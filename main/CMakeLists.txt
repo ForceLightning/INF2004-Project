@@ -53,6 +53,7 @@ if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
     target_include_directories(car_project_nosys PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
         # ${CMAKE_CURRENT_LIST_DIR}/../.. # for our common lwipopts
+        ${CMAKE_CURRENT_LIST_DIR}/drivers
         ${PICO_LWIP_CONTRIB_PATH}/apps/ping
         )
     target_link_libraries(car_project_nosys
@@ -61,7 +62,6 @@ if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
         pico_lwip_iperf
         FreeRTOS-Kernel-Heap4 # FreeRTOS kernel and dynamic heap
         hardware_adc
-        pathfinding
         )
     # enable usb output and uart output
     pico_enable_stdio_usb(car_project_nosys 1)
@@ -87,6 +87,7 @@ if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
     target_include_directories(car_project PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
         # ${CMAKE_CURRENT_LIST_DIR}/../.. # for our common lwipopts
+        ${CMAKE_CURRENT_LIST_DIR}/drivers
         ${PICO_LWIP_CONTRIB_PATH}/apps/ping
         )
     target_link_libraries(car_project
