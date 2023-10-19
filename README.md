@@ -29,3 +29,7 @@ cmake -S <current directory> -B <build directory>
 ```bash
 cmake --build <build directory> --config <Debug/Release> --target car_project -j 18 --
 ```
+
+# Contributing
+
+Pull requests are welcome. The enforced coding standard is the [Embedded C Coding Standard by the Barr Group](https://barrgroup.com/embedded-systems/books/embedded-c-coding-standard).
