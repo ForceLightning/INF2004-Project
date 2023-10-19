@@ -9,6 +9,9 @@
  * @copyright Copyright (c) 2023
  *
  */
+#ifndef BINARY_HEAP_H
+#define BINARY_HEAP_H
+
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "maze.h"
@@ -51,3 +54,7 @@ typedef struct binary_heap
 void insert(binary_heap_t *p_heap, grid_cell_t *p_maze_node, uint16_t priority);
 grid_cell_t *delete_min(binary_heap_t *p_heap);
 heap_node_t  peek(binary_heap_t *p_heap);
+
+#endif // BINARY_HEAP_H
+
+// End of file comment

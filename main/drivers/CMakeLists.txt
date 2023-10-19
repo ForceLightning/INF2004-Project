@@ -1,4 +1,4 @@
-add_library(car_library
+add_library(drivers INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}/ir_sensor/ir_sensor.c
     ${CMAKE_CURRENT_SOURCE_DIR}/magnetometer/magnetometer.c
     ${CMAKE_CURRENT_SOURCE_DIR}/motor_controller/motor_control.c
@@ -6,8 +6,13 @@ add_library(car_library
     ${CMAKE_CURRENT_SOURCE_DIR}/wheel_encoder/wheel_encoder.c
 )
 
-target_include_directories(car_library PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/../include
+target_link_libraries(drivers INTERFACE
+    pico_stdlib
+    hardware_adc
+    hardware_gpio
 )
 
-export(TARGETS car_library FILE car_library.cmake)
+target_include_directories(drivers INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}
+)
