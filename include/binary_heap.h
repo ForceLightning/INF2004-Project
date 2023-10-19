@@ -10,8 +10,8 @@
  *
  */
 #include <stdio.h>
-#include "maze.h"
 #include "pico/stdlib.h"
+#include "maze.h"
 
 /**
  * @brief This struct contains basic information about a node in a priority
