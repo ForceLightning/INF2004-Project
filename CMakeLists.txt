@@ -34,5 +34,13 @@ if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
 endif()
 
 
-# Lab weeks
+# Directories
 add_subdirectory(main)
+add_subdirectory(drivers)
+add_subdirectory(pathfinding)
+add_subdirectory(include)
+
+target_include_directories(car_project PRIVATE
+    ${PICO_SDK_PATH}/include
+    ${FREERTOS_KERNEL_PATH}/include
+)
