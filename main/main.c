@@ -6,13 +6,13 @@
 #include "task.h"
 #include "message_buffer.h"
 
-#include "ir_sensor.h"
-#include "magnetometer.h"
-#include "motor_control.h"
-#include "ultrasonic.h"
-#include "wheel_encoder.h"
+#include "ir_sensor/ir_sensor.h"
+#include "magnetometer/magnetometer.h"
+#include "motor_controller/motor_control.h"
+#include "ultrasonic_sensor/ultrasonic.h"
+#include "wheel_encoder/wheel_encoder.h"
 
-#include "a_star.h"
+#include "pathfinding/a_star.h"
 
 // Task priorities.
 //

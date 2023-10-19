@@ -41,6 +41,9 @@ else()
 
 endif()
 
+add_subdirectory(drivers)
+add_subdirectory(pathfinding)
+
 if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
     add_executable(car_project_nosys
         main.c
@@ -53,7 +56,7 @@ if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
     target_include_directories(car_project_nosys PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
         # ${CMAKE_CURRENT_LIST_DIR}/../.. # for our common lwipopts
-        ${CMAKE_CURRENT_LIST_DIR}/../include
+        ${CMAKE_CURRENT_LIST_DIR}/include
         ${PICO_LWIP_CONTRIB_PATH}/apps/ping
         )
     target_link_libraries(car_project_nosys
@@ -62,7 +65,7 @@ if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
         pico_lwip_iperf
         FreeRTOS-Kernel-Heap4 # FreeRTOS kernel and dynamic heap
         hardware_adc
-        car_library
+        drivers
         pathfinding
         )
     # enable usb output and uart output
@@ -88,8 +91,8 @@ if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
         )
     target_include_directories(car_project PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
-        # ${CMAKE_CURRENT_LIST_DIR}/../.. # for our common lwipopts
-        ${CMAKE_CURRENT_LIST_DIR}/../include
+        ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts
+        ${CMAKE_CURRENT_LIST_DIR}/include
         ${PICO_LWIP_CONTRIB_PATH}/apps/ping
         )
     target_link_libraries(car_project
@@ -98,7 +101,7 @@ if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
         pico_stdlib
         pico_lwip_iperf
         FreeRTOS-Kernel-Heap4 # FreeRTOS kernel and dynamic heap
-        car_library
+        drivers
         pathfinding
         )
     pico_enable_stdio_usb(car_project 1)
