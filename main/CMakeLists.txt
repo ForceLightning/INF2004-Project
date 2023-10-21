@@ -41,7 +41,7 @@ else()
 
 endif()
 
-add_subdirectory(drivers)
+add_subdirectory(driver)
 add_subdirectory(pathfinding)
 
 if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
@@ -65,7 +65,7 @@ if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
         pico_lwip_iperf
         FreeRTOS-Kernel-Heap4 # FreeRTOS kernel and dynamic heap
         hardware_adc
-        drivers
+        driver
         pathfinding
         )
     # enable usb output and uart output
@@ -101,7 +101,7 @@ if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
         pico_stdlib
         pico_lwip_iperf
         FreeRTOS-Kernel-Heap4 # FreeRTOS kernel and dynamic heap
-        drivers
+        driver
         pathfinding
         )
     pico_enable_stdio_usb(car_project 1)

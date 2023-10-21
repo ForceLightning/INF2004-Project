@@ -6,11 +6,12 @@
 #include "task.h"
 #include "message_buffer.h"
 
-#include "ir_sensor/ir_sensor.h"
+#include "irline/ir_sensor.h"
 #include "magnetometer/magnetometer.h"
-#include "motor_controller/motor_control.h"
-#include "ultrasonic_sensor/ultrasonic.h"
-#include "wheel_encoder/wheel_encoder.h"
+#include "motor/motor_control.h"
+#include "ultrasonic/ultrasonic.h"
+#include "encoder/wheel_encoder.h"
+#include "wifi/wifi.h"
 
 #include "pathfinding/a_star.h"
 
