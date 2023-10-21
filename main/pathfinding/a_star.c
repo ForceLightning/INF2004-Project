@@ -9,7 +9,6 @@
 // Private function prototypes.
 //
 static uint32_t square_euclidean_norm(point_t *point_a, point_t *point_b);
-void a_star(grid_t grid, grid_cell_t *p_start_node, grid_cell_t *p_end_node);
 static void a_star_inner_loop(binary_heap_t *open_set, grid_cell_t *p_end_node);
 
 /**
