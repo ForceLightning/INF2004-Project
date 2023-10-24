@@ -22,3 +22,10 @@ target_include_directories(driver INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
 )
+
+add_subdirectory(encoder)
+add_subdirectory(irline)
+add_subdirectory(magnetometer)
+add_subdirectory(motor)
+add_subdirectory(ultrasonic)
+add_subdirectory(wifi)
