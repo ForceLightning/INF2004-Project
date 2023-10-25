@@ -1,38 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "pico/stdlib.h"
-#include "math.h"
+#include <stdint.h>
 
 #include "binary_heap.h"
 #include "a_star.h"
 
 // Private function prototypes.
 //
-static uint32_t square_euclidean_norm(point_t *point_a, point_t *point_b);
+static uint32_t manhattan_distance(point_t *point_a, point_t *point_b);
 static void a_star_inner_loop(binary_heap_t *open_set, grid_cell_t *p_end_node);
 
 /**
- * @brief This function calculates the square of the Euclidean norm between two
- * points. This is used as the heuristic and avoids the costly square root
- * operation.
+ * @brief Calculates the manhattan distance between two points.
  *
  * @param point_a First point.
  * @param point_b Second point.
- * @return uint32_t The square of the Euclidean norm.
+ * @return uint32_t The manhattan distance.
+ *
+ * @ref https://en.wikipedia.org/wiki/Taxicab_geometry
  */
 static uint32_t
-square_euclidean_norm (point_t *point_a, point_t *point_b)
+manhattan_distance (point_t *point_a, point_t *point_b)
 {
-    // Casting from uint16_t to int and back to uint32_t is necessary to avoid
-    // overflow. There is no risk of overflow when casting from uint16_t to int
-    // because the maximum value of a uint16_t < INT_MAX.
-    //
     uint32_t x_diff = abs(point_a->x - point_b->x);
     uint32_t y_diff = abs(point_a->y - point_b->y);
-
-    return x_diff * x_diff + y_diff * y_diff;
+    return x_diff + y_diff;
 }
 
+/**
+ * @brief Contains the inner loop of the A* algorithm.
+ *
+ * @param open_set The open set heap which contains all unexplored nodes
+ * adjacent to explored nodes.
+ * @param p_end_node Pointer to the end node.
+ * 
+ * @ref https://en.wikipedia.org/wiki/A*_search_algorithm#Pseudocode
+ */
 static void
 a_star_inner_loop (binary_heap_t *open_set, grid_cell_t *p_end_node)
 {
@@ -67,7 +70,7 @@ a_star_inner_loop (binary_heap_t *open_set, grid_cell_t *p_end_node)
                 // since it is better than the previous value.
                 //
                 p_current_node.p_maze_node->g = tentative_g_score;
-                p_current_node.p_maze_node->h = square_euclidean_norm(
+                p_current_node.p_maze_node->h = manhattan_distance(
                     &p_current_node.p_maze_node->coordinates,
                     &p_end_node->coordinates);
 
@@ -125,7 +128,7 @@ a_star (grid_t grid, grid_cell_t *p_start_node, grid_cell_t *p_end_node)
 
     // Step 3: Insert the start node into the open set.
     //
-    uint32_t start_node_priority = square_euclidean_norm(
+    uint32_t start_node_priority = manhattan_distance(
         &p_start_node->coordinates, &p_end_node->coordinates);
     p_start_node->g = 0;
     insert(&open_set, p_start_node, start_node_priority);
