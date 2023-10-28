@@ -30,6 +30,22 @@ cmake -S <current directory> -B <build directory>
 cmake --build <build directory> --config <Debug/Release> --target car_project -j 18 --
 ```
 
+# Diagrams
+## Call Graph
+![Call graph](docs/callgraph.svg)
+
+## Data Flow
+![Data flow](docs/dataflow.svg)
+
+## Flowcharts
+### Mapping flowchart
+![Mapping](docs/mapping_flowchart.png)
+### Navigation flowchart
+![Navigation](docs/navigation_flowchart.png)
+
 # Contributing
 
 Pull requests are welcome. The enforced coding standard is the [Embedded C Coding Standard by the Barr Group](https://barrgroup.com/embedded-systems/books/embedded-c-coding-standard).
+
+# Licence
+[BSD-3-Clause](LICENSE.txt)
