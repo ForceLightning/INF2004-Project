@@ -1,6 +1,6 @@
 /**
  * @file wifi.h
- * 
+ *
  * @brief Header file for WiFi module.
  * This file contains the function prototypes and data structures for the WiFi
  * module. The module provides a TCP server that can be initialized and started
@@ -17,6 +17,12 @@
 
 #define BUF_SIZE 2048
 
+#ifndef NDEBUG
+#define DEBUG_PRINT(...) printf(__VA_ARGS__) // Assign to printf for debugging
+#else
+#define DEBUG_PRINT(...)
+#endif
+
 /**
  * @brief Struct representing a TCP server connection.
  *
@@ -29,13 +35,12 @@
  * @param recv_len Length of received data.
  * @param run_count Counter for tracking the state of the connection.
  *
- * @note struct contains information about a TCP server connection, including
- * the server and client PCBs,
- * @note flags indicating whether the connection is complete, buffers for sent
- * and received data, and various
- * @note counters for tracking the state of the connection.
+ * @note The struct contains information about a TCP server connection,
+ * including the server and client PCBs, flags indicating whether the connection
+ * is complete, buffers for sent and received data, and various counters for
+ * tracking the state of the connection.
  */
-typedef struct TCP_SERVER_T_
+typedef struct tcp_server
 {
     struct tcp_pcb *server_pcb; /**< Pointer to the server PCB */
     struct tcp_pcb *client_pcb; /**< Pointer to the client PCB */
@@ -45,10 +50,18 @@ typedef struct TCP_SERVER_T_
     int     sent_len;              /**< Length of sent data */
     int     recv_len;              /**< Length of received data */
     int     run_count; /**< Counter for tracking the state of the connection */
-} TCP_SERVER_T;
+} tcp_server_t;
 
 // Function prototypes
-void tcp_server_begin_init();
-void tcp_server_begin();
+void  tcp_server_begin_init();
+void  tcp_server_begin();
+err_t tcp_server_send_data(void *p_arg, struct tcp_pcb *p_tpcb);
+err_t tcp_server_recv(void                    *p_arg,
+                      __unused struct tcp_pcb *p_tpcb,
+                      struct pbuf             *p_buf,
+                      __unused err_t           err);
+void  run_tcp_server_test(void);
 
 #endif // WIFI_H
+
+// End of file driver/wifi/wifi.h.

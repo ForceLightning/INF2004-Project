@@ -12,16 +12,17 @@
  */
 
 #include "wifi.h"
-#include "pico/cyw43_arch.h"
 
 int main()
 {
     tcp_server_begin_init();
 
-    // TODO: Setup GPIO.
     for (;;) // Loop forever. See Barr Group "Embedded C Coding Standard" 8.4.c
     {
         tcp_server_begin();
     }
+
     return 0;
 }
+
+// End of file driver/wifi/main.c
