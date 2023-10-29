@@ -1,59 +1,40 @@
-/**
- * Copyright (c) 2020 Raspberry Pi (Trading) Ltd.
- *
- * SPDX-License-Identifier: BSD-3-Clause
- */
-
 #include <stdio.h>
 #include "pico/stdlib.h"
+#include "hardware/pwm.h"
 #include "hardware/gpio.h"
+#include "wheel_encoder.h"
 
-static char event_str[128];
+#define MOTOR_PIN_CLKWISE 16
+#define MOTOR_PIN_ANTICLKWISE 17
 
-void gpio_event_string(char *buf, uint32_t events);
+#define PWM_PIN 0
 
-void gpio_callback(uint gpio, uint32_t events) {
-    // Put the GPIO event(s) that just happened into event_str
-    // so we can print it
-    gpio_event_string(event_str, events);
-    printf("GPIO %d %s\n", gpio, event_str);
+#define CYCLE_PULSE 20
+#define DISTANCE_PER_PULSE 204.203/20.0
+
+/**
+ * @brief Get the time difference in ms
+ * 
+ * @param current_time 
+ * @param prev_time 
+ * @return float 
+ */
+float get_time_diff(uint64_t current_time, uint64_t prev_time){
+    return (current_time - prev_time)/1000.0;
 }
 
-int main() {
-    stdio_init_all();
-
-    printf("Hello GPIO IRQ\n");
-    gpio_set_irq_enabled_with_callback(2, GPIO_IRQ_EDGE_RISE, true, &gpio_callback);
-
-    // Wait forever
-    while (1);
-}
-
-
-static const char *gpio_irq_str[] = {
-        "LEVEL_LOW",  // 0x1
-        "LEVEL_HIGH", // 0x2
-        "EDGE_FALL",  // 0x4
-        "EDGE_RISE"   // 0x8
-};
-
-void gpio_event_string(char *buf, uint32_t events) {
-    for (uint i = 0; i < 4; i++) {
-        uint mask = (1 << i);
-        if (events & mask) {
-            // Copy this event string into the user string
-            const char *event_str = gpio_irq_str[i];
-            while (*event_str != '\0') {
-                *buf++ = *event_str++;
-            }
-            events &= ~mask;
-
-            // If more events add ", "
-            if (events) {
-                *buf++ = ',';
-                *buf++ = ' ';
-            }
-        }
+/**
+ * @brief Get the speed in either pulses/second or mm/second
+ * 
+ * @param time_elapsed 
+ * @param is_pulse 
+ * @return float 
+ */
+float get_speed(float time_elapsed, uint is_pulse){
+    if(is_pulse){
+        return 1000.0/time_elapsed;
     }
-    *buf++ = '\0';
+    else{
+        return (1000.0/time_elapsed) * DISTANCE_PER_PULSE;
+    }
 }
