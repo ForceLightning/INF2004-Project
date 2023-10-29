@@ -10,13 +10,13 @@
  */
 #include <stdbool.h>
 #include <stdint.h>
+#include <sys/cdefs.h>
 #include "pico/time.h"
 #include "pico/types.h"
+#include "pico/platform.h"
 #include "hardware/gpio.h"
-#include "ultrasonic.h"
 
-#define TRIG_PIN 0 // Pin for ultrasound pulse trigger.
-#define ECHO_PIN 1 // Pin for ultrasound pulse echo.
+#include "ultrasonic.h"
 
 static absolute_time_t g_start_time;  // Start time of the pulse.
 static absolute_time_t g_end_time;    // End time of the pulse.
@@ -31,8 +31,8 @@ static uint64_t        g_width;       // Pulse width in cycles.
  * @param events The type of event that triggered the interrupt.
 
  */
-void
-ultrasonic_pulse_isr (uint gpio, uint32_t events)
+static void
+ultrasonic_pulse_isr (__unused uint gpio, uint32_t events)
 {
     // Check if the pulse is starting or ending.
     //
@@ -57,6 +57,9 @@ ultrasonic_pulse_isr (uint gpio, uint32_t events)
  *
  * @param trig_pin Trigger pin for the ultrasonic sensor.
  * @param echo_pin Echo pin for the ultrasonic sensor.
+ *
+ * @par Initialises the trigger and echo pins, and sets a ISR on the echo pin to
+ * measure the pulse width.
  */
 void
 init_ultrasonic_pins (uint trig_pin, uint echo_pin)
@@ -82,7 +85,7 @@ uint64_t
 get_pulse (uint trig_pin, uint echo_pin)
 {
     gpio_put(trig_pin, 1);
-    sleep_us(10);
+    sleep_us(ULTRASONIC_TRIG_PULSE_US);
     gpio_put(trig_pin, 0);
     g_width = 0;
     while (!g_pulse_width)
@@ -119,3 +122,5 @@ get_inches (uint trig_pin, uint echo_pin)
     uint64_t pulse_length = get_pulse(trig_pin, echo_pin);
     return (uint64_t)pulse_length / 74.f / 2.f;
 }
+
+// End of file driver/ultrasonic/ultrasonic.c.
