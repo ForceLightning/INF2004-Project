@@ -1,3 +1,18 @@
+/**
+ * @file magnetometer.c
+ * 
+ * @author Jurgen Tan
+ * 
+ * @brief This file contains functions for initializing and reading data from a magnetometer sensor using I2C communication.
+ * The magnetometer sensor used is the LSM303DLHC.
+ * The file contains two functions: init_magnetometer() and read_magnetometer_data().
+ * 
+ * @version 0.1
+ * @date 2023-10-29
+ * 
+ * @copyright Copyright (c) 2023
+ */
+
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "hardware/i2c.h"
@@ -10,8 +25,14 @@
 #define ACCELEROMETER_ADDR \
     0x19 // Default I2C address for the LSM303DLHC accelerometer
 
-void
-init_magnetometer ()
+/**
+ * @brief Initializes the magnetometer by initializing the USB, I2C, and setting the GPIO pins.
+ * 
+ * @param None
+ * 
+ * @return void
+ */
+void init_magnetometer ()
 {
     stdio_usb_init();
 
@@ -22,6 +43,17 @@ init_magnetometer ()
     gpio_pull_up(I2C_SDA_PIN);
     gpio_pull_up(I2C_SCL_PIN);
 }
+/**
+ * @brief Reads magnetometer data from the magnetometer sensor and outputs the data for the X, Y, and Z axes.
+ * The function continuously reads the data and outputs it every second.
+ * The function uses I2C communication to communicate with the magnetometer sensor.
+ * The function sets the configuration registers for the magnetometer sensor before reading the data.
+ * The function also sets the configuration registers for the accelerometer sensor, but does not read its data.
+ * 
+ * @param None
+ * 
+ * @return void
+ */
 
 void
 read_magnetometer_data ()

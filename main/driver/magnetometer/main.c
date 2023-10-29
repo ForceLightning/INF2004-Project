@@ -1,12 +1,14 @@
 /**
  * @file main.c
- * @author
+ * 
+ * @author Jurgen Tan
+ * 
  * @brief Demonstration for the magnetometer driver.
+ * 
  * @version 0.1
- * @date 2023-10-24
+ * @date 2023-10-29
  *
  * @copyright Copyright (c) 2023
- *
  */
 
 #include <stdio.h>
@@ -35,6 +37,7 @@ int main()
         tight_loop_contents(); // No-op
         read_magnetometer_data();
     }
+    return 0;
 }
 
 // End of driver/magnetometer/main.c.

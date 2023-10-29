@@ -1,3 +1,8 @@
+/**
+ * @file magnetometer.h
+ * 
+ * @brief Header file for Magnetometer module.
+ */
 #ifndef MAGNETOMETER_H
 #define MAGNETOMETER_H
 
