@@ -9,23 +9,20 @@
  * 
  */
 
-#include <stdio.h>
-#include "pico/stdlib.h"
-#include "hardware/gpio.h"
-#include "hardware/adc.h"
+#include "pico/stdio.h"
 #include "ir_sensor.h"
 
-#define ADC_PIN 26 // Pin for IR_sensor for analog ouput
+#define ADC_PIN 26 // Pin for IR_sensor for analog ouput.
 
 int
 main (void)
 {
     stdio_init_all();
-    setupADCPins(ADC_PIN);
+    setup_adc_pins(ADC_PIN);
 
-    for (;;) // Loop forever. See Barr Group "Embedded C Coding Standard" 8.4.c
+    for (;;) // Loop forever. See Barr Group "Embedded C Coding Standard" 8.4.c.
     {
-        readBarcode();
+        read_barcode();
     }
 
 }

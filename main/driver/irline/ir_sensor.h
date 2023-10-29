@@ -14,8 +14,8 @@
 
 // Function prototypes
 //
-void setupADCPins(uint adcPin);
-void readBarcode();
+void setup_adc_pins(uint adcPin);
+void read_barcode();
 #endif // IR_SENSOR_H
 
 // End of driver/ir_sensor/ir_sensor.h.

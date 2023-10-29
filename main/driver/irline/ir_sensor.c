@@ -9,45 +9,46 @@
  *
  */
 #include <stdio.h>
-#include "pico/stdlib.h"
-#include "hardware/gpio.h"
+#include <stdint.h>
+#include <sys/types.h>
 #include "hardware/adc.h"
-
-#define ADC_PIN 26 // Pin for IR_sensor for analog ouput
 
 /**
  * @brief Initalises the pins for the ADC.
  *
- * @param adcPin ADC pin for the IR sensor
+ * @param adc_pin ADC pin for the IR sensor
  */
-void setupADCPins(uint adcPin)
+void
+setup_adc_pins (uint adc_pin)
 {
     adc_init();
-    adc_gpio_init(adcPin);
+    adc_gpio_init(adc_pin);
     adc_select_input(0);
 }
 
 /**
- * @brief This function reads the barcode and determines the colour and the thickness
- * 
+ * @brief This function reads the barcode and determines the colour and the
+ * thickness.
+ *
  */
-void readBarcode()
+void
+read_barcode ()
 {
     uint16_t result = adc_read();
 
-    if (result >= 200 && result <= 500)
+    if (200 < result && 500 >= result)
     {
         printf("THICK WHITE BARCODE\n");
     }
-    else if (result >= 501 && result <= 1800)
+    else if (500 < result && 1800 >= result)
     {
         printf("THIN WHITE BARCODE\n");
     }
-    else if (result >= 1801 && result <= 3300)
+    else if (1800 < result && 3300 >= result)
     {
         printf("THIN BLACK BARCODE\n");
     }
-    else if (result >= 3301 && result <= 4000)
+    else if (3300 < result && 4095 >= result)
     {
         printf("THICK BLACK BARCODE\n");
     }
