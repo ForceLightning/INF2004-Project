@@ -1,9 +1,9 @@
 /**
  * @file main.c
- * @author 
- * @brief Demonstration for the IR line sensor.
+ * @author Ang Jia Yu 
+ * @brief Demonstration for the IR sensor driver.
  * @version 0.1
- * @date 2023-10-24
+ * @date 2023-10-29
  * 
  * @copyright Copyright (c) 2023
  * 
@@ -11,29 +11,21 @@
 
 #include <stdio.h>
 #include "pico/stdlib.h"
-#include "pico/cyw43_arch.h"
 #include "hardware/gpio.h"
 #include "hardware/adc.h"
 #include "ir_sensor.h"
+
+#define ADC_PIN 26 // Pin for IR_sensor for analog ouput
 
 int
 main (void)
 {
     stdio_init_all();
-    adc_init();
-
-    if (cyw43_arch_init())
-    {
-        printf("CYW4343X initialization failed.\n");
-        return 1;
-    }
-
-    // TODO: Setup GPIO.
+    setupADCPins(ADC_PIN);
 
     for (;;) // Loop forever. See Barr Group "Embedded C Coding Standard" 8.4.c
     {
-        // TODO: Read from ADC.
-        tight_loop_contents(); // No-op
+        readBarcode();
     }
 
 }
