@@ -17,6 +17,15 @@ main (void)
     //
     stdio_init_all();
 
+    motor_pins_t motor_data = {
+        PWM_PIN_LEFT,
+        PWM_PIN_RIGHT,
+        LEFT_MOTOR_PIN_CLKWISE,
+        LEFT_MOTOR_PIN_ANTICLKWISE,
+        RIGHT_MOTOR_PIN_CLKWISE,
+        RIGHT_MOTOR_PIN_ANTICLKWISE,
+    };
+
     // Initialize motors.
     start_motor(
         LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, PWM_PIN_LEFT);
@@ -32,69 +41,35 @@ main (void)
         {
             case 'f':
                 printf("Moving forward...\n");
-                move_forward(PWM_PIN_LEFT,
-                             PWM_PIN_RIGHT,
-                             LEFT_MOTOR_PIN_CLKWISE,
-                             LEFT_MOTOR_PIN_ANTICLKWISE,
-                             RIGHT_MOTOR_PIN_CLKWISE,
-                             RIGHT_MOTOR_PIN_ANTICLKWISE);
+                move_forward(motor_data);
                 break;
             case 's':
                 printf("Stopping...\n");
-                stop(PWM_PIN_LEFT, PWM_PIN_RIGHT);
+                stop(motor_data);
                 break;
             case 'b':
                 printf("Reversing...\n");
-                reverse(PWM_PIN_LEFT,
-                        PWM_PIN_RIGHT,
-                        LEFT_MOTOR_PIN_CLKWISE,
-                        LEFT_MOTOR_PIN_ANTICLKWISE,
-                        RIGHT_MOTOR_PIN_CLKWISE,
-                        RIGHT_MOTOR_PIN_ANTICLKWISE);
+                reverse(motor_data);
                 break;
             case 'l':
                 printf("Turning forward left...\n");
-                turn_left(PWM_PIN_LEFT,
-                          PWM_PIN_RIGHT,
-                          LEFT_MOTOR_PIN_CLKWISE,
-                          LEFT_MOTOR_PIN_ANTICLKWISE,
-                          RIGHT_MOTOR_PIN_CLKWISE,
-                          RIGHT_MOTOR_PIN_ANTICLKWISE,
-                          0);
+                turn_left(motor_data, 0);
                 break;
             case 't':
                 printf("Turning reverse left...\n");
-                turn_left(PWM_PIN_LEFT,
-                          PWM_PIN_RIGHT,
-                          LEFT_MOTOR_PIN_CLKWISE,
-                          LEFT_MOTOR_PIN_ANTICLKWISE,
-                          RIGHT_MOTOR_PIN_CLKWISE,
-                          RIGHT_MOTOR_PIN_ANTICLKWISE,
-                          1);
+                turn_left(motor_data, 1);
                 break;
             case 'r':
                 printf("Turning forward right...\n");
-                turn_right(PWM_PIN_LEFT,
-                           PWM_PIN_RIGHT,
-                           LEFT_MOTOR_PIN_CLKWISE,
-                           LEFT_MOTOR_PIN_ANTICLKWISE,
-                           RIGHT_MOTOR_PIN_CLKWISE,
-                           RIGHT_MOTOR_PIN_ANTICLKWISE,
-                           0);
+                turn_right(motor_data, 0);
                 break;
             case 'y':
                 printf("Turning forward right...\n");
-                turn_right(PWM_PIN_LEFT,
-                           PWM_PIN_RIGHT,
-                           LEFT_MOTOR_PIN_CLKWISE,
-                           LEFT_MOTOR_PIN_ANTICLKWISE,
-                           RIGHT_MOTOR_PIN_CLKWISE,
-                           RIGHT_MOTOR_PIN_ANTICLKWISE,
-                           1);
+                turn_right(motor_data, 1);
                 break;
             default:
                 printf("Invalid input. Stopping car...\n");
-                stop(PWM_PIN_LEFT, PWM_PIN_RIGHT);
+                stop(motor_data);
                 break;
         }
     }

@@ -93,29 +93,16 @@ update_direction (uint clkwise_gpio,
  * This function moves the car forward by setting the duty cycle of both motors
  * to be equal, as well as setting a clockwise rotation for both motors.
  *
- * @param pwm_gpio_a The GPIO pin number for the first PWM output.
- * @param pwm_gpio_b The GPIO pin number for the second PWM output.
- * @param left_clkwise The GPIO pin number for the left motor's clockwise
- * rotation.
- * @param left_anticlkwise The GPIO pin number for the left motor's
- * anticlockwise rotation.
- * @param right_clkwise The GPIO pin number for the right motor's clockwise
- * rotation.
- * @param right_anticlkwise The GPIO pin number for the right motor's
- * anticlockwise rotation.
+ * @param motor_data The structure containing the GPIO pin numbers for the
+ * motors.
  */
 void
-move_forward (uint pwm_gpio_a,
-              uint pwm_gpio_b,
-              uint left_clkwise,
-              uint left_anticlkwise,
-              uint right_clkwise,
-              uint right_anticlkwise)
+move_forward (motor_pins_t motor_data)
 {
-    update_pwm(pwm_gpio_a, MOTOR_PWM_WRAP, 0.5f);
-    update_pwm(pwm_gpio_b, MOTOR_PWM_WRAP, 0.5f);
-    update_direction(left_clkwise, left_anticlkwise, 1, 0);
-    update_direction(right_clkwise, right_anticlkwise, 1, 0);
+    update_pwm(motor_data.pwm_gpio_a, MOTOR_PWM_WRAP, 0.5f);
+    update_pwm(motor_data.pwm_gpio_b, MOTOR_PWM_WRAP, 0.5f);
+    update_direction(motor_data.left_clkwise, motor_data.left_anticlkwise, 1, 0);
+    update_direction(motor_data.right_clkwise, motor_data.right_anticlkwise, 1, 0);
 }
 
 /**
@@ -123,14 +110,14 @@ move_forward (uint pwm_gpio_a,
  *
  * This function works by setting the duty cycle of both motors to 0.
  *
- * @param pwm_gpio_a The GPIO pin number for the first PWM output.
- * @param pwm_gpio_b The GPIO pin number for the second PWM output.
+ * @param motor_data The structure containing the GPIO pin numbers for the
+ * motors.
  */
 void
-stop (uint pwm_gpio_a, uint pwm_gpio_b)
+stop (motor_pins_t motor_data)
 {
-    update_pwm(pwm_gpio_a, MOTOR_PWM_WRAP, 0.0f);
-    update_pwm(pwm_gpio_b, MOTOR_PWM_WRAP, 0.0f);
+    update_pwm(motor_data.pwm_gpio_a, MOTOR_PWM_WRAP, 0.0f);
+    update_pwm(motor_data.pwm_gpio_b, MOTOR_PWM_WRAP, 0.0f);
 }
 
 /**
@@ -139,29 +126,16 @@ stop (uint pwm_gpio_a, uint pwm_gpio_b)
  * This function reverses the car by setting the duty cycle of both motors
  * to be equal, as well as setting an anti-clockwise rotation for both motors.
  *
- * @param pwm_gpio_a The GPIO pin number for the first PWM output.
- * @param pwm_gpio_b The GPIO pin number for the second PWM output.
- * @param left_clkwise The GPIO pin number for the left motor's clockwise
- * rotation.
- * @param left_anticlkwise The GPIO pin number for the left motor's
- * anticlockwise rotation.
- * @param right_clkwise The GPIO pin number for the right motor's clockwise
- * rotation.
- * @param right_anticlkwise The GPIO pin number for the right motor's
- * anticlockwise rotation.
+ * @param motor_data The structure containing the GPIO pin numbers for the
+ * motors.
  */
 void
-reverse (uint pwm_gpio_a,
-         uint pwm_gpio_b,
-         uint left_clkwise,
-         uint left_anticlkwise,
-         uint right_clkwise,
-         uint right_anticlkwise)
+reverse (motor_pins_t motor_data)
 {
-    update_pwm(pwm_gpio_a, MOTOR_PWM_WRAP, 0.5f);
-    update_pwm(pwm_gpio_b, MOTOR_PWM_WRAP, 0.5f);
-    update_direction(left_clkwise, left_anticlkwise, 0, 1);
-    update_direction(right_clkwise, right_anticlkwise, 0, 1);
+    update_pwm(motor_data.pwm_gpio_a, MOTOR_PWM_WRAP, 0.5f);
+    update_pwm(motor_data.pwm_gpio_b, MOTOR_PWM_WRAP, 0.5f);
+    update_direction(motor_data.left_clkwise, motor_data.left_anticlkwise, 0, 1);
+    update_direction(motor_data.right_clkwise, motor_data.right_anticlkwise, 0, 1);
 }
 
 /**
@@ -172,40 +146,26 @@ reverse (uint pwm_gpio_a,
  * addition, the left motor is set to rotate in the opposite direction of the
  * right motor.
  *
- * @param pwm_gpio_a The GPIO pin number for the first PWM output.
- * @param pwm_gpio_b The GPIO pin number for the second PWM output.
- * @param left_clkwise The GPIO pin number for the left motor's clockwise
- * rotation.
- * @param left_anticlkwise The GPIO pin number for the left motor's
- * anticlockwise rotation.
- * @param right_clkwise The GPIO pin number for the right motor's clockwise
- * rotation.
- * @param right_anticlkwise The GPIO pin number for the right motor's
- * anticlockwise rotation.
+ * @param motor_data The structure containing the GPIO pin numbers for the
+ * motors.
  * @param reverse_turn A boolean value to indicate that the car is turning in
  * reverse.
  */
 void
-turn_left (uint pwm_gpio_a,
-           uint pwm_gpio_b,
-           uint left_clkwise,
-           uint left_anticlkwise,
-           uint right_clkwise,
-           uint right_anticlkwise,
-           bool reverse_turn)
+turn_left (motor_pins_t motor_data, bool reverse_turn)
 {
-    update_pwm(pwm_gpio_a, MOTOR_PWM_WRAP, 0.2f);
-    update_pwm(pwm_gpio_b, MOTOR_PWM_WRAP, 0.5f);
+    update_pwm(motor_data.pwm_gpio_a, MOTOR_PWM_WRAP, 0.2f);
+    update_pwm(motor_data.pwm_gpio_b, MOTOR_PWM_WRAP, 0.5f);
 
     if (reverse_turn)
     {
-        update_direction(left_clkwise, left_anticlkwise, 1, 0);
-        update_direction(right_clkwise, right_anticlkwise, 0, 1);
+        update_direction(motor_data.left_clkwise, motor_data.left_anticlkwise, 1, 0);
+        update_direction(motor_data.right_clkwise, motor_data.right_anticlkwise, 0, 1);
     }
     else
     {
-        update_direction(left_clkwise, left_anticlkwise, 0, 1);
-        update_direction(right_clkwise, right_anticlkwise, 1, 0);
+        update_direction(motor_data.left_clkwise, motor_data.left_anticlkwise, 0, 1);
+        update_direction(motor_data.right_clkwise, motor_data.right_anticlkwise, 1, 0);
     }
 }
 
@@ -217,40 +177,26 @@ turn_left (uint pwm_gpio_a,
  * In addition, the right motor is set to rotate in the opposite direction of
  * the right motor.
  *
- * @param pwm_gpio_a The GPIO pin number for the first PWM output.
- * @param pwm_gpio_b The GPIO pin number for the second PWM output.
- * @param left_clkwise The GPIO pin number for the left motor's clockwise
- * rotation.
- * @param left_anticlkwise The GPIO pin number for the left motor's
- * anticlockwise rotation.
- * @param right_clkwise The GPIO pin number for the right motor's clockwise
- * rotation.
- * @param right_anticlkwise The GPIO pin number for the right motor's
- * anticlockwise rotation.
+ * @param motor_data The structure containing the GPIO pin numbers for the
+ * motors.
  * @param reverse_turn A boolean value to indicate that the car is turning in
  * reverse.
  */
 void
-turn_right (uint pwm_gpio_a,
-            uint pwm_gpio_b,
-            uint left_clkwise,
-            uint left_anticlkwise,
-            uint right_clkwise,
-            uint right_anticlkwise,
-            bool reverse_turn)
+turn_right (motor_pins_t motor_data, bool reverse_turn)
 {
-    update_pwm(pwm_gpio_a, MOTOR_PWM_WRAP, 0.5f);
-    update_pwm(pwm_gpio_b, MOTOR_PWM_WRAP, 0.2f);
+    update_pwm(motor_data.pwm_gpio_a, MOTOR_PWM_WRAP, 0.5f);
+    update_pwm(motor_data.pwm_gpio_b, MOTOR_PWM_WRAP, 0.2f);
 
     if (reverse_turn)
     {
-        update_direction(left_clkwise, left_anticlkwise, 0, 1);
-        update_direction(right_clkwise, right_anticlkwise, 1, 0);
+        update_direction(motor_data.left_clkwise, motor_data.left_anticlkwise, 0, 1);
+        update_direction(motor_data.right_clkwise, motor_data.right_anticlkwise, 1, 0);
     }
     else
     {
-        update_direction(left_clkwise, left_anticlkwise, 1, 0);
-        update_direction(right_clkwise, right_anticlkwise, 0, 1);
+        update_direction(motor_data.left_clkwise, motor_data.left_anticlkwise, 1, 0);
+        update_direction(motor_data.right_clkwise, motor_data.right_anticlkwise, 0, 1);
     }
 }
 // End of file motor_control.c

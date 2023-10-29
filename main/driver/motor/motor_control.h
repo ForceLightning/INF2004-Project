@@ -17,6 +17,15 @@
 #define MOTOR_PWM_CLKDIV 100   // PWM clock divider.
 #define MOTOR_PWM_WRAP   62500 // PWM wrap value.
 
+typedef struct motor_pins {
+    uint pwm_gpio_a;
+    uint pwm_gpio_b;
+    uint left_clkwise;
+    uint left_anticlkwise;
+    uint right_clkwise;
+    uint right_anticlkwise;
+} motor_pins_t;
+
 // Function prototypes
 //
 void start_motor(uint clkwise_gpio, uint anti_clkwise_gpio, uint pwm_gpio);
@@ -25,33 +34,11 @@ void update_direction(uint clkwise_gpio,
                       uint anti_clkwise_gpio,
                       uint clkwise,
                       uint anti_clkwise);
-void move_forward(uint pwm_gpio_a,
-                  uint pwm_gpio_b,
-                  uint left_clkwise,
-                  uint left_anticlkwise,
-                  uint right_clkwise,
-                  uint right_anticlkwise);
-void stop(uint pwm_gpio_a, uint pwm_gpio_b);
-void reverse(uint pwm_gpio_a,
-             uint pwm_gpio_b,
-             uint left_clkwise,
-             uint left_anticlkwise,
-             uint right_clkwise,
-             uint right_anticlkwise);
-void turn_left(uint pwm_gpio_a,
-               uint pwm_gpio_b,
-               uint left_clkwise,
-               uint left_anticlkwise,
-               uint right_clkwise,
-               uint right_anticlkwise,
-               bool reverse_turn);
-void turn_right(uint pwm_gpio_a,
-                uint pwm_gpio_b,
-                uint left_clkwise,
-                uint left_anticlkwise,
-                uint right_clkwise,
-                uint right_anticlkwise,
-                bool reverse_turn);
+void move_forward(motor_pins_t motor_data);
+void stop(motor_pins_t motor_data);
+void reverse(motor_pins_t motor_data);
+void turn_left(motor_pins_t motor_data, bool reverse_turn);
+void turn_right(motor_pins_t motor_data, bool reverse_turn);
 
 #endif // MOTOR_CONTROL_H
 
