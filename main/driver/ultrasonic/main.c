@@ -10,28 +10,37 @@
  */
 
 #include <stdio.h>
-#include "pico/cyw43_arch.h"
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
+#include "hardware/timer.h"
 #include "ultrasonic.h"
+
+int timeout = 26100;
+
+#define TRIG_PIN 0
+#define ECHO_PIN 1
+
+static absolute_time_t start_time;
+static absolute_time_t end_time;
+static uint64_t pulse_width;
+static uint64_t width;
 
 int
 main (void)
 {
     stdio_init_all();
 
-    if (cyw43_arch_init())
-    {
-        printf("CYW4343X initialization failed.\n");
-        return 1;
-    }
+    setupUltrasonicPins(TRIG_PIN, ECHO_PIN);
     
-    // TODO: Initialise the ultrasonic driver.
     
     for (;;) // Loop forever. See Barr Group "Embedded C Coding Standard" 8.4.c
     {
-        tight_loop_contents(); // No-op
-        // TODO: Read from ultrasonic driver.
+        uint64_t distance_cm = getCm(TRIG_PIN, ECHO_PIN);
+        uint64_t distance_inch = getInch(TRIG_PIN, ECHO_PIN);
+        printf("Distance in cm: %llu\n", distance_cm);
+        printf("Distance in inches: %llu\n", distance_inch);
+
+        sleep_ms(1000); 
     }
 
 }
