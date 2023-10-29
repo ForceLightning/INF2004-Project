@@ -16,6 +16,7 @@ target_link_libraries(driver INTERFACE
     hardware_adc
     hardware_gpio
     hardware_pwm
+    hardware_i2c
 )
 
 target_include_directories(driver INTERFACE
