@@ -15,7 +15,7 @@ set(WIFI_SSID "${WIFI_SSID}" CACHE INTERNAL "WiFi SSID")
 set(WIFI_PASSWORD "${WIFI_PASSWORD}" CACHE INTERNAL "WiFi password")
 
 add_executable(motor
-    main.c
+    main.c motor_control.c
     )
 
 target_link_libraries(motor

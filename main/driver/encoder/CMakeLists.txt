@@ -15,13 +15,14 @@ set(WIFI_SSID "${WIFI_SSID}" CACHE INTERNAL "WiFi SSID")
 set(WIFI_PASSWORD "${WIFI_PASSWORD}" CACHE INTERNAL "WiFi password")
 
 add_executable(encoder
-    main.c
+    main.c wheel_encoder.c
     )
 
 target_link_libraries(encoder
     pico_stdlib
     pico_cyw43_arch_none
     hardware_gpio
+    hardware_pwm
     )
 
 pico_add_extra_outputs(encoder)

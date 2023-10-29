@@ -14,18 +14,20 @@ endif()
 set(WIFI_SSID "${WIFI_SSID}" CACHE INTERNAL "WiFi SSID")
 set(WIFI_PASSWORD "${WIFI_PASSWORD}" CACHE INTERNAL "WiFi password")
 
-add_executable(magnetometer
-    main.c
-    )
+add_executable(magnetometer main.c magnetometer.c)
+
 
 target_link_libraries(magnetometer
     pico_stdlib
+    hardware_i2c
     pico_cyw43_arch_none
-    hardware_gpio
-    hardware_adc
     )
 
 pico_add_extra_outputs(magnetometer)
 
 pico_enable_stdio_usb(magnetometer 1)
 pico_enable_stdio_uart(magnetometer 0)
+
+pico_add_extra_outputs(magnetometer)
+
+example_auto_set_url(magnetometer)
