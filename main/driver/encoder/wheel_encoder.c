@@ -1,59 +1,46 @@
+#include <stdbool.h>
+#include <stdint.h>
+#include <sys/types.h>
+#include "wheel_encoder.h"
+
 /**
- * Copyright (c) 2020 Raspberry Pi (Trading) Ltd.
+ * @brief Get the time difference in ms
  *
- * SPDX-License-Identifier: BSD-3-Clause
+ * @param current_time Current time in us
+ * @param prev_time Previous time in us
+ * @return float Time difference in ms
  */
-
-#include <stdio.h>
-#include "pico/stdlib.h"
-#include "hardware/gpio.h"
-
-static char event_str[128];
-
-void gpio_event_string(char *buf, uint32_t events);
-
-void gpio_callback(uint gpio, uint32_t events) {
-    // Put the GPIO event(s) that just happened into event_str
-    // so we can print it
-    gpio_event_string(event_str, events);
-    printf("GPIO %d %s\n", gpio, event_str);
+float
+get_time_diff (uint64_t current_time, uint64_t prev_time)
+{
+    return (current_time - prev_time)
+           / 1000.0f; // Conversion from uint64_t to float is safe because the
+                      // maximum value of uint64_t is greater than the maximum
+                      // value of float.
 }
 
-int main() {
-    stdio_init_all();
+/**
+ * @brief Get the speed in either pulses/second or mm/second
+ *
+ * @param time_elapsed Time elapsed in ms
+ * @param is_pulse True if speed is in pulses/second, false if speed is in
+ * mm/second
+ * @return float Speed in either pulses/second or mm/second
+ */
+float
+get_speed (float time_elapsed, bool is_pulse)
+{
+    float speed = 0.0f;
 
-    printf("Hello GPIO IRQ\n");
-    gpio_set_irq_enabled_with_callback(2, GPIO_IRQ_EDGE_RISE, true, &gpio_callback);
-
-    // Wait forever
-    while (1);
-}
-
-
-static const char *gpio_irq_str[] = {
-        "LEVEL_LOW",  // 0x1
-        "LEVEL_HIGH", // 0x2
-        "EDGE_FALL",  // 0x4
-        "EDGE_RISE"   // 0x8
-};
-
-void gpio_event_string(char *buf, uint32_t events) {
-    for (uint i = 0; i < 4; i++) {
-        uint mask = (1 << i);
-        if (events & mask) {
-            // Copy this event string into the user string
-            const char *event_str = gpio_irq_str[i];
-            while (*event_str != '\0') {
-                *buf++ = *event_str++;
-            }
-            events &= ~mask;
-
-            // If more events add ", "
-            if (events) {
-                *buf++ = ',';
-                *buf++ = ' ';
-            }
-        }
+    if (is_pulse)
+    {
+        speed = 1000.0f / time_elapsed;
     }
-    *buf++ = '\0';
+    else
+    {
+        speed = (1000.0f / time_elapsed) * DISTANCE_PER_PULSE;
+    }
+
+    return speed;
 }
+// End of file wheel_encoder.c.
