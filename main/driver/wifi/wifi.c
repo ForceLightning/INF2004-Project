@@ -25,10 +25,9 @@
 
 #include "wifi.h"
 
-#define TCP_PORT        4242
-#define DEBUG_printf    printf
-#define TEST_ITERATIONS 10
-#define POLL_TIME_S     20
+#define TCP_PORT        4242 // Port to listen on
+#define DEBUG_printf    printf // Assign DEBUG_printf to printf for debugging
+#define POLL_TIME_S     20 // Poll time in seconds
 
 // Define the maximum length of a received message
 #define MAX_MESSAGE_LENGTH 1024
