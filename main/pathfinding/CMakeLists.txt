@@ -1,4 +1,4 @@
-add_library(pathfinding STATIC # Change to INTERFACE later.
+add_library(pathfinding INTERFACE
 )
 
 target_sources(pathfinding INTERFACE
@@ -7,7 +7,7 @@ target_sources(pathfinding INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}/maze.c
 )
 
-target_link_libraries(pathfinding STATIC # Change to INTERFACE later.
+target_link_libraries(pathfinding INTERFACE
     pico_stdlib
 )
 
