@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "pico/stdlib.h"
-#include "math.h"
+#include <stdint.h>
 
 #include "binary_heap.h"
 #include "a_star.h"
+#include "maze.h"
 
 // Private function prototypes.
 //

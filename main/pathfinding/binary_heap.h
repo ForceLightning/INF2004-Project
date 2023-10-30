@@ -12,9 +12,13 @@
 #ifndef BINARY_HEAP_H
 #define BINARY_HEAP_H
 
-#include <stdio.h>
-#include "pico/stdlib.h"
+#include <stdint.h>
 #include "maze.h"
+
+#ifndef NDEBUG
+#include <stdio.h>
+#define DEBUG_PRINT(...) printf(__VA_ARGS__)
+#endif
 
 /**
  * @brief This struct contains basic information about a node in a priority
