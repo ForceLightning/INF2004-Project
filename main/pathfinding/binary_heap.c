@@ -205,3 +205,33 @@ peek (binary_heap_t *p_heap)
     //
     return p_heap->p_array[0];
 }
+
+/**
+ * @brief Finds the index of the given node in the binary heap if it exists.
+ * Otherwise, returns UINT16_MAX.
+ *
+ * @param p_heap Pointer to the binary heap.
+ * @param p_maze_node Pointer to the node to be found.
+ * @return uint16_t Index of the node if it exists, otherwise UINT16_MAX.
+ * 
+ */
+uint16_t
+get_index_of_node (binary_heap_t *p_heap, grid_cell_t *p_maze_node)
+{
+    // Assume that the node is in the heap.
+    //
+    uint16_t return_index = UINT16_MAX;
+
+    for (uint16_t index = 0; p_heap->size > index; index++)
+    {
+        if (p_heap->p_array[index].p_maze_node == p_maze_node)
+        {
+            return_index = index;
+            break;
+        }
+    }
+
+    return return_index;
+}
+
+// End of pathfinding/binary_heap.c
