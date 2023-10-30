@@ -1,116 +1,457 @@
 /**
- * Copyright (c) 2022 Raspberry Pi (Trading) Ltd.
+ * @file wifi.c
  *
- * SPDX-License-Identifier: BSD-3-Clause
+ * @author Jurgen Tan
+ *
+ * @brief This file contains the implementation of a TCP server using lwIP.
+ * The TCP server is initialized using tcp_server_init() and closed using
+ * tcp_server_close(). The server sends data to the client using
+ * tcp_server_send_data() and receives data from the client using
+ * tcp_server_recv(). Callback functions for sent data and connection result are
+ * defined in tcp_server_sent() and tcp_server_result() respectively.
+ *
+ * @version 0.1
+ * @date 2023-10-29
+ *
+ * @copyright Copyright (c) 2023
  */
 
+#include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <sys/cdefs.h>
+
 #include "pico/cyw43_arch.h"
-#include "pico/stdlib.h"
-
-#include "lwip/netif.h"
+#include "pico/stdio.h"
+#include "cyw43_configport.h"
+#include "cyw43_ll.h"
 #include "lwip/ip4_addr.h"
-#include "lwip/apps/lwiperf.h"
+#include "lwip/ip_addr.h"
+#include "lwip/netif.h"
+#include "lwip/arch.h"
+#include "lwip/err.h"
+#include "lwip/pbuf.h"
+#include "lwip/tcp.h"
+#include "lwip/tcpbase.h"
+#include "pico/time.h"
 
-#include "FreeRTOS.h"
-#include "task.h"
+#include "wifi.h"
 
-#ifndef RUN_FREERTOS_ON_CORE
-#define RUN_FREERTOS_ON_CORE 0
-#endif
+#define TCP_PORT    4242 // Port to listen on
+#define POLL_TIME_S 20   // Poll time in seconds
 
-#define TEST_TASK_PRIORITY				( tskIDLE_PRIORITY + 2UL )
+// Define the maximum length of a received message
+#define MAX_MESSAGE_LENGTH 1024
 
-
-#if CLIENT_TEST && !defined(IPERF_SERVER_IP)
-#error IPERF_SERVER_IP not defined
-#endif
-
-// Report IP results and exit
-static void iperf_report(void *arg, enum lwiperf_report_type report_type,
-                         const ip_addr_t *local_addr, u16_t local_port, const ip_addr_t *remote_addr, u16_t remote_port,
-                         u32_t bytes_transferred, u32_t ms_duration, u32_t bandwidth_kbitpsec) {
-    static uint32_t total_iperf_megabytes = 0;
-    uint32_t mbytes = bytes_transferred / 1024 / 1024;
-    float mbits = bandwidth_kbitpsec / 1000.0;
-
-    total_iperf_megabytes += mbytes;
-
-    printf("Completed iperf transfer of %d MBytes @ %.1f Mbits/sec\n", mbytes, mbits);
-    printf("Total iperf megabytes since start %d Mbytes\n", total_iperf_megabytes);
+/**
+ * @brief Initializes a TCP server state.
+ *
+ * @return A pointer to the initialized tcp_server_t struct, or NULL if
+ * allocation failed.
+ */
+static tcp_server_t *
+tcp_server_init (void)
+{
+    tcp_server_t *p_state = calloc(1, sizeof(tcp_server_t));
+    if (!p_state)
+    {
+        DEBUG_PRINT("failed to allocate state\n");
+        return NULL;
+    }
+    return p_state;
 }
 
-void main_task(__unused void *params) {
-    if (cyw43_arch_init()) {
-        printf("failed to initialise\n");
+/**
+ * @brief Closes the TCP server connection and frees the memory allocated for
+ * the connection state.
+ *
+ * @param p_arg Pointer to the TCP server connection state.
+ *
+ * @return err_t Returns ERR_OK if the connection was closed successfully,
+ * ERR_ABRT if the connection was aborted, or an error code if the connection
+ * could not be closed.
+ */
+static err_t
+tcp_server_close (void *p_arg)
+{
+    tcp_server_t *state = (tcp_server_t *)p_arg;
+    err_t         err   = ERR_OK;
+    if (state->client_pcb != NULL)
+    {
+        tcp_arg(state->client_pcb, NULL);
+        tcp_poll(state->client_pcb, NULL, 0);
+        tcp_sent(state->client_pcb, NULL);
+        tcp_recv(state->client_pcb, NULL);
+        tcp_err(state->client_pcb, NULL);
+        err = tcp_close(state->client_pcb);
+        if (err != ERR_OK)
+        {
+            DEBUG_PRINT("close failed %d, calling abort\n", err);
+            tcp_abort(state->client_pcb);
+            err = ERR_ABRT;
+        }
+        state->client_pcb = NULL;
+    }
+    if (state->server_pcb)
+    {
+        tcp_arg(state->server_pcb, NULL);
+        tcp_close(state->server_pcb);
+        state->server_pcb = NULL;
+    }
+    return err;
+}
+
+/**
+ * @brief Callback function for TCP server connection result.
+ *
+ * @param p_arg pointer to the argument passed to tcp_connect.
+ * @param status indicates the status of the connection result. 0 indicates
+ * success, while other values indicate failure.
+ *
+ * @return ERR_OK if the function executes successfully.
+ */
+static err_t
+tcp_server_result (__unused void *p_arg, int status)
+{
+    if (status == 0)
+    {
+        DEBUG_PRINT("test success\n");
+    }
+    else
+    {
+        // handle failure
+    }
+    return ERR_OK;
+}
+
+/**
+ * @brief Callback function for TCP server to handle sent data.
+ *
+ * @param p_arg pointer to the tcp_server_t struct.
+ * @param p_tpcb pointer to the TCP control block.
+ * @param len length of the sent data.
+ *
+ * @return ERR_OK if successful.
+ */
+static err_t
+tcp_server_sent (void *p_arg, __unused struct tcp_pcb *p_tpcb, u16_t len)
+{
+    tcp_server_t *state = (tcp_server_t *)p_arg;
+    DEBUG_PRINT("tcp_server_sent %u\n", len);
+    state->sent_len += len;
+
+    if (state->sent_len >= BUF_SIZE)
+    {
+
+        // We should get the data back from the client
+        state->recv_len = 0;
+        DEBUG_PRINT("Waiting for buffer from client\n");
+    }
+
+    return ERR_OK;
+}
+
+/**
+ * @brief This function is a callback from lwIP, so cyw43_arch_lwip_begin is not
+ * required. However, you can use this method to cause an assertion in debug
+ * mode if this method is called when cyw43_arch_lwip_begin IS needed.
+ *
+ * @param p_arg A void pointer to the tcp_server_t struct.
+ * @param p_tpcb A pointer to the tcp_pcb struct.
+ *
+ * @return err_t value indicating success or failure.
+ */
+err_t
+tcp_server_send_data (void *p_arg, struct tcp_pcb *p_tpcb)
+{
+    tcp_server_t *p_state = (tcp_server_t *)p_arg;
+    for (int i = 0; i < BUF_SIZE; i++)
+    {
+        p_state->buffer_sent[i] = rand();
+    }
+
+    p_state->sent_len = 0;
+    DEBUG_PRINT("Writing %ld bytes to client\n", BUF_SIZE);
+    // this method is callback from lwIP, so cyw43_arch_lwip_begin is not
+    // required, however you can use this method to cause an assertion in debug
+    // mode, if this method is called when cyw43_arch_lwip_begin IS needed
+    cyw43_arch_lwip_check();
+    err_t err = tcp_write(
+        p_tpcb, p_state->buffer_sent, BUF_SIZE, TCP_WRITE_FLAG_COPY);
+    if (err != ERR_OK)
+    {
+        DEBUG_PRINT("Failed to write data %d\n", err);
+        return tcp_server_result(p_arg, -1);
+    }
+    return ERR_OK;
+}
+
+/**
+ * @brief This function is called by lwIP when data is received from a TCP
+ * client. It receives the data and checks if a complete message has been
+ * received (e.g., terminated by a newline character). If a complete message has
+ * been received, it null-terminates the received data, prints it to the
+ * console, and resets the receive buffer.
+ *
+ * @param p_arg Pointer to the TCP server state structure.
+ * @param p_tpcb Pointer to the TCP control block.
+ * @param p_buf Pointer to the received data buffer.
+ * @param err Error code.
+ *
+ * @return err_t Error code.
+ */
+err_t
+tcp_server_recv (void                    *p_arg,
+                 __unused struct tcp_pcb *p_tpcb,
+                 struct pbuf             *p_buf,
+                 __unused err_t           err)
+{
+    tcp_server_t *p_state = (tcp_server_t *)p_arg;
+    if (!p_buf)
+    {
+        return tcp_server_result(p_arg, -1);
+    }
+    // this method is callback from lwIP, so cyw43_arch_lwip_begin is not
+    // required, however you can use this method to cause an assertion in debug
+    // mode, if this method is called when cyw43_arch_lwip_begin IS needed
+    cyw43_arch_lwip_check();
+    if (p_buf->tot_len > 0)
+    {
+        // DEBUG_PRINT("tcp_server_recv %d/%d err %d\n", p_buf->tot_len,
+        // state->recv_len, err);
+
+        // Receive the buffer
+        const uint16_t buffer_left = BUF_SIZE - p_state->recv_len;
+        p_state->recv_len += pbuf_copy_partial(
+            p_buf,
+            p_state->buffer_recv + p_state->recv_len,
+            p_buf->tot_len > buffer_left ? buffer_left : p_buf->tot_len,
+            0);
+        tcp_recved(p_tpcb, p_buf->tot_len);
+
+        // Check if a complete message has been received (e.g., terminated by a
+        // newline character)
+        if (p_state->recv_len > 0
+            && p_state->buffer_recv[p_state->recv_len - 1] == '\n')
+        {
+            p_state->buffer_recv[p_state->recv_len]
+                = '\0'; // Null-terminate the received data
+            printf("Received message: %s\n", p_state->buffer_recv);
+
+            // Process the received message or respond to it as needed
+            // Here, we're just printing it to the console
+
+            // Reset the receive buffer
+            p_state->recv_len = 0;
+        }
+    }
+    pbuf_free(p_buf);
+    return tcp_server_send_data(p_arg, p_state->client_pcb);
+}
+
+/**
+ * @brief Polls the TCP server.
+ *
+ * @param p_arg The argument to pass to the callback function.
+ * @param p_tpcb The TCP control block.
+ *
+ * @return err_t The result of the TCP server.
+ */
+static err_t
+tcp_server_poll (void *p_arg, __unused struct tcp_pcb *p_tpcb)
+{
+    return tcp_server_result(p_arg, -1); // no response is an error?
+}
+
+/**
+ * @brief This function handles the errors that occurs in the TCP server. If the
+ * error is not an abort error, it calls the tcp_server_result() function with
+ * the given arguments.
+ *
+ * @param p_arg Pointer to the argument passed to the TCP server.
+ * @param err Error code returned by the TCP server.
+ */
+static void
+tcp_server_err (void *p_arg, err_t err)
+{
+    if (err != ERR_ABRT)
+    {
+        tcp_server_result(p_arg, err);
+    }
+}
+
+/**
+ * @brief Function called when a TCP client connects to the server.
+ *
+ * @param p_arg Pointer to the TCP server state structure.
+ * @param p_client_pcb Pointer to the client's PCB (Protocol Control Block).
+ * @param err Error code returned by the TCP stack.
+ *
+ * @return err_t Error code returned by the TCP stack.
+ */
+static err_t
+tcp_server_accept (void *p_arg, struct tcp_pcb *p_client_pcb, err_t err)
+{
+    tcp_server_t *p_state = (tcp_server_t *)p_arg;
+    if (err != ERR_OK || p_client_pcb == NULL)
+    {
+        DEBUG_PRINT("Failure in accept\n");
+        tcp_server_result(p_arg, err);
+        return ERR_VAL;
+    }
+    DEBUG_PRINT("Client connected\n");
+
+    p_state->client_pcb = p_client_pcb;
+    tcp_arg(p_client_pcb, p_state);
+    tcp_sent(p_client_pcb, tcp_server_sent);
+    tcp_recv(p_client_pcb, tcp_server_recv);
+    tcp_poll(p_client_pcb, tcp_server_poll, POLL_TIME_S * 2);
+    tcp_err(p_client_pcb, tcp_server_err);
+
+    return tcp_server_send_data(p_arg, p_state->client_pcb);
+}
+
+/**
+ * @brief Opens a TCP server and listens for incoming connections on a specified
+ * port.
+ *
+ * @param p_arg A pointer to a tcp_server_t struct that contains the server
+ * state.
+ *
+ * @return true if the server was successfully started, false otherwise.
+ */
+static bool
+tcp_server_open (void *p_arg)
+{
+    tcp_server_t *p_state = (tcp_server_t *)p_arg;
+    DEBUG_PRINT("Starting server at %s on port %u\n",
+                ip4addr_ntoa(netif_ip4_addr(netif_list)),
+                TCP_PORT);
+
+    struct tcp_pcb *p_pcb = tcp_new_ip_type(IPADDR_TYPE_ANY);
+    if (!p_pcb)
+    {
+        DEBUG_PRINT("failed to create pcb\n");
+        return false;
+    }
+
+    err_t err = tcp_bind(p_pcb, NULL, TCP_PORT);
+    if (err)
+    {
+        DEBUG_PRINT("failed to bind to port %u\n", TCP_PORT);
+        return false;
+    }
+
+    p_state->server_pcb = tcp_listen_with_backlog(p_pcb, 1);
+    if (!p_state->server_pcb)
+    {
+        DEBUG_PRINT("failed to listen\n");
+        if (p_pcb)
+        {
+            tcp_close(p_pcb);
+        }
+        return false;
+    }
+
+    tcp_arg(p_state->server_pcb, p_state);
+    tcp_accept(p_state->server_pcb, tcp_server_accept);
+
+    return true;
+}
+
+/**
+ * @brief Runs a TCP server and opens it. Then, it enters a loop to check for
+ * Wi-Fi driver or lwIP work that needs to be done. If using
+ * pico_cyw43_arch_poll, it polls periodically from the main loop to check for
+ * work. Otherwise, it sleeps for 1000ms.
+ *
+ * @param None
+ *
+ * @return void
+ *
+ * @note The code contains a note that assumes certain conditions have been met
+ * before the function can be executed. These conditions include the inclusion
+ * of necessary libraries and header files, definition of macros, structs and
+ * functions, allocation of memory, setup of hardware and network
+ * configurations, granting of permissions, opening of necessary ports,
+ * implementation of error handling, and cleanup.
+ */
+void
+run_tcp_server_test (void)
+{
+    tcp_server_t *p_state = tcp_server_init();
+    if (!p_state)
+    {
         return;
     }
-    cyw43_arch_enable_sta_mode();
-    printf("Connecting to Wi-Fi...\n");
-    if (cyw43_arch_wifi_connect_timeout_ms(WIFI_SSID, WIFI_PASSWORD, CYW43_AUTH_WPA2_AES_PSK, 30000)) {
-        printf("failed to connect.\n");
-        exit(1);
-    } else {
-        printf("Connected.\n");
+    if (!tcp_server_open(p_state))
+    {
+        tcp_server_result(p_state, -1);
+        return;
     }
-
-
-    cyw43_arch_lwip_begin();
-#if CLIENT_TEST
-    printf("\nReady, running iperf client\n");
-    ip_addr_t clientaddr;
-    ip4_addr_set_u32(&clientaddr, ipaddr_addr(xstr(IPERF_SERVER_IP)));
-    assert(lwiperf_start_tcp_client_default(&clientaddr, &iperf_report, NULL) != NULL);
+    while (!p_state->complete)
+    {
+        // the following #ifdef is only here so this same example can be used in
+        // multiple modes; you do not need it in your code
+#if PICO_CYW43_ARCH_POLL
+        // if you are using pico_cyw43_arch_poll, then you must poll
+        // periodically from your main loop (not from a timer) to check for
+        // Wi-Fi driver or lwIP work that needs to be done.
+        cyw43_arch_poll();
+        // you can poll as often as you like, however if you have nothing else
+        // to do you can choose to sleep until either a specified time, or
+        // cyw43_arch_poll() has work to do:
+        cyw43_arch_wait_for_work_until(make_timeout_time_ms(1000));
 #else
-    printf("\nReady, running iperf server at %s\n", ip4addr_ntoa(netif_ip4_addr(netif_list)));
-    lwiperf_start_tcp_server_default(&iperf_report, NULL);
+        // if you are not using pico_cyw43_arch_poll, then WiFI driver and lwIP
+        // work is done via interrupt in the background. This sleep is just an
+        // example of some (blocking) work you might be doing.
+        sleep_ms(1000);
 #endif
-    cyw43_arch_lwip_end();
-
-    while(true) {
-        // not much to do as LED is in another task, and we're using RAW (callback) lwIP API
-        vTaskDelay(10000);
     }
-
-    cyw43_arch_deinit();
+    free(p_state);
 }
 
-void vLaunch( void) {
-    TaskHandle_t task;
-    xTaskCreate(main_task, "TestMainThread", configMINIMAL_STACK_SIZE, NULL, TEST_TASK_PRIORITY, &task);
-
-#if NO_SYS && configUSE_CORE_AFFINITY && configNUM_CORES > 1
-    // we must bind the main task to one core (well at least while the init is called)
-    // (note we only do this in NO_SYS mode, because cyw43_arch_freertos
-    // takes care of it otherwise)
-    vTaskCoreAffinitySet(task, 1);
-#endif
-
-    /* Start the tasks and timer running. */
-    vTaskStartScheduler();
-}
-
-int main( void )
+/**
+ * @brief Initializes the TCP server by initializing standard input/output,
+ * initializing the CYW43 architecture, and enabling station mode.
+ *
+ * @param None
+ *
+ * @return void
+ */
+void
+tcp_server_begin_init ()
 {
     stdio_init_all();
+    cyw43_arch_init();
+    cyw43_arch_enable_sta_mode();
+}
 
-    /* Configure the hardware ready to run the demo. */
-    const char *rtos_name;
-#if ( portSUPPORT_SMP == 1 )
-    rtos_name = "FreeRTOS SMP";
-#else
-    rtos_name = "FreeRTOS";
-#endif
+/**
+ * @brief Begins a TCP server by connecting to Wi-Fi with the given SSID and
+ * password.
+ *
+ * @param None
+ *
+ * @return void
+ */
+void
+tcp_server_begin ()
+{
 
-#if ( portSUPPORT_SMP == 1 ) && ( configNUM_CORES == 2 )
-    printf("Starting %s on both cores:\n", rtos_name);
-    vLaunch();
-#elif ( RUN_FREERTOS_ON_CORE == 1 )
-    printf("Starting %s on core 1:\n", rtos_name);
-    multicore_launch_core1(vLaunch);
-    while (true);
-#else
-    printf("Starting %s on core 0:\n", rtos_name);
-    vLaunch();
-#endif
-    return 0;
+    printf("Connecting to Wi-Fi...\n");
+    if (cyw43_arch_wifi_connect_timeout_ms(
+            WIFI_SSID, WIFI_PASSWORD, CYW43_AUTH_WPA2_AES_PSK, 30000))
+    {
+        printf("failed to connect.\n");
+    }
+    else
+    {
+        printf("Connected.\n");
+    }
+    run_tcp_server_test();
+    cyw43_arch_deinit();
 }

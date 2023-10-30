@@ -1,4 +1,6 @@
-#include <stdio.h>
+#ifndef MAZE_H
+#define MAZE_H
+#include <stdint.h>
 
 // Declare constants.
 //
@@ -74,3 +76,7 @@ typedef struct
     uint16_t     rows;
     uint16_t     columns;
 } grid_t;
+
+#endif
+
+// End of pathfinding/maze.h

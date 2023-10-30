@@ -1,40 +1,46 @@
-#include <stdio.h>
-#include "pico/stdlib.h"
-#include "hardware/pwm.h"
-#include "hardware/gpio.h"
+#include <stdbool.h>
+#include <stdint.h>
+#include <sys/types.h>
 #include "wheel_encoder.h"
-
-#define MOTOR_PIN_CLKWISE 16
-#define MOTOR_PIN_ANTICLKWISE 17
-
-#define PWM_PIN 0
-
-#define CYCLE_PULSE 20
-#define DISTANCE_PER_PULSE 204.203/20.0
 
 /**
  * @brief Get the time difference in ms
- * 
- * @param current_time 
- * @param prev_time 
- * @return float 
+ *
+ * @param current_time Current time in us
+ * @param prev_time Previous time in us
+ * @return float Time difference in ms
  */
-float get_time_diff(uint64_t current_time, uint64_t prev_time){
-    return (current_time - prev_time)/1000.0;
+float
+get_time_diff (uint64_t current_time, uint64_t prev_time)
+{
+    return (current_time - prev_time)
+           / 1000.0f; // Conversion from uint64_t to float is safe because the
+                      // maximum value of uint64_t is greater than the maximum
+                      // value of float.
 }
 
 /**
  * @brief Get the speed in either pulses/second or mm/second
- * 
- * @param time_elapsed 
- * @param is_pulse 
- * @return float 
+ *
+ * @param time_elapsed Time elapsed in ms
+ * @param is_pulse True if speed is in pulses/second, false if speed is in
+ * mm/second
+ * @return float Speed in either pulses/second or mm/second
  */
-float get_speed(float time_elapsed, uint is_pulse){
-    if(is_pulse){
-        return 1000.0/time_elapsed;
+float
+get_speed (float time_elapsed, bool is_pulse)
+{
+    float speed = 0.0f;
+
+    if (is_pulse)
+    {
+        speed = 1000.0f / time_elapsed;
     }
-    else{
-        return (1000.0/time_elapsed) * DISTANCE_PER_PULSE;
+    else
+    {
+        speed = (1000.0f / time_elapsed) * DISTANCE_PER_PULSE;
     }
+
+    return speed;
 }
+// End of file wheel_encoder.c.

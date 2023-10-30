@@ -1,60 +1,94 @@
-
-#include "wheel_encoder.h"
+#include <stdint.h>
+#include <stdbool.h>
 #include <stdio.h>
-#include "pico/stdlib.h"
+#include <sys/types.h>
 #include "hardware/pwm.h"
 #include "hardware/gpio.h"
+#include "hardware/timer.h"
+#include "pico/stdio.h"
+#include "wheel_encoder.h"
 
-#define MOTOR_PIN_CLKWISE 16
-#define MOTOR_PIN_ANTICLKWISE 17
+#define MOTOR_PIN_CLKWISE     16 // GP16 for clockwise rotation.
+#define MOTOR_PIN_ANTICLKWISE 17 // GP17 for anticlockwise rotation.
 
-#define PWM_PIN 0
+#define PWM_PIN     0     // GP0 for PWM output to control motor speed.
+#define PWM_CLKDIV  100   // PWM clock divider.
+#define PWM_WRAP    62500 // PWM wrap value.
+#define ENCODER_PIN 22    // GP22 for encoder input.
+#define MM_TO_CM    10.0f // Conversion factor from mm to cm.
 
-#define CYCLE_PULSE 20
-#define DISTANCE_PER_PULSE 204.203/20.0
+/**
+ * @brief Struct to store global encoder data.
+ *
+ * @param prev_time          Time of previous interrupt.
+ * @param pulse_count        Number of pulses since last reset.
+ * @param distance_traversed Distance traversed since last reset.
+ */
+struct g_encoder_t
+{
+    uint64_t prev_time;
+    uint     pulse_count;
+    float    distance_traversed;
+} g_encoder;
 
-uint64_t prev_time = 0;
-uint pulse_count = 0;
-float distance_traversed = 0.0;
+/**
+ * @brief Sets up global struct(s).
+ */
+static void
+init_global_structs (void)
+{
+    g_encoder.prev_time          = 0;
+    g_encoder.pulse_count        = 0;
+    g_encoder.distance_traversed = 0.0f;
+}
 
 /**
  * @brief Interrupt callback function on rising edge
- * 
- * @param gpio 
- * @param events 
+ *
+ * @param gpio      GPIO pin number.
+ * @param events    Event mask. @see gpio_irq_level.
  */
-void encoder_callback(uint gpio, uint32_t events) {
+void
+encoder_tick_isr (uint gpio, uint32_t events)
+{
     uint64_t current_time = time_us_64();
-    pulse_count++;
+    g_encoder.pulse_count++;
 
     // Calculate time elapsed since last interrupt speed
-    float time_elapsed = get_time_diff(current_time, prev_time);
+    float time_elapsed = get_time_diff(current_time, g_encoder.prev_time);
 
     // Calculate current speed based on elapsed time
-    float current_speed_pulse = get_speed(time_elapsed, 1);
-    float current_speed_mm = get_speed(time_elapsed, 0);
+    float current_speed_pulse = get_speed(time_elapsed, true);
+    float current_speed_mm    = get_speed(time_elapsed, false);
 
     printf("\nCurrent speed: %f pulses/second", current_speed_pulse);
-    printf("\tCurrent speed: %f cm/second", current_speed_mm/10.0);
+    printf("\tCurrent speed: %f cm/second", current_speed_mm / MM_TO_CM);
 
     // Update distance traversed
-    distance_traversed += DISTANCE_PER_PULSE;
-    printf("\tDistance traversed: %fcm", distance_traversed/10.0);
+    g_encoder.distance_traversed += DISTANCE_PER_PULSE;
+    printf("\tDistance traversed: %fcm",
+           g_encoder.distance_traversed / MM_TO_CM);
 
     // Reset pulse count when one full cycle is completed
-    if(pulse_count == CYCLE_PULSE){
-        pulse_count = 0;
+    if (g_encoder.pulse_count == CYCLE_PULSE)
+    {
+        g_encoder.pulse_count = 0;
     }
 
-    prev_time = current_time;
+    g_encoder.prev_time = current_time;
 }
 
-int main() {
+int
+main ()
+{
+    // Initialisation.
+    //
     stdio_init_all();
+    init_global_structs(); // Initialise global struct for encoder data.
 
-    // Set up PWM on motor pin
+    // GPIO setup. Set PWM pin to PWM mode, motor pins to output.
+    //
     gpio_set_function(PWM_PIN, GPIO_FUNC_PWM);
-
     gpio_init(MOTOR_PIN_CLKWISE);
     gpio_init(MOTOR_PIN_ANTICLKWISE);
 
@@ -64,32 +98,38 @@ int main() {
     gpio_put(MOTOR_PIN_CLKWISE, 1);
     gpio_put(MOTOR_PIN_ANTICLKWISE, 0);
 
-    uint slice_num = pwm_gpio_to_slice_num(PWM_PIN);
-
-    pwm_set_clkdiv(slice_num, 100);
-    pwm_set_wrap(slice_num, 62500);
-    pwm_set_chan_level(slice_num, PWM_CHAN_A, 62500/2);
+    // Initialise PWM.
+    //
+    uint slice_num = pwm_gpio_to_slice_num(PWM_PIN); // Get PWM slice number.
+    pwm_set_clkdiv(slice_num, PWM_CLKDIV);
+    pwm_set_wrap(slice_num, PWM_WRAP);
+    pwm_set_chan_level(slice_num, PWM_CHAN_A, PWM_WRAP / 2);
     pwm_set_enabled(slice_num, true);
 
-    // Call interrupt on rising edge
-    gpio_set_irq_enabled_with_callback(22, GPIO_IRQ_EDGE_RISE, true, &encoder_callback);
+    // Call interrupt on rising edge.
+    //
+    gpio_set_irq_enabled_with_callback(
+        ENCODER_PIN, GPIO_IRQ_EDGE_RISE, true, &encoder_tick_isr);
 
-    while (1){
-        char c = getchar();
+    for (;;)
+    {
+        char user_input = getchar();
 
-        switch(c){
+        switch (user_input)
+        {
             case 'f':
-                pwm_set_wrap(slice_num, 62500);
-                pwm_set_chan_level(slice_num, PWM_CHAN_A, 62500);
+                pwm_set_wrap(slice_num, PWM_WRAP);
+                pwm_set_chan_level(slice_num, PWM_CHAN_A, PWM_WRAP);
                 break;
-            case 'r':
-                pwm_set_wrap(slice_num, 62500);
-                pwm_set_chan_level(slice_num, PWM_CHAN_A, 62500/2);
+            case 'r': // Redundant?
+                pwm_set_wrap(slice_num, PWM_WRAP);
+                pwm_set_chan_level(slice_num, PWM_CHAN_A, PWM_WRAP / 2);
                 break;
             default:
-                pwm_set_wrap(slice_num, 62500);
-                pwm_set_chan_level(slice_num, PWM_CHAN_A, 62500/2);
+                pwm_set_wrap(slice_num, PWM_WRAP);
+                pwm_set_chan_level(slice_num, PWM_CHAN_A, PWM_WRAP / 2);
                 break;
         }
-    };
+    }
 }
+// End of file comment.

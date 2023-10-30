@@ -1,6 +1,6 @@
-#include <stdlib.h>
+#include <stdint.h>
 #include "binary_heap.h"
-#include "pico/stdlib.h"
+#include "maze.h"
 
 // Private function prototypes.
 //
@@ -141,9 +141,8 @@ insert (binary_heap_t *p_heap, grid_cell_t *p_maze_node, uint16_t priority)
     //
     if (p_heap->size == p_heap->capacity)
     {
-#ifndef NDEBUG // If not in debug mode, don't print this message.
-        printf("Heap is full!\n");
-#endif
+        // If not in debug mode, don't print this message.
+        DEBUG_PRINT("Heap is full!\n");
         return;
     }
 

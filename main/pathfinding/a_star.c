@@ -5,6 +5,7 @@
 
 #include "binary_heap.h"
 #include "a_star.h"
+#include "maze.h"
 
 // Private function prototypes.
 //

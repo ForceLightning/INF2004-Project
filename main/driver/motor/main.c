@@ -1,38 +1,76 @@
-/**
- * @file main.c
- * @author 
- * @brief Demonstration for the Motor controller driver.
- * @version 0.1
- * @date 2023-10-24
- * 
- * @copyright Copyright (c) 2023
- * 
- */
-
 #include <stdio.h>
-#include "pico/stdlib.h"
-#include "pico/cyw43_arch.h"
-#include "hardware/pwm.h"
 #include "motor_control.h"
+
+// Definitions for the motor pins.
+// 
+#define LEFT_MOTOR_PIN_CLKWISE      16
+#define LEFT_MOTOR_PIN_ANTICLKWISE  17
+#define RIGHT_MOTOR_PIN_CLKWISE     14
+#define RIGHT_MOTOR_PIN_ANTICLKWISE 15
+#define PWM_PIN_LEFT                0
+#define PWM_PIN_RIGHT               1
 
 int
 main (void)
 {
+    // Initialisation.
+    //
     stdio_init_all();
 
-    if (cyw43_arch_init())
-    {
-        printf("CYW4343X initialization failed.\n");
-        return 1;
-    }
-    
-    // TODO: Drive forward/back.
-    // TODO: Turn left/right.
-    for (;;) // Loop forever. See Barr Group "Embedded C Coding Standard" 8.4.c
-    {
-        tight_loop_contents(); // No-op
-    }
+    motor_pins_t motor_data = {
+        PWM_PIN_LEFT,
+        PWM_PIN_RIGHT,
+        LEFT_MOTOR_PIN_CLKWISE,
+        LEFT_MOTOR_PIN_ANTICLKWISE,
+        RIGHT_MOTOR_PIN_CLKWISE,
+        RIGHT_MOTOR_PIN_ANTICLKWISE,
+    };
 
+    // Initialize motors.
+    start_motor(
+        LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, PWM_PIN_LEFT);
+    start_motor(
+        RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, PWM_PIN_RIGHT);
+
+    for (;;)
+    {
+        // Get input from serial monitor
+        char user_input = getchar();
+
+        switch (user_input)
+        {
+            case 'f':
+                printf("Moving forward...\n");
+                move_forward(motor_data);
+                break;
+            case 's':
+                printf("Stopping...\n");
+                stop(motor_data);
+                break;
+            case 'b':
+                printf("Reversing...\n");
+                reverse(motor_data);
+                break;
+            case 'l':
+                printf("Turning forward left...\n");
+                turn_left(motor_data, 0);
+                break;
+            case 't':
+                printf("Turning reverse left...\n");
+                turn_left(motor_data, 1);
+                break;
+            case 'r':
+                printf("Turning forward right...\n");
+                turn_right(motor_data, 0);
+                break;
+            case 'y':
+                printf("Turning forward right...\n");
+                turn_right(motor_data, 1);
+                break;
+            default:
+                printf("Invalid input. Stopping car...\n");
+                stop(motor_data);
+                break;
+        }
+    }
 }
-
-// End of driver/motor/main.c.
