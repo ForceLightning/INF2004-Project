@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <math.h>
 #include "pico/stdio_usb.h"
 #include "pico/time.h"
 #include "hardware/gpio.h"
@@ -111,7 +112,7 @@ read_magnetometer_data (void)
         int16_t x_mag = (int16_t)((data[0] << 8) | data[1]);
         int16_t z_mag = (int16_t)((data[2] << 8) | data[3]);
         int16_t y_mag = (int16_t)((data[4] << 8) | data[5]);
-        float headingRadians = atan2(yMag, xMag);
+        float headingRadians = atan2(y_mag, x_mag);
         float headingDegrees = headingRadians * 180.0 / M_PI;
         
         if (headingDegrees < 0)
