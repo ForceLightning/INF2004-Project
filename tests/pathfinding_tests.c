@@ -1,7 +1,16 @@
 #include <stdio.h>
 #include <stdint.h>
+#include <stdlib.h>
 #include "pathfinding/a_star.h"
 #include "pathfinding/maze.h"
+
+// Definitions.
+//
+typedef enum constants
+{
+    GRID_ROWS = 10, // Number of rows in the grid.
+    GRID_COLS = 10  // Number of columns in the grid.
+} constants_t;
 
 static int test_manhattan_distance(void);
 static int test_create_maze(void);
@@ -63,9 +72,9 @@ static int
 test_manhattan_distance (void)
 {
     point_t point_a = { 0, 0 };
-    for (uint16_t row = 0; 10 > row; row++)
+    for (uint16_t row = 0; GRID_ROWS > row; row++)
     {
-        for (uint16_t col = 0; 10 > col; col++)
+        for (uint16_t col = 0; GRID_COLS > col; col++)
         {
             point_t  point_b  = { row, col };
             uint32_t distance = manhattan_distance(&point_a, &point_b);
@@ -92,8 +101,17 @@ test_manhattan_distance (void)
 static int
 test_create_maze (void)
 {
-    // TODO(chris): Implement this.
-    return 0;
+    grid_t maze    = create_maze(GRID_ROWS, GRID_COLS);
+    int    ret_val = 0;
+
+    if (NULL == maze.p_grid_array)
+    {
+        printf("Maze grid array is NULL.\n");
+        ret_val = -1;
+    }
+
+    destroy_maze(&maze);
+    return ret_val;
 }
 
 /**
@@ -106,7 +124,53 @@ test_create_maze (void)
 static int
 test_initialise_empty_maze (void)
 {
-    // TODO(chris): Implement this.
+    grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+
+    for (uint16_t row = 0; maze.rows > row; row++)
+    {
+        for (uint16_t col = 0; maze.columns > col; col++)
+        {
+            // Check coordinates.
+            //
+            grid_cell_t *p_cell = &maze.p_grid_array[row * maze.columns + col];
+            if (row != p_cell->coordinates.x || col != p_cell->coordinates.y)
+            {
+                printf("Coordinates of cell (%d, %d) are (%d, %d).\n",
+                       row,
+                       col,
+                       p_cell->coordinates.x,
+                       p_cell->coordinates.y);
+                return -1; // Return here is easier than breaking out of nested
+                           // loops.
+            }
+
+            // Check heuristics.
+            //
+            if (0 != p_cell->f || 0 != p_cell->g || 0 != p_cell->h)
+            {
+                printf("Heuristics of cell (%d, %d) are (%d, %d, %d).\n",
+                       row,
+                       col,
+                       p_cell->f,
+                       p_cell->g,
+                       p_cell->h);
+                return -1; // Again, easier to return here.
+            }
+
+            // Check pointers.
+            //
+            if (NULL != p_cell->p_parent || NULL != p_cell->p_came_from)
+            {
+                printf(
+                    "Parent or came_from pointer of cell (%d, %d) is not "
+                    "NULL.\n",
+                    row,
+                    col);
+                return -1;
+            }
+        }
+    }
+    destroy_maze(&maze);
     return 0;
 }
 
@@ -120,7 +184,46 @@ test_initialise_empty_maze (void)
 static int
 test_clear_maze_heuristics (void)
 {
-    // TODO(chris): Implement this.
+    // Initialise maze with random heuristic values.
+    //
+    grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+
+    for (uint16_t row = 0; maze.rows > row; row++)
+    {
+        for (uint16_t col = 0; maze.columns > col; col++)
+        {
+            grid_cell_t *p_cell = &maze.p_grid_array[row * maze.columns + col];
+            // Casting to uint32_t is ok because rand() returns an int (0,
+            // RAND_MAX). No overflow.
+            //
+            p_cell->f = (uint32_t)rand();
+            p_cell->g = (uint32_t)rand();
+            p_cell->h = (uint32_t)rand();
+        }
+    }
+
+    // Clear the heuristics and check that they are all 0.
+    //
+    clear_maze_heuristics(&maze);
+    for (uint16_t row = 0; maze.rows > row; row++)
+    {
+        for (uint16_t col = 0; maze.columns > col; col++)
+        {
+            grid_cell_t *p_cell = &maze.p_grid_array[row * maze.columns + col];
+
+            if (0 != p_cell->f || 0 != p_cell->g || 0 != p_cell->h)
+            {
+                printf("Heuristics of cell (%d, %d) are (%d, %d, %d).\n",
+                       row,
+                       col,
+                       p_cell->f,
+                       p_cell->g,
+                       p_cell->h);
+                return -1; // Return to break out of the nested loop.
+            }
+        }
+    }
+
     return 0;
 }
 
@@ -133,9 +236,17 @@ test_clear_maze_heuristics (void)
 static int
 test_destroy_maze (void)
 {
-    // TODO(chris): Implement this.
+    // Create a maze.
+    //
+    grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+    destroy_maze(&maze);
 
-    // Step 1: Create a maze.
+    if (NULL != maze.p_grid_array)
+    {
+        printf("Maze grid array pointer is not NULL.\n");
+        return -1;
+    }
+
     return 0;
 }
 
