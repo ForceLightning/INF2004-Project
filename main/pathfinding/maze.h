@@ -44,8 +44,9 @@ typedef enum wall_direction
  * @param coordinates X and Y coordinates of the node.
  * @param f F-value of the node. F = G + H.
  * @param g G-value of the node. G = cost to move from the starting node to the
- * @param h H-value of the node. H = estimated cost to move from the current aka
- * heuristic.
+ * current node.
+ * @param h H-value of the node. H = estimated cost to move from the current
+ * node to the end node aka heuristic.
  * @param p_parent Pointer to the parent node.
  * @param p_next Pointers to the next nodes. This is indexed by the direction
  * enum.

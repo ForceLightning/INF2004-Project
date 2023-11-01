@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "pathfinding/a_star.h"
 #include "pathfinding/maze.h"
 
@@ -17,7 +18,7 @@ static int test_create_maze(void);
 static int test_initialise_empty_maze(void);
 static int test_clear_maze_heuristics(void);
 static int test_destroy_maze(void);
-static int test_column_pathfinding(void);
+static int test_row_pathfinding(void);
 
 int
 pathfinding_tests (int argc, char *argv[])
@@ -53,7 +54,7 @@ pathfinding_tests (int argc, char *argv[])
             ret_val = test_destroy_maze();
             break;
         case 6:
-            ret_val = test_column_pathfinding();
+            ret_val = test_row_pathfinding();
             break;
         default:
             printf("Invalid Test #%d. Terminating.\n", choice);
@@ -250,6 +251,17 @@ test_destroy_maze (void)
     return 0;
 }
 
+static bool
+test_coords_iseq (point_t *p_point_a, point_t *p_point_b)
+{
+    if (p_point_a->x != p_point_b->x || p_point_a->y != p_point_b->y)
+    {
+        printf("Coordinates are not equal.\n");
+        return false;
+    }
+    return true;
+}
+
 /**
  * @brief Tests the column pathfinding function to see if it works as expected.
  * This should return an array of nodes in sequential order that represent the
@@ -258,9 +270,70 @@ test_destroy_maze (void)
  * @return int
  */
 static int
-test_column_pathfinding (void)
+test_row_pathfinding (void)
 {
-    // TODO(chris): Implement this.
+    // TODO(chris): Fix the heap corruption in this test.
+    // Initialise the grid and the navigator.
+    //
+    grid_t            maze = create_maze(GRID_ROWS, GRID_COLS);
+    navigator_state_t navigator_state
+        = { &maze.p_grid_array[0],
+            &maze.p_grid_array[0],
+            &maze.p_grid_array[GRID_ROWS * (GRID_COLS - 1)],
+            NORTH };
+
+    // Set the walls of the maze. Should just be a column that leads to the
+    // objective.
+    //
+    grid_cell_t *p_current_node = navigator_state.p_current_node;
+    for (uint16_t row = 0; GRID_ROWS - 1 > row; row++)
+    {
+        p_current_node->p_next[NORTH]
+            = &maze.p_grid_array[(row + 1) * GRID_COLS];
+        p_current_node->p_next[NORTH]->p_next[SOUTH] = p_current_node;
+        p_current_node = p_current_node->p_next[NORTH];
+    }
+
+    // Run the A* algorithm.
+    //
+    a_star(maze, navigator_state.p_start_node, navigator_state.p_end_node);
+    grid_cell_t *p_path = get_path(navigator_state.p_end_node);
+
+    int ret_val = 0;
+    // Check that the path is correct.
+    //
+    if (NULL == p_path)
+    {
+        printf("Path is NULL.\n");
+        ret_val = -1;
+        goto end;
+    }
+
+    for (uint16_t row = 0; GRID_ROWS > row; row++)
+    {
+        point_t *point_a = &p_path[row].coordinates;
+        point_t *point_b = &maze.p_grid_array[row * GRID_COLS].coordinates;
+        if (!test_coords_iseq(point_a, point_b))
+        {
+            printf("Path is incorrect at row, col (%d, %d)\n", row, 0);
+            ret_val = -1;
+            goto end;
+        }
+    }
+end:
+    p_current_node                 = NULL;
+    navigator_state.p_current_node = NULL;
+    navigator_state.p_end_node     = NULL;
+    navigator_state.p_start_node   = NULL;
+
+    if (NULL != p_path)
+    {
+        free(p_path);
+        p_path = NULL;
+    }
+
+    destroy_maze(&maze);
+
     return 0;
 }
 

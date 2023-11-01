@@ -102,10 +102,14 @@ clear_maze_heuristics (grid_t *p_grid)
 void
 destroy_maze (grid_t *p_grid)
 {
-    free(p_grid->p_grid_array);
-    p_grid->p_grid_array = NULL;
-    p_grid->rows         = 0;
-    p_grid->columns      = 0;
+    if (NULL != p_grid->p_grid_array)
+    {
+        free(p_grid->p_grid_array);
+        p_grid->p_grid_array = NULL;
+    }
+
+    p_grid->rows    = 0;
+    p_grid->columns = 0;
 }
 
 /**
