@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-# Pull in SDK (must be before project)
-if (CMAKE_BUILD_TYPE MATCHES Debug
-    OR CMAKE_CONFIGURATION_TYPES MATCHES Debug)
+if (DEFINED ENV{TEST_BUILD})
     project(car_project_tests C CXX ASM)
     message(STATUS "Testing build")
     set(CMAKE_C_STANDARD 99)
@@ -18,7 +16,7 @@ else()
 
     project(car_project C CXX ASM)
     set(PICO_BOARD pico_w)
-    set(CMAKE_C_STANDARD 99)
+    set(CMAKE_C_STANDARD 11)
     set(CMAKE_CXX_STANDARD 17)
 
     if (PICO_SDK_VERSION_STRING VERSION_LESS "1.3.0")
@@ -31,7 +29,7 @@ else()
         set(PICO_EXAMPLES_PATH ${PROJECT_SOURCE_DIR}/pico-examples)
     endif()
 
-# Initialize the SDK
+    # Initialize the SDK
     pico_sdk_init()
 
     include(example_auto_set_url.cmake)
