@@ -11,9 +11,6 @@ if (CMAKE_BUILD_TYPE MATCHES Debug
     enable_testing()
     add_subdirectory(tests)
     add_subdirectory(main/pathfinding)
-    add_test(NAME tests
-        COMMAND $<TARGET_FILE:tests>
-        )
 else()
     include(pico_sdk_import.cmake)
 

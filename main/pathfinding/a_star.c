@@ -8,7 +8,6 @@
 
 // Private function prototypes.
 //
-static uint32_t manhattan_distance(point_t *point_a, point_t *point_b);
 static void a_star_inner_loop(binary_heap_t *open_set, grid_cell_t *p_end_node);
 
 /**
@@ -20,7 +19,7 @@ static void a_star_inner_loop(binary_heap_t *open_set, grid_cell_t *p_end_node);
  *
  * @ref https://en.wikipedia.org/wiki/Taxicab_geometry
  */
-static uint32_t
+uint32_t
 manhattan_distance (point_t *point_a, point_t *point_b)
 {
     uint32_t x_diff = abs(point_a->x - point_b->x);
@@ -34,7 +33,7 @@ manhattan_distance (point_t *point_a, point_t *point_b)
  * @param open_set The open set heap which contains all unexplored nodes
  * adjacent to explored nodes.
  * @param p_end_node Pointer to the end node.
- * 
+ *
  * @ref https://en.wikipedia.org/wiki/A*_search_algorithm#Pseudocode
  */
 static void

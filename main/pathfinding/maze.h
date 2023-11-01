@@ -79,4 +79,11 @@ typedef struct
 
 #endif
 
+// Public Functions.
+//
+grid_t create_maze(uint16_t rows, uint16_t columns);
+void   initialise_empty_maze(grid_t *p_grid);
+void   clear_maze_heuristics(grid_t *p_grid);
+void   destroy_maze(grid_t *p_grid);
+
 // End of pathfinding/maze.h
