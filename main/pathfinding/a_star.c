@@ -173,7 +173,7 @@ get_path (grid_cell_t *p_end_node)
 
     // Traverse the path backwards and store it in the path array in reverse.
     //
-    for (uint32_t reverse_index = path_length; 0 < reverse_index;
+    for (uint32_t reverse_index = path_length - 1; 0 < reverse_index;
          reverse_index--)
     {
         p_path[reverse_index] = *p_current_node;

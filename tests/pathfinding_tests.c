@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -28,6 +29,8 @@ pathfinding_tests (int argc, char *argv[])
 
     if (1 < argc)
     {
+        // Unsafe conversion to int. This is ok because the input is controlled
+        // by ctest.
         if (sscanf(argv[1], "%d", &choice) != 1)
         {
             printf("Could not parse argument. Terminating.\n");
@@ -251,14 +254,25 @@ test_destroy_maze (void)
     return 0;
 }
 
+/**
+ * @brief Tests if two points are equal.
+ *
+ * @param p_point_a Pointer to point a.
+ * @param p_point_b Pointer to point b.
+ * @return true Two points are equal.
+ * @return false Two points are not equal.
+ */
 static bool
 test_coords_iseq (point_t *p_point_a, point_t *p_point_b)
 {
+    // Compare the coordinates.
+    //
     if (p_point_a->x != p_point_b->x || p_point_a->y != p_point_b->y)
     {
         printf("Coordinates are not equal.\n");
         return false;
     }
+
     return true;
 }
 
@@ -272,24 +286,28 @@ test_coords_iseq (point_t *p_point_a, point_t *p_point_b)
 static int
 test_row_pathfinding (void)
 {
-    // TODO(chris): Fix the heap corruption in this test.
     // Initialise the grid and the navigator.
     //
-    grid_t            maze = create_maze(GRID_ROWS, GRID_COLS);
-    navigator_state_t navigator_state
-        = { &maze.p_grid_array[0],
-            &maze.p_grid_array[0],
-            &maze.p_grid_array[GRID_ROWS * (GRID_COLS - 1)],
-            NORTH };
+    grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+
+    navigator_state_t navigator_state = {
+        &maze.p_grid_array[0],
+        &maze.p_grid_array[0],
+        // Conversion to ptrdiff_t is ok because the result is always positive.
+        &maze.p_grid_array[(ptrdiff_t)(GRID_ROWS * (GRID_COLS - 1))],
+        NORTH
+    };
 
     // Set the walls of the maze. Should just be a column that leads to the
     // objective.
     //
     grid_cell_t *p_current_node = navigator_state.p_current_node;
+
     for (uint16_t row = 0; GRID_ROWS - 1 > row; row++)
     {
+        // Conversion to ptrdiff_t is ok because the result is always positive.
         p_current_node->p_next[NORTH]
-            = &maze.p_grid_array[(row + 1) * GRID_COLS];
+            = &maze.p_grid_array[(ptrdiff_t)((row + 1) * GRID_COLS)];
         p_current_node->p_next[NORTH]->p_next[SOUTH] = p_current_node;
         p_current_node = p_current_node->p_next[NORTH];
     }
@@ -313,6 +331,7 @@ test_row_pathfinding (void)
     {
         point_t *point_a = &p_path[row].coordinates;
         point_t *point_b = &maze.p_grid_array[row * GRID_COLS].coordinates;
+
         if (!test_coords_iseq(point_a, point_b))
         {
             printf("Path is incorrect at row, col (%d, %d)\n", row, 0);
@@ -320,7 +339,8 @@ test_row_pathfinding (void)
             goto end;
         }
     }
-end:
+
+end: // Clean up all malloc'd memory.
     p_current_node                 = NULL;
     navigator_state.p_current_node = NULL;
     navigator_state.p_end_node     = NULL;
