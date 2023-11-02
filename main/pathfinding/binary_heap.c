@@ -2,11 +2,6 @@
 #include "binary_heap.h"
 #include "maze.h"
 
-// Private function prototypes.
-//
-static void heapify_up(binary_heap_t *p_heap, uint16_t index);
-static void heapify_down(binary_heap_t *p_heap, uint16_t index);
-
 /**
  * @brief Moves the node at the given index down the binary heap to maintain the
  * heap property. This in effect raises the node to its correct position.
@@ -14,7 +9,7 @@ static void heapify_down(binary_heap_t *p_heap, uint16_t index);
  * @param p_heap Pointer to the binary heap.
  * @param index Index of the node to be moved down.
  */
-static void
+void
 heapify_up (binary_heap_t *p_heap, uint16_t index)
 {
     // @NOTE: These early returns are not necessary, but they make the code
@@ -69,7 +64,7 @@ heapify_up (binary_heap_t *p_heap, uint16_t index)
  * @param p_heap Pointer to the binary heap.
  * @param index Index of the node to be moved up.
  */
-static void
+void
 heapify_down (binary_heap_t *p_heap, uint16_t index)
 {
     // Step 1.1: Declare variables to store the indices of the left and right,
@@ -175,9 +170,12 @@ delete_min (binary_heap_t *p_heap)
     //
     heap_node_t root_node = p_heap->p_array[0];
 
-    // Step 2: Move the last node to the root.
+    // Step 2: Move the last node to the root and delete the last node.
     //
     p_heap->p_array[0] = p_heap->p_array[p_heap->size - 1];
+    // Delete the last node by setting it to NULL.
+    p_heap->p_array[p_heap->size - 1].p_maze_node = NULL;
+    p_heap->p_array[p_heap->size - 1].priority    = 0;
 
     // Step 3: Decrease the size of the heap.
     //
@@ -205,3 +203,33 @@ peek (binary_heap_t *p_heap)
     //
     return p_heap->p_array[0];
 }
+
+/**
+ * @brief Finds the index of the given node in the binary heap if it exists.
+ * Otherwise, returns UINT16_MAX.
+ *
+ * @param p_heap Pointer to the binary heap.
+ * @param p_maze_node Pointer to the node to be found.
+ * @return uint16_t Index of the node if it exists, otherwise UINT16_MAX.
+ *
+ */
+uint16_t
+get_index_of_node (binary_heap_t *p_heap, grid_cell_t *p_maze_node)
+{
+    // Assume that the node is in the heap.
+    //
+    uint16_t return_index = UINT16_MAX;
+
+    for (uint16_t index = 0; p_heap->size > index; index++)
+    {
+        if (p_heap->p_array[index].p_maze_node == p_maze_node)
+        {
+            return_index = index;
+            break;
+        }
+    }
+
+    return return_index;
+}
+
+// End of pathfinding/binary_heap.c

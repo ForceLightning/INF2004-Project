@@ -291,3 +291,7 @@ pico-sdk/**
 
 # pico-examples
 pico-examples/**
+
+# Coverage Reports
+CoverageReport**/
+LastCoverageResults.log

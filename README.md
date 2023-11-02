@@ -16,6 +16,7 @@
 | `FREERTOS_KERNEL_PATH` | Path to the FreeRTOS Kernel directory |
 | `WIFI_SSID` | Wi-Fi network SSID |
 | `WIFI_PASSWORD` | Wi-Fi network password |
+| `TEST_BUILD` | Define to enable `ctest` testing |
 
 
 # Compilation
@@ -29,6 +30,9 @@ cmake -S <current directory> -B <build directory>
 ```bash
 cmake --build <build directory> --config <Debug/Release> --target car_project -j 18 --
 ```
+
+# Testing
+Unit testing of code that is independent of the Pico SDK is done with `ctest` by defining the environment variable `TEST_BUILD`. Some configuration changes to your environment will be required such as changing the compiler toolkit so that the tests may run on your machine.
 
 # Diagrams
 ## Call Graph
