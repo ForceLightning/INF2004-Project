@@ -58,13 +58,17 @@ typedef enum wall_direction
  */
 typedef struct grid_cell
 {
-    point_t           coordinates;
-    uint32_t          f;
-    uint32_t          g;
-    uint32_t          h;
-    struct grid_cell *p_parent;
-    struct grid_cell *p_next[4];
-    struct grid_cell *p_came_from;
+    point_t  coordinates; // X and Y coordinates of the node.
+    uint32_t f;           // F-value of the node. F = G + H.
+    uint32_t g;           // G-value of the node. G = cost to move from the
+                          // starting node to the current node.
+    uint32_t h;           // H-value of the node. H = estimated cost to move
+                          // from the current node to the end node aka
+                          // heuristic.
+    struct grid_cell *p_next[4]; // Pointers to the next nodes. This is indexed
+                                 // by the direction enum.
+    struct grid_cell *p_came_from; // Pointer to the node that the current node
+                                   // came from for the A* algorithm.
 } grid_cell_t;
 
 /**

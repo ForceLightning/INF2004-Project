@@ -168,7 +168,7 @@ get_path (grid_cell_t *p_end_node)
 {
     uint32_t     path_length    = 0;
     grid_cell_t *p_current_node = p_end_node;
-    path_length                 = p_current_node->p_came_from->g + 1;
+    path_length                 = p_current_node->p_came_from->g + 2;
     grid_cell_t *p_path         = malloc(sizeof(grid_cell_t) * path_length);
 
     // Traverse the path backwards and store it in the path array in reverse.

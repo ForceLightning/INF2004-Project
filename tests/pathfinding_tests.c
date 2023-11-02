@@ -163,7 +163,7 @@ test_initialise_empty_maze (void)
 
             // Check pointers.
             //
-            if (NULL != p_cell->p_parent || NULL != p_cell->p_came_from)
+            if (NULL != p_cell->p_came_from)
             {
                 printf(
                     "Parent or came_from pointer of cell (%d, %d) is not "
@@ -354,7 +354,7 @@ end: // Clean up all malloc'd memory.
 
     destroy_maze(&maze);
 
-    return 0;
+    return ret_val;
 }
 
 // End of file tests/tests.c

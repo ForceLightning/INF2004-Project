@@ -62,7 +62,6 @@ initialise_empty_maze (grid_t *p_grid)
             p_cell->f           = 0;
             p_cell->g           = 0;
             p_cell->h           = 0;
-            p_cell->p_parent    = NULL;
             p_cell->p_came_from = NULL;
             for (uint8_t direction = 0; 4 > direction; direction++)
             {
