@@ -22,7 +22,8 @@ typedef enum cardinal_direction
     NORTH = 0,
     EAST  = 1,
     SOUTH = 2,
-    WEST  = 3
+    WEST  = 3,
+    NONE  = 255
 } cardinal_direction_t;
 
 /**
@@ -105,13 +106,16 @@ typedef struct navigator_state
 
 // Public Functions.
 //
-grid_t create_maze(uint16_t rows, uint16_t columns);
-void   initialise_empty_maze(grid_t *p_grid);
-void   clear_maze_heuristics(grid_t *p_grid);
-void   destroy_maze(grid_t *p_grid);
-void   navigator_unset_walls(grid_t            *p_grid,
-                             navigator_state_t *p_navigator,
-                             uint8_t            wall_bitmask);
+grid_t               create_maze(uint16_t rows, uint16_t columns);
+void                 initialise_empty_maze(grid_t *p_grid);
+void                 clear_maze_heuristics(grid_t *p_grid);
+void                 destroy_maze(grid_t *p_grid);
+void                 navigator_unset_walls(grid_t            *p_grid,
+                                           navigator_state_t *p_navigator,
+                                           uint8_t            wall_bitmask);
+char                *get_maze_string(grid_t *p_grid);
+cardinal_direction_t get_direction_from_to(point_t *p_point_a,
+                                           point_t *p_point_b);
 
 #endif // MAZE_H
 

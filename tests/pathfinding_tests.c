@@ -14,12 +14,15 @@ typedef enum constants
     GRID_COLS = 10  // Number of columns in the grid.
 } constants_t;
 
-static int test_manhattan_distance(void);
-static int test_create_maze(void);
-static int test_initialise_empty_maze(void);
-static int test_clear_maze_heuristics(void);
-static int test_destroy_maze(void);
-static int test_row_pathfinding(void);
+static int    test_manhattan_distance(void);
+static int    test_create_maze(void);
+static int    test_initialise_empty_maze(void);
+static int    test_clear_maze_heuristics(void);
+static int    test_destroy_maze(void);
+static int    test_row_pathfinding(void);
+static int    test_print_maze(void);
+static grid_t generate_col_maze(uint16_t rows, uint16_t cols);
+static int    test_print_route(void);
 
 int
 pathfinding_tests (int argc, char *argv[])
@@ -58,6 +61,12 @@ pathfinding_tests (int argc, char *argv[])
             break;
         case 6:
             ret_val = test_row_pathfinding();
+            break;
+        case 7:
+            ret_val = test_print_maze();
+            break;
+        case 8:
+            ret_val = test_print_route();
             break;
         default:
             printf("Invalid Test #%d. Terminating.\n", choice);
@@ -137,7 +146,7 @@ test_initialise_empty_maze (void)
             // Check coordinates.
             //
             grid_cell_t *p_cell = &maze.p_grid_array[row * maze.columns + col];
-            if (row != p_cell->coordinates.x || col != p_cell->coordinates.y)
+            if (col != p_cell->coordinates.x || row != p_cell->coordinates.y)
             {
                 printf("Coordinates of cell (%d, %d) are (%d, %d).\n",
                        row,
@@ -277,6 +286,37 @@ test_coords_iseq (point_t *p_point_a, point_t *p_point_b)
 }
 
 /**
+ * @brief Generates a maze that is a single column that leads to the objective.
+ *
+ * @param rows Number of rows in the maze.
+ * @param cols Number of columns in the maze.
+ * @return grid_t Generated maze.
+ */
+static grid_t
+generate_col_maze (uint16_t rows, uint16_t cols)
+{
+    grid_t maze = create_maze(rows, cols);
+
+    // Set the walls of the maze. Should just be a column that leads to the
+    // objective.
+    //
+    grid_cell_t *p_current_node = &maze.p_grid_array[0];
+
+    // Deal with the first node.
+    //
+    for (uint16_t row = 0; GRID_ROWS - 1 > row; row++)
+    {
+        // Conversion to ptrdiff_t is ok because the result is always positive.
+        p_current_node->p_next[SOUTH]
+            = &maze.p_grid_array[(ptrdiff_t)((row + 1) * GRID_COLS)];
+        p_current_node->p_next[SOUTH]->p_next[NORTH] = p_current_node;
+        p_current_node = p_current_node->p_next[SOUTH];
+    }
+
+    return maze;
+}
+
+/**
  * @brief Tests the column pathfinding function to see if it works as expected.
  * This should return an array of nodes in sequential order that represent the
  * shortest path from the start node to the end node.
@@ -288,7 +328,7 @@ test_row_pathfinding (void)
 {
     // Initialise the grid and the navigator.
     //
-    grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+    grid_t maze = generate_col_maze(GRID_ROWS, GRID_COLS);
 
     navigator_state_t navigator_state = {
         &maze.p_grid_array[0],
@@ -298,24 +338,10 @@ test_row_pathfinding (void)
         NORTH
     };
 
-    // Set the walls of the maze. Should just be a column that leads to the
-    // objective.
-    //
-    grid_cell_t *p_current_node = navigator_state.p_current_node;
-
-    for (uint16_t row = 0; GRID_ROWS - 1 > row; row++)
-    {
-        // Conversion to ptrdiff_t is ok because the result is always positive.
-        p_current_node->p_next[NORTH]
-            = &maze.p_grid_array[(ptrdiff_t)((row + 1) * GRID_COLS)];
-        p_current_node->p_next[NORTH]->p_next[SOUTH] = p_current_node;
-        p_current_node = p_current_node->p_next[NORTH];
-    }
-
     // Run the A* algorithm.
     //
     a_star(maze, navigator_state.p_start_node, navigator_state.p_end_node);
-    grid_cell_t *p_path = get_path(navigator_state.p_end_node);
+    path_t *p_path = get_path(navigator_state.p_end_node);
 
     int ret_val = 0;
     // Check that the path is correct.
@@ -329,7 +355,7 @@ test_row_pathfinding (void)
 
     for (uint16_t row = 0; GRID_ROWS > row; row++)
     {
-        point_t *point_a = &p_path[row].coordinates;
+        point_t *point_a = &p_path->p_path[row].coordinates;
         point_t *point_b = &maze.p_grid_array[row * GRID_COLS].coordinates;
 
         if (!test_coords_iseq(point_a, point_b))
@@ -341,13 +367,17 @@ test_row_pathfinding (void)
     }
 
 end: // Clean up all malloc'd memory.
-    p_current_node                 = NULL;
     navigator_state.p_current_node = NULL;
     navigator_state.p_end_node     = NULL;
     navigator_state.p_start_node   = NULL;
 
     if (NULL != p_path)
     {
+        if (NULL != p_path->p_path)
+        {
+            free(p_path->p_path);
+            p_path->p_path = NULL;
+        }
         free(p_path);
         p_path = NULL;
     }
@@ -355,6 +385,56 @@ end: // Clean up all malloc'd memory.
     destroy_maze(&maze);
 
     return ret_val;
+}
+
+static int
+test_print_maze (void)
+{
+    grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+
+    char *maze_str = get_maze_string(&maze);
+
+    printf("%s\n", maze_str);
+
+    free(maze_str);
+
+    return 0;
+}
+
+static int
+test_print_route (void)
+{
+    grid_t maze = generate_col_maze(GRID_ROWS, GRID_COLS);
+
+    navigator_state_t navigator_state = {
+        &maze.p_grid_array[0],
+        &maze.p_grid_array[0],
+        // Conversion to ptrdiff_t is ok because the result is always positive.
+        &maze.p_grid_array[(ptrdiff_t)(GRID_ROWS * (GRID_COLS - 1))],
+        NORTH
+    };
+
+    // Run the A* algorithm.
+    //
+    a_star(maze, navigator_state.p_start_node, navigator_state.p_end_node);
+    path_t *p_path = get_path(navigator_state.p_end_node);
+
+    char *maze_str = get_path_string(&maze, p_path);
+
+    printf("%s\n", maze_str);
+
+    // Clean up all malloc'd memory.
+    free(maze_str);
+
+    if (NULL != p_path)
+    {
+        if (NULL != p_path->p_path)
+        {
+            free(p_path->p_path);
+            p_path->p_path = NULL;
+        }
+    }
+    return 0;
 }
 
 // End of file tests/tests.c
