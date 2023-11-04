@@ -14,6 +14,8 @@ typedef enum constants
     GRID_COLS = 10  // Number of columns in the grid.
 } constants_t;
 
+// Test function prototypes.
+//
 static int    test_manhattan_distance(void);
 static int    test_create_maze(void);
 static int    test_initialise_empty_maze(void);
@@ -23,6 +25,8 @@ static int    test_row_pathfinding(void);
 static int    test_print_maze(void);
 static grid_t generate_col_maze(uint16_t rows, uint16_t cols);
 static int    test_print_route(void);
+static int    test_maze_deserialisation(void);
+static int    test_maze_serialisation(void);
 
 int
 pathfinding_tests (int argc, char *argv[])
@@ -67,6 +71,12 @@ pathfinding_tests (int argc, char *argv[])
             break;
         case 8:
             ret_val = test_print_route();
+            break;
+        case 9:
+            ret_val = test_maze_deserialisation();
+            break;
+        case 10:
+            ret_val = test_maze_serialisation();
             break;
         default:
             printf("Invalid Test #%d. Terminating.\n", choice);
@@ -435,6 +445,90 @@ test_print_route (void)
         }
     }
     return 0;
+}
+
+static int
+test_maze_deserialisation (void)
+{
+    int    ret_val = 0;
+    grid_t maze    = create_maze(5, 5);
+
+    maze_gap_bitmask_t gap_bitmask
+        = { .p_bitmask = NULL, .rows = 5, .columns = 5 };
+
+    static const uint16_t bitmask_array[25] = {
+        0x2, 0xE, 0xA, 0xC, 0x4, // Top Row
+        0x6, 0xB, 0xC, 0x3, 0x9, // 2nd row
+        0x3, 0x8, 0x7, 0x8, 0x4, // 3rd row
+        0x4, 0x4, 0x7, 0xA, 0xD, // 4th row
+        0x3, 0xB, 0x9, 0x2, 0x9  // last row
+    };
+
+    gap_bitmask.p_bitmask = (uint16_t *)bitmask_array;
+
+    ret_val = deserialise_maze(&maze, &gap_bitmask);
+
+    char *maze_str = get_maze_string(&maze);
+
+    printf("%s\n", maze_str);
+
+    return ret_val;
+}
+
+static int
+test_maze_serialisation (void)
+{
+    int ret_val = 0;
+
+    grid_t maze = create_maze(5, 5);
+
+    maze_gap_bitmask_t gap_bitmask
+        = { .p_bitmask = NULL, .rows = 5, .columns = 5 };
+
+    static const uint16_t bitmask_array[25] = {
+        0x2, 0xE, 0xA, 0xC, 0x4, // Top Row
+        0x6, 0xB, 0xC, 0x3, 0x9, // 2nd row
+        0x3, 0x8, 0x7, 0x8, 0x4, // 3rd row
+        0x4, 0x4, 0x7, 0xA, 0xD, // 4th row
+        0x3, 0xB, 0x9, 0x2, 0x9  // last row
+    };
+
+    gap_bitmask.p_bitmask = (uint16_t *)bitmask_array;
+    deserialise_maze(&maze, &gap_bitmask);
+
+    maze_gap_bitmask_t serialised_maze = serialise_maze(&maze);
+
+    for (uint16_t row = 0; row < serialised_maze.rows; row++)
+    {
+        for (uint16_t col = 0; col < serialised_maze.columns; col++)
+        {
+            uint16_t *p_bitmask
+                = &serialised_maze
+                       .p_bitmask[row * serialised_maze.columns + col];
+            uint16_t *p_actual
+                = &bitmask_array[row * serialised_maze.columns + col];
+            if (*p_actual != *p_bitmask)
+            {
+                printf("Bitmask at row, col (%d, %d) is %x when it should be %x.\n",
+                       row,
+                       col,
+                       *p_bitmask,
+                       *p_actual);
+                ret_val = -1;
+                goto end;
+            }
+        }
+    }
+
+end:
+    char *maze_str = get_maze_string(&maze);
+    printf("%s\n", maze_str);
+    free(maze_str);
+
+    free(serialised_maze.p_bitmask);
+    serialised_maze.p_bitmask = NULL;
+
+    return ret_val;
 }
 
 // End of file tests/tests.c

@@ -30,13 +30,16 @@ typedef enum cardinal_direction
  * @brief This enum contains bitmasks for the walls. Useful when updating more
  * than one wall at a time.
  *
+ * @NOTE: The bitmasks are powers of 2, so they can be bitwise ORed together.
+ * They DIFFER from the cardinal_direction_t enum.
  */
 typedef enum wall_direction
 {
-    FRONT_WALL = 0,
-    RIGHT_WALL = 1,
-    BACK_WALL  = 2,
-    LEFT_WALL  = 4
+    NO_WALLS   = 0,
+    FRONT_WALL = 1,
+    RIGHT_WALL = 2,
+    BACK_WALL  = 4,
+    LEFT_WALL  = 8
 } wall_direction_t;
 
 /**
@@ -83,9 +86,10 @@ typedef struct grid_cell
  */
 typedef struct grid
 {
-    grid_cell_t *p_grid_array;
-    uint16_t     rows;
-    uint16_t     columns;
+    grid_cell_t *p_grid_array; // Pointer to the first element
+                               // of the grid array.
+    uint16_t rows;             // Number of rows in the grid.
+    uint16_t columns;          // Number of columns in the grid.
 } grid_t;
 
 /**
@@ -98,11 +102,29 @@ typedef struct grid
  */
 typedef struct navigator_state
 {
-    grid_cell_t         *p_current_node;
-    grid_cell_t         *p_start_node;
-    grid_cell_t         *p_end_node;
-    cardinal_direction_t orientation;
+    grid_cell_t *p_current_node; // Pointer to the current
+                                 // location of the navigator.
+
+    grid_cell_t         *p_start_node; // Pointer to the start node of the maze.
+    grid_cell_t         *p_end_node;   // Pointer to the end node of the maze.
+    cardinal_direction_t orientation;  // Orientation of the navigator.
+                                       // This is an enum.
 } navigator_state_t;
+
+/**
+ * @brief This struct contains the maze gap bitmasks for serialisation.
+ *
+ * @param p_bitmask Pointer to the bitmask array.
+ * @param rows Number of rows.
+ * @param columns Number of columns.
+ */
+typedef struct maze_gap_bitmask
+{
+    uint16_t *p_bitmask; // Pointer to the bitmask array. This is indexed by row
+                         // first, then column.
+    uint16_t rows;       // Number of rows.
+    uint16_t columns;    // Number of columns.
+} maze_gap_bitmask_t;
 
 // Public Functions.
 //
@@ -116,6 +138,9 @@ void                 navigator_unset_walls(grid_t            *p_grid,
 char                *get_maze_string(grid_t *p_grid);
 cardinal_direction_t get_direction_from_to(point_t *p_point_a,
                                            point_t *p_point_b);
+
+int16_t deserialise_maze(grid_t *p_grid, maze_gap_bitmask_t *p_no_walls_array);
+maze_gap_bitmask_t serialise_maze(grid_t *p_grid);
 
 #endif // MAZE_H
 

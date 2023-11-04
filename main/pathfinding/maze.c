@@ -18,13 +18,13 @@ static void navigator_modify_walls(grid_t            *p_grid,
                                    bool               is_set,
                                    bool               is_unset);
 
-static void navigator_set_wall_helper(grid_t            *p_grid,
-                                      navigator_state_t *p_navigator,
-                                      uint8_t            cardinal_direction);
+static void set_wall_helper(grid_t      *p_grid,
+                            grid_cell_t *p_current_node,
+                            uint8_t      cardinal_direction);
 
-static void navigator_unset_wall_helper(grid_t            *p_grid,
-                                        navigator_state_t *p_navigator,
-                                        uint8_t            cardinal_direction);
+static void unset_wall_helper(grid_t      *p_grid,
+                              grid_cell_t *p_current_node,
+                              uint8_t      cardinal_direction);
 
 static void draw_cell(grid_cell_t *p_cell,
                       char        *p_maze_string,
@@ -223,19 +223,23 @@ navigator_modify_walls (grid_t            *p_grid,
     for (int8_t direction = 0; 4 > direction; direction++)
     {
         // Check if only one operation is being performed.
-        if ((is_set ^ is_unset) && (aligned_wall_bitmask & (1 << direction)))
+        if ((is_set ^ is_unset)
+            && (aligned_wall_bitmask & (1 << (direction + 1))))
         {
-            is_set
-                ? navigator_set_wall_helper(p_grid, p_navigator, direction)
-                : navigator_unset_wall_helper(p_grid, p_navigator, direction);
+            is_set ? set_wall_helper(
+                p_grid, p_navigator->p_current_node, direction)
+                   : unset_wall_helper(
+                       p_grid, p_navigator->p_current_node, direction);
         }
         else
         {
             // Unsets the wall in the direction where the bitmask is 1, and sets
             // the wall where the bitmask is 0.
             aligned_wall_bitmask & (1 << direction)
-                ? navigator_unset_wall_helper(p_grid, p_navigator, direction)
-                : navigator_set_wall_helper(p_grid, p_navigator, direction);
+                ? unset_wall_helper(
+                    p_grid, p_navigator->p_current_node, direction)
+                : set_wall_helper(
+                    p_grid, p_navigator->p_current_node, direction);
         }
     }
 }
@@ -244,17 +248,17 @@ navigator_modify_walls (grid_t            *p_grid,
  * @brief Sets a wall in a given direction.
  *
  * @param p_grid Pointer to the maze grid.
- * @param p_navigator Pointer to the navigator.
+ * @param p_current_node Pointer to the current node.
  * @param cardinal_direction Cardinal direction to set the wall in.
  */
 static void
-navigator_set_wall_helper (grid_t            *p_grid,
-                           navigator_state_t *p_navigator,
-                           uint8_t            cardinal_direction)
+set_wall_helper (grid_t      *p_grid,
+                 grid_cell_t *p_current_node,
+                 uint8_t      cardinal_direction)
 {
-    p_navigator->p_current_node->p_next[cardinal_direction] = NULL;
-    grid_cell_t *p_next_node = get_cell_in_direction_from(
-        p_grid, p_navigator->p_current_node, cardinal_direction);
+    p_current_node->p_next[cardinal_direction] = NULL;
+    grid_cell_t *p_next_node                   = get_cell_in_direction_from(
+        p_grid, p_current_node, cardinal_direction);
 
     // Sanity check to ensure that the next node is not NULL.
     if (NULL != p_next_node)
@@ -267,23 +271,22 @@ navigator_set_wall_helper (grid_t            *p_grid,
  * @brief Unsets a wall in a given direction.
  *
  * @param p_grid Pointer to the maze grid.
- * @param p_navigator Pointer to the navigator.
+ * @param p_current_node Pointer to the navigator.
  * @param cardinal_direction Cardinal direction to unset the wall in.
  */
 static void
-navigator_unset_wall_helper (grid_t            *p_grid,
-                             navigator_state_t *p_navigator,
-                             uint8_t            cardinal_direction)
+unset_wall_helper (grid_t      *p_grid,
+                   grid_cell_t *p_current_node,
+                   uint8_t      cardinal_direction)
 {
     grid_cell_t *p_next_node = get_cell_in_direction_from(
-        p_grid, p_navigator->p_current_node, cardinal_direction);
+        p_grid, p_current_node, cardinal_direction);
 
     // Sanity check to ensure that the next node is not NULL.
     if (NULL != p_next_node)
     {
-        p_navigator->p_current_node->p_next[cardinal_direction] = p_next_node;
-        p_next_node->p_next[(cardinal_direction + 2) % 4]
-            = p_navigator->p_current_node;
+        p_current_node->p_next[cardinal_direction]        = p_next_node;
+        p_next_node->p_next[(cardinal_direction + 2) % 4] = p_current_node;
     }
 }
 
@@ -432,3 +435,129 @@ get_direction_from_to (point_t *p_point_a, point_t *p_point_b)
 end:
     return direction;
 }
+
+/**
+ * @brief Parses a bitmask array into a maze.
+ *
+ * @param p_grid Pointer to the maze.
+ * @param p_no_walls_array Pointer to the bitmask array.
+ * @return int16_t 0 if successful, -1 if not.
+ */
+int16_t
+deserialise_maze (grid_t *p_grid, maze_gap_bitmask_t *p_no_walls_array)
+{
+    int16_t ret_val = 0;
+    // Ensure that the no walls array is not NULL.
+    //
+    if (NULL == p_no_walls_array)
+    {
+        ret_val = -1;
+        goto end;
+    }
+
+    // Check that the dimensions are the same.
+    //
+    if (p_grid->rows != p_no_walls_array->rows
+        || p_grid->columns != p_no_walls_array->columns)
+    {
+        ret_val = -1;
+        goto end;
+    }
+
+    // Iterate through the array and set the walls.
+    //
+    for (uint16_t row = 0; p_grid->rows > row; row++)
+    {
+        for (uint16_t col = 0; p_grid->columns > col; col++)
+        {
+            grid_cell_t *p_cell
+                = &p_grid->p_grid_array[row * p_grid->columns + col];
+            uint8_t cardinal_direction
+                = p_no_walls_array->p_bitmask[row * p_grid->columns + col];
+
+            // Check if the cell is NULL.
+            //
+            if (NULL == p_cell)
+            {
+                ret_val = -1;
+                goto end;
+            }
+
+            // Set or unset the walls.
+            //
+            for (uint8_t direction = 0; 4 > direction; direction++)
+            {
+                // Check if the direction is set.
+                //
+                if (cardinal_direction & (1 << (direction)))
+                {
+                    unset_wall_helper(p_grid, p_cell, direction);
+                }
+                else
+                {
+                    set_wall_helper(p_grid, p_cell, direction);
+                }
+            }
+        }
+    }
+
+end:
+    return ret_val;
+}
+
+/**
+ * @brief Serialises a maze into a bitmask array.
+ *
+ * @param p_grid Pointer to the maze.
+ * @return maze_gap_bitmask_t Bitmask array.
+ */
+maze_gap_bitmask_t
+serialise_maze (grid_t *p_grid)
+{
+    maze_gap_bitmask_t no_walls_array = {
+        .p_bitmask = malloc(sizeof(uint16_t) * p_grid->rows * p_grid->columns),
+        .rows      = p_grid->rows,
+        .columns   = p_grid->columns,
+    };
+    memset(no_walls_array.p_bitmask,
+           0,
+           sizeof(uint16_t) * p_grid->rows * p_grid->columns);
+
+    // Iterate through the array and set the walls.
+    //
+    for (uint16_t row = 0; p_grid->rows > row; row++)
+    {
+        for (uint16_t col = 0; p_grid->columns > col; col++)
+        {
+            grid_cell_t *p_cell
+                = &p_grid->p_grid_array[row * p_grid->columns + col];
+            uint8_t cardinal_direction = 0;
+
+            // Check if the cell is NULL.
+            //
+            if (NULL == p_cell)
+            {
+                goto end;
+            }
+
+            // Check every direction and set the bitmask.
+            //
+            for (uint8_t direction = 0; 4 > direction; direction++)
+            {
+                // Check if the direction is set.
+                //
+                if (NULL != p_cell->p_next[direction])
+                {
+                    cardinal_direction |= (1 << (direction));
+                }
+            }
+            no_walls_array.p_bitmask[row * p_grid->columns + col]
+                = cardinal_direction;
+        }
+    }
+
+end:
+    return no_walls_array;
+}
+
+// End of file pathfinding/maze.c
