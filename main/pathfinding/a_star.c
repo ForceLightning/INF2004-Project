@@ -228,13 +228,13 @@ get_path_string (grid_t *p_grid, path_t *p_path)
 
     for (uint32_t index = p_path->length - 2; 0 < index; index--)
     {
-        uint32_t off_by_one_index         = index;
+        // uint32_t off_by_one_index         = p_path->length - 1 - index;
         p_previous_cell                   = p_cell;
-        p_cell                            = &p_path->p_path[off_by_one_index];
+        p_cell                            = &p_path->p_path[index];
         cardinal_direction_t in_direction = get_direction_from_to(
-            &p_cell->p_came_from->coordinates, &p_cell->coordinates);
+            &p_cell->coordinates, &p_cell->p_came_from->coordinates);
         cardinal_direction_t out_direction = get_direction_from_to(
-            &p_previous_cell->coordinates, &p_cell->coordinates);
+            &p_cell->coordinates, &p_previous_cell->coordinates);
         insert_path_directions(p_maze_string,
                                p_cell,
                                str_num_rows,
@@ -272,52 +272,67 @@ insert_path_directions (char                *p_maze_string,
 {
     uint32_t node_row = p_cell->coordinates.y * 2 + 1;
     uint32_t node_col = p_cell->coordinates.x * 4 + 2;
+    if (in_direction != NONE)
+    {
+        insert_path_in_direction(
+            p_maze_string, str_num_cols, node_row, node_col, in_direction);
+    }
+
     switch (in_direction)
     {
+        case NONE:
+            // Deals with the start node.
+            insert_node_centre_char(
+                p_maze_string, node_row, node_col, str_num_cols, '%');
+            goto handle_end;
         case NORTH:
-            insert_path_in_direction(
-                p_maze_string, str_num_cols, node_row, node_col, NORTH);
             if (SOUTH == out_direction)
             {
                 insert_node_centre_char(
                     p_maze_string, node_row, node_col, str_num_cols, '|');
             }
+            else
+            {
+                goto handle_direction_change;
+            }
             goto handle_end;
         case EAST:
-            insert_path_in_direction(
-                p_maze_string, str_num_cols, node_row, node_col, EAST);
             if (WEST == out_direction)
             {
                 insert_node_centre_char(
                     p_maze_string, node_row, node_col, str_num_cols, '-');
             }
+            else
+            {
+                goto handle_direction_change;
+            }
             goto handle_end;
         case SOUTH:
-            insert_path_in_direction(
-                p_maze_string, str_num_cols, node_row, node_col, SOUTH);
             if (NORTH == out_direction)
             {
                 insert_node_centre_char(
                     p_maze_string, node_row, node_col, str_num_cols, '|');
             }
+            else
+            {
+                goto handle_direction_change;
+            }
             goto handle_end;
         case WEST:
-            insert_path_in_direction(
-                p_maze_string, str_num_cols, node_row, node_col, WEST);
             if (EAST == out_direction)
             {
                 insert_node_centre_char(
                     p_maze_string, node_row, node_col, str_num_cols, '-');
             }
+            else
+            {
+                goto handle_direction_change;
+            }
             goto handle_end;
-        case NONE:
-            // Deals with the start node.
-            insert_path_in_direction(
-                p_maze_string, str_num_cols, node_row, node_col, out_direction);
-            insert_node_centre_char(
-                p_maze_string, node_row, node_col, str_num_cols, '%');
-            break;
     }
+handle_direction_change:
+    insert_node_centre_char(
+        p_maze_string, node_row, node_col, str_num_cols, 'O');
 handle_end:
     if (NONE == out_direction)
     {

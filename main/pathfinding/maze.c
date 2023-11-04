@@ -560,4 +560,33 @@ end:
     return no_walls_array;
 }
 
+/**
+ * @brief Get the cell at the specified coordinates.
+ *
+ * @param p_grid Pointer to the maze.
+ * @param p_coordinates Pointer to the coordinates.
+ * @return grid_cell_t* Pointer to the cell. NULL if the coordinates are out of
+ * the maze.
+ */
+grid_cell_t *
+get_cell_at_coordinates (grid_t *p_grid, point_t *p_coordinates)
+{
+    grid_cell_t *p_cell = NULL;
+
+    // Check if the coordinates are within the maze.
+    //
+    if (p_grid->rows <= p_coordinates->y || p_grid->columns <= p_coordinates->x)
+    {
+        goto end;
+    }
+
+    // Go y * columns + x cells from the start of the array.
+    //
+    p_cell = &p_grid->p_grid_array[p_coordinates->y * p_grid->columns
+                                   + p_coordinates->x];
+
+end:
+    return p_cell;
+}
+
 // End of file pathfinding/maze.c

@@ -14,6 +14,14 @@ typedef enum constants
     GRID_COLS = 10  // Number of columns in the grid.
 } constants_t;
 
+static const uint16_t g_bitmask_array[25] = {
+    0x2, 0xE, 0xA, 0xC, 0x4, // Top Row
+    0x6, 0xB, 0xC, 0x3, 0x9, // 2nd row
+    0x3, 0x8, 0x7, 0x8, 0x4, // 3rd row
+    0x4, 0x4, 0x7, 0xA, 0xD, // 4th row
+    0x3, 0xB, 0x9, 0x2, 0x9  // last row
+};
+
 // Test function prototypes.
 //
 static int    test_manhattan_distance(void);
@@ -27,6 +35,7 @@ static grid_t generate_col_maze(uint16_t rows, uint16_t cols);
 static int    test_print_route(void);
 static int    test_maze_deserialisation(void);
 static int    test_maze_serialisation(void);
+static int    test_complex_maze_pathfinding(void);
 
 int
 pathfinding_tests (int argc, char *argv[])
@@ -77,6 +86,9 @@ pathfinding_tests (int argc, char *argv[])
             break;
         case 10:
             ret_val = test_maze_serialisation();
+            break;
+        case 11:
+            ret_val = test_complex_maze_pathfinding();
             break;
         default:
             printf("Invalid Test #%d. Terminating.\n", choice);
@@ -456,15 +468,7 @@ test_maze_deserialisation (void)
     maze_gap_bitmask_t gap_bitmask
         = { .p_bitmask = NULL, .rows = 5, .columns = 5 };
 
-    static const uint16_t bitmask_array[25] = {
-        0x2, 0xE, 0xA, 0xC, 0x4, // Top Row
-        0x6, 0xB, 0xC, 0x3, 0x9, // 2nd row
-        0x3, 0x8, 0x7, 0x8, 0x4, // 3rd row
-        0x4, 0x4, 0x7, 0xA, 0xD, // 4th row
-        0x3, 0xB, 0x9, 0x2, 0x9  // last row
-    };
-
-    gap_bitmask.p_bitmask = (uint16_t *)bitmask_array;
+    gap_bitmask.p_bitmask = (uint16_t *)g_bitmask_array;
 
     ret_val = deserialise_maze(&maze, &gap_bitmask);
 
@@ -485,15 +489,7 @@ test_maze_serialisation (void)
     maze_gap_bitmask_t gap_bitmask
         = { .p_bitmask = NULL, .rows = 5, .columns = 5 };
 
-    static const uint16_t bitmask_array[25] = {
-        0x2, 0xE, 0xA, 0xC, 0x4, // Top Row
-        0x6, 0xB, 0xC, 0x3, 0x9, // 2nd row
-        0x3, 0x8, 0x7, 0x8, 0x4, // 3rd row
-        0x4, 0x4, 0x7, 0xA, 0xD, // 4th row
-        0x3, 0xB, 0x9, 0x2, 0x9  // last row
-    };
-
-    gap_bitmask.p_bitmask = (uint16_t *)bitmask_array;
+    gap_bitmask.p_bitmask = (uint16_t *)g_bitmask_array;
     deserialise_maze(&maze, &gap_bitmask);
 
     maze_gap_bitmask_t serialised_maze = serialise_maze(&maze);
@@ -506,14 +502,16 @@ test_maze_serialisation (void)
                 = &serialised_maze
                        .p_bitmask[row * serialised_maze.columns + col];
             uint16_t *p_actual
-                = &bitmask_array[row * serialised_maze.columns + col];
+                = &g_bitmask_array[row * serialised_maze.columns + col];
             if (*p_actual != *p_bitmask)
             {
-                printf("Bitmask at row, col (%d, %d) is %x when it should be %x.\n",
-                       row,
-                       col,
-                       *p_bitmask,
-                       *p_actual);
+                printf(
+                    "Bitmask at row, col (%d, %d) is %x when it should be "
+                    "%x.\n",
+                    row,
+                    col,
+                    *p_bitmask,
+                    *p_actual);
                 ret_val = -1;
                 goto end;
             }
@@ -527,6 +525,64 @@ end:
 
     free(serialised_maze.p_bitmask);
     serialised_maze.p_bitmask = NULL;
+
+    return ret_val;
+}
+
+static int
+test_complex_maze_pathfinding (void)
+{
+    int ret_val = 0;
+
+    grid_t maze = create_maze(5, 5);
+
+    maze_gap_bitmask_t gap_bitmask
+        = { .p_bitmask = NULL, .rows = 5, .columns = 5 };
+
+    gap_bitmask.p_bitmask = (uint16_t *)g_bitmask_array;
+    deserialise_maze(&maze, &gap_bitmask);
+
+    point_t start_point = (point_t) { 0, 4 };
+    point_t end_point   = (point_t) { 4, 0 };
+
+    grid_cell_t *p_start = get_cell_at_coordinates(&maze, &start_point);
+    grid_cell_t *p_end   = get_cell_at_coordinates(&maze, &end_point);
+
+    navigator_state_t navigator_state = { p_start, p_start, p_end, NORTH };
+
+    // Run the A* algorithm.
+    //
+    a_star(maze, navigator_state.p_start_node, navigator_state.p_end_node);
+    path_t *p_path = get_path(navigator_state.p_end_node);
+
+    if (NULL == p_path)
+    {
+        printf("Path is NULL.\n");
+        ret_val = -1;
+        goto end;
+    }
+
+    char *maze_str = get_path_string(&maze, p_path);
+    printf("%s\n", maze_str);
+
+end: // Clean up all malloc'd memory.
+    navigator_state.p_current_node = NULL;
+    navigator_state.p_end_node     = NULL;
+    navigator_state.p_start_node   = NULL;
+    free(maze_str);
+
+    if (NULL != p_path)
+    {
+        if (NULL != p_path->p_path)
+        {
+            free(p_path->p_path);
+            p_path->p_path = NULL;
+        }
+        free(p_path);
+        p_path = NULL;
+    }
+
+    destroy_maze(&maze);
 
     return ret_val;
 }

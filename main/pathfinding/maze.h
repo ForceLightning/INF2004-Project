@@ -141,6 +141,7 @@ cardinal_direction_t get_direction_from_to(point_t *p_point_a,
 
 int16_t deserialise_maze(grid_t *p_grid, maze_gap_bitmask_t *p_no_walls_array);
 maze_gap_bitmask_t serialise_maze(grid_t *p_grid);
+grid_cell_t *get_cell_at_coordinates(grid_t *p_grid, point_t *p_coordinates);
 
 #endif // MAZE_H
 
