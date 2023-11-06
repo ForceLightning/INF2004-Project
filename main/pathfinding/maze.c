@@ -6,17 +6,9 @@
 
 // Private function prototypes.
 //
-static int8_t get_offset_from_nav_direction(navigator_state_t *p_navigator);
-
 static grid_cell_t *get_cell_in_direction_from(grid_t              *p_grid,
                                                grid_cell_t         *p_current,
                                                cardinal_direction_t direction);
-
-static void navigator_modify_walls(grid_t            *p_grid,
-                                   navigator_state_t *p_navigator,
-                                   uint8_t            aligned_wall_bitmask,
-                                   bool               is_set,
-                                   bool               is_unset);
 
 static void set_wall_helper(grid_t      *p_grid,
                             grid_cell_t *p_current_node,
@@ -43,7 +35,7 @@ create_maze (uint16_t rows, uint16_t columns)
     grid_cell_t *p_grid_array = malloc(sizeof(grid_cell_t) * rows * columns);
     memset(p_grid_array, 0, sizeof(grid_cell_t) * rows * columns);
     grid_t grid = { p_grid_array, rows, columns };
-    initialise_empty_maze(&grid);
+    initialise_empty_maze_walled(&grid);
     return grid;
 }
 
@@ -54,7 +46,7 @@ create_maze (uint16_t rows, uint16_t columns)
  * @param grid Pointer to empty maze.
  */
 void
-initialise_empty_maze (grid_t *p_grid)
+initialise_empty_maze_walled (grid_t *p_grid)
 {
     for (uint16_t row = 0; p_grid->rows > row; row++)
     {
@@ -124,7 +116,7 @@ destroy_maze (grid_t *p_grid)
  * @param p_navigator Pointer to the navigator.
  * @return int8_t Offset of the current direction from cardinal directions.
  */
-static int8_t
+int8_t
 get_offset_from_nav_direction (navigator_state_t *p_navigator)
 {
     int8_t offset = (int8_t)(-p_navigator->orientation);
@@ -206,7 +198,7 @@ navigator_unset_walls (grid_t            *p_grid,
         p_grid, p_navigator, wall_bitmask_rotated, true, false);
 }
 
-static void
+void
 navigator_modify_walls (grid_t            *p_grid,
                         navigator_state_t *p_navigator,
                         uint8_t            aligned_wall_bitmask,
@@ -589,4 +581,35 @@ end:
     return p_cell;
 }
 
+grid_cell_t *
+get_cell_in_direction (grid_t              *p_grid,
+                       grid_cell_t         *p_from,
+                       cardinal_direction_t direction)
+{
+    int16_t row_diff = direction == NORTH ? -1 : direction == SOUTH ? 1 : 0;
+    int16_t col_diff = direction == EAST ? 1 : direction == WEST ? -1 : 0;
+
+    point_t coordinates = { p_from->coordinates.x + col_diff,
+                            p_from->coordinates.y + row_diff };
+
+    grid_cell_t *p_cell = get_cell_at_coordinates(p_grid, &coordinates);
+    return p_cell;
+}
+
+/**
+ * @brief Calculates the manhattan distance between two points.
+ *
+ * @param point_a First point.
+ * @param point_b Second point.
+ * @return uint32_t The manhattan distance.
+ *
+ * @ref https://en.wikipedia.org/wiki/Taxicab_geometry
+ */
+uint32_t
+manhattan_distance (point_t *point_a, point_t *point_b)
+{
+    uint32_t x_diff = abs(point_a->x - point_b->x);
+    uint32_t y_diff = abs(point_a->y - point_b->y);
+    return x_diff + y_diff;
+}
 // End of file pathfinding/maze.c

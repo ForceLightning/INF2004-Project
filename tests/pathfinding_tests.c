@@ -150,7 +150,7 @@ test_create_maze (void)
 }
 
 /**
- * @brief Tests the initialise_empty_maze function to see if it works as
+ * @brief Tests the initialise_empty_maze_walled function to see if it works as
  * expected. This should set the coordinates appropriately, heuristics to 0 and
  * all pointers to NULL.
  *

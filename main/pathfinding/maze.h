@@ -1,6 +1,7 @@
 #ifndef MAZE_H
 #define MAZE_H
 #include <stdint.h>
+#include <stdbool.h>
 
 /**
  * @brief This struct contains the coordinates of a point.
@@ -129,12 +130,17 @@ typedef struct maze_gap_bitmask
 // Public Functions.
 //
 grid_t               create_maze(uint16_t rows, uint16_t columns);
-void                 initialise_empty_maze(grid_t *p_grid);
+void                 initialise_empty_maze_walled(grid_t *p_grid);
 void                 clear_maze_heuristics(grid_t *p_grid);
 void                 destroy_maze(grid_t *p_grid);
 void                 navigator_unset_walls(grid_t            *p_grid,
                                            navigator_state_t *p_navigator,
                                            uint8_t            wall_bitmask);
+void                 navigator_modify_walls(grid_t            *p_grid,
+                                            navigator_state_t *p_navigator,
+                                            uint8_t            aligned_wall_bitmask,
+                                            bool               is_set,
+                                            bool               is_unset);
 char                *get_maze_string(grid_t *p_grid);
 cardinal_direction_t get_direction_from_to(point_t *p_point_a,
                                            point_t *p_point_b);
@@ -142,6 +148,12 @@ cardinal_direction_t get_direction_from_to(point_t *p_point_a,
 int16_t deserialise_maze(grid_t *p_grid, maze_gap_bitmask_t *p_no_walls_array);
 maze_gap_bitmask_t serialise_maze(grid_t *p_grid);
 grid_cell_t *get_cell_at_coordinates(grid_t *p_grid, point_t *p_coordinates);
+grid_cell_t *get_cell_in_direction(grid_t              *p_grid,
+                                   grid_cell_t         *p_from,
+                                   cardinal_direction_t direction);
+int8_t       get_offset_from_nav_direction(navigator_state_t *p_navigator);
+
+uint32_t manhattan_distance(point_t *point_a, point_t *point_b);
 
 #endif // MAZE_H
 

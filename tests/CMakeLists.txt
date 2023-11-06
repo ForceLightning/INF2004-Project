@@ -1,6 +1,7 @@
 set(ctests
     pathfinding
     pid
+    floodfill
     )
 
 set(pathfinding_parts

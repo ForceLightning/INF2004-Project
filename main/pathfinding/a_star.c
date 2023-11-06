@@ -26,22 +26,6 @@ static void insert_node_centre_char(char    *p_maze_string,
                                     uint16_t str_num_cols,
                                     char     symbol);
 
-/**
- * @brief Calculates the manhattan distance between two points.
- *
- * @param point_a First point.
- * @param point_b Second point.
- * @return uint32_t The manhattan distance.
- *
- * @ref https://en.wikipedia.org/wiki/Taxicab_geometry
- */
-uint32_t
-manhattan_distance (point_t *point_a, point_t *point_b)
-{
-    uint32_t x_diff = abs(point_a->x - point_b->x);
-    uint32_t y_diff = abs(point_a->y - point_b->y);
-    return x_diff + y_diff;
-}
 
 /**
  * @brief Contains the inner loop of the A* algorithm.
@@ -342,6 +326,15 @@ handle_end:
     }
 }
 
+/**
+ * @brief Inserts the path string in the given direction.
+ *
+ * @param p_maze_str Pointer to the string containing the pretty printed maze.
+ * @param str_num_cols Number of rows in the string.
+ * @param node_row Row of the node to add the path to.
+ * @param node_col Column of the node to add the path to.
+ * @param direction Direction to add the path in.
+ */
 static void
 insert_path_in_direction (char                *p_maze_str,
                           uint16_t             str_num_cols,
@@ -395,4 +388,4 @@ insert_node_centre_char (char    *p_maze_string,
     p_maze_string[row * str_num_cols + col] = symbol;
 }
 
-// End of file comment
+// End of pathfinding/a_star.c

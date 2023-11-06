@@ -5,6 +5,7 @@ target_sources(pathfinding INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}/a_star.c
     ${CMAKE_CURRENT_SOURCE_DIR}/binary_heap.c
     ${CMAKE_CURRENT_SOURCE_DIR}/maze.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/floodfill.c
 )
 
 # target_link_libraries(pathfinding INTERFACE
