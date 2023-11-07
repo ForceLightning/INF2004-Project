@@ -60,7 +60,7 @@ typedef struct heap_node
  * heap.
  * @property size Current number of nodes in the binary heap.
  *
- * @WARNING: The array is 0-indexed, so capacity and size are always 1 greater
+ * @warning The array is 0-indexed, so capacity and size are always 1 greater
  * than their respective index maximums
  */
 typedef struct binary_heap

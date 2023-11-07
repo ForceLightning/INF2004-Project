@@ -177,7 +177,7 @@ navigator_unset_walls (grid_t            *p_grid,
  * @param is_set True if the walls are to be set.
  * @param is_unset True if the walls are to be unset.
  *
- * @NOTE: both is_set and is_unset can be True. In this case, the
+ * @note both is_set and is_unset can be True. In this case, the
  * entire cell's walls and gaps will be set.
  */
 void
@@ -222,7 +222,7 @@ navigator_modify_walls (grid_t            *p_grid,
  * @param p_grid Pointer to the maze grid.
  * @return char* Pointer to the string representation of the maze.
  *
- * @NOTE: The string returned by this function must be freed.
+ * @note The string returned by this function must be freed.
  *
  */
 char *

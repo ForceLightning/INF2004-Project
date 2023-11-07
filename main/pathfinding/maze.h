@@ -48,7 +48,7 @@ typedef enum cardinal_direction
  * @brief This enum contains bitmasks for the walls. Useful when updating more
  * than one wall at a time.
  *
- * @NOTE: The bitmasks are powers of 2, so they can be bitwise ORed together.
+ * @note The bitmasks are powers of 2, so they can be bitwise ORed together.
  * They DIFFER from the @ref cardinal_direction_t enum.
  */
 typedef enum wall_direction
@@ -64,7 +64,7 @@ typedef enum wall_direction
  * @typedef grid_cell_t
  * @brief This struct contains the node information.
  *
- * @NOTE: Ensure that the initialisation of the struct sets all pointers to
+ * @note Ensure that the initialisation of the struct sets all pointers to
  * NULL. Otherwise, the program might have undefined behaviour.
  */
 typedef struct grid_cell
@@ -86,7 +86,7 @@ typedef struct grid_cell
  * @typedef grid_t
  * @brief This struct contains the maze grid information.
  *
- * @NOTE: The grid array is indexed by row first, then column.
+ * @note The grid array is indexed by row first, then column.
  *
  */
 typedef struct grid

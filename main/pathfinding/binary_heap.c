@@ -25,7 +25,7 @@
 void
 heapify_up (binary_heap_t *p_heap, uint16_t index)
 {
-    // @NOTE: These early returns are not necessary, but they make the code
+    // @note These early returns are not necessary, but they make the code
     // easier to read.
 
     // Step 1: Check if the node is the root node.
@@ -58,16 +58,16 @@ heapify_up (binary_heap_t *p_heap, uint16_t index)
         // Step 4: Swap the parent node with the current node.
         //
         heap_node_t temp_node
-            = p_heap->p_array[parent_index]; ///< Save the parent node.
-        p_heap->p_array[parent_index] = p_heap->p_array[index]; ///< Swap.
-        p_heap->p_array[index]        = temp_node;              ///< Swap.
+            = p_heap->p_array[parent_index]; // Save the parent node.
+        p_heap->p_array[parent_index] = p_heap->p_array[index]; // Swap.
+        p_heap->p_array[index]        = temp_node;              // Swap.
 
         // Step 5: Heapify up the parent node.
         // Update the index to the parent's index and recalculate the node's new
         // parent's index.
         //
-        index        = parent_index;    ///< Update the index.
-        parent_index = (index - 1) / 2; ///< Recalculate the parent's index.
+        index        = parent_index;    // Update the index.
+        parent_index = (index - 1) / 2; // Recalculate the parent's index.
     }
 }
 
@@ -84,9 +84,9 @@ heapify_down (binary_heap_t *p_heap, uint16_t index)
     // Step 1.1: Declare variables to store the indices of the left and right,
     // as well as the smallest child.
     //
-    uint16_t left_index;           ///< Index of the left child.
-    uint16_t right_index;          ///< Index of the right child.
-    uint16_t smallest_child_index; /// Index of the smallest child.
+    uint16_t left_index;           // Index of the left child.
+    uint16_t right_index;          // Index of the right child.
+    uint16_t smallest_child_index; // Index of the smallest child.
 
     for (;;)
     {
@@ -94,11 +94,11 @@ heapify_down (binary_heap_t *p_heap, uint16_t index)
         // heap, the indices are known to be 2 * index + 1..=2 for the left and
         // right respectively.
         //
-        left_index           = 2 * index + 1; ///< Calculate the left index.
-        right_index          = 2 * index + 2; ///< Calculate the right index.
-        smallest_child_index = index;         ///< Assume that the
-                                              ///< current node is the
-                                              ///< smallest.
+        left_index           = 2 * index + 1; // Calculate the left index.
+        right_index          = 2 * index + 2; // Calculate the right index.
+        smallest_child_index = index;         // Assume that the
+                                              // current node is the
+                                              // smallest.
 
         // Step 2: Find the smallest value amongst the node and its children,
         // and assign the index to `smallest_child_index`.

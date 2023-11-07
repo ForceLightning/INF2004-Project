@@ -126,7 +126,7 @@ floodfill_tests (int argc, char *argv[])
  *
  * @return int 0 if successful, -1 otherwise.
  *
- * @NOTE: This test is not complete.
+ * @note This test is not complete.
  */
 static int
 test_initialise_empty_maze_nowall (void)
@@ -186,7 +186,7 @@ move_navigator (navigator_state_t *p_navigator, cardinal_direction_t direction)
  *
  * @return int 0 if successful, -1 otherwise.
  *
- * @NOTE: This test is not complete.
+ * @note This test is not complete.
  */
 static int
 test_floodfill (void)
