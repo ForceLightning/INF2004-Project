@@ -246,7 +246,8 @@ test_clear_maze_heuristics (void)
         {
             grid_cell_t *p_cell = &maze.p_grid_array[row * maze.columns + col];
 
-            if (0 != p_cell->f || 0 != p_cell->g || 0 != p_cell->h)
+            if (UINT32_MAX != p_cell->f || UINT32_MAX != p_cell->g
+                || UINT32_MAX != p_cell->h)
             {
                 printf("Heuristics of cell (%d, %d) are (%d, %d, %d).\n",
                        row,
