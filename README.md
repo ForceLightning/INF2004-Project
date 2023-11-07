@@ -34,22 +34,25 @@ cmake --build <build directory> --config <Debug/Release> --target car_project -j
 # Testing
 Unit testing of code that is independent of the Pico SDK is done with `ctest` by defining the environment variable `TEST_BUILD`. Some configuration changes to your environment will be required such as changing the compiler toolkit so that the tests may run on your machine.
 
+# Documentation
+Documentation can be found [here](https://forcelightning.github.io/INF2004-Project/).
+
 # Diagrams
 ## Call Graph
-![Call graph](docs/callgraph.svg)
+![Call graph](images/callgraph.svg)
 
 ## Data Flow
-![Data flow](docs/dataflow.svg)
+![Data flow](images/dataflow.svg)
 
 ## Flowcharts
 ### Mapping flowchart
-![Mapping](docs/mapping_flowchart.png)
+![Mapping](images/mapping_flowchart.png)
 ### Navigation flowchart
-![Navigation](docs/navigation_flowchart.png)
+![Navigation](images/navigation_flowchart.png)
 
 # Contributing
 
-Pull requests are welcome. The enforced coding standard is the [Embedded C Coding Standard by the Barr Group](https://barrgroup.com/embedded-systems/books/embedded-c-coding-standard).
+The enforced coding standard is the [Embedded C Coding Standard by the Barr Group](https://barrgroup.com/embedded-systems/books/embedded-c-coding-standard).
 
 # Licence
 [BSD-3-Clause](LICENSE.txt)

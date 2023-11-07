@@ -295,3 +295,6 @@ pico-examples/**
 # Coverage Reports
 CoverageReport**/
 LastCoverageResults.log
+
+# Docs
+docs/latex/**

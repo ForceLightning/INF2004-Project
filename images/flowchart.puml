@@ -1,0 +1,69 @@
+@startuml mapping_flowchart
+start
+:main;
+:Initialisation;
+:Initialise maze grid;
+while (reached end?) is (no)
+    while (obstacle ahead?) is (no)
+        while (able to turn?) is (cannot turn)
+            :Drive Forward;
+        endwhile (can turn)
+        :Take the turn;
+    endwhile (yes)
+    :Traceback to nearest junction;
+endwhile (yes)
+:Save maze grid;
+stop
+@enduml
+
+@startuml navigation_flowchart
+start
+fork
+    #HotPink:main;
+    :Initialisation;
+    #Yellow:Load maze grid;
+    #Yellow:Determine path with A*;
+    while (reached end?) is (no)
+        #Yellow:Provide navigation instructions;
+        #HotPink:Instruct Motor;
+        #Cyan:Move motor;
+        #Yellow:Update position based\non wheel encoder distance;
+    endwhile (yes)
+    #Yellow:Navigation Complete;
+fork again
+    -> line_sensor_isr;
+    #LightBlue:Lost line detection;
+    if (barcode?) is (yes) then
+        #LightBlue:Decode barcode;
+    elseif (barcode ended)
+        #Yellow:Backtrack until line detected;
+    else (no)
+        #LightBlue:Interrupt;
+        #Yellow:Backtrack 1 maze node;
+        #Orange:Start timer;
+        #Cyan:Alter orientation biased left;
+        #HotPink:Retry movement instruction;
+        if (cross line?) is (yes) then
+            #Orange:End timer;
+            #Yellow:Backtrack;
+        elseif (again)
+            #Orange:End timer;
+            #Yellow:Compare timing;
+            if (latest timing is?) is (shorter) then
+                #Cyan:Alter orientation biased right;
+            else (longer)
+                #Cyan:Alter orientation biased further left;
+            endif
+        else (no)
+            #Orange:End timer;
+            #Yellow:Resume navigation;
+        endif
+    endif
+fork again
+    -> ultrasonic_isr;
+    #LightBlue:Encountered obstacle;
+    #Yellow:Update maze grid state;
+    #Yellow:Run A* pathfinding from current position;
+end fork
+stop
+@enduml
