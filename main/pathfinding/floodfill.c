@@ -1,15 +1,26 @@
+/**
+ * @file floodfill.c
+ * @author Christopher Kok (chris@forcelightning.xyz)
+ * @brief This file contains the implementation of the floodfill algorithm for
+ * mapping the maze and determining a path to the end.
+ * @version 0.1
+ * @date 2023-11-07
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
+
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include <stdbool.h>
 #include "maze.h"
 #include "binary_heap.h"
 #include "floodfill.h"
 
 // Private function prototypes.
 //
-static void floodfill_inner_loop(grid_t            *p_grid,
-                                 navigator_state_t *p_navigator,
-                                 explore_func_t     p_explore_func);
+static void floodfill(binary_heap_t     *p_open_set,
+                      navigator_state_t *p_navigator);
 
 /**
  * @brief This function initialises a maze with no walls to perform the
@@ -59,19 +70,15 @@ initialise_empty_maze_nowall (grid_t *p_grid)
  * @param p_explore_func Pointer to the function that will explore the maze.
  */
 void
-floodfill (grid_t            *p_grid,
-           grid_cell_t       *p_start_node,
-           grid_cell_t       *p_end_node,
-           navigator_state_t *p_navigator,
-           explore_func_t     p_explore_func)
+map_maze (grid_t            *p_grid,
+          grid_cell_t       *p_start_node,
+          grid_cell_t       *p_end_node,
+          navigator_state_t *p_navigator,
+          explore_func_t     p_explore_func,
+          move_navigator_t   p_move_navigator)
 {
     // Initialise the flood array.
     //
-    binary_heap_t flood_array;
-    flood_array.p_array
-        = malloc(sizeof(heap_node_t) * p_grid->rows * p_grid->columns);
-    flood_array.capacity = p_grid->rows * p_grid->columns;
-    flood_array.size     = 0;
 
     grid_cell_t *p_current_node = p_start_node;
 
@@ -84,86 +91,139 @@ floodfill (grid_t            *p_grid,
             grid_cell_t *p_cell
                 = &p_grid->p_grid_array[row * p_grid->columns + col];
 
-            // May only need to initialise either the f or g value.
-            p_cell->g = manhattan_distance(&p_cell->coordinates,
-                                           &p_start_node->coordinates);
-            p_cell->f = p_cell->g;
+            p_cell->h = UINT32_MAX;
+            p_cell->g = UINT32_MAX;
+            p_cell->f = UINT32_MAX;
         }
     }
-
-    // Insert the start node into the flood array.
-    //
-    insert(&flood_array, p_start_node, p_start_node->f);
 
     // Start the inner loop.
     //
-    while (p_current_node != p_end_node)
+    while (p_navigator->p_current_node != p_end_node)
     {
-        floodfill_inner_loop(p_grid, p_navigator, p_explore_func);
+        // Explore the current node.
+        //
+        p_explore_func(p_grid, p_navigator, p_navigator->orientation);
+
+        // ! Possible to allocate this out of the loop?
+        binary_heap_t flood_array;
+        flood_array.p_array
+            = malloc(sizeof(heap_node_t) * p_grid->rows * p_grid->columns);
+        flood_array.capacity = p_grid->rows * p_grid->columns;
+        flood_array.size     = 0;
+        floodfill(&flood_array, p_navigator);
+        // Get the next node to explore.
+        //
+        grid_cell_t         *p_next_node = NULL;
+        cardinal_direction_t direction   = NONE;
+
+        for (uint8_t i = 0; 4 > i; i++)
+        {
+            grid_cell_t *p_neighbour = p_navigator->p_current_node->p_next[i];
+
+            if (NULL == p_neighbour)
+            {
+                continue;
+            }
+
+            if (p_neighbour->h < p_navigator->p_current_node->h)
+            {
+                p_next_node = p_neighbour;
+                direction   = i;
+                break;
+            }
+        }
+
+        if (NULL == p_next_node)
+        {
+            // We have reached a dead end. We need to backtrack.
+            //
+            p_next_node = p_navigator->p_current_node->p_came_from;
+            direction   = (p_navigator->orientation + 2) % 4;
+        }
+
+    end:
+        // Move the robot to the next node.
+        //
+        p_move_navigator(p_navigator, direction);
+        clear_maze_heuristics(p_grid);
+        // Free the flood array.
+        //
+        free(flood_array.p_array);
     }
 }
 
+/**
+ * @brief Runs the floodfill algorithm to produce h-values for all nodes. Runs
+ * every time the robot moves.
+ *
+ * @param p_open_set Pointer to the open set.
+ * @param p_navigator Pointer to the navigator state.
+ */
 static void
-floodfill_inner_loop (grid_t            *p_grid,
-                      navigator_state_t *p_navigator,
-                      explore_func_t     p_explore_func)
+floodfill (binary_heap_t *p_open_set, navigator_state_t *p_navigator)
 {
-    // Find the next node to explore. It will be the node with the lowest f
-    // value.
+    // First, update the flood array from the end node. We only update the h
+    // value here.
     //
-    uint32_t     lowest_f             = UINT32_MAX;
-    grid_cell_t *p_next_node          = NULL;
-    int16_t      direction_to_explore = 0;
-    grid_cell_t *p_current_node       = p_navigator->p_current_node;
+    grid_cell_t *p_flood_node = p_navigator->p_end_node;
+    p_flood_node->h           = 0;
 
-    // Check left, forward and right directions.
-    for (int16_t direction = 0; 4 > direction; direction++)
+    // Insert the start node into the flood array.
+    //
+    insert(p_open_set, p_flood_node, p_flood_node->h);
+
+    // This should look similar to the A* algorithm except we are conditioning
+    // on the h-value.
+    //
+    while (0 < p_open_set->size)
     {
-        // Ignore the back direction.
-        if (direction == 2)
+        heap_node_t p_current_node = peek(p_open_set);
+
+        if (p_current_node.p_maze_node == p_navigator->p_current_node)
         {
-            continue;
+            return;
         }
 
-        int8_t cardinal_offset = get_offset_from_nav_direction(p_navigator);
-        // Conversion from int8_t to int16_t is safe.
+        // Remove the current node from the open set.
         //
-        direction_to_explore = (direction - (int16_t)cardinal_offset) % 4;
+        delete_min(p_open_set);
 
-        grid_cell_t *p_neighbour = get_cell_in_direction(
-            p_grid, p_current_node, direction_to_explore);
-
-        // Set the neighbour to explore if it is not NULL.
-        //
-        if (NULL != p_neighbour)
+        for (uint8_t neighbour = 0; 4 > neighbour; neighbour++)
         {
-            if (lowest_f > p_neighbour->f)
+            grid_cell_t *p_neighbour
+                = p_current_node.p_maze_node->p_next[neighbour];
+
+            if (NULL == p_neighbour)
             {
-                lowest_f    = p_neighbour->f;
-                p_next_node = p_neighbour;
+                continue;
             }
-        }
-    }
 
-    // Explore the neighbour.
-    //
-    if (NULL != p_next_node)
-    {
-        uint16_t wall_bitmask
-            = p_explore_func(p_grid, p_navigator, direction_to_explore);
-        navigator_modify_walls(p_grid, p_navigator, wall_bitmask, true, false);
-    }
+            uint32_t     tentative_h_score = p_current_node.p_maze_node->h + 1;
+            grid_cell_t *p_neighbour_node
+                = p_current_node.p_maze_node->p_next[neighbour];
 
-    // Update all the f values of the neighbours.
-    //
-    for (uint16_t row = 0; p_grid->rows > row; row++)
-    {
-        for (uint16_t col = 0; p_grid->columns > col; col++)
-        {
-            grid_cell_t *p_cell
-                = &p_grid->p_grid_array[row * p_grid->columns + col];
-            // TODO(chris): Calculate the distances starting from the end node
-            // to every other node.
+            if (tentative_h_score < p_neighbour_node->h)
+            {
+                p_neighbour_node->h = tentative_h_score;
+
+                uint16_t neighbour_index
+                    = get_index_of_node(p_open_set, p_neighbour_node);
+
+                if (UINT16_MAX == neighbour_index)
+                {
+                    uint32_t neighbour_priority = p_neighbour_node->h;
+                    insert(p_open_set, p_neighbour_node, neighbour_priority);
+                }
+                else
+                {
+                    p_open_set->p_array[neighbour_index].priority
+                        = p_neighbour_node->h;
+                    heapify_up(p_open_set, neighbour_index);
+                }
+
+                p_neighbour_node->p_came_from = p_current_node.p_maze_node;
+            }
         }
     }
 }

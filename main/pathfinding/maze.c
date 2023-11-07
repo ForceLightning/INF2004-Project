@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -69,7 +70,7 @@ initialise_empty_maze_walled (grid_t *p_grid)
 
 /**
  * @brief Clears the maze heuristics. This sets the F, G, and H values of each
- * node to 0 for the A* algorithm.
+ * node to UINT32_MAX for the A* algorithm.
  *
  * @param p_grid Pointer to the maze.
  */
@@ -82,9 +83,9 @@ clear_maze_heuristics (grid_t *p_grid)
         {
             grid_cell_t *p_cell
                 = &p_grid->p_grid_array[row * p_grid->columns + col];
-            p_cell->f = 0;
-            p_cell->g = 0;
-            p_cell->h = 0;
+            p_cell->f = UINT32_MAX;
+            p_cell->g = UINT32_MAX;
+            p_cell->h = UINT32_MAX;
         }
     }
 }
@@ -215,15 +216,14 @@ navigator_modify_walls (grid_t            *p_grid,
     for (int8_t direction = 0; 4 > direction; direction++)
     {
         // Check if only one operation is being performed.
-        if ((is_set ^ is_unset)
-            && (aligned_wall_bitmask & (1 << (direction + 1))))
+        if ((is_set ^ is_unset) && (aligned_wall_bitmask & (1 << (direction))))
         {
             is_set ? set_wall_helper(
                 p_grid, p_navigator->p_current_node, direction)
                    : unset_wall_helper(
                        p_grid, p_navigator->p_current_node, direction);
         }
-        else
+        else if (is_set && is_unset)
         {
             // Unsets the wall in the direction where the bitmask is 1, and sets
             // the wall where the bitmask is 0.
@@ -340,6 +340,47 @@ get_maze_string (grid_t *p_grid)
     strcat(p_maze_string, "+");
 
     return p_maze_string;
+}
+
+/**
+ * @brief Inserts the navigator into the maze string.
+ *
+ * @param p_grid Pointer to the maze.
+ * @param p_navigator Pointer to the navigator state.
+ * @param maze_str Pointer to the maze string created by @ref get_maze_string.
+ */
+void
+insert_navigator_str (grid_t            *p_grid,
+                      navigator_state_t *p_navigator,
+                      char              *maze_str)
+{
+    uint16_t row = p_navigator->p_current_node->coordinates.y;
+    uint16_t col = p_navigator->p_current_node->coordinates.x;
+
+    char navigator_char = 'X';
+
+    switch (p_navigator->orientation)
+    {
+        case NORTH:
+            navigator_char = '^';
+            break;
+        case EAST:
+            navigator_char = '>';
+            break;
+        case SOUTH:
+            navigator_char = 'v';
+            break;
+        case WEST:
+            navigator_char = '<';
+            break;
+        default:
+            break;
+    }
+    uint16_t str_row      = row * 2 + 1;
+    uint16_t str_col      = col * 4 + 2;
+    uint16_t str_num_cols = p_grid->columns * 4 + 2;
+
+    maze_str[str_row * str_num_cols + str_col] = navigator_char;
 }
 
 /**
@@ -612,4 +653,5 @@ manhattan_distance (point_t *point_a, point_t *point_b)
     uint32_t y_diff = abs(point_a->y - point_b->y);
     return x_diff + y_diff;
 }
+
 // End of file pathfinding/maze.c

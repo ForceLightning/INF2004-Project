@@ -154,6 +154,9 @@ grid_cell_t *get_cell_in_direction(grid_t              *p_grid,
 int8_t       get_offset_from_nav_direction(navigator_state_t *p_navigator);
 
 uint32_t manhattan_distance(point_t *point_a, point_t *point_b);
+void     insert_navigator_str(grid_t            *p_grid,
+                              navigator_state_t *p_navigator,
+                              char              *maze_str);
 
 #endif // MAZE_H
 

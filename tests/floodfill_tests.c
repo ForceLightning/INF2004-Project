@@ -8,6 +8,12 @@
 
 // Definitions.
 //
+#ifndef NDEBUG
+#define DEBUG_PRINT(...) printf(__VA_ARGS__)
+#else
+#define DEBUG_PRINT(...)
+#endif
+
 typedef enum constants
 {
     GRID_ROWS = 5,
@@ -27,8 +33,8 @@ volatile grid_t g_true_grid
 
 // Test function prototypes.
 //
-static int test_initialise_empty_maze_nowall(void);
-static int test_floodfill(void);
+static int  test_initialise_empty_maze_nowall(void);
+static int  test_floodfill(void);
 
 int
 floodfill_tests (int argc, char *argv[])
@@ -72,27 +78,35 @@ test_initialise_empty_maze_nowall (void)
 }
 
 static uint16_t
-explore_func (grid_t              *p_grid,
-              navigator_state_t   *p_navigator,
-              cardinal_direction_t direction)
+explore_current_node (grid_t              *p_grid,
+                      navigator_state_t   *p_navigator,
+                      cardinal_direction_t direction)
 {
     grid_cell_t *p_current_node = p_navigator->p_current_node;
-    grid_cell_t *p_next_node    = p_current_node->p_next[direction];
 
-    if (NULL == p_next_node)
-    {
-        return 0;
-    }
+    uint8_t bitmask
+        = g_bitmask_array[p_current_node->coordinates.y * p_grid->columns
+                          + p_current_node->coordinates.x];
 
-    uint16_t bitmask
-        = g_bitmask_array[p_next_node->coordinates.y * p_grid->columns
-                          + p_next_node->coordinates.x];
+    bitmask = 0xF - bitmask;
 
-    p_navigator->p_current_node = p_next_node;
-    p_navigator->orientation    = direction;
+    p_navigator->orientation = direction;
     navigator_modify_walls(p_grid, p_navigator, bitmask, true, false);
 
+    // char *p_maze_string = get_maze_string(p_grid);
+    // printf("%s\n", p_maze_string);
+    // free(p_maze_string);
+
     return bitmask;
+}
+
+
+static void
+move_navigator (navigator_state_t *p_navigator, cardinal_direction_t direction)
+{
+    p_navigator->p_current_node
+        = p_navigator->p_current_node->p_next[direction];
+    p_navigator->orientation = direction;
 }
 
 static int
@@ -104,7 +118,6 @@ test_floodfill (void)
 
     grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
     initialise_empty_maze_nowall(&maze);
-
     maze_gap_bitmask_t gap_bitmask = { .p_bitmask = (uint16_t *)g_bitmask_array,
                                        .rows      = GRID_ROWS,
                                        .columns   = GRID_COLS };
@@ -119,10 +132,13 @@ test_floodfill (void)
 
     navigator_state_t navigator = { p_start, p_start, p_end, NORTH };
 
-    explore_func_t p_explore_func = &explore_func;
+    explore_func_t   p_explore_func   = &explore_current_node;
+    move_navigator_t p_move_navigator = &move_navigator;
 
-    floodfill(&maze, p_start, p_end, &navigator, p_explore_func);
+    map_maze(
+        &maze, p_start, p_end, &navigator, p_explore_func, p_move_navigator);
 
+    // TODO(chris): Check whether the path is correct.
     return 0;
 }
 

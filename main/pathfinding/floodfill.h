@@ -21,8 +21,7 @@
 
 /**
  * @brief This function pointer type is used to explore the maze. It is expected
- * to move the robot in the specified direction and return the walls that it
- * sees.
+ * to return the walls that the robot sees.
  *
  * @param p_grid Pointer to the maze.
  * @param p_navigator Pointer to the navigator state.
@@ -33,6 +32,15 @@
 typedef uint16_t (*explore_func_t)(grid_t              *p_grid,
                                    navigator_state_t   *p_navigator,
                                    cardinal_direction_t direction);
+
+/**
+ * @brief Moves the navigator/robot in the specified direction.
+ *
+ * @param p_navigator Pointer to the navigator state.
+ * @param direction Direction to move.
+ */
+typedef void (*move_navigator_t)(navigator_state_t   *p_navigator,
+                                 cardinal_direction_t direction);
 
 /**
  * @brief Initialises a maze with no walls to perform the floodfill algorithm.
@@ -51,11 +59,12 @@ void initialise_empty_maze_nowall(grid_t *p_grid);
  * @param p_navigator Pointer to the navigator state.
  * @param p_explore_func Pointer to the function to explore the maze.
  */
-void floodfill(grid_t            *p_grid,
-               grid_cell_t       *p_start_node,
-               grid_cell_t       *p_end_node,
-               navigator_state_t *p_navigator,
-               explore_func_t     p_explore_func);
+void map_maze(grid_t            *p_grid,
+              grid_cell_t       *p_start_node,
+              grid_cell_t       *p_end_node,
+              navigator_state_t *p_navigator,
+              explore_func_t     p_explore_func,
+              move_navigator_t   p_move_navigator);
 
 #endif
 

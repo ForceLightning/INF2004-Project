@@ -8,6 +8,10 @@ set(pathfinding_parts
     1 2 3 4 5 6 7 8 9 10 11
     )
 
+set(floodfill_parts
+    1 2
+    )
+
 foreach(ctest ${ctests})
     if(NOT DEFINED "${ctest}_parts")
         set(${ctest}_parts "1")
