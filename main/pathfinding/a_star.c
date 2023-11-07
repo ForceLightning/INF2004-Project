@@ -18,7 +18,9 @@
 #include "maze.h"
 
 // Private function prototypes.
+// ----------------------------------------------------------------------------
 //
+
 static void a_star_inner_loop(binary_heap_t *open_set, grid_cell_t *p_end_node);
 static void insert_path_directions(char                *p_maze_string,
                                    grid_cell_t         *p_cell,
@@ -37,85 +39,9 @@ static void insert_node_centre_char(char    *p_maze_string,
                                     uint16_t str_num_cols,
                                     char     symbol);
 
-/**
- * @brief Contains the inner loop of the A* algorithm.
- *
- * @param open_set The open set heap which contains all unexplored nodes
- * adjacent to explored nodes.
- * @param p_end_node Pointer to the end node.
- *
- * @ref https://en.wikipedia.org/wiki/A*_search_algorithm#Pseudocode
- */
-static void
-a_star_inner_loop (binary_heap_t *open_set, grid_cell_t *p_end_node)
-{
-    while (open_set->size > 0)
-    {
-        // Step 1: Get the node with the lowest F-value from the open set. If it
-        // is the end node, return.
-        heap_node_t p_current_node = peek(open_set);
-        if (p_current_node.p_maze_node == p_end_node)
-        {
-            return;
-        }
-
-        delete_min(open_set);
-
-        for (uint8_t neighbour = 0; 4 > neighbour; neighbour++)
-        {
-            // Step 2: Ensure that the neighbour is not NULL.
-            //
-            if (NULL == p_current_node.p_maze_node->p_next[neighbour])
-            {
-                continue;
-            }
-
-            // Step 3: Calculate the tentative g-score.
-            //
-            uint32_t     tentative_g_score = p_current_node.p_maze_node->g + 1;
-            grid_cell_t *p_neighbour_node
-                = p_current_node.p_maze_node->p_next[neighbour];
-
-            if (tentative_g_score < p_neighbour_node->g)
-            {
-                // Step 4: Update the g-score and h-score of the neighbour,
-                // since it is better than the previous value.
-                //
-                p_neighbour_node->g = tentative_g_score;
-                p_neighbour_node->h = manhattan_distance(
-                    &p_current_node.p_maze_node->coordinates,
-                    &p_end_node->coordinates);
-                p_neighbour_node->f = p_neighbour_node->g + p_neighbour_node->h;
-
-                // Step 5: Check if the neighbour is in the open set. If not,
-                // add it.
-                //
-                uint16_t neighbour_index
-                    = get_index_of_node(open_set, p_neighbour_node);
-                if (UINT16_MAX == neighbour_index)
-                {
-                    uint32_t neighbour_priority
-                        = p_current_node.p_maze_node->g
-                          + p_current_node.p_maze_node->h;
-
-                    insert(open_set,
-                           p_current_node.p_maze_node->p_next[neighbour],
-                           neighbour_priority);
-                }
-                // Otherwise, update the priority of the neighbour.
-                else
-                {
-                    open_set->p_array[neighbour_index].priority
-                        = p_neighbour_node->f;
-                    heapify_up(open_set, neighbour_index);
-                }
-
-                p_current_node.p_maze_node->p_next[neighbour]->p_came_from
-                    = p_current_node.p_maze_node;
-            }
-        }
-    }
-}
+// Public functions.
+// ----------------------------------------------------------------------------
+//
 
 /**
  * @brief Runs the A* algorithm on a grid maze to find the shortest path between
@@ -244,6 +170,90 @@ get_path_string (grid_t *p_grid, path_t *p_path)
     insert_path_directions(
         p_maze_string, p_cell, str_num_rows, str_num_cols, NONE, direction);
     return p_maze_string;
+}
+
+// Private functions.
+// ----------------------------------------------------------------------------
+//
+
+/**
+ * @brief Contains the inner loop of the A* algorithm.
+ *
+ * @param open_set The open set heap which contains all unexplored nodes
+ * adjacent to explored nodes.
+ * @param p_end_node Pointer to the end node.
+ *
+ * @see https://en.wikipedia.org/wiki/A*_search_algorithm#Pseudocode
+ */
+static void
+a_star_inner_loop (binary_heap_t *open_set, grid_cell_t *p_end_node)
+{
+    while (open_set->size > 0)
+    {
+        // Step 1: Get the node with the lowest F-value from the open set. If it
+        // is the end node, return.
+        heap_node_t p_current_node = peek(open_set);
+        if (p_current_node.p_maze_node == p_end_node)
+        {
+            return;
+        }
+
+        delete_min(open_set);
+
+        for (uint8_t neighbour = 0; 4 > neighbour; neighbour++)
+        {
+            // Step 2: Ensure that the neighbour is not NULL.
+            //
+            if (NULL == p_current_node.p_maze_node->p_next[neighbour])
+            {
+                continue;
+            }
+
+            // Step 3: Calculate the tentative g-score.
+            //
+            uint32_t     tentative_g_score = p_current_node.p_maze_node->g + 1;
+            grid_cell_t *p_neighbour_node
+                = p_current_node.p_maze_node->p_next[neighbour];
+
+            if (tentative_g_score < p_neighbour_node->g)
+            {
+                // Step 4: Update the g-score and h-score of the neighbour,
+                // since it is better than the previous value.
+                //
+                p_neighbour_node->g = tentative_g_score;
+                p_neighbour_node->h = manhattan_distance(
+                    &p_current_node.p_maze_node->coordinates,
+                    &p_end_node->coordinates);
+                p_neighbour_node->f = p_neighbour_node->g + p_neighbour_node->h;
+
+                // Step 5: Check if the neighbour is in the open set. If not,
+                // add it.
+                //
+                uint16_t neighbour_index
+                    = get_index_of_node(open_set, p_neighbour_node);
+                if (UINT16_MAX == neighbour_index)
+                {
+                    uint32_t neighbour_priority
+                        = p_current_node.p_maze_node->g
+                          + p_current_node.p_maze_node->h;
+
+                    insert(open_set,
+                           p_current_node.p_maze_node->p_next[neighbour],
+                           neighbour_priority);
+                }
+                // Otherwise, update the priority of the neighbour.
+                else
+                {
+                    open_set->p_array[neighbour_index].priority
+                        = p_neighbour_node->f;
+                    heapify_up(open_set, neighbour_index);
+                }
+
+                p_current_node.p_maze_node->p_next[neighbour]->p_came_from
+                    = p_current_node.p_maze_node;
+            }
+        }
+    }
 }
 
 /**

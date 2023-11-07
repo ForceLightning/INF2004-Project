@@ -283,7 +283,9 @@ TAB_SIZE               = 4
 # with the commands \{ and \} for these it is advised to use the version @{ and
 # @} or use a double escape (\\{ and \\})
 
-ALIASES                = NOTE=note
+ALIASES                = NOTE=note \
+                         WARNING=warning \
+                         TODO=todo
 
 # Set the OPTIMIZE_OUTPUT_FOR_C tag to YES if your project consists of C sources
 # only. Doxygen will then generate output that is more tailored for C. For
@@ -877,7 +879,7 @@ WARN_IF_INCOMPLETE_DOC = YES
 # WARN_IF_INCOMPLETE_DOC
 # The default value is: NO.
 
-WARN_NO_PARAMDOC       = NO
+WARN_NO_PARAMDOC       = YES
 
 # If WARN_IF_UNDOC_ENUM_VAL option is set to YES, doxygen will warn about
 # undocumented enumeration values. If set to NO, doxygen will accept
@@ -885,7 +887,7 @@ WARN_NO_PARAMDOC       = NO
 # will automatically be disabled.
 # The default value is: NO.
 
-WARN_IF_UNDOC_ENUM_VAL = NO
+WARN_IF_UNDOC_ENUM_VAL = YES
 
 # If the WARN_AS_ERROR tag is set to YES then doxygen will immediately stop when
 # a warning is encountered. If the WARN_AS_ERROR tag is set to FAIL_ON_WARNINGS
@@ -943,7 +945,8 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = X:/SIT/INF2004-Project/main
+INPUT                  = main \
+                         tests
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -1976,7 +1979,7 @@ GENERATE_LATEX         = YES
 # The default directory is: latex.
 # This tag requires that the tag GENERATE_LATEX is set to YES.
 
-LATEX_OUTPUT           = latex
+LATEX_OUTPUT           = docs/latex
 
 # The LATEX_CMD_NAME tag can be used to specify the LaTeX command name to be
 # invoked.
@@ -2573,7 +2576,7 @@ DOT_FONTPATH           =
 # Possible values are: NO, YES, TEXT, GRAPH and BUILTIN.
 # The default value is: YES.
 
-CLASS_GRAPH            = NO
+CLASS_GRAPH            = YES
 
 # If the COLLABORATION_GRAPH tag is set to YES then doxygen will generate a
 # graph for each documented class showing the direct and indirect implementation
@@ -2694,7 +2697,7 @@ CALL_GRAPH             = YES
 # The default value is: NO.
 # This tag requires that the tag HAVE_DOT is set to YES.
 
-CALLER_GRAPH           = NO
+CALLER_GRAPH           = YES
 
 # If the GRAPHICAL_HIERARCHY tag is set to YES then doxygen will graphical
 # hierarchy of all classes instead of a textual one.

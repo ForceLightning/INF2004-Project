@@ -10,16 +10,17 @@
  *
  */
 
+#include <stddef.h>
 #include <stdint.h>
 #include "binary_heap.h"
 #include "maze.h"
 
 /**
  * @brief Moves the node at the given index down the binary heap to maintain the
- * heap property. This in effect raises the node to its correct position.
+ * heap property. This in effect raises the node to the correct position.
  *
  * @param p_heap Pointer to the binary heap.
- * @param index Index of the node to be moved down.
+ * @param index Index of the node to be heapified up.
  */
 void
 heapify_up (binary_heap_t *p_heap, uint16_t index)
@@ -56,25 +57,26 @@ heapify_up (binary_heap_t *p_heap, uint16_t index)
     {
         // Step 4: Swap the parent node with the current node.
         //
-        heap_node_t temp_node         = p_heap->p_array[parent_index];
-        p_heap->p_array[parent_index] = p_heap->p_array[index];
-        p_heap->p_array[index]        = temp_node;
+        heap_node_t temp_node
+            = p_heap->p_array[parent_index]; ///< Save the parent node.
+        p_heap->p_array[parent_index] = p_heap->p_array[index]; ///< Swap.
+        p_heap->p_array[index]        = temp_node;              ///< Swap.
 
         // Step 5: Heapify up the parent node.
         // Update the index to the parent's index and recalculate the node's new
         // parent's index.
         //
-        index        = parent_index;
-        parent_index = (index - 1) / 2;
+        index        = parent_index;    ///< Update the index.
+        parent_index = (index - 1) / 2; ///< Recalculate the parent's index.
     }
 }
 
 /**
  * @brief Moves the node at the given index up the binary heap to maintain the
- * heap property. This in effect lowers the node to its correct position.
+ * heap property. This is in effect lowers the node to the correct position.
  *
  * @param p_heap Pointer to the binary heap.
- * @param index Index of the node to be moved up.
+ * @param index Index of the node to be heapified down.
  */
 void
 heapify_down (binary_heap_t *p_heap, uint16_t index)
@@ -82,9 +84,9 @@ heapify_down (binary_heap_t *p_heap, uint16_t index)
     // Step 1.1: Declare variables to store the indices of the left and right,
     // as well as the smallest child.
     //
-    uint16_t left_index;
-    uint16_t right_index;
-    uint16_t smallest_child_index;
+    uint16_t left_index;           ///< Index of the left child.
+    uint16_t right_index;          ///< Index of the right child.
+    uint16_t smallest_child_index; /// Index of the smallest child.
 
     for (;;)
     {
@@ -92,9 +94,11 @@ heapify_down (binary_heap_t *p_heap, uint16_t index)
         // heap, the indices are known to be 2 * index + 1..=2 for the left and
         // right respectively.
         //
-        left_index           = 2 * index + 1;
-        right_index          = 2 * index + 2;
-        smallest_child_index = index;
+        left_index           = 2 * index + 1; ///< Calculate the left index.
+        right_index          = 2 * index + 2; ///< Calculate the right index.
+        smallest_child_index = index;         ///< Assume that the
+                                              ///< current node is the
+                                              ///< smallest.
 
         // Step 2: Find the smallest value amongst the node and its children,
         // and assign the index to `smallest_child_index`.
@@ -137,7 +141,7 @@ heapify_down (binary_heap_t *p_heap, uint16_t index)
 /**
  * @brief Inserts a grid cell node into the binary heap with a given priority.
  *
- * @param p_heap Pointer to the binary heap.
+ * @param p_heap Pointer to the binary min-heap.
  * @param p_maze_node Pointer to the grid cell node to be inserted.
  * @param priority Priority of the node to be inserted.
  */
@@ -156,8 +160,8 @@ insert (binary_heap_t *p_heap, grid_cell_t *p_maze_node, uint16_t priority)
     // Step 2: Create a new heap node.
     //
     heap_node_t new_node;
-    new_node.priority    = priority;
     new_node.p_maze_node = p_maze_node;
+    new_node.priority    = priority;
 
     // Step 3: Insert it at the end of the array.
     //
@@ -172,7 +176,7 @@ insert (binary_heap_t *p_heap, grid_cell_t *p_maze_node, uint16_t priority)
 /**
  * @brief Deletes and returns the root node from the binary heap.
  *
- * @param p_heap Pointer to the binary heap.
+ * @param p_heap Pointer to the binary min-heap.
  * @return grid_cell_t* Pointer to the original root node.
  */
 grid_cell_t *
@@ -203,10 +207,10 @@ delete_min (binary_heap_t *p_heap)
 }
 
 /**
- * @brief Peeks at the root's value without removal.
+ * @brief Peeks at the root node of the binary heap.
  *
- * @param p_heap Pointer to the binary heap.
- * @return heap_node_t The root's value.
+ * @param p_heap Pointer to the binary min-heap.
+ * @return heap_node_t Root node of the binary heap.
  */
 heap_node_t
 peek (binary_heap_t *p_heap)
@@ -217,13 +221,12 @@ peek (binary_heap_t *p_heap)
 }
 
 /**
- * @brief Finds the index of the given node in the binary heap if it exists.
+ * @brief Finds the index of a given node in the binary heap if it exists.
  * Otherwise, returns UINT16_MAX.
  *
  * @param p_heap Pointer to the binary heap.
- * @param p_maze_node Pointer to the node to be found.
+ * @param p_maze_node Pointer to the node to be searched for.
  * @return uint16_t Index of the node if it exists, otherwise UINT16_MAX.
- *
  */
 uint16_t
 get_index_of_node (binary_heap_t *p_heap, grid_cell_t *p_maze_node)

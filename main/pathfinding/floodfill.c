@@ -18,9 +18,15 @@
 #include "floodfill.h"
 
 // Private function prototypes.
+// ----------------------------------------------------------------------------
 //
+
 static void floodfill(binary_heap_t     *p_open_set,
                       navigator_state_t *p_navigator);
+
+// Public Functions.
+// ----------------------------------------------------------------------------
+//
 
 /**
  * @brief This function initialises a maze with no walls to perform the
@@ -64,10 +70,13 @@ initialise_empty_maze_nowall (grid_t *p_grid)
 /**
  * @brief Runs the floodfill algorithm to map out the maze.
  *
- * @param p_grid Pointer to the initialised maze with no walls.
- * @param p_start_node Pointer to the start node.
- * @param p_end_node Pointer to the end node.
- * @param p_explore_func Pointer to the function that will explore the maze.
+ * @param[in,out] p_grid Pointer to the initialised maze with no walls.
+ * @param[in] p_start_node Pointer to the start node.
+ * @param[in] p_end_node Pointer to the end node.
+ * @param[in,out] p_navigator Pointer to the navigator state.
+ * @param[in] p_explore_func Pointer to the function that will explore the maze.
+ * @param[in] p_move_navigator Pointer to the function that will move the
+ * navigator.
  */
 void
 map_maze (grid_t            *p_grid,
@@ -153,12 +162,16 @@ map_maze (grid_t            *p_grid,
     }
 }
 
+// Private Functions.
+// ----------------------------------------------------------------------------
+//
+
 /**
  * @brief Runs the floodfill algorithm to produce h-values for all nodes. Runs
  * every time the robot moves.
  *
- * @param p_open_set Pointer to the open set.
- * @param p_navigator Pointer to the navigator state.
+ * @param[in,out] p_open_set Pointer to the open set.
+ * @param[in,out] p_navigator Pointer to the navigator state.
  */
 static void
 floodfill (binary_heap_t *p_open_set, navigator_state_t *p_navigator)

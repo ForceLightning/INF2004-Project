@@ -4,9 +4,9 @@
  * @brief Contains the implementation of utility maze functions.
  * @version 0.1
  * @date 2023-11-07
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
 
 #include <stdio.h>
@@ -37,9 +37,9 @@ static void draw_cell(grid_cell_t *p_cell,
 /**
  * @brief Create a maze with the specified number of rows and columns.
  *
- * @param rows Number of rows.
- * @param columns Number of columns.
- * @return grid_t Empty maze.
+ * @param rows Number of rows in the maze.
+ * @param columns Number of columns in the maze.
+ * @return grid_t Empty maze. Indexed first by row, then column.
  */
 grid_t
 create_maze (uint16_t rows, uint16_t columns)
@@ -53,9 +53,10 @@ create_maze (uint16_t rows, uint16_t columns)
 
 /**
  * @brief Initialises an empty maze. This sets the coordinates of each node, all
- * heuristic values to 0, and all pointers to NULL.
+ * heuristic values to 0, and all pointers to NULL. This is useful for the A*
+ * algorithm.
  *
- * @param grid Pointer to empty maze.
+ * @param p_grid Pointer to an empty maze created by @ref create_maze.
  */
 void
 initialise_empty_maze_walled (grid_t *p_grid)
@@ -81,9 +82,9 @@ initialise_empty_maze_walled (grid_t *p_grid)
 
 /**
  * @brief Clears the maze heuristics. This sets the F, G, and H values of each
- * node to UINT32_MAX for the A* algorithm.
+ * node to UINT32_MAX for the A* and floodfill algorithm.
  *
- * @param p_grid Pointer to the maze.
+ * @param p_grid Pointer to the maze grid.
  */
 void
 clear_maze_heuristics (grid_t *p_grid)
@@ -104,7 +105,7 @@ clear_maze_heuristics (grid_t *p_grid)
 /**
  * @brief Destroys the maze by freeing the memory allocated to the grid array.
  *
- * @param p_grid Pointer to the maze.
+ * @param p_grid Pointer to the maze grid.
  */
 void
 destroy_maze (grid_t *p_grid)
@@ -121,7 +122,8 @@ destroy_maze (grid_t *p_grid)
 
 /**
  * @brief Get the offset from the navigator's current direction to any other
- * possible direction. This is positive for clockwise turns and negative for
+ * possible direction.
+ * @par This is positive for clockwise turns and negative for
  * anticlockwise turns. It is the minimum number of turns required to get from
  * the current direction to the desired direction.
  *
@@ -136,58 +138,13 @@ get_offset_from_nav_direction (navigator_state_t *p_navigator)
 }
 
 /**
- * @brief Get the cell in the cardinal direction from the current cell.
- *
- * @param p_grid Pointer to the maze.
- * @param p_current Pointer to the current cell.
- * @param direction Cardinal direction to get the cell from.
- * @return grid_cell_t* Pointer to the cell in the direction from the current
- * cell.
- */
-static grid_cell_t *
-get_cell_in_direction_from (grid_t              *p_grid,
-                            grid_cell_t         *p_current,
-                            cardinal_direction_t direction)
-{
-    int8_t row_offset = 0;
-    int8_t col_offset = 0;
-
-    switch (direction)
-    {
-        case NORTH:
-            row_offset = -1;
-            break;
-        case EAST:
-            col_offset = 1;
-            break;
-        case SOUTH:
-            row_offset = 1;
-            break;
-        case WEST:
-            col_offset = -1;
-            break;
-        default:
-            break;
-    }
-
-    uint16_t row = p_current->coordinates.y + row_offset;
-    uint16_t col = p_current->coordinates.x + col_offset;
-
-    if (p_grid->rows <= row || p_grid->columns <= col)
-    {
-        return NULL;
-    }
-
-    return &p_grid->p_grid_array[row * p_grid->columns + col];
-}
-
-/**
  * @brief Unsets the walls of the current node and the next node(s) from the
  * position of the navigator in the directions it detects can be moved to.
  *
- * @param p_grid Pointer to the maze.
+ * @param p_grid Pointer to the maze grid.
  * @param p_navigator Pointer to the navigator.
- * @param wall_bitmask Bitmask of the walls to unset.
+ * @param wall_bitmask Bitmask of the walls to unset. This is aligned to the
+ * navigator's orientation.
  */
 void
 navigator_unset_walls (grid_t            *p_grid,
@@ -210,6 +167,19 @@ navigator_unset_walls (grid_t            *p_grid,
         p_grid, p_navigator, wall_bitmask_rotated, true, false);
 }
 
+/**
+ * @brief Modifies the walls of the navigator's current node.
+ *
+ * @param p_grid Pointer to the maze grid.
+ * @param p_navigator Pointer to the navigator.
+ * @param aligned_wall_bitmask Bitmask of the walls to set or unset. This is
+ * aligned to NORTH.
+ * @param is_set True if the walls are to be set.
+ * @param is_unset True if the walls are to be unset.
+ *
+ * @NOTE: both is_set and is_unset can be True. In this case, the
+ * entire cell's walls and gaps will be set.
+ */
 void
 navigator_modify_walls (grid_t            *p_grid,
                         navigator_state_t *p_navigator,
@@ -248,59 +218,12 @@ navigator_modify_walls (grid_t            *p_grid,
 }
 
 /**
- * @brief Sets a wall in a given direction.
- *
+ * @brief Get the string representation of the maze for pretty printing.
  * @param p_grid Pointer to the maze grid.
- * @param p_current_node Pointer to the current node.
- * @param cardinal_direction Cardinal direction to set the wall in.
- */
-static void
-set_wall_helper (grid_t      *p_grid,
-                 grid_cell_t *p_current_node,
-                 uint8_t      cardinal_direction)
-{
-    p_current_node->p_next[cardinal_direction] = NULL;
-    grid_cell_t *p_next_node                   = get_cell_in_direction_from(
-        p_grid, p_current_node, cardinal_direction);
-
-    // Sanity check to ensure that the next node is not NULL.
-    if (NULL != p_next_node)
-    {
-        p_next_node->p_next[(cardinal_direction + 2) % 4] = NULL;
-    }
-}
-
-/**
- * @brief Unsets a wall in a given direction.
+ * @return char* Pointer to the string representation of the maze.
  *
- * @param p_grid Pointer to the maze grid.
- * @param p_current_node Pointer to the navigator.
- * @param cardinal_direction Cardinal direction to unset the wall in.
- */
-static void
-unset_wall_helper (grid_t      *p_grid,
-                   grid_cell_t *p_current_node,
-                   uint8_t      cardinal_direction)
-{
-    grid_cell_t *p_next_node = get_cell_in_direction_from(
-        p_grid, p_current_node, cardinal_direction);
-
-    // Sanity check to ensure that the next node is not NULL.
-    if (NULL != p_next_node)
-    {
-        p_current_node->p_next[cardinal_direction]        = p_next_node;
-        p_next_node->p_next[(cardinal_direction + 2) % 4] = p_current_node;
-    }
-}
-
-/**
- * @brief Get the string representation of the maze.
+ * @NOTE: The string returned by this function must be freed.
  *
- * @param p_grid Pointer to the maze.
- * @return char* Pointer to string representation of the maze.
- *
- * @par This returns an ASCII string representation of the maze. Maze walls are
- * represented with --- or | depending on the direction of the wall.
  */
 char *
 get_maze_string (grid_t *p_grid)
@@ -354,11 +277,12 @@ get_maze_string (grid_t *p_grid)
 }
 
 /**
- * @brief Inserts the navigator into the maze string.
+ * @brief Inserts the navigator character into the maze string for pretty
+ * printing.
  *
- * @param p_grid Pointer to the maze.
- * @param p_navigator Pointer to the navigator state.
- * @param maze_str Pointer to the maze string created by @ref get_maze_string.
+ * @param p_grid Pointer to the maze grid.
+ * @param p_navigator Pointer to the navigator.
+ * @param maze_str Pointer to the maze string returned by @ref get_maze_string.
  */
 void
 insert_navigator_str (grid_t            *p_grid,
@@ -395,48 +319,8 @@ insert_navigator_str (grid_t            *p_grid,
 }
 
 /**
- * @brief Draws the north and west walls of the cell.
- *
- * @param p_cell Pointer to the cell.
- * @param p_maze_string Pointer to the maze string.
- * @param relative_row Internal row count of the string of the cell.
- */
-static void
-draw_cell (grid_cell_t *p_cell, char *p_maze_string, uint16_t relative_row)
-{
-    switch (relative_row)
-    {
-        case 0:
-            // Draw the North wall.
-            //
-            if (NULL == p_cell->p_next[NORTH])
-            {
-                strcat(p_maze_string, "+---");
-            }
-            else
-            {
-                strcat(p_maze_string, "+   ");
-            }
-            break;
-        case 1:
-            // Draw the West wall.
-            //
-            if (NULL == p_cell->p_next[WEST])
-            {
-                strcat(p_maze_string, "|   ");
-            }
-            else
-            {
-                strcat(p_maze_string, "    ");
-            }
-            break;
-        default:
-            break;
-    }
-}
-
-/**
- * @brief Get the direction from point_a to point_b if they are adjacent.
+ * @brief Get the direction from p_point_a to p_point_b if they
+ * are adjacent.
  *
  * @param p_point_a Pointer to point a.
  * @param p_point_b Pointer to point b.
@@ -481,11 +365,11 @@ end:
 }
 
 /**
- * @brief Parses a bitmask array into a maze.
+ * @brief Deserialises the maze from a bitmask array. @ref serialise_maze.
  *
- * @param p_grid Pointer to the maze.
- * @param p_no_walls_array Pointer to the bitmask array.
- * @return int16_t 0 if successful, -1 if not.
+ * @param p_grid Pointer to the maze grid.
+ * @param p_no_walls_array Pointer to the bitmask array of maze gaps.
+ * @return int16_t 0 if successful, -1 otherwise.
  */
 int16_t
 deserialise_maze (grid_t *p_grid, maze_gap_bitmask_t *p_no_walls_array)
@@ -550,10 +434,11 @@ end:
 }
 
 /**
- * @brief Serialises a maze into a bitmask array.
+ * @brief Serialises the maze into a bitmask array. @ref deserialise_maze.
  *
- * @param p_grid Pointer to the maze.
- * @return maze_gap_bitmask_t Bitmask array.
+ * @param p_grid Pointer to the maze grid.
+ * @return maze_gap_bitmask_t Bitmask array of maze gaps. Take OxF - bitmask to
+ * get the walls.
  */
 maze_gap_bitmask_t
 serialise_maze (grid_t *p_grid)
@@ -607,10 +492,9 @@ end:
 /**
  * @brief Get the cell at the specified coordinates.
  *
- * @param p_grid Pointer to the maze.
+ * @param p_grid Pointer to the maze grid.
  * @param p_coordinates Pointer to the coordinates.
- * @return grid_cell_t* Pointer to the cell. NULL if the coordinates are out of
- * the maze.
+ * @return grid_cell_t* Pointer to the cell. NULL if the cell is out of bounds.
  */
 grid_cell_t *
 get_cell_at_coordinates (grid_t *p_grid, point_t *p_coordinates)
@@ -633,6 +517,15 @@ end:
     return p_cell;
 }
 
+/**
+ * @brief Get the cell in the specified direction from a specific cell.
+ *
+ * @param p_grid Pointer to the maze grid.
+ * @param p_from Pointer to the cell to get the next cell from.
+ * @param direction Cardinal direction to get the next cell from.
+ *
+ * @return grid_cell_t* Pointer to the cell. NULL if the cell is out of bounds.
+ */
 grid_cell_t *
 get_cell_in_direction (grid_t              *p_grid,
                        grid_cell_t         *p_from,
@@ -651,11 +544,11 @@ get_cell_in_direction (grid_t              *p_grid,
 /**
  * @brief Calculates the manhattan distance between two points.
  *
- * @param point_a First point.
- * @param point_b Second point.
- * @return uint32_t The manhattan distance.
+ * @param point_a Pointer to first point.
+ * @param point_b Pointer to second point.
+ * @return uint32_t Manhattan distance.
  *
- * @ref https://en.wikipedia.org/wiki/Taxicab_geometry
+ * @see https://en.wikipedia.org/wiki/Taxicab_geometry
  */
 uint32_t
 manhattan_distance (point_t *point_a, point_t *point_b)
@@ -663,6 +556,142 @@ manhattan_distance (point_t *point_a, point_t *point_b)
     uint32_t x_diff = abs(point_a->x - point_b->x);
     uint32_t y_diff = abs(point_a->y - point_b->y);
     return x_diff + y_diff;
+}
+
+// Private functions.
+// ----------------------------------------------------------------------------
+//
+
+/**
+ * @brief Get the cell in the cardinal direction from the current cell.
+ *
+ * @return grid_cell_t* Pointer to the cell in the direction from the current
+ * cell.
+ */
+static grid_cell_t *
+get_cell_in_direction_from (grid_t              *p_grid,
+                            grid_cell_t         *p_current,
+                            cardinal_direction_t direction)
+{
+    int8_t row_offset = 0;
+    int8_t col_offset = 0;
+
+    switch (direction)
+    {
+        case NORTH:
+            row_offset = -1;
+            break;
+        case EAST:
+            col_offset = 1;
+            break;
+        case SOUTH:
+            row_offset = 1;
+            break;
+        case WEST:
+            col_offset = -1;
+            break;
+        default:
+            break;
+    }
+
+    uint16_t row = p_current->coordinates.y + row_offset;
+    uint16_t col = p_current->coordinates.x + col_offset;
+
+    if (p_grid->rows <= row || p_grid->columns <= col)
+    {
+        return NULL;
+    }
+
+    return &p_grid->p_grid_array[row * p_grid->columns + col];
+}
+
+/**
+ * @brief Sets a wall in a given direction.
+ *
+ * @param p_grid Pointer to the maze grid.
+ * @param p_current_node Pointer to the current node.
+ * @param cardinal_direction Cardinal direction to set the wall.
+ */
+static void
+set_wall_helper (grid_t      *p_grid,
+                 grid_cell_t *p_current_node,
+                 uint8_t      cardinal_direction)
+{
+    p_current_node->p_next[cardinal_direction] = NULL;
+    grid_cell_t *p_next_node                   = get_cell_in_direction_from(
+        p_grid, p_current_node, cardinal_direction);
+
+    // Sanity check to ensure that the next node is not NULL.
+    if (NULL != p_next_node)
+    {
+        p_next_node->p_next[(cardinal_direction + 2) % 4] = NULL;
+    }
+}
+
+/**
+ * @brief Unsets a wall in a given direction.
+ *
+ * @param p_grid Pointer to the maze grid.
+ * @param p_current_node Pointer to the current node.
+ * @param cardinal_direction Cardinal direction to unset the wall.
+ *
+ */
+static void
+unset_wall_helper (grid_t      *p_grid,
+                   grid_cell_t *p_current_node,
+                   uint8_t      cardinal_direction)
+{
+    grid_cell_t *p_next_node = get_cell_in_direction_from(
+        p_grid, p_current_node, cardinal_direction);
+
+    // Sanity check to ensure that the next node is not NULL.
+    if (NULL != p_next_node)
+    {
+        p_current_node->p_next[cardinal_direction]        = p_next_node;
+        p_next_node->p_next[(cardinal_direction + 2) % 4] = p_current_node;
+    }
+}
+
+/**
+ * @brief Draws the north and west walls of the cell.
+ *
+ * @param p_cell Pointer to the cell.
+ * @param p_maze_string Pointer to the maze string being drawn.
+ * @param relative_row Relative row of the cell to the string row.
+ *
+ */
+static void
+draw_cell (grid_cell_t *p_cell, char *p_maze_string, uint16_t relative_row)
+{
+    switch (relative_row)
+    {
+        case 0:
+            // Draw the North wall.
+            //
+            if (NULL == p_cell->p_next[NORTH])
+            {
+                strcat(p_maze_string, "+---");
+            }
+            else
+            {
+                strcat(p_maze_string, "+   ");
+            }
+            break;
+        case 1:
+            // Draw the West wall.
+            //
+            if (NULL == p_cell->p_next[WEST])
+            {
+                strcat(p_maze_string, "|   ");
+            }
+            else
+            {
+                strcat(p_maze_string, "    ");
+            }
+            break;
+        default:
+            break;
+    }
 }
 
 // End of file pathfinding/maze.c

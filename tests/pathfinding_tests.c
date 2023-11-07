@@ -23,7 +23,9 @@ static const uint16_t g_bitmask_array[25] = {
 };
 
 // Test function prototypes.
+// ----------------------------------------------------------------------------
 //
+
 static int    test_manhattan_distance(void);
 static int    test_create_maze(void);
 static int    test_initialise_empty_maze(void);
@@ -37,6 +39,13 @@ static int    test_maze_deserialisation(void);
 static int    test_maze_serialisation(void);
 static int    test_complex_maze_pathfinding(void);
 
+/**
+ * @brief The main function for the pathfinding tests.
+ *
+ * @param argc Number of arguments.
+ * @param argv Vector of arguments.
+ * @return int 0 if the test passes, -1 otherwise.
+ */
 int
 pathfinding_tests (int argc, char *argv[])
 {
@@ -97,6 +106,10 @@ pathfinding_tests (int argc, char *argv[])
 
     return ret_val;
 }
+
+// Test functions
+// ----------------------------------------------------------------------------
+//
 
 /**
  * @brief Tests whether the manhattan distance function works as expected.
@@ -410,6 +423,11 @@ end: // Clean up all malloc'd memory.
     return ret_val;
 }
 
+/**
+ * @brief Tests the print_maze function to see if it works as expected.
+ *
+ * @return int 0 if the test passes, -1 otherwise.
+ */
 static int
 test_print_maze (void)
 {
@@ -424,6 +442,11 @@ test_print_maze (void)
     return 0;
 }
 
+/**
+ * @brief Tests the print_route function to see if it works as expected.
+ *
+ * @return int 0 if the test passes, -1 otherwise.
+ */
 static int
 test_print_route (void)
 {
@@ -460,6 +483,11 @@ test_print_route (void)
     return 0;
 }
 
+/**
+ * @brief Tests the deserialise_maze function to see if it works as expected.
+ *
+ * @return int 0 if the test passes, -1 otherwise.
+ */
 static int
 test_maze_deserialisation (void)
 {
@@ -480,6 +508,11 @@ test_maze_deserialisation (void)
     return ret_val;
 }
 
+/**
+ * @brief Tests the serialise_maze function to see if it works as expected.
+ *
+ * @return int 0 if the test passes, -1 otherwise.
+ */
 static int
 test_maze_serialisation (void)
 {
@@ -530,6 +563,11 @@ end:
     return ret_val;
 }
 
+/**
+ * @brief Tests the pathfinding algorithm on a complex maze.
+ *
+ * @return int 0 if the test passes, -1 otherwise.
+ */
 static int
 test_complex_maze_pathfinding (void)
 {

@@ -18,18 +18,39 @@
 #include "pathfinding/maze.h"
 
 // Definitions.
-//
+// ----------------------------------------------------------------------------
+// 
+
 #ifndef NDEBUG
+/**
+ * @def DEBUG_PRINT(...)
+ * @brief Debug print macro. Only prints if NDEBUG is not defined.
+ * @param ... Variable arguments to be printed.
+ *
+ */
 #define DEBUG_PRINT(...) printf(__VA_ARGS__)
 #else
 #define DEBUG_PRINT(...)
 #endif
 
+// Type definitions.
+// ----------------------------------------------------------------------------
+// 
+
+/**
+ * @typedef constants_t
+ * @brief This enum contains constants used in the tests.
+ *
+ */
 typedef enum constants
 {
-    GRID_ROWS = 5, // Number of rows in the grid.
-    GRID_COLS = 5  // Number of columns in the grid.
+    GRID_ROWS = 5, ///< Number of rows in the grid.
+    GRID_COLS = 5  ///< Number of columns in the grid.
 } constants_t;
+
+// Global variables.
+// ----------------------------------------------------------------------------
+// 
 
 /**
  * @brief Global bitmask array of a maze for testing.
@@ -51,7 +72,9 @@ volatile grid_t g_true_grid
     = { .p_grid_array = NULL, .rows = GRID_ROWS, .columns = GRID_COLS };
 
 // Test function prototypes.
-//
+// ----------------------------------------------------------------------------
+// 
+
 static int test_initialise_empty_maze_nowall(void);
 static int test_floodfill(void);
 
@@ -65,7 +88,7 @@ static int test_floodfill(void);
 int
 floodfill_tests (int argc, char *argv[])
 {
-    int default_choice = 1;
+    int default_choice = 1; ///< Default choice for the test to run.
     int choice         = default_choice;
 
     if (1 < argc)
@@ -80,6 +103,7 @@ floodfill_tests (int argc, char *argv[])
     }
 
     int ret_val = 0;
+
     switch (choice)
     {
         case 1:
@@ -123,20 +147,18 @@ explore_current_node (grid_t              *p_grid,
                       navigator_state_t   *p_navigator,
                       cardinal_direction_t direction)
 {
-    grid_cell_t *p_current_node = p_navigator->p_current_node;
+    grid_cell_t *p_current_node
+        = p_navigator->p_current_node; ///< Current node.
 
     uint8_t bitmask
         = g_bitmask_array[p_current_node->coordinates.y * p_grid->columns
-                          + p_current_node->coordinates.x];
-
+                          + p_current_node->coordinates.x]; ///< Bitmask of the
+                                                            ///< walls.
+    //@TODO(chris): This should be a function.
     bitmask = 0xF - bitmask;
 
     p_navigator->orientation = direction;
     navigator_modify_walls(p_grid, p_navigator, bitmask, true, false);
-
-    // char *p_maze_string = get_maze_string(p_grid);
-    // printf("%s\n", p_maze_string);
-    // free(p_maze_string);
 
     return bitmask;
 }
@@ -151,8 +173,12 @@ static void
 move_navigator (navigator_state_t *p_navigator, cardinal_direction_t direction)
 {
     p_navigator->p_current_node
-        = p_navigator->p_current_node->p_next[direction];
-    p_navigator->orientation = direction;
+        = p_navigator->p_current_node->p_next[direction]; ///< Set the current
+                                                          ///< node to the next
+                                                          ///< node.
+
+    p_navigator->orientation = direction; ///< Set the orientation to the
+                                          ///< direction.
 }
 
 /**
@@ -177,12 +203,13 @@ test_floodfill (void)
 
     deserialise_maze(&g_true_grid, &gap_bitmask);
 
+    // Initialise the navigator.
+    //
     point_t start_point = { 0, 4 };
     point_t end_point   = { 4, 0 };
 
-    grid_cell_t *p_start = get_cell_at_coordinates(&maze, &start_point);
-    grid_cell_t *p_end   = get_cell_at_coordinates(&maze, &end_point);
-
+    grid_cell_t      *p_start   = get_cell_at_coordinates(&maze, &start_point);
+    grid_cell_t      *p_end     = get_cell_at_coordinates(&maze, &end_point);
     navigator_state_t navigator = { p_start, p_start, p_end, NORTH };
 
     explore_func_t   p_explore_func   = &explore_current_node;
@@ -191,7 +218,7 @@ test_floodfill (void)
     map_maze(
         &maze, p_start, p_end, &navigator, p_explore_func, p_move_navigator);
 
-    // TODO(chris): Check whether the path is correct.
+    //@TODO(chris): Check whether the path is correct.
     return 0;
 }
 
