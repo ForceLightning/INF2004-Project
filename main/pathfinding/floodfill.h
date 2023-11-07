@@ -20,6 +20,7 @@
 //
 
 /**
+ & @typedef explore_func_t
  * @brief This function pointer type is used to explore the maze. It is expected
  * to return the walls that the robot sees.
  *
@@ -34,6 +35,7 @@ typedef uint16_t (*explore_func_t)(grid_t              *p_grid,
                                    cardinal_direction_t direction);
 
 /**
+ * @typedef move_navigator_t
  * @brief Moves the navigator/robot in the specified direction.
  *
  * @param p_navigator Pointer to the navigator state.

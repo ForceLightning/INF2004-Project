@@ -1,3 +1,15 @@
+/**
+ * @file binary_heap.c
+ * @author Christopher Kok (chris@forcelightning.xyz)
+ * @brief Source file for the binary min-heap used in the a* algorithm and
+ * floodfill algorithm.
+ * @version 0.1
+ * @date 2023-11-07
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
+
 #include <stdint.h>
 #include "binary_heap.h"
 #include "maze.h"

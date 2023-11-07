@@ -1,3 +1,14 @@
+/**
+ * @file maze.c
+ * @author Christopher Kok (chris@forcelightning.xyz)
+ * @brief Contains the implementation of utility maze functions.
+ * @version 0.1
+ * @date 2023-11-07
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>

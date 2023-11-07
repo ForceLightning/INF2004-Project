@@ -1,3 +1,14 @@
+/**
+ * @file floodfill_tests.c
+ * @author Christopher Kok (chris@forcelightning.xyz)
+ * @brief This file contains the tests for the floodfill algorithm.
+ * @version 0.1
+ * @date 2023-11-07
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
+
 #include <stddef.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -16,10 +27,14 @@
 
 typedef enum constants
 {
-    GRID_ROWS = 5,
-    GRID_COLS = 5
+    GRID_ROWS = 5, // Number of rows in the grid.
+    GRID_COLS = 5  // Number of columns in the grid.
 } constants_t;
 
+/**
+ * @brief Global bitmask array of a maze for testing.
+ *
+ */
 static const uint16_t g_bitmask_array[GRID_ROWS * GRID_COLS] = {
     0x2, 0xE, 0xA, 0xC, 0x4, // Top Row
     0x6, 0xB, 0xC, 0x3, 0x9, // 2nd row
@@ -28,14 +43,25 @@ static const uint16_t g_bitmask_array[GRID_ROWS * GRID_COLS] = {
     0x3, 0xB, 0x9, 0x2, 0x9  // last row
 };
 
+/**
+ * @brief Global true grid for testing.
+ *
+ */
 volatile grid_t g_true_grid
     = { .p_grid_array = NULL, .rows = GRID_ROWS, .columns = GRID_COLS };
 
 // Test function prototypes.
 //
-static int  test_initialise_empty_maze_nowall(void);
-static int  test_floodfill(void);
+static int test_initialise_empty_maze_nowall(void);
+static int test_floodfill(void);
 
+/**
+ * @brief Runs the tests for the floodfill algorithm.
+ *
+ * @param argc Argument count.
+ * @param argv Argument vector.
+ * @return int 0 if successful, -1 otherwise.
+ */
 int
 floodfill_tests (int argc, char *argv[])
 {
@@ -71,12 +97,27 @@ floodfill_tests (int argc, char *argv[])
     return ret_val;
 }
 
+/**
+ * @brief Unit test for the initialise_empty_maze_nowall function.
+ *
+ * @return int 0 if successful, -1 otherwise.
+ *
+ * @NOTE: This test is not complete.
+ */
 static int
 test_initialise_empty_maze_nowall (void)
 {
     return 0;
 }
 
+/**
+ * @brief Explores the current node. A placeholder for the explore function.
+ *
+ * @param p_grid Pointer to the maze.
+ * @param p_navigator Pointer to the navigator.
+ * @param direction Cardinal direction to explore.
+ * @return uint16_t Bitmask of the walls.
+ */
 static uint16_t
 explore_current_node (grid_t              *p_grid,
                       navigator_state_t   *p_navigator,
@@ -100,7 +141,12 @@ explore_current_node (grid_t              *p_grid,
     return bitmask;
 }
 
-
+/**
+ * @brief Moves the navigator to the next node. Placeholder for robot movement.
+ *
+ * @param p_navigator Pointer to the navigator.
+ * @param direction Cardinal direction to move.
+ */
 static void
 move_navigator (navigator_state_t *p_navigator, cardinal_direction_t direction)
 {
@@ -109,6 +155,13 @@ move_navigator (navigator_state_t *p_navigator, cardinal_direction_t direction)
     p_navigator->orientation = direction;
 }
 
+/**
+ * @brief Unit test for the floodfill algorithm.
+ *
+ * @return int 0 if successful, -1 otherwise.
+ *
+ * @NOTE: This test is not complete.
+ */
 static int
 test_floodfill (void)
 {

@@ -1,3 +1,14 @@
+/**
+ * @file a_star.c
+ * @author Christopher Kok (chris@forcelightning.xyz)
+ * @brief Source file for the implementation of the a* algorithm.
+ * @version 0.1
+ * @date 2023-11-07
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
+
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,7 +36,6 @@ static void insert_node_centre_char(char    *p_maze_string,
                                     uint32_t col,
                                     uint16_t str_num_cols,
                                     char     symbol);
-
 
 /**
  * @brief Contains the inner loop of the A* algorithm.
@@ -158,8 +168,6 @@ a_star (grid_t grid, grid_cell_t *p_start_node, grid_cell_t *p_end_node)
 /**
  * @brief Get the path from the start node to the end node.
  *
- * @param p_grid Pointer to the grid maze.
- * @param p_start_node Pointer to the start node.
  * @param p_end_node Pointer to the end node.
  * @return path_t* Pointer to the path.
  */

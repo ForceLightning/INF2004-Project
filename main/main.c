@@ -1,3 +1,14 @@
+/**
+ * @file main.c
+ * @author Christopher Kok (chris@forcelightning.xyz)
+ * @brief The main source file for robot control.
+ * @version 0.1
+ * @date 2023-11-07
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
+
 #include <stdio.h>
 #include "pico/cyw43_arch.h"
 #include "pico/stdlib.h"
