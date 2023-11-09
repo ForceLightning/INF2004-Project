@@ -1,4 +1,5 @@
 # INF2004 Autonomous Car Project
+[![pages-build-deployment](https://github.com/ForceLightning/INF2004-Project/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/ForceLightning/INF2004-Project/actions/workflows/pages/pages-build-deployment)
 
 # Requirements
 - [Pico SDK v1.5.1](https://github.com/raspberrypi/pico-sdk/)
