@@ -86,7 +86,8 @@ grid_cell_t *delete_min(binary_heap_t *p_heap);
 
 heap_node_t peek(binary_heap_t *p_heap);
 
-uint16_t get_index_of_node(binary_heap_t *p_heap, grid_cell_t *p_maze_node);
+uint16_t get_index_of_node(const binary_heap_t *p_heap,
+                           const grid_cell_t   *p_maze_node);
 
 #endif // BINARY_HEAP_H
 

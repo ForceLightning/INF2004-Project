@@ -18,7 +18,7 @@
 
 // Type definitions.
 // ----------------------------------------------------------------------------
-// 
+//
 
 /**
  & @typedef explore_func_t
@@ -52,8 +52,7 @@ typedef void (*move_navigator_t)(navigator_state_t   *p_navigator,
 void initialise_empty_maze_nowall(grid_t *p_grid);
 
 void map_maze(grid_t            *p_grid,
-              grid_cell_t       *p_start_node,
-              grid_cell_t       *p_end_node,
+              const grid_cell_t *p_end_node,
               navigator_state_t *p_navigator,
               explore_func_t     p_explore_func,
               move_navigator_t   p_move_navigator);

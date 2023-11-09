@@ -71,7 +71,6 @@ initialise_empty_maze_nowall (grid_t *p_grid)
  * @brief Runs the floodfill algorithm to map out the maze.
  *
  * @param[in,out] p_grid Pointer to the initialised maze with no walls.
- * @param[in] p_start_node Pointer to the start node.
  * @param[in] p_end_node Pointer to the end node.
  * @param[in,out] p_navigator Pointer to the navigator state.
  * @param[in] p_explore_func Pointer to the function that will explore the maze.
@@ -80,16 +79,13 @@ initialise_empty_maze_nowall (grid_t *p_grid)
  */
 void
 map_maze (grid_t            *p_grid,
-          grid_cell_t       *p_start_node,
-          grid_cell_t       *p_end_node,
+          const grid_cell_t *p_end_node,
           navigator_state_t *p_navigator,
           explore_func_t     p_explore_func,
           move_navigator_t   p_move_navigator)
 {
     // Initialise the flood array.
     //
-
-    grid_cell_t *p_current_node = p_start_node;
 
     // Like in A*, initialise the f, g, and h values of all nodes.
     //
@@ -147,11 +143,9 @@ map_maze (grid_t            *p_grid,
         {
             // We have reached a dead end. We need to backtrack.
             //
-            p_next_node = p_navigator->p_current_node->p_came_from;
-            direction   = (p_navigator->orientation + 2) % 4;
+            direction = (p_navigator->orientation + 2) % 4;
         }
 
-    end:
         // Move the robot to the next node.
         //
         p_move_navigator(p_navigator, direction);

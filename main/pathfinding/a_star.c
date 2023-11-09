@@ -136,25 +136,40 @@ char *
 get_path_string (grid_t *p_grid, path_t *p_path)
 {
     char *p_maze_string = get_maze_string(p_grid);
-    // Work backwards. This is the end node.
-    grid_cell_t         *p_cell          = &p_path->p_path[p_path->length - 1];
-    grid_cell_t         *p_previous_cell = p_cell;
-    uint16_t             str_num_rows    = p_grid->rows * 2 + 1;
-    uint16_t             str_num_cols    = p_grid->columns * 4 + 2;
-    cardinal_direction_t direction       = get_direction_from_to(
+
+    // Initialise the pointers to the current and previous cells.
+    //
+    grid_cell_t *p_cell = &p_path->p_path[p_path->length - 1]; // Current cell.
+    grid_cell_t *p_previous_cell = p_cell;                     // Previous cell.
+
+    uint16_t str_num_cols
+        = p_grid->columns * 4 + 2; // Number of columns in the string.
+
+    // For each node, find the direction that leads in and out of the node, then
+    // add to the string. Special cases are the start and end nodes. This
+    // handles the end node.
+    //
+    cardinal_direction_t direction = get_direction_from_to(
         &p_cell->coordinates, &p_cell->p_came_from->coordinates);
+
     insert_path_directions(
         p_maze_string, p_cell, str_num_cols, direction, NONE);
 
+    // Now for the rest of the path.
+    //
     for (uint32_t index = p_path->length - 2; 0 < index; index--)
     {
-        // uint32_t off_by_one_index         = p_path->length - 1 - index;
-        p_previous_cell                   = p_cell;
-        p_cell                            = &p_path->p_path[index];
+        // Find the direction that leads in and out of the current cell, then
+        // add to the string.
+        //
+        p_previous_cell = p_cell;
+        p_cell          = &p_path->p_path[index];
+
         cardinal_direction_t in_direction = get_direction_from_to(
             &p_cell->coordinates, &p_cell->p_came_from->coordinates);
         cardinal_direction_t out_direction = get_direction_from_to(
             &p_cell->coordinates, &p_previous_cell->coordinates);
+
         insert_path_directions(
             p_maze_string, p_cell, str_num_cols, in_direction, out_direction);
     }
@@ -163,8 +178,10 @@ get_path_string (grid_t *p_grid, path_t *p_path)
     //
     p_previous_cell = p_cell;
     p_cell          = &p_path->p_path[0];
-    direction       = get_direction_from_to(&p_cell->coordinates,
+
+    direction = get_direction_from_to(&p_cell->coordinates,
                                       &p_previous_cell->coordinates);
+
     insert_path_directions(
         p_maze_string, p_cell, str_num_cols, NONE, direction);
     return p_maze_string;

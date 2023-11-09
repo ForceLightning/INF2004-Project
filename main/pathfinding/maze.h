@@ -140,7 +140,7 @@ void clear_maze_heuristics(grid_t *p_grid);
 
 void destroy_maze(grid_t *p_grid);
 
-int8_t get_offset_from_nav_direction(navigator_state_t *p_navigator);
+int8_t get_offset_from_nav_direction(const navigator_state_t *p_navigator);
 
 void navigator_unset_walls(grid_t            *p_grid,
                            navigator_state_t *p_navigator,
@@ -154,24 +154,25 @@ void navigator_modify_walls(grid_t            *p_grid,
 
 char *get_maze_string(grid_t *p_grid);
 
-void insert_navigator_str(grid_t            *p_grid,
-                          navigator_state_t *p_navigator,
-                          char              *maze_str);
+void insert_navigator_str(const grid_t            *p_grid,
+                          const navigator_state_t *p_navigator,
+                          char                    *maze_str);
 
-cardinal_direction_t get_direction_from_to(point_t *p_point_a,
-                                           point_t *p_point_b);
+cardinal_direction_t get_direction_from_to(const point_t *p_point_a,
+                                           const point_t *p_point_b);
 
 int16_t deserialise_maze(grid_t *p_grid, maze_gap_bitmask_t *p_no_walls_array);
 
 maze_gap_bitmask_t serialise_maze(grid_t *p_grid);
 
-grid_cell_t *get_cell_at_coordinates(grid_t *p_grid, point_t *p_coordinates);
+grid_cell_t *get_cell_at_coordinates(grid_t        *p_grid,
+                                     const point_t *p_coordinates);
 
 grid_cell_t *get_cell_in_direction(grid_t              *p_grid,
                                    grid_cell_t         *p_from,
                                    cardinal_direction_t direction);
 
-uint32_t manhattan_distance(point_t *p_point_a, point_t *p_point_b);
+uint32_t manhattan_distance(const point_t *p_point_a, const point_t *p_point_b);
 
 #endif // MAZE_H
 

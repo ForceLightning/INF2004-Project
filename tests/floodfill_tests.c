@@ -56,7 +56,7 @@ typedef enum constants
  * @brief Global bitmask array of a maze for testing.
  *
  */
-static const uint16_t g_bitmask_array[GRID_ROWS * GRID_COLS] = {
+static const uint8_t g_bitmask_array[GRID_ROWS * GRID_COLS] = {
     0x2, 0xE, 0xA, 0xC, 0x4, // Top Row
     0x6, 0xB, 0xC, 0x3, 0x9, // 2nd row
     0x3, 0x8, 0x7, 0x8, 0x4, // 3rd row
@@ -213,9 +213,12 @@ test_floodfill (void)
     explore_func_t   p_explore_func   = &explore_current_node;
     move_navigator_t p_move_navigator = &move_navigator;
 
-    map_maze(
-        &maze, p_start, p_end, &navigator, p_explore_func, p_move_navigator);
+    map_maze(&maze, p_end, &navigator, p_explore_func, p_move_navigator);
 
+    char *p_maze_str = get_maze_string(&maze);
+    insert_navigator_str(&maze, &navigator, p_maze_str);
+    printf("%s\n\n", p_maze_str);
+    free(p_maze_str);
     //@TODO(chris): Check whether the path is correct.
     return 0;
 }

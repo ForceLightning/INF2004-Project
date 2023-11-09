@@ -81,24 +81,16 @@ heapify_up (binary_heap_t *p_heap, uint16_t index)
 void
 heapify_down (binary_heap_t *p_heap, uint16_t index)
 {
-    // Step 1.1: Declare variables to store the indices of the left and right,
-    // as well as the smallest child.
-    //
-    uint16_t left_index;           // Index of the left child.
-    uint16_t right_index;          // Index of the right child.
-    uint16_t smallest_child_index; // Index of the smallest child.
-
     for (;;)
     {
-        // Step 1.2: Calculate the left and right child indices. In a binary
+        // Step 1: Calculate the left and right child indices. In a binary
         // heap, the indices are known to be 2 * index + 1..=2 for the left and
         // right respectively.
         //
-        left_index           = 2 * index + 1; // Calculate the left index.
-        right_index          = 2 * index + 2; // Calculate the right index.
-        smallest_child_index = index;         // Assume that the
-                                              // current node is the
-                                              // smallest.
+        uint16_t left_index  = 2 * index + 1;  // Calculate the left index.
+        uint16_t right_index = 2 * index + 2;  // Calculate the right index.
+        uint16_t smallest_child_index = index; // Assume that the current node
+                                               // is the smallest.
 
         // Step 2: Find the smallest value amongst the node and its children,
         // and assign the index to `smallest_child_index`.
@@ -224,12 +216,12 @@ peek (binary_heap_t *p_heap)
  * @brief Finds the index of a given node in the binary heap if it exists.
  * Otherwise, returns UINT16_MAX.
  *
- * @param p_heap Pointer to the binary heap.
- * @param p_maze_node Pointer to the node to be searched for.
+ * @param[in] p_heap Pointer to the binary heap.
+ * @param[in] p_maze_node Pointer to the node to be searched for.
  * @return uint16_t Index of the node if it exists, otherwise UINT16_MAX.
  */
 uint16_t
-get_index_of_node (binary_heap_t *p_heap, grid_cell_t *p_maze_node)
+get_index_of_node (const binary_heap_t *p_heap, const grid_cell_t *p_maze_node)
 {
     // Assume that the node is in the heap.
     //
