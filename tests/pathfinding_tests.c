@@ -26,24 +26,28 @@ static const uint16_t g_bitmask_array[25] = {
 // ----------------------------------------------------------------------------
 //
 
-static int    test_manhattan_distance(void);
-static int    test_create_maze(void);
-static int    test_initialise_empty_maze(void);
-static int    test_clear_maze_heuristics(void);
-static int    test_destroy_maze(void);
-static int    test_row_pathfinding(void);
-static int    test_print_maze(void);
+static int test_manhattan_distance(void);
+static int test_create_maze(void);
+static int test_initialise_empty_maze(void);
+static int test_clear_maze_heuristics(void);
+static int test_destroy_maze(void);
+static int test_row_pathfinding(void);
+static int test_print_maze(void);
+static int test_print_route(void);
+static int test_maze_deserialisation(void);
+static int test_maze_serialisation(void);
+static int test_complex_maze_pathfinding(void);
+
+// Private function prototypes.
+// ----------------------------------------------------------------------------
+//
 static grid_t generate_col_maze(uint16_t rows, uint16_t cols);
-static int    test_print_route(void);
-static int    test_maze_deserialisation(void);
-static int    test_maze_serialisation(void);
-static int    test_complex_maze_pathfinding(void);
 
 /**
  * @brief The main function for the pathfinding tests.
  *
- * @param argc Number of arguments.
- * @param argv Vector of arguments.
+ * @param[in] argc Number of arguments.
+ * @param[in] argv Vector of arguments.
  * @return int 0 if the test passes, -1 otherwise.
  */
 int
@@ -120,9 +124,9 @@ static int
 test_manhattan_distance (void)
 {
     point_t point_a = { 0, 0 };
-    for (uint16_t row = 0; GRID_ROWS > row; row++)
+    for (int32_t row = 0; GRID_ROWS > row; row++)
     {
-        for (uint16_t col = 0; GRID_COLS > col; col++)
+        for (int32_t col = 0; GRID_COLS > col; col++)
         {
             point_t  point_b  = { row, col };
             uint32_t distance = manhattan_distance(&point_a, &point_b);
@@ -322,37 +326,6 @@ test_coords_iseq (point_t *p_point_a, point_t *p_point_b)
 }
 
 /**
- * @brief Generates a maze that is a single column that leads to the objective.
- *
- * @param rows Number of rows in the maze.
- * @param cols Number of columns in the maze.
- * @return grid_t Generated maze.
- */
-static grid_t
-generate_col_maze (uint16_t rows, uint16_t cols)
-{
-    grid_t maze = create_maze(rows, cols);
-
-    // Set the walls of the maze. Should just be a column that leads to the
-    // objective.
-    //
-    grid_cell_t *p_current_node = &maze.p_grid_array[0];
-
-    // Deal with the first node.
-    //
-    for (uint16_t row = 0; GRID_ROWS - 1 > row; row++)
-    {
-        // Conversion to ptrdiff_t is ok because the result is always positive.
-        p_current_node->p_next[SOUTH]
-            = &maze.p_grid_array[(ptrdiff_t)((row + 1) * GRID_COLS)];
-        p_current_node->p_next[SOUTH]->p_next[NORTH] = p_current_node;
-        p_current_node = p_current_node->p_next[SOUTH];
-    }
-
-    return maze;
-}
-
-/**
  * @brief Tests the column pathfinding function to see if it works as expected.
  * This should return an array of nodes in sequential order that represent the
  * shortest path from the start node to the end node.
@@ -376,7 +349,7 @@ test_row_pathfinding (void)
 
     // Run the A* algorithm.
     //
-    a_star(maze, navigator_state.p_start_node, navigator_state.p_end_node);
+    a_star(&maze, navigator_state.p_start_node, navigator_state.p_end_node);
     path_t *p_path = get_path(navigator_state.p_end_node);
 
     int ret_val = 0;
@@ -389,7 +362,7 @@ test_row_pathfinding (void)
         goto end;
     }
 
-    for (uint16_t row = 0; GRID_ROWS > row; row++)
+    for (size_t row = 0; GRID_ROWS > row; row++)
     {
         point_t *point_a = &p_path->p_path[row].coordinates;
         point_t *point_b = &maze.p_grid_array[row * GRID_COLS].coordinates;
@@ -462,7 +435,7 @@ test_print_route (void)
 
     // Run the A* algorithm.
     //
-    a_star(maze, navigator_state.p_start_node, navigator_state.p_end_node);
+    a_star(&maze, navigator_state.p_start_node, navigator_state.p_end_node);
     path_t *p_path = get_path(navigator_state.p_end_node);
 
     char *maze_str = get_path_string(&maze, p_path);
@@ -591,7 +564,7 @@ test_complex_maze_pathfinding (void)
 
     // Run the A* algorithm.
     //
-    a_star(maze, navigator_state.p_start_node, navigator_state.p_end_node);
+    a_star(&maze, navigator_state.p_start_node, navigator_state.p_end_node);
     path_t *p_path = get_path(navigator_state.p_end_node);
 
     if (NULL == p_path)
@@ -624,6 +597,41 @@ end: // Clean up all malloc'd memory.
     destroy_maze(&maze);
 
     return ret_val;
+}
+
+// Private functions.
+// ----------------------------------------------------------------------------
+//
+
+/**
+ * @brief Generates a maze that is a single column that leads to the objective.
+ *
+ * @param[in] rows Number of rows in the maze.
+ * @param[in] cols Number of columns in the maze.
+ * @return grid_t Generated maze.
+ */
+static grid_t
+generate_col_maze (uint16_t rows, uint16_t cols)
+{
+    grid_t maze = create_maze(rows, cols);
+
+    // Set the walls of the maze. Should just be a column that leads to the
+    // objective.
+    //
+    grid_cell_t *p_current_node = &maze.p_grid_array[0];
+
+    // Deal with the first node.
+    //
+    for (uint32_t row = 0; GRID_ROWS - 1 > row; row++)
+    {
+        // Conversion to ptrdiff_t is ok because the result is always positive.
+        p_current_node->p_next[SOUTH]
+            = &maze.p_grid_array[(ptrdiff_t)((row + 1) * GRID_COLS)];
+        p_current_node->p_next[SOUTH]->p_next[NORTH] = p_current_node;
+        p_current_node = p_current_node->p_next[SOUTH];
+    }
+
+    return maze;
 }
 
 // End of file tests/tests.c

@@ -37,8 +37,8 @@ static void draw_cell(grid_cell_t *p_cell,
 /**
  * @brief Create a maze with the specified number of rows and columns.
  *
- * @param rows Number of rows in the maze.
- * @param columns Number of columns in the maze.
+ * @param[in] rows Number of rows in the maze.
+ * @param[in] columns Number of columns in the maze.
  * @return grid_t Empty maze. Indexed first by row, then column.
  */
 grid_t
@@ -56,7 +56,7 @@ create_maze (uint16_t rows, uint16_t columns)
  * heuristic values to 0, and all pointers to NULL. This is useful for the A*
  * algorithm.
  *
- * @param p_grid Pointer to an empty maze created by @ref create_maze.
+ * @param[in,out] p_grid Pointer to an empty maze created by @ref create_maze.
  */
 void
 initialise_empty_maze_walled (grid_t *p_grid)
@@ -84,7 +84,7 @@ initialise_empty_maze_walled (grid_t *p_grid)
  * @brief Clears the maze heuristics. This sets the F, G, and H values of each
  * node to UINT32_MAX for the A* and floodfill algorithm.
  *
- * @param p_grid Pointer to the maze grid.
+ * @param[in,out] p_grid Pointer to the maze grid.
  */
 void
 clear_maze_heuristics (grid_t *p_grid)
@@ -105,7 +105,7 @@ clear_maze_heuristics (grid_t *p_grid)
 /**
  * @brief Destroys the maze by freeing the memory allocated to the grid array.
  *
- * @param p_grid Pointer to the maze grid.
+ * @param[in,out] p_grid Pointer to the maze grid.
  */
 void
 destroy_maze (grid_t *p_grid)
@@ -127,7 +127,7 @@ destroy_maze (grid_t *p_grid)
  * anticlockwise turns. It is the minimum number of turns required to get from
  * the current direction to the desired direction.
  *
- * @param p_navigator Pointer to the navigator.
+ * @param[in] p_navigator Pointer to the navigator.
  * @return int8_t Offset of the current direction from cardinal directions.
  */
 int8_t
@@ -141,9 +141,9 @@ get_offset_from_nav_direction (navigator_state_t *p_navigator)
  * @brief Unsets the walls of the current node and the next node(s) from the
  * position of the navigator in the directions it detects can be moved to.
  *
- * @param p_grid Pointer to the maze grid.
- * @param p_navigator Pointer to the navigator.
- * @param wall_bitmask Bitmask of the walls to unset. This is aligned to the
+ * @param[in,out] p_grid Pointer to the maze grid.
+ * @param[in] p_navigator Pointer to the navigator.
+ * @param[in] wall_bitmask Bitmask of the walls to unset. This is aligned to the
  * navigator's orientation.
  */
 void
@@ -170,12 +170,12 @@ navigator_unset_walls (grid_t            *p_grid,
 /**
  * @brief Modifies the walls of the navigator's current node.
  *
- * @param p_grid Pointer to the maze grid.
- * @param p_navigator Pointer to the navigator.
- * @param aligned_wall_bitmask Bitmask of the walls to set or unset. This is
+ * @param[in,out] p_grid Pointer to the maze grid.
+ * @param[in] p_navigator Pointer to the navigator.
+ * @param[in] aligned_wall_bitmask Bitmask of the walls to set or unset. This is
  * aligned to NORTH.
- * @param is_set True if the walls are to be set.
- * @param is_unset True if the walls are to be unset.
+ * @param[in] is_set True if the walls are to be set.
+ * @param[in] is_unset True if the walls are to be unset.
  *
  * @note both is_set and is_unset can be True. In this case, the
  * entire cell's walls and gaps will be set.
@@ -219,7 +219,7 @@ navigator_modify_walls (grid_t            *p_grid,
 
 /**
  * @brief Get the string representation of the maze for pretty printing.
- * @param p_grid Pointer to the maze grid.
+ * @param[in] p_grid Pointer to the maze grid.
  * @return char* Pointer to the string representation of the maze.
  *
  * @note The string returned by this function must be freed.
@@ -280,14 +280,15 @@ get_maze_string (grid_t *p_grid)
  * @brief Inserts the navigator character into the maze string for pretty
  * printing.
  *
- * @param p_grid Pointer to the maze grid.
- * @param p_navigator Pointer to the navigator.
- * @param maze_str Pointer to the maze string returned by @ref get_maze_string.
+ * @param[in] p_grid Pointer to the maze grid.
+ * @param[in] p_navigator Pointer to the navigator.
+ * @param[in,out] p_maze_str Pointer to the maze string returned by @ref
+ * get_maze_string.
  */
 void
 insert_navigator_str (grid_t            *p_grid,
                       navigator_state_t *p_navigator,
-                      char              *maze_str)
+                      char              *p_maze_str)
 {
     uint16_t row = p_navigator->p_current_node->coordinates.y;
     uint16_t col = p_navigator->p_current_node->coordinates.x;
@@ -315,23 +316,23 @@ insert_navigator_str (grid_t            *p_grid,
     uint16_t str_col      = col * 4 + 2;
     uint16_t str_num_cols = p_grid->columns * 4 + 2;
 
-    maze_str[str_row * str_num_cols + str_col] = navigator_char;
+    p_maze_str[str_row * str_num_cols + str_col] = navigator_char;
 }
 
 /**
  * @brief Get the direction from p_point_a to p_point_b if they
  * are adjacent.
  *
- * @param p_point_a Pointer to point a.
- * @param p_point_b Pointer to point b.
+ * @param[in] p_point_a Pointer to point a.
+ * @param[in] p_point_b Pointer to point b.
  * @return cardinal_direction_t Direction from point a to point b. NONE if they
  * are not adjacent.
  */
 cardinal_direction_t
 get_direction_from_to (point_t *p_point_a, point_t *p_point_b)
 {
-    int8_t row_offset = p_point_b->y - p_point_a->y;
-    int8_t col_offset = p_point_b->x - p_point_a->x;
+    int32_t row_offset = p_point_b->y - p_point_a->y;
+    int32_t col_offset = p_point_b->x - p_point_a->x;
 
     cardinal_direction_t direction = NONE;
 
@@ -367,8 +368,8 @@ end:
 /**
  * @brief Deserialises the maze from a bitmask array. @ref serialise_maze.
  *
- * @param p_grid Pointer to the maze grid.
- * @param p_no_walls_array Pointer to the bitmask array of maze gaps.
+ * @param[in,out] p_grid Pointer to the maze grid.
+ * @param[in] p_no_walls_array Pointer to the bitmask array of maze gaps.
  * @return int16_t 0 if successful, -1 otherwise.
  */
 int16_t
@@ -436,7 +437,7 @@ end:
 /**
  * @brief Serialises the maze into a bitmask array. @ref deserialise_maze.
  *
- * @param p_grid Pointer to the maze grid.
+ * @param[in] p_grid Pointer to the maze grid.
  * @return maze_gap_bitmask_t Bitmask array of maze gaps. Take OxF - bitmask to
  * get the walls.
  */
@@ -492,8 +493,8 @@ end:
 /**
  * @brief Get the cell at the specified coordinates.
  *
- * @param p_grid Pointer to the maze grid.
- * @param p_coordinates Pointer to the coordinates.
+ * @param[in] p_grid Pointer to the maze grid.
+ * @param[in] p_coordinates Pointer to the coordinates.
  * @return grid_cell_t* Pointer to the cell. NULL if the cell is out of bounds.
  */
 grid_cell_t *
@@ -520,9 +521,9 @@ end:
 /**
  * @brief Get the cell in the specified direction from a specific cell.
  *
- * @param p_grid Pointer to the maze grid.
- * @param p_from Pointer to the cell to get the next cell from.
- * @param direction Cardinal direction to get the next cell from.
+ * @param[in] p_grid Pointer to the maze grid.
+ * @param[in] p_from Pointer to the cell to get the next cell from.
+ * @param[in] direction Cardinal direction to get the next cell from.
  *
  * @return grid_cell_t* Pointer to the cell. NULL if the cell is out of bounds.
  */
@@ -531,8 +532,8 @@ get_cell_in_direction (grid_t              *p_grid,
                        grid_cell_t         *p_from,
                        cardinal_direction_t direction)
 {
-    int16_t row_diff = direction == NORTH ? -1 : direction == SOUTH ? 1 : 0;
-    int16_t col_diff = direction == EAST ? 1 : direction == WEST ? -1 : 0;
+    int32_t row_diff = direction == NORTH ? -1 : direction == SOUTH ? 1 : 0;
+    int32_t col_diff = direction == EAST ? 1 : direction == WEST ? -1 : 0;
 
     point_t coordinates = { p_from->coordinates.x + col_diff,
                             p_from->coordinates.y + row_diff };
@@ -544,17 +545,17 @@ get_cell_in_direction (grid_t              *p_grid,
 /**
  * @brief Calculates the manhattan distance between two points.
  *
- * @param point_a Pointer to first point.
- * @param point_b Pointer to second point.
+ * @param[in] p_point_a Pointer to first point.
+ * @param[in] p_point_b Pointer to second point.
  * @return uint32_t Manhattan distance.
  *
  * @see https://en.wikipedia.org/wiki/Taxicab_geometry
  */
 uint32_t
-manhattan_distance (point_t *point_a, point_t *point_b)
+manhattan_distance (point_t *p_point_a, point_t *p_point_b)
 {
-    uint32_t x_diff = abs(point_a->x - point_b->x);
-    uint32_t y_diff = abs(point_a->y - point_b->y);
+    uint32_t x_diff = abs(p_point_a->x - p_point_b->x);
+    uint32_t y_diff = abs(p_point_a->y - p_point_b->y);
     return x_diff + y_diff;
 }
 
@@ -564,6 +565,10 @@ manhattan_distance (point_t *point_a, point_t *point_b)
 
 /**
  * @brief Get the cell in the cardinal direction from the current cell.
+ *
+ * @param[in] p_grid Pointer to the maze grid.
+ * @param[in] p_current Pointer to the current cell.
+ * @param[in] direction Cardinal direction to get the next cell from.
  *
  * @return grid_cell_t* Pointer to the cell in the direction from the current
  * cell.
@@ -608,9 +613,9 @@ get_cell_in_direction_from (grid_t              *p_grid,
 /**
  * @brief Sets a wall in a given direction.
  *
- * @param p_grid Pointer to the maze grid.
- * @param p_current_node Pointer to the current node.
- * @param cardinal_direction Cardinal direction to set the wall.
+ * @param[in,out] p_grid Pointer to the maze grid.
+ * @param[in] p_current_node Pointer to the current node.
+ * @param[in] cardinal_direction Cardinal direction to set the wall.
  */
 static void
 set_wall_helper (grid_t      *p_grid,
@@ -631,9 +636,9 @@ set_wall_helper (grid_t      *p_grid,
 /**
  * @brief Unsets a wall in a given direction.
  *
- * @param p_grid Pointer to the maze grid.
- * @param p_current_node Pointer to the current node.
- * @param cardinal_direction Cardinal direction to unset the wall.
+ * @param[in] p_grid Pointer to the maze grid.
+ * @param[in,out] p_current_node Pointer to the current node.
+ * @param[in] cardinal_direction Cardinal direction to unset the wall.
  *
  */
 static void
@@ -655,9 +660,9 @@ unset_wall_helper (grid_t      *p_grid,
 /**
  * @brief Draws the north and west walls of the cell.
  *
- * @param p_cell Pointer to the cell.
- * @param p_maze_string Pointer to the maze string being drawn.
- * @param relative_row Relative row of the cell to the string row.
+ * @param[in] p_cell Pointer to the cell.
+ * @param[in,out] p_maze_string Pointer to the maze string being drawn.
+ * @param[in] relative_row Relative row of the cell to the string row.
  *
  */
 static void

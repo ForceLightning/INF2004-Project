@@ -171,7 +171,7 @@ grid_cell_t *get_cell_in_direction(grid_t              *p_grid,
                                    grid_cell_t         *p_from,
                                    cardinal_direction_t direction);
 
-uint32_t manhattan_distance(point_t *point_a, point_t *point_b);
+uint32_t manhattan_distance(point_t *p_point_a, point_t *p_point_b);
 
 #endif // MAZE_H
 

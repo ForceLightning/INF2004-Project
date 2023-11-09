@@ -19,7 +19,7 @@
 
 // Definitions.
 // ----------------------------------------------------------------------------
-// 
+//
 
 #ifndef NDEBUG
 /**
@@ -35,7 +35,7 @@
 
 // Type definitions.
 // ----------------------------------------------------------------------------
-// 
+//
 
 /**
  * @typedef constants_t
@@ -50,7 +50,7 @@ typedef enum constants
 
 // Global variables.
 // ----------------------------------------------------------------------------
-// 
+//
 
 /**
  * @brief Global bitmask array of a maze for testing.
@@ -73,7 +73,7 @@ volatile grid_t g_true_grid
 
 // Test function prototypes.
 // ----------------------------------------------------------------------------
-// 
+//
 
 static int test_initialise_empty_maze_nowall(void);
 static int test_floodfill(void);
@@ -88,7 +88,7 @@ static int test_floodfill(void);
 int
 floodfill_tests (int argc, char *argv[])
 {
-    int default_choice = 1; ///< Default choice for the test to run.
+    int default_choice = 1; // Default choice for the test to run.
     int choice         = default_choice;
 
     if (1 < argc)
@@ -147,13 +147,12 @@ explore_current_node (grid_t              *p_grid,
                       navigator_state_t   *p_navigator,
                       cardinal_direction_t direction)
 {
-    grid_cell_t *p_current_node
-        = p_navigator->p_current_node; ///< Current node.
+    grid_cell_t *p_current_node = p_navigator->p_current_node; // Current node.
 
     uint8_t bitmask
         = g_bitmask_array[p_current_node->coordinates.y * p_grid->columns
-                          + p_current_node->coordinates.x]; ///< Bitmask of the
-                                                            ///< walls.
+                          + p_current_node->coordinates.x]; // Bitmask of the
+                                                            // walls.
     //@TODO(chris): This should be a function.
     bitmask = 0xF - bitmask;
 
@@ -173,12 +172,11 @@ static void
 move_navigator (navigator_state_t *p_navigator, cardinal_direction_t direction)
 {
     p_navigator->p_current_node
-        = p_navigator->p_current_node->p_next[direction]; ///< Set the current
-                                                          ///< node to the next
-                                                          ///< node.
+        = p_navigator->p_current_node
+              ->p_next[direction]; // Set the current node to the next node.
 
-    p_navigator->orientation = direction; ///< Set the orientation to the
-                                          ///< direction.
+    p_navigator->orientation
+        = direction; // Set the orientation to the direction.
 }
 
 /**

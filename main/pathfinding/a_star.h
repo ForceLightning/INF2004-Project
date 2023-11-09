@@ -34,7 +34,8 @@ typedef struct path
 // ----------------------------------------------------------------------------
 //
 
-void    a_star(grid_t grid, grid_cell_t *p_start_node, grid_cell_t *p_end_node);
+void a_star(grid_t *p_grid, grid_cell_t *p_start_node, grid_cell_t *p_end_node);
+
 path_t *get_path(grid_cell_t *p_end_node);
 char   *get_path_string(grid_t *p_grid, path_t *p_path);
 
