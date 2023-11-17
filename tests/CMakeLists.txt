@@ -2,6 +2,7 @@ set(ctests
     pathfinding
     pid
     floodfill
+    dfs
     )
 
 set(pathfinding_parts
@@ -10,6 +11,10 @@ set(pathfinding_parts
 
 set(floodfill_parts
     1 2
+    )
+
+set(dfs_parts
+    1
     )
 
 foreach(ctest ${ctests})

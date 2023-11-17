@@ -11,6 +11,7 @@
  */
 
 #include <stdio.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include "maze.h"
@@ -48,6 +49,7 @@ initialise_empty_maze_nowall (grid_t *p_grid)
             p_cell->h           = 0;
             p_cell->coordinates = (point_t) { col, row };
             p_cell->p_came_from = NULL;
+            p_cell->is_visited  = false;
 
             for (int16_t i = 0; 4 > i; i++)
             {
@@ -149,6 +151,10 @@ map_maze (grid_t            *p_grid,
         // Move the robot to the next node.
         //
         p_move_navigator(p_navigator, direction);
+        char *p_maze_str = get_maze_string(p_grid);
+        insert_navigator_str(p_grid, p_navigator, p_maze_str);
+        printf("%s\n\n", p_maze_str);
+        free(p_maze_str);
         clear_maze_heuristics(p_grid);
         // Free the flood array.
         //
