@@ -12,10 +12,21 @@
 #ifndef IR_SENSOR_H
 #define IR_SENSOR_H
 
+struct flags{
+    bool top_wall;
+    bool left_wall;
+};
+
 // Function prototypes.
 //
-void setup_adc_pins(uint adcPin);
+void setup_adc_pins(uint adcPinOne, uint adcPinTwo);
+void setup_gpio_pins(uint gpioPinOne, uint gpioPinTwo);
 void read_barcode();
+uint16_t read_line(uint gpioPinIn);
+void update_top_flag(struct flags * flag);
+void update_left_flag(struct flags * flag);
+uint16_t find_wall_directions(uint gpioPinLeft, uint gpioPinFront);
+
 #endif // IR_SENSOR_H
 
 // End of file driver/ir_sensor/ir_sensor.h.
