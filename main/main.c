@@ -78,6 +78,8 @@ int
 main (void)
 {
     stdio_init_all();
+    init_magnetometer();
+    readMagnetometerData();
 
     const char *rtos_name;
 
@@ -101,6 +103,7 @@ main (void)
 #else
     printf("Starting %s on core 0:\n", rtos_name);
     v_launch();
+
 #endif
 
     return 0;

@@ -29,7 +29,7 @@ main ()
 
     for (;;) // Loop forever. See Barr Group "Embedded C Coding Standard" 8.4.c
     {
-        read_magnetometer_data();
+        readMagnetometerData();
     }
 
     return 0;
