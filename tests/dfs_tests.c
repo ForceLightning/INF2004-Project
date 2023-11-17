@@ -1,6 +1,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <stdlib.h>
 #include <stdbool.h>
 
 #include "pathfinding/maze.h"
@@ -174,6 +175,10 @@ explore_current_node (grid_t              *p_grid,
 
     p_navigator->orientation = direction;
     navigator_modify_walls(p_grid, p_navigator, bitmask, true, false);
+    char *p_maze_str = get_maze_string(p_grid);
+    insert_navigator_str(p_grid, p_navigator, p_maze_str);
+    printf("%s\n\n", p_maze_str);
+    free(p_maze_str);
 }
 
 static void

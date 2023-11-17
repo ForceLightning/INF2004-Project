@@ -75,11 +75,6 @@ dfs_depth_first_search (grid_t            *p_grid,
         // Move the robot to the next node.
         //
         move_navigator(p_navigator, direction);
-
-        char *p_maze_str = get_maze_string(p_grid);
-        insert_navigator_str(p_grid, p_navigator, p_maze_str);
-        printf("%s\n\n", p_maze_str);
-        free(p_maze_str);
         p_next_node = NULL;
     }
 }
