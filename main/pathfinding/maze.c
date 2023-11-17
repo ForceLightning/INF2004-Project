@@ -74,6 +74,7 @@ initialise_empty_maze_walled (grid_t *p_grid)
             p_cell->g           = 0;
             p_cell->h           = 0;
             p_cell->p_came_from = NULL;
+            p_cell->is_visited  = false;
             for (uint8_t direction = 0; 4 > direction; direction++)
             {
                 p_cell->p_next[direction] = NULL;
@@ -97,9 +98,10 @@ clear_maze_heuristics (grid_t *p_grid)
         {
             grid_cell_t *p_cell
                 = &p_grid->p_grid_array[row * p_grid->columns + col];
-            p_cell->f = UINT32_MAX;
-            p_cell->g = UINT32_MAX;
-            p_cell->h = UINT32_MAX;
+            p_cell->f          = UINT32_MAX;
+            p_cell->g          = UINT32_MAX;
+            p_cell->h          = UINT32_MAX;
+            p_cell->is_visited = false;
         }
     }
 }
