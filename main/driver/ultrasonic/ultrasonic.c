@@ -88,10 +88,6 @@ get_pulse (uint trig_pin, uint echo_pin)
     sleep_us(ULTRASONIC_TRIG_PULSE_US);
     gpio_put(trig_pin, 0);
     g_width = 0;
-    while (!g_pulse_width)
-    {
-        tight_loop_contents();
-    }
     return g_pulse_width;
 }
 

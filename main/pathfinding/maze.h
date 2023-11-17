@@ -80,6 +80,7 @@ typedef struct grid_cell
                                    ///< indexed by the direction enum.
     struct grid_cell *p_came_from; ///< Pointer to the node that the current
                                    ///< node came from for the A* algorithm.
+    bool is_visited; ///< Indicates if the node has been visited before.
 } grid_cell_t;
 
 /**
