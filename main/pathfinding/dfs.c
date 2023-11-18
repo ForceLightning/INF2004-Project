@@ -60,7 +60,7 @@ dfs_depth_first_search (grid_t            *p_grid,
     grid_cell_t         *p_next_node = NULL;
     cardinal_direction_t direction   = NONE;
 
-    while (!dfs_is_all_visited(p_grid))
+    while (!dfs_is_all_reachable_visited(p_grid, p_navigator))
     {
         // Step 3: Explore the current node
         //
@@ -192,17 +192,18 @@ dfs_is_all_reachable_visited (grid_t *p_grid, navigator_state_t *p_navigator)
     // Step 4: Check if all the nodes in the reachable set have been visited.
     //
     bool is_visited = true;
-    for (size_t i = 0; reachable_set.size > i; i++)
+    while (0 < reachable_set.size)
     {
         grid_cell_t *p_current_node = peek(&reachable_set).p_maze_node;
         is_visited &= p_current_node->is_visited;
-
+        delete_min(&reachable_set);
         // Step 5: If not visited, end early and return false.
         //
         if (!is_visited)
         {
             goto end;
         }
+
     }
 end:
     free(reachable_set.p_array);
