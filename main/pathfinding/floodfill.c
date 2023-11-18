@@ -36,7 +36,7 @@ static void floodfill(binary_heap_t     *p_open_set,
  * @param p_grid Pointer to the maze.
  */
 void
-initialise_empty_maze_nowall (grid_t *p_grid)
+floodfill_init_empty_maze_nowall (grid_t *p_grid)
 {
     for (uint16_t row = 0; p_grid->rows > row; row++)
     {
@@ -80,11 +80,11 @@ initialise_empty_maze_nowall (grid_t *p_grid)
  * navigator.
  */
 void
-map_maze (grid_t            *p_grid,
-          const grid_cell_t *p_end_node,
-          navigator_state_t *p_navigator,
-          explore_func_t     p_explore_func,
-          move_navigator_t   p_move_navigator)
+floodfill_map_maze (grid_t            *p_grid,
+                    const grid_cell_t *p_end_node,
+                    navigator_state_t *p_navigator,
+                    explore_func_t     p_explore_func,
+                    move_navigator_t   p_move_navigator)
 {
     // Initialise the flood array.
     //
@@ -151,10 +151,6 @@ map_maze (grid_t            *p_grid,
         // Move the robot to the next node.
         //
         p_move_navigator(p_navigator, direction);
-        char *p_maze_str = get_maze_string(p_grid);
-        insert_navigator_str(p_grid, p_navigator, p_maze_str);
-        printf("%s\n\n", p_maze_str);
-        free(p_maze_str);
         clear_maze_heuristics(p_grid);
         // Free the flood array.
         //

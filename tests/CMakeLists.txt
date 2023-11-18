@@ -14,7 +14,7 @@ set(floodfill_parts
     )
 
 set(dfs_parts
-    1
+    1 2
     )
 
 foreach(ctest ${ctests})

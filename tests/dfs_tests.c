@@ -1,9 +1,11 @@
-#include <stddef.h>
 #include <stdio.h>
+#include <stddef.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
+#include "pathfinding/binary_heap.h"
+#include "pathfinding/floodfill.h"
 #include "pathfinding/maze.h"
 #include "pathfinding/dfs.h"
 
@@ -62,6 +64,7 @@ volatile grid_t g_dfs_true_grid
 //
 
 static int test_depth_first_search(void);
+static int test_all_reachable_visisted(void);
 
 // Private function prototypes.
 // ----------------------------------------------------------------------------
@@ -96,6 +99,9 @@ dfs_tests (int argc, char *argv[])
         case 1:
             ret_val = test_depth_first_search();
             break;
+        case 2:
+            ret_val = test_all_reachable_visisted();
+            break;
         default:
             printf("Invalid choice. Terminating.\n");
             ret_val = -1;
@@ -105,13 +111,17 @@ dfs_tests (int argc, char *argv[])
     return ret_val;
 }
 
+// Test function definitions.
+// ----------------------------------------------------------------------------
+//
+
 static int
 test_depth_first_search (void)
 {
     g_dfs_true_grid = create_maze(GRID_ROWS, GRID_COLS);
 
     grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
-    initialise_empty_maze_nowall(&maze);
+    floodfill_init_empty_maze_nowall(&maze);
     maze_gap_bitmask_t gap_bitmask = { .p_bitmask = (uint16_t *)g_bitmask_array,
                                        .rows      = GRID_ROWS,
                                        .columns   = GRID_COLS };
@@ -154,6 +164,51 @@ test_depth_first_search (void)
         }
     }
     return 0;
+}
+
+static int
+test_all_reachable_visisted (void)
+{
+    g_dfs_true_grid = create_maze(GRID_ROWS, GRID_COLS);
+
+    grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+    floodfill_init_empty_maze_nowall(&maze);
+    maze_gap_bitmask_t gap_bitmask = { .p_bitmask = (uint16_t *)g_bitmask_array,
+                                       .rows      = GRID_ROWS,
+                                       .columns   = GRID_COLS };
+    deserialise_maze(&g_dfs_true_grid, &gap_bitmask);
+
+    // Initialise the navigator.
+    //
+    point_t start_point = { 0, 4 };
+    point_t end_point   = { 4, 0 };
+
+    grid_cell_t *p_start = get_cell_at_coordinates(&maze, &start_point);
+    grid_cell_t *p_end   = get_cell_at_coordinates(&maze, &end_point);
+
+    navigator_state_t navigator = { p_start, p_start, NULL, NORTH };
+
+    explore_func_t   p_explore_func   = &explore_current_node;
+    move_navigator_t p_move_navigator = &move_navigator;
+
+    for (size_t row = 0; GRID_ROWS > row; row++)
+    {
+        for (size_t col = 0; GRID_COLS > col; col++)
+        {
+            grid_cell_t *p_cell = &maze.p_grid_array[row * GRID_COLS + col];
+            p_cell->is_visited  = true;
+        }
+    }
+
+    binary_heap_t reachable_set = { .p_array = NULL,
+                                    .size         = 0,
+                                    .capacity     = GRID_ROWS * GRID_COLS };
+    reachable_set.p_array
+        = malloc(sizeof(grid_cell_t *) * reachable_set.capacity);
+    
+    insert(&reachable_set, p_start, 0);
+    
+    return dfs_is_all_reachable_visited(&maze, &navigator);
 }
 
 // Private functions.

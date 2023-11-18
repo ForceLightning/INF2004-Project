@@ -122,7 +122,7 @@ floodfill_tests (int argc, char *argv[])
 }
 
 /**
- * @brief Unit test for the initialise_empty_maze_nowall function.
+ * @brief Unit test for the floodfill_init_empty_maze_nowall function.
  *
  * @return int 0 if successful, -1 otherwise.
  *
@@ -159,6 +159,11 @@ explore_current_node (grid_t              *p_grid,
     p_navigator->orientation = direction;
     navigator_modify_walls(p_grid, p_navigator, bitmask, true, false);
 
+    char *p_maze_str = get_maze_string(p_grid);
+    insert_navigator_str(p_grid, p_navigator, p_maze_str);
+    printf("%s\n\n", p_maze_str);
+    free(p_maze_str);
+
     return bitmask;
 }
 
@@ -194,7 +199,7 @@ test_floodfill (void)
     g_true_grid = create_maze(GRID_ROWS, GRID_COLS);
 
     grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
-    initialise_empty_maze_nowall(&maze);
+    floodfill_init_empty_maze_nowall(&maze);
     maze_gap_bitmask_t gap_bitmask = { .p_bitmask = (uint16_t *)g_bitmask_array,
                                        .rows      = GRID_ROWS,
                                        .columns   = GRID_COLS };
@@ -213,7 +218,7 @@ test_floodfill (void)
     explore_func_t   p_explore_func   = &explore_current_node;
     move_navigator_t p_move_navigator = &move_navigator;
 
-    map_maze(&maze, p_end, &navigator, p_explore_func, p_move_navigator);
+    floodfill_map_maze(&maze, p_end, &navigator, p_explore_func, p_move_navigator);
 
     char *p_maze_str = get_maze_string(&maze);
     insert_navigator_str(&maze, &navigator, p_maze_str);

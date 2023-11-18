@@ -49,9 +49,9 @@ typedef void (*move_navigator_t)(navigator_state_t   *p_navigator,
 // ----------------------------------------------------------------------------
 //
 
-void initialise_empty_maze_nowall(grid_t *p_grid);
+void floodfill_init_empty_maze_nowall(grid_t *p_grid);
 
-void map_maze(grid_t            *p_grid,
+void floodfill_map_maze(grid_t            *p_grid,
               const grid_cell_t *p_end_node,
               navigator_state_t *p_navigator,
               explore_func_t     p_explore_func,
