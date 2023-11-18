@@ -9,7 +9,11 @@
 #include "pathfinding/maze.h"
 #include "pathfinding/dfs.h"
 
-#ifndef DEBUG
+// Definitions.
+// ----------------------------------------------------------------------------
+//
+
+#ifndef NDEBUG
 /**
  * @def DEBUG_PRINT(...)
  * @brief Debug print macro. Only prints if NDEBUG is not defined.
@@ -44,20 +48,13 @@ typedef enum constants
  * @brief Global bitmask array of a maze for testing.
  *
  */
-static const uint8_t g_bitmask_array[GRID_ROWS * GRID_COLS] = {
+static const uint16_t g_bitmask_array[GRID_ROWS * GRID_COLS] = {
     0x2, 0xE, 0xA, 0xC, 0x4, // Top Row
     0x6, 0xB, 0xC, 0x3, 0x9, // 2nd row
     0x3, 0x8, 0x7, 0x8, 0x4, // 3rd row
     0x4, 0x4, 0x7, 0xA, 0xD, // 4th row
     0x3, 0xB, 0x9, 0x2, 0x9  // last row
 };
-
-/**
- * @brief Global true grid for testing.
- *
- */
-volatile grid_t g_dfs_true_grid
-    = { .p_grid_array = NULL, .rows = GRID_ROWS, .columns = GRID_COLS };
 
 // Test function prototypes.
 // ----------------------------------------------------------------------------
@@ -118,14 +115,17 @@ dfs_tests (int argc, char *argv[])
 static int
 test_depth_first_search (void)
 {
-    g_dfs_true_grid = create_maze(GRID_ROWS, GRID_COLS);
+    grid_t true_grid = create_maze(GRID_ROWS, GRID_COLS);
 
     grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
     floodfill_init_empty_maze_nowall(&maze);
     maze_gap_bitmask_t gap_bitmask = { .p_bitmask = (uint16_t *)g_bitmask_array,
                                        .rows      = GRID_ROWS,
                                        .columns   = GRID_COLS };
-    deserialise_maze(&g_dfs_true_grid, &gap_bitmask);
+    deserialise_maze(&true_grid, &gap_bitmask);
+
+    char *p_true_maze_str = get_maze_string(&true_grid);
+    printf("%s\n\n", p_true_maze_str);
 
     // Initialise the navigator.
     //
@@ -145,12 +145,12 @@ test_depth_first_search (void)
 
     // Check that the maze is correct.
     //
-    maze_gap_bitmask_t true_map_bitmask = serialise_maze(&g_dfs_true_grid);
+    maze_gap_bitmask_t true_map_bitmask = serialise_maze(&true_grid);
     maze_gap_bitmask_t map_bitmask      = serialise_maze(&maze);
 
-    for (uint16_t row; GRID_ROWS > row; row++)
+    for (size_t row = 0; GRID_ROWS > row; row++)
     {
-        for (uint16_t col; GRID_COLS > col; col++)
+        for (size_t col = 0; GRID_COLS > col; col++)
         {
             uint16_t true_bitmask
                 = true_map_bitmask.p_bitmask[row * GRID_COLS + col];
@@ -158,7 +158,16 @@ test_depth_first_search (void)
 
             if (true_bitmask != bitmask)
             {
-                printf("Maze is not correct.\n");
+                printf("Maze is not correct at row %llu, col %llu\n", row, col);
+                printf("True bitmask: %u\n", true_bitmask);
+                p_true_maze_str = get_maze_string(&true_grid);
+                printf("%s\n\n", p_true_maze_str);
+                printf("Found bitmask: %u\n", bitmask);
+                char *p_maze_str = get_maze_string(&maze);
+                printf("%s\n\n", p_maze_str);
+
+                free(p_true_maze_str);
+                free(p_maze_str);
                 return -1;
             }
         }
@@ -169,14 +178,15 @@ test_depth_first_search (void)
 static int
 test_all_reachable_visisted (void)
 {
-    g_dfs_true_grid = create_maze(GRID_ROWS, GRID_COLS);
+    int ret_val     = 0;
+    grid_t true_grid = create_maze(GRID_ROWS, GRID_COLS);
 
     grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
     floodfill_init_empty_maze_nowall(&maze);
     maze_gap_bitmask_t gap_bitmask = { .p_bitmask = (uint16_t *)g_bitmask_array,
                                        .rows      = GRID_ROWS,
                                        .columns   = GRID_COLS };
-    deserialise_maze(&g_dfs_true_grid, &gap_bitmask);
+    deserialise_maze(&true_grid, &gap_bitmask);
 
     // Initialise the navigator.
     //
@@ -200,15 +210,20 @@ test_all_reachable_visisted (void)
         }
     }
 
-    binary_heap_t reachable_set = { .p_array = NULL,
-                                    .size         = 0,
-                                    .capacity     = GRID_ROWS * GRID_COLS };
+    binary_heap_t reachable_set
+        = { .p_array = NULL, .size = 0, .capacity = GRID_ROWS * GRID_COLS };
     reachable_set.p_array
         = malloc(sizeof(grid_cell_t *) * reachable_set.capacity);
-    
+
     insert(&reachable_set, p_start, 0);
-    
-    return dfs_is_all_reachable_visited(&maze, &navigator);
+
+    if (!dfs_is_all_reachable_visited(&maze, &navigator))
+    {
+        ret_val = -1;
+        printf("Not all reachable nodes are visited.\n");
+    }
+
+    return ret_val;
 }
 
 // Private functions.

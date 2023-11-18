@@ -56,7 +56,7 @@ typedef enum constants
  * @brief Global bitmask array of a maze for testing.
  *
  */
-static const uint8_t g_bitmask_array[GRID_ROWS * GRID_COLS] = {
+static const uint16_t g_bitmask_array[GRID_ROWS * GRID_COLS] = {
     0x2, 0xE, 0xA, 0xC, 0x4, // Top Row
     0x6, 0xB, 0xC, 0x3, 0x9, // 2nd row
     0x3, 0x8, 0x7, 0x8, 0x4, // 3rd row
