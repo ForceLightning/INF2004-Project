@@ -41,7 +41,7 @@ static int test_complex_maze_pathfinding(void);
 // Private function prototypes.
 // ----------------------------------------------------------------------------
 //
-static grid_t generate_col_maze(uint16_t rows, uint16_t cols);
+static maze_grid_t generate_col_maze(uint16_t rows, uint16_t cols);
 
 /**
  * @brief The main function for the pathfinding tests.
@@ -123,12 +123,12 @@ pathfinding_tests (int argc, char *argv[])
 static int
 test_manhattan_distance (void)
 {
-    point_t point_a = { 0, 0 };
+    maze_point_t point_a = { 0, 0 };
     for (int32_t row = 0; GRID_ROWS > row; row++)
     {
         for (int32_t col = 0; GRID_COLS > col; col++)
         {
-            point_t  point_b  = { row, col };
+            maze_point_t  point_b  = { row, col };
             uint32_t distance = manhattan_distance(&point_a, &point_b);
             if (row + col != distance)
             {
@@ -153,7 +153,7 @@ test_manhattan_distance (void)
 static int
 test_create_maze (void)
 {
-    grid_t maze    = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t maze    = create_maze(GRID_ROWS, GRID_COLS);
     int    ret_val = 0;
 
     if (NULL == maze.p_grid_array)
@@ -176,7 +176,7 @@ test_create_maze (void)
 static int
 test_initialise_empty_maze (void)
 {
-    grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
 
     for (uint16_t row = 0; maze.rows > row; row++)
     {
@@ -184,7 +184,7 @@ test_initialise_empty_maze (void)
         {
             // Check coordinates.
             //
-            grid_cell_t *p_cell = &maze.p_grid_array[row * maze.columns + col];
+            maze_grid_cell_t *p_cell = &maze.p_grid_array[row * maze.columns + col];
             if (col != p_cell->coordinates.x || row != p_cell->coordinates.y)
             {
                 printf("Coordinates of cell (%d, %d) are (%d, %d).\n",
@@ -238,13 +238,13 @@ test_clear_maze_heuristics (void)
 {
     // Initialise maze with random heuristic values.
     //
-    grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
 
     for (uint16_t row = 0; maze.rows > row; row++)
     {
         for (uint16_t col = 0; maze.columns > col; col++)
         {
-            grid_cell_t *p_cell = &maze.p_grid_array[row * maze.columns + col];
+            maze_grid_cell_t *p_cell = &maze.p_grid_array[row * maze.columns + col];
             // Casting to uint32_t is ok because rand() returns an int (0,
             // RAND_MAX). No overflow.
             //
@@ -261,7 +261,7 @@ test_clear_maze_heuristics (void)
     {
         for (uint16_t col = 0; maze.columns > col; col++)
         {
-            grid_cell_t *p_cell = &maze.p_grid_array[row * maze.columns + col];
+            maze_grid_cell_t *p_cell = &maze.p_grid_array[row * maze.columns + col];
 
             if (UINT32_MAX != p_cell->f || UINT32_MAX != p_cell->g
                 || UINT32_MAX != p_cell->h)
@@ -291,7 +291,7 @@ test_destroy_maze (void)
 {
     // Create a maze.
     //
-    grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
     destroy_maze(&maze);
 
     if (NULL != maze.p_grid_array)
@@ -312,7 +312,7 @@ test_destroy_maze (void)
  * @return false Two points are not equal.
  */
 static bool
-test_coords_iseq (point_t *p_point_a, point_t *p_point_b)
+test_coords_iseq (maze_point_t *p_point_a, maze_point_t *p_point_b)
 {
     // Compare the coordinates.
     //
@@ -337,9 +337,9 @@ test_row_pathfinding (void)
 {
     // Initialise the grid and the navigator.
     //
-    grid_t maze = generate_col_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t maze = generate_col_maze(GRID_ROWS, GRID_COLS);
 
-    navigator_state_t navigator_state = {
+    maze_navigator_state_t navigator_state = {
         &maze.p_grid_array[0],
         &maze.p_grid_array[0],
         // Conversion to ptrdiff_t is ok because the result is always positive.
@@ -350,7 +350,7 @@ test_row_pathfinding (void)
     // Run the A* algorithm.
     //
     a_star(&maze, navigator_state.p_start_node, navigator_state.p_end_node);
-    path_t *p_path = get_path(navigator_state.p_end_node);
+    a_star_path_t *p_path = a_star_get_path(navigator_state.p_end_node);
 
     int ret_val = 0;
     // Check that the path is correct.
@@ -364,8 +364,8 @@ test_row_pathfinding (void)
 
     for (size_t row = 0; GRID_ROWS > row; row++)
     {
-        point_t *point_a = &p_path->p_path[row].coordinates;
-        point_t *point_b = &maze.p_grid_array[row * GRID_COLS].coordinates;
+        maze_point_t *point_a = &p_path->p_path[row].coordinates;
+        maze_point_t *point_b = &maze.p_grid_array[row * GRID_COLS].coordinates;
 
         if (!test_coords_iseq(point_a, point_b))
         {
@@ -404,7 +404,7 @@ end: // Clean up all malloc'd memory.
 static int
 test_print_maze (void)
 {
-    grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
 
     char *maze_str = get_maze_string(&maze);
 
@@ -423,9 +423,9 @@ test_print_maze (void)
 static int
 test_print_route (void)
 {
-    grid_t maze = generate_col_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t maze = generate_col_maze(GRID_ROWS, GRID_COLS);
 
-    navigator_state_t navigator_state = {
+    maze_navigator_state_t navigator_state = {
         &maze.p_grid_array[0],
         &maze.p_grid_array[0],
         // Conversion to ptrdiff_t is ok because the result is always positive.
@@ -436,9 +436,9 @@ test_print_route (void)
     // Run the A* algorithm.
     //
     a_star(&maze, navigator_state.p_start_node, navigator_state.p_end_node);
-    path_t *p_path = get_path(navigator_state.p_end_node);
+    a_star_path_t *p_path = a_star_get_path(navigator_state.p_end_node);
 
-    char *maze_str = get_path_string(&maze, p_path);
+    char *maze_str = a_star_get_path_str(&maze, p_path);
 
     printf("%s\n", maze_str);
 
@@ -465,7 +465,7 @@ static int
 test_maze_deserialisation (void)
 {
     int    ret_val = 0;
-    grid_t maze    = create_maze(5, 5);
+    maze_grid_t maze    = create_maze(5, 5);
 
     maze_gap_bitmask_t gap_bitmask
         = { .p_bitmask = NULL, .rows = 5, .columns = 5 };
@@ -491,7 +491,7 @@ test_maze_serialisation (void)
 {
     int ret_val = 0;
 
-    grid_t maze = create_maze(5, 5);
+    maze_grid_t maze = create_maze(5, 5);
 
     maze_gap_bitmask_t gap_bitmask
         = { .p_bitmask = NULL, .rows = 5, .columns = 5 };
@@ -546,7 +546,7 @@ test_complex_maze_pathfinding (void)
 {
     int ret_val = 0;
 
-    grid_t maze = create_maze(5, 5);
+    maze_grid_t maze = create_maze(5, 5);
 
     maze_gap_bitmask_t gap_bitmask
         = { .p_bitmask = NULL, .rows = 5, .columns = 5 };
@@ -554,18 +554,18 @@ test_complex_maze_pathfinding (void)
     gap_bitmask.p_bitmask = (uint16_t *)g_bitmask_array;
     deserialise_maze(&maze, &gap_bitmask);
 
-    point_t start_point = (point_t) { 0, 4 };
-    point_t end_point   = (point_t) { 4, 0 };
+    maze_point_t start_point = (maze_point_t) { 0, 4 };
+    maze_point_t end_point   = (maze_point_t) { 4, 0 };
 
-    grid_cell_t *p_start = get_cell_at_coordinates(&maze, &start_point);
-    grid_cell_t *p_end   = get_cell_at_coordinates(&maze, &end_point);
+    maze_grid_cell_t *p_start = get_cell_at_coordinates(&maze, &start_point);
+    maze_grid_cell_t *p_end   = get_cell_at_coordinates(&maze, &end_point);
 
-    navigator_state_t navigator_state = { p_start, p_start, p_end, NORTH };
+    maze_navigator_state_t navigator_state = { p_start, p_start, p_end, NORTH };
 
     // Run the A* algorithm.
     //
     a_star(&maze, navigator_state.p_start_node, navigator_state.p_end_node);
-    path_t *p_path = get_path(navigator_state.p_end_node);
+    a_star_path_t *p_path = a_star_get_path(navigator_state.p_end_node);
 
     if (NULL == p_path)
     {
@@ -574,7 +574,7 @@ test_complex_maze_pathfinding (void)
         goto end;
     }
 
-    char *maze_str = get_path_string(&maze, p_path);
+    char *maze_str = a_star_get_path_str(&maze, p_path);
     printf("%s\n", maze_str);
 
 end: // Clean up all malloc'd memory.
@@ -608,17 +608,17 @@ end: // Clean up all malloc'd memory.
  *
  * @param[in] rows Number of rows in the maze.
  * @param[in] cols Number of columns in the maze.
- * @return grid_t Generated maze.
+ * @return maze_grid_t Generated maze.
  */
-static grid_t
+static maze_grid_t
 generate_col_maze (uint16_t rows, uint16_t cols)
 {
-    grid_t maze = create_maze(rows, cols);
+    maze_grid_t maze = create_maze(rows, cols);
 
     // Set the walls of the maze. Should just be a column that leads to the
     // objective.
     //
-    grid_cell_t *p_current_node = &maze.p_grid_array[0];
+    maze_grid_cell_t *p_current_node = &maze.p_grid_array[0];
 
     // Deal with the first node.
     //

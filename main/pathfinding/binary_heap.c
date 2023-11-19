@@ -57,7 +57,7 @@ heapify_up (binary_heap_t *p_heap, uint16_t index)
     {
         // Step 4: Swap the parent node with the current node.
         //
-        heap_node_t temp_node
+        binary_heap_node_t temp_node
             = p_heap->p_array[parent_index]; // Save the parent node.
         p_heap->p_array[parent_index] = p_heap->p_array[index]; // Swap.
         p_heap->p_array[index]        = temp_node;              // Swap.
@@ -119,8 +119,8 @@ heapify_down (binary_heap_t *p_heap, uint16_t index)
 
         // Step 4: Otherwise, swap the current node with the smallest child.
         //
-        heap_node_t temp_node  = p_heap->p_array[index];
-        p_heap->p_array[index] = p_heap->p_array[smallest_child_index];
+        binary_heap_node_t temp_node = p_heap->p_array[index];
+        p_heap->p_array[index]       = p_heap->p_array[smallest_child_index];
         p_heap->p_array[smallest_child_index] = temp_node;
 
         // Step 5: Update the index to the smallest child's index for the next
@@ -138,7 +138,7 @@ heapify_down (binary_heap_t *p_heap, uint16_t index)
  * @param priority Priority of the node to be inserted.
  */
 void
-insert (binary_heap_t *p_heap, grid_cell_t *p_maze_node, uint16_t priority)
+insert (binary_heap_t *p_heap, maze_grid_cell_t *p_maze_node, uint16_t priority)
 {
     // Step 1: Check if the heap is full.
     //
@@ -151,7 +151,7 @@ insert (binary_heap_t *p_heap, grid_cell_t *p_maze_node, uint16_t priority)
 
     // Step 2: Create a new heap node.
     //
-    heap_node_t new_node;
+    binary_heap_node_t new_node;
     new_node.p_maze_node = p_maze_node;
     new_node.priority    = priority;
 
@@ -169,14 +169,14 @@ insert (binary_heap_t *p_heap, grid_cell_t *p_maze_node, uint16_t priority)
  * @brief Deletes and returns the root node from the binary heap.
  *
  * @param p_heap Pointer to the binary min-heap.
- * @return grid_cell_t* Pointer to the original root node.
+ * @return maze_grid_cell_t* Pointer to the original root node.
  */
-grid_cell_t *
+maze_grid_cell_t *
 delete_min (binary_heap_t *p_heap)
 {
     // Step 1: Save the root node to return.
     //
-    heap_node_t root_node = p_heap->p_array[0];
+    binary_heap_node_t root_node = p_heap->p_array[0];
 
     // Step 2: Move the last node to the root and delete the last node.
     //
@@ -202,9 +202,9 @@ delete_min (binary_heap_t *p_heap)
  * @brief Peeks at the root node of the binary heap.
  *
  * @param p_heap Pointer to the binary min-heap.
- * @return heap_node_t Root node of the binary heap.
+ * @return binary_heap_node_t Root node of the binary heap.
  */
-heap_node_t
+binary_heap_node_t
 peek (binary_heap_t *p_heap)
 {
     // Step 1: Return the root node.
@@ -221,7 +221,8 @@ peek (binary_heap_t *p_heap)
  * @return uint16_t Index of the node if it exists, otherwise UINT16_MAX.
  */
 uint16_t
-get_index_of_node (const binary_heap_t *p_heap, const grid_cell_t *p_maze_node)
+get_index_of_node (const binary_heap_t    *p_heap,
+                   const maze_grid_cell_t *p_maze_node)
 {
     // Assume that the node is in the heap.
     //

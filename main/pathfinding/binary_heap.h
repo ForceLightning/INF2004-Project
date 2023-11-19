@@ -42,14 +42,17 @@
  * @brief This struct contains basic information about a node in a priority
  * queue implemented with a binary heap.
  *
+ * @property priority Priority of the node. This is the F-value of the node.
+ * @property p_maze_node Pointer to a node in the maze.
+ *
  */
-typedef struct heap_node
+typedef struct binary_heap_node
 {
     uint16_t priority; ///< Priority of the node. This is the F-value of the
                        ///< node.
-    grid_cell_t *p_maze_node; ///< Pointer to a node in the maze.
+    maze_grid_cell_t *p_maze_node; ///< Pointer to a node in the maze.
 
-} heap_node_t;
+} binary_heap_node_t;
 
 /**
  * @typedef binary_heap_t
@@ -61,13 +64,13 @@ typedef struct heap_node
  * @property size Current number of nodes in the binary heap.
  *
  * @warning The array is 0-indexed, so capacity and size are always 1 greater
- * than their respective index maximums
+ * than their respective index maximums.
  */
 typedef struct binary_heap
 {
-    heap_node_t *p_array;  ///< Pointer to the first element of the array.
-    uint16_t     capacity; ///< Maximum number of nodes that can be stored in
-                           ///< the binary heap.
+    binary_heap_node_t *p_array; ///< Pointer to the first element of the array.
+    uint16_t capacity; ///< Maximum number of nodes that can be stored in
+                       ///< the binary heap.
 
     uint16_t size; ///< Current number of nodes in the binary heap.
 } binary_heap_t;
@@ -80,14 +83,16 @@ void heapify_up(binary_heap_t *p_heap, uint16_t index);
 
 void heapify_down(binary_heap_t *p_heap, uint16_t index);
 
-void insert(binary_heap_t *p_heap, grid_cell_t *p_maze_node, uint16_t priority);
+void insert(binary_heap_t    *p_heap,
+            maze_grid_cell_t *p_maze_node,
+            uint16_t          priority);
 
-grid_cell_t *delete_min(binary_heap_t *p_heap);
+maze_grid_cell_t *delete_min(binary_heap_t *p_heap);
 
-heap_node_t peek(binary_heap_t *p_heap);
+binary_heap_node_t peek(binary_heap_t *p_heap);
 
-uint16_t get_index_of_node(const binary_heap_t *p_heap,
-                           const grid_cell_t   *p_maze_node);
+uint16_t get_index_of_node(const binary_heap_t    *p_heap,
+                           const maze_grid_cell_t *p_maze_node);
 
 #endif // BINARY_HEAP_H
 

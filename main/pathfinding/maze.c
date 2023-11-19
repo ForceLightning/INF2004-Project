@@ -18,37 +18,39 @@
 
 // Private function prototypes.
 //
-static grid_cell_t *get_cell_in_direction_from(grid_t              *p_grid,
-                                               grid_cell_t         *p_current,
-                                               cardinal_direction_t direction);
+static maze_grid_cell_t *get_cell_in_direction_from(
+    maze_grid_t              *p_grid,
+    maze_grid_cell_t         *p_current,
+    maze_cardinal_direction_t direction);
 
-static void set_wall_helper(grid_t      *p_grid,
-                            grid_cell_t *p_current_node,
-                            uint8_t      cardinal_direction);
+static void set_wall_helper(maze_grid_t      *p_grid,
+                            maze_grid_cell_t *p_current_node,
+                            uint8_t           cardinal_direction);
 
-static void unset_wall_helper(grid_t      *p_grid,
-                              grid_cell_t *p_current_node,
-                              uint8_t      cardinal_direction);
+static void unset_wall_helper(maze_grid_t      *p_grid,
+                              maze_grid_cell_t *p_current_node,
+                              uint8_t           cardinal_direction);
 
-static void draw_cell(const grid_cell_t *p_cell,
-                      char              *p_maze_string,
-                      uint16_t           relative_row);
+static void draw_cell(const maze_grid_cell_t *p_cell,
+                      char                   *p_maze_string,
+                      uint16_t                relative_row);
 
 /**
  * @brief Create a maze with the specified number of rows and columns.
  *
  * @param[in] rows Number of rows in the maze.
  * @param[in] columns Number of columns in the maze.
- * @return grid_t Empty maze. Indexed first by row, then column.
+ * @return maze_grid_t Empty maze. Indexed first by row, then column.
  *
  * @warning The maze must be destroyed by @ref destroy_maze.
  */
-grid_t
+maze_grid_t
 create_maze (uint16_t rows, uint16_t columns)
 {
-    grid_cell_t *p_grid_array = malloc(sizeof(grid_cell_t) * rows * columns);
-    memset(p_grid_array, 0, sizeof(grid_cell_t) * rows * columns);
-    grid_t grid = { p_grid_array, rows, columns };
+    maze_grid_cell_t *p_grid_array
+        = malloc(sizeof(maze_grid_cell_t) * rows * columns);
+    memset(p_grid_array, 0, sizeof(maze_grid_cell_t) * rows * columns);
+    maze_grid_t grid = { p_grid_array, rows, columns };
     initialise_empty_maze_walled(&grid);
     return grid;
 }
@@ -61,15 +63,15 @@ create_maze (uint16_t rows, uint16_t columns)
  * @param[in,out] p_grid Pointer to an empty maze created by @ref create_maze.
  */
 void
-initialise_empty_maze_walled (grid_t *p_grid)
+initialise_empty_maze_walled (maze_grid_t *p_grid)
 {
     for (uint16_t row = 0; p_grid->rows > row; row++)
     {
         for (uint16_t col = 0; p_grid->columns > col; col++)
         {
-            grid_cell_t *p_cell
+            maze_grid_cell_t *p_cell
                 = &p_grid->p_grid_array[row * p_grid->columns + col];
-            p_cell->coordinates = (point_t) { col, row };
+            p_cell->coordinates = (maze_point_t) { col, row };
             p_cell->f           = 0;
             p_cell->g           = 0;
             p_cell->h           = 0;
@@ -90,13 +92,13 @@ initialise_empty_maze_walled (grid_t *p_grid)
  * @param[in,out] p_grid Pointer to the maze grid.
  */
 void
-clear_maze_heuristics (grid_t *p_grid)
+clear_maze_heuristics (maze_grid_t *p_grid)
 {
     for (uint16_t row = 0; p_grid->rows > row; row++)
     {
         for (uint16_t col = 0; p_grid->columns > col; col++)
         {
-            grid_cell_t *p_cell
+            maze_grid_cell_t *p_cell
                 = &p_grid->p_grid_array[row * p_grid->columns + col];
             p_cell->f          = UINT32_MAX;
             p_cell->g          = UINT32_MAX;
@@ -112,7 +114,7 @@ clear_maze_heuristics (grid_t *p_grid)
  * @param[in,out] p_grid Pointer to the maze grid.
  */
 void
-destroy_maze (grid_t *p_grid)
+destroy_maze (maze_grid_t *p_grid)
 {
     if (NULL != p_grid->p_grid_array)
     {
@@ -135,7 +137,7 @@ destroy_maze (grid_t *p_grid)
  * @return int8_t Offset of the current direction from cardinal directions.
  */
 int8_t
-get_offset_from_nav_direction (const navigator_state_t *p_navigator)
+get_offset_from_nav_direction (const maze_navigator_state_t *p_navigator)
 {
     int8_t offset = (int8_t)(-p_navigator->orientation);
     return offset;
@@ -151,9 +153,9 @@ get_offset_from_nav_direction (const navigator_state_t *p_navigator)
  * navigator's orientation.
  */
 void
-navigator_unset_walls (grid_t            *p_grid,
-                       navigator_state_t *p_navigator,
-                       uint8_t            wall_bitmask)
+navigator_unset_walls (maze_grid_t            *p_grid,
+                       maze_navigator_state_t *p_navigator,
+                       uint8_t                 wall_bitmask)
 {
     int8_t  offset     = get_offset_from_nav_direction(p_navigator);
     uint8_t mod_offset = offset % 4;
@@ -185,11 +187,11 @@ navigator_unset_walls (grid_t            *p_grid,
  * entire cell's walls and gaps will be set.
  */
 void
-navigator_modify_walls (grid_t            *p_grid,
-                        navigator_state_t *p_navigator,
-                        uint8_t            aligned_wall_bitmask,
-                        bool               is_set,
-                        bool               is_unset)
+navigator_modify_walls (maze_grid_t            *p_grid,
+                        maze_navigator_state_t *p_navigator,
+                        uint8_t                 aligned_wall_bitmask,
+                        bool                    is_set,
+                        bool                    is_unset)
 {
     // Sanity check to ensure that the navigator is not trying to do nothing
     // with this function call.
@@ -230,7 +232,7 @@ navigator_modify_walls (grid_t            *p_grid,
  *
  */
 char *
-get_maze_string (grid_t *p_grid)
+get_maze_string (maze_grid_t *p_grid)
 {
     uint16_t maze_string_length
         = (p_grid->columns * 4 + 2) * (p_grid->rows * 2 + 1);
@@ -245,7 +247,7 @@ get_maze_string (grid_t *p_grid)
         {
             for (uint16_t col = 0; p_grid->columns > col; col++)
             {
-                const grid_cell_t *p_cell
+                const maze_grid_cell_t *p_cell
                     = &p_grid->p_grid_array[row * p_grid->columns + col];
 
                 draw_cell(p_cell, p_maze_string, relative_row);
@@ -290,9 +292,9 @@ get_maze_string (grid_t *p_grid)
  * get_maze_string.
  */
 void
-insert_navigator_str (const grid_t            *p_grid,
-                      const navigator_state_t *p_navigator,
-                      char                    *p_maze_str)
+insert_navigator_str (const maze_grid_t            *p_grid,
+                      const maze_navigator_state_t *p_navigator,
+                      char                         *p_maze_str)
 {
     uint16_t row = p_navigator->p_current_node->coordinates.y;
     uint16_t col = p_navigator->p_current_node->coordinates.x;
@@ -329,16 +331,17 @@ insert_navigator_str (const grid_t            *p_grid,
  *
  * @param[in] p_point_a Pointer to point a.
  * @param[in] p_point_b Pointer to point b.
- * @return cardinal_direction_t Direction from point a to point b. NONE if they
- * are not adjacent.
+ * @return maze_cardinal_direction_t Direction from point a to point b. NONE if
+ * they are not adjacent.
  */
-cardinal_direction_t
-get_direction_from_to (const point_t *p_point_a, const point_t *p_point_b)
+maze_cardinal_direction_t
+get_direction_from_to (const maze_point_t *p_point_a,
+                       const maze_point_t *p_point_b)
 {
     int32_t row_offset = p_point_b->y - p_point_a->y;
     int32_t col_offset = p_point_b->x - p_point_a->x;
 
-    cardinal_direction_t direction = NONE;
+    maze_cardinal_direction_t direction = NONE;
 
     // Check if the points are adjacent.
     if (1 != (abs(row_offset) + abs(col_offset)))
@@ -377,7 +380,7 @@ end:
  * @return int16_t 0 if successful, -1 otherwise.
  */
 int16_t
-deserialise_maze (grid_t *p_grid, maze_gap_bitmask_t *p_no_walls_array)
+deserialise_maze (maze_grid_t *p_grid, maze_gap_bitmask_t *p_no_walls_array)
 {
     int16_t ret_val = 0;
     // Ensure that the no walls array is not NULL.
@@ -403,7 +406,7 @@ deserialise_maze (grid_t *p_grid, maze_gap_bitmask_t *p_no_walls_array)
     {
         for (uint16_t col = 0; p_grid->columns > col; col++)
         {
-            grid_cell_t *p_cell
+            maze_grid_cell_t *p_cell
                 = &p_grid->p_grid_array[row * p_grid->columns + col];
             uint16_t no_walls_directions
                 = p_no_walls_array->p_bitmask[row * p_grid->columns + col];
@@ -438,7 +441,7 @@ end:
  * get the walls.
  */
 maze_gap_bitmask_t
-serialise_maze (grid_t *p_grid)
+serialise_maze (maze_grid_t *p_grid)
 {
     maze_gap_bitmask_t no_walls_array = {
         .p_bitmask = malloc(sizeof(uint16_t) * p_grid->rows * p_grid->columns),
@@ -455,7 +458,7 @@ serialise_maze (grid_t *p_grid)
     {
         for (uint16_t col = 0; p_grid->columns > col; col++)
         {
-            const grid_cell_t *p_cell
+            const maze_grid_cell_t *p_cell
                 = &p_grid->p_grid_array[row * p_grid->columns + col];
             uint8_t cardinal_direction = 0;
 
@@ -482,12 +485,13 @@ serialise_maze (grid_t *p_grid)
  *
  * @param[in] p_grid Pointer to the maze grid.
  * @param[in] p_coordinates Pointer to the coordinates.
- * @return grid_cell_t* Pointer to the cell. NULL if the cell is out of bounds.
+ * @return maze_grid_cell_t* Pointer to the cell. NULL if the cell is out of
+ * bounds.
  */
-grid_cell_t *
-get_cell_at_coordinates (grid_t *p_grid, const point_t *p_coordinates)
+maze_grid_cell_t *
+get_cell_at_coordinates (maze_grid_t *p_grid, const maze_point_t *p_coordinates)
 {
-    grid_cell_t *p_cell = NULL;
+    maze_grid_cell_t *p_cell = NULL;
 
     // Check if the coordinates are within the maze.
     //
@@ -512,20 +516,21 @@ end:
  * @param[in] p_from Pointer to the cell to get the next cell from.
  * @param[in] direction Cardinal direction to get the next cell from.
  *
- * @return grid_cell_t* Pointer to the cell. NULL if the cell is out of bounds.
+ * @return maze_grid_cell_t* Pointer to the cell. NULL if the cell is out of
+ * bounds.
  */
-grid_cell_t *
-get_cell_in_direction (grid_t              *p_grid,
-                       grid_cell_t         *p_from,
-                       cardinal_direction_t direction)
+maze_grid_cell_t *
+get_cell_in_direction (maze_grid_t              *p_grid,
+                       maze_grid_cell_t         *p_from,
+                       maze_cardinal_direction_t direction)
 {
     int32_t row_diff = direction == NORTH ? -1 : direction == SOUTH ? 1 : 0;
     int32_t col_diff = direction == EAST ? 1 : direction == WEST ? -1 : 0;
 
-    point_t coordinates = { p_from->coordinates.x + col_diff,
-                            p_from->coordinates.y + row_diff };
+    maze_point_t coordinates = { p_from->coordinates.x + col_diff,
+                                 p_from->coordinates.y + row_diff };
 
-    grid_cell_t *p_cell = get_cell_at_coordinates(p_grid, &coordinates);
+    maze_grid_cell_t *p_cell = get_cell_at_coordinates(p_grid, &coordinates);
     return p_cell;
 }
 
@@ -542,7 +547,8 @@ get_cell_in_direction (grid_t              *p_grid,
  * @see https://en.wikipedia.org/wiki/Taxicab_geometry
  */
 uint32_t
-manhattan_distance (const point_t *p_point_a, const point_t *p_point_b)
+manhattan_distance (const maze_point_t *p_point_a,
+                    const maze_point_t *p_point_b)
 {
     uint32_t x_diff = abs(p_point_a->x - p_point_b->x);
     uint32_t y_diff = abs(p_point_a->y - p_point_b->y);
@@ -560,13 +566,13 @@ manhattan_distance (const point_t *p_point_a, const point_t *p_point_b)
  * @param[in] p_current Pointer to the current cell.
  * @param[in] direction Cardinal direction to get the next cell from.
  *
- * @return grid_cell_t* Pointer to the cell in the direction from the current
- * cell.
+ * @return maze_grid_cell_t* Pointer to the cell in the direction from the
+ * current cell.
  */
-static grid_cell_t *
-get_cell_in_direction_from (grid_t              *p_grid,
-                            grid_cell_t         *p_current,
-                            cardinal_direction_t direction)
+static maze_grid_cell_t *
+get_cell_in_direction_from (maze_grid_t              *p_grid,
+                            maze_grid_cell_t         *p_current,
+                            maze_cardinal_direction_t direction)
 {
     int8_t row_offset = 0;
     int8_t col_offset = 0;
@@ -608,12 +614,12 @@ get_cell_in_direction_from (grid_t              *p_grid,
  * @param[in] cardinal_direction Cardinal direction to set the wall.
  */
 static void
-set_wall_helper (grid_t      *p_grid,
-                 grid_cell_t *p_current_node,
-                 uint8_t      cardinal_direction)
+set_wall_helper (maze_grid_t      *p_grid,
+                 maze_grid_cell_t *p_current_node,
+                 uint8_t           cardinal_direction)
 {
     p_current_node->p_next[cardinal_direction] = NULL;
-    grid_cell_t *p_next_node                   = get_cell_in_direction_from(
+    maze_grid_cell_t *p_next_node              = get_cell_in_direction_from(
         p_grid, p_current_node, cardinal_direction);
 
     // Sanity check to ensure that the next node is not NULL.
@@ -632,11 +638,11 @@ set_wall_helper (grid_t      *p_grid,
  *
  */
 static void
-unset_wall_helper (grid_t      *p_grid,
-                   grid_cell_t *p_current_node,
-                   uint8_t      cardinal_direction)
+unset_wall_helper (maze_grid_t      *p_grid,
+                   maze_grid_cell_t *p_current_node,
+                   uint8_t           cardinal_direction)
 {
-    grid_cell_t *p_next_node = get_cell_in_direction_from(
+    maze_grid_cell_t *p_next_node = get_cell_in_direction_from(
         p_grid, p_current_node, cardinal_direction);
 
     // Sanity check to ensure that the next node is not NULL.
@@ -656,9 +662,9 @@ unset_wall_helper (grid_t      *p_grid,
  *
  */
 static void
-draw_cell (const grid_cell_t *p_cell,
-           char              *p_maze_string,
-           uint16_t           relative_row)
+draw_cell (const maze_grid_cell_t *p_cell,
+           char                   *p_maze_string,
+           uint16_t                relative_row)
 {
     switch (relative_row)
     {

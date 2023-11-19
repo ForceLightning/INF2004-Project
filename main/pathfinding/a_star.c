@@ -21,18 +21,18 @@
 // ----------------------------------------------------------------------------
 //
 
-static void a_star_inner_loop(binary_heap_t *p_open_set,
-                              grid_cell_t   *p_end_node);
-static void insert_path_directions(char                *p_maze_string,
-                                   grid_cell_t         *p_cell,
-                                   uint16_t             str_num_cols,
-                                   cardinal_direction_t in_direction,
-                                   cardinal_direction_t out_direction);
-static void insert_path_in_direction(char                *p_maze_str,
-                                     uint16_t             str_num_cols,
-                                     uint32_t             node_row,
-                                     uint32_t             node_col,
-                                     cardinal_direction_t direction);
+static void a_star_inner_loop(binary_heap_t    *p_open_set,
+                              maze_grid_cell_t *p_end_node);
+static void insert_path_directions(char                     *p_maze_string,
+                                   maze_grid_cell_t         *p_cell,
+                                   uint16_t                  str_num_cols,
+                                   maze_cardinal_direction_t in_direction,
+                                   maze_cardinal_direction_t out_direction);
+static void insert_path_in_direction(char                     *p_maze_str,
+                                     uint16_t                  str_num_cols,
+                                     uint32_t                  node_row,
+                                     uint32_t                  node_col,
+                                     maze_cardinal_direction_t direction);
 static void insert_node_centre_char(char    *p_maze_string,
                                     uint32_t row,
                                     uint32_t col,
@@ -53,13 +53,15 @@ static void insert_node_centre_char(char    *p_maze_string,
  * @param[in] p_end_node Pointer to the end node.
  */
 void
-a_star (grid_t *p_grid, grid_cell_t *p_start_node, grid_cell_t *p_end_node)
+a_star (maze_grid_t      *p_grid,
+        maze_grid_cell_t *p_start_node,
+        maze_grid_cell_t *p_end_node)
 {
     // Step 1: Initialise the open set heap.
     //
     binary_heap_t open_set;
     open_set.p_array
-        = malloc(sizeof(heap_node_t) * p_grid->rows * p_grid->columns);
+        = malloc(sizeof(binary_heap_node_t) * p_grid->rows * p_grid->columns);
     open_set.capacity = p_grid->rows * p_grid->columns;
     open_set.size     = 0;
 
@@ -69,7 +71,7 @@ a_star (grid_t *p_grid, grid_cell_t *p_start_node, grid_cell_t *p_end_node)
     {
         for (uint16_t col = 0; p_grid->columns > col; col++)
         {
-            grid_cell_t *p_cell
+            maze_grid_cell_t *p_cell
                 = &p_grid->p_grid_array[row * p_grid->columns + col];
             p_cell->g = UINT16_MAX;
             p_cell->h = UINT16_MAX;
@@ -99,16 +101,16 @@ a_star (grid_t *p_grid, grid_cell_t *p_start_node, grid_cell_t *p_end_node)
  * @param p_end_node Pointer to the end node.
  * @return path_t* Pointer to the path.
  */
-path_t *
-get_path (grid_cell_t *p_end_node)
+a_star_path_t *
+a_star_get_path (maze_grid_cell_t *p_end_node)
 {
-    uint32_t     path_length    = 0;
-    grid_cell_t *p_current_node = p_end_node;
-    path_length                 = p_current_node->p_came_from->g + 2;
-    grid_cell_t *p_path         = malloc(sizeof(grid_cell_t) * path_length);
-    path_t      *p_path_struct  = malloc(sizeof(path_t));
-    p_path_struct->length       = path_length;
-    p_path_struct->p_path       = p_path;
+    uint32_t          path_length    = 0;
+    maze_grid_cell_t *p_current_node = p_end_node;
+    path_length                      = p_current_node->p_came_from->g + 2;
+    maze_grid_cell_t *p_path = malloc(sizeof(maze_grid_cell_t) * path_length);
+    a_star_path_t    *p_path_struct = malloc(sizeof(a_star_path_t));
+    p_path_struct->length           = path_length;
+    p_path_struct->p_path           = p_path;
 
     // Traverse the path backwards and store it in the path array in reverse.
     //
@@ -133,14 +135,15 @@ get_path (grid_cell_t *p_end_node)
  * @return char* The string representation of the path.
  */
 char *
-get_path_string (grid_t *p_grid, path_t *p_path)
+a_star_get_path_str (maze_grid_t *p_grid, a_star_path_t *p_path)
 {
     char *p_maze_string = get_maze_string(p_grid);
 
     // Initialise the pointers to the current and previous cells.
     //
-    grid_cell_t *p_cell = &p_path->p_path[p_path->length - 1]; // Current cell.
-    grid_cell_t *p_previous_cell = p_cell;                     // Previous cell.
+    maze_grid_cell_t *p_cell
+        = &p_path->p_path[p_path->length - 1];  // Current cell.
+    maze_grid_cell_t *p_previous_cell = p_cell; // Previous cell.
 
     uint16_t str_num_cols
         = p_grid->columns * 4 + 2; // Number of columns in the string.
@@ -149,7 +152,7 @@ get_path_string (grid_t *p_grid, path_t *p_path)
     // add to the string. Special cases are the start and end nodes. This
     // handles the end node.
     //
-    cardinal_direction_t direction = get_direction_from_to(
+    maze_cardinal_direction_t direction = get_direction_from_to(
         &p_cell->coordinates, &p_cell->p_came_from->coordinates);
 
     insert_path_directions(
@@ -165,9 +168,9 @@ get_path_string (grid_t *p_grid, path_t *p_path)
         p_previous_cell = p_cell;
         p_cell          = &p_path->p_path[index];
 
-        cardinal_direction_t in_direction = get_direction_from_to(
+        maze_cardinal_direction_t in_direction = get_direction_from_to(
             &p_cell->coordinates, &p_cell->p_came_from->coordinates);
-        cardinal_direction_t out_direction = get_direction_from_to(
+        maze_cardinal_direction_t out_direction = get_direction_from_to(
             &p_cell->coordinates, &p_previous_cell->coordinates);
 
         insert_path_directions(
@@ -201,13 +204,13 @@ get_path_string (grid_t *p_grid, path_t *p_path)
  * @see https://en.wikipedia.org/wiki/A*_search_algorithm#Pseudocode
  */
 static void
-a_star_inner_loop (binary_heap_t *p_open_set, grid_cell_t *p_end_node)
+a_star_inner_loop (binary_heap_t *p_open_set, maze_grid_cell_t *p_end_node)
 {
     while (p_open_set->size > 0)
     {
         // Step 1: Get the node with the lowest F-value from the open set. If it
         // is the end node, return.
-        heap_node_t p_current_node = peek(p_open_set);
+        binary_heap_node_t p_current_node = peek(p_open_set);
         if (p_current_node.p_maze_node == p_end_node)
         {
             return;
@@ -226,8 +229,8 @@ a_star_inner_loop (binary_heap_t *p_open_set, grid_cell_t *p_end_node)
 
             // Step 3: Calculate the tentative g-score.
             //
-            uint32_t     tentative_g_score = p_current_node.p_maze_node->g + 1;
-            grid_cell_t *p_neighbour_node
+            uint32_t tentative_g_score = p_current_node.p_maze_node->g + 1;
+            maze_grid_cell_t *p_neighbour_node
                 = p_current_node.p_maze_node->p_next[neighbour];
 
             if (tentative_g_score < p_neighbour_node->g)
@@ -281,11 +284,11 @@ a_star_inner_loop (binary_heap_t *p_open_set, grid_cell_t *p_end_node)
  * @param out_direction Direction that leads out of the current cell.
  */
 static void
-insert_path_directions (char                *p_maze_string,
-                        grid_cell_t         *p_cell,
-                        uint16_t             str_num_cols,
-                        cardinal_direction_t in_direction,
-                        cardinal_direction_t out_direction)
+insert_path_directions (char                     *p_maze_string,
+                        maze_grid_cell_t         *p_cell,
+                        uint16_t                  str_num_cols,
+                        maze_cardinal_direction_t in_direction,
+                        maze_cardinal_direction_t out_direction)
 {
     uint32_t node_row = p_cell->coordinates.y * 2 + 1;
     uint32_t node_col = p_cell->coordinates.x * 4 + 2;
@@ -369,11 +372,11 @@ handle_end:
  * @param direction Direction to add the path in.
  */
 static void
-insert_path_in_direction (char                *p_maze_str,
-                          uint16_t             str_num_cols,
-                          uint32_t             node_row,
-                          uint32_t             node_col,
-                          cardinal_direction_t direction)
+insert_path_in_direction (char                     *p_maze_str,
+                          uint16_t                  str_num_cols,
+                          uint32_t                  node_row,
+                          uint32_t                  node_col,
+                          maze_cardinal_direction_t direction)
 {
 
     switch (direction)

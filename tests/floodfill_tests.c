@@ -68,7 +68,7 @@ static const uint16_t g_bitmask_array[GRID_ROWS * GRID_COLS] = {
  * @brief Global true grid for testing.
  *
  */
-volatile grid_t g_true_grid
+volatile maze_grid_t g_true_grid
     = { .p_grid_array = NULL, .rows = GRID_ROWS, .columns = GRID_COLS };
 
 // Test function prototypes.
@@ -143,11 +143,11 @@ test_initialise_empty_maze_nowall (void)
  * @return uint16_t Bitmask of the walls.
  */
 static uint16_t
-explore_current_node (grid_t              *p_grid,
-                      navigator_state_t   *p_navigator,
-                      cardinal_direction_t direction)
+explore_current_node (maze_grid_t              *p_grid,
+                      maze_navigator_state_t   *p_navigator,
+                      maze_cardinal_direction_t direction)
 {
-    grid_cell_t *p_current_node = p_navigator->p_current_node; // Current node.
+    maze_grid_cell_t *p_current_node = p_navigator->p_current_node; // Current node.
 
     uint8_t bitmask
         = g_bitmask_array[p_current_node->coordinates.y * p_grid->columns
@@ -174,7 +174,8 @@ explore_current_node (grid_t              *p_grid,
  * @param direction Cardinal direction to move.
  */
 static void
-move_navigator (navigator_state_t *p_navigator, cardinal_direction_t direction)
+move_navigator (maze_navigator_state_t   *p_navigator,
+                maze_cardinal_direction_t direction)
 {
     p_navigator->p_current_node
         = p_navigator->p_current_node
@@ -198,7 +199,7 @@ test_floodfill (void)
     //
     g_true_grid = create_maze(GRID_ROWS, GRID_COLS);
 
-    grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
     floodfill_init_empty_maze_nowall(&maze);
     maze_gap_bitmask_t gap_bitmask = { .p_bitmask = (uint16_t *)g_bitmask_array,
                                        .rows      = GRID_ROWS,
@@ -208,17 +209,18 @@ test_floodfill (void)
 
     // Initialise the navigator.
     //
-    point_t start_point = { 0, 4 };
-    point_t end_point   = { 4, 0 };
+    maze_point_t start_point = { 0, 4 };
+    maze_point_t end_point   = { 4, 0 };
 
-    grid_cell_t      *p_start   = get_cell_at_coordinates(&maze, &start_point);
-    grid_cell_t      *p_end     = get_cell_at_coordinates(&maze, &end_point);
-    navigator_state_t navigator = { p_start, p_start, p_end, NORTH };
+    maze_grid_cell_t *p_start = get_cell_at_coordinates(&maze, &start_point);
+    maze_grid_cell_t *p_end   = get_cell_at_coordinates(&maze, &end_point);
+    maze_navigator_state_t navigator = { p_start, p_start, p_end, NORTH };
 
     explore_func_t   p_explore_func   = &explore_current_node;
     move_navigator_t p_move_navigator = &move_navigator;
 
-    floodfill_map_maze(&maze, p_end, &navigator, p_explore_func, p_move_navigator);
+    floodfill_map_maze(
+        &maze, p_end, &navigator, p_explore_func, p_move_navigator);
 
     char *p_maze_str = get_maze_string(&maze);
     insert_navigator_str(&maze, &navigator, p_maze_str);

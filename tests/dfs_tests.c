@@ -66,11 +66,11 @@ static int test_all_reachable_visisted(void);
 // Private function prototypes.
 // ----------------------------------------------------------------------------
 //
-static uint16_t explore_current_node(grid_t              *p_grid,
-                                     navigator_state_t   *p_navigator,
-                                     cardinal_direction_t direction);
-static void     move_navigator(navigator_state_t   *p_navigator,
-                               cardinal_direction_t direction);
+static uint16_t explore_current_node(maze_grid_t              *p_grid,
+                                     maze_navigator_state_t   *p_navigator,
+                                     maze_cardinal_direction_t direction);
+static void     move_navigator(maze_navigator_state_t   *p_navigator,
+                               maze_cardinal_direction_t direction);
 
 int
 dfs_tests (int argc, char *argv[])
@@ -115,9 +115,9 @@ dfs_tests (int argc, char *argv[])
 static int
 test_depth_first_search (void)
 {
-    grid_t true_grid = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t true_grid = create_maze(GRID_ROWS, GRID_COLS);
 
-    grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
     floodfill_init_empty_maze_nowall(&maze);
     maze_gap_bitmask_t gap_bitmask = { .p_bitmask = (uint16_t *)g_bitmask_array,
                                        .rows      = GRID_ROWS,
@@ -129,13 +129,13 @@ test_depth_first_search (void)
 
     // Initialise the navigator.
     //
-    point_t start_point = { 0, 4 };
-    point_t end_point   = { 4, 0 };
+    maze_point_t start_point = { 0, 4 };
+    maze_point_t end_point   = { 4, 0 };
 
-    grid_cell_t *p_start = get_cell_at_coordinates(&maze, &start_point);
-    grid_cell_t *p_end   = get_cell_at_coordinates(&maze, &end_point);
+    maze_grid_cell_t *p_start = get_cell_at_coordinates(&maze, &start_point);
+    maze_grid_cell_t *p_end   = get_cell_at_coordinates(&maze, &end_point);
 
-    navigator_state_t navigator = { p_start, p_start, NULL, NORTH };
+    maze_navigator_state_t navigator = { p_start, p_start, NULL, NORTH };
 
     explore_func_t   p_explore_func   = &explore_current_node;
     move_navigator_t p_move_navigator = &move_navigator;
@@ -178,10 +178,10 @@ test_depth_first_search (void)
 static int
 test_all_reachable_visisted (void)
 {
-    int ret_val     = 0;
-    grid_t true_grid = create_maze(GRID_ROWS, GRID_COLS);
+    int         ret_val   = 0;
+    maze_grid_t true_grid = create_maze(GRID_ROWS, GRID_COLS);
 
-    grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
     floodfill_init_empty_maze_nowall(&maze);
     maze_gap_bitmask_t gap_bitmask = { .p_bitmask = (uint16_t *)g_bitmask_array,
                                        .rows      = GRID_ROWS,
@@ -190,13 +190,13 @@ test_all_reachable_visisted (void)
 
     // Initialise the navigator.
     //
-    point_t start_point = { 0, 4 };
-    point_t end_point   = { 4, 0 };
+    maze_point_t start_point = { 0, 4 };
+    maze_point_t end_point   = { 4, 0 };
 
-    grid_cell_t *p_start = get_cell_at_coordinates(&maze, &start_point);
-    grid_cell_t *p_end   = get_cell_at_coordinates(&maze, &end_point);
+    maze_grid_cell_t *p_start = get_cell_at_coordinates(&maze, &start_point);
+    maze_grid_cell_t *p_end   = get_cell_at_coordinates(&maze, &end_point);
 
-    navigator_state_t navigator = { p_start, p_start, NULL, NORTH };
+    maze_navigator_state_t navigator = { p_start, p_start, NULL, NORTH };
 
     explore_func_t   p_explore_func   = &explore_current_node;
     move_navigator_t p_move_navigator = &move_navigator;
@@ -205,15 +205,16 @@ test_all_reachable_visisted (void)
     {
         for (size_t col = 0; GRID_COLS > col; col++)
         {
-            grid_cell_t *p_cell = &maze.p_grid_array[row * GRID_COLS + col];
-            p_cell->is_visited  = true;
+            maze_grid_cell_t *p_cell
+                = &maze.p_grid_array[row * GRID_COLS + col];
+            p_cell->is_visited = true;
         }
     }
 
     binary_heap_t reachable_set
         = { .p_array = NULL, .size = 0, .capacity = GRID_ROWS * GRID_COLS };
     reachable_set.p_array
-        = malloc(sizeof(grid_cell_t *) * reachable_set.capacity);
+        = malloc(sizeof(maze_grid_cell_t *) * reachable_set.capacity);
 
     insert(&reachable_set, p_start, 0);
 
@@ -230,12 +231,12 @@ test_all_reachable_visisted (void)
 // ----------------------------------------------------------------------------
 //
 static uint16_t
-explore_current_node (grid_t              *p_grid,
-                      navigator_state_t   *p_navigator,
-                      cardinal_direction_t direction)
+explore_current_node (maze_grid_t              *p_grid,
+                      maze_navigator_state_t   *p_navigator,
+                      maze_cardinal_direction_t direction)
 {
-    grid_cell_t *p_current_node = p_navigator->p_current_node;
-    p_current_node->is_visited  = true;
+    maze_grid_cell_t *p_current_node = p_navigator->p_current_node;
+    p_current_node->is_visited       = true;
 
     uint8_t bitmask
         = g_bitmask_array[p_current_node->coordinates.y * p_grid->columns
@@ -252,10 +253,12 @@ explore_current_node (grid_t              *p_grid,
 }
 
 static void
-move_navigator (navigator_state_t *p_navigator, cardinal_direction_t direction)
+move_navigator (maze_navigator_state_t   *p_navigator,
+                maze_cardinal_direction_t direction)
 {
     p_navigator->orientation = direction;
-    grid_cell_t *p_next_node = p_navigator->p_current_node->p_next[direction];
+    maze_grid_cell_t *p_next_node
+        = p_navigator->p_current_node->p_next[direction];
     if (NULL == p_next_node->p_came_from)
     {
         p_next_node->p_came_from = p_navigator->p_current_node;

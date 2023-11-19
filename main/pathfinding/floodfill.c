@@ -22,8 +22,8 @@
 // ----------------------------------------------------------------------------
 //
 
-static void floodfill(binary_heap_t     *p_open_set,
-                      navigator_state_t *p_navigator);
+static void floodfill(binary_heap_t          *p_open_set,
+                      maze_navigator_state_t *p_navigator);
 
 // Public Functions.
 // ----------------------------------------------------------------------------
@@ -36,24 +36,24 @@ static void floodfill(binary_heap_t     *p_open_set,
  * @param p_grid Pointer to the maze.
  */
 void
-floodfill_init_empty_maze_nowall (grid_t *p_grid)
+floodfill_init_empty_maze_nowall (maze_grid_t *p_grid)
 {
     for (uint16_t row = 0; p_grid->rows > row; row++)
     {
         for (uint16_t col = 0; p_grid->columns > col; col++)
         {
-            grid_cell_t *p_cell
+            maze_grid_cell_t *p_cell
                 = &p_grid->p_grid_array[row * p_grid->columns + col];
             p_cell->f           = 0;
             p_cell->g           = 0;
             p_cell->h           = 0;
-            p_cell->coordinates = (point_t) { col, row };
+            p_cell->coordinates = (maze_point_t) { col, row };
             p_cell->p_came_from = NULL;
             p_cell->is_visited  = false;
 
             for (int16_t i = 0; 4 > i; i++)
             {
-                grid_cell_t *p_neighbour
+                maze_grid_cell_t *p_neighbour
                     = get_cell_in_direction(p_grid, p_cell, i);
 
                 if (NULL != p_neighbour)
@@ -80,11 +80,11 @@ floodfill_init_empty_maze_nowall (grid_t *p_grid)
  * navigator.
  */
 void
-floodfill_map_maze (grid_t            *p_grid,
-                    const grid_cell_t *p_end_node,
-                    navigator_state_t *p_navigator,
-                    explore_func_t     p_explore_func,
-                    move_navigator_t   p_move_navigator)
+floodfill_map_maze (maze_grid_t            *p_grid,
+                    const maze_grid_cell_t *p_end_node,
+                    maze_navigator_state_t *p_navigator,
+                    explore_func_t          p_explore_func,
+                    move_navigator_t        p_move_navigator)
 {
     // Initialise the flood array.
     //
@@ -95,7 +95,7 @@ floodfill_map_maze (grid_t            *p_grid,
     {
         for (uint16_t col = 0; p_grid->columns > col; col++)
         {
-            grid_cell_t *p_cell
+            maze_grid_cell_t *p_cell
                 = &p_grid->p_grid_array[row * p_grid->columns + col];
 
             p_cell->h = UINT32_MAX;
@@ -114,19 +114,20 @@ floodfill_map_maze (grid_t            *p_grid,
 
         // ! Possible to allocate this out of the loop?
         binary_heap_t flood_array;
-        flood_array.p_array
-            = malloc(sizeof(heap_node_t) * p_grid->rows * p_grid->columns);
+        flood_array.p_array  = malloc(sizeof(binary_heap_node_t) * p_grid->rows
+                                     * p_grid->columns);
         flood_array.capacity = p_grid->rows * p_grid->columns;
         flood_array.size     = 0;
         floodfill(&flood_array, p_navigator);
         // Get the next node to explore.
         //
-        grid_cell_t         *p_next_node = NULL;
-        cardinal_direction_t direction   = NONE;
+        maze_grid_cell_t         *p_next_node = NULL;
+        maze_cardinal_direction_t direction   = NONE;
 
         for (uint8_t i = 0; 4 > i; i++)
         {
-            grid_cell_t *p_neighbour = p_navigator->p_current_node->p_next[i];
+            maze_grid_cell_t *p_neighbour
+                = p_navigator->p_current_node->p_next[i];
 
             if (NULL == p_neighbour)
             {
@@ -170,13 +171,13 @@ floodfill_map_maze (grid_t            *p_grid,
  * @param[in,out] p_navigator Pointer to the navigator state.
  */
 static void
-floodfill (binary_heap_t *p_open_set, navigator_state_t *p_navigator)
+floodfill (binary_heap_t *p_open_set, maze_navigator_state_t *p_navigator)
 {
     // First, update the flood array from the end node. We only update the h
     // value here.
     //
-    grid_cell_t *p_flood_node = p_navigator->p_end_node;
-    p_flood_node->h           = 0;
+    maze_grid_cell_t *p_flood_node = p_navigator->p_end_node;
+    p_flood_node->h                = 0;
 
     // Insert the start node into the flood array.
     //
@@ -187,7 +188,7 @@ floodfill (binary_heap_t *p_open_set, navigator_state_t *p_navigator)
     //
     while (0 < p_open_set->size)
     {
-        heap_node_t p_current_node = peek(p_open_set);
+        binary_heap_node_t p_current_node = peek(p_open_set);
 
         if (p_current_node.p_maze_node == p_navigator->p_current_node)
         {
@@ -200,7 +201,7 @@ floodfill (binary_heap_t *p_open_set, navigator_state_t *p_navigator)
 
         for (uint8_t neighbour = 0; 4 > neighbour; neighbour++)
         {
-            grid_cell_t *p_neighbour
+            maze_grid_cell_t *p_neighbour
                 = p_current_node.p_maze_node->p_next[neighbour];
 
             if (NULL == p_neighbour)
@@ -208,8 +209,8 @@ floodfill (binary_heap_t *p_open_set, navigator_state_t *p_navigator)
                 continue;
             }
 
-            uint32_t     tentative_h_score = p_current_node.p_maze_node->h + 1;
-            grid_cell_t *p_neighbour_node
+            uint32_t tentative_h_score = p_current_node.p_maze_node->h + 1;
+            maze_grid_cell_t *p_neighbour_node
                 = p_current_node.p_maze_node->p_next[neighbour];
 
             if (tentative_h_score < p_neighbour_node->h)

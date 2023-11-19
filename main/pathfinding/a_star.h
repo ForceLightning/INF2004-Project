@@ -24,20 +24,22 @@
  * @brief Struct containing the path from the start node to the end node.
  *
  */
-typedef struct path
+typedef struct a_star_path
 {
-    uint32_t     length; ///< Length of the path.
-    grid_cell_t *p_path; ///< Pointer to the first node in the path.
-} path_t;
+    uint32_t          length; ///< Length of the path.
+    maze_grid_cell_t *p_path; ///< Pointer to the first node in the path.
+} a_star_path_t;
 
 // Public functions.
 // ----------------------------------------------------------------------------
 //
 
-void a_star(grid_t *p_grid, grid_cell_t *p_start_node, grid_cell_t *p_end_node);
+void a_star(maze_grid_t      *p_grid,
+            maze_grid_cell_t *p_start_node,
+            maze_grid_cell_t *p_end_node);
 
-path_t *get_path(grid_cell_t *p_end_node);
-char   *get_path_string(grid_t *p_grid, path_t *p_path);
+a_star_path_t *a_star_get_path(maze_grid_cell_t *p_end_node);
+char          *a_star_get_path_str(maze_grid_t *p_grid, a_star_path_t *p_path);
 
 #endif // A_STAR_H
 

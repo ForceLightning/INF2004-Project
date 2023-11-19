@@ -31,9 +31,9 @@
  *
  * @return int16_t Returns a bitmask of the walls.
  */
-typedef uint16_t (*explore_func_t)(grid_t              *p_grid,
-                                   navigator_state_t   *p_navigator,
-                                   cardinal_direction_t direction);
+typedef uint16_t (*explore_func_t)(maze_grid_t              *p_grid,
+                                   maze_navigator_state_t   *p_navigator,
+                                   maze_cardinal_direction_t direction);
 
 /**
  * @typedef move_navigator_t
@@ -42,20 +42,20 @@ typedef uint16_t (*explore_func_t)(grid_t              *p_grid,
  * @param p_navigator Pointer to the navigator state.
  * @param direction Direction to move.
  */
-typedef void (*move_navigator_t)(navigator_state_t   *p_navigator,
-                                 cardinal_direction_t direction);
+typedef void (*move_navigator_t)(maze_navigator_state_t   *p_navigator,
+                                 maze_cardinal_direction_t direction);
 
 // Public Functions.
 // ----------------------------------------------------------------------------
 //
 
-void floodfill_init_empty_maze_nowall(grid_t *p_grid);
+void floodfill_init_empty_maze_nowall(maze_grid_t *p_grid);
 
-void floodfill_map_maze(grid_t            *p_grid,
-              const grid_cell_t *p_end_node,
-              navigator_state_t *p_navigator,
-              explore_func_t     p_explore_func,
-              move_navigator_t   p_move_navigator);
+void floodfill_map_maze(maze_grid_t            *p_grid,
+                        const maze_grid_cell_t *p_end_node,
+                        maze_navigator_state_t *p_navigator,
+                        explore_func_t          p_explore_func,
+                        move_navigator_t        p_move_navigator);
 
 #endif
 

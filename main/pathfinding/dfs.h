@@ -16,15 +16,15 @@
 #include "maze.h"
 #include "floodfill.h"
 
-void dfs_depth_first_search(grid_t            *p_grid,
-                            grid_cell_t       *p_start_node,
-                            navigator_state_t *p_navigator,
-                            explore_func_t     p_explore_func,
-                            move_navigator_t   p_move_navigator);
+void dfs_depth_first_search(maze_grid_t            *p_grid,
+                            maze_grid_cell_t       *p_start_node,
+                            maze_navigator_state_t *p_navigator,
+                            explore_func_t          p_explore_func,
+                            move_navigator_t        p_move_navigator);
 
-bool dfs_is_all_visited(grid_t *p_grid);
-bool dfs_is_all_reachable_visited(grid_t            *p_grid,
-                                  navigator_state_t *p_navigator);
+bool dfs_is_all_visited(maze_grid_t *p_grid);
+bool dfs_is_all_reachable_visited(maze_grid_t            *p_grid,
+                                  maze_navigator_state_t *p_navigator);
 
 #endif // DFS_H
 
