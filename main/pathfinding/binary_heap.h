@@ -79,19 +79,19 @@ typedef struct binary_heap
 // ----------------------------------------------------------------------------
 //
 
-void heapify_up(binary_heap_t *p_heap, uint16_t index);
+void binary_heapify_up(binary_heap_t *p_heap, uint16_t index);
 
-void heapify_down(binary_heap_t *p_heap, uint16_t index);
+void binary_heapify_down(binary_heap_t *p_heap, uint16_t index);
 
-void insert(binary_heap_t    *p_heap,
+void binary_heap_insert(binary_heap_t    *p_heap,
             maze_grid_cell_t *p_maze_node,
             uint16_t          priority);
 
-maze_grid_cell_t *delete_min(binary_heap_t *p_heap);
+maze_grid_cell_t *binary_heap_delete_min(binary_heap_t *p_heap);
 
-binary_heap_node_t peek(binary_heap_t *p_heap);
+binary_heap_node_t binary_heap_peek(binary_heap_t *p_heap);
 
-uint16_t get_index_of_node(const binary_heap_t    *p_heap,
+uint16_t binary_heap_get_node_idx(const binary_heap_t    *p_heap,
                            const maze_grid_cell_t *p_maze_node);
 
 #endif // BINARY_HEAP_H

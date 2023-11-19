@@ -23,7 +23,7 @@
  * @param index Index of the node to be heapified up.
  */
 void
-heapify_up (binary_heap_t *p_heap, uint16_t index)
+binary_heapify_up (binary_heap_t *p_heap, uint16_t index)
 {
     // @note These early returns are not necessary, but they make the code
     // easier to read.
@@ -79,7 +79,7 @@ heapify_up (binary_heap_t *p_heap, uint16_t index)
  * @param index Index of the node to be heapified down.
  */
 void
-heapify_down (binary_heap_t *p_heap, uint16_t index)
+binary_heapify_down (binary_heap_t *p_heap, uint16_t index)
 {
     for (;;)
     {
@@ -138,7 +138,9 @@ heapify_down (binary_heap_t *p_heap, uint16_t index)
  * @param priority Priority of the node to be inserted.
  */
 void
-insert (binary_heap_t *p_heap, maze_grid_cell_t *p_maze_node, uint16_t priority)
+binary_heap_insert (binary_heap_t    *p_heap,
+                    maze_grid_cell_t *p_maze_node,
+                    uint16_t          priority)
 {
     // Step 1: Check if the heap is full.
     //
@@ -162,7 +164,7 @@ insert (binary_heap_t *p_heap, maze_grid_cell_t *p_maze_node, uint16_t priority)
 
     // Step 4: Heapify up.
     //
-    heapify_up(p_heap, p_heap->size - 1);
+    binary_heapify_up(p_heap, p_heap->size - 1);
 }
 
 /**
@@ -172,7 +174,7 @@ insert (binary_heap_t *p_heap, maze_grid_cell_t *p_maze_node, uint16_t priority)
  * @return maze_grid_cell_t* Pointer to the original root node.
  */
 maze_grid_cell_t *
-delete_min (binary_heap_t *p_heap)
+binary_heap_delete_min (binary_heap_t *p_heap)
 {
     // Step 1: Save the root node to return.
     //
@@ -191,7 +193,7 @@ delete_min (binary_heap_t *p_heap)
 
     // Step 4: Heapify down.
     //
-    heapify_down(p_heap, 0);
+    binary_heapify_down(p_heap, 0);
 
     // Step 5: Return the saved root node.
     //
@@ -205,7 +207,7 @@ delete_min (binary_heap_t *p_heap)
  * @return binary_heap_node_t Root node of the binary heap.
  */
 binary_heap_node_t
-peek (binary_heap_t *p_heap)
+binary_heap_peek (binary_heap_t *p_heap)
 {
     // Step 1: Return the root node.
     //
@@ -221,8 +223,8 @@ peek (binary_heap_t *p_heap)
  * @return uint16_t Index of the node if it exists, otherwise UINT16_MAX.
  */
 uint16_t
-get_index_of_node (const binary_heap_t    *p_heap,
-                   const maze_grid_cell_t *p_maze_node)
+binary_heap_get_node_idx (const binary_heap_t    *p_heap,
+                          const maze_grid_cell_t *p_maze_node)
 {
     // Assume that the node is in the heap.
     //

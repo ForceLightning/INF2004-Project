@@ -181,14 +181,14 @@ floodfill (binary_heap_t *p_open_set, maze_navigator_state_t *p_navigator)
 
     // Insert the start node into the flood array.
     //
-    insert(p_open_set, p_flood_node, p_flood_node->h);
+    binary_heap_insert(p_open_set, p_flood_node, p_flood_node->h);
 
     // This should look similar to the A* algorithm except we are conditioning
     // on the h-value.
     //
     while (0 < p_open_set->size)
     {
-        binary_heap_node_t p_current_node = peek(p_open_set);
+        binary_heap_node_t p_current_node = binary_heap_peek(p_open_set);
 
         if (p_current_node.p_maze_node == p_navigator->p_current_node)
         {
@@ -197,7 +197,7 @@ floodfill (binary_heap_t *p_open_set, maze_navigator_state_t *p_navigator)
 
         // Remove the current node from the open set.
         //
-        delete_min(p_open_set);
+        binary_heap_delete_min(p_open_set);
 
         for (uint8_t neighbour = 0; 4 > neighbour; neighbour++)
         {
@@ -218,18 +218,18 @@ floodfill (binary_heap_t *p_open_set, maze_navigator_state_t *p_navigator)
                 p_neighbour_node->h = tentative_h_score;
 
                 uint16_t neighbour_index
-                    = get_index_of_node(p_open_set, p_neighbour_node);
+                    = binary_heap_get_node_idx(p_open_set, p_neighbour_node);
 
                 if (UINT16_MAX == neighbour_index)
                 {
                     uint32_t neighbour_priority = p_neighbour_node->h;
-                    insert(p_open_set, p_neighbour_node, neighbour_priority);
+                    binary_heap_insert(p_open_set, p_neighbour_node, neighbour_priority);
                 }
                 else
                 {
                     p_open_set->p_array[neighbour_index].priority
                         = p_neighbour_node->h;
-                    heapify_up(p_open_set, neighbour_index);
+                    binary_heapify_up(p_open_set, neighbour_index);
                 }
 
                 p_neighbour_node->p_came_from = p_current_node.p_maze_node;

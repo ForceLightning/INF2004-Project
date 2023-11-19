@@ -216,7 +216,7 @@ test_all_reachable_visisted (void)
     reachable_set.p_array
         = malloc(sizeof(maze_grid_cell_t *) * reachable_set.capacity);
 
-    insert(&reachable_set, p_start, 0);
+    binary_heap_insert(&reachable_set, p_start, 0);
 
     if (!dfs_is_all_reachable_visited(&maze, &navigator))
     {

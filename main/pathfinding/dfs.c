@@ -195,9 +195,9 @@ dfs_is_all_reachable_visited (maze_grid_t            *p_grid,
     bool is_visited = true;
     while (0 < reachable_set.size)
     {
-        maze_grid_cell_t *p_current_node = peek(&reachable_set).p_maze_node;
+        maze_grid_cell_t *p_current_node = binary_heap_peek(&reachable_set).p_maze_node;
         is_visited &= p_current_node->is_visited;
-        delete_min(&reachable_set);
+        binary_heap_delete_min(&reachable_set);
         // Step 5: If not visited, end early and return false.
         //
         if (!is_visited)
@@ -237,13 +237,13 @@ reachable_floodfill (binary_heap_t          *p_reachable_set,
     // Step 2: Add the current node to the open set.
     //
     maze_grid_cell_t *p_next_node = p_navigator->p_current_node;
-    insert(&open_set, p_next_node, p_next_node->h);
+    binary_heap_insert(&open_set, p_next_node, p_next_node->h);
 
     while (0 < open_set.size)
     {
-        binary_heap_node_t p_current_node = peek(&open_set);
+        binary_heap_node_t p_current_node = binary_heap_peek(&open_set);
 
-        delete_min(&open_set);
+        binary_heap_delete_min(&open_set);
 
         for (uint8_t neighbour_dir = 0; 4 > neighbour_dir; neighbour_dir++)
         {
@@ -270,22 +270,22 @@ reachable_floodfill (binary_heap_t          *p_reachable_set,
             // then add it to the reachable set.
             //
             uint16_t neighbour_index
-                = get_index_of_node(p_reachable_set, p_neighbour);
+                = binary_heap_get_node_idx(p_reachable_set, p_neighbour);
             p_neighbour->g = tentative_g_score;
 
             if (UINT16_MAX == neighbour_index)
             {
-                insert(p_reachable_set, p_neighbour, p_neighbour->g);
+                binary_heap_insert(p_reachable_set, p_neighbour, p_neighbour->g);
             }
 
             // Step 6: Ensure that the neighbour is not in the open set, then
             // add it to the open set.
             //
-            neighbour_index = get_index_of_node(&open_set, p_neighbour);
+            neighbour_index = binary_heap_get_node_idx(&open_set, p_neighbour);
 
             if (UINT16_MAX == neighbour_index)
             {
-                insert(&open_set, p_neighbour, p_neighbour->g);
+                binary_heap_insert(&open_set, p_neighbour, p_neighbour->g);
             }
         }
     }

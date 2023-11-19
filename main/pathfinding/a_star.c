@@ -85,7 +85,7 @@ a_star (maze_grid_t      *p_grid,
     p_start_node->g = 0;
     p_start_node->h = start_node_priority;
     p_start_node->f = start_node_priority;
-    insert(&open_set, p_start_node, start_node_priority);
+    binary_heap_insert(&open_set, p_start_node, start_node_priority);
 
     // Step 4: Run the inner loop.
     //
@@ -210,13 +210,13 @@ a_star_inner_loop (binary_heap_t *p_open_set, maze_grid_cell_t *p_end_node)
     {
         // Step 1: Get the node with the lowest F-value from the open set. If it
         // is the end node, return.
-        binary_heap_node_t p_current_node = peek(p_open_set);
+        binary_heap_node_t p_current_node = binary_heap_peek(p_open_set);
         if (p_current_node.p_maze_node == p_end_node)
         {
             return;
         }
 
-        delete_min(p_open_set);
+        binary_heap_delete_min(p_open_set);
 
         for (uint8_t neighbour = 0; 4 > neighbour; neighbour++)
         {
@@ -248,14 +248,14 @@ a_star_inner_loop (binary_heap_t *p_open_set, maze_grid_cell_t *p_end_node)
                 // add it.
                 //
                 uint16_t neighbour_index
-                    = get_index_of_node(p_open_set, p_neighbour_node);
+                    = binary_heap_get_node_idx(p_open_set, p_neighbour_node);
                 if (UINT16_MAX == neighbour_index)
                 {
                     uint32_t neighbour_priority
                         = p_current_node.p_maze_node->g
                           + p_current_node.p_maze_node->h;
 
-                    insert(p_open_set,
+                    binary_heap_insert(p_open_set,
                            p_current_node.p_maze_node->p_next[neighbour],
                            neighbour_priority);
                 }
@@ -264,7 +264,7 @@ a_star_inner_loop (binary_heap_t *p_open_set, maze_grid_cell_t *p_end_node)
                 {
                     p_open_set->p_array[neighbour_index].priority
                         = p_neighbour_node->f;
-                    heapify_up(p_open_set, neighbour_index);
+                    binary_heapify_up(p_open_set, neighbour_index);
                 }
 
                 p_current_node.p_maze_node->p_next[neighbour]->p_came_from
