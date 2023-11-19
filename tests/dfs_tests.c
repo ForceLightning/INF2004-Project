@@ -115,16 +115,16 @@ dfs_tests (int argc, char *argv[])
 static int
 test_depth_first_search (void)
 {
-    maze_grid_t true_grid = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t true_grid = maze_create(GRID_ROWS, GRID_COLS);
 
-    maze_grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t maze = maze_create(GRID_ROWS, GRID_COLS);
     floodfill_init_maze_nowall(&maze);
     maze_gap_bitmask_t gap_bitmask = { .p_bitmask = (uint16_t *)g_bitmask_array,
                                        .rows      = GRID_ROWS,
                                        .columns   = GRID_COLS };
-    deserialise_maze(&true_grid, &gap_bitmask);
+    maze_deserialise(&true_grid, &gap_bitmask);
 
-    char *p_true_maze_str = get_maze_string(&true_grid);
+    char *p_true_maze_str = maze_get_string(&true_grid);
     printf("%s\n\n", p_true_maze_str);
 
     // Initialise the navigator.
@@ -132,8 +132,8 @@ test_depth_first_search (void)
     maze_point_t start_point = { 0, 4 };
     maze_point_t end_point   = { 4, 0 };
 
-    maze_grid_cell_t *p_start = get_cell_at_coordinates(&maze, &start_point);
-    maze_grid_cell_t *p_end   = get_cell_at_coordinates(&maze, &end_point);
+    maze_grid_cell_t *p_start = maze_get_cell_at_coords(&maze, &start_point);
+    maze_grid_cell_t *p_end   = maze_get_cell_at_coords(&maze, &end_point);
 
     maze_navigator_state_t navigator = { p_start, p_start, NULL, NORTH };
 
@@ -145,8 +145,8 @@ test_depth_first_search (void)
 
     // Check that the maze is correct.
     //
-    maze_gap_bitmask_t true_map_bitmask = serialise_maze(&true_grid);
-    maze_gap_bitmask_t map_bitmask      = serialise_maze(&maze);
+    maze_gap_bitmask_t true_map_bitmask = maze_serialise(&true_grid);
+    maze_gap_bitmask_t map_bitmask      = maze_serialise(&maze);
 
     for (size_t row = 0; GRID_ROWS > row; row++)
     {
@@ -160,10 +160,10 @@ test_depth_first_search (void)
             {
                 printf("Maze is not correct at row %llu, col %llu\n", row, col);
                 printf("True bitmask: %u\n", true_bitmask);
-                p_true_maze_str = get_maze_string(&true_grid);
+                p_true_maze_str = maze_get_string(&true_grid);
                 printf("%s\n\n", p_true_maze_str);
                 printf("Found bitmask: %u\n", bitmask);
-                char *p_maze_str = get_maze_string(&maze);
+                char *p_maze_str = maze_get_string(&maze);
                 printf("%s\n\n", p_maze_str);
 
                 free(p_true_maze_str);
@@ -179,22 +179,22 @@ static int
 test_all_reachable_visisted (void)
 {
     int         ret_val   = 0;
-    maze_grid_t true_grid = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t true_grid = maze_create(GRID_ROWS, GRID_COLS);
 
-    maze_grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t maze = maze_create(GRID_ROWS, GRID_COLS);
     floodfill_init_maze_nowall(&maze);
     maze_gap_bitmask_t gap_bitmask = { .p_bitmask = (uint16_t *)g_bitmask_array,
                                        .rows      = GRID_ROWS,
                                        .columns   = GRID_COLS };
-    deserialise_maze(&true_grid, &gap_bitmask);
+    maze_deserialise(&true_grid, &gap_bitmask);
 
     // Initialise the navigator.
     //
     maze_point_t start_point = { 0, 4 };
     maze_point_t end_point   = { 4, 0 };
 
-    maze_grid_cell_t *p_start = get_cell_at_coordinates(&maze, &start_point);
-    maze_grid_cell_t *p_end   = get_cell_at_coordinates(&maze, &end_point);
+    maze_grid_cell_t *p_start = maze_get_cell_at_coords(&maze, &start_point);
+    maze_grid_cell_t *p_end   = maze_get_cell_at_coords(&maze, &end_point);
 
     maze_navigator_state_t navigator = { p_start, p_start, NULL, NORTH };
 
@@ -245,9 +245,9 @@ explore_current_node (maze_grid_t              *p_grid,
     bitmask = 0xF - bitmask;
 
     p_navigator->orientation = direction;
-    navigator_modify_walls(p_grid, p_navigator, bitmask, true, false);
-    char *p_maze_str = get_maze_string(p_grid);
-    insert_navigator_str(p_grid, p_navigator, p_maze_str);
+    maze_nav_modify_walls(p_grid, p_navigator, bitmask, true, false);
+    char *p_maze_str = maze_get_string(p_grid);
+    maze_insert_nav_str(p_grid, p_navigator, p_maze_str);
     printf("%s\n\n", p_maze_str);
     free(p_maze_str);
 }

@@ -80,7 +80,7 @@ a_star (maze_grid_t      *p_grid,
 
     // Step 3: Insert the start node into the open set.
     //
-    uint32_t start_node_priority = manhattan_distance(
+    uint32_t start_node_priority = maze_manhattan_dist(
         &p_start_node->coordinates, &p_end_node->coordinates);
     p_start_node->g = 0;
     p_start_node->h = start_node_priority;
@@ -137,7 +137,7 @@ a_star_get_path (maze_grid_cell_t *p_end_node)
 char *
 a_star_get_path_str (maze_grid_t *p_grid, a_star_path_t *p_path)
 {
-    char *p_maze_string = get_maze_string(p_grid);
+    char *p_maze_string = maze_get_string(p_grid);
 
     // Initialise the pointers to the current and previous cells.
     //
@@ -152,7 +152,7 @@ a_star_get_path_str (maze_grid_t *p_grid, a_star_path_t *p_path)
     // add to the string. Special cases are the start and end nodes. This
     // handles the end node.
     //
-    maze_cardinal_direction_t direction = get_direction_from_to(
+    maze_cardinal_direction_t direction = maze_get_dir_from_to(
         &p_cell->coordinates, &p_cell->p_came_from->coordinates);
 
     insert_path_directions(
@@ -168,9 +168,9 @@ a_star_get_path_str (maze_grid_t *p_grid, a_star_path_t *p_path)
         p_previous_cell = p_cell;
         p_cell          = &p_path->p_path[index];
 
-        maze_cardinal_direction_t in_direction = get_direction_from_to(
+        maze_cardinal_direction_t in_direction = maze_get_dir_from_to(
             &p_cell->coordinates, &p_cell->p_came_from->coordinates);
-        maze_cardinal_direction_t out_direction = get_direction_from_to(
+        maze_cardinal_direction_t out_direction = maze_get_dir_from_to(
             &p_cell->coordinates, &p_previous_cell->coordinates);
 
         insert_path_directions(
@@ -182,7 +182,7 @@ a_star_get_path_str (maze_grid_t *p_grid, a_star_path_t *p_path)
     p_previous_cell = p_cell;
     p_cell          = &p_path->p_path[0];
 
-    direction = get_direction_from_to(&p_cell->coordinates,
+    direction = maze_get_dir_from_to(&p_cell->coordinates,
                                       &p_previous_cell->coordinates);
 
     insert_path_directions(
@@ -239,7 +239,7 @@ a_star_inner_loop (binary_heap_t *p_open_set, maze_grid_cell_t *p_end_node)
                 // since it is better than the previous value.
                 //
                 p_neighbour_node->g = tentative_g_score;
-                p_neighbour_node->h = manhattan_distance(
+                p_neighbour_node->h = maze_manhattan_dist(
                     &p_current_node.p_maze_node->coordinates,
                     &p_end_node->coordinates);
                 p_neighbour_node->f = p_neighbour_node->g + p_neighbour_node->h;

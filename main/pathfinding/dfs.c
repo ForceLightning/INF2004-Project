@@ -101,7 +101,7 @@ dfs_depth_first_search (maze_grid_t            *p_grid,
             // We have reached a dead end, backtrack.
             //
             p_next_node = p_navigator->p_current_node->p_came_from;
-            direction   = get_direction_from_to(
+            direction   = maze_get_dir_from_to(
                 &p_navigator->p_current_node->coordinates,
                 &p_next_node->coordinates);
         }

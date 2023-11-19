@@ -54,7 +54,7 @@ floodfill_init_maze_nowall (maze_grid_t *p_grid)
             for (int16_t i = 0; 4 > i; i++)
             {
                 maze_grid_cell_t *p_neighbour
-                    = get_cell_in_direction(p_grid, p_cell, i);
+                    = maze_get_cell_in_dir(p_grid, p_cell, i);
 
                 if (NULL != p_neighbour)
                 {
@@ -152,7 +152,7 @@ floodfill_map_maze (maze_grid_t            *p_grid,
         // Move the robot to the next node.
         //
         p_move_navigator(p_navigator, direction);
-        clear_maze_heuristics(p_grid);
+        maze_clear_heuristics(p_grid);
         // Free the flood array.
         //
         free(flood_array.p_array);

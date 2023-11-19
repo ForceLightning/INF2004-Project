@@ -129,7 +129,7 @@ test_manhattan_distance (void)
         for (int32_t col = 0; GRID_COLS > col; col++)
         {
             maze_point_t  point_b  = { row, col };
-            uint32_t distance = manhattan_distance(&point_a, &point_b);
+            uint32_t distance = maze_manhattan_dist(&point_a, &point_b);
             if (row + col != distance)
             {
                 printf("Distance between (%d, %d) and (%d, %d) is %d.\n",
@@ -146,14 +146,14 @@ test_manhattan_distance (void)
 }
 
 /**
- * @brief Tests the create_maze function to see if it works as expected.
+ * @brief Tests the maze_create function to see if it works as expected.
  *
  * @return int 0 if the test passes, -1 otherwise.
  */
 static int
 test_create_maze (void)
 {
-    maze_grid_t maze    = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t maze    = maze_create(GRID_ROWS, GRID_COLS);
     int    ret_val = 0;
 
     if (NULL == maze.p_grid_array)
@@ -162,12 +162,12 @@ test_create_maze (void)
         ret_val = -1;
     }
 
-    destroy_maze(&maze);
+    maze_destroy(&maze);
     return ret_val;
 }
 
 /**
- * @brief Tests the initialise_empty_maze_walled function to see if it works as
+ * @brief Tests the maze_initialise_empty_walled function to see if it works as
  * expected. This should set the coordinates appropriately, heuristics to 0 and
  * all pointers to NULL.
  *
@@ -176,7 +176,7 @@ test_create_maze (void)
 static int
 test_initialise_empty_maze (void)
 {
-    maze_grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t maze = maze_create(GRID_ROWS, GRID_COLS);
 
     for (uint16_t row = 0; maze.rows > row; row++)
     {
@@ -222,12 +222,12 @@ test_initialise_empty_maze (void)
             }
         }
     }
-    destroy_maze(&maze);
+    maze_destroy(&maze);
     return 0;
 }
 
 /**
- * @brief Tests the clear_maze_heuristics function to see if it works as
+ * @brief Tests the maze_clear_heuristics function to see if it works as
  * expected. This should set all heuristics to 0 without affecting the other
  * node values.
  *
@@ -238,7 +238,7 @@ test_clear_maze_heuristics (void)
 {
     // Initialise maze with random heuristic values.
     //
-    maze_grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t maze = maze_create(GRID_ROWS, GRID_COLS);
 
     for (uint16_t row = 0; maze.rows > row; row++)
     {
@@ -256,7 +256,7 @@ test_clear_maze_heuristics (void)
 
     // Clear the heuristics and check that they are all 0.
     //
-    clear_maze_heuristics(&maze);
+    maze_clear_heuristics(&maze);
     for (uint16_t row = 0; maze.rows > row; row++)
     {
         for (uint16_t col = 0; maze.columns > col; col++)
@@ -281,7 +281,7 @@ test_clear_maze_heuristics (void)
 }
 
 /**
- * @brief Tests the destroy_maze function to see if it works as expected. This
+ * @brief Tests the maze_destroy function to see if it works as expected. This
  * should free the memory allocated to the grid array.
  *
  * @return int 0 if the test passes, -1 otherwise.
@@ -291,8 +291,8 @@ test_destroy_maze (void)
 {
     // Create a maze.
     //
-    maze_grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
-    destroy_maze(&maze);
+    maze_grid_t maze = maze_create(GRID_ROWS, GRID_COLS);
+    maze_destroy(&maze);
 
     if (NULL != maze.p_grid_array)
     {
@@ -391,7 +391,7 @@ end: // Clean up all malloc'd memory.
         p_path = NULL;
     }
 
-    destroy_maze(&maze);
+    maze_destroy(&maze);
 
     return ret_val;
 }
@@ -404,9 +404,9 @@ end: // Clean up all malloc'd memory.
 static int
 test_print_maze (void)
 {
-    maze_grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t maze = maze_create(GRID_ROWS, GRID_COLS);
 
-    char *maze_str = get_maze_string(&maze);
+    char *maze_str = maze_get_string(&maze);
 
     printf("%s\n", maze_str);
 
@@ -457,7 +457,7 @@ test_print_route (void)
 }
 
 /**
- * @brief Tests the deserialise_maze function to see if it works as expected.
+ * @brief Tests the maze_deserialise function to see if it works as expected.
  *
  * @return int 0 if the test passes, -1 otherwise.
  */
@@ -465,16 +465,16 @@ static int
 test_maze_deserialisation (void)
 {
     int    ret_val = 0;
-    maze_grid_t maze    = create_maze(5, 5);
+    maze_grid_t maze    = maze_create(5, 5);
 
     maze_gap_bitmask_t gap_bitmask
         = { .p_bitmask = NULL, .rows = 5, .columns = 5 };
 
     gap_bitmask.p_bitmask = (uint16_t *)g_bitmask_array;
 
-    ret_val = deserialise_maze(&maze, &gap_bitmask);
+    ret_val = maze_deserialise(&maze, &gap_bitmask);
 
-    char *maze_str = get_maze_string(&maze);
+    char *maze_str = maze_get_string(&maze);
 
     printf("%s\n", maze_str);
 
@@ -482,7 +482,7 @@ test_maze_deserialisation (void)
 }
 
 /**
- * @brief Tests the serialise_maze function to see if it works as expected.
+ * @brief Tests the maze_serialise function to see if it works as expected.
  *
  * @return int 0 if the test passes, -1 otherwise.
  */
@@ -491,15 +491,15 @@ test_maze_serialisation (void)
 {
     int ret_val = 0;
 
-    maze_grid_t maze = create_maze(5, 5);
+    maze_grid_t maze = maze_create(5, 5);
 
     maze_gap_bitmask_t gap_bitmask
         = { .p_bitmask = NULL, .rows = 5, .columns = 5 };
 
     gap_bitmask.p_bitmask = (uint16_t *)g_bitmask_array;
-    deserialise_maze(&maze, &gap_bitmask);
+    maze_deserialise(&maze, &gap_bitmask);
 
-    maze_gap_bitmask_t serialised_maze = serialise_maze(&maze);
+    maze_gap_bitmask_t serialised_maze = maze_serialise(&maze);
 
     for (uint16_t row = 0; row < serialised_maze.rows; row++)
     {
@@ -526,7 +526,7 @@ test_maze_serialisation (void)
     }
 
 end:
-    char *maze_str = get_maze_string(&maze);
+    char *maze_str = maze_get_string(&maze);
     printf("%s\n", maze_str);
     free(maze_str);
 
@@ -546,19 +546,19 @@ test_complex_maze_pathfinding (void)
 {
     int ret_val = 0;
 
-    maze_grid_t maze = create_maze(5, 5);
+    maze_grid_t maze = maze_create(5, 5);
 
     maze_gap_bitmask_t gap_bitmask
         = { .p_bitmask = NULL, .rows = 5, .columns = 5 };
 
     gap_bitmask.p_bitmask = (uint16_t *)g_bitmask_array;
-    deserialise_maze(&maze, &gap_bitmask);
+    maze_deserialise(&maze, &gap_bitmask);
 
     maze_point_t start_point = (maze_point_t) { 0, 4 };
     maze_point_t end_point   = (maze_point_t) { 4, 0 };
 
-    maze_grid_cell_t *p_start = get_cell_at_coordinates(&maze, &start_point);
-    maze_grid_cell_t *p_end   = get_cell_at_coordinates(&maze, &end_point);
+    maze_grid_cell_t *p_start = maze_get_cell_at_coords(&maze, &start_point);
+    maze_grid_cell_t *p_end   = maze_get_cell_at_coords(&maze, &end_point);
 
     maze_navigator_state_t navigator_state = { p_start, p_start, p_end, NORTH };
 
@@ -594,7 +594,7 @@ end: // Clean up all malloc'd memory.
         p_path = NULL;
     }
 
-    destroy_maze(&maze);
+    maze_destroy(&maze);
 
     return ret_val;
 }
@@ -613,7 +613,7 @@ end: // Clean up all malloc'd memory.
 static maze_grid_t
 generate_col_maze (uint16_t rows, uint16_t cols)
 {
-    maze_grid_t maze = create_maze(rows, cols);
+    maze_grid_t maze = maze_create(rows, cols);
 
     // Set the walls of the maze. Should just be a column that leads to the
     // objective.

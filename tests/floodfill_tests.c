@@ -157,10 +157,10 @@ explore_current_node (maze_grid_t              *p_grid,
     bitmask = 0xF - bitmask;
 
     p_navigator->orientation = direction;
-    navigator_modify_walls(p_grid, p_navigator, bitmask, true, false);
+    maze_nav_modify_walls(p_grid, p_navigator, bitmask, true, false);
 
-    char *p_maze_str = get_maze_string(p_grid);
-    insert_navigator_str(p_grid, p_navigator, p_maze_str);
+    char *p_maze_str = maze_get_string(p_grid);
+    maze_insert_nav_str(p_grid, p_navigator, p_maze_str);
     printf("%s\n\n", p_maze_str);
     free(p_maze_str);
 
@@ -197,23 +197,23 @@ test_floodfill (void)
 {
     // Initialise the true grid and the maze.
     //
-    g_true_grid = create_maze(GRID_ROWS, GRID_COLS);
+    g_true_grid = maze_create(GRID_ROWS, GRID_COLS);
 
-    maze_grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
+    maze_grid_t maze = maze_create(GRID_ROWS, GRID_COLS);
     floodfill_init_maze_nowall(&maze);
     maze_gap_bitmask_t gap_bitmask = { .p_bitmask = (uint16_t *)g_bitmask_array,
                                        .rows      = GRID_ROWS,
                                        .columns   = GRID_COLS };
 
-    deserialise_maze(&g_true_grid, &gap_bitmask);
+    maze_deserialise(&g_true_grid, &gap_bitmask);
 
     // Initialise the navigator.
     //
     maze_point_t start_point = { 0, 4 };
     maze_point_t end_point   = { 4, 0 };
 
-    maze_grid_cell_t *p_start = get_cell_at_coordinates(&maze, &start_point);
-    maze_grid_cell_t *p_end   = get_cell_at_coordinates(&maze, &end_point);
+    maze_grid_cell_t *p_start = maze_get_cell_at_coords(&maze, &start_point);
+    maze_grid_cell_t *p_end   = maze_get_cell_at_coords(&maze, &end_point);
     maze_navigator_state_t navigator = { p_start, p_start, p_end, NORTH };
 
     floodfill_explore_func_t   p_explore_func   = &explore_current_node;
@@ -222,8 +222,8 @@ test_floodfill (void)
     floodfill_map_maze(
         &maze, p_end, &navigator, p_explore_func, p_move_navigator);
 
-    char *p_maze_str = get_maze_string(&maze);
-    insert_navigator_str(&maze, &navigator, p_maze_str);
+    char *p_maze_str = maze_get_string(&maze);
+    maze_insert_nav_str(&maze, &navigator, p_maze_str);
     printf("%s\n\n", p_maze_str);
     free(p_maze_str);
     //@TODO(chris): Check whether the path is correct.
