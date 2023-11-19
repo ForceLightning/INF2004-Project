@@ -23,16 +23,19 @@
 
 static void a_star_inner_loop(binary_heap_t    *p_open_set,
                               maze_grid_cell_t *p_end_node);
+
 static void insert_path_directions(char                     *p_maze_string,
                                    maze_grid_cell_t         *p_cell,
                                    uint16_t                  str_num_cols,
                                    maze_cardinal_direction_t in_direction,
                                    maze_cardinal_direction_t out_direction);
+
 static void insert_path_in_direction(char                     *p_maze_str,
                                      uint16_t                  str_num_cols,
                                      uint32_t                  node_row,
                                      uint32_t                  node_col,
                                      maze_cardinal_direction_t direction);
+
 static void insert_node_centre_char(char    *p_maze_string,
                                     uint32_t row,
                                     uint32_t col,
@@ -142,8 +145,8 @@ a_star_get_path_str (maze_grid_t *p_grid, a_star_path_t *p_path)
     // Initialise the pointers to the current and previous cells.
     //
     maze_grid_cell_t *p_cell
-        = &p_path->p_path[p_path->length - 1];  // Current cell.
-    maze_grid_cell_t *p_previous_cell = p_cell; // Previous cell.
+        = &p_path->p_path[p_path->length - 1]; // Current cell.
+    maze_grid_cell_t *p_previous_cell = NULL;  // Previous cell.
 
     uint16_t str_num_cols
         = p_grid->columns * 4 + 2; // Number of columns in the string.
@@ -183,7 +186,7 @@ a_star_get_path_str (maze_grid_t *p_grid, a_star_path_t *p_path)
     p_cell          = &p_path->p_path[0];
 
     direction = maze_get_dir_from_to(&p_cell->coordinates,
-                                      &p_previous_cell->coordinates);
+                                     &p_previous_cell->coordinates);
 
     insert_path_directions(
         p_maze_string, p_cell, str_num_cols, NONE, direction);
@@ -255,9 +258,10 @@ a_star_inner_loop (binary_heap_t *p_open_set, maze_grid_cell_t *p_end_node)
                         = p_current_node.p_maze_node->g
                           + p_current_node.p_maze_node->h;
 
-                    binary_heap_insert(p_open_set,
-                           p_current_node.p_maze_node->p_next[neighbour],
-                           neighbour_priority);
+                    binary_heap_insert(
+                        p_open_set,
+                        p_current_node.p_maze_node->p_next[neighbour],
+                        neighbour_priority);
                 }
                 // Otherwise, update the priority of the neighbour.
                 else
@@ -350,9 +354,15 @@ insert_path_directions (char                     *p_maze_string,
             }
             goto handle_end;
     }
+
+    // Handle the case where the direction changes by inserting a 'O'.
+    //
 handle_direction_change:
     insert_node_centre_char(
         p_maze_string, node_row, node_col, str_num_cols, 'O');
+
+    // Fallthrough to handle the end node.
+    //
 handle_end:
     if (NONE == out_direction)
     {

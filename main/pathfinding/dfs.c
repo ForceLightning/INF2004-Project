@@ -36,11 +36,11 @@ static void reachable_floodfill(binary_heap_t          *p_reachable_set,
  * @param[in] p_move_navigator Function pointer to move the navigator.
  */
 void
-dfs_depth_first_search (maze_grid_t            *p_grid,
-                        maze_grid_cell_t       *p_start_node,
-                        maze_navigator_state_t *p_navigator,
-                        floodfill_explore_func_t          p_explore_func,
-                        floodfill_move_navigator_t        p_move_navigator)
+dfs_depth_first_search (maze_grid_t               *p_grid,
+                        maze_grid_cell_t          *p_start_node,
+                        maze_navigator_state_t    *p_navigator,
+                        floodfill_explore_func_t   p_explore_func,
+                        floodfill_move_navigator_t p_move_navigator)
 {
     // Step 1: Initialise is_visited to false.
     //
@@ -57,7 +57,7 @@ dfs_depth_first_search (maze_grid_t            *p_grid,
 
     // Step 2: Get the next node to explore.
     //
-    maze_grid_cell_t         *p_next_node = NULL;
+    const maze_grid_cell_t   *p_next_node = NULL;
     maze_cardinal_direction_t direction   = NONE;
 
     while (!dfs_is_all_reachable_visited(p_grid, p_navigator))
@@ -86,12 +86,9 @@ dfs_depth_first_search (maze_grid_t            *p_grid,
             // Step 5: If the neighbour is not NULL or visited, set it as the
             // next node.
             //
-            if (!p_neighbour->is_visited)
-            {
-                p_next_node = p_neighbour;
-                direction   = direction_idx;
-                break;
-            }
+            p_next_node = p_neighbour;
+            direction   = direction_idx;
+            break;
         }
 
         // Step 6: Check if it is a dead end.
@@ -111,37 +108,6 @@ dfs_depth_first_search (maze_grid_t            *p_grid,
         p_move_navigator(p_navigator, direction);
         p_next_node = NULL;
     }
-}
-
-/**
- * @brief Checks if all the nodes in the grid have been visited.
- *
- * @param[in] p_grid Pointer to the grid.
- * @return true All nodes are visited.
- * @return false Not all nodes are visisted.
- */
-bool
-dfs_is_all_visited (maze_grid_t *p_grid)
-{
-    bool is_visited = true;
-    for (uint16_t row = 0; p_grid->rows > row; row++)
-    {
-        for (uint16_t col = 0; p_grid->columns > col; col++)
-        {
-            maze_grid_cell_t *p_current_node
-                = &p_grid->p_grid_array[p_grid->columns * row + col];
-            is_visited &= p_current_node->is_visited;
-
-            // If not visited, end early and return false.
-            //
-            if (!is_visited)
-            {
-                goto end;
-            }
-        }
-    }
-end:
-    return is_visited;
 }
 
 /**
@@ -195,7 +161,8 @@ dfs_is_all_reachable_visited (maze_grid_t            *p_grid,
     bool is_visited = true;
     while (0 < reachable_set.size)
     {
-        maze_grid_cell_t *p_current_node = binary_heap_peek(&reachable_set).p_maze_node;
+        const maze_grid_cell_t *p_current_node
+            = binary_heap_peek(&reachable_set).p_maze_node;
         is_visited &= p_current_node->is_visited;
         binary_heap_delete_min(&reachable_set);
         // Step 5: If not visited, end early and return false.
@@ -275,7 +242,8 @@ reachable_floodfill (binary_heap_t          *p_reachable_set,
 
             if (UINT16_MAX == neighbour_index)
             {
-                binary_heap_insert(p_reachable_set, p_neighbour, p_neighbour->g);
+                binary_heap_insert(
+                    p_reachable_set, p_neighbour, p_neighbour->g);
             }
 
             // Step 6: Ensure that the neighbour is not in the open set, then

@@ -15,6 +15,10 @@
 #include "binary_heap.h"
 #include "maze.h"
 
+// Public functions.
+// ----------------------------------------------------------------------------
+//
+
 /**
  * @brief Moves the node at the given index down the binary heap to maintain the
  * heap property. This in effect raises the node to the correct position.

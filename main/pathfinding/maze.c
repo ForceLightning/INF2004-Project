@@ -144,36 +144,6 @@ maze_get_nav_dir_offset (const maze_navigator_state_t *p_navigator)
 }
 
 /**
- * @brief Unsets the walls of the current node and the next node(s) from the
- * position of the navigator in the directions it detects can be moved to.
- *
- * @param[in,out] p_grid Pointer to the maze grid.
- * @param[in] p_navigator Pointer to the navigator.
- * @param[in] wall_bitmask Bitmask of the walls to unset. This is aligned to the
- * navigator's orientation.
- */
-void
-maze_nav_unset_walls (maze_grid_t            *p_grid,
-                      maze_navigator_state_t *p_navigator,
-                      uint8_t                 wall_bitmask)
-{
-    int8_t  offset     = maze_get_nav_dir_offset(p_navigator);
-    uint8_t mod_offset = offset % 4;
-    uint8_t wall_bitmask_rotated
-        = (wall_bitmask << mod_offset) | (wall_bitmask >> (4 - mod_offset));
-
-    if (0 == offset)
-    {
-        return;
-    }
-
-    // Set the next pointers of the current node.
-    //
-    maze_nav_modify_walls(
-        p_grid, p_navigator, wall_bitmask_rotated, true, false);
-}
-
-/**
  * @brief Modifies the walls of the navigator's current node.
  *
  * @param[in,out] p_grid Pointer to the maze grid.

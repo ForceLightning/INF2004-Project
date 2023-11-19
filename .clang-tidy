@@ -13,7 +13,8 @@ Checks: >
     -readability-uppercase-literal-suffix,
     -readability-named-parameter,
     -readability-braces-around-statements,
-    -modernize-macro-to-enum
+    -readability-function-size,
+    -modernize-macro-to-enum,
     -modernize-use-trailing-return-type
 
 CheckOptions:
@@ -26,6 +27,7 @@ CheckOptions:
     - { key: readability-identifier-naming.PointerParameterPrefix, value: p_ }
     - { key: readability-identifier-naming.GlobalPointerPrefix, value: gp_ }
     - { key: readability-identifier-length.MinimumVariableNameLength, value: 3 }
+    - { key: readability-functions-size.LineThreshold, value: 100 }
     # - { key: readability-identifier-length, value: 30 }
     # - { key: readability-identifier-naming.GlobalConstantPrefix, value: k }
     # - { key: readability-identifier-naming.BoolPrefix, value: "b_" }

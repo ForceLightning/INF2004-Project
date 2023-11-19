@@ -80,11 +80,11 @@ floodfill_init_maze_nowall (maze_grid_t *p_grid)
  * navigator.
  */
 void
-floodfill_map_maze (maze_grid_t            *p_grid,
-                    const maze_grid_cell_t *p_end_node,
-                    maze_navigator_state_t *p_navigator,
-                    floodfill_explore_func_t          p_explore_func,
-                    floodfill_move_navigator_t        p_move_navigator)
+floodfill_map_maze (maze_grid_t               *p_grid,
+                    const maze_grid_cell_t    *p_end_node,
+                    maze_navigator_state_t    *p_navigator,
+                    floodfill_explore_func_t   p_explore_func,
+                    floodfill_move_navigator_t p_move_navigator)
 {
     // Initialise the flood array.
     //
@@ -223,7 +223,8 @@ floodfill (binary_heap_t *p_open_set, maze_navigator_state_t *p_navigator)
                 if (UINT16_MAX == neighbour_index)
                 {
                     uint32_t neighbour_priority = p_neighbour_node->h;
-                    binary_heap_insert(p_open_set, p_neighbour_node, neighbour_priority);
+                    binary_heap_insert(
+                        p_open_set, p_neighbour_node, neighbour_priority);
                 }
                 else
                 {

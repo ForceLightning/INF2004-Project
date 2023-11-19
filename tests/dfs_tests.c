@@ -1,3 +1,14 @@
+/**
+ * @file dfs_tests.c
+ * @author Christopher Kok (chris@forcelightning.xyz)
+ * @brief This file containst the functions that test the depth first search
+ * algorithm with a simulated navigator.
+ * @version 0.1
+ * @date 2023-11-19
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
 #include <stdio.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -214,7 +225,7 @@ test_all_reachable_visisted (void)
     binary_heap_t reachable_set
         = { .p_array = NULL, .size = 0, .capacity = GRID_ROWS * GRID_COLS };
     reachable_set.p_array
-        = malloc(sizeof(maze_grid_cell_t *) * reachable_set.capacity);
+        = malloc(sizeof(maze_grid_cell_t) * reachable_set.capacity);
 
     binary_heap_insert(&reachable_set, p_start, 0);
 
@@ -250,6 +261,7 @@ explore_current_node (maze_grid_t              *p_grid,
     maze_insert_nav_str(p_grid, p_navigator, p_maze_str);
     printf("%s\n\n", p_maze_str);
     free(p_maze_str);
+    return bitmask;
 }
 
 static void

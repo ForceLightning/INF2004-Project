@@ -1,3 +1,13 @@
+/**
+ * @file pathfinding_tests.c
+ * @author Christopher Kok (chris@forcelightning.xyz)
+ * @brief This file contains the tests for the A* pathfinding algorithm.
+ * @version 0.1
+ * @date 2023-11-19
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
 #include <stddef.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -128,8 +138,8 @@ test_manhattan_distance (void)
     {
         for (int32_t col = 0; GRID_COLS > col; col++)
         {
-            maze_point_t  point_b  = { row, col };
-            uint32_t distance = maze_manhattan_dist(&point_a, &point_b);
+            maze_point_t point_b  = { row, col };
+            uint32_t     distance = maze_manhattan_dist(&point_a, &point_b);
             if (row + col != distance)
             {
                 printf("Distance between (%d, %d) and (%d, %d) is %d.\n",
@@ -154,7 +164,7 @@ static int
 test_create_maze (void)
 {
     maze_grid_t maze    = maze_create(GRID_ROWS, GRID_COLS);
-    int    ret_val = 0;
+    int         ret_val = 0;
 
     if (NULL == maze.p_grid_array)
     {
@@ -184,7 +194,8 @@ test_initialise_empty_maze (void)
         {
             // Check coordinates.
             //
-            maze_grid_cell_t *p_cell = &maze.p_grid_array[row * maze.columns + col];
+            maze_grid_cell_t *p_cell
+                = &maze.p_grid_array[row * maze.columns + col];
             if (col != p_cell->coordinates.x || row != p_cell->coordinates.y)
             {
                 printf("Coordinates of cell (%d, %d) are (%d, %d).\n",
@@ -244,7 +255,8 @@ test_clear_maze_heuristics (void)
     {
         for (uint16_t col = 0; maze.columns > col; col++)
         {
-            maze_grid_cell_t *p_cell = &maze.p_grid_array[row * maze.columns + col];
+            maze_grid_cell_t *p_cell
+                = &maze.p_grid_array[row * maze.columns + col];
             // Casting to uint32_t is ok because rand() returns an int (0,
             // RAND_MAX). No overflow.
             //
@@ -261,7 +273,8 @@ test_clear_maze_heuristics (void)
     {
         for (uint16_t col = 0; maze.columns > col; col++)
         {
-            maze_grid_cell_t *p_cell = &maze.p_grid_array[row * maze.columns + col];
+            maze_grid_cell_t *p_cell
+                = &maze.p_grid_array[row * maze.columns + col];
 
             if (UINT32_MAX != p_cell->f || UINT32_MAX != p_cell->g
                 || UINT32_MAX != p_cell->h)
@@ -464,7 +477,7 @@ test_print_route (void)
 static int
 test_maze_deserialisation (void)
 {
-    int    ret_val = 0;
+    int         ret_val = 0;
     maze_grid_t maze    = maze_create(5, 5);
 
     maze_gap_bitmask_t gap_bitmask

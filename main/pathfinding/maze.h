@@ -163,10 +163,6 @@ void maze_destroy(maze_grid_t *p_grid);
 
 int8_t maze_get_nav_dir_offset(const maze_navigator_state_t *p_navigator);
 
-void maze_nav_unset_walls(maze_grid_t            *p_grid,
-                           maze_navigator_state_t *p_navigator,
-                           uint8_t                 wall_bitmask);
-
 void maze_nav_modify_walls(maze_grid_t            *p_grid,
                             maze_navigator_state_t *p_navigator,
                             uint8_t                 aligned_wall_bitmask,
