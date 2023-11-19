@@ -39,8 +39,8 @@ void
 dfs_depth_first_search (maze_grid_t            *p_grid,
                         maze_grid_cell_t       *p_start_node,
                         maze_navigator_state_t *p_navigator,
-                        explore_func_t          p_explore_func,
-                        move_navigator_t        p_move_navigator)
+                        floodfill_explore_func_t          p_explore_func,
+                        floodfill_move_navigator_t        p_move_navigator)
 {
     // Step 1: Initialise is_visited to false.
     //

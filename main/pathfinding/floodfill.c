@@ -36,7 +36,7 @@ static void floodfill(binary_heap_t          *p_open_set,
  * @param p_grid Pointer to the maze.
  */
 void
-floodfill_init_empty_maze_nowall (maze_grid_t *p_grid)
+floodfill_init_maze_nowall (maze_grid_t *p_grid)
 {
     for (uint16_t row = 0; p_grid->rows > row; row++)
     {
@@ -83,8 +83,8 @@ void
 floodfill_map_maze (maze_grid_t            *p_grid,
                     const maze_grid_cell_t *p_end_node,
                     maze_navigator_state_t *p_navigator,
-                    explore_func_t          p_explore_func,
-                    move_navigator_t        p_move_navigator)
+                    floodfill_explore_func_t          p_explore_func,
+                    floodfill_move_navigator_t        p_move_navigator)
 {
     // Initialise the flood array.
     //

@@ -118,7 +118,7 @@ test_depth_first_search (void)
     maze_grid_t true_grid = create_maze(GRID_ROWS, GRID_COLS);
 
     maze_grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
-    floodfill_init_empty_maze_nowall(&maze);
+    floodfill_init_maze_nowall(&maze);
     maze_gap_bitmask_t gap_bitmask = { .p_bitmask = (uint16_t *)g_bitmask_array,
                                        .rows      = GRID_ROWS,
                                        .columns   = GRID_COLS };
@@ -137,8 +137,8 @@ test_depth_first_search (void)
 
     maze_navigator_state_t navigator = { p_start, p_start, NULL, NORTH };
 
-    explore_func_t   p_explore_func   = &explore_current_node;
-    move_navigator_t p_move_navigator = &move_navigator;
+    floodfill_explore_func_t   p_explore_func   = &explore_current_node;
+    floodfill_move_navigator_t p_move_navigator = &move_navigator;
 
     dfs_depth_first_search(
         &maze, p_start, &navigator, p_explore_func, p_move_navigator);
@@ -182,7 +182,7 @@ test_all_reachable_visisted (void)
     maze_grid_t true_grid = create_maze(GRID_ROWS, GRID_COLS);
 
     maze_grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
-    floodfill_init_empty_maze_nowall(&maze);
+    floodfill_init_maze_nowall(&maze);
     maze_gap_bitmask_t gap_bitmask = { .p_bitmask = (uint16_t *)g_bitmask_array,
                                        .rows      = GRID_ROWS,
                                        .columns   = GRID_COLS };
@@ -198,8 +198,8 @@ test_all_reachable_visisted (void)
 
     maze_navigator_state_t navigator = { p_start, p_start, NULL, NORTH };
 
-    explore_func_t   p_explore_func   = &explore_current_node;
-    move_navigator_t p_move_navigator = &move_navigator;
+    floodfill_explore_func_t   p_explore_func   = &explore_current_node;
+    floodfill_move_navigator_t p_move_navigator = &move_navigator;
 
     for (size_t row = 0; GRID_ROWS > row; row++)
     {

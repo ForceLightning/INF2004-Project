@@ -122,7 +122,7 @@ floodfill_tests (int argc, char *argv[])
 }
 
 /**
- * @brief Unit test for the floodfill_init_empty_maze_nowall function.
+ * @brief Unit test for the floodfill_init_maze_nowall function.
  *
  * @return int 0 if successful, -1 otherwise.
  *
@@ -200,7 +200,7 @@ test_floodfill (void)
     g_true_grid = create_maze(GRID_ROWS, GRID_COLS);
 
     maze_grid_t maze = create_maze(GRID_ROWS, GRID_COLS);
-    floodfill_init_empty_maze_nowall(&maze);
+    floodfill_init_maze_nowall(&maze);
     maze_gap_bitmask_t gap_bitmask = { .p_bitmask = (uint16_t *)g_bitmask_array,
                                        .rows      = GRID_ROWS,
                                        .columns   = GRID_COLS };
@@ -216,8 +216,8 @@ test_floodfill (void)
     maze_grid_cell_t *p_end   = get_cell_at_coordinates(&maze, &end_point);
     maze_navigator_state_t navigator = { p_start, p_start, p_end, NORTH };
 
-    explore_func_t   p_explore_func   = &explore_current_node;
-    move_navigator_t p_move_navigator = &move_navigator;
+    floodfill_explore_func_t   p_explore_func   = &explore_current_node;
+    floodfill_move_navigator_t p_move_navigator = &move_navigator;
 
     floodfill_map_maze(
         &maze, p_end, &navigator, p_explore_func, p_move_navigator);
