@@ -1,5 +1,5 @@
 name: Tests
-run-name: ${name}-${{ github.run_number }}
+run-name: ctest-${{ github.run_number }}
 on:
   push:
     branches: [ "main" ]
