@@ -1,0 +1,28 @@
+name: Tests
+run-name: ${name}-${{ github.run_number }}
+on:
+  push:
+    branches: [ "main" ]
+env:
+  TEST_BUILD: true
+jobs:
+    ctest:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Install build-essential, cmake, gcc
+            if: ${{ env.ACT }}
+            run: sudo apt update && sudo apt install -y build-essential cmake gcc
+          - name: Check out repository
+            uses: actions/checkout@v2
+          - name: Change directory
+            run: cd "${{ github.workspace }}"
+          - name: Clean build directory
+            run: rm -rf build
+          - name: Create build directory
+            run: mkdir build
+          - name: Run CTest
+            run: |
+              cd build
+              cmake ..
+              cmake --build . --config Debug --target test_runner -j$(nproc)
+              ctest -j$(nproc) -C Debug --output-on-failure
