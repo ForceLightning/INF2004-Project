@@ -1,0 +1,4 @@
+<map id="floodfill_map_maze" name="floodfill_map_maze">
+<area shape="rect" id="node1" title="Runs the floodfill algorithm to map out the maze." alt="" coords="5,5,136,31"/>
+<area shape="rect" id="node2" href="$maze_8c.html#ae46a2d15996ecdd82d948a24c682cbe1" title="Clears the maze heuristics. This sets the F, G, and H values of each node to UINT32_MAX for the A* an..." alt="" coords="184,5,335,31"/>
+</map>

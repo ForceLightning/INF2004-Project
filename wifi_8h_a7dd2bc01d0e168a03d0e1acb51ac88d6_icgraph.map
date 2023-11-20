@@ -1,0 +1,4 @@
+<map id="tcp_server_send_data" name="tcp_server_send_data">
+<area shape="rect" id="node1" title="This function is a callback from lwIP, so cyw43_arch_lwip_begin is not required. However,..." alt="" coords="168,5,319,31"/>
+<area shape="rect" id="node2" href="$wifi_8c.html#abe23238ac7d1d558a3574f0199db1b87" title="This function is called by lwIP when data is received from a TCP client. It receives the data and che..." alt="" coords="5,5,120,31"/>
+</map>

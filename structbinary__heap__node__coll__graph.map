@@ -1,0 +1,5 @@
+<map id="binary_heap_node" name="binary_heap_node">
+<area shape="rect" id="node1" title=" " alt="" coords="5,185,132,211"/>
+<area shape="rect" id="node2" href="$structmaze__grid__cell.html" title=" " alt="" coords="15,95,123,121"/>
+<area shape="rect" id="node3" href="$structmaze__point.html" title=" " alt="" coords="25,5,113,31"/>
+</map>

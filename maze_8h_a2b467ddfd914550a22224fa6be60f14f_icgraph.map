@@ -1,0 +1,4 @@
+<map id="maze_get_cell_in_dir" name="maze_get_cell_in_dir">
+<area shape="rect" id="node1" title="Get the cell in the specified direction from a specific cell." alt="" coords="176,13,319,38"/>
+<area shape="rect" id="node2" href="$floodfill_8c.html#a921aecf0c7109fefa4e4edffc7c5c0db" title="This function initialises a maze with no walls to perform the floodfill algorithm on." alt="" coords="5,5,128,45"/>
+</map>

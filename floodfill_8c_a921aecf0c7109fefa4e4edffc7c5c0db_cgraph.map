@@ -1,0 +1,5 @@
+<map id="floodfill_init_maze_nowall" name="floodfill_init_maze_nowall">
+<area shape="rect" id="node1" title="This function initialises a maze with no walls to perform the floodfill algorithm on." alt="" coords="5,5,128,45"/>
+<area shape="rect" id="node2" href="$maze_8c.html#a2b467ddfd914550a22224fa6be60f14f" title="Get the cell in the specified direction from a specific cell." alt="" coords="176,13,319,38"/>
+<area shape="rect" id="node3" href="$maze_8c.html#a1957f5adb3d22d45ee033ba0c22d61cf" title="Get the cell at the specified coordinates." alt="" coords="367,13,536,38"/>
+</map>

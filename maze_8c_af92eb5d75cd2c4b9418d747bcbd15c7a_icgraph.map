@@ -1,0 +1,4 @@
+<map id="maze_get_string" name="maze_get_string">
+<area shape="rect" id="node1" title="Get the string representation of the maze for pretty printing." alt="" coords="191,5,308,31"/>
+<area shape="rect" id="node2" href="$a__star_8c.html#aa93e473768652772f2577e1564b89d91" title="Gets the string representation of the path from the start node to the end node." alt="" coords="5,5,143,31"/>
+</map>

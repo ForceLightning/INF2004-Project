@@ -1,0 +1,6 @@
+<map id="binary_heapify_down" name="binary_heapify_down">
+<area shape="rect" id="node1" title="Moves the node at the given index up the binary heap to maintain the heap property...." alt="" coords="604,13,747,38"/>
+<area shape="rect" id="node2" href="$binary__heap_8c.html#af38f858070d3c5f43dcb2b9a38920082" title="Deletes and returns the root node from the binary heap." alt="" coords="395,13,556,38"/>
+<area shape="rect" id="node3" href="$dfs_8c.html#ae6f752eff6517a7aeace592951a6a919" title="Checks if all reachable nodes from the navigator&#39;s current position has been visisted." alt="" coords="207,5,347,45"/>
+<area shape="rect" id="node4" href="$dfs_8c.html#ad895d09bb41bba4132541d5d17f7f4c0" title="Conducts a depth first search on a maze." alt="" coords="5,13,159,38"/>
+</map>

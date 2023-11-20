@@ -1,0 +1,5 @@
+<map id="maze_navigator_state" name="maze_navigator_state">
+<area shape="rect" id="node1" title=" " alt="" coords="5,215,155,240"/>
+<area shape="rect" id="node2" href="$structmaze__grid__cell.html" title=" " alt="" coords="26,95,134,121"/>
+<area shape="rect" id="node3" href="$structmaze__point.html" title=" " alt="" coords="36,5,124,31"/>
+</map>

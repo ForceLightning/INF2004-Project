@@ -1,0 +1,5 @@
+<map id="main/pathfinding/dfs.h" name="main/pathfinding/dfs.h">
+<area shape="rect" id="node1" title="Header file for the depth first search algorithm for mapping the maze." alt="" coords="84,5,232,31"/>
+<area shape="rect" id="node2" href="$dfs_8c.html" title="Runs the depth first search algorithm on a maze." alt="" coords="5,79,153,104"/>
+<area shape="rect" id="node3" href="$dfs__tests_8c.html" title="This file containst the functions that test the depth first search algorithm with a simulated navigat..." alt="" coords="177,79,296,104"/>
+</map>
