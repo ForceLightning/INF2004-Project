@@ -3,6 +3,7 @@ add_library(driver INTERFACE
 
 target_sources(driver INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}/encoder/wheel_encoder.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/pid/pid.c
     ${CMAKE_CURRENT_SOURCE_DIR}/irline/ir_sensor.c
     ${CMAKE_CURRENT_SOURCE_DIR}/magnetometer/magnetometer.c
     ${CMAKE_CURRENT_SOURCE_DIR}/motor/motor_control.c
@@ -25,6 +26,7 @@ target_include_directories(driver INTERFACE
 )
 
 add_subdirectory(encoder)
+add_subdirectory(pid)
 add_subdirectory(irline)
 add_subdirectory(magnetometer)
 add_subdirectory(motor)
