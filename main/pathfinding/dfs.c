@@ -64,7 +64,10 @@ dfs_depth_first_search (maze_grid_t               *p_grid,
     {
         // Step 3: Explore the current node
         //
-        p_explore_func(p_grid, p_navigator, p_navigator->orientation);
+        uint16_t gap_bitmask
+            = p_explore_func(p_grid, p_navigator, p_navigator->orientation);
+        maze_nav_modify_walls(p_grid, p_navigator, gap_bitmask, true, false);
+
         for (uint8_t direction_idx = 0; 4 > direction_idx; direction_idx++)
         {
             maze_grid_cell_t *p_neighbour
