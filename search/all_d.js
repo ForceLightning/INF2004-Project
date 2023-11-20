@@ -12,6 +12,7 @@ var searchData=
   ['p_5fstart_5fnode_9',['p_start_node',['../structmaze__navigator__state.html#a11272e3b39296d77b855b7d3ee5acb9f',1,'maze_navigator_state']]],
   ['pathfinding_5ftests_10',['pathfinding_tests',['../pathfinding__tests_8c.html#a12f00de89ab5b9d9f9f01c8999b89a04',1,'pathfinding_tests.c']]],
   ['pathfinding_5ftests_2ec_11',['pathfinding_tests.c',['../pathfinding__tests_8c.html',1,'']]],
-  ['priority_12',['priority',['../structbinary__heap__node.html#a0815784d41b3c13d42ce22367abfba1d',1,'binary_heap_node']]],
-  ['project_5ftest_2ec_13',['project_test.c',['../project__test_8c.html',1,'']]]
+  ['pid_5fparams_5ft_12',['pid_params_t',['../structpid__params__t.html',1,'']]],
+  ['priority_13',['priority',['../structbinary__heap__node.html#a0815784d41b3c13d42ce22367abfba1d',1,'binary_heap_node']]],
+  ['project_5ftest_2ec_14',['project_test.c',['../project__test_8c.html',1,'']]]
 ];

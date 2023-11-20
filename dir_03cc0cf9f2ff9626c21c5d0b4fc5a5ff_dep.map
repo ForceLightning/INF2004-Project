@@ -1,10 +1,11 @@
 <map id="main/driver" name="main/driver">
-<area shape="rect" id="node2" href="dir_32d610a2a6a3ffabf17b691195eaa5f4.html" title="encoder" alt="" coords="487,63,555,88"/>
-<area shape="rect" id="node3" href="dir_9acabe3509286bdc74b4083dedf3872a.html" title="irline" alt="" coords="414,63,463,88"/>
-<area shape="rect" id="node4" href="dir_7037465db2a82242a866a8e1b79c9f42.html" title="magnetometer" alt="" coords="285,63,390,88"/>
-<area shape="rect" id="node5" href="dir_c60c47be64a26db5ce8a84e711bfc8d2.html" title="motor" alt="" coords="206,63,261,88"/>
-<area shape="rect" id="node6" href="dir_deb25b8f26a592b34c57622f4b00f5a0.html" title="ultrasonic" alt="" coords="103,63,182,88"/>
-<area shape="rect" id="node7" href="dir_95011f6e5b26185ab733a0aa8e5658b9.html" title="wifi" alt="" coords="38,63,79,88"/>
-<area shape="rect" id="clust2" href="dir_03cc0cf9f2ff9626c21c5d0b4fc5a5ff.html" alt="" coords="27,52,645,99"/>
-<area shape="rect" id="clust1" href="dir_5c982d53a68cdbcd421152b4020263a9.html" title="main" alt="" coords="16,16,656,109"/>
+<area shape="rect" id="node2" href="dir_32d610a2a6a3ffabf17b691195eaa5f4.html" title="encoder" alt="" coords="550,63,618,88"/>
+<area shape="rect" id="node3" href="dir_9acabe3509286bdc74b4083dedf3872a.html" title="irline" alt="" coords="477,63,526,88"/>
+<area shape="rect" id="node4" href="dir_7037465db2a82242a866a8e1b79c9f42.html" title="magnetometer" alt="" coords="347,63,453,88"/>
+<area shape="rect" id="node5" href="dir_c60c47be64a26db5ce8a84e711bfc8d2.html" title="motor" alt="" coords="269,63,323,88"/>
+<area shape="rect" id="node6" href="dir_53499b87f221dc70cf0fea2919feb39a.html" title="pid" alt="" coords="206,63,245,88"/>
+<area shape="rect" id="node7" href="dir_deb25b8f26a592b34c57622f4b00f5a0.html" title="ultrasonic" alt="" coords="103,63,182,88"/>
+<area shape="rect" id="node8" href="dir_95011f6e5b26185ab733a0aa8e5658b9.html" title="wifi" alt="" coords="38,63,79,88"/>
+<area shape="rect" id="clust2" href="dir_03cc0cf9f2ff9626c21c5d0b4fc5a5ff.html" alt="" coords="27,52,708,99"/>
+<area shape="rect" id="clust1" href="dir_5c982d53a68cdbcd421152b4020263a9.html" title="main" alt="" coords="16,16,719,109"/>
 </map>
