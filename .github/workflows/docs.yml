@@ -1,8 +1,10 @@
 name: Docs
 run-name: docs-${{ github.run_number }}
 on:
-    push:
-        branches: [ "main" ]
+  push:
+    branches: [ "main" ]
+permissions:
+  contents: write
 jobs:
   build_docs:
     runs-on: ubuntu-latest
