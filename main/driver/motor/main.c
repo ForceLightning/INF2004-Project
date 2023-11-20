@@ -5,10 +5,10 @@
 // 
 #define LEFT_MOTOR_PIN_CLKWISE      16
 #define LEFT_MOTOR_PIN_ANTICLKWISE  17
-#define RIGHT_MOTOR_PIN_CLKWISE     14
-#define RIGHT_MOTOR_PIN_ANTICLKWISE 15
-#define PWM_PIN_LEFT                0
-#define PWM_PIN_RIGHT               1
+#define RIGHT_MOTOR_PIN_CLKWISE     15
+#define RIGHT_MOTOR_PIN_ANTICLKWISE 14
+#define PWM_PIN_LEFT                10
+#define PWM_PIN_RIGHT               11
 
 int
 main (void)
