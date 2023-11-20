@@ -1,6 +1,5 @@
 # INF2004 Autonomous Car Project
-[![pages-build-deployment](https://github.com/ForceLightning/INF2004-Project/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/ForceLightning/INF2004-Project/actions/workflows/pages/pages-build-deployment)
-
+[![Tests](https://github.com/ForceLightning/INF2004-Project/actions/workflows/ctest.yml/badge.svg)](https://github.com/ForceLightning/INF2004-Project/actions/workflows/ctest.yml) [![Docs](https://github.com/ForceLightning/INF2004-Project/actions/workflows/docs.yml/badge.svg)](https://github.com/ForceLightning/INF2004-Project/actions/workflows/docs.yml)
 # Requirements
 - [Pico SDK v1.5.1](https://github.com/raspberrypi/pico-sdk/)
 - Pico ARM Toolchain
