@@ -111,6 +111,7 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 <li>a_star()&#160;:&#160;<a class="el" href="a__star_8c.html#a6d82d3636110fd676cb68188a8351c3a">a_star.c</a>, <a class="el" href="a__star_8h.html#a6d82d3636110fd676cb68188a8351c3a">a_star.h</a></li>
 <li>a_star_get_path()&#160;:&#160;<a class="el" href="a__star_8c.html#a2f70df96f17376cc25ad3f453e80e4a9">a_star.c</a>, <a class="el" href="a__star_8h.html#a2f70df96f17376cc25ad3f453e80e4a9">a_star.h</a></li>
 <li>a_star_get_path_str()&#160;:&#160;<a class="el" href="a__star_8c.html#aa93e473768652772f2577e1564b89d91">a_star.c</a>, <a class="el" href="a__star_8h.html#aa93e473768652772f2577e1564b89d91">a_star.h</a></li>
+<li>a_star_path_to_buffer()&#160;:&#160;<a class="el" href="a__star_8c.html#ac106312a2e54f3fcfbc7b8f9893bb9c6">a_star.c</a>, <a class="el" href="a__star_8h.html#ac106312a2e54f3fcfbc7b8f9893bb9c6">a_star.h</a></li>
 </ul>
 
 
@@ -153,19 +154,22 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 
 <h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
 <li>maze_clear_heuristics()&#160;:&#160;<a class="el" href="maze_8h.html#ae46a2d15996ecdd82d948a24c682cbe1">maze.h</a>, <a class="el" href="maze_8c.html#ae46a2d15996ecdd82d948a24c682cbe1">maze.c</a></li>
-<li>maze_create()&#160;:&#160;<a class="el" href="maze_8c.html#ab0ccd906b9a3479704eaf22867649b3f">maze.c</a>, <a class="el" href="maze_8h.html#ab0ccd906b9a3479704eaf22867649b3f">maze.h</a></li>
+<li>maze_create()&#160;:&#160;<a class="el" href="maze_8h.html#ab0ccd906b9a3479704eaf22867649b3f">maze.h</a>, <a class="el" href="maze_8c.html#ab0ccd906b9a3479704eaf22867649b3f">maze.c</a></li>
 <li>maze_deserialise()&#160;:&#160;<a class="el" href="maze_8c.html#a20eeebb6a55bf5f6dac5ba158ea21878">maze.c</a>, <a class="el" href="maze_8h.html#a20eeebb6a55bf5f6dac5ba158ea21878">maze.h</a></li>
 <li>maze_destroy()&#160;:&#160;<a class="el" href="maze_8c.html#adfd3fd1e0b98f4368aed22fbb72dbe8c">maze.c</a>, <a class="el" href="maze_8h.html#adfd3fd1e0b98f4368aed22fbb72dbe8c">maze.h</a></li>
 <li>maze_get_cell_at_coords()&#160;:&#160;<a class="el" href="maze_8c.html#a1957f5adb3d22d45ee033ba0c22d61cf">maze.c</a>, <a class="el" href="maze_8h.html#a1957f5adb3d22d45ee033ba0c22d61cf">maze.h</a></li>
 <li>maze_get_cell_in_dir()&#160;:&#160;<a class="el" href="maze_8c.html#a2b467ddfd914550a22224fa6be60f14f">maze.c</a>, <a class="el" href="maze_8h.html#a2b467ddfd914550a22224fa6be60f14f">maze.h</a></li>
 <li>maze_get_dir_from_to()&#160;:&#160;<a class="el" href="maze_8c.html#ab8154230298572c603d5b32c37f39fb5">maze.c</a>, <a class="el" href="maze_8h.html#ab8154230298572c603d5b32c37f39fb5">maze.h</a></li>
-<li>maze_get_nav_dir_offset()&#160;:&#160;<a class="el" href="maze_8h.html#adf53560282204aa46ad3f18cab9e0cd8">maze.h</a>, <a class="el" href="maze_8c.html#adf53560282204aa46ad3f18cab9e0cd8">maze.c</a></li>
+<li>maze_get_nav_dir_offset()&#160;:&#160;<a class="el" href="maze_8c.html#adf53560282204aa46ad3f18cab9e0cd8">maze.c</a>, <a class="el" href="maze_8h.html#adf53560282204aa46ad3f18cab9e0cd8">maze.h</a></li>
 <li>maze_get_string()&#160;:&#160;<a class="el" href="maze_8c.html#af92eb5d75cd2c4b9418d747bcbd15c7a">maze.c</a>, <a class="el" href="maze_8h.html#af92eb5d75cd2c4b9418d747bcbd15c7a">maze.h</a></li>
 <li>maze_initialise_empty_walled()&#160;:&#160;<a class="el" href="maze_8c.html#aef69dba27c12430494d4dbca3a9c0ef3">maze.c</a>, <a class="el" href="maze_8h.html#aef69dba27c12430494d4dbca3a9c0ef3">maze.h</a></li>
 <li>maze_insert_nav_str()&#160;:&#160;<a class="el" href="maze_8c.html#a892498023a08de789335a138509f04e5">maze.c</a>, <a class="el" href="maze_8h.html#acf435368da7fd002a7365c3733032545">maze.h</a></li>
 <li>maze_manhattan_dist()&#160;:&#160;<a class="el" href="maze_8c.html#a9037ecf1d39a1e3f0e0a34ca30391b91">maze.c</a>, <a class="el" href="maze_8h.html#a9037ecf1d39a1e3f0e0a34ca30391b91">maze.h</a></li>
 <li>maze_nav_modify_walls()&#160;:&#160;<a class="el" href="maze_8c.html#abb1a3c500ab00f0983a378f4b2045c4e">maze.c</a>, <a class="el" href="maze_8h.html#abb1a3c500ab00f0983a378f4b2045c4e">maze.h</a></li>
+<li>maze_nav_to_buffer()&#160;:&#160;<a class="el" href="maze_8h.html#a39f5fccadb0b4834e38f62f3f11ad270">maze.h</a>, <a class="el" href="maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270">maze.c</a></li>
 <li>maze_serialise()&#160;:&#160;<a class="el" href="maze_8c.html#a35e70f881f107a45f52eab387e71c61c">maze.c</a>, <a class="el" href="maze_8h.html#a35e70f881f107a45f52eab387e71c61c">maze.h</a></li>
+<li>maze_serialised_to_buffer()&#160;:&#160;<a class="el" href="maze_8c.html#aae2cf92e83b0810d22411db9fbea4d94">maze.c</a>, <a class="el" href="maze_8h.html#aae2cf92e83b0810d22411db9fbea4d94">maze.h</a></li>
+<li>maze_uint16_to_uint8_buffer()&#160;:&#160;<a class="el" href="maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1">maze.c</a>, <a class="el" href="maze_8h.html#a54d2a340d7b8fa00c0c3e989fa8657d1">maze.h</a></li>
 <li>move_forward()&#160;:&#160;<a class="el" href="motor__control_8c.html#aaa42eff93493c29478e16f4fc8817942">motor_control.c</a>, <a class="el" href="motor__control_8h.html#aaa42eff93493c29478e16f4fc8817942">motor_control.h</a></li>
 </ul>
 

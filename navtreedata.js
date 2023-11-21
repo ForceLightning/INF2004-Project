@@ -25,6 +25,13 @@
 var NAVTREE =
 [
   [ "INF2004-Project", "index.html", [
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ]
+      ] ]
+    ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
@@ -51,7 +58,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "FreeRTOSConfig_8h_source.html",
-"ultrasonic_8h.html"
+"structmaze__grid__cell.html#a2f0db7aa0db32e7c22625872dc55cbe1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

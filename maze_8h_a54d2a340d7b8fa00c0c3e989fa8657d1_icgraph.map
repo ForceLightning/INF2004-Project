@@ -1,0 +1,5 @@
+<map id="maze_uint16_to_uint8_buffer" name="maze_uint16_to_uint8_buffer">
+<area shape="rect" id="node1" title="Helper function to convert a uint16_t to a uint8_t buffer." alt="" coords="200,23,348,63"/>
+<area shape="rect" id="node2" href="$a__star_8c.html#ac106312a2e54f3fcfbc7b8f9893bb9c6" title="Inserts the path in coordinates from the start node to the end node into a buffer." alt="" coords="5,5,152,31"/>
+<area shape="rect" id="node3" href="$maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270" title="Serialises the navigator state into a uint8_t buffer." alt="" coords="9,55,148,80"/>
+</map>

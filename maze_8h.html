@@ -133,20 +133,21 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="maze_8h__dep__incl.png" border="0" usemap="#amain_2pathfinding_2maze_8hdep" alt=""/></div>
 <map name="amain_2pathfinding_2maze_8hdep" id="amain_2pathfinding_2maze_8hdep">
-<area shape="rect" title="Header file for the maze data structure and public functions." alt="" coords="663,5,825,31"/>
-<area shape="rect" href="a__star_8c.html" title="Source file for the implementation of the a* algorithm." alt="" coords="309,255,435,295"/>
-<area shape="rect" href="a__star_8h.html" title="Header file for the a* algorithm." alt="" coords="162,167,289,207"/>
+<area shape="rect" title="Header file for the maze data structure and public functions." alt="" coords="725,5,886,31"/>
+<area shape="rect" href="a__star_8c.html" title="Source file for the implementation of the a* algorithm." alt="" coords="193,255,319,295"/>
+<area shape="rect" href="a__star_8h.html" title="Header file for the a* algorithm." alt="" coords="187,167,314,207"/>
+<area shape="rect" href="navigation__tests_8c.html" title="Tests the combined navigational functions." alt="" coords="623,262,783,287"/>
 <area shape="rect" href="pathfinding__tests_8c.html" title="This file contains the tests for the A* pathfinding algorithm." alt="" coords="5,262,168,287"/>
-<area shape="rect" href="binary__heap_8c.html" title="Source file for the binary min&#45;heap used in the a* algorithm and floodfill algorithm." alt="" coords="364,167,519,207"/>
-<area shape="rect" href="binary__heap_8h.html" title="This file contains the declarations for the binary min&#45;heap used in the a* algorithm." alt="" coords="516,79,671,119"/>
-<area shape="rect" href="dfs_8c.html" title="Runs the depth first search algorithm on a maze." alt="" coords="734,262,882,287"/>
-<area shape="rect" href="floodfill_8c.html" title="This file contains the implementation of the floodfill algorithm for mapping the maze and determining..." alt="" coords="746,174,915,199"/>
-<area shape="rect" href="dfs__tests_8c.html" title="This file containst the functions that test the depth first search algorithm with a simulated navigat..." alt="" coords="1062,262,1181,287"/>
-<area shape="rect" href="dfs_8h.html" title="Header file for the depth first search algorithm for mapping the maze." alt="" coords="991,174,1139,199"/>
-<area shape="rect" href="floodfill_8h.html" title="This file contains the function prototypes for the floodfill algorithm for mapping of the maze." alt="" coords="902,86,1071,111"/>
-<area shape="rect" href="floodfill__tests_8c.html" title="This file contains the tests for the floodfill algorithm." alt="" coords="1215,174,1355,199"/>
-<area shape="rect" href="maze_8c.html" title="Contains the implementation of utility maze functions." alt="" coords="1431,86,1593,111"/>
-<area shape="rect" href="main_8c.html" title="The main source file for robot control." alt="" coords="193,262,285,287"/>
+<area shape="rect" href="binary__heap_8c.html" title="Source file for the binary min&#45;heap used in the a* algorithm and floodfill algorithm." alt="" coords="389,167,544,207"/>
+<area shape="rect" href="binary__heap_8h.html" title="This file contains the declarations for the binary min&#45;heap used in the a* algorithm." alt="" coords="555,79,709,119"/>
+<area shape="rect" href="dfs_8c.html" title="Runs the depth first search algorithm on a maze." alt="" coords="967,262,1115,287"/>
+<area shape="rect" href="floodfill_8c.html" title="This file contains the implementation of the floodfill algorithm for mapping the maze and determining..." alt="" coords="721,174,890,199"/>
+<area shape="rect" href="dfs__tests_8c.html" title="This file containst the functions that test the depth first search algorithm with a simulated navigat..." alt="" coords="1142,262,1261,287"/>
+<area shape="rect" href="dfs_8h.html" title="Header file for the depth first search algorithm for mapping the maze." alt="" coords="966,174,1114,199"/>
+<area shape="rect" href="floodfill_8h.html" title="This file contains the function prototypes for the floodfill algorithm for mapping of the maze." alt="" coords="955,86,1125,111"/>
+<area shape="rect" href="floodfill__tests_8c.html" title="This file contains the tests for the floodfill algorithm." alt="" coords="1241,174,1381,199"/>
+<area shape="rect" href="maze_8c.html" title="Contains the implementation of utility maze functions." alt="" coords="1507,86,1669,111"/>
+<area shape="rect" href="main_8c.html" title="The main source file for robot control." alt="" coords="343,262,435,287"/>
 </map>
 </div>
 </div>
@@ -163,6 +164,8 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmaze__navigator__state.html">maze_navigator_state</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmaze__gap__bitmask.html">maze_gap_bitmask</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionmaze__bitmask__compressed.html">maze_bitmask_compressed</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -188,6 +191,9 @@ typedef struct <a class="el" href="structmaze__navigator__state.html">maze_navig
 <tr class="memitem:a8b7f60aa6e205b169ea0494a0f0f5dd2"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structmaze__gap__bitmask.html">maze_gap_bitmask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2">maze_gap_bitmask_t</a></td></tr>
 <tr class="memdesc:a8b7f60aa6e205b169ea0494a0f0f5dd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">This struct contains the maze gap bitmasks for serialisation.  <a href="maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2">More...</a><br /></td></tr>
 <tr class="separator:a8b7f60aa6e205b169ea0494a0f0f5dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49115553f0197dd6983f685d976b7793"><td class="memItemLeft" align="right" valign="top"><a id="a49115553f0197dd6983f685d976b7793" name="a49115553f0197dd6983f685d976b7793"></a>
+typedef union <a class="el" href="unionmaze__bitmask__compressed.html">maze_bitmask_compressed</a>&#160;</td><td class="memItemRight" valign="bottom"><b>maze_bitmask_compressed_t</b></td></tr>
+<tr class="separator:a49115553f0197dd6983f685d976b7793"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -256,6 +262,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a9037ecf1d39a1e3f0e0a34ca30391b91"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#a9037ecf1d39a1e3f0e0a34ca30391b91">maze_manhattan_dist</a> (const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_a, const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_b)</td></tr>
 <tr class="memdesc:a9037ecf1d39a1e3f0e0a34ca30391b91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the manhattan distance between two points.  <a href="maze_8h.html#a9037ecf1d39a1e3f0e0a34ca30391b91">More...</a><br /></td></tr>
 <tr class="separator:a9037ecf1d39a1e3f0e0a34ca30391b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae2cf92e83b0810d22411db9fbea4d94"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#aae2cf92e83b0810d22411db9fbea4d94">maze_serialised_to_buffer</a> (const <a class="el" href="maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2">maze_gap_bitmask_t</a> *p_bitmask, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
+<tr class="memdesc:aae2cf92e83b0810d22411db9fbea4d94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialises the maze into a uint8_t buffer.  <a href="maze_8h.html#aae2cf92e83b0810d22411db9fbea4d94">More...</a><br /></td></tr>
+<tr class="separator:aae2cf92e83b0810d22411db9fbea4d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39f5fccadb0b4834e38f62f3f11ad270"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#a39f5fccadb0b4834e38f62f3f11ad270">maze_nav_to_buffer</a> (const <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *p_navigator, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
+<tr class="memdesc:a39f5fccadb0b4834e38f62f3f11ad270"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialises the navigator state into a uint8_t buffer.  <a href="maze_8h.html#a39f5fccadb0b4834e38f62f3f11ad270">More...</a><br /></td></tr>
+<tr class="separator:a39f5fccadb0b4834e38f62f3f11ad270"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54d2a340d7b8fa00c0c3e989fa8657d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#a54d2a340d7b8fa00c0c3e989fa8657d1">maze_uint16_to_uint8_buffer</a> (uint16_t value, uint8_t *p_buffer)</td></tr>
+<tr class="memdesc:a54d2a340d7b8fa00c0c3e989fa8657d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function to convert a uint16_t to a uint8_t buffer.  <a href="maze_8h.html#a54d2a340d7b8fa00c0c3e989fa8657d1">More...</a><br /></td></tr>
+<tr class="separator:a54d2a340d7b8fa00c0c3e989fa8657d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Header file for the maze data structure and public functions. </p>
@@ -918,6 +933,62 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a39f5fccadb0b4834e38f62f3f11ad270" name="a39f5fccadb0b4834e38f62f3f11ad270"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39f5fccadb0b4834e38f62f3f11ad270">&#9670;&#160;</a></span>maze_nav_to_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t maze_nav_to_buffer </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *&#160;</td>
+          <td class="paramname"><em>p_navigator</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>p_buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Serialises the navigator state into a uint8_t buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_navigator</td><td>Pointer to the navigator state. </td></tr>
+    <tr><td class="paramname">p_buffer</td><td>Pointer to the buffer. </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>Length of the buffer for checks. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int16_t -1 if the buffer is too small, 0 otherwise.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The buffer is expected to be cleared before calling this function.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>The buffer must be large enough to fit the navigator state. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="maze_8h_a39f5fccadb0b4834e38f62f3f11ad270_cgraph.png" border="0" usemap="#amaze_8h_a39f5fccadb0b4834e38f62f3f11ad270_cgraph" alt=""/></div>
+<map name="amaze_8h_a39f5fccadb0b4834e38f62f3f11ad270_cgraph" id="amaze_8h_a39f5fccadb0b4834e38f62f3f11ad270_cgraph">
+<area shape="rect" title="Serialises the navigator state into a uint8_t buffer." alt="" coords="5,13,144,38"/>
+<area shape="rect" href="maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1" title="Helper function to convert a uint16_t to a uint8_t buffer." alt="" coords="192,5,340,45"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a35e70f881f107a45f52eab387e71c61c" name="a35e70f881f107a45f52eab387e71c61c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a35e70f881f107a45f52eab387e71c61c">&#9670;&#160;</a></span>maze_serialise()</h2>
 
@@ -942,6 +1013,99 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>maze_gap_bitmask_t Bitmask array of maze gaps. Take OxF - bitmask to get the walls. </dd></dl>
+
+</div>
+</div>
+<a id="aae2cf92e83b0810d22411db9fbea4d94" name="aae2cf92e83b0810d22411db9fbea4d94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae2cf92e83b0810d22411db9fbea4d94">&#9670;&#160;</a></span>maze_serialised_to_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t maze_serialised_to_buffer </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2">maze_gap_bitmask_t</a> *&#160;</td>
+          <td class="paramname"><em>p_bitmask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>p_buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Serialises the maze into a uint8_t buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_bitmask</td><td>Pointer to the maze gap bitmask. </td></tr>
+    <tr><td class="paramname">p_buffer</td><td>Pointer to the buffer. </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>Size of the buffer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int16_t -1 if the buffer is too small, 0 otherwise.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The buffer must be large enough to fit the maze, and the buffer must be cleared before calling this function. </dd></dl>
+
+</div>
+</div>
+<a id="a54d2a340d7b8fa00c0c3e989fa8657d1" name="a54d2a340d7b8fa00c0c3e989fa8657d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54d2a340d7b8fa00c0c3e989fa8657d1">&#9670;&#160;</a></span>maze_uint16_to_uint8_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void maze_uint16_to_uint8_buffer </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>p_buffer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Helper function to convert a uint16_t to a uint8_t buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Value to convert. </td></tr>
+    <tr><td class="paramname">p_buffer</td><td>uint8_t buffer of size 2. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="maze_8h_a54d2a340d7b8fa00c0c3e989fa8657d1_icgraph.png" border="0" usemap="#amaze_8h_a54d2a340d7b8fa00c0c3e989fa8657d1_icgraph" alt=""/></div>
+<map name="amaze_8h_a54d2a340d7b8fa00c0c3e989fa8657d1_icgraph" id="amaze_8h_a54d2a340d7b8fa00c0c3e989fa8657d1_icgraph">
+<area shape="rect" title="Helper function to convert a uint16_t to a uint8_t buffer." alt="" coords="200,23,348,63"/>
+<area shape="rect" href="a__star_8c.html#ac106312a2e54f3fcfbc7b8f9893bb9c6" title="Inserts the path in coordinates from the start node to the end node into a buffer." alt="" coords="5,5,152,31"/>
+<area shape="rect" href="maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270" title="Serialises the navigator state into a uint8_t buffer." alt="" coords="9,55,148,80"/>
+</map>
+</div>
 
 </div>
 </div>

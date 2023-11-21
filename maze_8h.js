@@ -5,6 +5,7 @@ var maze_8h =
     [ "maze_grid", "structmaze__grid.html", "structmaze__grid" ],
     [ "maze_navigator_state", "structmaze__navigator__state.html", "structmaze__navigator__state" ],
     [ "maze_gap_bitmask", "structmaze__gap__bitmask.html", "structmaze__gap__bitmask" ],
+    [ "maze_bitmask_compressed", "unionmaze__bitmask__compressed.html", "unionmaze__bitmask__compressed" ],
     [ "maze_gap_bitmask_t", "maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2", null ],
     [ "maze_wall_direction_t", "maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375", null ],
     [ "maze_cardinal_direction", "maze_8h.html#a82ffd437d83514d94a8db843697d7eda", [
@@ -34,5 +35,8 @@ var maze_8h =
     [ "maze_insert_nav_str", "maze_8h.html#acf435368da7fd002a7365c3733032545", null ],
     [ "maze_manhattan_dist", "maze_8h.html#a9037ecf1d39a1e3f0e0a34ca30391b91", null ],
     [ "maze_nav_modify_walls", "maze_8h.html#abb1a3c500ab00f0983a378f4b2045c4e", null ],
-    [ "maze_serialise", "maze_8h.html#a35e70f881f107a45f52eab387e71c61c", null ]
+    [ "maze_nav_to_buffer", "maze_8h.html#a39f5fccadb0b4834e38f62f3f11ad270", null ],
+    [ "maze_serialise", "maze_8h.html#a35e70f881f107a45f52eab387e71c61c", null ],
+    [ "maze_serialised_to_buffer", "maze_8h.html#aae2cf92e83b0810d22411db9fbea4d94", null ],
+    [ "maze_uint16_to_uint8_buffer", "maze_8h.html#a54d2a340d7b8fa00c0c3e989fa8657d1", null ]
 ];

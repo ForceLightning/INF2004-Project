@@ -13,5 +13,8 @@ var maze_8c =
     [ "maze_insert_nav_str", "maze_8c.html#a892498023a08de789335a138509f04e5", null ],
     [ "maze_manhattan_dist", "maze_8c.html#a9037ecf1d39a1e3f0e0a34ca30391b91", null ],
     [ "maze_nav_modify_walls", "maze_8c.html#abb1a3c500ab00f0983a378f4b2045c4e", null ],
-    [ "maze_serialise", "maze_8c.html#a35e70f881f107a45f52eab387e71c61c", null ]
+    [ "maze_nav_to_buffer", "maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270", null ],
+    [ "maze_serialise", "maze_8c.html#a35e70f881f107a45f52eab387e71c61c", null ],
+    [ "maze_serialised_to_buffer", "maze_8c.html#aae2cf92e83b0810d22411db9fbea4d94", null ],
+    [ "maze_uint16_to_uint8_buffer", "maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1", null ]
 ];

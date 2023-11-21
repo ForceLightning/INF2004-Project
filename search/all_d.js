@@ -13,6 +13,8 @@ var searchData=
   ['pathfinding_5ftests_10',['pathfinding_tests',['../pathfinding__tests_8c.html#a12f00de89ab5b9d9f9f01c8999b89a04',1,'pathfinding_tests.c']]],
   ['pathfinding_5ftests_2ec_11',['pathfinding_tests.c',['../pathfinding__tests_8c.html',1,'']]],
   ['pid_5fparams_5ft_12',['pid_params_t',['../structpid__params__t.html',1,'']]],
-  ['priority_13',['priority',['../structbinary__heap__node.html#a0815784d41b3c13d42ce22367abfba1d',1,'binary_heap_node']]],
-  ['project_5ftest_2ec_14',['project_test.c',['../project__test_8c.html',1,'']]]
+  ['pretty_5fprint_5fmaze_13',['pretty_print_maze',['../namespaceprint__maze.html#ac338594cbf3e7db061a5a85cc7fa57c9',1,'print_maze']]],
+  ['print_5fmaze_14',['print_maze',['../namespaceprint__maze.html',1,'']]],
+  ['priority_15',['priority',['../structbinary__heap__node.html#a0815784d41b3c13d42ce22367abfba1d',1,'binary_heap_node']]],
+  ['project_5ftest_2ec_16',['project_test.c',['../project__test_8c.html',1,'']]]
 ];

@@ -136,10 +136,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="a__star_8h__dep__incl.png" border="0" usemap="#amain_2pathfinding_2a__star_8hdep" alt=""/></div>
 <map name="amain_2pathfinding_2a__star_8hdep" id="amain_2pathfinding_2a__star_8hdep">
-<area shape="rect" title="Header file for the a* algorithm." alt="" coords="121,5,248,45"/>
+<area shape="rect" title="Header file for the a* algorithm." alt="" coords="205,5,332,45"/>
 <area shape="rect" href="main_8c.html" title="The main source file for robot control." alt="" coords="5,101,97,126"/>
 <area shape="rect" href="a__star_8c.html" title="Source file for the implementation of the a* algorithm." alt="" coords="121,93,248,133"/>
-<area shape="rect" href="pathfinding__tests_8c.html" title="This file contains the tests for the A* pathfinding algorithm." alt="" coords="273,101,435,126"/>
+<area shape="rect" href="navigation__tests_8c.html" title="Tests the combined navigational functions." alt="" coords="273,101,433,126"/>
+<area shape="rect" href="pathfinding__tests_8c.html" title="This file contains the tests for the A* pathfinding algorithm." alt="" coords="457,101,619,126"/>
 </map>
 </div>
 </div>
@@ -162,11 +163,14 @@ Functions</h2></td></tr>
 <tr class="memdesc:a6d82d3636110fd676cb68188a8351c3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the A* algorithm on a grid maze to find the shortest path between two points, if one exists. The path can be retrieved by checking the <code>p_came_from</code> field of each node.  <a href="a__star_8h.html#a6d82d3636110fd676cb68188a8351c3a">More...</a><br /></td></tr>
 <tr class="separator:a6d82d3636110fd676cb68188a8351c3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f70df96f17376cc25ad3f453e80e4a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structa__star__path.html">a_star_path_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#a2f70df96f17376cc25ad3f453e80e4a9">a_star_get_path</a> (<a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *p_end_node)</td></tr>
-<tr class="memdesc:a2f70df96f17376cc25ad3f453e80e4a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the path from the start node to the end node.  <a href="a__star_8h.html#a2f70df96f17376cc25ad3f453e80e4a9">More...</a><br /></td></tr>
+<tr class="memdesc:a2f70df96f17376cc25ad3f453e80e4a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the path from the start node to the end node (inclusive).  <a href="a__star_8h.html#a2f70df96f17376cc25ad3f453e80e4a9">More...</a><br /></td></tr>
 <tr class="separator:a2f70df96f17376cc25ad3f453e80e4a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa93e473768652772f2577e1564b89d91"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#aa93e473768652772f2577e1564b89d91">a_star_get_path_str</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, <a class="el" href="structa__star__path.html">a_star_path_t</a> *p_path)</td></tr>
 <tr class="memdesc:aa93e473768652772f2577e1564b89d91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the string representation of the path from the start node to the end node.  <a href="a__star_8h.html#aa93e473768652772f2577e1564b89d91">More...</a><br /></td></tr>
 <tr class="separator:aa93e473768652772f2577e1564b89d91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac106312a2e54f3fcfbc7b8f9893bb9c6"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#ac106312a2e54f3fcfbc7b8f9893bb9c6">a_star_path_to_buffer</a> (<a class="el" href="structa__star__path.html">a_star_path_t</a> *p_path, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
+<tr class="memdesc:ac106312a2e54f3fcfbc7b8f9893bb9c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts the path in coordinates from the start node to the end node into a buffer.  <a href="a__star_8h.html#ac106312a2e54f3fcfbc7b8f9893bb9c6">More...</a><br /></td></tr>
+<tr class="separator:ac106312a2e54f3fcfbc7b8f9893bb9c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Header file for the a* algorithm. </p>
@@ -246,7 +250,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Get the path from the start node to the end node. </p>
+<p>Get the path from the start node to the end node (inclusive). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p_end_node</td><td>Pointer to the end node. </td></tr>
@@ -300,6 +304,60 @@ Here is the call graph for this function:</div>
 <area shape="rect" title="Gets the string representation of the path from the start node to the end node." alt="" coords="5,31,143,56"/>
 <area shape="rect" href="maze_8c.html#ab8154230298572c603d5b32c37f39fb5" title="Get the direction from p_point_a to p_point_b if they are adjacent." alt="" coords="191,5,341,31"/>
 <area shape="rect" href="maze_8c.html#af92eb5d75cd2c4b9418d747bcbd15c7a" title="Get the string representation of the maze for pretty printing." alt="" coords="207,55,325,80"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac106312a2e54f3fcfbc7b8f9893bb9c6" name="ac106312a2e54f3fcfbc7b8f9893bb9c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac106312a2e54f3fcfbc7b8f9893bb9c6">&#9670;&#160;</a></span>a_star_path_to_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t a_star_path_to_buffer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structa__star__path.html">a_star_path_t</a> *&#160;</td>
+          <td class="paramname"><em>p_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>p_buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inserts the path in coordinates from the start node to the end node into a buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_path</td><td>Pointer to the path generated by the A* algorithm. </td></tr>
+    <tr><td class="paramname">p_buffer</td><td>Pointer to the buffer to store the path in. </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>Size of the buffer. Checks if the buffer is large enough. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int16_t -1 if the buffer is too small, 0 otherwise. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a__star_8h_ac106312a2e54f3fcfbc7b8f9893bb9c6_cgraph.png" border="0" usemap="#aa__star_8h_ac106312a2e54f3fcfbc7b8f9893bb9c6_cgraph" alt=""/></div>
+<map name="aa__star_8h_ac106312a2e54f3fcfbc7b8f9893bb9c6_cgraph" id="aa__star_8h_ac106312a2e54f3fcfbc7b8f9893bb9c6_cgraph">
+<area shape="rect" title="Inserts the path in coordinates from the start node to the end node into a buffer." alt="" coords="5,13,152,38"/>
+<area shape="rect" href="maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1" title="Helper function to convert a uint16_t to a uint8_t buffer." alt="" coords="200,5,348,45"/>
 </map>
 </div>
 
