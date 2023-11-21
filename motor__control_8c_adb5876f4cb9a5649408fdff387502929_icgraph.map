@@ -1,0 +1,4 @@
+<map id="turn_right" name="turn_right">
+<area shape="rect" id="node1" title="A function to turn the car right." alt="" coords="179,5,255,31"/>
+<area shape="rect" id="node2" href="$pid_8c.html#a6bd427202c90c3677a319cd4028bedf1" title="Function to turn the car based on a given direction." alt="" coords="5,5,131,31"/>
+</map>

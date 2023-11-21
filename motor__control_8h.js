@@ -1,12 +1,12 @@
 var motor__control_8h =
 [
     [ "motor_pins", "structmotor__pins.html", null ],
-    [ "move_forward", "motor__control_8h.html#aaa42eff93493c29478e16f4fc8817942", null ],
-    [ "reverse", "motor__control_8h.html#a412149b48e9e1c97db5c9f1a6977c139", null ],
+    [ "move_forward", "motor__control_8h.html#ae550a3c67881c84d0b773c23e5b3aecd", null ],
+    [ "reverse", "motor__control_8h.html#a310c0bebc002158f5646a91d60e4dc89", null ],
     [ "start_motor", "motor__control_8h.html#add26593501b870e1b04583975115d4ee", null ],
-    [ "stop", "motor__control_8h.html#a5c889b6c93f58d5f7af6b62e927c1be5", null ],
-    [ "turn_left", "motor__control_8h.html#a9f9a41dbac2cab68a287c709d42c0ea7", null ],
-    [ "turn_right", "motor__control_8h.html#aff91bd9e6ca45c462fd1d1e5f9dda1c1", null ],
+    [ "stop", "motor__control_8h.html#a8c528baf37154d347366083f0f816846", null ],
+    [ "turn_left", "motor__control_8h.html#a2b3e4a3587c92c609c39b1a5778bcf00", null ],
+    [ "turn_right", "motor__control_8h.html#adb5876f4cb9a5649408fdff387502929", null ],
     [ "update_direction", "motor__control_8h.html#af0ebed13ef30e857d8c5cbda43c8f7c0", null ],
     [ "update_pwm", "motor__control_8h.html#aa20774b583539f8a2698c2f8ac6d4334", null ]
 ];

@@ -128,9 +128,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="motor__control_8h__dep__incl.png" border="0" usemap="#amain_2driver_2motor_2motor__control_8hdep" alt=""/></div>
 <map name="amain_2driver_2motor_2motor__control_8hdep" id="amain_2driver_2motor_2motor__control_8hdep">
-<area shape="rect" title=" " alt="" coords="80,5,240,45"/>
+<area shape="rect" title=" " alt="" coords="179,5,339,45"/>
 <area shape="rect" href="motor__control_8c.html" title=" " alt="" coords="5,93,165,133"/>
-<area shape="rect" href="main_8c.html" title="The main source file for robot control." alt="" coords="190,101,282,126"/>
+<area shape="rect" href="pid_8c.html" title=" " alt="" coords="189,101,328,126"/>
+<area shape="rect" href="main_8c.html" title="The main source file for robot control." alt="" coords="353,101,445,126"/>
 </map>
 </div>
 </div>
@@ -149,6 +150,24 @@ Macros</h2></td></tr>
 <tr class="memitem:af98dec0f0cd51e25b66c0d3ac408010f"><td class="memItemLeft" align="right" valign="top"><a id="af98dec0f0cd51e25b66c0d3ac408010f" name="af98dec0f0cd51e25b66c0d3ac408010f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_PWM_WRAP</b>&#160;&#160;&#160;62500</td></tr>
 <tr class="separator:af98dec0f0cd51e25b66c0d3ac408010f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9008251671d3c9f794be9160dfac929"><td class="memItemLeft" align="right" valign="top"><a id="af9008251671d3c9f794be9160dfac929" name="af9008251671d3c9f794be9160dfac929"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LEFT_MOTOR_PIN_CLKWISE</b>&#160;&#160;&#160;16</td></tr>
+<tr class="separator:af9008251671d3c9f794be9160dfac929"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a492a2d2ae0b5b255f0ed72c3223637f2"><td class="memItemLeft" align="right" valign="top"><a id="a492a2d2ae0b5b255f0ed72c3223637f2" name="a492a2d2ae0b5b255f0ed72c3223637f2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LEFT_MOTOR_PIN_ANTICLKWISE</b>&#160;&#160;&#160;17</td></tr>
+<tr class="separator:a492a2d2ae0b5b255f0ed72c3223637f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a523a0439da2158837bc6bd08d85c1396"><td class="memItemLeft" align="right" valign="top"><a id="a523a0439da2158837bc6bd08d85c1396" name="a523a0439da2158837bc6bd08d85c1396"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RIGHT_MOTOR_PIN_CLKWISE</b>&#160;&#160;&#160;15</td></tr>
+<tr class="separator:a523a0439da2158837bc6bd08d85c1396"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75bac6a16445c8576b50d2eb1072f929"><td class="memItemLeft" align="right" valign="top"><a id="a75bac6a16445c8576b50d2eb1072f929" name="a75bac6a16445c8576b50d2eb1072f929"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RIGHT_MOTOR_PIN_ANTICLKWISE</b>&#160;&#160;&#160;14</td></tr>
+<tr class="separator:a75bac6a16445c8576b50d2eb1072f929"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84bcae7cac5342c62e10866a7f29dda5"><td class="memItemLeft" align="right" valign="top"><a id="a84bcae7cac5342c62e10866a7f29dda5" name="a84bcae7cac5342c62e10866a7f29dda5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PWM_PIN_LEFT</b>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:a84bcae7cac5342c62e10866a7f29dda5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa93c986e24ec0f7c89b34b643ac7857f"><td class="memItemLeft" align="right" valign="top"><a id="aa93c986e24ec0f7c89b34b643ac7857f" name="aa93c986e24ec0f7c89b34b643ac7857f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PWM_PIN_RIGHT</b>&#160;&#160;&#160;11</td></tr>
+<tr class="separator:aa93c986e24ec0f7c89b34b643ac7857f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -167,21 +186,21 @@ Functions</h2></td></tr>
 <tr class="memitem:af0ebed13ef30e857d8c5cbda43c8f7c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8h.html#af0ebed13ef30e857d8c5cbda43c8f7c0">update_direction</a> (uint clkwise_gpio, uint anti_clkwise_gpio, uint clkwise, uint anti_clkwise)</td></tr>
 <tr class="memdesc:af0ebed13ef30e857d8c5cbda43c8f7c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to update the direction of the motor's rotation.  <a href="motor__control_8h.html#af0ebed13ef30e857d8c5cbda43c8f7c0">More...</a><br /></td></tr>
 <tr class="separator:af0ebed13ef30e857d8c5cbda43c8f7c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa42eff93493c29478e16f4fc8817942"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8h.html#aaa42eff93493c29478e16f4fc8817942">move_forward</a> (<a class="el" href="structmotor__pins.html">motor_pins_t</a> motor_data)</td></tr>
-<tr class="memdesc:aaa42eff93493c29478e16f4fc8817942"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to move the car forward.  <a href="motor__control_8h.html#aaa42eff93493c29478e16f4fc8817942">More...</a><br /></td></tr>
-<tr class="separator:aaa42eff93493c29478e16f4fc8817942"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c889b6c93f58d5f7af6b62e927c1be5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8h.html#a5c889b6c93f58d5f7af6b62e927c1be5">stop</a> (<a class="el" href="structmotor__pins.html">motor_pins_t</a> motor_data)</td></tr>
-<tr class="memdesc:a5c889b6c93f58d5f7af6b62e927c1be5"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to stop the car.  <a href="motor__control_8h.html#a5c889b6c93f58d5f7af6b62e927c1be5">More...</a><br /></td></tr>
-<tr class="separator:a5c889b6c93f58d5f7af6b62e927c1be5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a412149b48e9e1c97db5c9f1a6977c139"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8h.html#a412149b48e9e1c97db5c9f1a6977c139">reverse</a> (<a class="el" href="structmotor__pins.html">motor_pins_t</a> motor_data)</td></tr>
-<tr class="memdesc:a412149b48e9e1c97db5c9f1a6977c139"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to reverse the car.  <a href="motor__control_8h.html#a412149b48e9e1c97db5c9f1a6977c139">More...</a><br /></td></tr>
-<tr class="separator:a412149b48e9e1c97db5c9f1a6977c139"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f9a41dbac2cab68a287c709d42c0ea7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8h.html#a9f9a41dbac2cab68a287c709d42c0ea7">turn_left</a> (<a class="el" href="structmotor__pins.html">motor_pins_t</a> motor_data, bool reverse_turn)</td></tr>
-<tr class="memdesc:a9f9a41dbac2cab68a287c709d42c0ea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to turn the car left.  <a href="motor__control_8h.html#a9f9a41dbac2cab68a287c709d42c0ea7">More...</a><br /></td></tr>
-<tr class="separator:a9f9a41dbac2cab68a287c709d42c0ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff91bd9e6ca45c462fd1d1e5f9dda1c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8h.html#aff91bd9e6ca45c462fd1d1e5f9dda1c1">turn_right</a> (<a class="el" href="structmotor__pins.html">motor_pins_t</a> motor_data, bool reverse_turn)</td></tr>
-<tr class="memdesc:aff91bd9e6ca45c462fd1d1e5f9dda1c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to turn the car right.  <a href="motor__control_8h.html#aff91bd9e6ca45c462fd1d1e5f9dda1c1">More...</a><br /></td></tr>
-<tr class="separator:aff91bd9e6ca45c462fd1d1e5f9dda1c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae550a3c67881c84d0b773c23e5b3aecd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8h.html#ae550a3c67881c84d0b773c23e5b3aecd">move_forward</a> ()</td></tr>
+<tr class="memdesc:ae550a3c67881c84d0b773c23e5b3aecd"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to move the car forward.  <a href="motor__control_8h.html#ae550a3c67881c84d0b773c23e5b3aecd">More...</a><br /></td></tr>
+<tr class="separator:ae550a3c67881c84d0b773c23e5b3aecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c528baf37154d347366083f0f816846"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8h.html#a8c528baf37154d347366083f0f816846">stop</a> ()</td></tr>
+<tr class="memdesc:a8c528baf37154d347366083f0f816846"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to stop the car.  <a href="motor__control_8h.html#a8c528baf37154d347366083f0f816846">More...</a><br /></td></tr>
+<tr class="separator:a8c528baf37154d347366083f0f816846"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a310c0bebc002158f5646a91d60e4dc89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8h.html#a310c0bebc002158f5646a91d60e4dc89">reverse</a> ()</td></tr>
+<tr class="memdesc:a310c0bebc002158f5646a91d60e4dc89"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to reverse the car.  <a href="motor__control_8h.html#a310c0bebc002158f5646a91d60e4dc89">More...</a><br /></td></tr>
+<tr class="separator:a310c0bebc002158f5646a91d60e4dc89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b3e4a3587c92c609c39b1a5778bcf00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8h.html#a2b3e4a3587c92c609c39b1a5778bcf00">turn_left</a> (bool reverse_turn)</td></tr>
+<tr class="memdesc:a2b3e4a3587c92c609c39b1a5778bcf00"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to turn the car left.  <a href="motor__control_8h.html#a2b3e4a3587c92c609c39b1a5778bcf00">More...</a><br /></td></tr>
+<tr class="separator:a2b3e4a3587c92c609c39b1a5778bcf00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb5876f4cb9a5649408fdff387502929"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8h.html#adb5876f4cb9a5649408fdff387502929">turn_right</a> (bool reverse_turn)</td></tr>
+<tr class="memdesc:adb5876f4cb9a5649408fdff387502929"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to turn the car right.  <a href="motor__control_8h.html#adb5876f4cb9a5649408fdff387502929">More...</a><br /></td></tr>
+<tr class="separator:adb5876f4cb9a5649408fdff387502929"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Bryan Seah </dd></dl>
@@ -189,8 +208,8 @@ Functions</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>2023-10-29</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2023 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="aaa42eff93493c29478e16f4fc8817942" name="aaa42eff93493c29478e16f4fc8817942"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa42eff93493c29478e16f4fc8817942">&#9670;&#160;</a></span>move_forward()</h2>
+<a id="ae550a3c67881c84d0b773c23e5b3aecd" name="ae550a3c67881c84d0b773c23e5b3aecd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae550a3c67881c84d0b773c23e5b3aecd">&#9670;&#160;</a></span>move_forward()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -198,8 +217,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void move_forward </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmotor__pins.html">motor_pins_t</a>&#160;</td>
-          <td class="paramname"><em>motor_data</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -216,18 +234,27 @@ Functions</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="motor__control_8h_aaa42eff93493c29478e16f4fc8817942_cgraph.png" border="0" usemap="#amotor__control_8h_aaa42eff93493c29478e16f4fc8817942_cgraph" alt=""/></div>
-<map name="amotor__control_8h_aaa42eff93493c29478e16f4fc8817942_cgraph" id="amotor__control_8h_aaa42eff93493c29478e16f4fc8817942_cgraph">
+<div class="center"><img src="motor__control_8h_ae550a3c67881c84d0b773c23e5b3aecd_cgraph.png" border="0" usemap="#amotor__control_8h_ae550a3c67881c84d0b773c23e5b3aecd_cgraph" alt=""/></div>
+<map name="amotor__control_8h_ae550a3c67881c84d0b773c23e5b3aecd_cgraph" id="amotor__control_8h_ae550a3c67881c84d0b773c23e5b3aecd_cgraph">
 <area shape="rect" title="A function to move the car forward." alt="" coords="5,31,109,56"/>
 <area shape="rect" href="motor__control_8c.html#af0ebed13ef30e857d8c5cbda43c8f7c0" title="A function to update the direction of the motor&#39;s rotation." alt="" coords="157,5,275,31"/>
 <area shape="rect" href="motor__control_8c.html#aa20774b583539f8a2698c2f8ac6d4334" title="A function to update the PWM duty cycle and wrap value." alt="" coords="168,55,264,80"/>
 </map>
 </div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="motor__control_8h_ae550a3c67881c84d0b773c23e5b3aecd_icgraph.png" border="0" usemap="#amotor__control_8h_ae550a3c67881c84d0b773c23e5b3aecd_icgraph" alt=""/></div>
+<map name="amotor__control_8h_ae550a3c67881c84d0b773c23e5b3aecd_icgraph" id="amotor__control_8h_ae550a3c67881c84d0b773c23e5b3aecd_icgraph">
+<area shape="rect" title="A function to move the car forward." alt="" coords="179,5,283,31"/>
+<area shape="rect" href="pid_8c.html#a6bd427202c90c3677a319cd4028bedf1" title="Function to turn the car based on a given direction." alt="" coords="5,5,131,31"/>
+</map>
+</div>
 
 </div>
 </div>
-<a id="a412149b48e9e1c97db5c9f1a6977c139" name="a412149b48e9e1c97db5c9f1a6977c139"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a412149b48e9e1c97db5c9f1a6977c139">&#9670;&#160;</a></span>reverse()</h2>
+<a id="a310c0bebc002158f5646a91d60e4dc89" name="a310c0bebc002158f5646a91d60e4dc89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a310c0bebc002158f5646a91d60e4dc89">&#9670;&#160;</a></span>reverse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -235,8 +262,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void reverse </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmotor__pins.html">motor_pins_t</a>&#160;</td>
-          <td class="paramname"><em>motor_data</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -253,8 +279,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="motor__control_8h_a412149b48e9e1c97db5c9f1a6977c139_cgraph.png" border="0" usemap="#amotor__control_8h_a412149b48e9e1c97db5c9f1a6977c139_cgraph" alt=""/></div>
-<map name="amotor__control_8h_a412149b48e9e1c97db5c9f1a6977c139_cgraph" id="amotor__control_8h_a412149b48e9e1c97db5c9f1a6977c139_cgraph">
+<div class="center"><img src="motor__control_8h_a310c0bebc002158f5646a91d60e4dc89_cgraph.png" border="0" usemap="#amotor__control_8h_a310c0bebc002158f5646a91d60e4dc89_cgraph" alt=""/></div>
+<map name="amotor__control_8h_a310c0bebc002158f5646a91d60e4dc89_cgraph" id="amotor__control_8h_a310c0bebc002158f5646a91d60e4dc89_cgraph">
 <area shape="rect" title="A function to reverse the car." alt="" coords="5,31,71,56"/>
 <area shape="rect" href="motor__control_8c.html#af0ebed13ef30e857d8c5cbda43c8f7c0" title="A function to update the direction of the motor&#39;s rotation." alt="" coords="119,5,236,31"/>
 <area shape="rect" href="motor__control_8c.html#aa20774b583539f8a2698c2f8ac6d4334" title="A function to update the PWM duty cycle and wrap value." alt="" coords="129,55,225,80"/>
@@ -308,8 +334,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a5c889b6c93f58d5f7af6b62e927c1be5" name="a5c889b6c93f58d5f7af6b62e927c1be5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c889b6c93f58d5f7af6b62e927c1be5">&#9670;&#160;</a></span>stop()</h2>
+<a id="a8c528baf37154d347366083f0f816846" name="a8c528baf37154d347366083f0f816846"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c528baf37154d347366083f0f816846">&#9670;&#160;</a></span>stop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -317,8 +343,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void stop </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmotor__pins.html">motor_pins_t</a>&#160;</td>
-          <td class="paramname"><em>motor_data</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -335,8 +360,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="motor__control_8h_a5c889b6c93f58d5f7af6b62e927c1be5_cgraph.png" border="0" usemap="#amotor__control_8h_a5c889b6c93f58d5f7af6b62e927c1be5_cgraph" alt=""/></div>
-<map name="amotor__control_8h_a5c889b6c93f58d5f7af6b62e927c1be5_cgraph" id="amotor__control_8h_a5c889b6c93f58d5f7af6b62e927c1be5_cgraph">
+<div class="center"><img src="motor__control_8h_a8c528baf37154d347366083f0f816846_cgraph.png" border="0" usemap="#amotor__control_8h_a8c528baf37154d347366083f0f816846_cgraph" alt=""/></div>
+<map name="amotor__control_8h_a8c528baf37154d347366083f0f816846_cgraph" id="amotor__control_8h_a8c528baf37154d347366083f0f816846_cgraph">
 <area shape="rect" title="A function to stop the car." alt="" coords="5,5,52,31"/>
 <area shape="rect" href="motor__control_8c.html#aa20774b583539f8a2698c2f8ac6d4334" title="A function to update the PWM duty cycle and wrap value." alt="" coords="100,5,196,31"/>
 </map>
@@ -344,8 +369,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a9f9a41dbac2cab68a287c709d42c0ea7" name="a9f9a41dbac2cab68a287c709d42c0ea7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f9a41dbac2cab68a287c709d42c0ea7">&#9670;&#160;</a></span>turn_left()</h2>
+<a id="a2b3e4a3587c92c609c39b1a5778bcf00" name="a2b3e4a3587c92c609c39b1a5778bcf00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b3e4a3587c92c609c39b1a5778bcf00">&#9670;&#160;</a></span>turn_left()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -353,19 +378,9 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void turn_left </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmotor__pins.html">motor_pins_t</a>&#160;</td>
-          <td class="paramname"><em>motor_data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>reverse_turn</em>&#160;</td>
-        </tr>
-        <tr>
+          <td class="paramname"><em>reverse_turn</em></td><td>)</td>
           <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -382,18 +397,27 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="motor__control_8h_a9f9a41dbac2cab68a287c709d42c0ea7_cgraph.png" border="0" usemap="#amotor__control_8h_a9f9a41dbac2cab68a287c709d42c0ea7_cgraph" alt=""/></div>
-<map name="amotor__control_8h_a9f9a41dbac2cab68a287c709d42c0ea7_cgraph" id="amotor__control_8h_a9f9a41dbac2cab68a287c709d42c0ea7_cgraph">
+<div class="center"><img src="motor__control_8h_a2b3e4a3587c92c609c39b1a5778bcf00_cgraph.png" border="0" usemap="#amotor__control_8h_a2b3e4a3587c92c609c39b1a5778bcf00_cgraph" alt=""/></div>
+<map name="amotor__control_8h_a2b3e4a3587c92c609c39b1a5778bcf00_cgraph" id="amotor__control_8h_a2b3e4a3587c92c609c39b1a5778bcf00_cgraph">
 <area shape="rect" title="A function to turn the car left." alt="" coords="5,31,75,56"/>
 <area shape="rect" href="motor__control_8c.html#af0ebed13ef30e857d8c5cbda43c8f7c0" title="A function to update the direction of the motor&#39;s rotation." alt="" coords="123,5,240,31"/>
 <area shape="rect" href="motor__control_8c.html#aa20774b583539f8a2698c2f8ac6d4334" title="A function to update the PWM duty cycle and wrap value." alt="" coords="133,55,229,80"/>
 </map>
 </div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="motor__control_8h_a2b3e4a3587c92c609c39b1a5778bcf00_icgraph.png" border="0" usemap="#amotor__control_8h_a2b3e4a3587c92c609c39b1a5778bcf00_icgraph" alt=""/></div>
+<map name="amotor__control_8h_a2b3e4a3587c92c609c39b1a5778bcf00_icgraph" id="amotor__control_8h_a2b3e4a3587c92c609c39b1a5778bcf00_icgraph">
+<area shape="rect" title="A function to turn the car left." alt="" coords="179,5,248,31"/>
+<area shape="rect" href="pid_8c.html#a6bd427202c90c3677a319cd4028bedf1" title="Function to turn the car based on a given direction." alt="" coords="5,5,131,31"/>
+</map>
+</div>
 
 </div>
 </div>
-<a id="aff91bd9e6ca45c462fd1d1e5f9dda1c1" name="aff91bd9e6ca45c462fd1d1e5f9dda1c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aff91bd9e6ca45c462fd1d1e5f9dda1c1">&#9670;&#160;</a></span>turn_right()</h2>
+<a id="adb5876f4cb9a5649408fdff387502929" name="adb5876f4cb9a5649408fdff387502929"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb5876f4cb9a5649408fdff387502929">&#9670;&#160;</a></span>turn_right()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -401,19 +425,9 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void turn_right </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmotor__pins.html">motor_pins_t</a>&#160;</td>
-          <td class="paramname"><em>motor_data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>reverse_turn</em>&#160;</td>
-        </tr>
-        <tr>
+          <td class="paramname"><em>reverse_turn</em></td><td>)</td>
           <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -430,11 +444,20 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="motor__control_8h_aff91bd9e6ca45c462fd1d1e5f9dda1c1_cgraph.png" border="0" usemap="#amotor__control_8h_aff91bd9e6ca45c462fd1d1e5f9dda1c1_cgraph" alt=""/></div>
-<map name="amotor__control_8h_aff91bd9e6ca45c462fd1d1e5f9dda1c1_cgraph" id="amotor__control_8h_aff91bd9e6ca45c462fd1d1e5f9dda1c1_cgraph">
+<div class="center"><img src="motor__control_8h_adb5876f4cb9a5649408fdff387502929_cgraph.png" border="0" usemap="#amotor__control_8h_adb5876f4cb9a5649408fdff387502929_cgraph" alt=""/></div>
+<map name="amotor__control_8h_adb5876f4cb9a5649408fdff387502929_cgraph" id="amotor__control_8h_adb5876f4cb9a5649408fdff387502929_cgraph">
 <area shape="rect" title="A function to turn the car right." alt="" coords="5,31,81,56"/>
 <area shape="rect" href="motor__control_8c.html#af0ebed13ef30e857d8c5cbda43c8f7c0" title="A function to update the direction of the motor&#39;s rotation." alt="" coords="129,5,247,31"/>
 <area shape="rect" href="motor__control_8c.html#aa20774b583539f8a2698c2f8ac6d4334" title="A function to update the PWM duty cycle and wrap value." alt="" coords="140,55,236,80"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="motor__control_8h_adb5876f4cb9a5649408fdff387502929_icgraph.png" border="0" usemap="#amotor__control_8h_adb5876f4cb9a5649408fdff387502929_icgraph" alt=""/></div>
+<map name="amotor__control_8h_adb5876f4cb9a5649408fdff387502929_icgraph" id="amotor__control_8h_adb5876f4cb9a5649408fdff387502929_icgraph">
+<area shape="rect" title="A function to turn the car right." alt="" coords="179,5,255,31"/>
+<area shape="rect" href="pid_8c.html#a6bd427202c90c3677a319cd4028bedf1" title="Function to turn the car based on a given direction." alt="" coords="5,5,131,31"/>
 </map>
 </div>
 
@@ -493,11 +516,12 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="motor__control_8h_af0ebed13ef30e857d8c5cbda43c8f7c0_icgraph.png" border="0" usemap="#amotor__control_8h_af0ebed13ef30e857d8c5cbda43c8f7c0_icgraph" alt=""/></div>
 <map name="amotor__control_8h_af0ebed13ef30e857d8c5cbda43c8f7c0_icgraph" id="amotor__control_8h_af0ebed13ef30e857d8c5cbda43c8f7c0_icgraph">
-<area shape="rect" title="A function to update the direction of the motor&#39;s rotation." alt="" coords="157,80,275,105"/>
-<area shape="rect" href="motor__control_8c.html#aaa42eff93493c29478e16f4fc8817942" title="A function to move the car forward." alt="" coords="5,5,109,31"/>
-<area shape="rect" href="motor__control_8c.html#a412149b48e9e1c97db5c9f1a6977c139" title="A function to reverse the car." alt="" coords="25,55,90,80"/>
-<area shape="rect" href="motor__control_8c.html#a9f9a41dbac2cab68a287c709d42c0ea7" title="A function to turn the car left." alt="" coords="23,104,92,129"/>
-<area shape="rect" href="motor__control_8c.html#aff91bd9e6ca45c462fd1d1e5f9dda1c1" title="A function to turn the car right." alt="" coords="19,153,95,179"/>
+<area shape="rect" title="A function to update the direction of the motor&#39;s rotation." alt="" coords="331,80,448,105"/>
+<area shape="rect" href="motor__control_8c.html#ae550a3c67881c84d0b773c23e5b3aecd" title="A function to move the car forward." alt="" coords="179,5,283,31"/>
+<area shape="rect" href="motor__control_8c.html#a310c0bebc002158f5646a91d60e4dc89" title="A function to reverse the car." alt="" coords="198,55,263,80"/>
+<area shape="rect" href="motor__control_8c.html#a2b3e4a3587c92c609c39b1a5778bcf00" title="A function to turn the car left." alt="" coords="196,104,265,129"/>
+<area shape="rect" href="motor__control_8c.html#adb5876f4cb9a5649408fdff387502929" title="A function to turn the car right." alt="" coords="193,153,269,179"/>
+<area shape="rect" href="pid_8c.html#a6bd427202c90c3677a319cd4028bedf1" title="Function to turn the car based on a given direction." alt="" coords="5,104,131,129"/>
 </map>
 </div>
 
@@ -550,12 +574,13 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="motor__control_8h_aa20774b583539f8a2698c2f8ac6d4334_icgraph.png" border="0" usemap="#amotor__control_8h_aa20774b583539f8a2698c2f8ac6d4334_icgraph" alt=""/></div>
 <map name="amotor__control_8h_aa20774b583539f8a2698c2f8ac6d4334_icgraph" id="amotor__control_8h_aa20774b583539f8a2698c2f8ac6d4334_icgraph">
-<area shape="rect" title="A function to update the PWM duty cycle and wrap value." alt="" coords="157,104,253,129"/>
-<area shape="rect" href="motor__control_8c.html#aaa42eff93493c29478e16f4fc8817942" title="A function to move the car forward." alt="" coords="5,5,109,31"/>
-<area shape="rect" href="motor__control_8c.html#a412149b48e9e1c97db5c9f1a6977c139" title="A function to reverse the car." alt="" coords="25,55,90,80"/>
-<area shape="rect" href="motor__control_8c.html#a5c889b6c93f58d5f7af6b62e927c1be5" title="A function to stop the car." alt="" coords="34,104,81,129"/>
-<area shape="rect" href="motor__control_8c.html#a9f9a41dbac2cab68a287c709d42c0ea7" title="A function to turn the car left." alt="" coords="23,153,92,179"/>
-<area shape="rect" href="motor__control_8c.html#aff91bd9e6ca45c462fd1d1e5f9dda1c1" title="A function to turn the car right." alt="" coords="19,203,95,228"/>
+<area shape="rect" title="A function to update the PWM duty cycle and wrap value." alt="" coords="331,104,427,129"/>
+<area shape="rect" href="motor__control_8c.html#ae550a3c67881c84d0b773c23e5b3aecd" title="A function to move the car forward." alt="" coords="179,5,283,31"/>
+<area shape="rect" href="motor__control_8c.html#a310c0bebc002158f5646a91d60e4dc89" title="A function to reverse the car." alt="" coords="198,55,263,80"/>
+<area shape="rect" href="motor__control_8c.html#a8c528baf37154d347366083f0f816846" title="A function to stop the car." alt="" coords="207,104,254,129"/>
+<area shape="rect" href="motor__control_8c.html#a2b3e4a3587c92c609c39b1a5778bcf00" title="A function to turn the car left." alt="" coords="196,153,265,179"/>
+<area shape="rect" href="motor__control_8c.html#adb5876f4cb9a5649408fdff387502929" title="A function to turn the car right." alt="" coords="193,203,269,228"/>
+<area shape="rect" href="pid_8c.html#a6bd427202c90c3677a319cd4028bedf1" title="Function to turn the car based on a given direction." alt="" coords="5,153,131,179"/>
 </map>
 </div>
 

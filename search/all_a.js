@@ -42,5 +42,5 @@ var searchData=
   ['motor_5fcontrol_2ec_39',['motor_control.c',['../motor__control_8c.html',1,'']]],
   ['motor_5fcontrol_2eh_40',['motor_control.h',['../motor__control_8h.html',1,'']]],
   ['motor_5fpins_41',['motor_pins',['../structmotor__pins.html',1,'']]],
-  ['move_5fforward_42',['move_forward',['../motor__control_8c.html#aaa42eff93493c29478e16f4fc8817942',1,'move_forward(motor_pins_t motor_data):&#160;motor_control.c'],['../motor__control_8h.html#aaa42eff93493c29478e16f4fc8817942',1,'move_forward(motor_pins_t motor_data):&#160;motor_control.c']]]
+  ['move_5fforward_42',['move_forward',['../motor__control_8c.html#ae550a3c67881c84d0b773c23e5b3aecd',1,'move_forward():&#160;motor_control.c'],['../motor__control_8h.html#ae550a3c67881c84d0b773c23e5b3aecd',1,'move_forward():&#160;motor_control.c']]]
 ];

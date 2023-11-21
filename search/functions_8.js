@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['read_5fbarcode_0',['read_barcode',['../ir__sensor_8c.html#aaa017aac7378a704a7e0e08dec170866',1,'read_barcode():&#160;ir_sensor.c'],['../ir__sensor_8h.html#aaa017aac7378a704a7e0e08dec170866',1,'read_barcode():&#160;ir_sensor.c']]],
-  ['read_5fline_1',['read_line',['../ir__sensor_8c.html#a5d70cb4e12385bd6a3d9d842e1011ecd',1,'read_line(uint gpioPinIn):&#160;ir_sensor.c'],['../ir__sensor_8h.html#a5d70cb4e12385bd6a3d9d842e1011ecd',1,'read_line(uint gpioPinIn):&#160;ir_sensor.c']]],
-  ['reverse_2',['reverse',['../motor__control_8c.html#a412149b48e9e1c97db5c9f1a6977c139',1,'reverse(motor_pins_t motor_data):&#160;motor_control.c'],['../motor__control_8h.html#a412149b48e9e1c97db5c9f1a6977c139',1,'reverse(motor_pins_t motor_data):&#160;motor_control.c']]],
-  ['run_5ftcp_5fserver_5ftest_3',['run_tcp_server_test',['../wifi_8c.html#a98d152d32cdf64cc1a86388de3187816',1,'run_tcp_server_test(void):&#160;wifi.c'],['../wifi_8h.html#a98d152d32cdf64cc1a86388de3187816',1,'run_tcp_server_test(void):&#160;wifi.c']]]
+  ['pathfinding_5ftests_0',['pathfinding_tests',['../pathfinding__tests_8c.html#a12f00de89ab5b9d9f9f01c8999b89a04',1,'pathfinding_tests.c']]],
+  ['pretty_5fprint_5fmaze_1',['pretty_print_maze',['../namespaceprint__maze.html#ac338594cbf3e7db061a5a85cc7fa57c9',1,'print_maze']]]
 ];

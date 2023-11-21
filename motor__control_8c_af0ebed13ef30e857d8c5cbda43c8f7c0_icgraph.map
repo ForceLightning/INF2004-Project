@@ -1,7 +1,8 @@
 <map id="update_direction" name="update_direction">
-<area shape="rect" id="node1" title="A function to update the direction of the motor&#39;s rotation." alt="" coords="157,80,275,105"/>
-<area shape="rect" id="node2" href="$motor__control_8c.html#aaa42eff93493c29478e16f4fc8817942" title="A function to move the car forward." alt="" coords="5,5,109,31"/>
-<area shape="rect" id="node3" href="$motor__control_8c.html#a412149b48e9e1c97db5c9f1a6977c139" title="A function to reverse the car." alt="" coords="25,55,90,80"/>
-<area shape="rect" id="node4" href="$motor__control_8c.html#a9f9a41dbac2cab68a287c709d42c0ea7" title="A function to turn the car left." alt="" coords="23,104,92,129"/>
-<area shape="rect" id="node5" href="$motor__control_8c.html#aff91bd9e6ca45c462fd1d1e5f9dda1c1" title="A function to turn the car right." alt="" coords="19,153,95,179"/>
+<area shape="rect" id="node1" title="A function to update the direction of the motor&#39;s rotation." alt="" coords="331,80,448,105"/>
+<area shape="rect" id="node2" href="$motor__control_8c.html#ae550a3c67881c84d0b773c23e5b3aecd" title="A function to move the car forward." alt="" coords="179,5,283,31"/>
+<area shape="rect" id="node4" href="$motor__control_8c.html#a310c0bebc002158f5646a91d60e4dc89" title="A function to reverse the car." alt="" coords="198,55,263,80"/>
+<area shape="rect" id="node5" href="$motor__control_8c.html#a2b3e4a3587c92c609c39b1a5778bcf00" title="A function to turn the car left." alt="" coords="196,104,265,129"/>
+<area shape="rect" id="node6" href="$motor__control_8c.html#adb5876f4cb9a5649408fdff387502929" title="A function to turn the car right." alt="" coords="193,153,269,179"/>
+<area shape="rect" id="node3" href="$pid_8c.html#a6bd427202c90c3677a319cd4028bedf1" title="Function to turn the car based on a given direction." alt="" coords="5,104,131,129"/>
 </map>
