@@ -17,6 +17,8 @@
 #define MOTOR_PWM_CLKDIV 100   // PWM clock divider.
 #define MOTOR_PWM_WRAP   62500 // PWM wrap value.
 
+// Definitions for the motor pins.
+// 
 #define LEFT_MOTOR_PIN_CLKWISE      16
 #define LEFT_MOTOR_PIN_ANTICLKWISE  17
 #define RIGHT_MOTOR_PIN_CLKWISE     15
@@ -32,15 +34,6 @@ typedef struct motor_pins {
     uint right_clkwise;
     uint right_anticlkwise;
 } motor_pins_t;
-
-// motor_pins_t motor_data_struct = {
-//     PWM_PIN_LEFT,
-//     PWM_PIN_RIGHT,
-//     LEFT_MOTOR_PIN_CLKWISE,
-//     LEFT_MOTOR_PIN_ANTICLKWISE,
-//     RIGHT_MOTOR_PIN_CLKWISE,
-//     RIGHT_MOTOR_PIN_ANTICLKWISE,
-// };
 
 // Function prototypes
 //

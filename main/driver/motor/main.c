@@ -1,14 +1,6 @@
 #include <stdio.h>
 #include "motor_control.h"
 
-// Definitions for the motor pins.
-// 
-#define LEFT_MOTOR_PIN_CLKWISE      16
-#define LEFT_MOTOR_PIN_ANTICLKWISE  17
-#define RIGHT_MOTOR_PIN_CLKWISE     15
-#define RIGHT_MOTOR_PIN_ANTICLKWISE 14
-#define PWM_PIN_LEFT                10
-#define PWM_PIN_RIGHT               11
 
 int
 main (void)
@@ -16,15 +8,6 @@ main (void)
     // Initialisation.
     //
     stdio_init_all();
-
-    // motor_pins_t motor_data = {
-    //     PWM_PIN_LEFT,
-    //     PWM_PIN_RIGHT,
-    //     LEFT_MOTOR_PIN_CLKWISE,
-    //     LEFT_MOTOR_PIN_ANTICLKWISE,
-    //     RIGHT_MOTOR_PIN_CLKWISE,
-    //     RIGHT_MOTOR_PIN_ANTICLKWISE,
-    // };
 
     // Initialize motors.
     start_motor(

@@ -100,7 +100,7 @@ void
 move_forward ()
 {
     update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
-    update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
+    update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.5f);
     update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 1, 0);
     update_direction(RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 1, 0);
 }
@@ -116,8 +116,8 @@ move_forward ()
 void
 stop ()
 {
-    update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.0f);
     update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.0f);
+    update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.0f);
 }
 
 /**
