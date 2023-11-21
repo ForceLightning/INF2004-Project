@@ -175,7 +175,7 @@ barcode_update_line_buffer (barcode_line_buffer_t *p_line_buffer,
         = &p_line_buffer->line_buffer[p_line_buffer->line_buffer_index - 1];
 
     bool is_same_colour     = line_type & *p_previous_line;
-    bool is_new_line_bigger = line_type - *p_previous_line;
+    bool is_new_line_bigger = line_type > *p_previous_line;
 
     if (is_same_colour && is_new_line_bigger)
     {
@@ -195,6 +195,11 @@ barcode_update_line_buffer (barcode_line_buffer_t *p_line_buffer,
     p_line_buffer->line_buffer[p_line_buffer->line_buffer_index] = line_type;
     p_line_buffer->line_buffer_index++;
 
+    if (BARCODE_MAX_LINES > p_line_buffer->line_buffer_index)
+    {
+        return BARCODE_READ_CONTINUE;
+    }
+
     return BARCODE_READ_SUCCESS;
 }
 
@@ -212,7 +217,7 @@ barcode_clear_line_buffer (barcode_line_buffer_t *p_line_buffer)
     }
 
     memset(p_line_buffer, 0, sizeof(barcode_line_buffer_t));
-    p_line_buffer->line_buffer_index = 0;
+    p_line_buffer->line_buffer_index = 0u;
 }
 
 barcode_char_t
@@ -247,9 +252,10 @@ barcode_get_barcode_char (barcode_line_buffer_t *p_line_buffer)
 char *
 barcode_buffer_to_binary_string (barcode_line_buffer_t *p_line_buffer)
 {
-    size_t num_chars = p_line_buffer->line_buffer_index + 3;
+    size_t num_chars = p_line_buffer->line_buffer_index + 2;
     char  *p_string  = NULL;
-    p_string         = malloc(num_chars * sizeof(char));
+    p_string         = (char *)malloc(num_chars * sizeof(char));
+    memset(p_string, 0, num_chars * sizeof(char));
 
     if (NULL == p_string)
     {
@@ -257,22 +263,25 @@ barcode_buffer_to_binary_string (barcode_line_buffer_t *p_line_buffer)
         return NULL;
     }
 
+    if (0 == p_line_buffer->line_buffer_index)
+    {
+        free(p_string);
+        return NULL;
+    }
+
     // Insert into the string in reverse. (MSB first).
     //
-    for (size_t idx = p_line_buffer->line_buffer_index - 1; 0 <= idx; idx--)
+    for (uint16_t idx = p_line_buffer->line_buffer_index; 0 < idx; idx--)
     {
         barcode_line_type_t line_type = p_line_buffer->line_buffer[idx];
-
         if (BARCODE_LINE_BLACK_THICK == line_type
             || BARCODE_LINE_WHITE_THICK == line_type)
         {
             strcat(p_string, "1");
-            // printf("1");
         }
         else if (BARCODE_LINE_BLACK_THIN == line_type
                  || BARCODE_LINE_WHITE_THIN == line_type)
         {
-            // printf("0");
             strcat(p_string, "0");
         }
     }

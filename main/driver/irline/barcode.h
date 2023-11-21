@@ -8,6 +8,13 @@
 //
 #define BARCODE_MAX_LINES 9 // Maximum number of barcode lines.
 
+#ifndef NDEBUG
+// #define PICO_DEBUG_MALLOC 1 // Enable malloc debug.
+#ifndef DEBUG_PRINT
+#define DEBUG_PRINT(...) printf(__VA_ARGS__) // Enable debug print.
+#endif
+#endif
+
 // Type definitions.
 // ----------------------------------------------------------------------------
 //
