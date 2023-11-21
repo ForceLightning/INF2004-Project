@@ -4,6 +4,7 @@ add_library(driver INTERFACE
 target_sources(driver INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}/encoder/wheel_encoder.c
     ${CMAKE_CURRENT_SOURCE_DIR}/irline/ir_sensor.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/irline/barcode.c
     ${CMAKE_CURRENT_SOURCE_DIR}/magnetometer/magnetometer.c
     ${CMAKE_CURRENT_SOURCE_DIR}/motor/motor_control.c
     ${CMAKE_CURRENT_SOURCE_DIR}/ultrasonic/ultrasonic.c

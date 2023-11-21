@@ -14,6 +14,7 @@
 #include "hardware/gpio.h"
 #include "hardware/adc.h"
 #include "ir_sensor.h"
+#include "barcode.h"
 
 /**
  * @brief Initalises the pins for the ADC.
@@ -34,8 +35,8 @@ setup_adc_pins (uint adc_pin)
  * @param gpioPinOne GPIO pin for the first IR sensor
  * @param gpioPinTwo GPIO pin for the second IR sensor
  */
-void 
-setup_gpio_pins(uint gpioPinOne, uint gpioPinTwo)
+void
+setup_gpio_pins (uint gpioPinOne, uint gpioPinTwo)
 {
     gpio_init(gpioPinOne);
     gpio_init(gpioPinTwo);
@@ -45,11 +46,12 @@ setup_gpio_pins(uint gpioPinOne, uint gpioPinTwo)
 
 /**
  * @brief Detects line
- * 
+ *
  * @param gpioPinIn GPIO pin for the IR sensor
- * @return uint16_t 
+ * @return uint16_t
  */
-uint16_t read_line(uint gpioPinIn)
+uint16_t
+read_line (uint gpioPinIn)
 {
     uint16_t digital_result = gpio_get(gpioPinIn);
     return digital_result;
@@ -57,33 +59,35 @@ uint16_t read_line(uint gpioPinIn)
 
 /**
  * @brief Indicates whether there is a top wall
- * 
- * @param flag The indicator for the walls 
+ *
+ * @param flag The indicator for the walls
  */
-void update_top_flag(struct flags * flag)
+void
+update_top_flag (ir_flags_t *p_flag)
 {
-    flag->top_wall = 1;
+    p_flag->top_wall = 1;
 }
 
 /**
  * @brief Indicates whether there is a left wall
- * 
- * @param flag The indicator for the walls 
+ *
+ * @param flag The indicator for the walls
  */
-void update_left_flag(struct flags * flag)
+void
+update_left_flag (ir_flags_t *p_flag)
 {
-    flag->left_wall = 1;
+    p_flag->left_wall = 1;
 }
 
 /**
- * @brief This returns the information of the walls in the node 
- * 
+ * @brief This returns the information of the walls in the node
+ *
  * @param gpioPinLeft GPIO pin for the left sensor
  * @param gpioPinFront GPIO pin for the front sensor
- * @return uint16_t 
+ * @return uint16_t
  */
-uint16_t 
-find_wall_directions(uint gpioPinLeft, uint gpioPinFront)
+uint16_t
+find_wall_directions (uint gpioPinLeft, uint gpioPinFront)
 {
     uint16_t has_wall = 0;
     if (read_line(gpioPinLeft) == 1)
@@ -93,7 +97,6 @@ find_wall_directions(uint gpioPinLeft, uint gpioPinFront)
     if (read_line(gpioPinFront) == 1)
     {
         has_wall += 1;
-        
     }
     return has_wall;
 }
@@ -103,25 +106,30 @@ find_wall_directions(uint gpioPinLeft, uint gpioPinFront)
  * thickness.
  *
  */
-void
-read_barcode ()
+barcode_line_type_t
+read_barcode (void)
 {
     uint16_t result = adc_read();
 
+    barcode_line_type_t barcode_type = BARCODE_LINE_NONE;
+
     if (200 < result && 500 >= result)
     {
-        printf("THICK WHITE BARCODE\n");
+        barcode_type = BARCODE_LINE_WHITE_THICK;
     }
     else if (500 < result && 1800 >= result)
     {
-        printf("THIN WHITE BARCODE\n");
+        barcode_type = BARCODE_LINE_WHITE_THIN;
     }
     else if (1800 < result && 3300 >= result)
     {
-        printf("THIN BLACK BARCODE\n");
+        barcode_type = BARCODE_LINE_BLACK_THIN;
     }
     else if (3300 < result && 4095 >= result)
     {
-        printf("THICK BLACK BARCODE\n");
+        barcode_type = BARCODE_LINE_BLACK_THICK;
     }
+
+    return barcode_type;
 }
+// End of file driver/ir_sensor/ir_sensor.c.
