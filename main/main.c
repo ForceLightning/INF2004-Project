@@ -78,8 +78,11 @@ int
 main (void)
 {
     stdio_init_all();
-    init_magnetometer();
-    readMagnetometerData();
+    // init_magnetometer();
+    tcp_server_begin_init();
+    // readMagnetometerData();
+    tcp_server_begin();
+    
 
     const char *rtos_name;
 
@@ -99,6 +102,8 @@ main (void)
     for (;;)
     {
         tight_loop_contents(); // No-op
+        // readMagnetometerData();
+        // tcp_server_begin();
     }
 #else
     printf("Starting %s on core 0:\n", rtos_name);

@@ -169,7 +169,7 @@ tcp_server_send_data (void *p_arg, struct tcp_pcb *p_tpcb)
     tcp_server_t *p_state = (tcp_server_t *)p_arg;
     for (int i = 0; i < BUF_SIZE; i++)
     {
-        p_state->buffer_sent[i] = rand();
+        // p_state->buffer_sent[i] = rand();
     }
 
     p_state->sent_len = 0;
