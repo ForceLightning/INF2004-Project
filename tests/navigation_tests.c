@@ -3,10 +3,10 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 
 #include "pathfinding/maze.h"
 #include "pathfinding/floodfill.h"
-#include "pathfinding/binary_heap.h"
 #include "pathfinding/dfs.h"
 #include "pathfinding/a_star.h"
 
@@ -81,6 +81,7 @@ static int test_combined_northwards(void);
 static int test_mapping_southwards(void);
 static int test_navigation_southwards(void);
 static int test_combined_southwards(void);
+static int test_compression(void);
 
 // Private function prototypes.
 // ----------------------------------------------------------------------------
@@ -146,6 +147,9 @@ navigation_tests (int argc, char *argv[])
         case 6:
             ret_val = test_combined_southwards();
             break;
+        case 7:
+            ret_val = test_compression();
+            break;
         default:
             printf("Invalid choice. Terminating.\n");
             ret_val = -1;
@@ -192,6 +196,46 @@ static int
 test_combined_southwards (void)
 {
     return test_combined(g_bitmask_array_south);
+}
+
+static int
+test_compression (void)
+{
+    int ret_val = 0;
+
+    maze_grid_t maze = maze_create(GRID_ROWS, GRID_COLS);
+
+    maze_gap_bitmask_t true_map_bitmask = { .p_bitmask = g_bitmask_array_north,
+                                            .rows      = GRID_ROWS,
+                                            .columns   = GRID_COLS };
+    maze_deserialise(&maze, &true_map_bitmask);
+
+    maze_gap_bitmask_t map_bitmask = maze_serialise(&maze);
+
+    maze_bitmask_compressed_t *p_compressed_bitmask
+        = malloc(sizeof(maze_bitmask_compressed_t) * GRID_ROWS * GRID_COLS);
+
+    uint8_t *p_buffer = malloc(sizeof(uint8_t) * 2048u);
+    memset(p_buffer, 0, sizeof(uint8_t) * 2048u);
+
+    maze_serialised_to_buffer(&map_bitmask, p_buffer, 2048u);
+
+    char *p_compressed_str = malloc(sizeof(char) * 4096u);
+    memset(p_compressed_str, 0, sizeof(char) * 4096u);
+    
+    uint16_t compressed_size = 4 + (GRID_ROWS * GRID_COLS) / 2 + (GRID_ROWS * GRID_COLS) % 2;
+
+    for (size_t idx = 0; compressed_size > idx; idx++)
+    {
+        sprintf(p_compressed_str + idx * 2, "%2X", p_buffer[idx]);
+    }
+
+    printf("Compressed string:\n%s\n", p_compressed_str);
+    
+    free(p_buffer);
+    free(p_compressed_str);
+    
+    return ret_val;
 }
 
 // Private function definitions.

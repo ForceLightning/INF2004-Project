@@ -35,6 +35,9 @@ static void draw_cell(const maze_grid_cell_t *p_cell,
                       char                   *p_maze_string,
                       uint16_t                relative_row);
 
+static maze_bitmask_compressed_t *serialised_to_compressed(
+    const maze_gap_bitmask_t *p_bitmask);
+
 /**
  * @brief Create a maze with the specified number of rows and columns.
  *
@@ -576,6 +579,58 @@ maze_get_cell_in_dir_from (maze_grid_t              *p_grid,
     return &p_grid->p_grid_array[row * p_grid->columns + col];
 }
 
+/**
+ * @brief Serialises the maze into a uint8_t buffer.
+ *
+ * @param p_bitmask Pointer to the maze gap bitmask.
+ * @param p_buffer Pointer to the buffer.
+ * @param buffer_size Size of the buffer.
+ * @return int16_t -1 if the buffer is too small, 0 otherwise.
+ *
+ * @note The buffer must be large enough to fit the maze, and the buffer must be
+ * cleared before calling this function.
+ */
+int16_t
+maze_serialised_to_buffer (const maze_gap_bitmask_t *p_bitmask,
+                           uint8_t                  *p_buffer,
+                           uint16_t                  buffer_size)
+{
+    // Check that the buffer is large enough.
+    //
+    uint16_t num_compressed = (p_bitmask->rows * p_bitmask->columns) / 2
+                              + (p_bitmask->rows * p_bitmask->columns) % 2;
+
+    uint16_t header_size = 4; // 2 x uint8_t for rows and columns.
+
+    if (buffer_size < num_compressed + header_size)
+    {
+        return -1;
+    }
+
+    // Otherwise, iterate through the bitmask and compress it.
+    //
+    maze_bitmask_compressed_t *p_compressed
+        = serialised_to_compressed(p_bitmask);
+
+    // Write the header.
+    //
+    p_buffer[0] = (p_bitmask->rows & 0xFF00) >> 8;    // MSB
+    p_buffer[1] = (p_bitmask->rows & 0x00FF);         // LSB
+    p_buffer[2] = (p_bitmask->columns & 0xFF00) >> 8; // MSB
+    p_buffer[3] = (p_bitmask->columns & 0x00FF);      // LSB
+
+    // Write the compressed bitmask.
+    //
+    for (size_t idx = 0; num_compressed > idx; idx++)
+    {
+        p_buffer[idx + header_size] = p_compressed[idx].bits;
+    }
+
+    free(p_compressed); // Free the compressed array. Prevents memory leak.
+
+    return 0; // Success.
+}
+
 // Private functions definitions.
 // ----------------------------------------------------------------------------
 //
@@ -669,6 +724,30 @@ draw_cell (const maze_grid_cell_t *p_cell,
         default:
             break;
     }
+}
+
+static maze_bitmask_compressed_t *
+serialised_to_compressed (const maze_gap_bitmask_t *p_bitmask)
+{
+    uint8_t                    num_cells = p_bitmask->rows * p_bitmask->columns;
+    maze_bitmask_compressed_t *p_compressed
+        = malloc(sizeof(maze_bitmask_compressed_t) * num_cells);
+    memset(p_compressed, 0, sizeof(maze_bitmask_compressed_t) * num_cells);
+
+    uint16_t num_compressed = num_cells / 2 + num_cells % 2;
+
+    for (size_t cell = 0; num_compressed > cell; cell++)
+    {
+        p_compressed[cell].fields.cell_a = p_bitmask->p_bitmask[cell * 2];
+
+        if (num_cells > cell * 2 + 1)
+        {
+            p_compressed[cell].fields.cell_b
+                = p_bitmask->p_bitmask[cell * 2 + 1];
+        }
+    }
+
+    return p_compressed;
 }
 
 // End of file pathfinding/maze.c
