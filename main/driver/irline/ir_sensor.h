@@ -11,7 +11,7 @@
 
 #ifndef IR_SENSOR_H
 #define IR_SENSOR_H
-
+#include "pico/types.h"
 struct flags{
     bool top_wall;
     bool left_wall;
@@ -19,7 +19,7 @@ struct flags{
 
 // Function prototypes.
 //
-void setup_adc_pins(uint adcPinOne, uint adcPinTwo);
+void setup_adc_pins(uint adc_pin);
 void setup_gpio_pins(uint gpioPinOne, uint gpioPinTwo);
 void read_barcode();
 uint16_t read_line(uint gpioPinIn);
