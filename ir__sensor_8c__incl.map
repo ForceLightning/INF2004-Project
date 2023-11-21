@@ -1,7 +1,10 @@
 <map id="main/driver/irline/ir_sensor.c" name="main/driver/irline/ir_sensor.c">
-<area shape="rect" id="node1" title="Driver code for the IR sensor driver." alt="" coords="113,5,230,45"/>
+<area shape="rect" id="node1" title="Driver code for the IR sensor driver." alt="" coords="225,5,342,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,93,65,119"/>
 <area shape="rect" id="node3" title=" " alt="" coords="90,93,154,119"/>
 <area shape="rect" id="node4" title=" " alt="" coords="179,93,265,119"/>
-<area shape="rect" id="node5" title=" " alt="" coords="289,93,400,119"/>
+<area shape="rect" id="node5" title=" " alt="" coords="289,93,403,119"/>
+<area shape="rect" id="node6" title=" " alt="" coords="427,93,537,119"/>
+<area shape="rect" id="node7" href="$ir__sensor_8h.html" title="Header file for the IR sensor driver." alt="" coords="562,93,647,119"/>
+<area shape="rect" id="node8" title=" " alt="" coords="559,167,650,192"/>
 </map>

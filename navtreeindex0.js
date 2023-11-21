@@ -108,11 +108,12 @@ var NAVTREEINDEX0 =
 "ir__sensor_8c.html#abecf20fb4c01637b05a58ca719738a3d":[2,0,0,0,1,0,4],
 "ir__sensor_8h.html":[2,0,0,0,1,1],
 "ir__sensor_8h.html#a3968df262754548ff7cb0cb8832895de":[2,0,0,0,1,1,1],
-"ir__sensor_8h.html#a511e70344aec1ddb622127d252fc6780":[2,0,0,0,1,1,6],
+"ir__sensor_8h.html#a511e70344aec1ddb622127d252fc6780":[2,0,0,0,1,1,7],
 "ir__sensor_8h.html#a5d70cb4e12385bd6a3d9d842e1011ecd":[2,0,0,0,1,1,3],
-"ir__sensor_8h.html#a86c1d451bced712ad97eeb0140f7bde2":[2,0,0,0,1,1,5],
+"ir__sensor_8h.html#a5f3158fe9128f67d34801fc30ec6eec0":[2,0,0,0,1,1,4],
+"ir__sensor_8h.html#a86c1d451bced712ad97eeb0140f7bde2":[2,0,0,0,1,1,6],
 "ir__sensor_8h.html#aaa017aac7378a704a7e0e08dec170866":[2,0,0,0,1,1,2],
-"ir__sensor_8h.html#abecf20fb4c01637b05a58ca719738a3d":[2,0,0,0,1,1,4],
+"ir__sensor_8h.html#abecf20fb4c01637b05a58ca719738a3d":[2,0,0,0,1,1,5],
 "ir__sensor_8h_source.html":[2,0,0,0,1,1],
 "lwipopts_8h_source.html":[2,0,0,4],
 "lwipopts__examples__common_8h_source.html":[2,0,0,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "structbinary__heap.html#a35c0dc945e4aad02d896e3cb0fbeca64":[1,0,1,1],
 "structbinary__heap.html#a6be948a502bdacee3d2a2cc1d2f97ece":[1,0,1,0],
 "structbinary__heap.html#aaba88b24a21a6c70c895c0d55f4a69a0":[1,0,1,2],
-"structbinary__heap__node.html":[1,0,2],
-"structbinary__heap__node.html#a0815784d41b3c13d42ce22367abfba1d":[1,0,2,1]
+"structbinary__heap__node.html":[1,0,2]
 };
