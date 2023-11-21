@@ -61,6 +61,20 @@ typedef enum maze_wall_direction
 } maze_wall_direction_t;
 
 /**
+ * @typedef maze_relative_direction_t
+ * @brief This enum contains the relative directions of instructions from the
+ * navigator's perspective.
+ *
+ */
+typedef enum maze_relative_direction
+{
+    MAZE_FRONT, ///< Front is the direction the navigator is facing.
+    MAZE_RIGHT, ///< Right of the navigator.
+    MAZE_BACK,  ///< Back of the navigator.
+    MAZE_LEFT   ///< Left of the navigator.
+} maze_relative_direction_t;
+
+/**
  * @typedef grid_cell_t
  * @brief This struct contains the node information.
  *
@@ -219,6 +233,10 @@ int16_t maze_nav_to_buffer(const maze_navigator_state_t *p_navigator,
                            uint16_t                      buffer_size);
 
 void maze_uint16_to_uint8_buffer(uint16_t value, uint8_t *p_buffer);
+
+maze_relative_direction_t maze_get_relative_dir(
+    const maze_cardinal_direction_t direction_from,
+    const maze_cardinal_direction_t direction_to);
 
 #endif // MAZE_H
 

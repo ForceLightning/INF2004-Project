@@ -101,6 +101,7 @@ static int test_compression(void);
 static int test_navigator_serialisation(void);
 static int test_path_serialisation(void);
 static int test_combined_serialisation(void);
+static int test_relative_direction(void);
 
 // Private function prototypes.
 // ----------------------------------------------------------------------------
@@ -177,6 +178,9 @@ navigation_tests (int argc, char *argv[])
             break;
         case 10:
             ret_val = test_combined_serialisation();
+            break;
+        case 11:
+            ret_val = test_relative_direction();
             break;
         default:
             printf("Invalid choice. Terminating.\n");
@@ -338,6 +342,26 @@ test_combined_serialisation (void)
 {
     // @TODO(chris): Complete this test.
     return 0;
+}
+
+static int
+test_relative_direction(void)
+{
+    int ret_val = 0;
+    maze_cardinal_direction_t dir_a = NORTH;
+    maze_cardinal_direction_t dir_b = SOUTH;
+    
+    maze_relative_direction_t rel_dir = maze_get_relative_dir(dir_a, dir_b);
+
+    if (MAZE_BACK != rel_dir)
+    {
+        ret_val = -1;
+        printf("rel_dir: %d", rel_dir);
+        goto end;
+    }
+    
+end:
+    return ret_val;
 }
 
 // Private function definitions.

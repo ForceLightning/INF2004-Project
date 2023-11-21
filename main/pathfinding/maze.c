@@ -528,6 +528,24 @@ maze_manhattan_dist (const maze_point_t *p_point_a,
     return x_diff + y_diff;
 }
 
+/**
+ * @brief Gets the relative direction from the current direction to the desired
+ * cardinal direction.
+ *
+ * @param direction_from Cardinal direction to get the relative direction from.
+ * @param direction_to Cardinal direction to get the relative direction to.
+ * @return Relative direction from the navigator to the desired direction.
+ */
+maze_relative_direction_t
+maze_get_relative_dir (const maze_cardinal_direction_t direction_from,
+                       const maze_cardinal_direction_t direction_to)
+{
+    int8_t offset = -(int8_t)direction_from;
+
+    maze_relative_direction_t relative_direction = (offset + direction_to) % 4;
+    return relative_direction;
+}
+
 // Private functions.
 // ----------------------------------------------------------------------------
 //
