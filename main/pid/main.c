@@ -6,8 +6,10 @@
 #include "hardware/gpio.h"
 #include "hardware/timer.h"
 #include "pico/stdio.h"
-#include "../motor/motor_control.h"
+#include "motor/motor_control.h"
 #include "pid.h"
+
+turn_params_t g_turn_params;
 
 /**
  * @brief Interrupt callback function on rising edge
@@ -18,8 +20,8 @@
 void
 encoder_tick_isr (uint gpio, uint32_t events)
 {
-    printf("Encoder step count: %d\n", turn_params.encoder_step_count);
-    navigate_car_turn(turn_params.turn_direction);
+    printf("Encoder step count: %d\n", g_turn_params.encoder_step_count);
+    navigate_car_turn(&g_turn_params, g_turn_params.turn_direction);
 }
 
 int
@@ -28,9 +30,7 @@ main (void)
     // Initialisation.
     //
     stdio_init_all();
-    init_pid_structs();
-
-    
+    init_pid_structs(&g_turn_params);
 
     // Initialize motors.
     start_motor(
@@ -50,20 +50,20 @@ main (void)
         {
             case '1':
                 move_forward();
-                turn_params.is_turning = 1;
-                turn_params.turn_direction = user_input;
+                g_turn_params.is_turning     = 1;
+                g_turn_params.turn_direction = user_input;
                 break;
 
             case '3':
                 move_forward();
-                turn_params.is_turning = 1;
-                turn_params.turn_direction = user_input;
+                g_turn_params.is_turning     = 1;
+                g_turn_params.turn_direction = user_input;
                 break;
 
             case '2':
                 move_forward();
-                turn_params.is_turning = 1;
-                turn_params.turn_direction = user_input;
+                g_turn_params.is_turning     = 1;
+                g_turn_params.turn_direction = user_input;
                 break;
         }
     }

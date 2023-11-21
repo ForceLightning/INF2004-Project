@@ -1,19 +1,21 @@
 /**
  * @file motor_control.h
  * @author Bryan Seah
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2023-10-29
- * 
+ *
  * @copyright Copyright (c) 2023
  */
 
 #ifndef MOTOR_CONTROL_H
 #define MOTOR_CONTROL_H
+#include <stdbool.h>
 #include "pico/stdlib.h"
+#include "pico/types.h"
 
 // Definitions
-// 
+//
 #define MOTOR_PWM_CLKDIV 100   // PWM clock divider.
 #define MOTOR_PWM_WRAP   62500 // PWM wrap value.
 
@@ -24,7 +26,8 @@
 #define PWM_PIN_LEFT                10
 #define PWM_PIN_RIGHT               11
 
-typedef struct motor_pins {
+typedef struct motor_pins
+{
     uint pwm_gpio_a;
     uint pwm_gpio_b;
     uint left_clkwise;
