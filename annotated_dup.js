@@ -13,5 +13,5 @@ var annotated_dup =
     [ "maze_point", "structmaze__point.html", "structmaze__point" ],
     [ "motor_pins", "structmotor__pins.html", null ],
     [ "tcp_server", "structtcp__server.html", "structtcp__server" ],
-    [ "turn_params_t", "structturn__params__t.html", null ]
+    [ "turn_params", "structturn__params.html", null ]
 ];

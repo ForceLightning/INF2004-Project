@@ -1,9 +1,9 @@
 <map id="main/driver/motor/motor_control.c" name="main/driver/motor/motor_control.c">
-<area shape="rect" id="node1" title=" " alt="" coords="223,5,383,45"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,93,80,119"/>
-<area shape="rect" id="node3" title=" " alt="" coords="104,93,221,119"/>
-<area shape="rect" id="node4" title=" " alt="" coords="246,93,359,119"/>
-<area shape="rect" id="node5" title=" " alt="" coords="384,93,475,119"/>
-<area shape="rect" id="node6" href="$motor__control_8h.html" title=" " alt="" coords="499,93,610,119"/>
-<area shape="rect" id="node7" title=" " alt="" coords="509,167,600,192"/>
+<area shape="rect" id="node1" title=" " alt="" coords="142,5,302,45"/>
+<area shape="rect" id="node2" title=" " alt="" coords="71,167,146,192"/>
+<area shape="rect" id="node3" title=" " alt="" coords="23,93,140,119"/>
+<area shape="rect" id="node4" title=" " alt="" coords="165,93,278,119"/>
+<area shape="rect" id="node5" title=" " alt="" coords="406,167,496,192"/>
+<area shape="rect" id="node6" href="$motor__control_8h.html" title=" " alt="" coords="302,93,413,119"/>
+<area shape="rect" id="node7" title=" " alt="" coords="291,167,382,192"/>
 </map>

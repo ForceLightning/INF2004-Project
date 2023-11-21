@@ -1,12 +1,10 @@
-<map id="main/driver/pid/pid.c" name="main/driver/pid/pid.c">
-<area shape="rect" id="node1" title=" " alt="" coords="287,5,426,31"/>
-<area shape="rect" id="node2" title=" " alt="" coords="238,225,313,251"/>
-<area shape="rect" id="node3" title=" " alt="" coords="31,79,149,104"/>
-<area shape="rect" id="node4" title=" " alt="" coords="173,79,287,104"/>
-<area shape="rect" id="node5" title=" " alt="" coords="311,79,402,104"/>
-<area shape="rect" id="node6" href="$motor__control_8h.html" title=" " alt="" coords="427,79,585,104"/>
-<area shape="rect" id="node8" href="$maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="562,152,711,177"/>
-<area shape="rect" id="node10" href="$pid_8h.html" title=" " alt="" coords="661,79,711,104"/>
-<area shape="rect" id="node7" title=" " alt="" coords="447,152,538,177"/>
-<area shape="rect" id="node9" title=" " alt="" coords="605,225,669,251"/>
+<map id="main/pid/pid.c" name="main/pid/pid.c">
+<area shape="rect" id="node1" title=" " alt="" coords="169,5,271,31"/>
+<area shape="rect" id="node2" href="$motor__control_8h.html" title=" " alt="" coords="14,79,162,104"/>
+<area shape="rect" id="node6" href="$maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="251,152,314,177"/>
+<area shape="rect" id="node8" href="$pid_8h.html" title=" " alt="" coords="258,79,307,104"/>
+<area shape="rect" id="node3" title=" " alt="" coords="49,225,124,251"/>
+<area shape="rect" id="node4" title=" " alt="" coords="21,152,112,177"/>
+<area shape="rect" id="node5" title=" " alt="" coords="136,152,227,177"/>
+<area shape="rect" id="node7" title=" " alt="" coords="251,225,315,251"/>
 </map>

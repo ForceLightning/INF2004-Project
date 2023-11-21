@@ -1,5 +1,4 @@
 <map id="main/driver/irline/ir_sensor.h" name="main/driver/irline/ir_sensor.h">
-<area shape="rect" id="node1" title="Header file for the IR sensor driver." alt="" coords="69,5,187,45"/>
+<area shape="rect" id="node1" title="Header file for the IR sensor driver." alt="" coords="5,5,123,45"/>
 <area shape="rect" id="node2" href="$driver_2irline_2main_8c.html" title="Demonstration for the IR sensor driver." alt="" coords="5,93,123,133"/>
-<area shape="rect" id="node3" href="$main_8c.html" title="The main source file for robot control." alt="" coords="147,101,239,126"/>
 </map>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>INF2004-Project: main/driver/pid/pid.h File Reference</title>
+<title>INF2004-Project: main/pid/pid.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -108,19 +108,19 @@ $(document).ready(function(){initNavTree('pid_8h.html',''); initResizable(); });
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">pid.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="maze_8h_source.html">../../pathfinding/maze.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="maze_8h_source.html">maze.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for pid.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="pid_8h__incl.png" border="0" usemap="#amain_2driver_2pid_2pid_8h" alt=""/></div>
-<map name="amain_2driver_2pid_2pid_8h" id="amain_2driver_2pid_2pid_8h">
-<area shape="rect" title=" " alt="" coords="15,5,153,31"/>
-<area shape="rect" href="maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="9,79,159,104"/>
+<div class="center"><img src="pid_8h__incl.png" border="0" usemap="#amain_2pid_2pid_8h" alt=""/></div>
+<map name="amain_2pid_2pid_8h" id="amain_2pid_2pid_8h">
+<area shape="rect" title=" " alt="" coords="33,5,135,31"/>
+<area shape="rect" href="maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="53,79,115,104"/>
 <area shape="rect" title=" " alt="" coords="5,152,69,177"/>
 <area shape="rect" title=" " alt="" coords="93,152,168,177"/>
 </map>
@@ -128,10 +128,10 @@ Include dependency graph for pid.h:</div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="pid_8h__dep__incl.png" border="0" usemap="#amain_2driver_2pid_2pid_8hdep" alt=""/></div>
-<map name="amain_2driver_2pid_2pid_8hdep" id="amain_2driver_2pid_2pid_8hdep">
-<area shape="rect" title=" " alt="" coords="5,5,144,31"/>
-<area shape="rect" href="pid_8c.html" title=" " alt="" coords="5,79,144,104"/>
+<div class="center"><img src="pid_8h__dep__incl.png" border="0" usemap="#amain_2pid_2pid_8hdep" alt=""/></div>
+<map name="amain_2pid_2pid_8hdep" id="amain_2pid_2pid_8hdep">
+<area shape="rect" title=" " alt="" coords="5,5,108,31"/>
+<area shape="rect" href="pid_8c.html" title=" " alt="" coords="5,79,108,104"/>
 </map>
 </div>
 </div>
@@ -139,7 +139,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structturn__params__t.html">turn_params_t</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structturn__params.html">turn_params</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -160,21 +160,21 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>ENCODER_PIN</b>&#160;&#160;&#160;21</td></tr>
 <tr class="separator:a3835ad6a89a424c0a0eb80132b72efd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a90e7b9aa80c4b27def777137c8f08bf0"><td class="memItemLeft" align="right" valign="top"><a id="a90e7b9aa80c4b27def777137c8f08bf0" name="a90e7b9aa80c4b27def777137c8f08bf0"></a>
+typedef struct <a class="el" href="structturn__params.html">turn_params</a>&#160;</td><td class="memItemRight" valign="bottom"><b>turn_params_t</b></td></tr>
+<tr class="separator:a90e7b9aa80c4b27def777137c8f08bf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2bcc27ed50c613d926cce5740113613d"><td class="memItemLeft" align="right" valign="top"><a id="a2bcc27ed50c613d926cce5740113613d" name="a2bcc27ed50c613d926cce5740113613d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init_pid_structs</b> (void)</td></tr>
-<tr class="memdesc:a2bcc27ed50c613d926cce5740113613d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up pid struct(s). <br /></td></tr>
-<tr class="separator:a2bcc27ed50c613d926cce5740113613d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bd427202c90c3677a319cd4028bedf1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pid_8h.html#a6bd427202c90c3677a319cd4028bedf1">navigate_car_turn</a> (maze_cardinal_direction_t direction)</td></tr>
-<tr class="memdesc:a6bd427202c90c3677a319cd4028bedf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to turn the car based on a given direction.  <a href="pid_8h.html#a6bd427202c90c3677a319cd4028bedf1">More...</a><br /></td></tr>
-<tr class="separator:a6bd427202c90c3677a319cd4028bedf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a3d46b06747b66ae19f7e51dec2cb6eea"><td class="memItemLeft" align="right" valign="top"><a id="a3d46b06747b66ae19f7e51dec2cb6eea" name="a3d46b06747b66ae19f7e51dec2cb6eea"></a>
-struct <a class="el" href="structturn__params__t.html">turn_params_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>turn_params</b></td></tr>
-<tr class="separator:a3d46b06747b66ae19f7e51dec2cb6eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d536de103ad5b8b41e9fc2bdb1a9b52"><td class="memItemLeft" align="right" valign="top"><a id="a9d536de103ad5b8b41e9fc2bdb1a9b52" name="a9d536de103ad5b8b41e9fc2bdb1a9b52"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_pid_structs</b> (<a class="el" href="structturn__params.html">turn_params_t</a> *p_turn_params)</td></tr>
+<tr class="memdesc:a9d536de103ad5b8b41e9fc2bdb1a9b52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up pid struct(s). <br /></td></tr>
+<tr class="separator:a9d536de103ad5b8b41e9fc2bdb1a9b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e5de50418f75fc0da6bce222ceb343d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pid_8h.html#a0e5de50418f75fc0da6bce222ceb343d">navigate_car_turn</a> (<a class="el" href="structturn__params.html">turn_params_t</a> *p_turn_params, maze_cardinal_direction_t direction)</td></tr>
+<tr class="memdesc:a0e5de50418f75fc0da6bce222ceb343d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to turn the car based on a given direction.  <a href="pid_8h.html#a0e5de50418f75fc0da6bce222ceb343d">More...</a><br /></td></tr>
+<tr class="separator:a0e5de50418f75fc0da6bce222ceb343d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Bryan Seah </dd></dl>
@@ -182,8 +182,8 @@ struct <a class="el" href="structturn__params__t.html">turn_params_t</a>&#160;</
 <dl class="section date"><dt>Date</dt><dd>2023-10-29</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2023 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a6bd427202c90c3677a319cd4028bedf1" name="a6bd427202c90c3677a319cd4028bedf1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6bd427202c90c3677a319cd4028bedf1">&#9670;&#160;</a></span>navigate_car_turn()</h2>
+<a id="a0e5de50418f75fc0da6bce222ceb343d" name="a0e5de50418f75fc0da6bce222ceb343d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e5de50418f75fc0da6bce222ceb343d">&#9670;&#160;</a></span>navigate_car_turn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -191,9 +191,19 @@ struct <a class="el" href="structturn__params__t.html">turn_params_t</a>&#160;</
         <tr>
           <td class="memname">void navigate_car_turn </td>
           <td>(</td>
-          <td class="paramtype">maze_cardinal_direction_t&#160;</td>
-          <td class="paramname"><em>direction</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structturn__params.html">turn_params_t</a> *&#160;</td>
+          <td class="paramname"><em>p_turn_params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">maze_cardinal_direction_t&#160;</td>
+          <td class="paramname"><em>direction</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -216,10 +226,10 @@ struct <a class="el" href="structturn__params__t.html">turn_params_t</a>&#160;</
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="pid_8h_a6bd427202c90c3677a319cd4028bedf1_cgraph.png" border="0" usemap="#apid_8h_a6bd427202c90c3677a319cd4028bedf1_cgraph" alt=""/></div>
-<map name="apid_8h_a6bd427202c90c3677a319cd4028bedf1_cgraph" id="apid_8h_a6bd427202c90c3677a319cd4028bedf1_cgraph">
+<div class="center"><img src="pid_8h_a0e5de50418f75fc0da6bce222ceb343d_cgraph.png" border="0" usemap="#apid_8h_a0e5de50418f75fc0da6bce222ceb343d_cgraph" alt=""/></div>
+<map name="apid_8h_a0e5de50418f75fc0da6bce222ceb343d_cgraph" id="apid_8h_a0e5de50418f75fc0da6bce222ceb343d_cgraph">
 <area shape="rect" title="Function to turn the car based on a given direction." alt="" coords="5,80,131,105"/>
-<area shape="rect" href="pid_8c.html#a2bcc27ed50c613d926cce5740113613d" title="Sets up pid struct(s)." alt="" coords="179,5,289,31"/>
+<area shape="rect" href="pid_8c.html#a9d536de103ad5b8b41e9fc2bdb1a9b52" title="Sets up pid struct(s)." alt="" coords="179,5,289,31"/>
 <area shape="rect" href="motor__control_8c.html#ae550a3c67881c84d0b773c23e5b3aecd" title="A function to move the car forward." alt="" coords="182,55,286,80"/>
 <area shape="rect" href="motor__control_8c.html#a2b3e4a3587c92c609c39b1a5778bcf00" title="A function to turn the car left." alt="" coords="199,104,269,129"/>
 <area shape="rect" href="motor__control_8c.html#adb5876f4cb9a5649408fdff387502929" title="A function to turn the car right." alt="" coords="196,153,272,179"/>
@@ -235,7 +245,7 @@ Here is the call graph for this function:</div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a class="el" href="dir_03cc0cf9f2ff9626c21c5d0b4fc5a5ff.html">driver</a></li><li class="navelem"><a class="el" href="dir_53499b87f221dc70cf0fea2919feb39a.html">pid</a></li><li class="navelem"><a class="el" href="pid_8h.html">pid.h</a></li>
+    <li class="navelem"><a class="el" href="dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a class="el" href="dir_b513d2787555fa799f0522c9a2ea2090.html">pid</a></li><li class="navelem"><a class="el" href="pid_8h.html">pid.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
