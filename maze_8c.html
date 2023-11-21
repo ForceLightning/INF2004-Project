@@ -178,6 +178,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a9037ecf1d39a1e3f0e0a34ca30391b91"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a9037ecf1d39a1e3f0e0a34ca30391b91">maze_manhattan_dist</a> (const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_a, const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_b)</td></tr>
 <tr class="memdesc:a9037ecf1d39a1e3f0e0a34ca30391b91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the manhattan distance between two points.  <a href="maze_8c.html#a9037ecf1d39a1e3f0e0a34ca30391b91">More...</a><br /></td></tr>
 <tr class="separator:a9037ecf1d39a1e3f0e0a34ca30391b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a899cf893dd431a4896d1d0f74825cf40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39">maze_relative_direction_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a899cf893dd431a4896d1d0f74825cf40">maze_get_relative_dir</a> (const maze_cardinal_direction_t direction_from, const maze_cardinal_direction_t direction_to)</td></tr>
+<tr class="memdesc:a899cf893dd431a4896d1d0f74825cf40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the relative direction from the current direction to the desired cardinal direction.  <a href="maze_8c.html#a899cf893dd431a4896d1d0f74825cf40">More...</a><br /></td></tr>
+<tr class="separator:a899cf893dd431a4896d1d0f74825cf40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae2cf92e83b0810d22411db9fbea4d94"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#aae2cf92e83b0810d22411db9fbea4d94">maze_serialised_to_buffer</a> (const <a class="el" href="maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2">maze_gap_bitmask_t</a> *p_bitmask, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
 <tr class="memdesc:aae2cf92e83b0810d22411db9fbea4d94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialises the maze into a uint8_t buffer.  <a href="maze_8c.html#aae2cf92e83b0810d22411db9fbea4d94">More...</a><br /></td></tr>
 <tr class="separator:aae2cf92e83b0810d22411db9fbea4d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -526,6 +529,44 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int8_t Offset of the current direction from cardinal directions. </dd></dl>
+
+</div>
+</div>
+<a id="a899cf893dd431a4896d1d0f74825cf40" name="a899cf893dd431a4896d1d0f74825cf40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a899cf893dd431a4896d1d0f74825cf40">&#9670;&#160;</a></span>maze_get_relative_dir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39">maze_relative_direction_t</a> maze_get_relative_dir </td>
+          <td>(</td>
+          <td class="paramtype">const maze_cardinal_direction_t&#160;</td>
+          <td class="paramname"><em>direction_from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const maze_cardinal_direction_t&#160;</td>
+          <td class="paramname"><em>direction_to</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the relative direction from the current direction to the desired cardinal direction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">direction_from</td><td>Cardinal direction to get the relative direction from. </td></tr>
+    <tr><td class="paramname">direction_to</td><td>Cardinal direction to get the relative direction to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Relative direction from the navigator to the desired direction. </dd></dl>
 
 </div>
 </div>

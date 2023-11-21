@@ -8,6 +8,7 @@ var maze_8c =
     [ "maze_get_cell_in_dir", "maze_8c.html#a2b467ddfd914550a22224fa6be60f14f", null ],
     [ "maze_get_dir_from_to", "maze_8c.html#ab8154230298572c603d5b32c37f39fb5", null ],
     [ "maze_get_nav_dir_offset", "maze_8c.html#adf53560282204aa46ad3f18cab9e0cd8", null ],
+    [ "maze_get_relative_dir", "maze_8c.html#a899cf893dd431a4896d1d0f74825cf40", null ],
     [ "maze_get_string", "maze_8c.html#af92eb5d75cd2c4b9418d747bcbd15c7a", null ],
     [ "maze_initialise_empty_walled", "maze_8c.html#aef69dba27c12430494d4dbca3a9c0ef3", null ],
     [ "maze_insert_nav_str", "maze_8c.html#a892498023a08de789335a138509f04e5", null ],

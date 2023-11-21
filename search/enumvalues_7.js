@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['south_0',['SOUTH',['../maze_8h.html#a82ffd437d83514d94a8db843697d7edaa8ef5c0bce69283a9986011a63eea8a6b',1,'maze.h']]]
+  ['right_5fwall_0',['RIGHT_WALL',['../maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902a47412afab845bb5d82848c742c5aa826',1,'maze.h']]]
 ];

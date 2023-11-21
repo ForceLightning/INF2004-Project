@@ -7,6 +7,7 @@ var maze_8h =
     [ "maze_gap_bitmask", "structmaze__gap__bitmask.html", "structmaze__gap__bitmask" ],
     [ "maze_bitmask_compressed", "unionmaze__bitmask__compressed.html", "unionmaze__bitmask__compressed" ],
     [ "maze_gap_bitmask_t", "maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2", null ],
+    [ "maze_relative_direction_t", "maze_8h.html#afa054bfc35cf2998af33b43faab72b39", null ],
     [ "maze_wall_direction_t", "maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375", null ],
     [ "maze_cardinal_direction", "maze_8h.html#a82ffd437d83514d94a8db843697d7eda", [
       [ "NORTH", "maze_8h.html#a82ffd437d83514d94a8db843697d7edaad0611de6f28d4a9c9eac959f5344698e", null ],
@@ -14,6 +15,12 @@ var maze_8h =
       [ "SOUTH", "maze_8h.html#a82ffd437d83514d94a8db843697d7edaa8ef5c0bce69283a9986011a63eea8a6b", null ],
       [ "WEST", "maze_8h.html#a82ffd437d83514d94a8db843697d7edaae9449e8683a8199dad36b07a63b2f523", null ],
       [ "NONE", "maze_8h.html#a82ffd437d83514d94a8db843697d7edaac157bdf0b85a40d2619cbc8bc1ae5fe2", null ]
+    ] ],
+    [ "maze_relative_direction", "maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63c", [
+      [ "MAZE_FRONT", "maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63cac8219b4a6c4005208e803ae700da249d", null ],
+      [ "MAZE_RIGHT", "maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63caa5794f48ab4197841a9a7fddba248c0b", null ],
+      [ "MAZE_BACK", "maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63ca9515cc04e3ef38579803c8101376b898", null ],
+      [ "MAZE_LEFT", "maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63ca317ce326f23547dca337a73e60691c82", null ]
     ] ],
     [ "maze_wall_direction", "maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902", [
       [ "NO_WALLS", "maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902addf9bcea77c0275de8fadeafa12d2a36", null ],
@@ -30,6 +37,7 @@ var maze_8h =
     [ "maze_get_cell_in_dir", "maze_8h.html#a2b467ddfd914550a22224fa6be60f14f", null ],
     [ "maze_get_dir_from_to", "maze_8h.html#ab8154230298572c603d5b32c37f39fb5", null ],
     [ "maze_get_nav_dir_offset", "maze_8h.html#adf53560282204aa46ad3f18cab9e0cd8", null ],
+    [ "maze_get_relative_dir", "maze_8h.html#a899cf893dd431a4896d1d0f74825cf40", null ],
     [ "maze_get_string", "maze_8h.html#af92eb5d75cd2c4b9418d747bcbd15c7a", null ],
     [ "maze_initialise_empty_walled", "maze_8h.html#aef69dba27c12430494d4dbca3a9c0ef3", null ],
     [ "maze_insert_nav_str", "maze_8h.html#acf435368da7fd002a7365c3733032545", null ],

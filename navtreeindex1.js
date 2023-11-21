@@ -1,5 +1,13 @@
 var NAVTREEINDEX1 =
 {
+"structmaze__gap__bitmask.html#ae98bc97235b87da7326dd2169ec05437":[1,0,6,0],
+"structmaze__grid.html":[1,0,7],
+"structmaze__grid.html#a04a415b67fcd6019152dbdd3a4c0e7f1":[1,0,7,1],
+"structmaze__grid.html#a58897720d39a73af3d7686c4e8303758":[1,0,7,2],
+"structmaze__grid.html#ae98bc97235b87da7326dd2169ec05437":[1,0,7,0],
+"structmaze__grid__cell.html":[1,0,8],
+"structmaze__grid__cell.html#a16ac3af8d458b9527df92bfc368e5e91":[1,0,8,0],
+"structmaze__grid__cell.html#a1fab8d68d051eca3d118d5408e1200ca":[1,0,8,2],
 "structmaze__grid__cell.html#a2f0db7aa0db32e7c22625872dc55cbe1":[1,0,8,6],
 "structmaze__grid__cell.html#a50d0f0f0767450a76d736d60766c9999":[1,0,8,3],
 "structmaze__grid__cell.html#a5ab4724a87dab3741294b7ac26d747c7":[1,0,8,5],
