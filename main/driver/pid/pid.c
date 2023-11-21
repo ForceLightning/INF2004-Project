@@ -1,46 +1,104 @@
+/**
+ * @file pid.c
+ * @author Bryan Seah
+ * @brief 
+ * @version 0.1
+ * @date 2023-10-29
+ * 
+ * @copyright Copyright (c) 2023
+ */
 #include <stdbool.h>
-#include <stdint.h>
-#include <sys/types.h>
+#include "hardware/pwm.h"
+#include "hardware/gpio.h"
+#include "pico/types.h"
+#include "../motor/motor_control.h"
+#include "../../pathfinding/maze.h"
 #include "pid.h"
 
 /**
- * @brief Get the time difference in ms
- *
- * @param current_time Current time in us
- * @param prev_time Previous time in us
- * @return float Time difference in ms
+ * @brief Sets up pid struct(s).
  */
-float
-get_time_diff (uint64_t current_time, uint64_t prev_time)
+void
+init_pid_structs (void)
 {
-    return (current_time - prev_time)
-           / 1000.0f; // Conversion from uint64_t to float is safe because the
-                      // maximum value of uint64_t is greater than the maximum
-                      // value of float.
+    turn_params.is_turning = 0;
+    turn_params.encoder_step_count = 0;
+    turn_params.turn_direction = 'n';
+    turn_params.is_centered = 0;
+    turn_params.completed_turn = 0;
+    turn_params.moved_cell = 0;
 }
 
 /**
- * @brief Get the speed in either pulses/second or mm/second
- *
- * @param time_elapsed Time elapsed in ms
- * @param is_pulse True if speed is in pulses/second, false if speed is in
- * mm/second
- * @return float Speed in either pulses/second or mm/second
+ * @brief Function to turn the car based on a given direction
+ * 
+ * @param p_navigator 
+ * @param direction 
  */
-float
-get_speed (float time_elapsed, bool is_pulse)
-{
-    float speed = 0.0f;
+void navigate_car_turn(maze_cardinal_direction_t direction){
+    if(turn_params.is_turning){
+        turn_params.encoder_step_count++;
 
-    if (is_pulse)
-    {
-        speed = 1000.0f / time_elapsed;
-    }
-    else
-    {
-        speed = (1000.0f / time_elapsed) * DISTANCE_PER_PULSE;
-    }
+        // Center the car to prepare for turning
+        if(!turn_params.is_centered)
+        {
+            if(turn_params.encoder_step_count == ENCODER_CENTER_OFFSET)
+            {
+                turn_params.is_centered = 1;
+                turn_params.encoder_step_count = 0;
+            }
+        } 
+        else if(!turn_params.completed_turn)
+        {
+            switch((uint)direction)
+            {
+                case WEST:
+                    turn_left(0);
+                    if(turn_params.encoder_step_count == ENCODER_STEP_TURN_90_DEG)
+                    {
+                        turn_params.completed_turn = 1;
+                        turn_params.encoder_step_count = 0;
+                    }
 
-    return speed;
+                    break;
+
+                case EAST:
+                    turn_right(0);
+                    if(turn_params.encoder_step_count == ENCODER_STEP_TURN_90_DEG)
+                    {
+                        turn_params.completed_turn = 1;
+                        turn_params.encoder_step_count = 0;
+                    }
+
+                    break;
+
+                case SOUTH:
+                    turn_left(0);
+                    if(turn_params.encoder_step_count == ENCODER_STEP_TURN_180_DEG)
+                    {
+                        turn_params.completed_turn = 1;
+                        turn_params.encoder_step_count = 0;
+                    }
+
+                    break;
+            }
+        } 
+        else if(!turn_params.moved_cell)
+        {
+            move_forward();
+            if(turn_params.encoder_step_count == ENCODER_STEP_MOVE)
+            {
+                turn_params.moved_cell = 1;
+                turn_params.encoder_step_count = 0;
+            }
+        } 
+        else 
+        {
+            init_pid_structs();
+        }
+    } else {
+        return;
+    }
 }
-// End of file wheel_encoder.c.
+
+// End of file pid.c

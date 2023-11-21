@@ -15,7 +15,7 @@ set(WIFI_SSID "${WIFI_SSID}" CACHE INTERNAL "WiFi SSID")
 set(WIFI_PASSWORD "${WIFI_PASSWORD}" CACHE INTERNAL "WiFi password")
 
 add_executable(pid
-    main.c pid.c
+    main.c error_correction.c pid.c
     )
 
 target_link_libraries(pid
@@ -23,6 +23,7 @@ target_link_libraries(pid
     pico_cyw43_arch_none
     hardware_gpio
     hardware_pwm
+    motor_control
     )
 
 pico_add_extra_outputs(pid)

@@ -1,4 +1,4 @@
-
+add_library(motor_control INTERFACE)
 cmake_minimum_required(VERSION 3.12)
 
 if (DEFINED ENV{WIFI_SSID} AND (NOT WIFI_SSID))
@@ -13,6 +13,9 @@ endif()
 
 set(WIFI_SSID "${WIFI_SSID}" CACHE INTERNAL "WiFi SSID")
 set(WIFI_PASSWORD "${WIFI_PASSWORD}" CACHE INTERNAL "WiFi password")
+
+target_sources(motor_control INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}/motor_control.h)
 
 add_executable(motor
     main.c motor_control.c

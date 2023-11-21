@@ -1,17 +1,49 @@
-#ifndef WHEEL_ENCODER_H
-#define WHEEL_ENCODER_H
-#include "pico/stdlib.h"
+/**
+ * @file pid.h
+ * @author Bryan Seah
+ * @brief 
+ * @version 0.1
+ * @date 2023-10-29
+ * 
+ * @copyright Copyright (c) 2023
+ */
 
-// Definitions.
+#ifndef PID_H
+#define PID_H
+
+#include "../../pathfinding/maze.h"
+
+// Definitions for the encoder steps.
 // 
-#define CYCLE_PULSE 20 // Number of encoder pulses per 1 full rotation.
-#define DISTANCE_PER_PULSE \
-    (204.203f / 20.0f) // Distance travelled per tick in mm.
+#define ENCODER_STEP_TURN_90_DEG 18
+#define ENCODER_STEP_TURN_180_DEG 36
+#define ENCODER_STEP_MOVE 25
+#define ENCODER_CENTER_OFFSET 5
 
-// Function prototypes
-//
-float get_time_diff(uint64_t current_time, uint64_t prev_time);
-float get_speed(float time_elapsed, bool is_pulse);
+#define ENCODER_PIN 21
 
-#endif
-// WHEEL_ENCODER_H
+struct turn_params_t {
+    uint is_turning;
+    uint encoder_step_count;
+    char turn_direction;
+    uint is_centered;
+    uint completed_turn;
+    uint moved_cell;
+} turn_params;
+
+/**
+ * @brief Sets up pid struct(s).
+ */
+void init_pid_structs (void);
+
+/**
+ * @brief Function to turn the car based on a given direction
+ * 
+ * @param p_navigator 
+ * @param direction 
+ */
+void navigate_car_turn(maze_cardinal_direction_t direction);
+
+#endif // PID_H
+
+// End of file pid.h
