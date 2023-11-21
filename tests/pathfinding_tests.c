@@ -538,7 +538,7 @@ test_maze_serialisation (void)
         }
     }
 
-end:
+end:; // Clean up all malloc'd memory, semicolon is for linting errors.
     char *maze_str = maze_get_string(&maze);
     printf("%s\n", maze_str);
     free(maze_str);
