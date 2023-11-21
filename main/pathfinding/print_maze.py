@@ -25,7 +25,6 @@ def pretty_print_maze(serialised_maze: bytes) -> str:
     serialised_maze = serialised_maze[4:]
     num_bytes = (rows * cols) // 2 + (rows * cols) % 2
     serialised_maze = struct.unpack(f">{num_bytes}B", serialised_maze)
-    print(serialised_maze)
 
     for i in range(num_bytes):
         val = serialised_maze[i]

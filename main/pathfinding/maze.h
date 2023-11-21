@@ -214,6 +214,12 @@ int16_t maze_serialised_to_buffer(const maze_gap_bitmask_t *p_bitmask,
                                   uint8_t                  *p_buffer,
                                   uint16_t                  buffer_size);
 
+int16_t maze_nav_to_buffer(const maze_navigator_state_t *p_navigator,
+                           uint8_t                      *p_buffer,
+                           uint16_t                      buffer_size);
+
+void maze_uint16_to_uint8_buffer(uint16_t value, uint8_t *p_buffer);
+
 #endif // MAZE_H
 
 // End of pathfinding/maze.h

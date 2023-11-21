@@ -631,6 +631,64 @@ maze_serialised_to_buffer (const maze_gap_bitmask_t *p_bitmask,
     return 0; // Success.
 }
 
+/**
+ * @brief Serialises the navigator state into a uint8_t buffer.
+ *
+ * @param p_navigator Pointer to the navigator state.
+ * @param p_buffer Pointer to the buffer.
+ * @param buffer_size Length of the buffer for checks.
+ * @return int16_t -1 if the buffer is too small, 0 otherwise.
+ *
+ * @note The buffer is expected to be cleared before calling this function.
+ *
+ * @warning The buffer must be large enough to fit the navigator state.
+ */
+int16_t
+maze_nav_to_buffer (const maze_navigator_state_t *p_navigator,
+                    uint8_t                      *p_buffer,
+                    uint16_t                      buffer_size)
+{
+    // Puts the navigator's coordinates, orientation, current node, start node,
+    // end node coordinates in that order.
+    //
+    const uint16_t header_size
+        = 13u; // 2 x uint16_t for coordinates, 1 x uint8_t for orientation, 4 x
+               // uint16_t for start and end node coordinates. Value in bytes.
+
+    if (header_size > buffer_size)
+    {
+        return -1;
+    }
+
+    maze_uint16_to_uint8_buffer(p_navigator->p_current_node->coordinates.x,
+                                &p_buffer[0]);
+    maze_uint16_to_uint8_buffer(p_navigator->p_current_node->coordinates.y,
+                                &p_buffer[2]);
+    p_buffer[4] = (uint8_t)p_navigator->orientation;
+    maze_uint16_to_uint8_buffer(p_navigator->p_start_node->coordinates.x,
+                                &p_buffer[5]);
+    maze_uint16_to_uint8_buffer(p_navigator->p_start_node->coordinates.y,
+                                &p_buffer[7]);
+    maze_uint16_to_uint8_buffer(p_navigator->p_end_node->coordinates.x,
+                                &p_buffer[9]);
+    maze_uint16_to_uint8_buffer(p_navigator->orientation, &p_buffer[11]);
+
+    return 0;
+}
+
+/**
+ * @brief Helper function to convert a uint16_t to a uint8_t buffer.
+ *
+ * @param value Value to convert.
+ * @param p_buffer uint8_t buffer of size 2.
+ */
+void
+maze_uint16_to_uint8_buffer (uint16_t value, uint8_t *p_buffer)
+{
+    p_buffer[0] = (value & 0xFF00) >> 8;
+    p_buffer[1] = (value & 0x00FF);
+}
+
 // Private functions definitions.
 // ----------------------------------------------------------------------------
 //
