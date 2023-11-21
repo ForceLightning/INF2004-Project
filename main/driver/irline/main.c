@@ -22,7 +22,8 @@ int
 main (void)
 {
     stdio_init_all();
-    setup_adc_pins(ADC_PIN_LEFT, ADC_PIN_FRONT);
+    setup_adc_pins(ADC_PIN_LEFT);
+    setup_adc_pins(ADC_PIN_FRONT);
     setup_gpio_pins(GPIO_PIN_LEFT, GPIO_PIN_FRONT);
 
 

@@ -17,12 +17,12 @@
 #include "task.h"
 #include "message_buffer.h"
 
-#include "irline/ir_sensor.h"
+// #include "irline/ir_sensor.h"
 #include "magnetometer/magnetometer.h"
 #include "motor/motor_control.h"
 #include "ultrasonic/ultrasonic.h"
 #include "encoder/wheel_encoder.h"
-#include "wifi/wifi.h"
+// #include "wifi/wifi.h"
 
 #include "pathfinding/a_star.h"
 

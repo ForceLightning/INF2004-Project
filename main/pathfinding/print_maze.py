@@ -1,21 +1,42 @@
-def pretty_print_maze(serialised_maze: str, rows: int, cols: int):
+"""Module for printing a maze in a human-readable format.
+"""
+
+import struct
+
+_author = "Christopher Kok"
+
+
+def pretty_print_maze(serialised_maze: bytes) -> str:
     """Prints a maze in a human-readable format.
 
     Args:
-        serialised_maze: A string of single hex chars representing a maze.
-        rows: The number of rows in the maze.
-        cols: The number of columns in the maze.
+        serialised_maze (bytes): Compressed maze string gap bitmask.
+        Each hex character represents a cell in the maze.
+        rows (int): Number of rows in the maze.
+        cols (int): Number of columns in the maze.
+
+    Returns:
+        str: A string representing the maze.
     """
-    
+
     # Convert the string into a 2D array.
     maze = []
-    for i in range(rows):
-        row = []
-        for j in range(cols):
-            val = int(serialised_maze[i * cols + j], 16)
-            val = 0xF - val
-            row.append(val)
-        maze.append(row)
+    rows, cols = struct.unpack(">2H", serialised_maze[:4])
+    serialised_maze = serialised_maze[4:]
+    num_bytes = (rows * cols) // 2 + (rows * cols) % 2
+    serialised_maze = struct.unpack(f">{num_bytes}B", serialised_maze)
+
+    for i in range(num_bytes):
+        val = serialised_maze[i]
+        cell_a = (val & 0xF0) >> 4
+        cell_b = val & 0x0F
+        cell_a = 0xF - cell_a
+        cell_b = 0xF - cell_b
+        maze.append(cell_a)
+        if cell_b != 0xF:
+            maze.append(cell_b)
+
+    maze = [maze[i:i + cols] for i in range(0, len(maze), cols)]
 
     # Print the maze.
     ret_str = ""
@@ -34,6 +55,7 @@ def pretty_print_maze(serialised_maze: str, rows: int, cols: int):
 
     ret_str += "+"
     return ret_str
+
 
 def draw_cell(cell_bitmask: int, relative_row: int) -> str:
     """Helper function to draw a single cell in a maze.
@@ -58,11 +80,11 @@ def draw_cell(cell_bitmask: int, relative_row: int) -> str:
             else:
                 return "    "
 
+
 def main():
-    serialised_maze_str = "6EC451397AA856AC3D412BB8"
-    rows = 6
-    cols = 4
-    print(pretty_print_maze(serialised_maze_str, rows, cols))
+    serialised_maze_bytes = b'\x00\x06\x00\x04\x6E\xC4\x51\x39\x7A\xA8\x56\xAC\x3D\x41\x2B\xB8'
+    print(pretty_print_maze(serialised_maze_bytes))
+
 
 if __name__ == "__main__":
     main()

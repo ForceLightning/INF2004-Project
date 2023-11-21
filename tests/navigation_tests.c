@@ -1,12 +1,22 @@
+/**
+ * @file navigation_tests.c
+ * @author Christopher Kok (chris@forcelightning.xyz)
+ * @brief Tests the combined navigational functions.
+ * @version 0.1
+ * @date 2023-11-21
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
 #include <stdio.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 
 #include "pathfinding/maze.h"
 #include "pathfinding/floodfill.h"
-#include "pathfinding/binary_heap.h"
 #include "pathfinding/dfs.h"
 #include "pathfinding/a_star.h"
 
@@ -37,8 +47,9 @@
  */
 typedef enum constants
 {
-    GRID_ROWS = 6, ///< Number of rows in the grid.
-    GRID_COLS = 4  ///< Number of columns in the grid.
+    GRID_ROWS   = 6,    ///< Number of rows in the grid.
+    GRID_COLS   = 4,    ///< Number of columns in the grid.
+    BUFFER_SIZE = 2048u ///< Size of the buffer for serialisation.
 } constants_t;
 
 // Global variables.
@@ -58,6 +69,10 @@ static const uint16_t g_bitmask_array_north[GRID_ROWS * GRID_COLS] = {
     0x2, 0xB, 0xB, 0x8  // Last row.
 };
 
+/**
+ * @brief Global bitmask of the array rotated 180 degrees.
+ *
+ */
 static const uint16_t g_bitmask_array_south[GRID_ROWS * GRID_COLS] = {
     0x2, 0xE, 0xE, 0x8, // First row.
     0x4, 0x1, 0x7, 0xC, // Second row.
@@ -70,7 +85,8 @@ static const uint16_t g_bitmask_array_south[GRID_ROWS * GRID_COLS] = {
 static const maze_point_t start_point = { 2, 5 }; // Start point is at (2, 5).
 static const maze_point_t end_point   = { 1, 0 }; // End point is at (1, 0).
 
-static uint16_t *gp_bitmask_array = NULL;
+static uint16_t *gp_bitmask_array = NULL; // Pointer to the global bitmask array
+                                          // that is set by the test functions.
 
 // Test function prototypes.
 // ----------------------------------------------------------------------------
@@ -81,6 +97,11 @@ static int test_combined_northwards(void);
 static int test_mapping_southwards(void);
 static int test_navigation_southwards(void);
 static int test_combined_southwards(void);
+static int test_compression(void);
+static int test_navigator_serialisation(void);
+static int test_path_serialisation(void);
+static int test_combined_serialisation(void);
+static int test_relative_direction(void);
 
 // Private function prototypes.
 // ----------------------------------------------------------------------------
@@ -146,6 +167,21 @@ navigation_tests (int argc, char *argv[])
         case 6:
             ret_val = test_combined_southwards();
             break;
+        case 7:
+            ret_val = test_compression();
+            break;
+        case 8:
+            ret_val = test_navigator_serialisation();
+            break;
+        case 9:
+            ret_val = test_path_serialisation();
+            break;
+        case 10:
+            ret_val = test_combined_serialisation();
+            break;
+        case 11:
+            ret_val = test_relative_direction();
+            break;
         default:
             printf("Invalid choice. Terminating.\n");
             ret_val = -1;
@@ -158,40 +194,174 @@ navigation_tests (int argc, char *argv[])
 // Test function definitions.
 // ----------------------------------------------------------------------------
 //
+
+/**
+ * @brief Tests the mapping in the northwards direction.
+ *
+ * @return int 0 if the test passes, -1 otherwise.
+ */
 static int
 test_mapping_northwards (void)
 {
     return test_mapping(g_bitmask_array_north);
 }
 
+/**
+ * @brief Tests the navigation in the northwards direction.
+ *
+ * @return int 0 if the test passes, -1 otherwise.
+ */
 static int
 test_navigation_northwards (void)
 {
     return test_navigation(g_bitmask_array_north);
 }
 
+/**
+ * @brief Tests the combined mapping and navigation in the northwards direction.
+ *
+ * @return int 0 if the test passes, -1 otherwise.
+ */
 static int
 test_combined_northwards (void)
 {
     return test_combined(g_bitmask_array_north);
 }
 
+/**
+ * @brief Tests the mapping in the southwards direction.
+ *
+ * @return int 0 if the test passes, -1 otherwise.
+ */
 static int
 test_mapping_southwards (void)
 {
     return test_mapping(g_bitmask_array_south);
 }
 
+/**
+ * @brief Tests the navigation in the southwards direction.
+ *
+ * @return int 0 if the test passes, -1 otherwise.
+ */
 static int
 test_navigation_southwards (void)
 {
     return test_navigation(g_bitmask_array_south);
 }
 
+/**
+ * @brief Tests the combined mapping and navigation in the southwards direction.
+ *
+ * @return int 0 if the test passes, -1 otherwise.
+ */
 static int
 test_combined_southwards (void)
 {
     return test_combined(g_bitmask_array_south);
+}
+
+/**
+ * @brief Tests the compression of the maze bitmask.
+ *
+ * @return int 0 if the test passes, -1 otherwise.
+ */
+static int
+test_compression (void)
+{
+    int ret_val = 0;
+
+    maze_grid_t maze = maze_create(GRID_ROWS, GRID_COLS);
+
+    maze_gap_bitmask_t true_map_bitmask = { .p_bitmask = g_bitmask_array_north,
+                                            .rows      = GRID_ROWS,
+                                            .columns   = GRID_COLS };
+    maze_deserialise(&maze, &true_map_bitmask);
+
+    const maze_gap_bitmask_t map_bitmask = maze_serialise(&maze);
+
+    maze_bitmask_compressed_t *p_compressed_bitmask
+        = malloc(sizeof(maze_bitmask_compressed_t) * GRID_ROWS * GRID_COLS);
+
+    uint8_t *p_buffer = malloc(sizeof(uint8_t) * BUFFER_SIZE);
+    memset(p_buffer, 0, sizeof(uint8_t) * BUFFER_SIZE);
+
+    ret_val = maze_serialised_to_buffer(&map_bitmask, p_buffer, BUFFER_SIZE);
+
+    char *p_compressed_str = malloc(sizeof(char) * BUFFER_SIZE * 2u);
+    memset(p_compressed_str, 0, sizeof(char) * BUFFER_SIZE * 2u);
+
+    uint16_t compressed_size
+        = 4 + (GRID_ROWS * GRID_COLS) / 2 + (GRID_ROWS * GRID_COLS) % 2;
+
+    for (size_t idx = 0; compressed_size > idx; idx++)
+    {
+        sprintf(p_compressed_str + idx * 2, "%2X", p_buffer[idx]);
+    }
+
+    printf("Compressed string:\n%s\n", p_compressed_str);
+
+    free(p_buffer);
+    free(p_compressed_str);
+
+    return ret_val;
+}
+
+/**
+ * @brief Tests the serialisation of the navigator state.
+ *
+ * @return int 0 if the test passes, -1 otherwise.
+ */
+static int
+test_navigator_serialisation (void)
+{
+    // @TODO(chris): Complete this test.
+    return 0;
+}
+
+/**
+ * @brief Tests the serialisation of the path.
+ *
+ * @return int 0 if the test passes, -1 otherwise.
+ */
+static int
+test_path_serialisation (void)
+{
+    // @TODO(chris): Complete this test.
+    return 0;
+}
+
+/**
+ * @brief Tests the combined serialisation of the maze, navigator state, and
+ * path.
+ *
+ * @return int 0 if the test passes, -1 otherwise.
+ */
+static int
+test_combined_serialisation (void)
+{
+    // @TODO(chris): Complete this test.
+    return 0;
+}
+
+static int
+test_relative_direction(void)
+{
+    int ret_val = 0;
+    maze_cardinal_direction_t dir_a = NORTH;
+    maze_cardinal_direction_t dir_b = SOUTH;
+    
+    maze_relative_direction_t rel_dir = maze_get_relative_dir(dir_a, dir_b);
+
+    if (MAZE_BACK != rel_dir)
+    {
+        ret_val = -1;
+        printf("rel_dir: %d", rel_dir);
+        goto end;
+    }
+    
+end:
+    return ret_val;
 }
 
 // Private function definitions.

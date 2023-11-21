@@ -40,6 +40,9 @@ void a_star(maze_grid_t      *p_grid,
 
 a_star_path_t *a_star_get_path(maze_grid_cell_t *p_end_node);
 char          *a_star_get_path_str(maze_grid_t *p_grid, a_star_path_t *p_path);
+int16_t        a_star_path_to_buffer(a_star_path_t *p_path,
+                                     uint8_t       *p_buffer,
+                                     uint16_t       buffer_size);
 
 #endif // A_STAR_H
 

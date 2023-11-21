@@ -43,11 +43,12 @@ endif()
 
 add_subdirectory(driver)
 add_subdirectory(pathfinding)
+add_subdirectory(pid)
 
 if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
     add_executable(car_project_nosys
         main.c
-        ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c
+        # ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c
         )
     target_compile_definitions(car_project_nosys PRIVATE
         WIFI_SSID=\"${WIFI_SSID}\"
@@ -66,6 +67,7 @@ if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
         FreeRTOS-Kernel-Heap4 # FreeRTOS kernel and dynamic heap
         driver
         pathfinding
+        pid_driver
         )
     # enable usb output and uart output
     pico_enable_stdio_usb(car_project_nosys 1)
@@ -102,6 +104,7 @@ if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
         FreeRTOS-Kernel-Heap4 # FreeRTOS kernel and dynamic heap
         driver
         pathfinding
+        pid_driver
         )
     pico_enable_stdio_usb(car_project 1)
     pico_enable_stdio_uart(car_project 0)

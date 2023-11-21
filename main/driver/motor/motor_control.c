@@ -97,12 +97,12 @@ update_direction (uint clkwise_gpio,
  * motors.
  */
 void
-move_forward (motor_pins_t motor_data)
+move_forward ()
 {
-    update_pwm(motor_data.pwm_gpio_a, MOTOR_PWM_WRAP, 0.5f);
-    update_pwm(motor_data.pwm_gpio_b, MOTOR_PWM_WRAP, 0.5f);
-    update_direction(motor_data.left_clkwise, motor_data.left_anticlkwise, 1, 0);
-    update_direction(motor_data.right_clkwise, motor_data.right_anticlkwise, 1, 0);
+    update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
+    update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.5f);
+    update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 1, 0);
+    update_direction(RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 1, 0);
 }
 
 /**
@@ -114,10 +114,10 @@ move_forward (motor_pins_t motor_data)
  * motors.
  */
 void
-stop (motor_pins_t motor_data)
+stop ()
 {
-    update_pwm(motor_data.pwm_gpio_a, MOTOR_PWM_WRAP, 0.0f);
-    update_pwm(motor_data.pwm_gpio_b, MOTOR_PWM_WRAP, 0.0f);
+    update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.0f);
+    update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.0f);
 }
 
 /**
@@ -130,12 +130,12 @@ stop (motor_pins_t motor_data)
  * motors.
  */
 void
-reverse (motor_pins_t motor_data)
+reverse ()
 {
-    update_pwm(motor_data.pwm_gpio_a, MOTOR_PWM_WRAP, 0.5f);
-    update_pwm(motor_data.pwm_gpio_b, MOTOR_PWM_WRAP, 0.5f);
-    update_direction(motor_data.left_clkwise, motor_data.left_anticlkwise, 0, 1);
-    update_direction(motor_data.right_clkwise, motor_data.right_anticlkwise, 0, 1);
+    update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
+    update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.5f);
+    update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 0, 1);
+    update_direction(RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 0, 1);
 }
 
 /**
@@ -152,20 +152,20 @@ reverse (motor_pins_t motor_data)
  * reverse.
  */
 void
-turn_left (motor_pins_t motor_data, bool reverse_turn)
+turn_left (bool reverse_turn)
 {
-    update_pwm(motor_data.pwm_gpio_a, MOTOR_PWM_WRAP, 0.2f);
-    update_pwm(motor_data.pwm_gpio_b, MOTOR_PWM_WRAP, 0.5f);
+    update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.2f);
+    update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.5f);
 
     if (reverse_turn)
     {
-        update_direction(motor_data.left_clkwise, motor_data.left_anticlkwise, 1, 0);
-        update_direction(motor_data.right_clkwise, motor_data.right_anticlkwise, 0, 1);
+        update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 1, 0);
+        update_direction(RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 0, 1);
     }
     else
     {
-        update_direction(motor_data.left_clkwise, motor_data.left_anticlkwise, 0, 1);
-        update_direction(motor_data.right_clkwise, motor_data.right_anticlkwise, 1, 0);
+        update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 0, 1);
+        update_direction(RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 1, 0);
     }
 }
 
@@ -183,20 +183,20 @@ turn_left (motor_pins_t motor_data, bool reverse_turn)
  * reverse.
  */
 void
-turn_right (motor_pins_t motor_data, bool reverse_turn)
+turn_right (bool reverse_turn)
 {
-    update_pwm(motor_data.pwm_gpio_a, MOTOR_PWM_WRAP, 0.5f);
-    update_pwm(motor_data.pwm_gpio_b, MOTOR_PWM_WRAP, 0.2f);
+    update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
+    update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.2f);
 
     if (reverse_turn)
     {
-        update_direction(motor_data.left_clkwise, motor_data.left_anticlkwise, 0, 1);
-        update_direction(motor_data.right_clkwise, motor_data.right_anticlkwise, 1, 0);
+        update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 0, 1);
+        update_direction(RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 1, 0);
     }
     else
     {
-        update_direction(motor_data.left_clkwise, motor_data.left_anticlkwise, 1, 0);
-        update_direction(motor_data.right_clkwise, motor_data.right_anticlkwise, 0, 1);
+        update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 1, 0);
+        update_direction(RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 0, 1);
     }
 }
 // End of file motor_control.c

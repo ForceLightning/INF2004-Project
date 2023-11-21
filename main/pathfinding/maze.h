@@ -61,6 +61,20 @@ typedef enum maze_wall_direction
 } maze_wall_direction_t;
 
 /**
+ * @typedef maze_relative_direction_t
+ * @brief This enum contains the relative directions of instructions from the
+ * navigator's perspective.
+ *
+ */
+typedef enum maze_relative_direction
+{
+    MAZE_FRONT, ///< Front is the direction the navigator is facing.
+    MAZE_RIGHT, ///< Right of the navigator.
+    MAZE_BACK,  ///< Back of the navigator.
+    MAZE_LEFT   ///< Left of the navigator.
+} maze_relative_direction_t;
+
+/**
  * @typedef grid_cell_t
  * @brief This struct contains the node information.
  *
@@ -149,6 +163,23 @@ typedef struct maze_gap_bitmask
     uint16_t columns;    ///< Number of columns.
 } maze_gap_bitmask_t;
 
+/**
+ * @typedef maze_serialised_compressed_t
+ * @brief Used for sending the maze over serial or WiFi.
+ *
+ * @property cell_b Cell B bitmask.
+ * @property cell_a Cell A bitmask.
+ */
+typedef union maze_bitmask_compressed
+{
+    struct
+    {
+        uint8_t cell_b : 4; ///< Cell B bitmask (LSB).
+        uint8_t cell_a : 4; ///< Cell A bitmask (MSB).
+    } fields;
+    uint8_t bits; ///< Bitmask.
+} maze_bitmask_compressed_t;
+
 // Public Functions.
 // ----------------------------------------------------------------------------
 //
@@ -164,19 +195,19 @@ void maze_destroy(maze_grid_t *p_grid);
 int8_t maze_get_nav_dir_offset(const maze_navigator_state_t *p_navigator);
 
 void maze_nav_modify_walls(maze_grid_t            *p_grid,
-                            maze_navigator_state_t *p_navigator,
-                            uint8_t                 aligned_wall_bitmask,
-                            bool                    is_set,
-                            bool                    is_unset);
+                           maze_navigator_state_t *p_navigator,
+                           uint8_t                 aligned_wall_bitmask,
+                           bool                    is_set,
+                           bool                    is_unset);
 
 char *maze_get_string(maze_grid_t *p_grid);
 
 void maze_insert_nav_str(const maze_grid_t            *p_grid,
-                          const maze_navigator_state_t *p_navigator,
-                          char                         *maze_str);
+                         const maze_navigator_state_t *p_navigator,
+                         char                         *maze_str);
 
 maze_cardinal_direction_t maze_get_dir_from_to(const maze_point_t *p_point_a,
-                                                const maze_point_t *p_point_b);
+                                               const maze_point_t *p_point_b);
 
 int16_t maze_deserialise(maze_grid_t        *p_grid,
                          maze_gap_bitmask_t *p_no_walls_array);
@@ -187,11 +218,25 @@ maze_grid_cell_t *maze_get_cell_at_coords(maze_grid_t        *p_grid,
                                           const maze_point_t *p_coordinates);
 
 maze_grid_cell_t *maze_get_cell_in_dir(maze_grid_t              *p_grid,
-                                        maze_grid_cell_t         *p_from,
-                                        maze_cardinal_direction_t direction);
+                                       maze_grid_cell_t         *p_from,
+                                       maze_cardinal_direction_t direction);
 
 uint32_t maze_manhattan_dist(const maze_point_t *p_point_a,
-                            const maze_point_t *p_point_b);
+                             const maze_point_t *p_point_b);
+
+int16_t maze_serialised_to_buffer(const maze_gap_bitmask_t *p_bitmask,
+                                  uint8_t                  *p_buffer,
+                                  uint16_t                  buffer_size);
+
+int16_t maze_nav_to_buffer(const maze_navigator_state_t *p_navigator,
+                           uint8_t                      *p_buffer,
+                           uint16_t                      buffer_size);
+
+void maze_uint16_to_uint8_buffer(uint16_t value, uint8_t *p_buffer);
+
+maze_relative_direction_t maze_get_relative_dir(
+    const maze_cardinal_direction_t direction_from,
+    const maze_cardinal_direction_t direction_to);
 
 #endif // MAZE_H
 

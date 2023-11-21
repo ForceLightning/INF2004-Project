@@ -3,12 +3,11 @@ add_library(driver INTERFACE
 
 target_sources(driver INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}/encoder/wheel_encoder.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/pid/pid.c
     ${CMAKE_CURRENT_SOURCE_DIR}/irline/ir_sensor.c
     ${CMAKE_CURRENT_SOURCE_DIR}/magnetometer/magnetometer.c
     ${CMAKE_CURRENT_SOURCE_DIR}/motor/motor_control.c
     ${CMAKE_CURRENT_SOURCE_DIR}/ultrasonic/ultrasonic.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/wifi/wifi.c
+    # ${CMAKE_CURRENT_SOURCE_DIR}/wifi/wifi.c
 )
 
 target_link_libraries(driver INTERFACE
@@ -26,9 +25,8 @@ target_include_directories(driver INTERFACE
 )
 
 add_subdirectory(encoder)
-add_subdirectory(pid)
 add_subdirectory(irline)
 add_subdirectory(magnetometer)
 add_subdirectory(motor)
 add_subdirectory(ultrasonic)
-add_subdirectory(wifi)
+# add_subdirectory(wifi)

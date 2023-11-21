@@ -11,7 +11,9 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <sys/types.h>
+#include "hardware/gpio.h"
 #include "hardware/adc.h"
+#include "ir_sensor.h"
 
 /**
  * @brief Initalises the pins for the ADC.

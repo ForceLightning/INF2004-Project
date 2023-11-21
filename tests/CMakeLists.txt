@@ -19,7 +19,7 @@ set(dfs_parts
     )
 
 set(navigation_parts
-    1 2 3 4 5 6
+    1 2 3 4 5 6 7 8 9 10 11
     )
 
 foreach(ctest ${ctests})
