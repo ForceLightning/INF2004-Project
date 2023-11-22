@@ -38,6 +38,7 @@
 #ifndef RUN_FREERTOS_ON_CORE
 #define RUN_FREERTOS_ON_CORE 0
 #endif
+// volatile bearing_data_t *gp_bearing_data;
 
 static void
 main_task (__unused void *params)
@@ -57,9 +58,11 @@ main_task (__unused void *params)
     cyw43_arch_deinit();
 }
 
+
 static void 
 read_magnetometer_task(__unused void *params)
 {
+    init_bearing_data();
     readMagnetometerData();
 }
 
@@ -71,11 +74,13 @@ move_car_forward_task(__unused void *params)
     start_motor(
         RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, PWM_PIN_RIGHT);
     while(1){
-        if(checkBearingOutOfRange()){
+        // printf("Current bearing: %f\n", gp_bearing_data->current_bearing);
+        // printf("Min bearing: %f\n", gp_bearing_data->min_bearing);
+        // if(gp_bearing_data->current_bearing < gp_bearing_data->min_bearing){
             pid_params_t pid_params;
             init_pid_error_correction(&pid_params);
-            bearing_correction(getTrueBearing(), getCurrentBearing(), &pid_params);
-        }
+            bearing_correction(&pid_params);
+        // }
         move_forward();
     }
 }
@@ -114,6 +119,7 @@ int
 main (void)
 {
     stdio_init_all();
+    // scanf("Press any key to continue...\n");
     init_magnetometer();
     //tcp_server_begin_init();
     //tcp_server_begin();

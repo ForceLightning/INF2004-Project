@@ -13,6 +13,7 @@
 #include "hardware/gpio.h"
 #include "pico/types.h"
 #include "motor_control.h"
+#include "magnetometer/magnetometer.h"
 
 float ratio = 1.05f;
 
@@ -102,7 +103,8 @@ update_direction (uint clkwise_gpio,
 void
 move_forward ()
 {
-    printf("Moving forward\n");
+    // printf("Moving forward\n");
+    // printf("True north: %f\n", getTrueBearing());
     update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
     update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.5f);
     update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 1, 0);

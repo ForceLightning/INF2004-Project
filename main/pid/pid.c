@@ -113,11 +113,11 @@ navigate_car_turn (turn_params_t            *p_turn_params,
 }
 
 void init_pid_error_correction(pid_params_t *p_pid_params){
-    p_pid_params->kp = 0.01f;
-    p_pid_params->ki = 0.05f;
-    p_pid_params->kd = 0.01f;
+    p_pid_params->kp = 0.1f;
+    p_pid_params->ki = 0.00005f;
+    p_pid_params->kd = 0.1f;
     p_pid_params->epsilon = 0.01f;
-    p_pid_params->ratio_to_bearing = -0.035f;
+    p_pid_params->ratio_to_bearing = -0.01f; // When turning anticlockwise, ratio should decrease, hence multily by a negative
     p_pid_params->setpoint = 0.0f;
     p_pid_params->integral = 0.0f;
     p_pid_params->prev_error = 0.0f;
@@ -131,6 +131,8 @@ float calculate_pid(float current_bearing, float target_bearing, float current_r
     p_pid_params->integral += error;
     float derivative = error - p_pid_params->prev_error;
 
+    printf("Integral: %f\n", p_pid_params->integral);
+
     float control_signal = p_pid_params->kp * error + p_pid_params->ki * p_pid_params->integral + p_pid_params->kd * derivative;
 
     p_pid_params->prev_error = error;
@@ -138,24 +140,29 @@ float calculate_pid(float current_bearing, float target_bearing, float current_r
     return control_signal;
 }
 
-void bearing_correction(float target_bearing, float current_bearing, pid_params_t *p_pid_params){ 
+void bearing_correction(pid_params_t *p_pid_params){ 
     // init_pid_error_correction(pid_params_t *p_pid_params);
-    
-    p_pid_params->current_bearing = current_bearing;
-    while((int)p_pid_params->current_bearing != (int)target_bearing){
-        float control_signal = calculate_pid(p_pid_params->current_bearing, target_bearing, p_pid_params->current_ratio, p_pid_params);
 
-        float new_ratio = (p_pid_params->current_ratio + p_pid_params->epsilon) + ((control_signal + p_pid_params->epsilon + 1) * p_pid_params->ratio_to_bearing);
-
-        // p_pid_params->current_bearing += (new_ratio - p_pid_params->current_ratio) / p_pid_params->ratio_to_bearing;
+    if(checkBearingOutOfRange()){
         p_pid_params->current_bearing = getCurrentBearing();
-        p_pid_params->current_ratio = new_ratio;
+        while((int)p_pid_params->current_bearing != (int)getTrueBearing()){
+            float control_signal = calculate_pid(p_pid_params->current_bearing, getTrueBearing(), p_pid_params->current_ratio, p_pid_params);
 
-        update_ratio(p_pid_params->current_ratio);
+            float new_ratio = (p_pid_params->current_ratio + p_pid_params->epsilon) + ((control_signal + p_pid_params->epsilon + 1) * p_pid_params->ratio_to_bearing);
 
-    }   
+            // p_pid_params->current_bearing += (new_ratio - p_pid_params->current_ratio) / p_pid_params->ratio_to_bearing;
+            p_pid_params->current_bearing = getCurrentBearing();
+            p_pid_params->current_ratio = new_ratio;
 
-    update_ratio(1.05f);
+            update_ratio(p_pid_params->current_ratio);
+
+            // printf("Target Bearing: %f\n", getTrueBearing());
+            // printf("Current Bearing: %f\n", p_pid_params->current_bearing);
+            // printf("Current Ratio: %f\n", p_pid_params->current_ratio);
+
+        }  
+        // update_ratio(1.05f);
+    }
 }
 
 // End of file pid.c

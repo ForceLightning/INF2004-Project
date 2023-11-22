@@ -28,11 +28,12 @@ int16_t bias_x = 0;
 int16_t bias_y = 0;
 int16_t bias_z = 0;
 
-float *true_heading = 0;
-float *current_bearing = 0;
-float *min_bearing = 0;
-float *max_bearing = 0;
+// float *true_heading = 0;
+// float *current_bearing = 0;
+// float *min_bearing = 0;
+// float *max_bearing = 0;
 
+bearing_data_t bearing_data;
 void writeRegister(uint8_t address, uint8_t reg, uint8_t value) {
     uint8_t data[2] = {reg, value};
     i2c_write_blocking(i2c0, address, data, 2, true);
@@ -81,8 +82,8 @@ void calculateAcceleration(int16_t x, int16_t y, int16_t z) {
     double acc_y = (double)y * (g / 16384.0);
     double acc_z = (double)z * (g / 16384.0);
 
-    double acceleration = sqrt(acc_x * acc_x + acc_y * acc_y + acc_z * acc_z);
-    printf("Overall Acceleration: %.2f m/s^2\n", acceleration);
+    // double acceleration = sqrt(acc_x * acc_x + acc_y * acc_y + acc_z * acc_z);
+    // printf("Overall Acceleration: %.2f m/s^2\n", acceleration);
 }
 
 
@@ -96,6 +97,13 @@ void initializeI2C() {
 
 void configureMagnetometer() {
     writeRegister(MAGNETOMETER_ADDR, MR_REG_M, CRA_REG_M);
+}
+
+void init_bearing_data(){
+    bearing_data.true_heading = 0.0f;
+    bearing_data.current_bearing = 0.0f;
+    bearing_data.min_bearing = 0;
+    bearing_data.max_bearing = 0;
 }
 
 void readMagnetometerData() {
@@ -114,37 +122,38 @@ void readMagnetometerData() {
         // int16_t z_mag = (int16_t)((data[2] << 8) | data[3]);
         int16_t y_mag = (int16_t)((data[4] << 8) | data[5]);
         float headingRadians = atan2(y_mag, x_mag);
-        // float headingDegrees = headingRadians * 180.0 / M_PI;
+        float headingDegrees = headingRadians * 180.0 / M_PI;
 
-        // if (headingDegrees < 0) {
-        //     headingDegrees += 360.0;
-        // }
-
-        *current_bearing = headingRadians;
-
-        if(!*true_heading){
-            *true_heading = headingRadians;
-            *min_bearing = headingRadians - BEARING_OFFSET;
-            *max_bearing = headingRadians + BEARING_OFFSET;
+        if (headingDegrees < 0) {
+            headingDegrees += 360.0;
         }
 
-        printf("Compass Heading: %f\n", headingRadians);
-        printf("True North: %f\n", *true_heading);
-        printf("Curr Bearing: %f\n", *true_heading);
-        sleep_ms(1000);
+        bearing_data.current_bearing = headingDegrees;
+        if(!bearing_data.true_heading){
+            printf("DEBUG: Initialising. Heading degrees: %f\n", headingDegrees);
+            bearing_data.is_initialised = true;
+            bearing_data.true_heading = headingDegrees;
+            bearing_data.min_bearing = headingDegrees - BEARING_OFFSET;
+            bearing_data.max_bearing = headingDegrees + BEARING_OFFSET;
+        }
+
+        // printf("Compass Heading: %f\n", headingDegrees);
+        // printf("True North: %f\n", bearing_data.true_heading);
+        // printf("Curr Bearing: %f\n", bearing_data.current_bearing);
+        // sleep_ms(1000);
     }
 }
 
 uint checkBearingOutOfRange(){
-    return (*current_bearing < *min_bearing || *current_bearing > *max_bearing);
+    return (bearing_data.current_bearing < bearing_data.min_bearing || bearing_data.current_bearing > bearing_data.max_bearing);
 }
 
 float getTrueBearing(){
-    return *true_heading;
+    return bearing_data.true_heading;
 }
 
 float getCurrentBearing(){
-    return *current_bearing;
+    return bearing_data.current_bearing;
 }
 
 /**

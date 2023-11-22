@@ -62,6 +62,7 @@ if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
         )
     target_link_libraries(car_project_nosys
         pico_cyw43_arch_lwip_threadsafe_background
+        hardware_adc
         pico_stdlib
         pico_lwip_iperf
         FreeRTOS-Kernel-Heap4 # FreeRTOS kernel and dynamic heap
