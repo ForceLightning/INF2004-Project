@@ -106,11 +106,13 @@ $(document).ready(function(){initNavTree('motor__control_8c.html',''); initResiz
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">motor_control.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &quot;hardware/pwm.h&quot;</code><br />
 <code>#include &quot;hardware/gpio.h&quot;</code><br />
 <code>#include &quot;pico/types.h&quot;</code><br />
@@ -120,13 +122,14 @@ Include dependency graph for motor_control.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="motor__control_8c__incl.png" border="0" usemap="#amain_2driver_2motor_2motor__control_8c" alt=""/></div>
 <map name="amain_2driver_2motor_2motor__control_8c" id="amain_2driver_2motor_2motor__control_8c">
-<area shape="rect" title=" " alt="" coords="142,5,302,45"/>
-<area shape="rect" title=" " alt="" coords="71,167,146,192"/>
-<area shape="rect" title=" " alt="" coords="23,93,140,119"/>
-<area shape="rect" title=" " alt="" coords="165,93,278,119"/>
-<area shape="rect" title=" " alt="" coords="406,167,496,192"/>
-<area shape="rect" href="motor__control_8h.html" title=" " alt="" coords="302,93,413,119"/>
-<area shape="rect" title=" " alt="" coords="291,167,382,192"/>
+<area shape="rect" title=" " alt="" coords="189,5,349,45"/>
+<area shape="rect" title=" " alt="" coords="5,93,65,119"/>
+<area shape="rect" title=" " alt="" coords="189,167,263,192"/>
+<area shape="rect" title=" " alt="" coords="141,93,258,119"/>
+<area shape="rect" title=" " alt="" coords="283,93,396,119"/>
+<area shape="rect" title=" " alt="" coords="523,167,614,192"/>
+<area shape="rect" href="motor__control_8h.html" title=" " alt="" coords="420,93,531,119"/>
+<area shape="rect" title=" " alt="" coords="409,167,499,192"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -156,6 +159,15 @@ Functions</h2></td></tr>
 <tr class="memitem:adb5876f4cb9a5649408fdff387502929"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8c.html#adb5876f4cb9a5649408fdff387502929">turn_right</a> (bool reverse_turn)</td></tr>
 <tr class="memdesc:adb5876f4cb9a5649408fdff387502929"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to turn the car right.  <a href="motor__control_8c.html#adb5876f4cb9a5649408fdff387502929">More...</a><br /></td></tr>
 <tr class="separator:adb5876f4cb9a5649408fdff387502929"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2808ee83722a5b5f4a15e581373252a"><td class="memItemLeft" align="right" valign="top"><a id="ac2808ee83722a5b5f4a15e581373252a" name="ac2808ee83722a5b5f4a15e581373252a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>update_ratio</b> (float new_ratio)</td></tr>
+<tr class="separator:ac2808ee83722a5b5f4a15e581373252a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a207ad05f99cc72068a92358861ff5e71"><td class="memItemLeft" align="right" valign="top"><a id="a207ad05f99cc72068a92358861ff5e71" name="a207ad05f99cc72068a92358861ff5e71"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>ratio</b> = 1.05f</td></tr>
+<tr class="separator:a207ad05f99cc72068a92358861ff5e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Bryan Seah </dd></dl>

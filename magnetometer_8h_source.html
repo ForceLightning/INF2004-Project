@@ -140,13 +140,19 @@ $(document).ready(function(){initNavTree('magnetometer_8h_source.html',''); init
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#define OUT_Y_H_M 0x07</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#define OUT_Y_L_M 0x08</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">// Function prototypes</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">void</span> <a class="code hl_function" href="magnetometer_8h.html#aaf794abf1b329fe501b536df538e4285">init_magnetometer</a>();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keywordtype">void</span> readMagnetometerData();</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif </span><span class="comment">// MAGNETOMETER_H</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// End of file driver/magnetometer/magnetometer.h.</span></div>
-<div class="ttc" id="amagnetometer_8h_html_aaf794abf1b329fe501b536df538e4285"><div class="ttname"><a href="magnetometer_8h.html#aaf794abf1b329fe501b536df538e4285">init_magnetometer</a></div><div class="ttdeci">void init_magnetometer()</div><div class="ttdoc">Initializes the magnetometer by initializing the USB, I2C, and setting the GPIO pins.</div><div class="ttdef"><b>Definition:</b> magnetometer.c:126</div></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#define BEARING_OFFSET 1.0f</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// Function prototypes</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keywordtype">void</span> <a class="code hl_function" href="magnetometer_8h.html#aaf794abf1b329fe501b536df538e4285">init_magnetometer</a>();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keywordtype">void</span> readMagnetometerData();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keywordtype">void</span> reset_true_north();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>uint checkBearingOutOfRange();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keywordtype">float</span> getTrueBearing();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keywordtype">float</span> getCurrentBearing();</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif </span><span class="comment">// MAGNETOMETER_H</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">// End of file driver/magnetometer/magnetometer.h.</span></div>
+<div class="ttc" id="amagnetometer_8h_html_aaf794abf1b329fe501b536df538e4285"><div class="ttname"><a href="magnetometer_8h.html#aaf794abf1b329fe501b536df538e4285">init_magnetometer</a></div><div class="ttdeci">void init_magnetometer()</div><div class="ttdoc">Initializes the magnetometer by initializing the USB, I2C, and setting the GPIO pins.</div><div class="ttdef"><b>Definition:</b> magnetometer.c:154</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

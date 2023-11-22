@@ -130,8 +130,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="pid_8h__dep__incl.png" border="0" usemap="#amain_2pid_2pid_8hdep" alt=""/></div>
 <map name="amain_2pid_2pid_8hdep" id="amain_2pid_2pid_8hdep">
-<area shape="rect" title=" " alt="" coords="5,5,108,31"/>
-<area shape="rect" href="pid_8c.html" title=" " alt="" coords="5,79,108,104"/>
+<area shape="rect" title=" " alt="" coords="60,5,163,31"/>
+<area shape="rect" href="main_8c.html" title="The main source file for robot control." alt="" coords="5,79,97,104"/>
+<area shape="rect" href="pid_8c.html" title=" " alt="" coords="121,79,224,104"/>
 </map>
 </div>
 </div>
@@ -139,6 +140,8 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpid__params.html">pid_params</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structturn__params.html">turn_params</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -162,12 +165,18 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:a8ef7439bc185f839f220b5e74e4354cb"><td class="memItemLeft" align="right" valign="top"><a id="a8ef7439bc185f839f220b5e74e4354cb" name="a8ef7439bc185f839f220b5e74e4354cb"></a>
+typedef struct <a class="el" href="structpid__params.html">pid_params</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pid_params_t</b></td></tr>
+<tr class="separator:a8ef7439bc185f839f220b5e74e4354cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90e7b9aa80c4b27def777137c8f08bf0"><td class="memItemLeft" align="right" valign="top"><a id="a90e7b9aa80c4b27def777137c8f08bf0" name="a90e7b9aa80c4b27def777137c8f08bf0"></a>
 typedef struct <a class="el" href="structturn__params.html">turn_params</a>&#160;</td><td class="memItemRight" valign="bottom"><b>turn_params_t</b></td></tr>
 <tr class="separator:a90e7b9aa80c4b27def777137c8f08bf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a97d510886f5f84c9e49e1eaa220d7859"><td class="memItemLeft" align="right" valign="top"><a id="a97d510886f5f84c9e49e1eaa220d7859" name="a97d510886f5f84c9e49e1eaa220d7859"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_pid_error_correction</b> (<a class="el" href="structpid__params.html">pid_params_t</a> *p_pid_params)</td></tr>
+<tr class="separator:a97d510886f5f84c9e49e1eaa220d7859"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d536de103ad5b8b41e9fc2bdb1a9b52"><td class="memItemLeft" align="right" valign="top"><a id="a9d536de103ad5b8b41e9fc2bdb1a9b52" name="a9d536de103ad5b8b41e9fc2bdb1a9b52"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>init_pid_structs</b> (<a class="el" href="structturn__params.html">turn_params_t</a> *p_turn_params)</td></tr>
 <tr class="memdesc:a9d536de103ad5b8b41e9fc2bdb1a9b52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up pid struct(s). <br /></td></tr>
@@ -175,6 +184,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>init_pid_structs</b> 
 <tr class="memitem:a0e5de50418f75fc0da6bce222ceb343d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pid_8h.html#a0e5de50418f75fc0da6bce222ceb343d">navigate_car_turn</a> (<a class="el" href="structturn__params.html">turn_params_t</a> *p_turn_params, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> direction)</td></tr>
 <tr class="memdesc:a0e5de50418f75fc0da6bce222ceb343d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to turn the car based on a given direction.  <a href="pid_8h.html#a0e5de50418f75fc0da6bce222ceb343d">More...</a><br /></td></tr>
 <tr class="separator:a0e5de50418f75fc0da6bce222ceb343d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecce6c03751e0fc8169a1614db629a95"><td class="memItemLeft" align="right" valign="top"><a id="aecce6c03751e0fc8169a1614db629a95" name="aecce6c03751e0fc8169a1614db629a95"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>calculate_pid</b> (float current_bearing, float target_bearing, float current_ratio, <a class="el" href="structpid__params.html">pid_params_t</a> *p_pid_params)</td></tr>
+<tr class="separator:aecce6c03751e0fc8169a1614db629a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab06760403be2a49cb1fc5997b16d0a6"><td class="memItemLeft" align="right" valign="top"><a id="aab06760403be2a49cb1fc5997b16d0a6" name="aab06760403be2a49cb1fc5997b16d0a6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>bearing_correction</b> (float target_bearing, float current_bearing, <a class="el" href="structpid__params.html">pid_params_t</a> *p_pid_params)</td></tr>
+<tr class="separator:aab06760403be2a49cb1fc5997b16d0a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Bryan Seah </dd></dl>

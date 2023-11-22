@@ -119,10 +119,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="magnetometer_8h__dep__incl.png" border="0" usemap="#amain_2driver_2magnetometer_2magnetometer_8hdep" alt=""/></div>
 <map name="amain_2driver_2magnetometer_2magnetometer_8hdep" id="amain_2driver_2magnetometer_2magnetometer_8hdep">
-<area shape="rect" title="Header file for the magnetometer driver." alt="" coords="203,5,376,45"/>
+<area shape="rect" title="Header file for the magnetometer driver." alt="" coords="281,5,455,45"/>
 <area shape="rect" href="magnetometer_8c.html" title="This file contains functions for initializing and reading data from a magnetometer sensor using I2C c..." alt="" coords="5,93,179,133"/>
 <area shape="rect" href="driver_2magnetometer_2main_8c.html" title="Demonstration for the magnetometer driver." alt="" coords="203,93,376,133"/>
 <area shape="rect" href="main_8c.html" title="The main source file for robot control." alt="" coords="401,101,493,126"/>
+<area shape="rect" href="pid_8c.html" title=" " alt="" coords="517,101,619,126"/>
 </map>
 </div>
 </div>
@@ -190,6 +191,9 @@ Macros</h2></td></tr>
 <tr class="memitem:ac2a68cdf4dc38a1e6953a131d193aac2"><td class="memItemLeft" align="right" valign="top"><a id="ac2a68cdf4dc38a1e6953a131d193aac2" name="ac2a68cdf4dc38a1e6953a131d193aac2"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_Y_L_M</b>&#160;&#160;&#160;0x08</td></tr>
 <tr class="separator:ac2a68cdf4dc38a1e6953a131d193aac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35a2584dbeb685657de16fdccba8e451"><td class="memItemLeft" align="right" valign="top"><a id="a35a2584dbeb685657de16fdccba8e451" name="a35a2584dbeb685657de16fdccba8e451"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BEARING_OFFSET</b>&#160;&#160;&#160;1.0f</td></tr>
+<tr class="separator:a35a2584dbeb685657de16fdccba8e451"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -200,6 +204,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>init_magnetometer</b>
 <tr class="memitem:a2c61be7aaede4cc19fb20217e63420f3"><td class="memItemLeft" align="right" valign="top"><a id="a2c61be7aaede4cc19fb20217e63420f3" name="a2c61be7aaede4cc19fb20217e63420f3"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>readMagnetometerData</b> ()</td></tr>
 <tr class="separator:a2c61be7aaede4cc19fb20217e63420f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cafce15b76573bed862bf43f3de09f4"><td class="memItemLeft" align="right" valign="top"><a id="a3cafce15b76573bed862bf43f3de09f4" name="a3cafce15b76573bed862bf43f3de09f4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>reset_true_north</b> ()</td></tr>
+<tr class="separator:a3cafce15b76573bed862bf43f3de09f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a6298c1a1d948585c37e92fc3ac27d2"><td class="memItemLeft" align="right" valign="top"><a id="a5a6298c1a1d948585c37e92fc3ac27d2" name="a5a6298c1a1d948585c37e92fc3ac27d2"></a>
+uint&#160;</td><td class="memItemRight" valign="bottom"><b>checkBearingOutOfRange</b> ()</td></tr>
+<tr class="separator:a5a6298c1a1d948585c37e92fc3ac27d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0405a7e651f76675892e02f3f0c3901"><td class="memItemLeft" align="right" valign="top"><a id="aa0405a7e651f76675892e02f3f0c3901" name="aa0405a7e651f76675892e02f3f0c3901"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>getTrueBearing</b> ()</td></tr>
+<tr class="separator:aa0405a7e651f76675892e02f3f0c3901"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fdd7f24dea3ddb78e37898ee6c0d24b"><td class="memItemLeft" align="right" valign="top"><a id="a2fdd7f24dea3ddb78e37898ee6c0d24b" name="a2fdd7f24dea3ddb78e37898ee6c0d24b"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>getCurrentBearing</b> ()</td></tr>
+<tr class="separator:a2fdd7f24dea3ddb78e37898ee6c0d24b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Header file for the magnetometer driver. </p>
