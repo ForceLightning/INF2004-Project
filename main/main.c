@@ -23,7 +23,7 @@
 #include "ultrasonic/ultrasonic.h"
 #include "encoder/wheel_encoder.h"
 #include "pid/pid.h"
-// #include "wifi/wifi.h"
+#include "wifi/wifi.h"
 
 #include "pathfinding/a_star.h"
 
@@ -39,23 +39,23 @@
 #define RUN_FREERTOS_ON_CORE 0
 #endif
 
-static void
-main_task (__unused void *params)
-{
-    if (cyw43_arch_init())
-    {
-        printf("CYW4343X initialization failed!\n");
-        return;
-    }
+// static void
+// main_task (__unused void *params)
+// {
+//     if (cyw43_arch_init())
+//     {
+//         printf("CYW4343X initialization failed!\n");
+//         return;
+//     }
 
-    for (;;)
-    {
-        tight_loop_contents();
-        vTaskDelay(pdMS_TO_TICKS(1000));
-    }
+//     for (;;)
+//     {
+//         tight_loop_contents();
+//         vTaskDelay(pdMS_TO_TICKS(1000));
+//     }
 
-    cyw43_arch_deinit();
-}
+//     cyw43_arch_deinit();
+// }
 
 static void 
 read_magnetometer_task(__unused void *params)
@@ -80,6 +80,12 @@ move_car_forward_task(__unused void *params)
     }
 }
 
+static void 
+tcp_server_begin_task(__unused void *params)
+{
+    tcp_server_begin();
+}
+
 static void
 v_launch (void)
 {
@@ -91,32 +97,37 @@ v_launch (void)
                 MAIN_TASK_PRIORITY,
                 &magnetometer_task);
 
-    TaskHandle_t move_car_forward_handle;
-    xTaskCreate(move_car_forward_task,
-                "Move Car Forward",
+    // TaskHandle_t move_car_forward_handle;
+    // xTaskCreate(move_car_forward_task,
+    //             "Move Car Forward",
+    //             configMINIMAL_STACK_SIZE,
+    //             NULL,
+    //             MAIN_TASK_PRIORITY,
+    //             &move_car_forward_handle);
+
+    TaskHandle_t wifi_task;
+    xTaskCreate(tcp_server_begin_task,
+                "Wifi",
                 configMINIMAL_STACK_SIZE,
                 NULL,
                 MAIN_TASK_PRIORITY,
-                &move_car_forward_handle);
+                &wifi_task);
 
 #if NO_SYS && configUSE_CORE_AFFINITY && configNUM_CORES > 1
     vTaskCoreAffinitySet(h_main_task, 1);
 #endif
 
-gpio_init(20);
-gpio_set_dir(20, GPIO_IN);
-if(gpio_get(20)){
-    vTaskStartScheduler();
-}
+   vTaskStartScheduler();
 }
 
 int
 main (void)
 {
     stdio_init_all();
+    // stdio_usb_init();
     init_magnetometer();
-    //tcp_server_begin_init();
-    //tcp_server_begin();
+    tcp_server_begin_init();
+    // gpio_init(20);
     
 
     const char *rtos_name;
@@ -137,12 +148,12 @@ main (void)
     for (;;)
     {
         tight_loop_contents(); // No-op
-        // readMagnetometerData();
-        // tcp_server_begin();
     }
 #else
-    printf("Starting %s on core 0:\n", rtos_name);
-    v_launch();
+    // if (gpio_get(20)) {
+    printf("Running %s on core 1\n", rtos_name);
+    v_launch(); 
+    // }
 
 #endif
 

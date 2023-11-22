@@ -7,7 +7,7 @@ target_sources(driver INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}/magnetometer/magnetometer.c
     ${CMAKE_CURRENT_SOURCE_DIR}/motor/motor_control.c
     ${CMAKE_CURRENT_SOURCE_DIR}/ultrasonic/ultrasonic.c
-    # ${CMAKE_CURRENT_SOURCE_DIR}/wifi/wifi.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/wifi/wifi.c
 )
 
 target_link_libraries(driver INTERFACE
@@ -29,4 +29,4 @@ add_subdirectory(irline)
 add_subdirectory(magnetometer)
 add_subdirectory(motor)
 add_subdirectory(ultrasonic)
-# add_subdirectory(wifi)
+add_subdirectory(wifi)

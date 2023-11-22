@@ -425,7 +425,7 @@ run_tcp_server_test (void)
 void
 tcp_server_begin_init ()
 {
-    stdio_init_all();
+    // stdio_init_all();
     cyw43_arch_init();
     cyw43_arch_enable_sta_mode();
 }
