@@ -1,7 +1,7 @@
 var searchData=
 [
   ['f_0',['f',['../structmaze__grid__cell.html#ae62fc1ab6b0e2ecfbb6ed4186c722c3d',1,'maze_grid_cell']]],
-  ['find_5fwall_5fdirections_1',['find_wall_directions',['../ir__sensor_8c.html#a53ac04bada2d8faa21ed00d53bcf50c9',1,'find_wall_directions(uint gpio_pin_left, uint gpio_pin_right):&#160;ir_sensor.c'],['../ir__sensor_8h.html#a3968df262754548ff7cb0cb8832895de',1,'find_wall_directions(uint gpioPinLeft, uint gpioPinFront):&#160;ir_sensor.c']]],
+  ['find_5fwall_5fdirections_1',['find_wall_directions',['../ir__sensor_8c.html#a53ac04bada2d8faa21ed00d53bcf50c9',1,'find_wall_directions(uint gpio_pin_left, uint gpio_pin_right):&#160;ir_sensor.c'],['../ir__sensor_8h.html#a53ac04bada2d8faa21ed00d53bcf50c9',1,'find_wall_directions(uint gpio_pin_left, uint gpio_pin_right):&#160;ir_sensor.c']]],
   ['floodfill_2ec_2',['floodfill.c',['../floodfill_8c.html',1,'']]],
   ['floodfill_2eh_3',['floodfill.h',['../floodfill_8h.html',1,'']]],
   ['floodfill_5fexplore_5ffunc_5ft_4',['floodfill_explore_func_t',['../floodfill_8h.html#a085b6be2b6e4f1335e82e7b902b0f1ca',1,'floodfill.h']]],

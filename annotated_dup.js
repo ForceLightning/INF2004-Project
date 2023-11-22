@@ -5,7 +5,7 @@ var annotated_dup =
     [ "binary_heap", "structbinary__heap.html", "structbinary__heap" ],
     [ "binary_heap_node", "structbinary__heap__node.html", "structbinary__heap__node" ],
     [ "g_encoder_t", "structg__encoder__t.html", null ],
-    [ "ir_flags", "structir__flags.html", null ],
+    [ "ir_flags", "structir__flags.html", "structir__flags" ],
     [ "maze_bitmask_compressed", "unionmaze__bitmask__compressed.html", "unionmaze__bitmask__compressed" ],
     [ "maze_gap_bitmask", "structmaze__gap__bitmask.html", "structmaze__gap__bitmask" ],
     [ "maze_grid", "structmaze__grid.html", "structmaze__grid" ],

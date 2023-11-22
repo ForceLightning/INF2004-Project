@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['maze_5fgap_5fbitmask_5ft_0',['maze_gap_bitmask_t',['../maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2',1,'maze.h']]]
+  ['ir_5fflags_5ft_0',['ir_flags_t',['../ir__sensor_8h.html#a461088461b65ec1d748be8d1511f999d',1,'ir_sensor.h']]]
 ];
