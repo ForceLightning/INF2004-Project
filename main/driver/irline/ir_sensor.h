@@ -9,23 +9,26 @@
  *
  */
 
-#ifndef IR_SENSOR_H
+#ifndef IR_SENSOR_H // Include guard.
 #define IR_SENSOR_H
 #include "pico/types.h"
-struct flags{
+#include "barcode.h"
+
+typedef struct ir_flags
+{
     bool top_wall;
     bool left_wall;
-};
+} ir_flags_t;
 
 // Function prototypes.
 //
-void setup_adc_pins(uint adc_pin);
-void setup_gpio_pins(uint gpioPinOne, uint gpioPinTwo);
-void read_barcode();
-uint16_t read_line(uint gpioPinIn);
-void update_top_flag(struct flags * flag);
-void update_left_flag(struct flags * flag);
-uint16_t find_wall_directions(uint gpioPinLeft, uint gpioPinFront);
+void                setup_adc_pin(uint adc_pin);
+void                setup_gpio_pin(uint gpio_pin);
+barcode_line_type_t read_barcode(void);
+uint16_t            read_line(uint gpioPinIn);
+void                update_top_flag(ir_flags_t *flag);
+void                update_left_flag(ir_flags_t *flag);
+uint16_t            find_wall_directions(uint gpioPinLeft, uint gpioPinFront);
 
 #endif // IR_SENSOR_H
 

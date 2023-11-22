@@ -17,6 +17,7 @@ set(WIFI_PASSWORD "${WIFI_PASSWORD}" CACHE INTERNAL "WiFi password")
 add_executable(irline
     main.c
     ir_sensor.c
+    barcode.c
     )
 
 target_link_libraries(irline
