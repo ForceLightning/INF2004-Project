@@ -116,6 +116,12 @@ barcode_get_char (barcode_char_t barcode_char)
     }
 }
 
+/**
+ * @brief Helper function to get the barcode line type as a string.
+ *
+ * @param line_type Barcode line type.
+ * @return char* Pointer to the barcode line type string.
+ */
 char *
 barcode_line_to_string (barcode_line_type_t line_type)
 {
@@ -146,9 +152,6 @@ int8_t
 barcode_update_line_buffer (barcode_line_buffer_t *p_line_buffer,
                             barcode_line_type_t    line_type)
 {
-    // @TODO(chris): Make sure that the first line is always a black line.
-    //
-
     // If the line buffer doesn't exist, return an error.
     //
     if (NULL == p_line_buffer)
@@ -164,12 +167,23 @@ barcode_update_line_buffer (barcode_line_buffer_t *p_line_buffer,
         return BARCODE_READ_ERROR;
     }
 
+    // Make sure that the first line is always a black line.
+    //
+    if (0u == p_line_buffer->line_buffer_index)
+    {
+        if (BARCODE_LINE_WHITE_THIN == line_type
+            || BARCODE_LINE_WHITE_THICK == line_type)
+        {
+            return BARCODE_READ_NO_OP;
+        }
+    }
+
     // If the line is the same colour but thicker than the previous line,
     // override the previous line. We can do this because the thick lines are
     // always bigger than the thin lines by the next biggest power of two. So
     // checking if the line type is the same colour is as simple as doing a
-    // bitwise AND, and checking if it is bigger is as simple as doing a
-    // subtraction and checking if the result is non-zero.
+    // bitwise AND, and checking if it is bigger is just a simple greater than
+    // check.
     //
     barcode_line_type_t *p_previous_line
         = &p_line_buffer->line_buffer[p_line_buffer->line_buffer_index - 1];
@@ -219,22 +233,28 @@ barcode_clear_line_buffer (barcode_line_buffer_t *p_line_buffer)
     memset(p_line_buffer, 0, sizeof(barcode_line_buffer_t));
     p_line_buffer->line_buffer_index = 0u;
 }
+/**
+ * @brief Decodes the barcode character enum from the line buffer.
+ *
+ * @param p_line_buffer Pointer to the barcode line buffer.
+ * @return barcode_char_t Enum representing the decoded character.
+ */
 
 barcode_char_t
-barcode_get_barcode_char (barcode_line_buffer_t *p_line_buffer)
+barcode_decode_barcode_char (barcode_line_buffer_t *p_line_buffer)
 {
     uint16_t barcode_binarised = 0u;
 
-    for (size_t idx = 0; p_line_buffer->line_buffer_index > idx; idx++)
+    for (uint16_t idx = 0u; p_line_buffer->line_buffer_index > idx; idx++)
     {
-        barcode_binarised <<= 1;
+        barcode_binarised <<= 1u;
         barcode_line_type_t line_type = p_line_buffer->line_buffer[idx];
 
         if (BARCODE_LINE_BLACK_THICK == line_type
             || BARCODE_LINE_WHITE_THICK == line_type)
         {
 
-            barcode_binarised |= 1;
+            barcode_binarised |= 1u;
         }
     }
 
@@ -252,18 +272,25 @@ barcode_get_barcode_char (barcode_line_buffer_t *p_line_buffer)
 char *
 barcode_buffer_to_binary_string (barcode_line_buffer_t *p_line_buffer)
 {
-    size_t num_chars = p_line_buffer->line_buffer_index + 2;
-    char  *p_string  = NULL;
-    p_string         = (char *)malloc(num_chars * sizeof(char));
+    // Allocate memory for the string.
+    //
+    uint16_t num_chars = p_line_buffer->line_buffer_index + 2u;
+    char    *p_string  = NULL;
+    p_string           = (char *)malloc(num_chars * sizeof(char));
     memset(p_string, 0, num_chars * sizeof(char));
 
+    // If the string failed to allocate, return NULL.
+    //
     if (NULL == p_string)
     {
-        printf("Failed to allocate memory for barcode buffer string.\n");
+        DEBUG_PRINT(
+            "DEBUG: Failed to allocate memory for barcode buffer string.\n");
         return NULL;
     }
 
-    if (0 == p_line_buffer->line_buffer_index)
+    // If the line buffer is empty, return NULL.
+    //
+    if (0u == p_line_buffer->line_buffer_index)
     {
         free(p_string);
         return NULL;
@@ -271,7 +298,7 @@ barcode_buffer_to_binary_string (barcode_line_buffer_t *p_line_buffer)
 
     // Insert into the string in reverse. (MSB first).
     //
-    for (uint16_t idx = p_line_buffer->line_buffer_index; 0 < idx; idx--)
+    for (uint16_t idx = p_line_buffer->line_buffer_index; 0u < idx; idx--)
     {
         barcode_line_type_t line_type = p_line_buffer->line_buffer[idx];
         if (BARCODE_LINE_BLACK_THICK == line_type

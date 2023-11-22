@@ -22,8 +22,8 @@ typedef struct ir_flags
 
 // Function prototypes.
 //
-void                setup_adc_pins(uint adc_pin);
-void                setup_gpio_pins(uint gpioPinOne, uint gpioPinTwo);
+void                setup_adc_pin(uint adc_pin);
+void                setup_gpio_pin(uint gpio_pin);
 barcode_line_type_t read_barcode(void);
 uint16_t            read_line(uint gpioPinIn);
 void                update_top_flag(ir_flags_t *flag);

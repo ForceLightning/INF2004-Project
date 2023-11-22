@@ -25,7 +25,7 @@
  * or black), while a 1 bit represents a thick line.
  *
  */
-typedef enum barcode_char
+typedef enum
 {
     BARCODE_CHAR_0        = 0b000110100,
     BARCODE_CHAR_1        = 0b100100001,
@@ -70,7 +70,7 @@ typedef enum barcode_char
     BARCODE_CHAR_SLASH    = 0b010100010,
     BARCODE_CHAR_PLUS     = 0b010001010,
     BARCODE_CHAR_PERCENT  = 0b000101010,
-    BARCODE_CHAR_ASTERISK = 0b010010100
+    BARCODE_CHAR_ASTERISK = 0b010010100 ///< Used as a delimiter.
 } barcode_char_t;
 
 /**
@@ -79,7 +79,7 @@ typedef enum barcode_char
  * for error handling.
  *
  */
-typedef enum barcode_line_type
+typedef enum
 {
     BARCODE_LINE_BLACK_THIN  = 0b0001,
     BARCODE_LINE_BLACK_THICK = 0b0011,
@@ -106,7 +106,7 @@ typedef struct barcode_line_buffer
  * @brief Enum for the barcode read response. Success or error.
  *
  */
-typedef enum barcode_read_response
+typedef enum
 {
     BARCODE_READ_ERROR    = -1, ///< Error reading barcode.
     BARCODE_READ_SUCCESS  = 0,  ///< Successfully read barcode.
@@ -124,7 +124,8 @@ char          *barcode_line_to_string(barcode_line_type_t line_type);
 int8_t         barcode_update_line_buffer(barcode_line_buffer_t *p_line_buffer,
                                           barcode_line_type_t    line_type);
 void           barcode_clear_line_buffer(barcode_line_buffer_t *p_line_buffer);
-barcode_char_t barcode_get_barcode_char(barcode_line_buffer_t *p_line_buffer);
+barcode_char_t barcode_decode_barcode_char(
+    barcode_line_buffer_t *p_line_buffer);
 char *barcode_buffer_to_binary_string(barcode_line_buffer_t *p_line_buffer);
 
 #endif // BARCODE_H

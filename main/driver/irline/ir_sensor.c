@@ -17,12 +17,12 @@
 #include "barcode.h"
 
 /**
- * @brief Initalises the pins for the ADC.
+ * @brief Initalises the analog pins for the IR sensor to ADC.
  *
- * @param adc_pin ADC pin for the IR sensor
+ * @param adc_pin ADC pin for the IR sensor.
  */
 void
-setup_adc_pins (uint adc_pin)
+setup_adc_pin (uint adc_pin)
 {
     adc_init();
     adc_gpio_init(adc_pin);
@@ -30,30 +30,27 @@ setup_adc_pins (uint adc_pin)
 }
 
 /**
- * @brief Initialises the digital pin for the IR sensors.
+ * @brief Initialises the digital pin for the IR sensor.
  *
- * @param gpioPinOne GPIO pin for the first IR sensor
- * @param gpioPinTwo GPIO pin for the second IR sensor
+ * @param gpio_pin GPIO pin for the IR sensor
  */
 void
-setup_gpio_pins (uint gpioPinOne, uint gpioPinTwo)
+setup_gpio_pin (uint gpio_pin)
 {
-    gpio_init(gpioPinOne);
-    gpio_init(gpioPinTwo);
-    gpio_set_dir(gpioPinOne, GPIO_IN);
-    gpio_set_dir(gpioPinTwo, GPIO_IN);
+    gpio_init(gpio_pin);
+    gpio_set_dir(gpio_pin, GPIO_IN);
 }
 
 /**
  * @brief Detects line
  *
- * @param gpioPinIn GPIO pin for the IR sensor
+ * @param gpio_pin_in GPIO pin for the IR sensor
  * @return uint16_t
  */
 uint16_t
-read_line (uint gpioPinIn)
+read_line (uint gpio_pin_in)
 {
-    uint16_t digital_result = gpio_get(gpioPinIn);
+    uint16_t digital_result = gpio_get(gpio_pin_in);
     return digital_result;
 }
 
@@ -82,19 +79,19 @@ update_left_flag (ir_flags_t *p_flag)
 /**
  * @brief This returns the information of the walls in the node
  *
- * @param gpioPinLeft GPIO pin for the left sensor
- * @param gpioPinFront GPIO pin for the front sensor
+ * @param gpio_pin_left GPIO pin for the left sensor
+ * @param gpio_pin_right GPIO pin for the front sensor
  * @return uint16_t
  */
 uint16_t
-find_wall_directions (uint gpioPinLeft, uint gpioPinFront)
+find_wall_directions (uint gpio_pin_left, uint gpio_pin_right)
 {
     uint16_t has_wall = 0;
-    if (read_line(gpioPinLeft) == 1)
+    if (read_line(gpio_pin_left) == 1)
     {
         has_wall += 8;
     }
-    if (read_line(gpioPinFront) == 1)
+    if (read_line(gpio_pin_right) == 1)
     {
         has_wall += 1;
     }
