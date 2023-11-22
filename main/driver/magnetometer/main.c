@@ -12,6 +12,7 @@
  */
 
 #include <stdio.h>
+#include "pico/stdlib.h"
 #include "pico/cyw43_arch.h"
 
 #include "magnetometer.h"
@@ -19,6 +20,8 @@
 int
 main ()
 {
+    stdio_init_all();
+    stdio_usb_init();
     init_magnetometer();
 
     if (cyw43_arch_init())
@@ -29,7 +32,9 @@ main ()
 
     for (;;) // Loop forever. See Barr Group "Embedded C Coding Standard" 8.4.c
     {
-        readMagnetometerData();
+        float true_heading = 0;
+        float curr_heading = 0;
+        readMagnetometerData(&true_heading, &curr_heading);
     }
 
     return 0;

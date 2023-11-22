@@ -52,6 +52,8 @@ void reverse();
 void turn_left(bool reverse_turn);
 void turn_right(bool reverse_turn);
 
+void update_ratio(float new_ratio);
+
 #endif // MOTOR_CONTROL_H
 
 // End of file motor_control.h

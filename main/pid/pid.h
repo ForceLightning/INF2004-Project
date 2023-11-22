@@ -22,6 +22,22 @@
 
 #define ENCODER_PIN 21
 
+typedef struct pid_params {
+    float kp;
+    float ki;
+    float kd;
+
+    float epsilon;
+    float ratio_to_bearing;
+    float setpoint;
+    float integral;
+    float prev_error;
+    float current_ratio;
+    float current_bearing;
+} pid_params_t;
+
+void init_pid_error_correction(pid_params_t *p_pid_params);
+
 typedef struct turn_params
 {
     uint is_turning;
@@ -45,6 +61,9 @@ void init_pid_structs(turn_params_t *p_turn_params);
  */
 void navigate_car_turn(turn_params_t            *p_turn_params,
                        maze_cardinal_direction_t direction);
+
+float calculate_pid(float current_bearing, float target_bearing, float current_ratio, pid_params_t *p_pid_params);
+void bearing_correction(float target_bearing, float current_bearing, pid_params_t *p_pid_params);
 
 #endif // PID_H
 

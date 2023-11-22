@@ -28,6 +28,11 @@ int16_t bias_x = 0;
 int16_t bias_y = 0;
 int16_t bias_z = 0;
 
+float *true_heading = 0;
+float *current_bearing = 0;
+float *min_bearing = 0;
+float *max_bearing = 0;
+
 void writeRegister(uint8_t address, uint8_t reg, uint8_t value) {
     uint8_t data[2] = {reg, value};
     i2c_write_blocking(i2c0, address, data, 2, true);
@@ -94,6 +99,7 @@ void configureMagnetometer() {
 }
 
 void readMagnetometerData() {
+    
     for (;;) {
         int16_t x_acc, y_acc, z_acc;
         readAccelerometerData(&x_acc, &y_acc, &z_acc);
@@ -108,15 +114,37 @@ void readMagnetometerData() {
         // int16_t z_mag = (int16_t)((data[2] << 8) | data[3]);
         int16_t y_mag = (int16_t)((data[4] << 8) | data[5]);
         float headingRadians = atan2(y_mag, x_mag);
-        float headingDegrees = headingRadians * 180.0 / M_PI;
+        // float headingDegrees = headingRadians * 180.0 / M_PI;
 
-        if (headingDegrees < 0) {
-            headingDegrees += 360.0;
+        // if (headingDegrees < 0) {
+        //     headingDegrees += 360.0;
+        // }
+
+        *current_bearing = headingRadians;
+
+        if(!*true_heading){
+            *true_heading = headingRadians;
+            *min_bearing = headingRadians - BEARING_OFFSET;
+            *max_bearing = headingRadians + BEARING_OFFSET;
         }
 
-        printf("Compass Heading: %f\n", headingDegrees);
+        printf("Compass Heading: %f\n", headingRadians);
+        printf("True North: %f\n", *true_heading);
+        printf("Curr Bearing: %f\n", *true_heading);
         sleep_ms(1000);
     }
+}
+
+uint checkBearingOutOfRange(){
+    return (*current_bearing < *min_bearing || *current_bearing > *max_bearing);
+}
+
+float getTrueBearing(){
+    return *true_heading;
+}
+
+float getCurrentBearing(){
+    return *current_bearing;
 }
 
 /**
@@ -128,6 +156,7 @@ void init_magnetometer(void) {
     initializeI2C();
     configureAccelerometer();
     calibrateAccelerometer();
+    configureMagnetometer();
 }
 
 // double getCompassBearing(int16_t x, int16_t y) {

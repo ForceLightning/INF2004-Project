@@ -40,9 +40,15 @@
 #define OUT_Y_H_M 0x07
 #define OUT_Y_L_M 0x08
 
+#define BEARING_OFFSET 1.0f
+
 // Function prototypes
 void init_magnetometer();
 void readMagnetometerData();
+void reset_true_north();
+uint checkBearingOutOfRange();
+float getTrueBearing();
+float getCurrentBearing();
 #endif // MAGNETOMETER_H
 
 // End of file driver/magnetometer/magnetometer.h.

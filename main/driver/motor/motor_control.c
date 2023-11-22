@@ -7,11 +7,14 @@
  * 
  * @copyright Copyright (c) 2023
  */
+#include <stdio.h>
 #include <stdbool.h>
 #include "hardware/pwm.h"
 #include "hardware/gpio.h"
 #include "pico/types.h"
 #include "motor_control.h"
+
+float ratio = 1.05f;
 
 /**
  * @brief Default initialization of a single motor.
@@ -99,6 +102,7 @@ update_direction (uint clkwise_gpio,
 void
 move_forward ()
 {
+    printf("Moving forward\n");
     update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
     update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.5f);
     update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 1, 0);
@@ -198,5 +202,9 @@ turn_right (bool reverse_turn)
         update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 1, 0);
         update_direction(RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 0, 1);
     }
+}
+
+void update_ratio(float new_ratio){
+    ratio = new_ratio;
 }
 // End of file motor_control.c
