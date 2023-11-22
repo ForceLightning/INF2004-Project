@@ -272,6 +272,13 @@ barcode_decode_barcode_char (barcode_line_buffer_t *p_line_buffer)
 char *
 barcode_buffer_to_binary_string (barcode_line_buffer_t *p_line_buffer)
 {
+    // If the line buffer is empty, return NULL.
+    //
+    if (0u == p_line_buffer->line_buffer_index)
+    {
+        return NULL;
+    }
+
     // Allocate memory for the string.
     //
     uint16_t num_chars = p_line_buffer->line_buffer_index + 2u;
@@ -288,17 +295,9 @@ barcode_buffer_to_binary_string (barcode_line_buffer_t *p_line_buffer)
         return NULL;
     }
 
-    // If the line buffer is empty, return NULL.
-    //
-    if (0u == p_line_buffer->line_buffer_index)
-    {
-        free(p_string);
-        return NULL;
-    }
-
     // Insert into the string in reverse. (MSB first).
     //
-    for (uint16_t idx = p_line_buffer->line_buffer_index; 0u < idx; idx--)
+    for (uint16_t idx = 0u; p_line_buffer->line_buffer_index > idx; idx++)
     {
         barcode_line_type_t line_type = p_line_buffer->line_buffer[idx];
         if (BARCODE_LINE_BLACK_THICK == line_type

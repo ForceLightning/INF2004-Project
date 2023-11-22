@@ -110,19 +110,19 @@ read_barcode (void)
 
     barcode_line_type_t barcode_type = BARCODE_LINE_NONE;
 
-    if (200 < result && 500 >= result)
+    if (180 < result && 350 >= result)
     {
         barcode_type = BARCODE_LINE_WHITE_THICK;
     }
-    else if (500 < result && 1800 >= result)
+    else if (350 < result && 1800 >= result)
     {
         barcode_type = BARCODE_LINE_WHITE_THIN;
     }
-    else if (1800 < result && 3300 >= result)
+    else if (1800 < result && 3600 >= result)
     {
         barcode_type = BARCODE_LINE_BLACK_THIN;
     }
-    else if (3300 < result && 4095 >= result)
+    else if (3600 < result && 4095 >= result)
     {
         barcode_type = BARCODE_LINE_BLACK_THICK;
     }

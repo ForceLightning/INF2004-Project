@@ -26,6 +26,7 @@ main (void)
 {
     stdio_init_all();
     scanf("Press enter to start barcode read.\n");
+    printf("Starting barcode read.\n");
     setup_adc_pin(ADC_PIN_LEFT);
     setup_adc_pin(ADC_PIN_FRONT);
     setup_gpio_pin(GPIO_PIN_LEFT);
@@ -38,17 +39,8 @@ main (void)
     {
         barcode_line_type_t barcode_line_type = read_barcode();
 
-        // char *barcode_line_str = barcode_line_to_string(barcode_line_type);
-        // printf("Barcode line type: %s\n", barcode_line_str);
-
-        // if (BARCODE_LINE_NONE == barcode_line_type)
-        // {
-        //     barcode_clear_line_buffer(&barcode_line_buffer);
-        //     continue;
-        // }
-
         // Check whether the barcode line is valid.
-        // 
+        //
         int8_t barcode_read_response = barcode_update_line_buffer(
             &barcode_line_buffer, barcode_line_type);
 
@@ -58,26 +50,31 @@ main (void)
             barcode_clear_line_buffer(&barcode_line_buffer);
             goto end_barcode_read;
         }
+        if (1 == BARCODE_DEBUG_VERBOSE)
+        {
+            char *p_barcode_buffer_str
+                = barcode_buffer_to_binary_string(&barcode_line_buffer);
+            if (NULL != p_barcode_buffer_str)
+            {
+                DEBUG_PRINT("DEBUG: %s\n", p_barcode_buffer_str);
+                free(p_barcode_buffer_str);
+            }
+            else
+            {
+                DEBUG_PRINT("DEBUG: Barcode buffer string is NULL.\n");
+            }
+        }
 
         // If the barcode line buffer is not full, continue reading.
-        // 
+        //
         if (BARCODE_READ_NO_OP == barcode_read_response
             || BARCODE_READ_CONTINUE == barcode_read_response)
         {
-            DEBUG_PRINT("DEBUG: No-op\n");
+            // DEBUG_PRINT("DEBUG: No-op\n");
             goto end_barcode_read;
         }
-
-        char *p_barcode_buffer_str
-            = barcode_buffer_to_binary_string(&barcode_line_buffer);
-        if (NULL != p_barcode_buffer_str)
-        {
-            DEBUG_PRINT("DEBUG: %s\n", p_barcode_buffer_str);
-            free(p_barcode_buffer_str);
-        }
-
         // Otherwise, decode the barcode character.
-        // 
+        //
         if (BARCODE_READ_SUCCESS == barcode_read_response)
         {
             barcode_char_t barcode_char
@@ -86,9 +83,8 @@ main (void)
             if ('~' != decoded_char)
             {
                 printf("Decoded character: %c\n", decoded_char);
-                barcode_clear_line_buffer(&barcode_line_buffer);
-                continue;
             }
+            barcode_clear_line_buffer(&barcode_line_buffer);
         }
 
     end_barcode_read:

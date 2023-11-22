@@ -8,8 +8,13 @@
 //
 #define BARCODE_MAX_LINES 9 // Maximum number of barcode lines.
 
+#ifndef BARCODE_DEBUG_VERBOSE
+#define BARCODE_DEBUG_VERBOSE 0
+#endif
+
 #ifndef NDEBUG
-// #define PICO_DEBUG_MALLOC 1 // Enable malloc debug.
+#define PICO_DEBUG_MALLOC     1 // Enable malloc debug.
+#define BARCODE_DEBUG_VERBOSE 0 // Enable verbose debug. 1-3.
 #ifndef DEBUG_PRINT
 #define DEBUG_PRINT(...) printf(__VA_ARGS__) // Enable debug print.
 #endif
@@ -81,11 +86,11 @@ typedef enum
  */
 typedef enum
 {
+    BARCODE_LINE_NONE        = 0,
     BARCODE_LINE_BLACK_THIN  = 0b0001,
     BARCODE_LINE_BLACK_THICK = 0b0011,
     BARCODE_LINE_WHITE_THIN  = 0b0100,
-    BARCODE_LINE_WHITE_THICK = 0b1100,
-    BARCODE_LINE_NONE        = 0xFF
+    BARCODE_LINE_WHITE_THICK = 0b1100
 } barcode_line_type_t;
 
 /**
