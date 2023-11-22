@@ -15,6 +15,12 @@
 #include "binary_heap.h"
 #include "maze.h"
 
+#ifndef NDEBUG
+#define DEBUG_PRINT(...) printf(__VA_ARGS__) // Debug print macro.
+#else
+#define DEBUG_PRINT(...)
+#endif
+
 // Type definitions.
 // ----------------------------------------------------------------------------
 //
@@ -43,6 +49,12 @@ char          *a_star_get_path_str(maze_grid_t *p_grid, a_star_path_t *p_path);
 int16_t        a_star_path_to_buffer(a_star_path_t *p_path,
                                      uint8_t       *p_buffer,
                                      uint16_t       buffer_size);
+
+int16_t a_star_maze_path_nav_to_buffer(maze_grid_t            *p_grid,
+                                       a_star_path_t          *p_path,
+                                       maze_navigator_state_t *p_navigator,
+                                       uint8_t                *p_buffer,
+                                       uint16_t                buffer_size);
 
 #endif // A_STAR_H
 

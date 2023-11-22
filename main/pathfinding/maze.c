@@ -650,7 +650,9 @@ maze_serialised_to_buffer (const maze_gap_bitmask_t *p_bitmask,
 }
 
 /**
- * @brief Serialises the navigator state into a uint8_t buffer.
+ * @brief Serialises the navigator state into a uint8_t buffer. The buffer is
+ * set with the navigator's coordinates, orientation, start node, and end node
+ * coordinates in that order.
  *
  * @param p_navigator Pointer to the navigator state.
  * @param p_buffer Pointer to the buffer.
@@ -678,11 +680,18 @@ maze_nav_to_buffer (const maze_navigator_state_t *p_navigator,
         return -1;
     }
 
+    // Insert the current coordinates.
+    //
     maze_uint16_to_uint8_buffer(p_navigator->p_current_node->coordinates.x,
                                 &p_buffer[0]);
     maze_uint16_to_uint8_buffer(p_navigator->p_current_node->coordinates.y,
                                 &p_buffer[2]);
+    // Insert the orientation.
+    //
     p_buffer[4] = (uint8_t)p_navigator->orientation;
+
+    // Insert the start and end node coordinates.
+    //
     maze_uint16_to_uint8_buffer(p_navigator->p_start_node->coordinates.x,
                                 &p_buffer[5]);
     maze_uint16_to_uint8_buffer(p_navigator->p_start_node->coordinates.y,
