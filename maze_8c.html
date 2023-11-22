@@ -160,7 +160,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a892498023a08de789335a138509f04e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a892498023a08de789335a138509f04e5">maze_insert_nav_str</a> (const <a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, const <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *p_navigator, char *p_maze_str)</td></tr>
 <tr class="memdesc:a892498023a08de789335a138509f04e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts the navigator character into the maze string for pretty printing.  <a href="maze_8c.html#a892498023a08de789335a138509f04e5">More...</a><br /></td></tr>
 <tr class="separator:a892498023a08de789335a138509f04e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8154230298572c603d5b32c37f39fb5"><td class="memItemLeft" align="right" valign="top">maze_cardinal_direction_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#ab8154230298572c603d5b32c37f39fb5">maze_get_dir_from_to</a> (const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_a, const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_b)</td></tr>
+<tr class="memitem:ab8154230298572c603d5b32c37f39fb5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#ab8154230298572c603d5b32c37f39fb5">maze_get_dir_from_to</a> (const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_a, const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_b)</td></tr>
 <tr class="memdesc:ab8154230298572c603d5b32c37f39fb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the direction from p_point_a to p_point_b if they are adjacent.  <a href="maze_8c.html#ab8154230298572c603d5b32c37f39fb5">More...</a><br /></td></tr>
 <tr class="separator:ab8154230298572c603d5b32c37f39fb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20eeebb6a55bf5f6dac5ba158ea21878"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a20eeebb6a55bf5f6dac5ba158ea21878">maze_deserialise</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, <a class="el" href="maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2">maze_gap_bitmask_t</a> *p_no_walls_array)</td></tr>
@@ -172,20 +172,20 @@ Functions</h2></td></tr>
 <tr class="memitem:a1957f5adb3d22d45ee033ba0c22d61cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a1957f5adb3d22d45ee033ba0c22d61cf">maze_get_cell_at_coords</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_coordinates)</td></tr>
 <tr class="memdesc:a1957f5adb3d22d45ee033ba0c22d61cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the cell at the specified coordinates.  <a href="maze_8c.html#a1957f5adb3d22d45ee033ba0c22d61cf">More...</a><br /></td></tr>
 <tr class="separator:a1957f5adb3d22d45ee033ba0c22d61cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b467ddfd914550a22224fa6be60f14f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a2b467ddfd914550a22224fa6be60f14f">maze_get_cell_in_dir</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, <a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *p_from, maze_cardinal_direction_t direction)</td></tr>
+<tr class="memitem:a2b467ddfd914550a22224fa6be60f14f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a2b467ddfd914550a22224fa6be60f14f">maze_get_cell_in_dir</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, <a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *p_from, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> direction)</td></tr>
 <tr class="memdesc:a2b467ddfd914550a22224fa6be60f14f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the cell in the specified direction from a specific cell.  <a href="maze_8c.html#a2b467ddfd914550a22224fa6be60f14f">More...</a><br /></td></tr>
 <tr class="separator:a2b467ddfd914550a22224fa6be60f14f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9037ecf1d39a1e3f0e0a34ca30391b91"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a9037ecf1d39a1e3f0e0a34ca30391b91">maze_manhattan_dist</a> (const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_a, const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_b)</td></tr>
 <tr class="memdesc:a9037ecf1d39a1e3f0e0a34ca30391b91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the manhattan distance between two points.  <a href="maze_8c.html#a9037ecf1d39a1e3f0e0a34ca30391b91">More...</a><br /></td></tr>
 <tr class="separator:a9037ecf1d39a1e3f0e0a34ca30391b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a899cf893dd431a4896d1d0f74825cf40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39">maze_relative_direction_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a899cf893dd431a4896d1d0f74825cf40">maze_get_relative_dir</a> (const maze_cardinal_direction_t direction_from, const maze_cardinal_direction_t direction_to)</td></tr>
+<tr class="memitem:a899cf893dd431a4896d1d0f74825cf40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39">maze_relative_direction_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a899cf893dd431a4896d1d0f74825cf40">maze_get_relative_dir</a> (const <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> direction_from, const <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> direction_to)</td></tr>
 <tr class="memdesc:a899cf893dd431a4896d1d0f74825cf40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the relative direction from the current direction to the desired cardinal direction.  <a href="maze_8c.html#a899cf893dd431a4896d1d0f74825cf40">More...</a><br /></td></tr>
 <tr class="separator:a899cf893dd431a4896d1d0f74825cf40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae2cf92e83b0810d22411db9fbea4d94"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#aae2cf92e83b0810d22411db9fbea4d94">maze_serialised_to_buffer</a> (const <a class="el" href="maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2">maze_gap_bitmask_t</a> *p_bitmask, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
 <tr class="memdesc:aae2cf92e83b0810d22411db9fbea4d94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialises the maze into a uint8_t buffer.  <a href="maze_8c.html#aae2cf92e83b0810d22411db9fbea4d94">More...</a><br /></td></tr>
 <tr class="separator:aae2cf92e83b0810d22411db9fbea4d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39f5fccadb0b4834e38f62f3f11ad270"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270">maze_nav_to_buffer</a> (const <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *p_navigator, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
-<tr class="memdesc:a39f5fccadb0b4834e38f62f3f11ad270"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialises the navigator state into a uint8_t buffer.  <a href="maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270">More...</a><br /></td></tr>
+<tr class="memdesc:a39f5fccadb0b4834e38f62f3f11ad270"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialises the navigator state into a uint8_t buffer. The buffer is set with the navigator's coordinates, orientation, start node, and end node coordinates in that order.  <a href="maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270">More...</a><br /></td></tr>
 <tr class="separator:a39f5fccadb0b4834e38f62f3f11ad270"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54d2a340d7b8fa00c0c3e989fa8657d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1">maze_uint16_to_uint8_buffer</a> (uint16_t value, uint8_t *p_buffer)</td></tr>
 <tr class="memdesc:a54d2a340d7b8fa00c0c3e989fa8657d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function to convert a uint16_t to a uint8_t buffer.  <a href="maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1">More...</a><br /></td></tr>
@@ -414,7 +414,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">maze_cardinal_direction_t&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a>&#160;</td>
           <td class="paramname"><em>direction</em>&#160;</td>
         </tr>
         <tr>
@@ -463,7 +463,7 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">maze_cardinal_direction_t maze_get_dir_from_to </td>
+          <td class="memname"><a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> maze_get_dir_from_to </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structmaze__point.html">maze_point_t</a> *&#160;</td>
           <td class="paramname"><em>p_point_a</em>, </td>
@@ -541,13 +541,13 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname"><a class="el" href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39">maze_relative_direction_t</a> maze_get_relative_dir </td>
           <td>(</td>
-          <td class="paramtype">const maze_cardinal_direction_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a>&#160;</td>
           <td class="paramname"><em>direction_from</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const maze_cardinal_direction_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a>&#160;</td>
           <td class="paramname"><em>direction_to</em>&#160;</td>
         </tr>
         <tr>
@@ -835,7 +835,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Serialises the navigator state into a uint8_t buffer. </p>
+<p>Serialises the navigator state into a uint8_t buffer. The buffer is set with the navigator's coordinates, orientation, start node, and end node coordinates in that order. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p_navigator</td><td>Pointer to the navigator state. </td></tr>
@@ -852,8 +852,17 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="maze_8c_a39f5fccadb0b4834e38f62f3f11ad270_cgraph.png" border="0" usemap="#amaze_8c_a39f5fccadb0b4834e38f62f3f11ad270_cgraph" alt=""/></div>
 <map name="amaze_8c_a39f5fccadb0b4834e38f62f3f11ad270_cgraph" id="amaze_8c_a39f5fccadb0b4834e38f62f3f11ad270_cgraph">
-<area shape="rect" title="Serialises the navigator state into a uint8_t buffer." alt="" coords="5,13,144,38"/>
+<area shape="rect" title="Serialises the navigator state into a uint8_t buffer. The buffer is set with the navigator&#39;s coordina..." alt="" coords="5,13,144,38"/>
 <area shape="rect" href="maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1" title="Helper function to convert a uint16_t to a uint8_t buffer." alt="" coords="192,5,340,45"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="maze_8c_a39f5fccadb0b4834e38f62f3f11ad270_icgraph.png" border="0" usemap="#amaze_8c_a39f5fccadb0b4834e38f62f3f11ad270_icgraph" alt=""/></div>
+<map name="amaze_8c_a39f5fccadb0b4834e38f62f3f11ad270_icgraph" id="amaze_8c_a39f5fccadb0b4834e38f62f3f11ad270_icgraph">
+<area shape="rect" title="Serialises the navigator state into a uint8_t buffer. The buffer is set with the navigator&#39;s coordina..." alt="" coords="209,13,348,38"/>
+<area shape="rect" href="a__star_8c.html#a0467d77650c85f7690212ed6d3c5a2e3" title="Inserts the maze, path and navigator state into a buffer." alt="" coords="5,5,161,45"/>
 </map>
 </div>
 
@@ -883,6 +892,15 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>maze_gap_bitmask_t Bitmask array of maze gaps. Take OxF - bitmask to get the walls. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="maze_8c_a35e70f881f107a45f52eab387e71c61c_icgraph.png" border="0" usemap="#amaze_8c_a35e70f881f107a45f52eab387e71c61c_icgraph" alt=""/></div>
+<map name="amaze_8c_a35e70f881f107a45f52eab387e71c61c_icgraph" id="amaze_8c_a35e70f881f107a45f52eab387e71c61c_icgraph">
+<area shape="rect" title="Serialises the maze into a bitmask array. maze_deserialise." alt="" coords="209,13,317,38"/>
+<area shape="rect" href="a__star_8c.html#a0467d77650c85f7690212ed6d3c5a2e3" title="Inserts the maze, path and navigator state into a buffer." alt="" coords="5,5,161,45"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -929,6 +947,15 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int16_t -1 if the buffer is too small, 0 otherwise.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The buffer must be large enough to fit the maze, and the buffer must be cleared before calling this function. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="maze_8c_aae2cf92e83b0810d22411db9fbea4d94_icgraph.png" border="0" usemap="#amaze_8c_aae2cf92e83b0810d22411db9fbea4d94_icgraph" alt=""/></div>
+<map name="amaze_8c_aae2cf92e83b0810d22411db9fbea4d94_icgraph" id="amaze_8c_aae2cf92e83b0810d22411db9fbea4d94_icgraph">
+<area shape="rect" title="Serialises the maze into a uint8_t buffer." alt="" coords="209,5,343,45"/>
+<area shape="rect" href="a__star_8c.html#a0467d77650c85f7690212ed6d3c5a2e3" title="Inserts the maze, path and navigator state into a buffer." alt="" coords="5,5,161,45"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -971,9 +998,10 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="maze_8c_a54d2a340d7b8fa00c0c3e989fa8657d1_icgraph.png" border="0" usemap="#amaze_8c_a54d2a340d7b8fa00c0c3e989fa8657d1_icgraph" alt=""/></div>
 <map name="amaze_8c_a54d2a340d7b8fa00c0c3e989fa8657d1_icgraph" id="amaze_8c_a54d2a340d7b8fa00c0c3e989fa8657d1_icgraph">
-<area shape="rect" title="Helper function to convert a uint16_t to a uint8_t buffer." alt="" coords="200,23,348,63"/>
-<area shape="rect" href="a__star_8c.html#ac106312a2e54f3fcfbc7b8f9893bb9c6" title="Inserts the path in coordinates from the start node to the end node into a buffer." alt="" coords="5,5,152,31"/>
-<area shape="rect" href="maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270" title="Serialises the navigator state into a uint8_t buffer." alt="" coords="9,55,148,80"/>
+<area shape="rect" title="Helper function to convert a uint16_t to a uint8_t buffer." alt="" coords="404,16,552,56"/>
+<area shape="rect" href="a__star_8c.html#a0467d77650c85f7690212ed6d3c5a2e3" title="Inserts the maze, path and navigator state into a buffer." alt="" coords="5,16,161,56"/>
+<area shape="rect" href="a__star_8c.html#ac106312a2e54f3fcfbc7b8f9893bb9c6" title="Inserts the path in coordinates from the start node to the end node into a buffer." alt="" coords="209,23,356,48"/>
+<area shape="rect" href="maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270" title="Serialises the navigator state into a uint8_t buffer. The buffer is set with the navigator&#39;s coordina..." alt="" coords="213,72,352,98"/>
 </map>
 </div>
 

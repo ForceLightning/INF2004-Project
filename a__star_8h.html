@@ -107,6 +107,7 @@ $(document).ready(function(){initNavTree('a__star_8h.html',''); initResizable();
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">a_star.h File Reference</div></div>
@@ -151,6 +152,12 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structa__star__path.html">a_star_path</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a88edd2aa4feabff4af21a997d5d8aa23"><td class="memItemLeft" align="right" valign="top"><a id="a88edd2aa4feabff4af21a997d5d8aa23" name="a88edd2aa4feabff4af21a997d5d8aa23"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DEBUG_PRINT</b>(...)&#160;&#160;&#160;printf(__VA_ARGS__)</td></tr>
+<tr class="separator:a88edd2aa4feabff4af21a997d5d8aa23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a527cde189628f809da4a1cbf8b9426f7"><td class="memItemLeft" align="right" valign="top"><a id="a527cde189628f809da4a1cbf8b9426f7" name="a527cde189628f809da4a1cbf8b9426f7"></a>
@@ -171,6 +178,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ac106312a2e54f3fcfbc7b8f9893bb9c6"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#ac106312a2e54f3fcfbc7b8f9893bb9c6">a_star_path_to_buffer</a> (<a class="el" href="structa__star__path.html">a_star_path_t</a> *p_path, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
 <tr class="memdesc:ac106312a2e54f3fcfbc7b8f9893bb9c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts the path in coordinates from the start node to the end node into a buffer.  <a href="a__star_8h.html#ac106312a2e54f3fcfbc7b8f9893bb9c6">More...</a><br /></td></tr>
 <tr class="separator:ac106312a2e54f3fcfbc7b8f9893bb9c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0467d77650c85f7690212ed6d3c5a2e3"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#a0467d77650c85f7690212ed6d3c5a2e3">a_star_maze_path_nav_to_buffer</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, <a class="el" href="structa__star__path.html">a_star_path_t</a> *p_path, <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *p_navigator, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
+<tr class="memdesc:a0467d77650c85f7690212ed6d3c5a2e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts the maze, path and navigator state into a buffer.  <a href="a__star_8h.html#a0467d77650c85f7690212ed6d3c5a2e3">More...</a><br /></td></tr>
+<tr class="separator:a0467d77650c85f7690212ed6d3c5a2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Header file for the a* algorithm. </p>
@@ -309,6 +319,78 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a id="a0467d77650c85f7690212ed6d3c5a2e3" name="a0467d77650c85f7690212ed6d3c5a2e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0467d77650c85f7690212ed6d3c5a2e3">&#9670;&#160;</a></span>a_star_maze_path_nav_to_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t a_star_maze_path_nav_to_buffer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmaze__grid.html">maze_grid_t</a> *&#160;</td>
+          <td class="paramname"><em>p_grid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structa__star__path.html">a_star_path_t</a> *&#160;</td>
+          <td class="paramname"><em>p_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *&#160;</td>
+          <td class="paramname"><em>p_navigator</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>p_buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inserts the maze, path and navigator state into a buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_grid</td><td>Pointer to the maze grid. </td></tr>
+    <tr><td class="paramname">p_path</td><td>Pointer to the path generated by A*, NULL if no path exists. </td></tr>
+    <tr><td class="paramname">p_navigator</td><td>Pointer to the navigator state. </td></tr>
+    <tr><td class="paramname">p_buffer</td><td>Pointer to the buffer to store the maze, path and navigator state in. </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>Size of the buffer. Checks if the buffer is large enough. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int16_t -1 if the buffer is too small, the size of the buffer required otherwise. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a__star_8h_a0467d77650c85f7690212ed6d3c5a2e3_cgraph.png" border="0" usemap="#aa__star_8h_a0467d77650c85f7690212ed6d3c5a2e3_cgraph" alt=""/></div>
+<map name="aa__star_8h_a0467d77650c85f7690212ed6d3c5a2e3_cgraph" id="aa__star_8h_a0467d77650c85f7690212ed6d3c5a2e3_cgraph">
+<area shape="rect" title="Inserts the maze, path and navigator state into a buffer." alt="" coords="5,99,161,139"/>
+<area shape="rect" href="a__star_8c.html#ac106312a2e54f3fcfbc7b8f9893bb9c6" title="Inserts the path in coordinates from the start node to the end node into a buffer." alt="" coords="209,5,356,31"/>
+<area shape="rect" href="maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1" title="Helper function to convert a uint16_t to a uint8_t buffer." alt="" coords="404,49,552,89"/>
+<area shape="rect" href="maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270" title="Serialises the navigator state into a uint8_t buffer. The buffer is set with the navigator&#39;s coordina..." alt="" coords="213,107,352,132"/>
+<area shape="rect" href="maze_8c.html#a35e70f881f107a45f52eab387e71c61c" title="Serialises the maze into a bitmask array. maze_deserialise." alt="" coords="229,156,337,181"/>
+<area shape="rect" href="maze_8c.html#aae2cf92e83b0810d22411db9fbea4d94" title="Serialises the maze into a uint8_t buffer." alt="" coords="216,206,349,246"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="ac106312a2e54f3fcfbc7b8f9893bb9c6" name="ac106312a2e54f3fcfbc7b8f9893bb9c6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac106312a2e54f3fcfbc7b8f9893bb9c6">&#9670;&#160;</a></span>a_star_path_to_buffer()</h2>
 
@@ -358,6 +440,15 @@ Here is the call graph for this function:</div>
 <map name="aa__star_8h_ac106312a2e54f3fcfbc7b8f9893bb9c6_cgraph" id="aa__star_8h_ac106312a2e54f3fcfbc7b8f9893bb9c6_cgraph">
 <area shape="rect" title="Inserts the path in coordinates from the start node to the end node into a buffer." alt="" coords="5,13,152,38"/>
 <area shape="rect" href="maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1" title="Helper function to convert a uint16_t to a uint8_t buffer." alt="" coords="200,5,348,45"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a__star_8h_ac106312a2e54f3fcfbc7b8f9893bb9c6_icgraph.png" border="0" usemap="#aa__star_8h_ac106312a2e54f3fcfbc7b8f9893bb9c6_icgraph" alt=""/></div>
+<map name="aa__star_8h_ac106312a2e54f3fcfbc7b8f9893bb9c6_icgraph" id="aa__star_8h_ac106312a2e54f3fcfbc7b8f9893bb9c6_icgraph">
+<area shape="rect" title="Inserts the path in coordinates from the start node to the end node into a buffer." alt="" coords="209,13,356,38"/>
+<area shape="rect" href="a__star_8c.html#a0467d77650c85f7690212ed6d3c5a2e3" title="Inserts the maze, path and navigator state into a buffer." alt="" coords="5,5,161,45"/>
 </map>
 </div>
 

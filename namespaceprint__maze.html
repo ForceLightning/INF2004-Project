@@ -115,8 +115,23 @@ $(document).ready(function(){initNavTree('namespaceprint__maze.html',''); initRe
 Functions</h2></td></tr>
 <tr class="memitem:ac338594cbf3e7db061a5a85cc7fa57c9"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceprint__maze.html#ac338594cbf3e7db061a5a85cc7fa57c9">pretty_print_maze</a> (bytes serialised_maze)</td></tr>
 <tr class="separator:ac338594cbf3e7db061a5a85cc7fa57c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc9f1a93f2b4a0584a295c211ddb9a1d"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceprint__maze.html#afc9f1a93f2b4a0584a295c211ddb9a1d">draw_grid</a> (list[list[int]] maze)</td></tr>
+<tr class="separator:afc9f1a93f2b4a0584a295c211ddb9a1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad63d1885bf5f3d46eb9e8e3e3844d56"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceprint__maze.html#aad63d1885bf5f3d46eb9e8e3e3844d56">draw_cell</a> (int cell_bitmask, int relative_row)</td></tr>
 <tr class="separator:aad63d1885bf5f3d46eb9e8e3e3844d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c1f938efeedbae77272794af67579ac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceprint__maze.html#a6c1f938efeedbae77272794af67579ac">get_direction_from_coords</a> (tuple point_a, tuple point_b)</td></tr>
+<tr class="separator:a6c1f938efeedbae77272794af67579ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a101b7b7ae5dd9839e3457f91c3eb8b71"><td class="memItemLeft" align="right" valign="top"><a id="a101b7b7ae5dd9839e3457f91c3eb8b71" name="a101b7b7ae5dd9839e3457f91c3eb8b71"></a>
+str&#160;</td><td class="memItemRight" valign="bottom"><b>draw_path</b> (str ret_str, int rows, int cols, list[list[int]] path)</td></tr>
+<tr class="separator:a101b7b7ae5dd9839e3457f91c3eb8b71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade938b9fef84f37d1b59f8018b2e5d15"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceprint__maze.html#ade938b9fef84f37d1b59f8018b2e5d15">insert_centre_path_char</a> (str ret_str, int str_num_cols, tuple coords, str char)</td></tr>
+<tr class="separator:ade938b9fef84f37d1b59f8018b2e5d15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca88724ed9516f46edb2aa31e54a2ad4"><td class="memItemLeft" align="right" valign="top"><a id="aca88724ed9516f46edb2aa31e54a2ad4" name="aca88724ed9516f46edb2aa31e54a2ad4"></a>
+str&#160;</td><td class="memItemRight" valign="bottom"><b>insert_path_in_direction</b> (str ret_str, int str_num_cols, tuple coords, int direction)</td></tr>
+<tr class="separator:aca88724ed9516f46edb2aa31e54a2ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21e3b576ca2bcd4f985dce0598d24808"><td class="memItemLeft" align="right" valign="top"><a id="a21e3b576ca2bcd4f985dce0598d24808" name="a21e3b576ca2bcd4f985dce0598d24808"></a>
+str&#160;</td><td class="memItemRight" valign="bottom"><b>draw_navigator</b> (str ret_str, int rows, int cols, tuple current, int orientation)</td></tr>
+<tr class="separator:a21e3b576ca2bcd4f985dce0598d24808"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19a7b3cd609ad62e14a361b54bbad262"><td class="memItemLeft" align="right" valign="top"><a id="a19a7b3cd609ad62e14a361b54bbad262" name="a19a7b3cd609ad62e14a361b54bbad262"></a>
 def&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> ()</td></tr>
 <tr class="separator:a19a7b3cd609ad62e14a361b54bbad262"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -158,21 +173,187 @@ Args:
 Returns:
     str: A string representing the relative row of the cell.
 </pre> <div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceprint__maze_aad63d1885bf5f3d46eb9e8e3e3844d56_icgraph.png" border="0" usemap="#anamespaceprint__maze_aad63d1885bf5f3d46eb9e8e3e3844d56_icgraph" alt=""/></div>
+<map name="anamespaceprint__maze_aad63d1885bf5f3d46eb9e8e3e3844d56_icgraph" id="anamespaceprint__maze_aad63d1885bf5f3d46eb9e8e3e3844d56_icgraph">
+<area shape="rect" title=" " alt="" coords="691,37,768,62"/>
+<area shape="rect" href="namespaceprint__maze.html#afc9f1a93f2b4a0584a295c211ddb9a1d" title=" " alt="" coords="564,37,643,62"/>
+<area shape="rect" href="namespaceprint__maze.html#ac338594cbf3e7db061a5a85cc7fa57c9" title=" " alt="" coords="392,37,516,62"/>
+<area shape="rect" href="namespaceprint__maze.html#ade938b9fef84f37d1b59f8018b2e5d15" title=" " alt="" coords="183,37,344,62"/>
+<area shape="rect" href="namespaceprint__maze.html#a6c1f938efeedbae77272794af67579ac" title=" " alt="" coords="5,29,135,69"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afc9f1a93f2b4a0584a295c211ddb9a1d" name="afc9f1a93f2b4a0584a295c211ddb9a1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc9f1a93f2b4a0584a295c211ddb9a1d">&#9670;&#160;</a></span>draw_grid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str draw_grid </td>
+          <td>(</td>
+          <td class="paramtype">list[list[int]]&#160;</td>
+          <td class="paramname"><em>maze</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Draws a grid of the maze.
+
+Args:
+    maze (list[list[int]]): A 2D array representing the maze.
+
+Returns:
+    str: A string representing the maze.
+</pre> <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="namespaceprint__maze_aad63d1885bf5f3d46eb9e8e3e3844d56_cgraph.png" border="0" usemap="#anamespaceprint__maze_aad63d1885bf5f3d46eb9e8e3e3844d56_cgraph" alt=""/></div>
-<map name="anamespaceprint__maze_aad63d1885bf5f3d46eb9e8e3e3844d56_cgraph" id="anamespaceprint__maze_aad63d1885bf5f3d46eb9e8e3e3844d56_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,83,31"/>
-<area shape="rect" href="namespaceprint__maze.html#ac338594cbf3e7db061a5a85cc7fa57c9" title=" " alt="" coords="131,5,255,31"/>
+<div class="center"><img src="namespaceprint__maze_afc9f1a93f2b4a0584a295c211ddb9a1d_cgraph.png" border="0" usemap="#anamespaceprint__maze_afc9f1a93f2b4a0584a295c211ddb9a1d_cgraph" alt=""/></div>
+<map name="anamespaceprint__maze_afc9f1a93f2b4a0584a295c211ddb9a1d_cgraph" id="anamespaceprint__maze_afc9f1a93f2b4a0584a295c211ddb9a1d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,84,31"/>
+<area shape="rect" href="namespaceprint__maze.html#aad63d1885bf5f3d46eb9e8e3e3844d56" title=" " alt="" coords="132,5,209,31"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="namespaceprint__maze_aad63d1885bf5f3d46eb9e8e3e3844d56_icgraph.png" border="0" usemap="#anamespaceprint__maze_aad63d1885bf5f3d46eb9e8e3e3844d56_icgraph" alt=""/></div>
-<map name="anamespaceprint__maze_aad63d1885bf5f3d46eb9e8e3e3844d56_icgraph" id="anamespaceprint__maze_aad63d1885bf5f3d46eb9e8e3e3844d56_icgraph">
-<area shape="rect" title=" " alt="" coords="177,5,255,31"/>
-<area shape="rect" href="namespaceprint__maze.html#ac338594cbf3e7db061a5a85cc7fa57c9" title=" " alt="" coords="5,5,129,31"/>
+<div class="center"><img src="namespaceprint__maze_afc9f1a93f2b4a0584a295c211ddb9a1d_icgraph.png" border="0" usemap="#anamespaceprint__maze_afc9f1a93f2b4a0584a295c211ddb9a1d_icgraph" alt=""/></div>
+<map name="anamespaceprint__maze_afc9f1a93f2b4a0584a295c211ddb9a1d_icgraph" id="anamespaceprint__maze_afc9f1a93f2b4a0584a295c211ddb9a1d_icgraph">
+<area shape="rect" title=" " alt="" coords="564,37,643,62"/>
+<area shape="rect" href="namespaceprint__maze.html#ac338594cbf3e7db061a5a85cc7fa57c9" title=" " alt="" coords="392,37,516,62"/>
+<area shape="rect" href="namespaceprint__maze.html#ade938b9fef84f37d1b59f8018b2e5d15" title=" " alt="" coords="183,37,344,62"/>
+<area shape="rect" href="namespaceprint__maze.html#a6c1f938efeedbae77272794af67579ac" title=" " alt="" coords="5,29,135,69"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6c1f938efeedbae77272794af67579ac" name="a6c1f938efeedbae77272794af67579ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c1f938efeedbae77272794af67579ac">&#9670;&#160;</a></span>get_direction_from_coords()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int get_direction_from_coords </td>
+          <td>(</td>
+          <td class="paramtype">tuple&#160;</td>
+          <td class="paramname"><em>point_a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">tuple&#160;</td>
+          <td class="paramname"><em>point_b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Gets the direction from point A to point B.
+
+Args:
+    point_a (tuple): Point A. Coordinates (X, Y)
+    point_b (tuple): Point B. Coordinates (X, Y)
+
+Returns:
+    int: The direction from point A to point B.
+</pre> <div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceprint__maze_a6c1f938efeedbae77272794af67579ac_cgraph.png" border="0" usemap="#anamespaceprint__maze_a6c1f938efeedbae77272794af67579ac_cgraph" alt=""/></div>
+<map name="anamespaceprint__maze_a6c1f938efeedbae77272794af67579ac_cgraph" id="anamespaceprint__maze_a6c1f938efeedbae77272794af67579ac_cgraph">
+<area shape="rect" title=" " alt="" coords="5,29,135,69"/>
+<area shape="rect" href="namespaceprint__maze.html#ade938b9fef84f37d1b59f8018b2e5d15" title=" " alt="" coords="183,37,344,62"/>
+<area shape="rect" href="namespaceprint__maze.html#ac338594cbf3e7db061a5a85cc7fa57c9" title=" " alt="" coords="392,37,516,62"/>
+<area shape="rect" href="namespaceprint__maze.html#afc9f1a93f2b4a0584a295c211ddb9a1d" title=" " alt="" coords="564,37,643,62"/>
+<area shape="rect" href="namespaceprint__maze.html#aad63d1885bf5f3d46eb9e8e3e3844d56" title=" " alt="" coords="691,37,768,62"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceprint__maze_a6c1f938efeedbae77272794af67579ac_icgraph.png" border="0" usemap="#anamespaceprint__maze_a6c1f938efeedbae77272794af67579ac_icgraph" alt=""/></div>
+<map name="anamespaceprint__maze_a6c1f938efeedbae77272794af67579ac_icgraph" id="anamespaceprint__maze_a6c1f938efeedbae77272794af67579ac_icgraph">
+<area shape="rect" title=" " alt="" coords="5,29,135,69"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ade938b9fef84f37d1b59f8018b2e5d15" name="ade938b9fef84f37d1b59f8018b2e5d15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade938b9fef84f37d1b59f8018b2e5d15">&#9670;&#160;</a></span>insert_centre_path_char()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str insert_centre_path_char </td>
+          <td>(</td>
+          <td class="paramtype">str&#160;</td>
+          <td class="paramname"><em>ret_str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>str_num_cols</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">tuple&#160;</td>
+          <td class="paramname"><em>coords</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">str
+&#160;</td>
+          <td class="paramname"><em>char</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Inserts a character into the centre of a cell in the maze.
+
+Args:
+    ret_str (str): The current maze string.
+    str_num_cols (int): The number of columns in the maze string.
+    coords (tuple): The coordinates of the cell to insert the character into.
+    char (str): The character to insert into the cell.
+
+Returns:
+    str: The updated maze string.
+</pre> <div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceprint__maze_ade938b9fef84f37d1b59f8018b2e5d15_cgraph.png" border="0" usemap="#anamespaceprint__maze_ade938b9fef84f37d1b59f8018b2e5d15_cgraph" alt=""/></div>
+<map name="anamespaceprint__maze_ade938b9fef84f37d1b59f8018b2e5d15_cgraph" id="anamespaceprint__maze_ade938b9fef84f37d1b59f8018b2e5d15_cgraph">
+<area shape="rect" title=" " alt="" coords="5,29,167,55"/>
+<area shape="rect" href="namespaceprint__maze.html#ac338594cbf3e7db061a5a85cc7fa57c9" title=" " alt="" coords="215,29,339,55"/>
+<area shape="rect" href="namespaceprint__maze.html#afc9f1a93f2b4a0584a295c211ddb9a1d" title=" " alt="" coords="387,29,465,55"/>
+<area shape="rect" href="namespaceprint__maze.html#aad63d1885bf5f3d46eb9e8e3e3844d56" title=" " alt="" coords="513,29,591,55"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceprint__maze_ade938b9fef84f37d1b59f8018b2e5d15_icgraph.png" border="0" usemap="#anamespaceprint__maze_ade938b9fef84f37d1b59f8018b2e5d15_icgraph" alt=""/></div>
+<map name="anamespaceprint__maze_ade938b9fef84f37d1b59f8018b2e5d15_icgraph" id="anamespaceprint__maze_ade938b9fef84f37d1b59f8018b2e5d15_icgraph">
+<area shape="rect" title=" " alt="" coords="183,37,344,62"/>
+<area shape="rect" href="namespaceprint__maze.html#a6c1f938efeedbae77272794af67579ac" title=" " alt="" coords="5,29,135,69"/>
 </map>
 </div>
 
@@ -198,8 +379,6 @@ Here is the caller graph for this function:</div>
 Args:
     serialised_maze (bytes): Compressed maze string gap bitmask.
     Each hex character represents a cell in the maze.
-    rows (int): Number of rows in the maze.
-    cols (int): Number of columns in the maze.
 
 Returns:
     str: A string representing the maze.
@@ -209,7 +388,8 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="namespaceprint__maze_ac338594cbf3e7db061a5a85cc7fa57c9_cgraph.png" border="0" usemap="#anamespaceprint__maze_ac338594cbf3e7db061a5a85cc7fa57c9_cgraph" alt=""/></div>
 <map name="anamespaceprint__maze_ac338594cbf3e7db061a5a85cc7fa57c9_cgraph" id="anamespaceprint__maze_ac338594cbf3e7db061a5a85cc7fa57c9_cgraph">
 <area shape="rect" title=" " alt="" coords="5,5,129,31"/>
-<area shape="rect" href="namespaceprint__maze.html#aad63d1885bf5f3d46eb9e8e3e3844d56" title=" " alt="" coords="177,5,255,31"/>
+<area shape="rect" href="namespaceprint__maze.html#afc9f1a93f2b4a0584a295c211ddb9a1d" title=" " alt="" coords="177,5,256,31"/>
+<area shape="rect" href="namespaceprint__maze.html#aad63d1885bf5f3d46eb9e8e3e3844d56" title=" " alt="" coords="304,5,381,31"/>
 </map>
 </div>
 <div class="dynheader">
@@ -217,8 +397,9 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceprint__maze_ac338594cbf3e7db061a5a85cc7fa57c9_icgraph.png" border="0" usemap="#anamespaceprint__maze_ac338594cbf3e7db061a5a85cc7fa57c9_icgraph" alt=""/></div>
 <map name="anamespaceprint__maze_ac338594cbf3e7db061a5a85cc7fa57c9_icgraph" id="anamespaceprint__maze_ac338594cbf3e7db061a5a85cc7fa57c9_icgraph">
-<area shape="rect" title=" " alt="" coords="131,5,255,31"/>
-<area shape="rect" href="namespaceprint__maze.html#aad63d1885bf5f3d46eb9e8e3e3844d56" title=" " alt="" coords="5,5,83,31"/>
+<area shape="rect" title=" " alt="" coords="392,37,516,62"/>
+<area shape="rect" href="namespaceprint__maze.html#ade938b9fef84f37d1b59f8018b2e5d15" title=" " alt="" coords="183,37,344,62"/>
+<area shape="rect" href="namespaceprint__maze.html#a6c1f938efeedbae77272794af67579ac" title=" " alt="" coords="5,29,135,69"/>
 </map>
 </div>
 

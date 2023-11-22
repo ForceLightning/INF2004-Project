@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['maze_5fcardinal_5fdirection_0',['maze_cardinal_direction',['../maze_8h.html#a82ffd437d83514d94a8db843697d7eda',1,'maze.h']]],
-  ['maze_5frelative_5fdirection_1',['maze_relative_direction',['../maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63c',1,'maze.h']]],
-  ['maze_5fwall_5fdirection_2',['maze_wall_direction',['../maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902',1,'maze.h']]]
+  ['maze_5fcardinal_5fdirection_5ft_0',['maze_cardinal_direction_t',['../maze_8h.html#acc7f25a6419c912c96df8a247f83c4da',1,'maze.h']]],
+  ['maze_5frelative_5fdirection_5ft_1',['maze_relative_direction_t',['../maze_8h.html#afa054bfc35cf2998af33b43faab72b39',1,'maze.h']]],
+  ['maze_5fwall_5fdirection_5ft_2',['maze_wall_direction_t',['../maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375',1,'maze.h']]]
 ];

@@ -7,27 +7,25 @@ var maze_8h =
     [ "maze_gap_bitmask", "structmaze__gap__bitmask.html", "structmaze__gap__bitmask" ],
     [ "maze_bitmask_compressed", "unionmaze__bitmask__compressed.html", "unionmaze__bitmask__compressed" ],
     [ "maze_gap_bitmask_t", "maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2", null ],
-    [ "maze_relative_direction_t", "maze_8h.html#afa054bfc35cf2998af33b43faab72b39", null ],
-    [ "maze_wall_direction_t", "maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375", null ],
-    [ "maze_cardinal_direction", "maze_8h.html#a82ffd437d83514d94a8db843697d7eda", [
-      [ "NORTH", "maze_8h.html#a82ffd437d83514d94a8db843697d7edaad0611de6f28d4a9c9eac959f5344698e", null ],
-      [ "EAST", "maze_8h.html#a82ffd437d83514d94a8db843697d7edaab5b3793b961949c817c7c0d99c05dad7", null ],
-      [ "SOUTH", "maze_8h.html#a82ffd437d83514d94a8db843697d7edaa8ef5c0bce69283a9986011a63eea8a6b", null ],
-      [ "WEST", "maze_8h.html#a82ffd437d83514d94a8db843697d7edaae9449e8683a8199dad36b07a63b2f523", null ],
-      [ "NONE", "maze_8h.html#a82ffd437d83514d94a8db843697d7edaac157bdf0b85a40d2619cbc8bc1ae5fe2", null ]
+    [ "maze_cardinal_direction_t", "maze_8h.html#acc7f25a6419c912c96df8a247f83c4da", [
+      [ "NORTH", "maze_8h.html#acc7f25a6419c912c96df8a247f83c4daad0611de6f28d4a9c9eac959f5344698e", null ],
+      [ "EAST", "maze_8h.html#acc7f25a6419c912c96df8a247f83c4daab5b3793b961949c817c7c0d99c05dad7", null ],
+      [ "SOUTH", "maze_8h.html#acc7f25a6419c912c96df8a247f83c4daa8ef5c0bce69283a9986011a63eea8a6b", null ],
+      [ "WEST", "maze_8h.html#acc7f25a6419c912c96df8a247f83c4daae9449e8683a8199dad36b07a63b2f523", null ],
+      [ "NONE", "maze_8h.html#acc7f25a6419c912c96df8a247f83c4daac157bdf0b85a40d2619cbc8bc1ae5fe2", null ]
     ] ],
-    [ "maze_relative_direction", "maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63c", [
-      [ "MAZE_FRONT", "maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63cac8219b4a6c4005208e803ae700da249d", null ],
-      [ "MAZE_RIGHT", "maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63caa5794f48ab4197841a9a7fddba248c0b", null ],
-      [ "MAZE_BACK", "maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63ca9515cc04e3ef38579803c8101376b898", null ],
-      [ "MAZE_LEFT", "maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63ca317ce326f23547dca337a73e60691c82", null ]
+    [ "maze_relative_direction_t", "maze_8h.html#afa054bfc35cf2998af33b43faab72b39", [
+      [ "MAZE_FRONT", "maze_8h.html#afa054bfc35cf2998af33b43faab72b39ac8219b4a6c4005208e803ae700da249d", null ],
+      [ "MAZE_RIGHT", "maze_8h.html#afa054bfc35cf2998af33b43faab72b39aa5794f48ab4197841a9a7fddba248c0b", null ],
+      [ "MAZE_BACK", "maze_8h.html#afa054bfc35cf2998af33b43faab72b39a9515cc04e3ef38579803c8101376b898", null ],
+      [ "MAZE_LEFT", "maze_8h.html#afa054bfc35cf2998af33b43faab72b39a317ce326f23547dca337a73e60691c82", null ]
     ] ],
-    [ "maze_wall_direction", "maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902", [
-      [ "NO_WALLS", "maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902addf9bcea77c0275de8fadeafa12d2a36", null ],
-      [ "FRONT_WALL", "maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902aef0ba35f4a0e2e92b86374b4bd5f1aa9", null ],
-      [ "RIGHT_WALL", "maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902a47412afab845bb5d82848c742c5aa826", null ],
-      [ "BACK_WALL", "maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902a02337b96b3b85c03299dc8d80095311c", null ],
-      [ "LEFT_WALL", "maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902a432a66e9cf59d20911b0409c4366bbfb", null ]
+    [ "maze_wall_direction_t", "maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375", [
+      [ "NO_WALLS", "maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375addf9bcea77c0275de8fadeafa12d2a36", null ],
+      [ "FRONT_WALL", "maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375aef0ba35f4a0e2e92b86374b4bd5f1aa9", null ],
+      [ "RIGHT_WALL", "maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375a47412afab845bb5d82848c742c5aa826", null ],
+      [ "BACK_WALL", "maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375a02337b96b3b85c03299dc8d80095311c", null ],
+      [ "LEFT_WALL", "maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375a432a66e9cf59d20911b0409c4366bbfb", null ]
     ] ],
     [ "maze_clear_heuristics", "maze_8h.html#ae46a2d15996ecdd82d948a24c682cbe1", null ],
     [ "maze_create", "maze_8h.html#ab0ccd906b9a3479704eaf22867649b3f", null ],

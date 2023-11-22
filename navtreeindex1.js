@@ -1,5 +1,8 @@
 var NAVTREEINDEX1 =
 {
+"structbinary__heap.html#a6be948a502bdacee3d2a2cc1d2f97ece":[1,0,1,0],
+"structbinary__heap.html#aaba88b24a21a6c70c895c0d55f4a69a0":[1,0,1,2],
+"structbinary__heap__node.html":[1,0,2],
 "structbinary__heap__node.html#a0815784d41b3c13d42ce22367abfba1d":[1,0,2,1],
 "structbinary__heap__node.html#ae372b3bd7dd2c88ac107c1113719584c":[1,0,2,0],
 "structflags.html":[1,0,3],

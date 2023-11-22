@@ -175,15 +175,6 @@ Typedefs</h2></td></tr>
 <tr class="memitem:aeee527597e983106d296b6c9a4ca7c90"><td class="memItemLeft" align="right" valign="top"><a id="aeee527597e983106d296b6c9a4ca7c90" name="aeee527597e983106d296b6c9a4ca7c90"></a>
 typedef struct <a class="el" href="structmaze__point.html">maze_point</a>&#160;</td><td class="memItemRight" valign="bottom"><b>maze_point_t</b></td></tr>
 <tr class="separator:aeee527597e983106d296b6c9a4ca7c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0514cf07c8d2325efeebf275401f4ac"><td class="memItemLeft" align="right" valign="top"><a id="ad0514cf07c8d2325efeebf275401f4ac" name="ad0514cf07c8d2325efeebf275401f4ac"></a>
-typedef enum <a class="el" href="maze_8h.html#a82ffd437d83514d94a8db843697d7eda">maze_cardinal_direction</a>&#160;</td><td class="memItemRight" valign="bottom"><b>maze_cardinal_direction_t</b></td></tr>
-<tr class="separator:ad0514cf07c8d2325efeebf275401f4ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae87b89fdc19784bdcc8c4eb985715375"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902">maze_wall_direction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375">maze_wall_direction_t</a></td></tr>
-<tr class="memdesc:ae87b89fdc19784bdcc8c4eb985715375"><td class="mdescLeft">&#160;</td><td class="mdescRight">This enum contains bitmasks for the walls. Useful when updating more than one wall at a time.  <a href="maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375">More...</a><br /></td></tr>
-<tr class="separator:ae87b89fdc19784bdcc8c4eb985715375"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa054bfc35cf2998af33b43faab72b39"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63c">maze_relative_direction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39">maze_relative_direction_t</a></td></tr>
-<tr class="memdesc:afa054bfc35cf2998af33b43faab72b39"><td class="mdescLeft">&#160;</td><td class="mdescRight">This enum contains the relative directions of instructions from the navigator's perspective.  <a href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39">More...</a><br /></td></tr>
-<tr class="separator:afa054bfc35cf2998af33b43faab72b39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12801eb645cc8316245e29c7ec3dcbe4"><td class="memItemLeft" align="right" valign="top"><a id="a12801eb645cc8316245e29c7ec3dcbe4" name="a12801eb645cc8316245e29c7ec3dcbe4"></a>
 typedef struct <a class="el" href="structmaze__grid__cell.html">maze_grid_cell</a>&#160;</td><td class="memItemRight" valign="bottom"><b>maze_grid_cell_t</b></td></tr>
 <tr class="separator:a12801eb645cc8316245e29c7ec3dcbe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -202,32 +193,34 @@ typedef union <a class="el" href="unionmaze__bitmask__compressed.html">maze_bitm
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a82ffd437d83514d94a8db843697d7eda"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#a82ffd437d83514d94a8db843697d7eda">maze_cardinal_direction</a> { <br />
-&#160;&#160;<a class="el" href="maze_8h.html#a82ffd437d83514d94a8db843697d7edaad0611de6f28d4a9c9eac959f5344698e">NORTH</a> = 0
-, <a class="el" href="maze_8h.html#a82ffd437d83514d94a8db843697d7edaab5b3793b961949c817c7c0d99c05dad7">EAST</a> = 1
-, <a class="el" href="maze_8h.html#a82ffd437d83514d94a8db843697d7edaa8ef5c0bce69283a9986011a63eea8a6b">SOUTH</a> = 2
-, <a class="el" href="maze_8h.html#a82ffd437d83514d94a8db843697d7edaae9449e8683a8199dad36b07a63b2f523">WEST</a> = 3
+<tr class="memitem:acc7f25a6419c912c96df8a247f83c4da"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> { <br />
+&#160;&#160;<a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4daad0611de6f28d4a9c9eac959f5344698e">NORTH</a> = 0
+, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4daab5b3793b961949c817c7c0d99c05dad7">EAST</a> = 1
+, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4daa8ef5c0bce69283a9986011a63eea8a6b">SOUTH</a> = 2
+, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4daae9449e8683a8199dad36b07a63b2f523">WEST</a> = 3
 , <br />
-&#160;&#160;<a class="el" href="maze_8h.html#a82ffd437d83514d94a8db843697d7edaac157bdf0b85a40d2619cbc8bc1ae5fe2">NONE</a> = 255
+&#160;&#160;<a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4daac157bdf0b85a40d2619cbc8bc1ae5fe2">NONE</a> = 255
 <br />
  }</td></tr>
-<tr class="separator:a82ffd437d83514d94a8db843697d7eda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34cefe3e0dcb868d854e9c99c70f4902"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902">maze_wall_direction</a> { <br />
-&#160;&#160;<a class="el" href="maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902addf9bcea77c0275de8fadeafa12d2a36">NO_WALLS</a> = 0
-, <a class="el" href="maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902aef0ba35f4a0e2e92b86374b4bd5f1aa9">FRONT_WALL</a> = 1
-, <a class="el" href="maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902a47412afab845bb5d82848c742c5aa826">RIGHT_WALL</a> = 2
-, <a class="el" href="maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902a02337b96b3b85c03299dc8d80095311c">BACK_WALL</a> = 4
+<tr class="separator:acc7f25a6419c912c96df8a247f83c4da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae87b89fdc19784bdcc8c4eb985715375"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375">maze_wall_direction_t</a> { <br />
+&#160;&#160;<a class="el" href="maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375addf9bcea77c0275de8fadeafa12d2a36">NO_WALLS</a> = 0
+, <a class="el" href="maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375aef0ba35f4a0e2e92b86374b4bd5f1aa9">FRONT_WALL</a> = 1
+, <a class="el" href="maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375a47412afab845bb5d82848c742c5aa826">RIGHT_WALL</a> = 2
+, <a class="el" href="maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375a02337b96b3b85c03299dc8d80095311c">BACK_WALL</a> = 4
 , <br />
-&#160;&#160;<a class="el" href="maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902a432a66e9cf59d20911b0409c4366bbfb">LEFT_WALL</a> = 8
+&#160;&#160;<a class="el" href="maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375a432a66e9cf59d20911b0409c4366bbfb">LEFT_WALL</a> = 8
 <br />
  }</td></tr>
-<tr class="separator:a34cefe3e0dcb868d854e9c99c70f4902"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a2bb5ab014e3d7b4a15e7146d18c63c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63c">maze_relative_direction</a> { <a class="el" href="maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63cac8219b4a6c4005208e803ae700da249d">MAZE_FRONT</a>
-, <a class="el" href="maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63caa5794f48ab4197841a9a7fddba248c0b">MAZE_RIGHT</a>
-, <a class="el" href="maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63ca9515cc04e3ef38579803c8101376b898">MAZE_BACK</a>
-, <a class="el" href="maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63ca317ce326f23547dca337a73e60691c82">MAZE_LEFT</a>
+<tr class="memdesc:ae87b89fdc19784bdcc8c4eb985715375"><td class="mdescLeft">&#160;</td><td class="mdescRight">This enum contains bitmasks for the walls. Useful when updating more than one wall at a time.  <a href="maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375">More...</a><br /></td></tr>
+<tr class="separator:ae87b89fdc19784bdcc8c4eb985715375"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa054bfc35cf2998af33b43faab72b39"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39">maze_relative_direction_t</a> { <a class="el" href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39ac8219b4a6c4005208e803ae700da249d">MAZE_FRONT</a>
+, <a class="el" href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39aa5794f48ab4197841a9a7fddba248c0b">MAZE_RIGHT</a>
+, <a class="el" href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39a9515cc04e3ef38579803c8101376b898">MAZE_BACK</a>
+, <a class="el" href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39a317ce326f23547dca337a73e60691c82">MAZE_LEFT</a>
  }</td></tr>
-<tr class="separator:a9a2bb5ab014e3d7b4a15e7146d18c63c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:afa054bfc35cf2998af33b43faab72b39"><td class="mdescLeft">&#160;</td><td class="mdescRight">This enum contains the relative directions of instructions from the navigator's perspective.  <a href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39">More...</a><br /></td></tr>
+<tr class="separator:afa054bfc35cf2998af33b43faab72b39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -255,7 +248,7 @@ Functions</h2></td></tr>
 <tr class="memitem:acf435368da7fd002a7365c3733032545"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#acf435368da7fd002a7365c3733032545">maze_insert_nav_str</a> (const <a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, const <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *p_navigator, char *maze_str)</td></tr>
 <tr class="memdesc:acf435368da7fd002a7365c3733032545"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts the navigator character into the maze string for pretty printing.  <a href="maze_8h.html#acf435368da7fd002a7365c3733032545">More...</a><br /></td></tr>
 <tr class="separator:acf435368da7fd002a7365c3733032545"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8154230298572c603d5b32c37f39fb5"><td class="memItemLeft" align="right" valign="top">maze_cardinal_direction_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#ab8154230298572c603d5b32c37f39fb5">maze_get_dir_from_to</a> (const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_a, const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_b)</td></tr>
+<tr class="memitem:ab8154230298572c603d5b32c37f39fb5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#ab8154230298572c603d5b32c37f39fb5">maze_get_dir_from_to</a> (const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_a, const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_b)</td></tr>
 <tr class="memdesc:ab8154230298572c603d5b32c37f39fb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the direction from p_point_a to p_point_b if they are adjacent.  <a href="maze_8h.html#ab8154230298572c603d5b32c37f39fb5">More...</a><br /></td></tr>
 <tr class="separator:ab8154230298572c603d5b32c37f39fb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20eeebb6a55bf5f6dac5ba158ea21878"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#a20eeebb6a55bf5f6dac5ba158ea21878">maze_deserialise</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, <a class="el" href="maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2">maze_gap_bitmask_t</a> *p_no_walls_array)</td></tr>
@@ -267,7 +260,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a1957f5adb3d22d45ee033ba0c22d61cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#a1957f5adb3d22d45ee033ba0c22d61cf">maze_get_cell_at_coords</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_coordinates)</td></tr>
 <tr class="memdesc:a1957f5adb3d22d45ee033ba0c22d61cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the cell at the specified coordinates.  <a href="maze_8h.html#a1957f5adb3d22d45ee033ba0c22d61cf">More...</a><br /></td></tr>
 <tr class="separator:a1957f5adb3d22d45ee033ba0c22d61cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b467ddfd914550a22224fa6be60f14f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#a2b467ddfd914550a22224fa6be60f14f">maze_get_cell_in_dir</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, <a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *p_from, maze_cardinal_direction_t direction)</td></tr>
+<tr class="memitem:a2b467ddfd914550a22224fa6be60f14f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#a2b467ddfd914550a22224fa6be60f14f">maze_get_cell_in_dir</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, <a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *p_from, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> direction)</td></tr>
 <tr class="memdesc:a2b467ddfd914550a22224fa6be60f14f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the cell in the specified direction from a specific cell.  <a href="maze_8h.html#a2b467ddfd914550a22224fa6be60f14f">More...</a><br /></td></tr>
 <tr class="separator:a2b467ddfd914550a22224fa6be60f14f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9037ecf1d39a1e3f0e0a34ca30391b91"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#a9037ecf1d39a1e3f0e0a34ca30391b91">maze_manhattan_dist</a> (const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_a, const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_b)</td></tr>
@@ -277,12 +270,12 @@ Functions</h2></td></tr>
 <tr class="memdesc:aae2cf92e83b0810d22411db9fbea4d94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialises the maze into a uint8_t buffer.  <a href="maze_8h.html#aae2cf92e83b0810d22411db9fbea4d94">More...</a><br /></td></tr>
 <tr class="separator:aae2cf92e83b0810d22411db9fbea4d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39f5fccadb0b4834e38f62f3f11ad270"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#a39f5fccadb0b4834e38f62f3f11ad270">maze_nav_to_buffer</a> (const <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *p_navigator, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
-<tr class="memdesc:a39f5fccadb0b4834e38f62f3f11ad270"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialises the navigator state into a uint8_t buffer.  <a href="maze_8h.html#a39f5fccadb0b4834e38f62f3f11ad270">More...</a><br /></td></tr>
+<tr class="memdesc:a39f5fccadb0b4834e38f62f3f11ad270"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialises the navigator state into a uint8_t buffer. The buffer is set with the navigator's coordinates, orientation, start node, and end node coordinates in that order.  <a href="maze_8h.html#a39f5fccadb0b4834e38f62f3f11ad270">More...</a><br /></td></tr>
 <tr class="separator:a39f5fccadb0b4834e38f62f3f11ad270"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54d2a340d7b8fa00c0c3e989fa8657d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#a54d2a340d7b8fa00c0c3e989fa8657d1">maze_uint16_to_uint8_buffer</a> (uint16_t value, uint8_t *p_buffer)</td></tr>
 <tr class="memdesc:a54d2a340d7b8fa00c0c3e989fa8657d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function to convert a uint16_t to a uint8_t buffer.  <a href="maze_8h.html#a54d2a340d7b8fa00c0c3e989fa8657d1">More...</a><br /></td></tr>
 <tr class="separator:a54d2a340d7b8fa00c0c3e989fa8657d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a899cf893dd431a4896d1d0f74825cf40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39">maze_relative_direction_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#a899cf893dd431a4896d1d0f74825cf40">maze_get_relative_dir</a> (const maze_cardinal_direction_t direction_from, const maze_cardinal_direction_t direction_to)</td></tr>
+<tr class="memitem:a899cf893dd431a4896d1d0f74825cf40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39">maze_relative_direction_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8h.html#a899cf893dd431a4896d1d0f74825cf40">maze_get_relative_dir</a> (const <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> direction_from, const <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> direction_to)</td></tr>
 <tr class="memdesc:a899cf893dd431a4896d1d0f74825cf40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the relative direction from the current direction to the desired cardinal direction.  <a href="maze_8h.html#a899cf893dd431a4896d1d0f74825cf40">More...</a><br /></td></tr>
 <tr class="separator:a899cf893dd431a4896d1d0f74825cf40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -309,6 +302,33 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="acc7f25a6419c912c96df8a247f83c4da" name="acc7f25a6419c912c96df8a247f83c4da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc7f25a6419c912c96df8a247f83c4da">&#9670;&#160;</a></span>maze_cardinal_direction_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="acc7f25a6419c912c96df8a247f83c4daad0611de6f28d4a9c9eac959f5344698e" name="acc7f25a6419c912c96df8a247f83c4daad0611de6f28d4a9c9eac959f5344698e"></a>NORTH&#160;</td><td class="fielddoc"><p >North is the top of the maze. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="acc7f25a6419c912c96df8a247f83c4daab5b3793b961949c817c7c0d99c05dad7" name="acc7f25a6419c912c96df8a247f83c4daab5b3793b961949c817c7c0d99c05dad7"></a>EAST&#160;</td><td class="fielddoc"><p >East is the right of the maze. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="acc7f25a6419c912c96df8a247f83c4daa8ef5c0bce69283a9986011a63eea8a6b" name="acc7f25a6419c912c96df8a247f83c4daa8ef5c0bce69283a9986011a63eea8a6b"></a>SOUTH&#160;</td><td class="fielddoc"><p >South is the bottom of the maze. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="acc7f25a6419c912c96df8a247f83c4daae9449e8683a8199dad36b07a63b2f523" name="acc7f25a6419c912c96df8a247f83c4daae9449e8683a8199dad36b07a63b2f523"></a>WEST&#160;</td><td class="fielddoc"><p >West is the left of the maze. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="acc7f25a6419c912c96df8a247f83c4daac157bdf0b85a40d2619cbc8bc1ae5fe2" name="acc7f25a6419c912c96df8a247f83c4daac157bdf0b85a40d2619cbc8bc1ae5fe2"></a>NONE&#160;</td><td class="fielddoc"><p >None is used for errors. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <a id="afa054bfc35cf2998af33b43faab72b39" name="afa054bfc35cf2998af33b43faab72b39"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afa054bfc35cf2998af33b43faab72b39">&#9670;&#160;</a></span>maze_relative_direction_t</h2>
 
@@ -316,12 +336,22 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39">maze_relative_direction_t</a></td>
+          <td class="memname">enum <a class="el" href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39">maze_relative_direction_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>This enum contains the relative directions of instructions from the navigator's perspective. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="afa054bfc35cf2998af33b43faab72b39ac8219b4a6c4005208e803ae700da249d" name="afa054bfc35cf2998af33b43faab72b39ac8219b4a6c4005208e803ae700da249d"></a>MAZE_FRONT&#160;</td><td class="fielddoc"><p >Front is the direction the navigator is facing. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afa054bfc35cf2998af33b43faab72b39aa5794f48ab4197841a9a7fddba248c0b" name="afa054bfc35cf2998af33b43faab72b39aa5794f48ab4197841a9a7fddba248c0b"></a>MAZE_RIGHT&#160;</td><td class="fielddoc"><p >Right of the navigator. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afa054bfc35cf2998af33b43faab72b39a9515cc04e3ef38579803c8101376b898" name="afa054bfc35cf2998af33b43faab72b39a9515cc04e3ef38579803c8101376b898"></a>MAZE_BACK&#160;</td><td class="fielddoc"><p >Back of the navigator. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afa054bfc35cf2998af33b43faab72b39a317ce326f23547dca337a73e60691c82" name="afa054bfc35cf2998af33b43faab72b39a317ce326f23547dca337a73e60691c82"></a>MAZE_LEFT&#160;</td><td class="fielddoc"><p >Left of the navigator. </p>
+</td></tr>
+</table>
 
 </div>
 </div>
@@ -332,88 +362,23 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375">maze_wall_direction_t</a></td>
+          <td class="memname">enum <a class="el" href="maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375">maze_wall_direction_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>This enum contains bitmasks for the walls. Useful when updating more than one wall at a time. </p>
 <dl class="section note"><dt>Note</dt><dd>The bitmasks are powers of 2, so they can be bitwise ORed together. They DIFFER from the cardinal_direction_t enum. </dd></dl>
-
-</div>
-</div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a82ffd437d83514d94a8db843697d7eda" name="a82ffd437d83514d94a8db843697d7eda"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82ffd437d83514d94a8db843697d7eda">&#9670;&#160;</a></span>maze_cardinal_direction</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="maze_8h.html#a82ffd437d83514d94a8db843697d7eda">maze_cardinal_direction</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a82ffd437d83514d94a8db843697d7edaad0611de6f28d4a9c9eac959f5344698e" name="a82ffd437d83514d94a8db843697d7edaad0611de6f28d4a9c9eac959f5344698e"></a>NORTH&#160;</td><td class="fielddoc"><p >North is the top of the maze. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae87b89fdc19784bdcc8c4eb985715375addf9bcea77c0275de8fadeafa12d2a36" name="ae87b89fdc19784bdcc8c4eb985715375addf9bcea77c0275de8fadeafa12d2a36"></a>NO_WALLS&#160;</td><td class="fielddoc"><p >No walls. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a82ffd437d83514d94a8db843697d7edaab5b3793b961949c817c7c0d99c05dad7" name="a82ffd437d83514d94a8db843697d7edaab5b3793b961949c817c7c0d99c05dad7"></a>EAST&#160;</td><td class="fielddoc"><p >East is the right of the maze. </p>
+<tr><td class="fieldname"><a id="ae87b89fdc19784bdcc8c4eb985715375aef0ba35f4a0e2e92b86374b4bd5f1aa9" name="ae87b89fdc19784bdcc8c4eb985715375aef0ba35f4a0e2e92b86374b4bd5f1aa9"></a>FRONT_WALL&#160;</td><td class="fielddoc"><p >Front wall. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a82ffd437d83514d94a8db843697d7edaa8ef5c0bce69283a9986011a63eea8a6b" name="a82ffd437d83514d94a8db843697d7edaa8ef5c0bce69283a9986011a63eea8a6b"></a>SOUTH&#160;</td><td class="fielddoc"><p >South is the bottom of the maze. </p>
+<tr><td class="fieldname"><a id="ae87b89fdc19784bdcc8c4eb985715375a47412afab845bb5d82848c742c5aa826" name="ae87b89fdc19784bdcc8c4eb985715375a47412afab845bb5d82848c742c5aa826"></a>RIGHT_WALL&#160;</td><td class="fielddoc"><p >Right wall. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a82ffd437d83514d94a8db843697d7edaae9449e8683a8199dad36b07a63b2f523" name="a82ffd437d83514d94a8db843697d7edaae9449e8683a8199dad36b07a63b2f523"></a>WEST&#160;</td><td class="fielddoc"><p >West is the left of the maze. </p>
+<tr><td class="fieldname"><a id="ae87b89fdc19784bdcc8c4eb985715375a02337b96b3b85c03299dc8d80095311c" name="ae87b89fdc19784bdcc8c4eb985715375a02337b96b3b85c03299dc8d80095311c"></a>BACK_WALL&#160;</td><td class="fielddoc"><p >Back wall. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a82ffd437d83514d94a8db843697d7edaac157bdf0b85a40d2619cbc8bc1ae5fe2" name="a82ffd437d83514d94a8db843697d7edaac157bdf0b85a40d2619cbc8bc1ae5fe2"></a>NONE&#160;</td><td class="fielddoc"><p >None is used for errors. </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<a id="a9a2bb5ab014e3d7b4a15e7146d18c63c" name="a9a2bb5ab014e3d7b4a15e7146d18c63c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a2bb5ab014e3d7b4a15e7146d18c63c">&#9670;&#160;</a></span>maze_relative_direction</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="maze_8h.html#a9a2bb5ab014e3d7b4a15e7146d18c63c">maze_relative_direction</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a9a2bb5ab014e3d7b4a15e7146d18c63cac8219b4a6c4005208e803ae700da249d" name="a9a2bb5ab014e3d7b4a15e7146d18c63cac8219b4a6c4005208e803ae700da249d"></a>MAZE_FRONT&#160;</td><td class="fielddoc"><p >Front is the direction the navigator is facing. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a9a2bb5ab014e3d7b4a15e7146d18c63caa5794f48ab4197841a9a7fddba248c0b" name="a9a2bb5ab014e3d7b4a15e7146d18c63caa5794f48ab4197841a9a7fddba248c0b"></a>MAZE_RIGHT&#160;</td><td class="fielddoc"><p >Right of the navigator. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a9a2bb5ab014e3d7b4a15e7146d18c63ca9515cc04e3ef38579803c8101376b898" name="a9a2bb5ab014e3d7b4a15e7146d18c63ca9515cc04e3ef38579803c8101376b898"></a>MAZE_BACK&#160;</td><td class="fielddoc"><p >Back of the navigator. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a9a2bb5ab014e3d7b4a15e7146d18c63ca317ce326f23547dca337a73e60691c82" name="a9a2bb5ab014e3d7b4a15e7146d18c63ca317ce326f23547dca337a73e60691c82"></a>MAZE_LEFT&#160;</td><td class="fielddoc"><p >Left of the navigator. </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<a id="a34cefe3e0dcb868d854e9c99c70f4902" name="a34cefe3e0dcb868d854e9c99c70f4902"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34cefe3e0dcb868d854e9c99c70f4902">&#9670;&#160;</a></span>maze_wall_direction</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902">maze_wall_direction</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a34cefe3e0dcb868d854e9c99c70f4902addf9bcea77c0275de8fadeafa12d2a36" name="a34cefe3e0dcb868d854e9c99c70f4902addf9bcea77c0275de8fadeafa12d2a36"></a>NO_WALLS&#160;</td><td class="fielddoc"><p >No walls. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a34cefe3e0dcb868d854e9c99c70f4902aef0ba35f4a0e2e92b86374b4bd5f1aa9" name="a34cefe3e0dcb868d854e9c99c70f4902aef0ba35f4a0e2e92b86374b4bd5f1aa9"></a>FRONT_WALL&#160;</td><td class="fielddoc"><p >Front wall. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a34cefe3e0dcb868d854e9c99c70f4902a47412afab845bb5d82848c742c5aa826" name="a34cefe3e0dcb868d854e9c99c70f4902a47412afab845bb5d82848c742c5aa826"></a>RIGHT_WALL&#160;</td><td class="fielddoc"><p >Right wall. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a34cefe3e0dcb868d854e9c99c70f4902a02337b96b3b85c03299dc8d80095311c" name="a34cefe3e0dcb868d854e9c99c70f4902a02337b96b3b85c03299dc8d80095311c"></a>BACK_WALL&#160;</td><td class="fielddoc"><p >Back wall. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a34cefe3e0dcb868d854e9c99c70f4902a432a66e9cf59d20911b0409c4366bbfb" name="a34cefe3e0dcb868d854e9c99c70f4902a432a66e9cf59d20911b0409c4366bbfb"></a>LEFT_WALL&#160;</td><td class="fielddoc"><p >Left wall. </p>
+<tr><td class="fieldname"><a id="ae87b89fdc19784bdcc8c4eb985715375a432a66e9cf59d20911b0409c4366bbfb" name="ae87b89fdc19784bdcc8c4eb985715375a432a66e9cf59d20911b0409c4366bbfb"></a>LEFT_WALL&#160;</td><td class="fielddoc"><p >Left wall. </p>
 </td></tr>
 </table>
 
@@ -636,7 +601,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">maze_cardinal_direction_t&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a>&#160;</td>
           <td class="paramname"><em>direction</em>&#160;</td>
         </tr>
         <tr>
@@ -685,7 +650,7 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">maze_cardinal_direction_t maze_get_dir_from_to </td>
+          <td class="memname"><a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> maze_get_dir_from_to </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structmaze__point.html">maze_point_t</a> *&#160;</td>
           <td class="paramname"><em>p_point_a</em>, </td>
@@ -763,13 +728,13 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname"><a class="el" href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39">maze_relative_direction_t</a> maze_get_relative_dir </td>
           <td>(</td>
-          <td class="paramtype">const maze_cardinal_direction_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a>&#160;</td>
           <td class="paramname"><em>direction_from</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const maze_cardinal_direction_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a>&#160;</td>
           <td class="paramname"><em>direction_to</em>&#160;</td>
         </tr>
         <tr>
@@ -1057,7 +1022,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Serialises the navigator state into a uint8_t buffer. </p>
+<p>Serialises the navigator state into a uint8_t buffer. The buffer is set with the navigator's coordinates, orientation, start node, and end node coordinates in that order. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p_navigator</td><td>Pointer to the navigator state. </td></tr>
@@ -1074,8 +1039,17 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="maze_8h_a39f5fccadb0b4834e38f62f3f11ad270_cgraph.png" border="0" usemap="#amaze_8h_a39f5fccadb0b4834e38f62f3f11ad270_cgraph" alt=""/></div>
 <map name="amaze_8h_a39f5fccadb0b4834e38f62f3f11ad270_cgraph" id="amaze_8h_a39f5fccadb0b4834e38f62f3f11ad270_cgraph">
-<area shape="rect" title="Serialises the navigator state into a uint8_t buffer." alt="" coords="5,13,144,38"/>
+<area shape="rect" title="Serialises the navigator state into a uint8_t buffer. The buffer is set with the navigator&#39;s coordina..." alt="" coords="5,13,144,38"/>
 <area shape="rect" href="maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1" title="Helper function to convert a uint16_t to a uint8_t buffer." alt="" coords="192,5,340,45"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="maze_8h_a39f5fccadb0b4834e38f62f3f11ad270_icgraph.png" border="0" usemap="#amaze_8h_a39f5fccadb0b4834e38f62f3f11ad270_icgraph" alt=""/></div>
+<map name="amaze_8h_a39f5fccadb0b4834e38f62f3f11ad270_icgraph" id="amaze_8h_a39f5fccadb0b4834e38f62f3f11ad270_icgraph">
+<area shape="rect" title="Serialises the navigator state into a uint8_t buffer. The buffer is set with the navigator&#39;s coordina..." alt="" coords="209,13,348,38"/>
+<area shape="rect" href="a__star_8c.html#a0467d77650c85f7690212ed6d3c5a2e3" title="Inserts the maze, path and navigator state into a buffer." alt="" coords="5,5,161,45"/>
 </map>
 </div>
 
@@ -1105,6 +1079,15 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>maze_gap_bitmask_t Bitmask array of maze gaps. Take OxF - bitmask to get the walls. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="maze_8h_a35e70f881f107a45f52eab387e71c61c_icgraph.png" border="0" usemap="#amaze_8h_a35e70f881f107a45f52eab387e71c61c_icgraph" alt=""/></div>
+<map name="amaze_8h_a35e70f881f107a45f52eab387e71c61c_icgraph" id="amaze_8h_a35e70f881f107a45f52eab387e71c61c_icgraph">
+<area shape="rect" title="Serialises the maze into a bitmask array. maze_deserialise." alt="" coords="209,13,317,38"/>
+<area shape="rect" href="a__star_8c.html#a0467d77650c85f7690212ed6d3c5a2e3" title="Inserts the maze, path and navigator state into a buffer." alt="" coords="5,5,161,45"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1151,6 +1134,15 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int16_t -1 if the buffer is too small, 0 otherwise.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The buffer must be large enough to fit the maze, and the buffer must be cleared before calling this function. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="maze_8h_aae2cf92e83b0810d22411db9fbea4d94_icgraph.png" border="0" usemap="#amaze_8h_aae2cf92e83b0810d22411db9fbea4d94_icgraph" alt=""/></div>
+<map name="amaze_8h_aae2cf92e83b0810d22411db9fbea4d94_icgraph" id="amaze_8h_aae2cf92e83b0810d22411db9fbea4d94_icgraph">
+<area shape="rect" title="Serialises the maze into a uint8_t buffer." alt="" coords="209,5,343,45"/>
+<area shape="rect" href="a__star_8c.html#a0467d77650c85f7690212ed6d3c5a2e3" title="Inserts the maze, path and navigator state into a buffer." alt="" coords="5,5,161,45"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1193,9 +1185,10 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="maze_8h_a54d2a340d7b8fa00c0c3e989fa8657d1_icgraph.png" border="0" usemap="#amaze_8h_a54d2a340d7b8fa00c0c3e989fa8657d1_icgraph" alt=""/></div>
 <map name="amaze_8h_a54d2a340d7b8fa00c0c3e989fa8657d1_icgraph" id="amaze_8h_a54d2a340d7b8fa00c0c3e989fa8657d1_icgraph">
-<area shape="rect" title="Helper function to convert a uint16_t to a uint8_t buffer." alt="" coords="200,23,348,63"/>
-<area shape="rect" href="a__star_8c.html#ac106312a2e54f3fcfbc7b8f9893bb9c6" title="Inserts the path in coordinates from the start node to the end node into a buffer." alt="" coords="5,5,152,31"/>
-<area shape="rect" href="maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270" title="Serialises the navigator state into a uint8_t buffer." alt="" coords="9,55,148,80"/>
+<area shape="rect" title="Helper function to convert a uint16_t to a uint8_t buffer." alt="" coords="404,16,552,56"/>
+<area shape="rect" href="a__star_8c.html#a0467d77650c85f7690212ed6d3c5a2e3" title="Inserts the maze, path and navigator state into a buffer." alt="" coords="5,16,161,56"/>
+<area shape="rect" href="a__star_8c.html#ac106312a2e54f3fcfbc7b8f9893bb9c6" title="Inserts the path in coordinates from the start node to the end node into a buffer." alt="" coords="209,23,356,48"/>
+<area shape="rect" href="maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270" title="Serialises the navigator state into a uint8_t buffer. The buffer is set with the navigator&#39;s coordina..." alt="" coords="213,72,352,98"/>
 </map>
 </div>
 

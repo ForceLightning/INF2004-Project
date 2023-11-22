@@ -11,5 +11,5 @@ var searchData=
   ['floodfill_5fmove_5fnavigator_5ft_8',['floodfill_move_navigator_t',['../floodfill_8h.html#aaa5dd0d15668be40804766df2d3fc69d',1,'floodfill.h']]],
   ['floodfill_5ftests_9',['floodfill_tests',['../floodfill__tests_8c.html#a6cc82fcad96c788ecb035d06669cad9c',1,'floodfill_tests.c']]],
   ['floodfill_5ftests_2ec_10',['floodfill_tests.c',['../floodfill__tests_8c.html',1,'']]],
-  ['front_5fwall_11',['FRONT_WALL',['../maze_8h.html#a34cefe3e0dcb868d854e9c99c70f4902aef0ba35f4a0e2e92b86374b4bd5f1aa9',1,'maze.h']]]
+  ['front_5fwall_11',['FRONT_WALL',['../maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375aef0ba35f4a0e2e92b86374b4bd5f1aa9',1,'maze.h']]]
 ];

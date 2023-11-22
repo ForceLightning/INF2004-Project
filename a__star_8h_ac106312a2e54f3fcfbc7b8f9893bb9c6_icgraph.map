@@ -1,0 +1,4 @@
+<map id="a_star_path_to_buffer" name="a_star_path_to_buffer">
+<area shape="rect" id="node1" title="Inserts the path in coordinates from the start node to the end node into a buffer." alt="" coords="209,13,356,38"/>
+<area shape="rect" id="node2" href="$a__star_8c.html#a0467d77650c85f7690212ed6d3c5a2e3" title="Inserts the maze, path and navigator state into a buffer." alt="" coords="5,5,161,45"/>
+</map>

@@ -1,4 +1,4 @@
 <map id="maze_nav_to_buffer" name="maze_nav_to_buffer">
-<area shape="rect" id="node1" title="Serialises the navigator state into a uint8_t buffer." alt="" coords="5,13,144,38"/>
+<area shape="rect" id="node1" title="Serialises the navigator state into a uint8_t buffer. The buffer is set with the navigator&#39;s coordina..." alt="" coords="5,13,144,38"/>
 <area shape="rect" id="node2" href="$maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1" title="Helper function to convert a uint16_t to a uint8_t buffer." alt="" coords="192,5,340,45"/>
 </map>
