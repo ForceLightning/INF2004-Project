@@ -1,6 +1,6 @@
 /**
  * @file main.c
- * @author Ang Jia Yu
+ * @author Ang Jia Yu and Christopher Kok
  * @brief Demonstration for the IR sensor driver.
  * @version 0.1
  * @date 2023-10-29

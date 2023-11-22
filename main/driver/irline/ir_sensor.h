@@ -14,10 +14,15 @@
 #include "pico/types.h"
 #include "barcode.h"
 
+/**
+ * @typedef ir_flags_t
+ * @brief Indicates whether the IR line sensor detects walls on the top and left
+ * sides.
+ */
 typedef struct ir_flags
 {
-    bool top_wall;
-    bool left_wall;
+    bool top_wall;  ///< Indicates whether there is a top wall.
+    bool left_wall; ///< Indicates whether there is a left wall.
 } ir_flags_t;
 
 // Function prototypes.
@@ -25,10 +30,10 @@ typedef struct ir_flags
 void                setup_adc_pin(uint adc_pin);
 void                setup_gpio_pin(uint gpio_pin);
 barcode_line_type_t read_barcode(void);
-uint16_t            read_line(uint gpioPinIn);
+uint16_t            read_line(uint gpio_pin_in);
 void                update_top_flag(ir_flags_t *flag);
 void                update_left_flag(ir_flags_t *flag);
-uint16_t            find_wall_directions(uint gpioPinLeft, uint gpioPinFront);
+uint16_t find_wall_directions(uint gpio_pin_left, uint gpio_pin_right);
 
 #endif // IR_SENSOR_H
 

@@ -1,3 +1,13 @@
+/**
+ * @file barcode.h
+ * @author Christopher Kok (chris@forcelightning.xyz)
+ * @brief Header file for the barcode driver.
+ * @version 0.1
+ * @date 2023-11-22
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #include <stdint.h>
 
 #ifndef BARCODE_H // Include guard.
@@ -86,11 +96,11 @@ typedef enum
  */
 typedef enum
 {
-    BARCODE_LINE_NONE        = 0,
-    BARCODE_LINE_BLACK_THIN  = 0b0001,
-    BARCODE_LINE_BLACK_THICK = 0b0011,
-    BARCODE_LINE_WHITE_THIN  = 0b0100,
-    BARCODE_LINE_WHITE_THICK = 0b1100
+    BARCODE_LINE_NONE        = 0,      ///< No barcode line detected.
+    BARCODE_LINE_BLACK_THIN  = 0b0001, ///< Black thin barcode line.
+    BARCODE_LINE_BLACK_THICK = 0b0011, ///< Black thick barcode line.
+    BARCODE_LINE_WHITE_THIN  = 0b0100, ///< White thin barcode line.
+    BARCODE_LINE_WHITE_THICK = 0b1100  ///< White thick barcode line.
 } barcode_line_type_t;
 
 /**
@@ -124,13 +134,18 @@ typedef enum
 // ----------------------------------------------------------------------------
 //
 
-char           barcode_get_char(barcode_char_t barcode_char);
-char          *barcode_line_to_string(barcode_line_type_t line_type);
-int8_t         barcode_update_line_buffer(barcode_line_buffer_t *p_line_buffer,
-                                          barcode_line_type_t    line_type);
-void           barcode_clear_line_buffer(barcode_line_buffer_t *p_line_buffer);
+char barcode_get_char(barcode_char_t barcode_char);
+
+char *barcode_line_to_string(barcode_line_type_t line_type);
+
+int8_t barcode_update_line_buffer(barcode_line_buffer_t *p_line_buffer,
+                                  barcode_line_type_t    line_type);
+
+void barcode_clear_line_buffer(barcode_line_buffer_t *p_line_buffer);
+
 barcode_char_t barcode_decode_barcode_char(
     barcode_line_buffer_t *p_line_buffer);
+
 char *barcode_buffer_to_binary_string(barcode_line_buffer_t *p_line_buffer);
 
 #endif // BARCODE_H

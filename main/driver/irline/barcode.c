@@ -1,3 +1,13 @@
+/**
+ * @file barcode.c
+ * @author Christopher Kok (chris@forcelightning.xyz)
+ * @brief Implementation of the barcode driver.
+ * @version 0.1
+ * @date 2023-11-22
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -247,6 +257,9 @@ barcode_decode_barcode_char (barcode_line_buffer_t *p_line_buffer)
 
     for (uint16_t idx = 0u; p_line_buffer->line_buffer_index > idx; idx++)
     {
+        // Shift the barcode to the left by 1 bit to prepare for insertion of
+        // LSB.
+        //
         barcode_binarised <<= 1u;
         barcode_line_type_t line_type = p_line_buffer->line_buffer[idx];
 
