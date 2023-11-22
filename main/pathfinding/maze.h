@@ -34,7 +34,7 @@ typedef struct maze_point
  * @brief This enum contains the possible directions.
  *
  */
-typedef enum maze_cardinal_direction
+typedef enum
 {
     NORTH = 0,  ///< North is the top of the maze.
     EAST  = 1,  ///< East is the right of the maze.
@@ -51,7 +51,7 @@ typedef enum maze_cardinal_direction
  * @note The bitmasks are powers of 2, so they can be bitwise ORed together.
  * They DIFFER from the @ref cardinal_direction_t enum.
  */
-typedef enum maze_wall_direction
+typedef enum
 {
     NO_WALLS   = 0, ///< No walls.
     FRONT_WALL = 1, ///< Front wall.
@@ -66,7 +66,7 @@ typedef enum maze_wall_direction
  * navigator's perspective.
  *
  */
-typedef enum maze_relative_direction
+typedef enum
 {
     MAZE_FRONT, ///< Front is the direction the navigator is facing.
     MAZE_RIGHT, ///< Right of the navigator.

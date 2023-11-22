@@ -315,8 +315,35 @@ test_compression (void)
 static int
 test_navigator_serialisation (void)
 {
-    // @TODO(chris): Complete this test.
-    return 0;
+    int ret_val = 0;
+
+    maze_grid_t        maze             = maze_create(GRID_ROWS, GRID_COLS);
+    maze_gap_bitmask_t true_map_bitmask = { .p_bitmask = g_bitmask_array_north,
+                                            .rows      = GRID_ROWS,
+                                            .columns   = GRID_COLS };
+    maze_deserialise(&maze, &true_map_bitmask);
+    maze_navigator_state_t navigator;
+
+    maze_grid_cell_t *p_start   = maze_get_cell_at_coords(&maze, &start_point);
+    maze_grid_cell_t *p_end     = maze_get_cell_at_coords(&maze, &end_point);
+    maze_grid_cell_t *p_current = p_start;
+
+    navigator.orientation    = NORTH;
+    navigator.p_current_node = p_current;
+    navigator.p_start_node   = p_start;
+    navigator.p_end_node     = p_end;
+
+    uint8_t *p_buffer = malloc(sizeof(uint8_t) * BUFFER_SIZE);
+    memset(p_buffer, 0, sizeof(uint8_t) * BUFFER_SIZE);
+
+    ret_val = maze_nav_to_buffer(&navigator, p_buffer, BUFFER_SIZE);
+
+    for (size_t idx = 0; 13u > idx; idx++)
+    {
+        printf("%X", p_buffer[idx]);
+    }
+
+    return ret_val;
 }
 
 /**
@@ -328,7 +355,38 @@ static int
 test_path_serialisation (void)
 {
     // @TODO(chris): Complete this test.
-    return 0;
+    int ret_val = 0;
+
+    maze_grid_t        maze             = maze_create(GRID_ROWS, GRID_COLS);
+    maze_gap_bitmask_t true_map_bitmask = { .p_bitmask = g_bitmask_array_north,
+                                            .rows      = GRID_ROWS,
+                                            .columns   = GRID_COLS };
+    maze_deserialise(&maze, &true_map_bitmask);
+    maze_navigator_state_t navigator;
+
+    maze_grid_cell_t *p_start   = maze_get_cell_at_coords(&maze, &start_point);
+    maze_grid_cell_t *p_end     = maze_get_cell_at_coords(&maze, &end_point);
+    maze_grid_cell_t *p_current = p_start;
+
+    navigator.orientation    = NORTH;
+    navigator.p_current_node = p_current;
+    navigator.p_start_node   = p_start;
+    navigator.p_end_node     = p_end;
+
+    a_star(&maze, navigator.p_current_node, navigator.p_end_node);
+    a_star_path_t *p_path = a_star_get_path(navigator.p_end_node);
+
+    uint8_t *p_buffer = malloc(sizeof(uint8_t) * BUFFER_SIZE);
+    memset(p_buffer, 0, sizeof(uint8_t) * BUFFER_SIZE);
+
+    ret_val = a_star_path_to_buffer(p_path, p_buffer, BUFFER_SIZE);
+
+    for (uint32_t idx = 0; p_path->length * 4u > idx; idx++)
+    {
+        printf("%X", p_buffer[idx]);
+    }
+
+    return ret_val;
 }
 
 /**
@@ -340,17 +398,53 @@ test_path_serialisation (void)
 static int
 test_combined_serialisation (void)
 {
-    // @TODO(chris): Complete this test.
-    return 0;
+    int ret_val = 0;
+
+    maze_grid_t            maze = maze_create(GRID_ROWS, GRID_COLS);
+    maze_navigator_state_t navigator;
+    initialise_variables(g_bitmask_array_north, &maze, &navigator);
+
+    map_maze(&maze, gp_bitmask_array, &navigator);
+    a_star(&maze, navigator.p_current_node, navigator.p_end_node);
+
+    a_star_path_t *p_path = a_star_get_path(navigator.p_end_node);
+
+    printf("Path length: %u\n", p_path->length);
+
+    maze_gap_bitmask_t map_bitmask = maze_serialise(&maze);
+
+    uint8_t *p_buffer = malloc(sizeof(uint8_t) * BUFFER_SIZE);
+    memset(p_buffer, 0, sizeof(uint8_t) * BUFFER_SIZE);
+
+    ret_val = a_star_maze_path_nav_to_buffer(
+        &maze, p_path, &navigator, p_buffer, BUFFER_SIZE);
+    printf("ret_val: %d\n", ret_val);
+
+    if (-1 == ret_val)
+    {
+        printf("Failed to serialise maze, path, and navigator\n");
+        goto end;
+    }
+
+    // Conversion from int to uint32_t is safe here because ret_val is
+    // guaranteed to be positive.
+    //
+    for (uint32_t idx = 0; (uint32_t)ret_val > idx; idx++)
+    {
+        printf("%X", p_buffer[idx]);
+    }
+
+end:
+    return ret_val == -1 ? -1 : 0;
 }
 
 static int
-test_relative_direction(void)
+test_relative_direction (void)
 {
-    int ret_val = 0;
-    maze_cardinal_direction_t dir_a = NORTH;
-    maze_cardinal_direction_t dir_b = SOUTH;
-    
+    int                       ret_val = 0;
+    maze_cardinal_direction_t dir_a   = NORTH;
+    maze_cardinal_direction_t dir_b   = SOUTH;
+
     maze_relative_direction_t rel_dir = maze_get_relative_dir(dir_a, dir_b);
 
     if (MAZE_BACK != rel_dir)
@@ -359,7 +453,7 @@ test_relative_direction(void)
         printf("rel_dir: %d", rel_dir);
         goto end;
     }
-    
+
 end:
     return ret_val;
 }
@@ -581,9 +675,9 @@ test_combined (const uint16_t *p_bitmask_array)
 
     for (size_t idx = 1; p_path->length > idx; idx++)
     {
-        maze_grid_cell_t          next_node = p_path->p_path[idx];
-        maze_cardinal_direction_t next_direction
-            = maze_get_dir_from_to(navigator.p_current_node, &next_node);
+        maze_grid_cell_t          next_node      = p_path->p_path[idx];
+        maze_cardinal_direction_t next_direction = maze_get_dir_from_to(
+            &navigator.p_current_node->coordinates, &next_node.coordinates);
 
         move_navigator(&navigator, next_direction);
     }
@@ -592,7 +686,7 @@ test_combined (const uint16_t *p_bitmask_array)
     {
         ret_val = -1;
         printf("Navigator did not reach end\n");
-        printf("Navigator is at (%llu, %llu)\n",
+        printf("Navigator is at (%u, %u)\n",
                navigator.p_current_node->coordinates.x,
                navigator.p_current_node->coordinates.y);
         goto end_return_to_start;
