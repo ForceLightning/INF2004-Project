@@ -340,7 +340,7 @@ test_navigator_serialisation (void)
 
     for (size_t idx = 0; 13u > idx; idx++)
     {
-        printf("%X", p_buffer[idx]);
+        printf("%02X", p_buffer[idx]);
     }
 
     return ret_val;
@@ -383,7 +383,7 @@ test_path_serialisation (void)
 
     for (uint32_t idx = 0; p_path->length * 4u > idx; idx++)
     {
-        printf("%X", p_buffer[idx]);
+        printf("%02X", p_buffer[idx]);
     }
 
     return ret_val;
@@ -431,7 +431,7 @@ test_combined_serialisation (void)
     //
     for (uint32_t idx = 0; (uint32_t)ret_val > idx; idx++)
     {
-        printf("%X", p_buffer[idx]);
+        printf("%02X", p_buffer[idx]);
     }
 
 end:

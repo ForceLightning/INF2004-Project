@@ -226,7 +226,7 @@ a_star_path_to_buffer (a_star_path_t *p_path,
     uint16_t path_length_msb = p_path->length >> 16u;
     uint16_t path_length_lsb = p_path->length & 0xFFFFu;
     maze_uint16_to_uint8_buffer(path_length_msb, p_buffer);
-    maze_uint16_to_uint8_buffer(path_length_lsb, p_buffer);
+    maze_uint16_to_uint8_buffer(path_length_lsb, &p_buffer[2u]);
 
     // Copy the path into the buffer.
     //
