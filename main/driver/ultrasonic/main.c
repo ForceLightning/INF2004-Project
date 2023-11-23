@@ -15,10 +15,6 @@
 #include "pico/time.h"
 #include "ultrasonic.h"
 
-#define TRIG_PIN 0    // Trigger pin for the ultrasonic sensor.
-#define ECHO_PIN 1    // Echo pin for the ultrasonic sensor.
-#define SLEEP_1S 1000 // 1 second in milliseconds.
-
 int
 main (void)
 {

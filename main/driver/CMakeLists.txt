@@ -11,7 +11,7 @@ target_sources(driver INTERFACE
 )
 
 target_link_libraries(driver INTERFACE
-    pico_lwip_iperf
+    # pico_lwip_iperf
     pico_stdlib
     hardware_adc
     hardware_gpio

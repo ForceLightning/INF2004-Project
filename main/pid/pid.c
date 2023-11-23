@@ -69,7 +69,7 @@ navigate_car_turn (turn_params_t            *p_turn_params,
 
                     break;
 
-                case EAST:
+                case 'r':
                     turn_right(0);
                     if (p_turn_params->encoder_step_count
                         == ENCODER_STEP_TURN_90_DEG)
@@ -80,8 +80,8 @@ navigate_car_turn (turn_params_t            *p_turn_params,
 
                     break;
 
-                case SOUTH:
-                    turn_left(0);
+                case 'b':
+                    reverse();
                     if (p_turn_params->encoder_step_count
                         == ENCODER_STEP_TURN_180_DEG)
                     {
@@ -95,11 +95,12 @@ navigate_car_turn (turn_params_t            *p_turn_params,
         else if (!p_turn_params->moved_cell)
         {
             move_forward();
-            if (p_turn_params->encoder_step_count == ENCODER_STEP_MOVE)
-            {
-                p_turn_params->moved_cell         = 1;
-                p_turn_params->encoder_step_count = 0;
-            }
+            p_turn_params->moved_cell = 1;
+            // if (p_turn_params->encoder_step_count == ENCODER_STEP_MOVE)
+            // {
+            //     p_turn_params->moved_cell         = 1;
+            //     p_turn_params->encoder_step_count = 0;
+            // }
         }
         else
         {
@@ -131,7 +132,7 @@ float calculate_pid(float current_bearing, float target_bearing, float current_r
     p_pid_params->integral += error;
     float derivative = error - p_pid_params->prev_error;
 
-    printf("Integral: %f\n", p_pid_params->integral);
+    // printf("Integral: %f\n", p_pid_params->integral);
 
     float control_signal = p_pid_params->kp * error + p_pid_params->ki * p_pid_params->integral + p_pid_params->kd * derivative;
 
@@ -140,18 +141,18 @@ float calculate_pid(float current_bearing, float target_bearing, float current_r
     return control_signal;
 }
 
-void bearing_correction(pid_params_t *p_pid_params){ 
+void bearing_correction(pid_params_t *p_pid_params, bearing_data_t *p_bearing_data){ 
     // init_pid_error_correction(pid_params_t *p_pid_params);
 
-    if(checkBearingOutOfRange()){
-        p_pid_params->current_bearing = getCurrentBearing();
-        while((int)p_pid_params->current_bearing != (int)getTrueBearing()){
-            float control_signal = calculate_pid(p_pid_params->current_bearing, getTrueBearing(), p_pid_params->current_ratio, p_pid_params);
+    if(checkBearingOutOfRange(p_bearing_data)){
+        p_pid_params->current_bearing = getCurrentBearing(p_bearing_data);
+        while((int)p_pid_params->current_bearing != (int)getTrueBearing(p_bearing_data)){
+            float control_signal = calculate_pid(p_pid_params->current_bearing, getTrueBearing(p_bearing_data), p_pid_params->current_ratio, p_pid_params);
 
             float new_ratio = (p_pid_params->current_ratio + p_pid_params->epsilon) + ((control_signal + p_pid_params->epsilon + 1) * p_pid_params->ratio_to_bearing);
 
             // p_pid_params->current_bearing += (new_ratio - p_pid_params->current_ratio) / p_pid_params->ratio_to_bearing;
-            p_pid_params->current_bearing = getCurrentBearing();
+            p_pid_params->current_bearing = getCurrentBearing(p_bearing_data);
             p_pid_params->current_ratio = new_ratio;
 
             update_ratio(p_pid_params->current_ratio);

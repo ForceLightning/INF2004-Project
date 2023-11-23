@@ -64,7 +64,7 @@ void navigate_car_turn(turn_params_t            *p_turn_params,
                        maze_cardinal_direction_t direction);
 
 float calculate_pid(float current_bearing, float target_bearing, float current_ratio, pid_params_t *p_pid_params);
-void bearing_correction(pid_params_t *p_pid_params);
+void bearing_correction(pid_params_t *p_pid_params, bearing_data_t *p_bearing_data);
 
 #endif // PID_H
 

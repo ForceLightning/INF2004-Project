@@ -8,6 +8,7 @@
  * @copyright Copyright (c) 2023
  *
  */
+#include <stdio.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <sys/cdefs.h>
@@ -18,10 +19,7 @@
 
 #include "ultrasonic.h"
 
-static absolute_time_t g_start_time;  // Start time of the pulse.
-static absolute_time_t g_end_time;    // End time of the pulse.
-static uint64_t        g_pulse_width; // Pulse width in us.
-static uint64_t        g_width;       // Pulse width in cycles.
+ultrasonic_data_t g_ultrasonic_data;
 
 /**
  * @brief This function is the interrupt service routine when receiving a
@@ -38,17 +36,17 @@ ultrasonic_pulse_isr (__unused uint gpio, uint32_t events)
     //
     if (GPIO_IRQ_EDGE_RISE == events)
     {
-        g_start_time = get_absolute_time();
-        g_width++;
-        if (ULTRASONIC_TIMEOUT < g_width)
+        g_ultrasonic_data.g_start_time = get_absolute_time();
+        g_ultrasonic_data.g_width++;
+        if (ULTRASONIC_TIMEOUT < g_ultrasonic_data.g_width)
         {
-            g_width = 0;
+            g_ultrasonic_data.g_width = 0;
         }
     }
     else if (GPIO_IRQ_EDGE_FALL == events)
     {
-        g_end_time    = get_absolute_time();
-        g_pulse_width = absolute_time_diff_us(g_start_time, g_end_time);
+        g_ultrasonic_data.g_end_time    = get_absolute_time();
+        g_ultrasonic_data.g_pulse_width = absolute_time_diff_us(g_ultrasonic_data.g_start_time, g_ultrasonic_data.g_end_time);
     }
 }
 
@@ -68,6 +66,7 @@ init_ultrasonic_pins (uint trig_pin, uint echo_pin)
     gpio_init(echo_pin);
     gpio_set_dir(trig_pin, GPIO_OUT);
     gpio_set_dir(echo_pin, GPIO_IN);
+    printf("init ultrasonic pins\n");
     gpio_set_irq_enabled_with_callback(echo_pin,
                                        GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL,
                                        true,
@@ -87,8 +86,8 @@ get_pulse (uint trig_pin, uint echo_pin)
     gpio_put(trig_pin, 1);
     sleep_us(ULTRASONIC_TRIG_PULSE_US);
     gpio_put(trig_pin, 0);
-    g_width = 0;
-    return g_pulse_width;
+    g_ultrasonic_data.g_width = 0;
+    return g_ultrasonic_data.g_pulse_width;
 }
 
 /**
@@ -102,6 +101,8 @@ uint64_t
 get_cm (uint trig_pin, uint echo_pin)
 {
     uint64_t pulse_length = get_pulse(trig_pin, echo_pin);
+    // printf("pulse length: %llu\n", pulse_length);
+
     return pulse_length / 29 / 2;
 }
 
@@ -116,6 +117,7 @@ uint64_t
 get_inches (uint trig_pin, uint echo_pin)
 {
     uint64_t pulse_length = get_pulse(trig_pin, echo_pin);
+    // print("pulse length: %llu\n", pulse_length);
     return (uint64_t)pulse_length / 74.f / 2.f;
 }
 

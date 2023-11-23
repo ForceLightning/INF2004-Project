@@ -51,16 +51,16 @@ typedef struct bearing_data
     float max_bearing;
 } bearing_data_t;
 
-void init_bearing_data();
+void init_bearing_data(bearing_data_t *p_bearing_data);
 
 
 // Function prototypes
 void init_magnetometer();
-void readMagnetometerData();
+void readMagnetometerData(bearing_data_t *p_bearing_data);
 // void reset_true_north();
-uint checkBearingOutOfRange();
-float getTrueBearing();
-float getCurrentBearing();
+uint checkBearingOutOfRange(bearing_data_t *p_bearing_data);
+float getTrueBearing(bearing_data_t *p_bearing_data);
+float getCurrentBearing(bearing_data_t *p_bearing_data);
 #endif // MAGNETOMETER_H
 
 // End of file driver/magnetometer/magnetometer.h.

@@ -37,6 +37,7 @@ setup_adc_pins (uint adc_pin)
 void 
 setup_gpio_pins(uint gpioPinOne, uint gpioPinTwo)
 {
+    printf("hi\n");
     gpio_init(gpioPinOne);
     gpio_init(gpioPinTwo);
     gpio_set_dir(gpioPinOne, GPIO_IN);
@@ -95,6 +96,7 @@ find_wall_directions(uint gpioPinLeft, uint gpioPinFront)
         has_wall += 1;
         
     }
+    printf("has wall: %d\n", has_wall);
     return has_wall;
 }
 

@@ -99,14 +99,14 @@ void configureMagnetometer() {
     writeRegister(MAGNETOMETER_ADDR, MR_REG_M, CRA_REG_M);
 }
 
-void init_bearing_data(){
-    bearing_data.true_heading = 0.0f;
-    bearing_data.current_bearing = 0.0f;
-    bearing_data.min_bearing = 0;
-    bearing_data.max_bearing = 0;
+void init_bearing_data(bearing_data_t *p_bearing_data){
+    p_bearing_data->true_heading = 0.0f;
+    p_bearing_data->current_bearing = 0.0f;
+    p_bearing_data->min_bearing = 0;
+    p_bearing_data->max_bearing = 0;
 }
 
-void readMagnetometerData() {
+void readMagnetometerData(bearing_data_t *p_bearing_data) {
     
     for (;;) {
         int16_t x_acc, y_acc, z_acc;
@@ -128,13 +128,13 @@ void readMagnetometerData() {
             headingDegrees += 360.0;
         }
 
-        bearing_data.current_bearing = headingDegrees;
-        if(!bearing_data.true_heading){
+        p_bearing_data->current_bearing = headingDegrees;
+        if(!p_bearing_data->true_heading){
             printf("DEBUG: Initialising. Heading degrees: %f\n", headingDegrees);
-            bearing_data.is_initialised = true;
-            bearing_data.true_heading = headingDegrees;
-            bearing_data.min_bearing = headingDegrees - BEARING_OFFSET;
-            bearing_data.max_bearing = headingDegrees + BEARING_OFFSET;
+            p_bearing_data->is_initialised = true;
+            p_bearing_data->true_heading = headingDegrees;
+            p_bearing_data->min_bearing = headingDegrees - BEARING_OFFSET;
+            p_bearing_data->max_bearing = headingDegrees + BEARING_OFFSET;
         }
 
         // printf("Compass Heading: %f\n", headingDegrees);
@@ -144,16 +144,16 @@ void readMagnetometerData() {
     }
 }
 
-uint checkBearingOutOfRange(){
-    return (bearing_data.current_bearing < bearing_data.min_bearing || bearing_data.current_bearing > bearing_data.max_bearing);
+uint checkBearingOutOfRange(bearing_data_t *p_bearing_data){
+    return (p_bearing_data->current_bearing < p_bearing_data->min_bearing || p_bearing_data->current_bearing > p_bearing_data->max_bearing);
 }
 
-float getTrueBearing(){
-    return bearing_data.true_heading;
+float getTrueBearing(bearing_data_t *p_bearing_data){
+    return p_bearing_data->true_heading;
 }
 
-float getCurrentBearing(){
-    return bearing_data.current_bearing;
+float getCurrentBearing(bearing_data_t *p_bearing_data){
+    return p_bearing_data->current_bearing;
 }
 
 /**

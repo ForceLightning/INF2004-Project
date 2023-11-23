@@ -42,73 +42,30 @@ else()
 endif()
 
 add_subdirectory(driver)
-add_subdirectory(pathfinding)
 add_subdirectory(pid)
+add_subdirectory(pathfinding)
 
-if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
-    add_executable(car_project_nosys
-        main.c
-        # ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c
-        )
-    target_compile_definitions(car_project_nosys PRIVATE
-        WIFI_SSID=\"${WIFI_SSID}\"
-        WIFI_PASSWORD=\"${WIFI_PASSWORD}\"
-        )
-    target_include_directories(car_project_nosys PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}
-        # ${CMAKE_CURRENT_LIST_DIR}/../.. # for our common lwipopts
-        ${CMAKE_CURRENT_LIST_DIR}/include
-        ${PICO_LWIP_CONTRIB_PATH}/apps/ping
-        )
-    target_link_libraries(car_project_nosys
-        pico_cyw43_arch_lwip_threadsafe_background
-        hardware_adc
-        pico_stdlib
-        pico_lwip_iperf
-        FreeRTOS-Kernel-Heap4 # FreeRTOS kernel and dynamic heap
-        driver
-        pathfinding
-        pid_driver
-        )
-    # enable usb output and uart output
-    pico_enable_stdio_usb(car_project_nosys 1)
-    pico_enable_stdio_uart(car_project_nosys 0)
 
-    # create map/bin/hex file etc.
-    pico_add_extra_outputs(car_project_nosys)
-
-    # add url via pico_set_program_url
-    example_auto_set_url(car_project_nosys)
-
-    add_executable(car_project
-        main.c
-        ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c
-        )
-    target_compile_definitions(car_project PRIVATE
-        WIFI_SSID=\"${WIFI_SSID}\"
-        WIFI_PASSWORD=\"${WIFI_PASSWORD}\"
-        NO_SYS=0            # don't want NO_SYS (generally this would be in your lwipopts.h)
-        LWIP_SOCKET=1       # we need the socket API (generally this would be in your lwipopts.h)
-        PING_USE_SOCKETS=1
-        )
-    target_include_directories(car_project PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}
-        ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts
-        ${CMAKE_CURRENT_LIST_DIR}/include
-        ${PICO_LWIP_CONTRIB_PATH}/apps/ping
-        )
-    target_link_libraries(car_project
-        hardware_adc
-        pico_cyw43_arch_lwip_sys_freertos
-        pico_stdlib
-        pico_lwip_iperf
-        FreeRTOS-Kernel-Heap4 # FreeRTOS kernel and dynamic heap
-        driver
-        pathfinding
-        pid_driver
-        )
-    pico_enable_stdio_usb(car_project 1)
-    pico_enable_stdio_uart(car_project 0)
-    pico_add_extra_outputs(car_project)
-
-endif()
+add_executable(car_project
+    main.c
+    )
+target_compile_definitions(car_project PRIVATE
+    WIFI_SSID=\"${WIFI_SSID}\"
+    WIFI_PASSWORD=\"${WIFI_PASSWORD}\"
+    )
+target_include_directories(car_project PRIVATE
+    ${CMAKE_CURRENT_LIST_DIR}
+    # ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts
+    ${CMAKE_CURRENT_LIST_DIR}/include
+    )
+target_link_libraries(car_project
+    hardware_adc
+    pico_cyw43_arch_none
+    pico_stdlib
+    driver
+    pathfinding
+    pid_driver
+    )
+pico_enable_stdio_usb(car_project 1)
+pico_enable_stdio_uart(car_project 0)
+pico_add_extra_outputs(car_project)

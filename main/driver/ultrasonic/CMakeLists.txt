@@ -16,6 +16,7 @@ set(WIFI_PASSWORD "${WIFI_PASSWORD}" CACHE INTERNAL "WiFi password")
 
 add_executable(ultrasonic
     main.c
+    ultrasonic.c
     )
 
 target_link_libraries(ultrasonic

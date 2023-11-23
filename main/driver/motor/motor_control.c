@@ -15,7 +15,7 @@
 #include "motor_control.h"
 #include "magnetometer/magnetometer.h"
 
-float ratio = 1.05f;
+float ratio = 1.0f;
 
 /**
  * @brief Default initialization of a single motor.
@@ -161,7 +161,7 @@ void
 turn_left (bool reverse_turn)
 {
     update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.2f);
-    update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.5f);
+    update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 1.0f);
 
     if (reverse_turn)
     {
@@ -191,7 +191,7 @@ turn_left (bool reverse_turn)
 void
 turn_right (bool reverse_turn)
 {
-    update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
+    update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 1.0f);
     update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.2f);
 
     if (reverse_turn)

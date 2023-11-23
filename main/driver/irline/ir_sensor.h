@@ -17,6 +17,11 @@ struct flags{
     bool left_wall;
 };
 
+// #define ADC_PIN_LEFT 26 // Pin for left IR_sensor for analog ouput.
+// #define ADC_PIN_FRONT 27 // Pin for front IR_sensor for analog output
+#define GPIO_PIN_LEFT 26 // Pin for left IR_sensor for digital output
+#define GPIO_PIN_FRONT 27 // Pin for front IR_sensor for digital output
+
 // Function prototypes.
 //
 void setup_adc_pins(uint adc_pin);
