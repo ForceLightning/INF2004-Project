@@ -1,6 +1,7 @@
 BSD 3-Clause License
 
-Copyright (c) 2023, Christopher Kok, Jurgen Tan, Bryan Seah, Ang Jia Yu, and the Singapore Institute of Technology. All rights reserved.
+Copyright (c) 2023, Christopher Kok, Jurgen Tan, Bryan Seah, Ang Jia Yu, and
+the Singapore Institute of Technology. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:

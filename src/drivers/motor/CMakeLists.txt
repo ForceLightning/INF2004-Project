@@ -29,3 +29,25 @@ pico_add_extra_outputs(motor)
 
 pico_enable_stdio_usb(motor 1)
 pico_enable_stdio_uart(motor 0)
+
+add_library(motor_driver INTERFACE
+    )
+
+target_sources(motor_driver INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}/motor_control.c
+    )
+
+target_link_libraries(motor_driver INTERFACE
+    pico_stdlib
+    hardware_gpio
+    hardware_pwm
+    )
+
+target_link_directories(motor_driver INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    )
+
+target_include_directories(motor_driver INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}
+    )

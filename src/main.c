@@ -17,7 +17,7 @@
 #include "task.h"
 #include "message_buffer.h"
 
-// #include "irline/ir_sensor.h"
+#include "irline/ir_sensor.h"
 #include "magnetometer/magnetometer.h"
 #include "motor/motor_control.h"
 #include "ultrasonic/ultrasonic.h"

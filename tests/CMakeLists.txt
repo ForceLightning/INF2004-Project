@@ -42,12 +42,12 @@ create_test_sourcelist(srclist test_runner.c ${ctestsrc})
 add_executable(test_runner ${srclist} project_test.c)
 
 target_link_directories(test_runner PRIVATE
-    ${CMAKE_CURRENT_LIST_DIR}/../main
-    ${CMAKE_CURRENT_LIST_DIR}/../main/pathfinding
+    ${CMAKE_CURRENT_LIST_DIR}/../src
+    ${CMAKE_CURRENT_LIST_DIR}/../src/pathfinding
     )
 
 target_include_directories(test_runner PRIVATE
-    ${CMAKE_CURRENT_LIST_DIR}/../main
+    ${CMAKE_CURRENT_LIST_DIR}/../src
     )
 
 target_link_libraries(test_runner PRIVATE

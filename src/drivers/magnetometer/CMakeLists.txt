@@ -31,3 +31,24 @@ pico_enable_stdio_uart(magnetometer 0)
 pico_add_extra_outputs(magnetometer)
 
 example_auto_set_url(magnetometer)
+
+add_library(magnetometer_driver INTERFACE
+    )
+
+target_sources(magnetometer_driver INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}/magnetometer.c
+    )
+
+target_link_libraries(magnetometer_driver INTERFACE
+    pico_stdlib
+    hardware_i2c
+    )
+
+target_link_directories(magnetometer_driver INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    )
+
+target_include_directories(magnetometer_driver INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}
+)

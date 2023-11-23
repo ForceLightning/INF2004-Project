@@ -8,7 +8,7 @@ if (DEFINED ENV{TEST_BUILD})
     include(CTest)
     enable_testing()
     add_subdirectory(tests)
-    add_subdirectory(main/pathfinding)
+    add_subdirectory(src/pathfinding)
 else()
     include(pico_sdk_import.cmake)
 
@@ -43,7 +43,7 @@ else()
     endif()
 
     # Directories
-    add_subdirectory(main)
+    add_subdirectory(src)
 
     target_include_directories(car_project PRIVATE
         ${PICO_SDK_PATH}/include
