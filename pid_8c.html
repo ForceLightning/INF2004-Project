@@ -118,23 +118,21 @@ $(document).ready(function(){initNavTree('pid_8c.html',''); initResizable(); });
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for pid.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="pid_8c__incl.png" border="0" usemap="#amain_2pid_2pid_8c" alt=""/></div>
-<map name="amain_2pid_2pid_8c" id="amain_2pid_2pid_8c">
-<area shape="rect" title=" " alt="" coords="231,5,334,31"/>
-<area shape="rect" href="motor__control_8h.html" title=" " alt="" coords="14,79,162,104"/>
-<area shape="rect" href="maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="251,152,314,177"/>
-<area shape="rect" href="pid_8h.html" title=" " alt="" coords="258,79,307,104"/>
-<area shape="rect" href="magnetometer_8h.html" title="Header file for the magnetometer driver." alt="" coords="332,79,535,104"/>
-<area shape="rect" title=" " alt="" coords="559,79,619,104"/>
-<area shape="rect" title=" " alt="" coords="49,225,124,251"/>
-<area shape="rect" title=" " alt="" coords="21,152,112,177"/>
-<area shape="rect" title=" " alt="" coords="136,152,227,177"/>
-<area shape="rect" title=" " alt="" coords="251,225,315,251"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="pid_8c__incl.svg" width="624" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:aab06760403be2a49cb1fc5997b16d0a6"><td class="memItemLeft" align="right" valign="top"><a id="aab06760403be2a49cb1fc5997b16d0a6" name="aab06760403be2a49cb1fc5997b16d0a6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>bearing_correction</b> (float target_bearing, float current_bearing, <a class="el" href="structpid__params.html">pid_params_t</a> *p_pid_params)</td></tr>
+<tr class="separator:aab06760403be2a49cb1fc5997b16d0a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecce6c03751e0fc8169a1614db629a95"><td class="memItemLeft" align="right" valign="top"><a id="aecce6c03751e0fc8169a1614db629a95" name="aecce6c03751e0fc8169a1614db629a95"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>calculate_pid</b> (float current_bearing, float target_bearing, float current_ratio, <a class="el" href="structpid__params.html">pid_params_t</a> *p_pid_params)</td></tr>
+<tr class="separator:aecce6c03751e0fc8169a1614db629a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97d510886f5f84c9e49e1eaa220d7859"><td class="memItemLeft" align="right" valign="top"><a id="a97d510886f5f84c9e49e1eaa220d7859" name="a97d510886f5f84c9e49e1eaa220d7859"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_pid_error_correction</b> (<a class="el" href="structpid__params.html">pid_params_t</a> *p_pid_params)</td></tr>
+<tr class="separator:a97d510886f5f84c9e49e1eaa220d7859"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d536de103ad5b8b41e9fc2bdb1a9b52"><td class="memItemLeft" align="right" valign="top"><a id="a9d536de103ad5b8b41e9fc2bdb1a9b52" name="a9d536de103ad5b8b41e9fc2bdb1a9b52"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>init_pid_structs</b> (<a class="el" href="structturn__params.html">turn_params_t</a> *p_turn_params)</td></tr>
 <tr class="memdesc:a9d536de103ad5b8b41e9fc2bdb1a9b52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up pid struct(s). <br /></td></tr>
@@ -142,15 +140,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>init_pid_structs</b> 
 <tr class="memitem:a0e5de50418f75fc0da6bce222ceb343d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pid_8c.html#a0e5de50418f75fc0da6bce222ceb343d">navigate_car_turn</a> (<a class="el" href="structturn__params.html">turn_params_t</a> *p_turn_params, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> direction)</td></tr>
 <tr class="memdesc:a0e5de50418f75fc0da6bce222ceb343d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to turn the car based on a given direction.  <a href="pid_8c.html#a0e5de50418f75fc0da6bce222ceb343d">More...</a><br /></td></tr>
 <tr class="separator:a0e5de50418f75fc0da6bce222ceb343d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97d510886f5f84c9e49e1eaa220d7859"><td class="memItemLeft" align="right" valign="top"><a id="a97d510886f5f84c9e49e1eaa220d7859" name="a97d510886f5f84c9e49e1eaa220d7859"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init_pid_error_correction</b> (<a class="el" href="structpid__params.html">pid_params_t</a> *p_pid_params)</td></tr>
-<tr class="separator:a97d510886f5f84c9e49e1eaa220d7859"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecce6c03751e0fc8169a1614db629a95"><td class="memItemLeft" align="right" valign="top"><a id="aecce6c03751e0fc8169a1614db629a95" name="aecce6c03751e0fc8169a1614db629a95"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>calculate_pid</b> (float current_bearing, float target_bearing, float current_ratio, <a class="el" href="structpid__params.html">pid_params_t</a> *p_pid_params)</td></tr>
-<tr class="separator:aecce6c03751e0fc8169a1614db629a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab06760403be2a49cb1fc5997b16d0a6"><td class="memItemLeft" align="right" valign="top"><a id="aab06760403be2a49cb1fc5997b16d0a6" name="aab06760403be2a49cb1fc5997b16d0a6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>bearing_correction</b> (float target_bearing, float current_bearing, <a class="el" href="structpid__params.html">pid_params_t</a> *p_pid_params)</td></tr>
-<tr class="separator:aab06760403be2a49cb1fc5997b16d0a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Bryan Seah </dd></dl>
@@ -192,19 +181,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>bearing_correction</b
   </table>
   </dd>
 </dl>
+
+<p class="reference">References <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4daab5b3793b961949c817c7c0d99c05dad7">EAST</a>, <a class="el" href="pid_8c.html#a9d536de103ad5b8b41e9fc2bdb1a9b52">init_pid_structs()</a>, <a class="el" href="motor__control_8c.html#ae550a3c67881c84d0b773c23e5b3aecd">move_forward()</a>, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4daa8ef5c0bce69283a9986011a63eea8a6b">SOUTH</a>, <a class="el" href="motor__control_8c.html#a2b3e4a3587c92c609c39b1a5778bcf00">turn_left()</a>, <a class="el" href="motor__control_8c.html#adb5876f4cb9a5649408fdff387502929">turn_right()</a>, and <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4daae9449e8683a8199dad36b07a63b2f523">WEST</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="pid_8c_a0e5de50418f75fc0da6bce222ceb343d_cgraph.png" border="0" usemap="#apid_8c_a0e5de50418f75fc0da6bce222ceb343d_cgraph" alt=""/></div>
-<map name="apid_8c_a0e5de50418f75fc0da6bce222ceb343d_cgraph" id="apid_8c_a0e5de50418f75fc0da6bce222ceb343d_cgraph">
-<area shape="rect" title="Function to turn the car based on a given direction." alt="" coords="5,80,131,105"/>
-<area shape="rect" href="pid_8c.html#a9d536de103ad5b8b41e9fc2bdb1a9b52" title="Sets up pid struct(s)." alt="" coords="179,5,289,31"/>
-<area shape="rect" href="motor__control_8c.html#ae550a3c67881c84d0b773c23e5b3aecd" title="A function to move the car forward." alt="" coords="182,55,286,80"/>
-<area shape="rect" href="motor__control_8c.html#a2b3e4a3587c92c609c39b1a5778bcf00" title="A function to turn the car left." alt="" coords="199,104,269,129"/>
-<area shape="rect" href="motor__control_8c.html#adb5876f4cb9a5649408fdff387502929" title="A function to turn the car right." alt="" coords="196,153,272,179"/>
-<area shape="rect" href="motor__control_8c.html#af0ebed13ef30e857d8c5cbda43c8f7c0" title="A function to update the direction of the motor&#39;s rotation." alt="" coords="337,80,455,105"/>
-<area shape="rect" href="motor__control_8c.html#aa20774b583539f8a2698c2f8ac6d4334" title="A function to update the PWM duty cycle and wrap value." alt="" coords="348,129,444,155"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="pid_8c_a0e5de50418f75fc0da6bce222ceb343d_cgraph.svg" width="460" height="184"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

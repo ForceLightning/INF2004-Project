@@ -118,31 +118,28 @@ $(document).ready(function(){initNavTree('structtcp__server.html',''); initResiz
 <div class="dynheader">
 Collaboration diagram for tcp_server:</div>
 <div class="dyncontent">
-<div class="center"><img src="structtcp__server__coll__graph.png" border="0" usemap="#atcp__server_coll__map" alt="Collaboration graph"/></div>
-<map name="atcp__server_coll__map" id="atcp__server_coll__map">
-<area shape="rect" title="Struct representing a TCP server connection." alt="" coords="5,108,88,133"/>
-<area shape="rect" title=" " alt="" coords="19,5,74,31"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structtcp__server__coll__graph.svg" width="118" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a1ddc43510b44a00f929f873709506b33"><td class="memItemLeft" align="right" valign="top">struct tcp_pcb *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtcp__server.html#a1ddc43510b44a00f929f873709506b33">server_pcb</a></td></tr>
-<tr class="separator:a1ddc43510b44a00f929f873709506b33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab982513ef4174fb8e848390c216c8190"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtcp__server.html#ab982513ef4174fb8e848390c216c8190">buffer_recv</a> [BUF_SIZE]</td></tr>
+<tr class="separator:ab982513ef4174fb8e848390c216c8190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83d69afc3bf289e483e81587d8738692"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtcp__server.html#a83d69afc3bf289e483e81587d8738692">buffer_sent</a> [BUF_SIZE]</td></tr>
+<tr class="separator:a83d69afc3bf289e483e81587d8738692"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37b7f6cb567a169b376526b57559319e"><td class="memItemLeft" align="right" valign="top">struct tcp_pcb *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtcp__server.html#a37b7f6cb567a169b376526b57559319e">client_pcb</a></td></tr>
 <tr class="separator:a37b7f6cb567a169b376526b57559319e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6b1fef28954e41d75acf35f76bc8d39"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtcp__server.html#af6b1fef28954e41d75acf35f76bc8d39">complete</a></td></tr>
 <tr class="separator:af6b1fef28954e41d75acf35f76bc8d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83d69afc3bf289e483e81587d8738692"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtcp__server.html#a83d69afc3bf289e483e81587d8738692">buffer_sent</a> [BUF_SIZE]</td></tr>
-<tr class="separator:a83d69afc3bf289e483e81587d8738692"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab982513ef4174fb8e848390c216c8190"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtcp__server.html#ab982513ef4174fb8e848390c216c8190">buffer_recv</a> [BUF_SIZE]</td></tr>
-<tr class="separator:ab982513ef4174fb8e848390c216c8190"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79a428820b513503b6589f9e8ed7ef49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtcp__server.html#a79a428820b513503b6589f9e8ed7ef49">sent_len</a></td></tr>
-<tr class="separator:a79a428820b513503b6589f9e8ed7ef49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87070e93bad893ca3fddbe2853173b5c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtcp__server.html#a87070e93bad893ca3fddbe2853173b5c">recv_len</a></td></tr>
 <tr class="separator:a87070e93bad893ca3fddbe2853173b5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a29572e19988c3954cb886b5325e07c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtcp__server.html#a0a29572e19988c3954cb886b5325e07c">run_count</a></td></tr>
 <tr class="separator:a0a29572e19988c3954cb886b5325e07c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79a428820b513503b6589f9e8ed7ef49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtcp__server.html#a79a428820b513503b6589f9e8ed7ef49">sent_len</a></td></tr>
+<tr class="separator:a79a428820b513503b6589f9e8ed7ef49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ddc43510b44a00f929f873709506b33"><td class="memItemLeft" align="right" valign="top">struct tcp_pcb *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtcp__server.html#a1ddc43510b44a00f929f873709506b33">server_pcb</a></td></tr>
+<tr class="separator:a1ddc43510b44a00f929f873709506b33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Struct representing a TCP server connection. </p>

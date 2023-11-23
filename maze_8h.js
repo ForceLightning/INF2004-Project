@@ -1,11 +1,11 @@
 var maze_8h =
 [
-    [ "maze_point", "structmaze__point.html", "structmaze__point" ],
-    [ "maze_grid_cell", "structmaze__grid__cell.html", "structmaze__grid__cell" ],
-    [ "maze_grid", "structmaze__grid.html", "structmaze__grid" ],
-    [ "maze_navigator_state", "structmaze__navigator__state.html", "structmaze__navigator__state" ],
-    [ "maze_gap_bitmask", "structmaze__gap__bitmask.html", "structmaze__gap__bitmask" ],
     [ "maze_bitmask_compressed", "unionmaze__bitmask__compressed.html", "unionmaze__bitmask__compressed" ],
+    [ "maze_gap_bitmask", "structmaze__gap__bitmask.html", "structmaze__gap__bitmask" ],
+    [ "maze_grid", "structmaze__grid.html", "structmaze__grid" ],
+    [ "maze_grid_cell", "structmaze__grid__cell.html", "structmaze__grid__cell" ],
+    [ "maze_navigator_state", "structmaze__navigator__state.html", "structmaze__navigator__state" ],
+    [ "maze_point", "structmaze__point.html", "structmaze__point" ],
     [ "maze_gap_bitmask_t", "maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2", null ],
     [ "maze_cardinal_direction_t", "maze_8h.html#acc7f25a6419c912c96df8a247f83c4da", [
       [ "NORTH", "maze_8h.html#acc7f25a6419c912c96df8a247f83c4daad0611de6f28d4a9c9eac959f5344698e", null ],

@@ -122,24 +122,14 @@ $(document).ready(function(){initNavTree('wifi_8h.html',''); initResizable(); })
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for wifi.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="wifi_8h__incl.png" border="0" usemap="#amain_2driver_2wifi_2wifi_8h" alt=""/></div>
-<map name="amain_2driver_2wifi_2wifi_8h" id="amain_2driver_2wifi_2wifi_8h">
-<area shape="rect" title="Header file for WiFi module. This file contains the function prototypes and data structures for the W..." alt="" coords="60,5,203,31"/>
-<area shape="rect" title=" " alt="" coords="5,79,65,104"/>
-<area shape="rect" title=" " alt="" coords="89,79,173,104"/>
-<area shape="rect" title=" " alt="" coords="198,79,275,104"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="wifi_8h__incl.svg" width="282" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="wifi_8h__dep__incl.png" border="0" usemap="#amain_2driver_2wifi_2wifi_8hdep" alt=""/></div>
-<map name="amain_2driver_2wifi_2wifi_8hdep" id="amain_2driver_2wifi_2wifi_8hdep">
-<area shape="rect" title="Header file for WiFi module. This file contains the function prototypes and data structures for the W..." alt="" coords="180,5,323,31"/>
-<area shape="rect" href="driver_2wifi_2main_8c.html" title="Demonstration for the WiFi driver." alt="" coords="5,79,156,104"/>
-<area shape="rect" href="wifi_8c.html" title="This file contains the implementation of a TCP server using lwIP. The TCP server is initialized using..." alt="" coords="180,79,323,104"/>
-<area shape="rect" href="main_8c.html" title="The main source file for robot control." alt="" coords="347,79,439,104"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="wifi_8h__dep__incl.svg" width="444" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 </div>
 <p><a href="wifi_8h_source.html">Go to the source code of this file.</a></p>
@@ -167,21 +157,21 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8faaa2937ee6590e64f6559fa97ac534"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wifi_8h.html#a8faaa2937ee6590e64f6559fa97ac534">tcp_server_begin_init</a> ()</td></tr>
-<tr class="memdesc:a8faaa2937ee6590e64f6559fa97ac534"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the TCP server by initializing standard input/output, initializing the CYW43 architecture, and enabling station mode.  <a href="wifi_8h.html#a8faaa2937ee6590e64f6559fa97ac534">More...</a><br /></td></tr>
-<tr class="separator:a8faaa2937ee6590e64f6559fa97ac534"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b99dfc6ff79b395d123e88925e6625f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wifi_8h.html#a2b99dfc6ff79b395d123e88925e6625f">tcp_server_begin</a> ()</td></tr>
-<tr class="memdesc:a2b99dfc6ff79b395d123e88925e6625f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begins a TCP server by connecting to Wi-Fi with the given SSID and password.  <a href="wifi_8h.html#a2b99dfc6ff79b395d123e88925e6625f">More...</a><br /></td></tr>
-<tr class="separator:a2b99dfc6ff79b395d123e88925e6625f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7dd2bc01d0e168a03d0e1acb51ac88d6"><td class="memItemLeft" align="right" valign="top">err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wifi_8h.html#a7dd2bc01d0e168a03d0e1acb51ac88d6">tcp_server_send_data</a> (void *p_arg, struct tcp_pcb *p_tpcb)</td></tr>
-<tr class="memdesc:a7dd2bc01d0e168a03d0e1acb51ac88d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is a callback from lwIP, so cyw43_arch_lwip_begin is not required. However, you can use this method to cause an assertion in debug mode if this method is called when cyw43_arch_lwip_begin IS needed.  <a href="wifi_8h.html#a7dd2bc01d0e168a03d0e1acb51ac88d6">More...</a><br /></td></tr>
-<tr class="separator:a7dd2bc01d0e168a03d0e1acb51ac88d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe23238ac7d1d558a3574f0199db1b87"><td class="memItemLeft" align="right" valign="top">err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wifi_8h.html#abe23238ac7d1d558a3574f0199db1b87">tcp_server_recv</a> (void *p_arg, __unused struct tcp_pcb *p_tpcb, struct pbuf *p_buf, __unused err_t err)</td></tr>
-<tr class="memdesc:abe23238ac7d1d558a3574f0199db1b87"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is called by lwIP when data is received from a TCP client. It receives the data and checks if a complete message has been received (e.g., terminated by a newline character). If a complete message has been received, it null-terminates the received data, prints it to the console, and resets the receive buffer.  <a href="wifi_8h.html#abe23238ac7d1d558a3574f0199db1b87">More...</a><br /></td></tr>
-<tr class="separator:abe23238ac7d1d558a3574f0199db1b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98d152d32cdf64cc1a86388de3187816"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wifi_8h.html#a98d152d32cdf64cc1a86388de3187816">run_tcp_server_test</a> (void)</td></tr>
 <tr class="memdesc:a98d152d32cdf64cc1a86388de3187816"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs a TCP server and opens it. Then, it enters a loop to check for Wi-Fi driver or lwIP work that needs to be done. If using pico_cyw43_arch_poll, it polls periodically from the main loop to check for work. Otherwise, it sleeps for 1000ms.  <a href="wifi_8h.html#a98d152d32cdf64cc1a86388de3187816">More...</a><br /></td></tr>
 <tr class="separator:a98d152d32cdf64cc1a86388de3187816"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b99dfc6ff79b395d123e88925e6625f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wifi_8h.html#a2b99dfc6ff79b395d123e88925e6625f">tcp_server_begin</a> ()</td></tr>
+<tr class="memdesc:a2b99dfc6ff79b395d123e88925e6625f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begins a TCP server by connecting to Wi-Fi with the given SSID and password.  <a href="wifi_8h.html#a2b99dfc6ff79b395d123e88925e6625f">More...</a><br /></td></tr>
+<tr class="separator:a2b99dfc6ff79b395d123e88925e6625f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8faaa2937ee6590e64f6559fa97ac534"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wifi_8h.html#a8faaa2937ee6590e64f6559fa97ac534">tcp_server_begin_init</a> ()</td></tr>
+<tr class="memdesc:a8faaa2937ee6590e64f6559fa97ac534"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the TCP server by initializing standard input/output, initializing the CYW43 architecture, and enabling station mode.  <a href="wifi_8h.html#a8faaa2937ee6590e64f6559fa97ac534">More...</a><br /></td></tr>
+<tr class="separator:a8faaa2937ee6590e64f6559fa97ac534"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe23238ac7d1d558a3574f0199db1b87"><td class="memItemLeft" align="right" valign="top">err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wifi_8h.html#abe23238ac7d1d558a3574f0199db1b87">tcp_server_recv</a> (void *p_arg, __unused struct tcp_pcb *p_tpcb, struct pbuf *p_buf, __unused err_t err)</td></tr>
+<tr class="memdesc:abe23238ac7d1d558a3574f0199db1b87"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is called by lwIP when data is received from a TCP client. It receives the data and checks if a complete message has been received (e.g., terminated by a newline character). If a complete message has been received, it null-terminates the received data, prints it to the console, and resets the receive buffer.  <a href="wifi_8h.html#abe23238ac7d1d558a3574f0199db1b87">More...</a><br /></td></tr>
+<tr class="separator:abe23238ac7d1d558a3574f0199db1b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dd2bc01d0e168a03d0e1acb51ac88d6"><td class="memItemLeft" align="right" valign="top">err_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wifi_8h.html#a7dd2bc01d0e168a03d0e1acb51ac88d6">tcp_server_send_data</a> (void *p_arg, struct tcp_pcb *p_tpcb)</td></tr>
+<tr class="memdesc:a7dd2bc01d0e168a03d0e1acb51ac88d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is a callback from lwIP, so cyw43_arch_lwip_begin is not required. However, you can use this method to cause an assertion in debug mode if this method is called when cyw43_arch_lwip_begin IS needed.  <a href="wifi_8h.html#a7dd2bc01d0e168a03d0e1acb51ac88d6">More...</a><br /></td></tr>
+<tr class="separator:a7dd2bc01d0e168a03d0e1acb51ac88d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Header file for WiFi module. This file contains the function prototypes and data structures for the WiFi module. The module provides a TCP server that can be initialized and started using the functions <a class="el" href="wifi_8h.html#a8faaa2937ee6590e64f6559fa97ac534" title="Initializes the TCP server by initializing standard input/output, initializing the CYW43 architecture...">tcp_server_begin_init()</a> and <a class="el" href="wifi_8h.html#a2b99dfc6ff79b395d123e88925e6625f" title="Begins a TCP server by connecting to Wi-Fi with the given SSID and password.">tcp_server_begin()</a>. The TCP server uses lwIP library for network communication and has a buffer size of 2048 bytes. </p>
@@ -242,14 +232,13 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The code contains a note that assumes certain conditions have been met before the function can be executed. These conditions include the inclusion of necessary libraries and header files, definition of macros, structs and functions, allocation of memory, setup of hardware and network configurations, granting of permissions, opening of necessary ports, implementation of error handling, and cleanup. </dd></dl>
+
+<p class="reference">References <a class="el" href="structtcp__server.html#af6b1fef28954e41d75acf35f76bc8d39">tcp_server::complete</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="wifi_8h_a98d152d32cdf64cc1a86388de3187816_icgraph.png" border="0" usemap="#awifi_8h_a98d152d32cdf64cc1a86388de3187816_icgraph" alt=""/></div>
-<map name="awifi_8h_a98d152d32cdf64cc1a86388de3187816_icgraph" id="awifi_8h_a98d152d32cdf64cc1a86388de3187816_icgraph">
-<area shape="rect" title="Runs a TCP server and opens it. Then, it enters a loop to check for Wi&#45;Fi driver or lwIP work that ne..." alt="" coords="175,5,312,31"/>
-<area shape="rect" href="wifi_8c.html#a2b99dfc6ff79b395d123e88925e6625f" title="Begins a TCP server by connecting to Wi&#45;Fi with the given SSID and password." alt="" coords="5,5,127,31"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="wifi_8h_a98d152d32cdf64cc1a86388de3187816_icgraph.svg" width="318" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -277,14 +266,13 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+<p class="reference">References <a class="el" href="wifi_8c.html#a98d152d32cdf64cc1a86388de3187816">run_tcp_server_test()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="wifi_8h_a2b99dfc6ff79b395d123e88925e6625f_cgraph.png" border="0" usemap="#awifi_8h_a2b99dfc6ff79b395d123e88925e6625f_cgraph" alt=""/></div>
-<map name="awifi_8h_a2b99dfc6ff79b395d123e88925e6625f_cgraph" id="awifi_8h_a2b99dfc6ff79b395d123e88925e6625f_cgraph">
-<area shape="rect" title="Begins a TCP server by connecting to Wi&#45;Fi with the given SSID and password." alt="" coords="5,5,127,31"/>
-<area shape="rect" href="wifi_8c.html#a98d152d32cdf64cc1a86388de3187816" title="Runs a TCP server and opens it. Then, it enters a loop to check for Wi&#45;Fi driver or lwIP work that ne..." alt="" coords="175,5,312,31"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="wifi_8h_a2b99dfc6ff79b395d123e88925e6625f_cgraph.svg" width="318" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -364,14 +352,13 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>err_t Error code. </dd></dl>
+
+<p class="reference">References <a class="el" href="structtcp__server.html#ab982513ef4174fb8e848390c216c8190">tcp_server::buffer_recv</a>, <a class="el" href="structtcp__server.html#a37b7f6cb567a169b376526b57559319e">tcp_server::client_pcb</a>, <a class="el" href="structtcp__server.html#a87070e93bad893ca3fddbe2853173b5c">tcp_server::recv_len</a>, and <a class="el" href="wifi_8c.html#a7dd2bc01d0e168a03d0e1acb51ac88d6">tcp_server_send_data()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="wifi_8h_abe23238ac7d1d558a3574f0199db1b87_cgraph.png" border="0" usemap="#awifi_8h_abe23238ac7d1d558a3574f0199db1b87_cgraph" alt=""/></div>
-<map name="awifi_8h_abe23238ac7d1d558a3574f0199db1b87_cgraph" id="awifi_8h_abe23238ac7d1d558a3574f0199db1b87_cgraph">
-<area shape="rect" title="This function is called by lwIP when data is received from a TCP client. It receives the data and che..." alt="" coords="5,5,120,31"/>
-<area shape="rect" href="wifi_8c.html#a7dd2bc01d0e168a03d0e1acb51ac88d6" title="This function is a callback from lwIP, so cyw43_arch_lwip_begin is not required. However,..." alt="" coords="168,5,319,31"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="wifi_8h_abe23238ac7d1d558a3574f0199db1b87_cgraph.svg" width="324" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -411,14 +398,13 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>err_t value indicating success or failure. </dd></dl>
+
+<p class="reference">References <a class="el" href="structtcp__server.html#a83d69afc3bf289e483e81587d8738692">tcp_server::buffer_sent</a>, and <a class="el" href="structtcp__server.html#a79a428820b513503b6589f9e8ed7ef49">tcp_server::sent_len</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="wifi_8h_a7dd2bc01d0e168a03d0e1acb51ac88d6_icgraph.png" border="0" usemap="#awifi_8h_a7dd2bc01d0e168a03d0e1acb51ac88d6_icgraph" alt=""/></div>
-<map name="awifi_8h_a7dd2bc01d0e168a03d0e1acb51ac88d6_icgraph" id="awifi_8h_a7dd2bc01d0e168a03d0e1acb51ac88d6_icgraph">
-<area shape="rect" title="This function is a callback from lwIP, so cyw43_arch_lwip_begin is not required. However,..." alt="" coords="168,5,319,31"/>
-<area shape="rect" href="wifi_8c.html#abe23238ac7d1d558a3574f0199db1b87" title="This function is called by lwIP when data is received from a TCP client. It receives the data and che..." alt="" coords="5,5,120,31"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="wifi_8h_a7dd2bc01d0e168a03d0e1acb51ac88d6_icgraph.svg" width="324" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

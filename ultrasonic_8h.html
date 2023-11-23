@@ -117,13 +117,8 @@ $(document).ready(function(){initNavTree('ultrasonic_8h.html',''); initResizable
 <div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="ultrasonic_8h__dep__incl.png" border="0" usemap="#amain_2driver_2ultrasonic_2ultrasonic_8hdep" alt=""/></div>
-<map name="amain_2driver_2ultrasonic_2ultrasonic_8hdep" id="amain_2driver_2ultrasonic_2ultrasonic_8hdep">
-<area shape="rect" title="Header file for the ultrasonic sensor driver." alt="" coords="176,5,323,45"/>
-<area shape="rect" href="driver_2ultrasonic_2main_8c.html" title="Demonstration for the Ultrasonic driver." alt="" coords="5,93,152,133"/>
-<area shape="rect" href="ultrasonic_8c.html" title="Driver code for the ultrasonic sensor." alt="" coords="176,93,323,133"/>
-<area shape="rect" href="main_8c.html" title="The main source file for robot control." alt="" coords="347,101,439,126"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="ultrasonic_8h__dep__incl.svg" width="446" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 </div>
 <p><a href="ultrasonic_8h_source.html">Go to the source code of this file.</a></p>
@@ -139,18 +134,18 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a94564229f0a38762ef97e9f32990895f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ultrasonic_8h.html#a94564229f0a38762ef97e9f32990895f">init_ultrasonic_pins</a> (uint trig_pin, uint echo_pin)</td></tr>
-<tr class="memdesc:a94564229f0a38762ef97e9f32990895f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initalises the pins for the ultrasonic sensor.  <a href="ultrasonic_8h.html#a94564229f0a38762ef97e9f32990895f">More...</a><br /></td></tr>
-<tr class="separator:a94564229f0a38762ef97e9f32990895f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8afe1af0eb541451138cf3e7369a4e5"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ultrasonic_8h.html#aa8afe1af0eb541451138cf3e7369a4e5">get_pulse</a> (uint trig_pin, uint echo_pin)</td></tr>
-<tr class="memdesc:aa8afe1af0eb541451138cf3e7369a4e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the pulse length in cycles.  <a href="ultrasonic_8h.html#aa8afe1af0eb541451138cf3e7369a4e5">More...</a><br /></td></tr>
-<tr class="separator:aa8afe1af0eb541451138cf3e7369a4e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae451660745e5e099dd66724c79e4d824"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ultrasonic_8h.html#ae451660745e5e099dd66724c79e4d824">get_cm</a> (uint trig_pin, uint echo_pin)</td></tr>
 <tr class="memdesc:ae451660745e5e099dd66724c79e4d824"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the distance to an object in centimetres.  <a href="ultrasonic_8h.html#ae451660745e5e099dd66724c79e4d824">More...</a><br /></td></tr>
 <tr class="separator:ae451660745e5e099dd66724c79e4d824"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a123f64dd2828e7f9efdc7de1a467eed7"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ultrasonic_8h.html#a123f64dd2828e7f9efdc7de1a467eed7">get_inches</a> (uint trig_pin, uint echo_pin)</td></tr>
 <tr class="memdesc:a123f64dd2828e7f9efdc7de1a467eed7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the distance to an object in inches.  <a href="ultrasonic_8h.html#a123f64dd2828e7f9efdc7de1a467eed7">More...</a><br /></td></tr>
 <tr class="separator:a123f64dd2828e7f9efdc7de1a467eed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8afe1af0eb541451138cf3e7369a4e5"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ultrasonic_8h.html#aa8afe1af0eb541451138cf3e7369a4e5">get_pulse</a> (uint trig_pin, uint echo_pin)</td></tr>
+<tr class="memdesc:aa8afe1af0eb541451138cf3e7369a4e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the pulse length in cycles.  <a href="ultrasonic_8h.html#aa8afe1af0eb541451138cf3e7369a4e5">More...</a><br /></td></tr>
+<tr class="separator:aa8afe1af0eb541451138cf3e7369a4e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94564229f0a38762ef97e9f32990895f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ultrasonic_8h.html#a94564229f0a38762ef97e9f32990895f">init_ultrasonic_pins</a> (uint trig_pin, uint echo_pin)</td></tr>
+<tr class="memdesc:a94564229f0a38762ef97e9f32990895f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initalises the pins for the ultrasonic sensor.  <a href="ultrasonic_8h.html#a94564229f0a38762ef97e9f32990895f">More...</a><br /></td></tr>
+<tr class="separator:a94564229f0a38762ef97e9f32990895f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Header file for the ultrasonic sensor driver. </p>
@@ -194,14 +189,13 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>uint64_t The distance to an object in centimetres. </dd></dl>
+
+<p class="reference">References <a class="el" href="ultrasonic_8c.html#aa8afe1af0eb541451138cf3e7369a4e5">get_pulse()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="ultrasonic_8h_ae451660745e5e099dd66724c79e4d824_cgraph.png" border="0" usemap="#aultrasonic_8h_ae451660745e5e099dd66724c79e4d824_cgraph" alt=""/></div>
-<map name="aultrasonic_8h_ae451660745e5e099dd66724c79e4d824_cgraph" id="aultrasonic_8h_ae451660745e5e099dd66724c79e4d824_cgraph">
-<area shape="rect" title="Get the distance to an object in centimetres." alt="" coords="5,5,71,31"/>
-<area shape="rect" href="ultrasonic_8c.html#aa8afe1af0eb541451138cf3e7369a4e5" title="Get the pulse length in cycles." alt="" coords="119,5,197,31"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="ultrasonic_8h_ae451660745e5e099dd66724c79e4d824_cgraph.svg" width="203" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -241,14 +235,13 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>uint64_t The distance to an object in inches. </dd></dl>
+
+<p class="reference">References <a class="el" href="ultrasonic_8c.html#aa8afe1af0eb541451138cf3e7369a4e5">get_pulse()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="ultrasonic_8h_a123f64dd2828e7f9efdc7de1a467eed7_cgraph.png" border="0" usemap="#aultrasonic_8h_a123f64dd2828e7f9efdc7de1a467eed7_cgraph" alt=""/></div>
-<map name="aultrasonic_8h_a123f64dd2828e7f9efdc7de1a467eed7_cgraph" id="aultrasonic_8h_a123f64dd2828e7f9efdc7de1a467eed7_cgraph">
-<area shape="rect" title="Get the distance to an object in inches." alt="" coords="5,5,91,31"/>
-<area shape="rect" href="ultrasonic_8c.html#aa8afe1af0eb541451138cf3e7369a4e5" title="Get the pulse length in cycles." alt="" coords="139,5,217,31"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="ultrasonic_8h_a123f64dd2828e7f9efdc7de1a467eed7_cgraph.svg" width="223" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -291,12 +284,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="ultrasonic_8h_aa8afe1af0eb541451138cf3e7369a4e5_icgraph.png" border="0" usemap="#aultrasonic_8h_aa8afe1af0eb541451138cf3e7369a4e5_icgraph" alt=""/></div>
-<map name="aultrasonic_8h_aa8afe1af0eb541451138cf3e7369a4e5_icgraph" id="aultrasonic_8h_aa8afe1af0eb541451138cf3e7369a4e5_icgraph">
-<area shape="rect" title="Get the pulse length in cycles." alt="" coords="139,31,217,56"/>
-<area shape="rect" href="ultrasonic_8c.html#ae451660745e5e099dd66724c79e4d824" title="Get the distance to an object in centimetres." alt="" coords="15,5,81,31"/>
-<area shape="rect" href="ultrasonic_8c.html#a123f64dd2828e7f9efdc7de1a467eed7" title="Get the distance to an object in inches." alt="" coords="5,55,91,80"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="ultrasonic_8h_aa8afe1af0eb541451138cf3e7369a4e5_icgraph.svg" width="223" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

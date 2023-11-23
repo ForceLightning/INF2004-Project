@@ -122,40 +122,23 @@ $(document).ready(function(){initNavTree('binary__heap_8h.html',''); initResizab
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for binary_heap.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="binary__heap_8h__incl.png" border="0" usemap="#amain_2pathfinding_2binary__heap_8h" alt=""/></div>
-<map name="amain_2pathfinding_2binary__heap_8h" id="amain_2pathfinding_2binary__heap_8h">
-<area shape="rect" title="This file contains the declarations for the binary min&#45;heap used in the a* algorithm." alt="" coords="29,5,184,45"/>
-<area shape="rect" title=" " alt="" coords="5,167,69,192"/>
-<area shape="rect" href="maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="75,93,138,119"/>
-<area shape="rect" title=" " alt="" coords="162,93,222,119"/>
-<area shape="rect" title=" " alt="" coords="93,167,168,192"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="binary__heap_8h__incl.svg" width="228" height="198"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="binary__heap_8h__dep__incl.png" border="0" usemap="#amain_2pathfinding_2binary__heap_8hdep" alt=""/></div>
-<map name="amain_2pathfinding_2binary__heap_8hdep" id="amain_2pathfinding_2binary__heap_8hdep">
-<area shape="rect" title="This file contains the declarations for the binary min&#45;heap used in the a* algorithm." alt="" coords="378,5,533,45"/>
-<area shape="rect" href="a__star_8c.html" title="Source file for the implementation of the a* algorithm." alt="" coords="5,181,132,221"/>
-<area shape="rect" href="a__star_8h.html" title="Header file for the a* algorithm." alt="" coords="139,93,265,133"/>
-<area shape="rect" href="binary__heap_8c.html" title="Source file for the binary min&#45;heap used in the a* algorithm and floodfill algorithm." alt="" coords="290,93,445,133"/>
-<area shape="rect" href="dfs_8c.html" title="Runs the depth first search algorithm on a maze." alt="" coords="469,101,617,126"/>
-<area shape="rect" href="floodfill_8c.html" title="This file contains the implementation of the floodfill algorithm for mapping the maze and determining..." alt="" coords="641,101,811,126"/>
-<area shape="rect" href="dfs__tests_8c.html" title="This file containst the functions that test the depth first search algorithm with a simulated navigat..." alt="" coords="835,101,953,126"/>
-<area shape="rect" href="main_8c.html" title="The main source file for robot control." alt="" coords="156,189,248,214"/>
-<area shape="rect" href="navigation__tests_8c.html" title="Tests the combined navigational functions." alt="" coords="273,189,433,214"/>
-<area shape="rect" href="pathfinding__tests_8c.html" title="This file contains the tests for the A* pathfinding algorithm." alt="" coords="457,189,619,214"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="binary__heap_8h__dep__incl.svg" width="959" height="227"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 </div>
 <p><a href="binary__heap_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structbinary__heap__node.html">binary_heap_node</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structbinary__heap.html">binary_heap</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structbinary__heap__node.html">binary_heap_node</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -175,24 +158,24 @@ typedef struct <a class="el" href="structbinary__heap__node.html">binary_heap_no
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a76720d1612568af283cab311e6506150"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8h.html#a76720d1612568af283cab311e6506150">binary_heapify_up</a> (<a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *p_heap, uint16_t index)</td></tr>
-<tr class="memdesc:a76720d1612568af283cab311e6506150"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the node at the given index down the binary heap to maintain the heap property. This in effect raises the node to the correct position.  <a href="binary__heap_8h.html#a76720d1612568af283cab311e6506150">More...</a><br /></td></tr>
-<tr class="separator:a76720d1612568af283cab311e6506150"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7dff85ea558ed732c081ab37b97ba5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8h.html#ae7dff85ea558ed732c081ab37b97ba5d">binary_heapify_down</a> (<a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *p_heap, uint16_t index)</td></tr>
-<tr class="memdesc:ae7dff85ea558ed732c081ab37b97ba5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the node at the given index up the binary heap to maintain the heap property. This is in effect lowers the node to the correct position.  <a href="binary__heap_8h.html#ae7dff85ea558ed732c081ab37b97ba5d">More...</a><br /></td></tr>
-<tr class="separator:ae7dff85ea558ed732c081ab37b97ba5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2c52107ee2c491443e7f8f3cafa9edd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8h.html#ae2c52107ee2c491443e7f8f3cafa9edd">binary_heap_insert</a> (<a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *p_heap, <a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *p_maze_node, uint16_t priority)</td></tr>
-<tr class="memdesc:ae2c52107ee2c491443e7f8f3cafa9edd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts a grid cell node into the binary heap with a given priority.  <a href="binary__heap_8h.html#ae2c52107ee2c491443e7f8f3cafa9edd">More...</a><br /></td></tr>
-<tr class="separator:ae2c52107ee2c491443e7f8f3cafa9edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af38f858070d3c5f43dcb2b9a38920082"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8h.html#af38f858070d3c5f43dcb2b9a38920082">binary_heap_delete_min</a> (<a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *p_heap)</td></tr>
 <tr class="memdesc:af38f858070d3c5f43dcb2b9a38920082"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes and returns the root node from the binary heap.  <a href="binary__heap_8h.html#af38f858070d3c5f43dcb2b9a38920082">More...</a><br /></td></tr>
 <tr class="separator:af38f858070d3c5f43dcb2b9a38920082"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad06768f1a7c61c92aa00fe5a3a33dbc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbinary__heap__node.html">binary_heap_node_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8h.html#ad06768f1a7c61c92aa00fe5a3a33dbc2">binary_heap_peek</a> (<a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *p_heap)</td></tr>
-<tr class="memdesc:ad06768f1a7c61c92aa00fe5a3a33dbc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peeks at the root node of the binary heap.  <a href="binary__heap_8h.html#ad06768f1a7c61c92aa00fe5a3a33dbc2">More...</a><br /></td></tr>
-<tr class="separator:ad06768f1a7c61c92aa00fe5a3a33dbc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7eeedd36046d03eb1321e3e191895ec4"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8h.html#a7eeedd36046d03eb1321e3e191895ec4">binary_heap_get_node_idx</a> (const <a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *p_heap, const <a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *p_maze_node)</td></tr>
 <tr class="memdesc:a7eeedd36046d03eb1321e3e191895ec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the index of a given node in the binary heap if it exists. Otherwise, returns UINT16_MAX.  <a href="binary__heap_8h.html#a7eeedd36046d03eb1321e3e191895ec4">More...</a><br /></td></tr>
 <tr class="separator:a7eeedd36046d03eb1321e3e191895ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2c52107ee2c491443e7f8f3cafa9edd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8h.html#ae2c52107ee2c491443e7f8f3cafa9edd">binary_heap_insert</a> (<a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *p_heap, <a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *p_maze_node, uint16_t priority)</td></tr>
+<tr class="memdesc:ae2c52107ee2c491443e7f8f3cafa9edd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts a grid cell node into the binary heap with a given priority.  <a href="binary__heap_8h.html#ae2c52107ee2c491443e7f8f3cafa9edd">More...</a><br /></td></tr>
+<tr class="separator:ae2c52107ee2c491443e7f8f3cafa9edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad06768f1a7c61c92aa00fe5a3a33dbc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbinary__heap__node.html">binary_heap_node_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8h.html#ad06768f1a7c61c92aa00fe5a3a33dbc2">binary_heap_peek</a> (<a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *p_heap)</td></tr>
+<tr class="memdesc:ad06768f1a7c61c92aa00fe5a3a33dbc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peeks at the root node of the binary heap.  <a href="binary__heap_8h.html#ad06768f1a7c61c92aa00fe5a3a33dbc2">More...</a><br /></td></tr>
+<tr class="separator:ad06768f1a7c61c92aa00fe5a3a33dbc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7dff85ea558ed732c081ab37b97ba5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8h.html#ae7dff85ea558ed732c081ab37b97ba5d">binary_heapify_down</a> (<a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *p_heap, uint16_t index)</td></tr>
+<tr class="memdesc:ae7dff85ea558ed732c081ab37b97ba5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the node at the given index up the binary heap to maintain the heap property. This is in effect lowers the node to the correct position.  <a href="binary__heap_8h.html#ae7dff85ea558ed732c081ab37b97ba5d">More...</a><br /></td></tr>
+<tr class="separator:ae7dff85ea558ed732c081ab37b97ba5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76720d1612568af283cab311e6506150"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8h.html#a76720d1612568af283cab311e6506150">binary_heapify_up</a> (<a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *p_heap, uint16_t index)</td></tr>
+<tr class="memdesc:a76720d1612568af283cab311e6506150"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the node at the given index down the binary heap to maintain the heap property. This in effect raises the node to the correct position.  <a href="binary__heap_8h.html#a76720d1612568af283cab311e6506150">More...</a><br /></td></tr>
+<tr class="separator:a76720d1612568af283cab311e6506150"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >This file contains the declarations for the binary min-heap used in the a* algorithm. </p>
@@ -269,24 +252,19 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>maze_grid_cell_t* Pointer to the original root node. </dd></dl>
+
+<p class="reference">References <a class="el" href="binary__heap_8c.html#ae7dff85ea558ed732c081ab37b97ba5d">binary_heapify_down()</a>, <a class="el" href="structbinary__heap.html#a35c0dc945e4aad02d896e3cb0fbeca64">binary_heap::p_array</a>, <a class="el" href="structbinary__heap__node.html#ae372b3bd7dd2c88ac107c1113719584c">binary_heap_node::p_maze_node</a>, <a class="el" href="structbinary__heap__node.html#a0815784d41b3c13d42ce22367abfba1d">binary_heap_node::priority</a>, and <a class="el" href="structbinary__heap.html#aaba88b24a21a6c70c895c0d55f4a69a0">binary_heap::size</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="binary__heap_8h_af38f858070d3c5f43dcb2b9a38920082_cgraph.png" border="0" usemap="#abinary__heap_8h_af38f858070d3c5f43dcb2b9a38920082_cgraph" alt=""/></div>
-<map name="abinary__heap_8h_af38f858070d3c5f43dcb2b9a38920082_cgraph" id="abinary__heap_8h_af38f858070d3c5f43dcb2b9a38920082_cgraph">
-<area shape="rect" title="Deletes and returns the root node from the binary heap." alt="" coords="5,5,167,31"/>
-<area shape="rect" href="binary__heap_8c.html#ae7dff85ea558ed732c081ab37b97ba5d" title="Moves the node at the given index up the binary heap to maintain the heap property...." alt="" coords="215,5,357,31"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="binary__heap_8h_af38f858070d3c5f43dcb2b9a38920082_cgraph.svg" width="363" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="binary__heap_8h_af38f858070d3c5f43dcb2b9a38920082_icgraph.png" border="0" usemap="#abinary__heap_8h_af38f858070d3c5f43dcb2b9a38920082_icgraph" alt=""/></div>
-<map name="abinary__heap_8h_af38f858070d3c5f43dcb2b9a38920082_icgraph" id="abinary__heap_8h_af38f858070d3c5f43dcb2b9a38920082_icgraph">
-<area shape="rect" title="Deletes and returns the root node from the binary heap." alt="" coords="395,13,556,38"/>
-<area shape="rect" href="dfs_8c.html#ae6f752eff6517a7aeace592951a6a919" title="Checks if all reachable nodes from the navigator&#39;s current position has been visisted." alt="" coords="207,5,347,45"/>
-<area shape="rect" href="dfs_8c.html#ad895d09bb41bba4132541d5d17f7f4c0" title="Conducts a depth first search on a maze." alt="" coords="5,13,159,38"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="binary__heap_8h_af38f858070d3c5f43dcb2b9a38920082_icgraph.svg" width="562" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -326,6 +304,8 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>uint16_t Index of the node if it exists, otherwise UINT16_MAX. </dd></dl>
+
+<p class="reference">References <a class="el" href="structbinary__heap.html#a35c0dc945e4aad02d896e3cb0fbeca64">binary_heap::p_array</a>, <a class="el" href="structbinary__heap__node.html#ae372b3bd7dd2c88ac107c1113719584c">binary_heap_node::p_maze_node</a>, and <a class="el" href="structbinary__heap.html#aaba88b24a21a6c70c895c0d55f4a69a0">binary_heap::size</a>.</p>
 
 </div>
 </div>
@@ -370,23 +350,19 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
+
+<p class="reference">References <a class="el" href="binary__heap_8c.html#a76720d1612568af283cab311e6506150">binary_heapify_up()</a>, <a class="el" href="structbinary__heap.html#a6be948a502bdacee3d2a2cc1d2f97ece">binary_heap::capacity</a>, <a class="el" href="structbinary__heap.html#a35c0dc945e4aad02d896e3cb0fbeca64">binary_heap::p_array</a>, <a class="el" href="structbinary__heap__node.html#ae372b3bd7dd2c88ac107c1113719584c">binary_heap_node::p_maze_node</a>, <a class="el" href="structbinary__heap__node.html#a0815784d41b3c13d42ce22367abfba1d">binary_heap_node::priority</a>, and <a class="el" href="structbinary__heap.html#aaba88b24a21a6c70c895c0d55f4a69a0">binary_heap::size</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="binary__heap_8h_ae2c52107ee2c491443e7f8f3cafa9edd_cgraph.png" border="0" usemap="#abinary__heap_8h_ae2c52107ee2c491443e7f8f3cafa9edd_cgraph" alt=""/></div>
-<map name="abinary__heap_8h_ae2c52107ee2c491443e7f8f3cafa9edd_cgraph" id="abinary__heap_8h_ae2c52107ee2c491443e7f8f3cafa9edd_cgraph">
-<area shape="rect" title="Inserts a grid cell node into the binary heap with a given priority." alt="" coords="5,5,136,31"/>
-<area shape="rect" href="binary__heap_8c.html#a76720d1612568af283cab311e6506150" title="Moves the node at the given index down the binary heap to maintain the heap property...." alt="" coords="184,5,309,31"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="binary__heap_8h_ae2c52107ee2c491443e7f8f3cafa9edd_cgraph.svg" width="315" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="binary__heap_8h_ae2c52107ee2c491443e7f8f3cafa9edd_icgraph.png" border="0" usemap="#abinary__heap_8h_ae2c52107ee2c491443e7f8f3cafa9edd_icgraph" alt=""/></div>
-<map name="abinary__heap_8h_ae2c52107ee2c491443e7f8f3cafa9edd_icgraph" id="abinary__heap_8h_ae2c52107ee2c491443e7f8f3cafa9edd_icgraph">
-<area shape="rect" title="Inserts a grid cell node into the binary heap with a given priority." alt="" coords="112,5,243,31"/>
-<area shape="rect" href="a__star_8c.html#a6d82d3636110fd676cb68188a8351c3a" title="Runs the A* algorithm on a grid maze to find the shortest path between two points,..." alt="" coords="5,5,64,31"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="binary__heap_8h_ae2c52107ee2c491443e7f8f3cafa9edd_icgraph.svg" width="248" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -415,15 +391,13 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>binary_heap_node_t Root node of the binary heap. </dd></dl>
+
+<p class="reference">References <a class="el" href="structbinary__heap.html#a35c0dc945e4aad02d896e3cb0fbeca64">binary_heap::p_array</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="binary__heap_8h_ad06768f1a7c61c92aa00fe5a3a33dbc2_icgraph.png" border="0" usemap="#abinary__heap_8h_ad06768f1a7c61c92aa00fe5a3a33dbc2_icgraph" alt=""/></div>
-<map name="abinary__heap_8h_ad06768f1a7c61c92aa00fe5a3a33dbc2_icgraph" id="abinary__heap_8h_ad06768f1a7c61c92aa00fe5a3a33dbc2_icgraph">
-<area shape="rect" title="Peeks at the root node of the binary heap." alt="" coords="395,13,521,38"/>
-<area shape="rect" href="dfs_8c.html#ae6f752eff6517a7aeace592951a6a919" title="Checks if all reachable nodes from the navigator&#39;s current position has been visisted." alt="" coords="207,5,347,45"/>
-<area shape="rect" href="dfs_8c.html#ad895d09bb41bba4132541d5d17f7f4c0" title="Conducts a depth first search on a maze." alt="" coords="5,13,159,38"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="binary__heap_8h_ad06768f1a7c61c92aa00fe5a3a33dbc2_icgraph.svg" width="527" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -462,16 +436,13 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
+
+<p class="reference">References <a class="el" href="structbinary__heap.html#a35c0dc945e4aad02d896e3cb0fbeca64">binary_heap::p_array</a>, and <a class="el" href="structbinary__heap__node.html#a0815784d41b3c13d42ce22367abfba1d">binary_heap_node::priority</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="binary__heap_8h_ae7dff85ea558ed732c081ab37b97ba5d_icgraph.png" border="0" usemap="#abinary__heap_8h_ae7dff85ea558ed732c081ab37b97ba5d_icgraph" alt=""/></div>
-<map name="abinary__heap_8h_ae7dff85ea558ed732c081ab37b97ba5d_icgraph" id="abinary__heap_8h_ae7dff85ea558ed732c081ab37b97ba5d_icgraph">
-<area shape="rect" title="Moves the node at the given index up the binary heap to maintain the heap property...." alt="" coords="604,13,747,38"/>
-<area shape="rect" href="binary__heap_8c.html#af38f858070d3c5f43dcb2b9a38920082" title="Deletes and returns the root node from the binary heap." alt="" coords="395,13,556,38"/>
-<area shape="rect" href="dfs_8c.html#ae6f752eff6517a7aeace592951a6a919" title="Checks if all reachable nodes from the navigator&#39;s current position has been visisted." alt="" coords="207,5,347,45"/>
-<area shape="rect" href="dfs_8c.html#ad895d09bb41bba4132541d5d17f7f4c0" title="Conducts a depth first search on a maze." alt="" coords="5,13,159,38"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="binary__heap_8h_ae7dff85ea558ed732c081ab37b97ba5d_icgraph.svg" width="752" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -510,15 +481,13 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
+
+<p class="reference">References <a class="el" href="structbinary__heap.html#a35c0dc945e4aad02d896e3cb0fbeca64">binary_heap::p_array</a>, and <a class="el" href="structbinary__heap__node.html#a0815784d41b3c13d42ce22367abfba1d">binary_heap_node::priority</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="binary__heap_8h_a76720d1612568af283cab311e6506150_icgraph.png" border="0" usemap="#abinary__heap_8h_a76720d1612568af283cab311e6506150_icgraph" alt=""/></div>
-<map name="abinary__heap_8h_a76720d1612568af283cab311e6506150_icgraph" id="abinary__heap_8h_a76720d1612568af283cab311e6506150_icgraph">
-<area shape="rect" title="Moves the node at the given index down the binary heap to maintain the heap property...." alt="" coords="291,5,416,31"/>
-<area shape="rect" href="binary__heap_8c.html#ae2c52107ee2c491443e7f8f3cafa9edd" title="Inserts a grid cell node into the binary heap with a given priority." alt="" coords="112,5,243,31"/>
-<area shape="rect" href="a__star_8c.html#a6d82d3636110fd676cb68188a8351c3a" title="Runs the A* algorithm on a grid maze to find the shortest path between two points,..." alt="" coords="5,5,64,31"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="binary__heap_8h_a76720d1612568af283cab311e6506150_icgraph.svg" width="422" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

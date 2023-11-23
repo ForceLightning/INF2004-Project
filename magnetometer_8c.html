@@ -126,63 +126,52 @@ $(document).ready(function(){initNavTree('magnetometer_8c.html',''); initResizab
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for magnetometer.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="magnetometer_8c__incl.png" border="0" usemap="#amain_2driver_2magnetometer_2magnetometer_8c" alt=""/></div>
-<map name="amain_2driver_2magnetometer_2magnetometer_8c" id="amain_2driver_2magnetometer_2magnetometer_8c">
-<area shape="rect" title="This file contains functions for initializing and reading data from a magnetometer sensor using I2C c..." alt="" coords="334,5,507,45"/>
-<area shape="rect" title=" " alt="" coords="5,93,65,119"/>
-<area shape="rect" title=" " alt="" coords="90,93,154,119"/>
-<area shape="rect" title=" " alt="" coords="178,93,253,119"/>
-<area shape="rect" title=" " alt="" coords="277,93,338,119"/>
-<area shape="rect" title=" " alt="" coords="363,93,479,119"/>
-<area shape="rect" title=" " alt="" coords="503,93,589,119"/>
-<area shape="rect" title=" " alt="" coords="613,93,727,119"/>
-<area shape="rect" title=" " alt="" coords="751,93,858,119"/>
-<area shape="rect" href="magnetometer_8h.html" title="Header file for the magnetometer driver." alt="" coords="882,93,997,119"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="magnetometer_8c__incl.svg" width="1003" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa45e1da3e5daedc63b309ea0459c2395"><td class="memItemLeft" align="right" valign="top"><a id="aa45e1da3e5daedc63b309ea0459c2395" name="aa45e1da3e5daedc63b309ea0459c2395"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>writeRegister</b> (uint8_t address, uint8_t reg, uint8_t value)</td></tr>
-<tr class="separator:aa45e1da3e5daedc63b309ea0459c2395"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af876343a0105eaaa39450ef32d513b18"><td class="memItemLeft" align="right" valign="top"><a id="af876343a0105eaaa39450ef32d513b18" name="af876343a0105eaaa39450ef32d513b18"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>readRegister</b> (uint8_t address, uint8_t reg)</td></tr>
-<tr class="separator:af876343a0105eaaa39450ef32d513b18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca5b11ab3c54bbdcc859003f9683070a"><td class="memItemLeft" align="right" valign="top"><a id="aca5b11ab3c54bbdcc859003f9683070a" name="aca5b11ab3c54bbdcc859003f9683070a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>configureAccelerometer</b> ()</td></tr>
-<tr class="separator:aca5b11ab3c54bbdcc859003f9683070a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3b5318f4f882b6eda3c9e6b4921e2ce"><td class="memItemLeft" align="right" valign="top"><a id="ae3b5318f4f882b6eda3c9e6b4921e2ce" name="ae3b5318f4f882b6eda3c9e6b4921e2ce"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>readAccelerometerData</b> (int16_t *x, int16_t *y, int16_t *z)</td></tr>
-<tr class="separator:ae3b5318f4f882b6eda3c9e6b4921e2ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90e3601e0be4a56c5997268a61e37986"><td class="memItemLeft" align="right" valign="top"><a id="a90e3601e0be4a56c5997268a61e37986" name="a90e3601e0be4a56c5997268a61e37986"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>calibrateAccelerometer</b> ()</td></tr>
-<tr class="separator:a90e3601e0be4a56c5997268a61e37986"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af92e2fecd99890eb9829fcbb7b5b3181"><td class="memItemLeft" align="right" valign="top"><a id="af92e2fecd99890eb9829fcbb7b5b3181" name="af92e2fecd99890eb9829fcbb7b5b3181"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>calculateAcceleration</b> (int16_t x, int16_t y, int16_t z)</td></tr>
 <tr class="separator:af92e2fecd99890eb9829fcbb7b5b3181"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1aeaab70eeeeb297b13f331967401936"><td class="memItemLeft" align="right" valign="top"><a id="a1aeaab70eeeeb297b13f331967401936" name="a1aeaab70eeeeb297b13f331967401936"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>initializeI2C</b> ()</td></tr>
-<tr class="separator:a1aeaab70eeeeb297b13f331967401936"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a679075966b25cf1d525e90378e38b5a1"><td class="memItemLeft" align="right" valign="top"><a id="a679075966b25cf1d525e90378e38b5a1" name="a679075966b25cf1d525e90378e38b5a1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>configureMagnetometer</b> ()</td></tr>
-<tr class="separator:a679075966b25cf1d525e90378e38b5a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c61be7aaede4cc19fb20217e63420f3"><td class="memItemLeft" align="right" valign="top"><a id="a2c61be7aaede4cc19fb20217e63420f3" name="a2c61be7aaede4cc19fb20217e63420f3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>readMagnetometerData</b> ()</td></tr>
-<tr class="separator:a2c61be7aaede4cc19fb20217e63420f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90e3601e0be4a56c5997268a61e37986"><td class="memItemLeft" align="right" valign="top"><a id="a90e3601e0be4a56c5997268a61e37986" name="a90e3601e0be4a56c5997268a61e37986"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>calibrateAccelerometer</b> ()</td></tr>
+<tr class="separator:a90e3601e0be4a56c5997268a61e37986"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a6298c1a1d948585c37e92fc3ac27d2"><td class="memItemLeft" align="right" valign="top"><a id="a5a6298c1a1d948585c37e92fc3ac27d2" name="a5a6298c1a1d948585c37e92fc3ac27d2"></a>
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>checkBearingOutOfRange</b> ()</td></tr>
 <tr class="separator:a5a6298c1a1d948585c37e92fc3ac27d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0405a7e651f76675892e02f3f0c3901"><td class="memItemLeft" align="right" valign="top"><a id="aa0405a7e651f76675892e02f3f0c3901" name="aa0405a7e651f76675892e02f3f0c3901"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getTrueBearing</b> ()</td></tr>
-<tr class="separator:aa0405a7e651f76675892e02f3f0c3901"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca5b11ab3c54bbdcc859003f9683070a"><td class="memItemLeft" align="right" valign="top"><a id="aca5b11ab3c54bbdcc859003f9683070a" name="aca5b11ab3c54bbdcc859003f9683070a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>configureAccelerometer</b> ()</td></tr>
+<tr class="separator:aca5b11ab3c54bbdcc859003f9683070a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a679075966b25cf1d525e90378e38b5a1"><td class="memItemLeft" align="right" valign="top"><a id="a679075966b25cf1d525e90378e38b5a1" name="a679075966b25cf1d525e90378e38b5a1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>configureMagnetometer</b> ()</td></tr>
+<tr class="separator:a679075966b25cf1d525e90378e38b5a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2fdd7f24dea3ddb78e37898ee6c0d24b"><td class="memItemLeft" align="right" valign="top"><a id="a2fdd7f24dea3ddb78e37898ee6c0d24b" name="a2fdd7f24dea3ddb78e37898ee6c0d24b"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>getCurrentBearing</b> ()</td></tr>
 <tr class="separator:a2fdd7f24dea3ddb78e37898ee6c0d24b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0405a7e651f76675892e02f3f0c3901"><td class="memItemLeft" align="right" valign="top"><a id="aa0405a7e651f76675892e02f3f0c3901" name="aa0405a7e651f76675892e02f3f0c3901"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>getTrueBearing</b> ()</td></tr>
+<tr class="separator:aa0405a7e651f76675892e02f3f0c3901"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bf58fbc3299d05b2b471b38e70ee66f"><td class="memItemLeft" align="right" valign="top"><a id="a9bf58fbc3299d05b2b471b38e70ee66f" name="a9bf58fbc3299d05b2b471b38e70ee66f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>init_magnetometer</b> (void)</td></tr>
 <tr class="memdesc:a9bf58fbc3299d05b2b471b38e70ee66f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the magnetometer by initializing the USB, I2C, and setting the GPIO pins. <br /></td></tr>
 <tr class="separator:a9bf58fbc3299d05b2b471b38e70ee66f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aeaab70eeeeb297b13f331967401936"><td class="memItemLeft" align="right" valign="top"><a id="a1aeaab70eeeeb297b13f331967401936" name="a1aeaab70eeeeb297b13f331967401936"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>initializeI2C</b> ()</td></tr>
+<tr class="separator:a1aeaab70eeeeb297b13f331967401936"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3b5318f4f882b6eda3c9e6b4921e2ce"><td class="memItemLeft" align="right" valign="top"><a id="ae3b5318f4f882b6eda3c9e6b4921e2ce" name="ae3b5318f4f882b6eda3c9e6b4921e2ce"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>readAccelerometerData</b> (int16_t *x, int16_t *y, int16_t *z)</td></tr>
+<tr class="separator:ae3b5318f4f882b6eda3c9e6b4921e2ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c61be7aaede4cc19fb20217e63420f3"><td class="memItemLeft" align="right" valign="top"><a id="a2c61be7aaede4cc19fb20217e63420f3" name="a2c61be7aaede4cc19fb20217e63420f3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>readMagnetometerData</b> ()</td></tr>
+<tr class="separator:a2c61be7aaede4cc19fb20217e63420f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af876343a0105eaaa39450ef32d513b18"><td class="memItemLeft" align="right" valign="top"><a id="af876343a0105eaaa39450ef32d513b18" name="af876343a0105eaaa39450ef32d513b18"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>readRegister</b> (uint8_t address, uint8_t reg)</td></tr>
+<tr class="separator:af876343a0105eaaa39450ef32d513b18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa45e1da3e5daedc63b309ea0459c2395"><td class="memItemLeft" align="right" valign="top"><a id="aa45e1da3e5daedc63b309ea0459c2395" name="aa45e1da3e5daedc63b309ea0459c2395"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>writeRegister</b> (uint8_t address, uint8_t reg, uint8_t value)</td></tr>
+<tr class="separator:aa45e1da3e5daedc63b309ea0459c2395"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -195,18 +184,18 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>bias_y</b> = 0</td
 <tr class="memitem:affc618084ad47e2e4cfb0054bb5df6eb"><td class="memItemLeft" align="right" valign="top"><a id="affc618084ad47e2e4cfb0054bb5df6eb" name="affc618084ad47e2e4cfb0054bb5df6eb"></a>
 int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>bias_z</b> = 0</td></tr>
 <tr class="separator:affc618084ad47e2e4cfb0054bb5df6eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24f21fd3227677ffecf03b64abffa230"><td class="memItemLeft" align="right" valign="top"><a id="a24f21fd3227677ffecf03b64abffa230" name="a24f21fd3227677ffecf03b64abffa230"></a>
-float *&#160;</td><td class="memItemRight" valign="bottom"><b>true_heading</b> = 0</td></tr>
-<tr class="separator:a24f21fd3227677ffecf03b64abffa230"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea4ef4f076df61ccf8dc886ae42d5c61"><td class="memItemLeft" align="right" valign="top"><a id="aea4ef4f076df61ccf8dc886ae42d5c61" name="aea4ef4f076df61ccf8dc886ae42d5c61"></a>
 float *&#160;</td><td class="memItemRight" valign="bottom"><b>current_bearing</b> = 0</td></tr>
 <tr class="separator:aea4ef4f076df61ccf8dc886ae42d5c61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f8907685fdfbd63cc3b4102a5a29c28"><td class="memItemLeft" align="right" valign="top"><a id="a5f8907685fdfbd63cc3b4102a5a29c28" name="a5f8907685fdfbd63cc3b4102a5a29c28"></a>
-float *&#160;</td><td class="memItemRight" valign="bottom"><b>min_bearing</b> = 0</td></tr>
-<tr class="separator:a5f8907685fdfbd63cc3b4102a5a29c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a408f8fbeccbdc9ede0d02e109c9a974a"><td class="memItemLeft" align="right" valign="top"><a id="a408f8fbeccbdc9ede0d02e109c9a974a" name="a408f8fbeccbdc9ede0d02e109c9a974a"></a>
 float *&#160;</td><td class="memItemRight" valign="bottom"><b>max_bearing</b> = 0</td></tr>
 <tr class="separator:a408f8fbeccbdc9ede0d02e109c9a974a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f8907685fdfbd63cc3b4102a5a29c28"><td class="memItemLeft" align="right" valign="top"><a id="a5f8907685fdfbd63cc3b4102a5a29c28" name="a5f8907685fdfbd63cc3b4102a5a29c28"></a>
+float *&#160;</td><td class="memItemRight" valign="bottom"><b>min_bearing</b> = 0</td></tr>
+<tr class="separator:a5f8907685fdfbd63cc3b4102a5a29c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24f21fd3227677ffecf03b64abffa230"><td class="memItemLeft" align="right" valign="top"><a id="a24f21fd3227677ffecf03b64abffa230" name="a24f21fd3227677ffecf03b64abffa230"></a>
+float *&#160;</td><td class="memItemRight" valign="bottom"><b>true_heading</b> = 0</td></tr>
+<tr class="separator:a24f21fd3227677ffecf03b64abffa230"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >This file contains functions for initializing and reading data from a magnetometer sensor using I2C communication. The magnetometer sensor used is the LSM303DLHC. The file contains two functions: <a class="el" href="magnetometer_8c.html#a9bf58fbc3299d05b2b471b38e70ee66f" title="Initializes the magnetometer by initializing the USB, I2C, and setting the GPIO pins.">init_magnetometer()</a> and read_magnetometer_data(). </p>

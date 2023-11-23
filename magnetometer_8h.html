@@ -117,86 +117,89 @@ $(document).ready(function(){initNavTree('magnetometer_8h.html',''); initResizab
 <div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="magnetometer_8h__dep__incl.png" border="0" usemap="#amain_2driver_2magnetometer_2magnetometer_8hdep" alt=""/></div>
-<map name="amain_2driver_2magnetometer_2magnetometer_8hdep" id="amain_2driver_2magnetometer_2magnetometer_8hdep">
-<area shape="rect" title="Header file for the magnetometer driver." alt="" coords="281,5,455,45"/>
-<area shape="rect" href="magnetometer_8c.html" title="This file contains functions for initializing and reading data from a magnetometer sensor using I2C c..." alt="" coords="5,93,179,133"/>
-<area shape="rect" href="driver_2magnetometer_2main_8c.html" title="Demonstration for the magnetometer driver." alt="" coords="203,93,376,133"/>
-<area shape="rect" href="main_8c.html" title="The main source file for robot control." alt="" coords="401,101,493,126"/>
-<area shape="rect" href="pid_8c.html" title=" " alt="" coords="517,101,619,126"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="magnetometer_8h__dep__incl.svg" width="626" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 </div>
 <p><a href="magnetometer_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:abb091df092bd1481b1e56f305c88bfc5"><td class="memItemLeft" align="right" valign="top"><a id="abb091df092bd1481b1e56f305c88bfc5" name="abb091df092bd1481b1e56f305c88bfc5"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAGNETOMETER_ADDR</b>&#160;&#160;&#160;    0x1E</td></tr>
-<tr class="separator:abb091df092bd1481b1e56f305c88bfc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26f6e189bb1638d4fba101445d660968"><td class="memItemLeft" align="right" valign="top"><a id="a26f6e189bb1638d4fba101445d660968" name="a26f6e189bb1638d4fba101445d660968"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>ACCELEROMETER_ADDR</b>&#160;&#160;&#160;    0x19</td></tr>
 <tr class="separator:a26f6e189bb1638d4fba101445d660968"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cade698267beb86ccaa38c14d35ab0f"><td class="memItemLeft" align="right" valign="top"><a id="a2cade698267beb86ccaa38c14d35ab0f" name="a2cade698267beb86ccaa38c14d35ab0f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>I2C_SDA_PIN</b>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a2cade698267beb86ccaa38c14d35ab0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e4e08bab2fb484136d18b067bef372c"><td class="memItemLeft" align="right" valign="top"><a id="a0e4e08bab2fb484136d18b067bef372c" name="a0e4e08bab2fb484136d18b067bef372c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>I2C_SCL_PIN</b>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a0e4e08bab2fb484136d18b067bef372c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31568ea8caf00a3ec699c01652c771d0"><td class="memItemLeft" align="right" valign="top"><a id="a31568ea8caf00a3ec699c01652c771d0" name="a31568ea8caf00a3ec699c01652c771d0"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>I2C_BAUDRATE</b>&#160;&#160;&#160;1000000</td></tr>
-<tr class="separator:a31568ea8caf00a3ec699c01652c771d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a853f1ff08cf4f7c3555450177fc17d2e"><td class="memItemLeft" align="right" valign="top"><a id="a853f1ff08cf4f7c3555450177fc17d2e" name="a853f1ff08cf4f7c3555450177fc17d2e"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CTRL_REG1_A</b>&#160;&#160;&#160;0x20</td></tr>
-<tr class="separator:a853f1ff08cf4f7c3555450177fc17d2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af07420cc51cd538201554ceb8187eb32"><td class="memItemLeft" align="right" valign="top"><a id="af07420cc51cd538201554ceb8187eb32" name="af07420cc51cd538201554ceb8187eb32"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_X_L_A</b>&#160;&#160;&#160;0x28</td></tr>
-<tr class="separator:af07420cc51cd538201554ceb8187eb32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff0544c632e0f9a08e9e4ed32a6f8a21"><td class="memItemLeft" align="right" valign="top"><a id="aff0544c632e0f9a08e9e4ed32a6f8a21" name="aff0544c632e0f9a08e9e4ed32a6f8a21"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_X_H_A</b>&#160;&#160;&#160;0x29</td></tr>
-<tr class="separator:aff0544c632e0f9a08e9e4ed32a6f8a21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c057ac2609133a18c32ae2b630daafb"><td class="memItemLeft" align="right" valign="top"><a id="a7c057ac2609133a18c32ae2b630daafb" name="a7c057ac2609133a18c32ae2b630daafb"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_Y_L_A</b>&#160;&#160;&#160;0x2A</td></tr>
-<tr class="separator:a7c057ac2609133a18c32ae2b630daafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affecb4c00ec91d1cb8fd0e2e00dc268f"><td class="memItemLeft" align="right" valign="top"><a id="affecb4c00ec91d1cb8fd0e2e00dc268f" name="affecb4c00ec91d1cb8fd0e2e00dc268f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_Y_H_A</b>&#160;&#160;&#160;0x2B</td></tr>
-<tr class="separator:affecb4c00ec91d1cb8fd0e2e00dc268f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09387c436745ba77d147288050d7d8c1"><td class="memItemLeft" align="right" valign="top"><a id="a09387c436745ba77d147288050d7d8c1" name="a09387c436745ba77d147288050d7d8c1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_Z_L_A</b>&#160;&#160;&#160;0x2C</td></tr>
-<tr class="separator:a09387c436745ba77d147288050d7d8c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd262b693d21cb2585621aa7f8c7d2a1"><td class="memItemLeft" align="right" valign="top"><a id="afd262b693d21cb2585621aa7f8c7d2a1" name="afd262b693d21cb2585621aa7f8c7d2a1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_Z_H_A</b>&#160;&#160;&#160;0x2D</td></tr>
-<tr class="separator:afd262b693d21cb2585621aa7f8c7d2a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5db5abd5c3f56469dd0b8b79d8438a0"><td class="memItemLeft" align="right" valign="top"><a id="ad5db5abd5c3f56469dd0b8b79d8438a0" name="ad5db5abd5c3f56469dd0b8b79d8438a0"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CRA_REG_M</b>&#160;&#160;&#160;0x00</td></tr>
-<tr class="separator:ad5db5abd5c3f56469dd0b8b79d8438a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74f535c51859496c7d489b791ada330b"><td class="memItemLeft" align="right" valign="top"><a id="a74f535c51859496c7d489b791ada330b" name="a74f535c51859496c7d489b791ada330b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>MR_REG_M</b>&#160;&#160;&#160;0x02</td></tr>
-<tr class="separator:a74f535c51859496c7d489b791ada330b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2489b398fe6a7418ea8f45c61cce4f9b"><td class="memItemLeft" align="right" valign="top"><a id="a2489b398fe6a7418ea8f45c61cce4f9b" name="a2489b398fe6a7418ea8f45c61cce4f9b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_X_H_M</b>&#160;&#160;&#160;0x03</td></tr>
-<tr class="separator:a2489b398fe6a7418ea8f45c61cce4f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abab698c56e01e1fd410398c4e7beaaf3"><td class="memItemLeft" align="right" valign="top"><a id="abab698c56e01e1fd410398c4e7beaaf3" name="abab698c56e01e1fd410398c4e7beaaf3"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_X_L_M</b>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:abab698c56e01e1fd410398c4e7beaaf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbf1fdc9b183596b72618c113b30718b"><td class="memItemLeft" align="right" valign="top"><a id="abbf1fdc9b183596b72618c113b30718b" name="abbf1fdc9b183596b72618c113b30718b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_Z_H_M</b>&#160;&#160;&#160;0x05</td></tr>
-<tr class="separator:abbf1fdc9b183596b72618c113b30718b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae30aefcb21f60ce603a214d5678b8f9d"><td class="memItemLeft" align="right" valign="top"><a id="ae30aefcb21f60ce603a214d5678b8f9d" name="ae30aefcb21f60ce603a214d5678b8f9d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_Z_L_M</b>&#160;&#160;&#160;0x06</td></tr>
-<tr class="separator:ae30aefcb21f60ce603a214d5678b8f9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a296228caa98301cb5cd765cafc9ee7b6"><td class="memItemLeft" align="right" valign="top"><a id="a296228caa98301cb5cd765cafc9ee7b6" name="a296228caa98301cb5cd765cafc9ee7b6"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_Y_H_M</b>&#160;&#160;&#160;0x07</td></tr>
-<tr class="separator:a296228caa98301cb5cd765cafc9ee7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2a68cdf4dc38a1e6953a131d193aac2"><td class="memItemLeft" align="right" valign="top"><a id="ac2a68cdf4dc38a1e6953a131d193aac2" name="ac2a68cdf4dc38a1e6953a131d193aac2"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_Y_L_M</b>&#160;&#160;&#160;0x08</td></tr>
-<tr class="separator:ac2a68cdf4dc38a1e6953a131d193aac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35a2584dbeb685657de16fdccba8e451"><td class="memItemLeft" align="right" valign="top"><a id="a35a2584dbeb685657de16fdccba8e451" name="a35a2584dbeb685657de16fdccba8e451"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>BEARING_OFFSET</b>&#160;&#160;&#160;1.0f</td></tr>
 <tr class="separator:a35a2584dbeb685657de16fdccba8e451"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5db5abd5c3f56469dd0b8b79d8438a0"><td class="memItemLeft" align="right" valign="top"><a id="ad5db5abd5c3f56469dd0b8b79d8438a0" name="ad5db5abd5c3f56469dd0b8b79d8438a0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CRA_REG_M</b>&#160;&#160;&#160;0x00</td></tr>
+<tr class="separator:ad5db5abd5c3f56469dd0b8b79d8438a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a853f1ff08cf4f7c3555450177fc17d2e"><td class="memItemLeft" align="right" valign="top"><a id="a853f1ff08cf4f7c3555450177fc17d2e" name="a853f1ff08cf4f7c3555450177fc17d2e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CTRL_REG1_A</b>&#160;&#160;&#160;0x20</td></tr>
+<tr class="separator:a853f1ff08cf4f7c3555450177fc17d2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31568ea8caf00a3ec699c01652c771d0"><td class="memItemLeft" align="right" valign="top"><a id="a31568ea8caf00a3ec699c01652c771d0" name="a31568ea8caf00a3ec699c01652c771d0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>I2C_BAUDRATE</b>&#160;&#160;&#160;1000000</td></tr>
+<tr class="separator:a31568ea8caf00a3ec699c01652c771d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e4e08bab2fb484136d18b067bef372c"><td class="memItemLeft" align="right" valign="top"><a id="a0e4e08bab2fb484136d18b067bef372c" name="a0e4e08bab2fb484136d18b067bef372c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>I2C_SCL_PIN</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a0e4e08bab2fb484136d18b067bef372c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cade698267beb86ccaa38c14d35ab0f"><td class="memItemLeft" align="right" valign="top"><a id="a2cade698267beb86ccaa38c14d35ab0f" name="a2cade698267beb86ccaa38c14d35ab0f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>I2C_SDA_PIN</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a2cade698267beb86ccaa38c14d35ab0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb091df092bd1481b1e56f305c88bfc5"><td class="memItemLeft" align="right" valign="top"><a id="abb091df092bd1481b1e56f305c88bfc5" name="abb091df092bd1481b1e56f305c88bfc5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAGNETOMETER_ADDR</b>&#160;&#160;&#160;    0x1E</td></tr>
+<tr class="separator:abb091df092bd1481b1e56f305c88bfc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74f535c51859496c7d489b791ada330b"><td class="memItemLeft" align="right" valign="top"><a id="a74f535c51859496c7d489b791ada330b" name="a74f535c51859496c7d489b791ada330b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MR_REG_M</b>&#160;&#160;&#160;0x02</td></tr>
+<tr class="separator:a74f535c51859496c7d489b791ada330b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff0544c632e0f9a08e9e4ed32a6f8a21"><td class="memItemLeft" align="right" valign="top"><a id="aff0544c632e0f9a08e9e4ed32a6f8a21" name="aff0544c632e0f9a08e9e4ed32a6f8a21"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_X_H_A</b>&#160;&#160;&#160;0x29</td></tr>
+<tr class="separator:aff0544c632e0f9a08e9e4ed32a6f8a21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2489b398fe6a7418ea8f45c61cce4f9b"><td class="memItemLeft" align="right" valign="top"><a id="a2489b398fe6a7418ea8f45c61cce4f9b" name="a2489b398fe6a7418ea8f45c61cce4f9b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_X_H_M</b>&#160;&#160;&#160;0x03</td></tr>
+<tr class="separator:a2489b398fe6a7418ea8f45c61cce4f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af07420cc51cd538201554ceb8187eb32"><td class="memItemLeft" align="right" valign="top"><a id="af07420cc51cd538201554ceb8187eb32" name="af07420cc51cd538201554ceb8187eb32"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_X_L_A</b>&#160;&#160;&#160;0x28</td></tr>
+<tr class="separator:af07420cc51cd538201554ceb8187eb32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abab698c56e01e1fd410398c4e7beaaf3"><td class="memItemLeft" align="right" valign="top"><a id="abab698c56e01e1fd410398c4e7beaaf3" name="abab698c56e01e1fd410398c4e7beaaf3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_X_L_M</b>&#160;&#160;&#160;0x04</td></tr>
+<tr class="separator:abab698c56e01e1fd410398c4e7beaaf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affecb4c00ec91d1cb8fd0e2e00dc268f"><td class="memItemLeft" align="right" valign="top"><a id="affecb4c00ec91d1cb8fd0e2e00dc268f" name="affecb4c00ec91d1cb8fd0e2e00dc268f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_Y_H_A</b>&#160;&#160;&#160;0x2B</td></tr>
+<tr class="separator:affecb4c00ec91d1cb8fd0e2e00dc268f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a296228caa98301cb5cd765cafc9ee7b6"><td class="memItemLeft" align="right" valign="top"><a id="a296228caa98301cb5cd765cafc9ee7b6" name="a296228caa98301cb5cd765cafc9ee7b6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_Y_H_M</b>&#160;&#160;&#160;0x07</td></tr>
+<tr class="separator:a296228caa98301cb5cd765cafc9ee7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c057ac2609133a18c32ae2b630daafb"><td class="memItemLeft" align="right" valign="top"><a id="a7c057ac2609133a18c32ae2b630daafb" name="a7c057ac2609133a18c32ae2b630daafb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_Y_L_A</b>&#160;&#160;&#160;0x2A</td></tr>
+<tr class="separator:a7c057ac2609133a18c32ae2b630daafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2a68cdf4dc38a1e6953a131d193aac2"><td class="memItemLeft" align="right" valign="top"><a id="ac2a68cdf4dc38a1e6953a131d193aac2" name="ac2a68cdf4dc38a1e6953a131d193aac2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_Y_L_M</b>&#160;&#160;&#160;0x08</td></tr>
+<tr class="separator:ac2a68cdf4dc38a1e6953a131d193aac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd262b693d21cb2585621aa7f8c7d2a1"><td class="memItemLeft" align="right" valign="top"><a id="afd262b693d21cb2585621aa7f8c7d2a1" name="afd262b693d21cb2585621aa7f8c7d2a1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_Z_H_A</b>&#160;&#160;&#160;0x2D</td></tr>
+<tr class="separator:afd262b693d21cb2585621aa7f8c7d2a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbf1fdc9b183596b72618c113b30718b"><td class="memItemLeft" align="right" valign="top"><a id="abbf1fdc9b183596b72618c113b30718b" name="abbf1fdc9b183596b72618c113b30718b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_Z_H_M</b>&#160;&#160;&#160;0x05</td></tr>
+<tr class="separator:abbf1fdc9b183596b72618c113b30718b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09387c436745ba77d147288050d7d8c1"><td class="memItemLeft" align="right" valign="top"><a id="a09387c436745ba77d147288050d7d8c1" name="a09387c436745ba77d147288050d7d8c1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_Z_L_A</b>&#160;&#160;&#160;0x2C</td></tr>
+<tr class="separator:a09387c436745ba77d147288050d7d8c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae30aefcb21f60ce603a214d5678b8f9d"><td class="memItemLeft" align="right" valign="top"><a id="ae30aefcb21f60ce603a214d5678b8f9d" name="ae30aefcb21f60ce603a214d5678b8f9d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUT_Z_L_M</b>&#160;&#160;&#160;0x06</td></tr>
+<tr class="separator:ae30aefcb21f60ce603a214d5678b8f9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a5a6298c1a1d948585c37e92fc3ac27d2"><td class="memItemLeft" align="right" valign="top"><a id="a5a6298c1a1d948585c37e92fc3ac27d2" name="a5a6298c1a1d948585c37e92fc3ac27d2"></a>
+uint&#160;</td><td class="memItemRight" valign="bottom"><b>checkBearingOutOfRange</b> ()</td></tr>
+<tr class="separator:a5a6298c1a1d948585c37e92fc3ac27d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fdd7f24dea3ddb78e37898ee6c0d24b"><td class="memItemLeft" align="right" valign="top"><a id="a2fdd7f24dea3ddb78e37898ee6c0d24b" name="a2fdd7f24dea3ddb78e37898ee6c0d24b"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>getCurrentBearing</b> ()</td></tr>
+<tr class="separator:a2fdd7f24dea3ddb78e37898ee6c0d24b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0405a7e651f76675892e02f3f0c3901"><td class="memItemLeft" align="right" valign="top"><a id="aa0405a7e651f76675892e02f3f0c3901" name="aa0405a7e651f76675892e02f3f0c3901"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>getTrueBearing</b> ()</td></tr>
+<tr class="separator:aa0405a7e651f76675892e02f3f0c3901"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf794abf1b329fe501b536df538e4285"><td class="memItemLeft" align="right" valign="top"><a id="aaf794abf1b329fe501b536df538e4285" name="aaf794abf1b329fe501b536df538e4285"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>init_magnetometer</b> ()</td></tr>
 <tr class="memdesc:aaf794abf1b329fe501b536df538e4285"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the magnetometer by initializing the USB, I2C, and setting the GPIO pins. <br /></td></tr>
@@ -207,15 +210,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>readMagnetometerData<
 <tr class="memitem:a3cafce15b76573bed862bf43f3de09f4"><td class="memItemLeft" align="right" valign="top"><a id="a3cafce15b76573bed862bf43f3de09f4" name="a3cafce15b76573bed862bf43f3de09f4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>reset_true_north</b> ()</td></tr>
 <tr class="separator:a3cafce15b76573bed862bf43f3de09f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a6298c1a1d948585c37e92fc3ac27d2"><td class="memItemLeft" align="right" valign="top"><a id="a5a6298c1a1d948585c37e92fc3ac27d2" name="a5a6298c1a1d948585c37e92fc3ac27d2"></a>
-uint&#160;</td><td class="memItemRight" valign="bottom"><b>checkBearingOutOfRange</b> ()</td></tr>
-<tr class="separator:a5a6298c1a1d948585c37e92fc3ac27d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0405a7e651f76675892e02f3f0c3901"><td class="memItemLeft" align="right" valign="top"><a id="aa0405a7e651f76675892e02f3f0c3901" name="aa0405a7e651f76675892e02f3f0c3901"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getTrueBearing</b> ()</td></tr>
-<tr class="separator:aa0405a7e651f76675892e02f3f0c3901"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fdd7f24dea3ddb78e37898ee6c0d24b"><td class="memItemLeft" align="right" valign="top"><a id="a2fdd7f24dea3ddb78e37898ee6c0d24b" name="a2fdd7f24dea3ddb78e37898ee6c0d24b"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getCurrentBearing</b> ()</td></tr>
-<tr class="separator:a2fdd7f24dea3ddb78e37898ee6c0d24b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Header file for the magnetometer driver. </p>

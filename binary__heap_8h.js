@@ -1,7 +1,7 @@
 var binary__heap_8h =
 [
-    [ "binary_heap_node", "structbinary__heap__node.html", "structbinary__heap__node" ],
     [ "binary_heap", "structbinary__heap.html", "structbinary__heap" ],
+    [ "binary_heap_node", "structbinary__heap__node.html", "structbinary__heap__node" ],
     [ "DEBUG_PRINT", "binary__heap_8h.html#a88edd2aa4feabff4af21a997d5d8aa23", null ],
     [ "binary_heap_t", "binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1", null ],
     [ "binary_heap_delete_min", "binary__heap_8h.html#af38f858070d3c5f43dcb2b9a38920082", null ],
