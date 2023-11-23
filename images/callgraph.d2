@@ -1,23 +1,50 @@
-main() -> "Navigation Routines"
-Navigation Routines.shape: oval
-main() -> "Motor Routines"
+main() -> Wifi Routines: Sends data over Wifi
+Wifi Routines -> CYW43438 Module
+Wifi Routines.shape: oval
+Pathfinding Library {
+    "A* Algorithm"
+    Floodfill Algorithm
+    DFS Algorithm
+    Binary Min-heap
+    Maze abstraction
+    "A* Algorithm" -> Binary Min-Heap
+    "A* Algorithm" -> Maze abstraction
+    DFS Algorithm -> Floodfill Algorithm
+    DFS Algorithm -> Maze abstraction
+    Floodfill Algorithm -> Binary Min-Heap
+    Floodfill Algorithm -> Maze abstraction
+    Binary Min-Heap -> Maze abstraction
+}
+
+main() -> Pathfinding Library: Initialises the pathfinding stateful variables
+main() -> Pathfinding Library."DFS Algorithm": Maps the maze
+main() -> Pathfinding Library."A* Algorithm": Finds the shortest path
+Pathfinding Library -> PID Routines: Issues instructions via function pointers
+
+main() -> Motor Routines
 Motor Routines.shape: oval
-"Motor Routines" -> "Motor Controller"
-"Motor Controller" -> "Left Motor"
-"Motor Controller" -> "Right Motor"
-main() -> "Ultrasonic Routines"
-Ultrasonic Routines.shape: oval
-"Ultrasonic Routines" -> "Ultrasonic Sensor"
-main() -> "Wheel Encoder Routines"
-Wheel Encoder Routines.shape: oval
-"Wheel Encoder Routines" -> "Wheel Encoder"
-main() -> "IR Sensor Routines"
+Motor Routines -> Motor Controller
+
+main() -> PID Routines
+PID Routines.shape: oval
+
+PID Routines -> Motor Routines: Issues corrections
+PID Routines -> IR Sensor Routines: Detects maze wall boundaries
+PID Routines -> Magnetometer Routines: Corrects for drift
+PID Routines -> Wheel Encoder Routines: Detects wheel rotations
+
+main() -> IR Sensor Routines
 IR Sensor Routines.shape: oval
-"IR Sensor Routines" -> "IR Sensor"
-main() -> "WiFi Routines"
-WiFi Routines.shape: oval
-"WiFi Routines" -> "WiFi Chip"
-main() -> "Magnetometer Routines"
+IR Sensor Routines -> Front IR Sensor: Detects walls and decodes barcodes
+IR Sensor Routines -> Left IR Sensor: Detects walls
+
+main() -> Magnetometer Routines: Initializes the magnetometer and accelerometer
 Magnetometer Routines.shape: oval
-"Magnetometer Routines" -> "Magnetometer Sensor"
-"Magnetometer Routines" -> "Accelerometer Sensor"
+Magnetometer Routines -> Magnetometer: Reads the magnetometer
+Magnetometer Routines -> Accelerometer: Reads the accelerometer
+
+Wheel Encoder Routines.shape: oval
+Wheel Encoder Routines -> Wheel Encoder: Reads the wheel encoder
+
+main() -> Ultrasonic Sensor Routines: Detects obstacles
+Ultrasonic Sensor Routines.shape: oval

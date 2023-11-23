@@ -1,4 +1,4 @@
-main(): {
+pico.main(): {
   style: {
     fill: orchid
   }
@@ -6,47 +6,75 @@ main(): {
 }
 
 "Ultrasound Echo" -> HC-SR04.Echo
-HC-SR04.Echo -> Pico-IN.GP03: Digital active high
-Pico-IN.GP03 -> Routines."Ultrasonic Routines"
-Routines."Ultrasonic Routines" -> Pico-OUT.GP02: 16Hz, 10μs pulse
-Pico-OUT.GP02 -> HC-SR04.Trig
+HC-SR04.Echo -> Pico.IN.GP03: Digital active high
+Pico.IN.GP03 -> Pico.Routines."Ultrasonic Routines"
+Pico.Routines."Ultrasonic Routines" -> Pico.OUT.GP02: 16Hz, 10μs pulse
+Pico.OUT.GP02 -> HC-SR04.Trig
 HC-SR04.Trig -> "Ultrasound Pulse": 8 x 40kHz pulse
-"Ultrasound Pulse" -> "Ultrasound Echo"
-Routines."Ultrasonic Routines": {
+# "Ultrasound Pulse" -> "Ultrasound Echo"
+Pico.Routines."Ultrasonic Routines": {
   style: {
     fill: "#9a876d"
   }
   shape: oval
 }
-Routines."Ultrasonic Routines" -> main() {
+Pico.Routines."Ultrasonic Routines" -> pico.main() {
   style.stroke: red
 }
 
 "Magnetic Field" -> Magnetometer.M
 Acceleration -> Magnetometer.A
 Magnetometer.M -> Magnetometer.SDA
-Magnetometer.SDA -> Pico-IN.GP00: I2C1 SDA
-Magnetometer.SCL -> Pico-IN.GP01: I2C1 SCL
+Magnetometer.SDA -> Pico.IN.GP00: I2C1 SDA
+Magnetometer.SCL -> Pico.IN.GP01: I2C1 SCL
 Magnetometer.A -> Magnetometer.SDA
-Pico-IN.GP00 -> Routines."Magnetometer Routines"
-Pico-IN.GP01 -> Routines."Magnetometer Routines"
-Routines."Magnetometer Routines" -> main(): update orientation + acceleration {
+Pico.IN.GP00 -> Pico.Routines."Magnetometer Routines"
+Pico.IN.GP01 -> Pico.Routines."Magnetometer Routines"
+Pico.Routines."Magnetometer Routines" -> pico.main(): update orientation + acceleration {
   style.stroke: red
 }
-Routines."Magnetometer Routines": {
+Pico.Routines."Magnetometer Routines": {
   style: {
     fill: "#9a876d"
   }
   shape: oval
 }
 
-main() -> Routines."Navigation Routines": update state {
+Pico.Routines.PID Routines : {
+  style: {
+    fill: "#9a876d"
+  }
+  shape: oval
+}
+
+Pico.Routines.Wifi Routines {
+  style: {
+    fill: "#9a876d"
+  }
+  shape: oval
+}
+
+Pico.Routines.Magnetometer Routines -> Pico.Routines.PID Routines: update orientation
+Pico.Routines.IR Sensor Routines -> Pico.Routines.PID Routines: update wall detection
+Pico.Routines.IR Sensor Routines -> Pico.Routines.Navigation Routines: update wall directions
+Pico.Routines.Ultrasonic Routines -> Pico.Routines.Navigation Routines: update obstacle direction
+Pico.Routines.Navigation Routines -> Pico.Routines.PID Routines: provide direction to move in
+Pico.Routines.PID Routines -> Pico.Routines.Motor Routines: update motor speed
+Pico.Routines.Wheel Encoder Routines -> Pico.Routines.PID Routines: update motor differential speed
+
+pico.main() -> Pico.Routines.Wifi Routines: send navigation and navigator state {
   style.stroke: blue
 }
-Routines."Navigation Routines" -> main(): provide nav instruction {
+
+pico.main() -> Pico.Routines."Navigation Routines": update state {
+  style.stroke: blue
+}
+
+Pico.Routines."Navigation Routines" -> pico.main(): update navigator state {
   style.stroke: red
 }
-Routines."Navigation Routines": {
+
+Pico.Routines."Navigation Routines": {
   style: {
     fill: "#9a876d"
   }
@@ -54,66 +82,70 @@ Routines."Navigation Routines": {
 }
 
 "Left Wheel movement" -> "Left Wheel Encoder"
-"Left Wheel Encoder".OUT -> Pico-IN.GP22: Digital active low
-Pico-IN.GP22 -> Routines."Wheel Encoder Routines"
-Routines."Wheel Encoder Routines": {
+"Left Wheel Encoder".OUT -> Pico.IN.GP22: Digital active low
+Pico.IN.GP22 -> Pico.Routines."Wheel Encoder Routines"
+Pico.Routines."Wheel Encoder Routines": {
   style: {
     fill: "#9a876d"
   }
   shape: oval
 }
-Routines."Wheel Encoder Routines" -> main(): update speed {
+Pico.Routines."Wheel Encoder Routines" -> pico.main(): update speed {
   style.stroke: red
 }
 
 "Right Wheel movement" -> Right Wheel Encoder
-Right Wheel Encoder.OUT -> Pico-IN.GP21: Digital active low
-Pico-IN.GP21 -> Routines.Wheel Encoder Routines
+Right Wheel Encoder.OUT -> Pico.IN.GP21: Digital active low
+Pico.IN.GP21 -> Pico.Routines.Wheel Encoder Routines
 
 "IR Light" -> "Left IR Sensor"
-"Left IR Sensor".AO -> Pico-IN.GP27
-Pico-IN.GP27 -> Routines."IR Sensor Routines"
-Routines."IR Sensor Routines": {
+"Left IR Sensor".AO -> Pico.IN.GP27: ADC analog reading
+Left IR Sensor.DO -> Pico.IN.GP20: Digital active low
+Pico.IN.GP27 -> Pico.Routines."IR Sensor Routines"
+Pico.IN.GP20 -> Pico.Routines.IR Sensor Routines
+Pico.Routines."IR Sensor Routines": {
   style: {
     fill: "#9a876d"
   }
   shape: oval
 }
 "IR Light" -> "Front IR Sensor"
-"Front IR Sensor".AO -> Pico-IN.GP26
-Pico-IN.GP26 -> Routines.IR Sensor Routines
+"Front IR Sensor".AO -> Pico.IN.GP26: ADC analog reading
+Front IR Sensor.DO -> Pico.IN.GP19: Digital active low
+Pico.IN.GP26 -> Pico.Routines.IR Sensor Routines
+Pico.IN.GP19 -> Pico.Routines.IR Sensor Routines
 
-Routines."IR Sensor Routines" -> main(): Interrupt on line crossover &&\nbarcode not detected {
+Pico.Routines."IR Sensor Routines" -> pico.main(): Interrupt on line crossover &&\nbarcode not detected {
   style.stroke: red
 }
-Routines."IR Sensor Routines" -> main(): Decoded barcode output {
+Pico.Routines."IR Sensor Routines" -> pico.main(): Decoded barcode output {
   style.stroke: red
 }
 
-main() -> Routines."Motor Routines": Directional input + speed {
+pico.main() -> Pico.Routines."Motor Routines": Directional input + speed {
   style.stroke: blue
 }
-Routines."Motor Routines": {
+Pico.Routines."Motor Routines": {
   style: {
     fill: "#9a876d"
   }
   shape: oval
 }
 
-Routines.Motor Routines -> Pico-OUT.GP10: Left Motor PWM speed
-Routines.Motor Routines -> Pico-OUT.GP11: Right Motor PWM speed
-Routines.Motor Routines -> Pico-OUT.GP14: Right Motor Anti-Clockwise
-Routines.Motor Routines -> Pico-OUT.GP15: Right Motor Clockwise
-Routines.Motor Routines -> Pico-OUT.GP16: Left Motor Clockwise
-Routines.Motor Routines -> Pico-OUT.GP17: Left Motor Anti-Clockwise
+Pico.Routines.Motor Routines -> Pico.OUT.GP10: Left Motor PWM speed
+Pico.Routines.Motor Routines -> Pico.OUT.GP11: Right Motor PWM speed
+Pico.Routines.Motor Routines -> Pico.OUT.GP14: Right Motor Anti-Clockwise
+Pico.Routines.Motor Routines -> Pico.OUT.GP15: Right Motor Clockwise
+Pico.Routines.Motor Routines -> Pico.OUT.GP16: Left Motor Clockwise
+Pico.Routines.Motor Routines -> Pico.OUT.GP17: Left Motor Anti-Clockwise
 
-Pico-OUT.GP14 -> L298N.IN1
-Pico-OUT.GP15 -> L298N.IN2
-Pico-OUT.GP17 -> L298N.IN3
-Pico-OUT.GP16 -> L298N.IN4
+Pico.OUT.GP15 -> L298N.IN1
+Pico.OUT.GP14 -> L298N.IN2
+Pico.OUT.GP16 -> L298N.IN3
+Pico.OUT.GP17 -> L298N.IN4
 
-Pico-OUT.GP10 -> L298N.EN B
-Pico-OUT.GP11 -> L298N.EN A
+Pico.OUT.GP10 -> L298N.EN B
+Pico.OUT.GP11 -> L298N.EN A
 
 L298N.IN1 -> "Right motor"
 L298N.IN2 -> "Right motor"
