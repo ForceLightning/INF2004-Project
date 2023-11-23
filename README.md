@@ -44,12 +44,6 @@ Documentation can be found [here](https://forcelightning.github.io/INF2004-Proje
 ## Data Flow
 ![Data flow](images/dataflow.svg)
 
-## Flowcharts
-### Mapping flowchart
-![Mapping](images/mapping_flowchart.png)
-### Navigation flowchart
-![Navigation](images/navigation_flowchart.png)
-
 # Contributing
 
 The enforced coding standard is the [Embedded C Coding Standard by the Barr Group](https://barrgroup.com/embedded-systems/books/embedded-c-coding-standard).
