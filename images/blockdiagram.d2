@@ -1,0 +1,46 @@
+grid-rows: 4
+
+main()
+
+main() -> ""
+
+"" {
+    grid-columns: 2
+    grid-rows: 1
+    Drivers {
+        grid-columns: 7
+        Wheel Encoder
+        Motor Control
+        IR Line Sensor {
+            grid-rows: 2
+            Wall Detection
+            Barcode Decoder
+        }
+        Ultrasonic Sensor
+        Magnetometer and Accelerometer
+        Wifi
+        PID Controller
+    }
+
+
+    Libraries {
+        grid-columns: 3
+
+        Mapping {
+            grid-rows: 2
+            DFS
+            Floodfill
+        }
+
+        Pathfinding {
+            "A*" {
+                height: 180
+            }
+        }
+        Binary Min-Heap
+        Maze Abstraction
+    }
+}
+
+"" <-> FreeRTOS
+FreeRTOS <-> Hardware

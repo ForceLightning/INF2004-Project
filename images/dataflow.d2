@@ -13,9 +13,6 @@ Pico.OUT.GP02 -> HC-SR04.Trig
 HC-SR04.Trig -> "Ultrasound Pulse": 8 x 40kHz pulse
 # "Ultrasound Pulse" -> "Ultrasound Echo"
 Pico.Routines."Ultrasonic Routines": {
-  style: {
-    fill: "#9a876d"
-  }
   shape: oval
 }
 Pico.Routines."Ultrasonic Routines" -> pico.main() {
@@ -34,23 +31,14 @@ Pico.Routines."Magnetometer Routines" -> pico.main(): update orientation + accel
   style.stroke: red
 }
 Pico.Routines."Magnetometer Routines": {
-  style: {
-    fill: "#9a876d"
-  }
   shape: oval
 }
 
 Pico.Routines.PID Routines : {
-  style: {
-    fill: "#9a876d"
-  }
   shape: oval
 }
 
 Pico.Routines.Wifi Routines {
-  style: {
-    fill: "#9a876d"
-  }
   shape: oval
 }
 
@@ -75,9 +63,6 @@ Pico.Routines."Navigation Routines" -> pico.main(): update navigator state {
 }
 
 Pico.Routines."Navigation Routines": {
-  style: {
-    fill: "#9a876d"
-  }
   shape: oval
 }
 
@@ -85,9 +70,6 @@ Pico.Routines."Navigation Routines": {
 "Left Wheel Encoder".OUT -> Pico.IN.GP22: Digital active low
 Pico.IN.GP22 -> Pico.Routines."Wheel Encoder Routines"
 Pico.Routines."Wheel Encoder Routines": {
-  style: {
-    fill: "#9a876d"
-  }
   shape: oval
 }
 Pico.Routines."Wheel Encoder Routines" -> pico.main(): update speed {
@@ -104,9 +86,6 @@ Left IR Sensor.DO -> Pico.IN.GP20: Digital active low
 Pico.IN.GP27 -> Pico.Routines."IR Sensor Routines"
 Pico.IN.GP20 -> Pico.Routines.IR Sensor Routines
 Pico.Routines."IR Sensor Routines": {
-  style: {
-    fill: "#9a876d"
-  }
   shape: oval
 }
 "IR Light" -> "Front IR Sensor"
@@ -126,9 +105,6 @@ pico.main() -> Pico.Routines."Motor Routines": Directional input + speed {
   style.stroke: blue
 }
 Pico.Routines."Motor Routines": {
-  style: {
-    fill: "#9a876d"
-  }
   shape: oval
 }
 

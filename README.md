@@ -38,6 +38,9 @@ Unit testing of code that is independent of the Pico SDK is done with `ctest` by
 Documentation can be found [here](https://forcelightning.github.io/INF2004-Project/).
 
 # Diagrams
+## Block Diagram
+![Block Diagram](images/blockdiagram.svg)
+
 ## Call Graph
 ![Call graph](images/callgraph.svg)
 
