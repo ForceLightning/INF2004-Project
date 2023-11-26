@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "motor_control.h"
 
-
 int
 main (void)
 {
@@ -10,10 +9,10 @@ main (void)
     stdio_init_all();
 
     // Initialize motors.
-    start_motor(
-        LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, PWM_PIN_LEFT);
-    start_motor(
-        RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, PWM_PIN_RIGHT);
+    motor_start(
+        MOTOR_LEFT_PIN_CLKWISE, MOTOR_LEFT_PIN_ANTICLKWISE, MOTOR_PWM_PIN_LEFT);
+    motor_start(
+        MOTOR_RIGHT_PIN_CLKWISE, MOTOR_RIGHT_PIN_ANTICLKWISE, MOTOR_PWM_PIN_RIGHT);
 
     for (;;)
     {
@@ -24,35 +23,35 @@ main (void)
         {
             case 'f':
                 printf("Moving forward...\n");
-                move_forward();
+                motor_move_forward();
                 break;
             case 's':
                 printf("Stopping...\n");
-                stop();
+                motor_stop();
                 break;
             case 'b':
                 printf("Reversing...\n");
-                reverse();
+                motor_reverse();
                 break;
             case 'l':
                 printf("Turning forward left...\n");
-                turn_left(0);
+                motor_turn_left(0);
                 break;
             case 't':
                 printf("Turning reverse left...\n");
-                turn_left(1);
+                motor_turn_left(1);
                 break;
             case 'r':
                 printf("Turning forward right...\n");
-                turn_right(0);
+                motor_turn_right(0);
                 break;
             case 'y':
                 printf("Turning forward right...\n");
-                turn_right(1);
+                motor_turn_right(1);
                 break;
             default:
                 printf("Invalid input. Stopping car...\n");
-                stop();
+                motor_stop();
                 break;
         }
     }

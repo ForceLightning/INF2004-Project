@@ -14,7 +14,8 @@
 #include "pico/types.h"
 #include "motor_control.h"
 
-float g_ratio = 1.05f;
+float g_ratio = MOTOR_DEFAULT_DIFF_RATIO; // Global variable for motor speed
+                                          // difference ratio.
 
 /**
  * @brief Default initialization of a single motor.
@@ -27,7 +28,7 @@ float g_ratio = 1.05f;
  * @param pwm_gpio GPIO pin number for PWM output to control motor speed.
  */
 void
-start_motor (uint clkwise_gpio, uint anti_clkwise_gpio, uint pwm_gpio)
+motor_start (uint clkwise_gpio, uint anti_clkwise_gpio, uint pwm_gpio)
 {
     gpio_set_function(pwm_gpio, GPIO_FUNC_PWM);
 
@@ -52,7 +53,7 @@ start_motor (uint clkwise_gpio, uint anti_clkwise_gpio, uint pwm_gpio)
  * @param duty_cycle The duty cycle of the PWM slice.
  */
 void
-update_pwm (uint pwm_gpio, uint pwm_wrap, float duty_cycle)
+motor_update_pwm (uint pwm_gpio, uint pwm_wrap, float duty_cycle)
 {
     // Make sure that the duty cycle is in (0, 1)
     if (1.0f < duty_cycle)
@@ -81,10 +82,10 @@ update_pwm (uint pwm_gpio, uint pwm_wrap, float duty_cycle)
  * @param anti_clkwise The digital value to set for anticlockwise rotation.
  */
 void
-update_direction (uint clkwise_gpio,
-                  uint anti_clkwise_gpio,
-                  uint clkwise,
-                  uint anti_clkwise)
+motor_update_direction (uint clkwise_gpio,
+                        uint anti_clkwise_gpio,
+                        uint clkwise,
+                        uint anti_clkwise)
 {
     gpio_put(clkwise_gpio, clkwise);
     gpio_put(anti_clkwise_gpio, anti_clkwise);
@@ -100,14 +101,15 @@ update_direction (uint clkwise_gpio,
  * motors.
  */
 void
-move_forward ()
+motor_move_forward ()
 {
     printf("Moving forward\n");
-    update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
-    update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.5f);
-    update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 1, 0);
-    update_direction(
-        RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 1, 0);
+    motor_update_pwm(MOTOR_PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
+    motor_update_pwm(MOTOR_PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.5f);
+    motor_update_direction(
+        MOTOR_LEFT_PIN_CLKWISE, MOTOR_LEFT_PIN_ANTICLKWISE, 1, 0);
+    motor_update_direction(
+        MOTOR_RIGHT_PIN_CLKWISE, MOTOR_RIGHT_PIN_ANTICLKWISE, 1, 0);
 }
 
 /**
@@ -121,8 +123,8 @@ move_forward ()
 void
 stop ()
 {
-    update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.0f);
-    update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.0f);
+    motor_update_pwm(MOTOR_PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.0f);
+    motor_update_pwm(MOTOR_PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.0f);
 }
 
 /**
@@ -135,13 +137,14 @@ stop ()
  * motors.
  */
 void
-reverse ()
+motor_reverse ()
 {
-    update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
-    update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.5f);
-    update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 0, 1);
-    update_direction(
-        RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 0, 1);
+    motor_update_pwm(MOTOR_PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
+    motor_update_pwm(MOTOR_PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.5f);
+    motor_update_direction(
+        MOTOR_LEFT_PIN_CLKWISE, MOTOR_LEFT_PIN_ANTICLKWISE, 0, 1);
+    motor_update_direction(
+        MOTOR_RIGHT_PIN_CLKWISE, MOTOR_RIGHT_PIN_ANTICLKWISE, 0, 1);
 }
 
 /**
@@ -158,24 +161,24 @@ reverse ()
  * reverse.
  */
 void
-turn_left (bool reverse_turn)
+motor_turn_left (bool reverse_turn)
 {
-    update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.2f);
-    update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.5f);
+    motor_update_pwm(MOTOR_PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.2f);
+    motor_update_pwm(MOTOR_PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.5f);
 
     if (reverse_turn)
     {
-        update_direction(
-            LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 1, 0);
-        update_direction(
-            RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 0, 1);
+        motor_update_direction(
+            MOTOR_LEFT_PIN_CLKWISE, MOTOR_LEFT_PIN_ANTICLKWISE, 1, 0);
+        motor_update_direction(
+            MOTOR_RIGHT_PIN_CLKWISE, MOTOR_RIGHT_PIN_ANTICLKWISE, 0, 1);
     }
     else
     {
-        update_direction(
-            LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 0, 1);
-        update_direction(
-            RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 1, 0);
+        motor_update_direction(
+            MOTOR_LEFT_PIN_CLKWISE, MOTOR_LEFT_PIN_ANTICLKWISE, 0, 1);
+        motor_update_direction(
+            MOTOR_RIGHT_PIN_CLKWISE, MOTOR_RIGHT_PIN_ANTICLKWISE, 1, 0);
     }
 }
 
@@ -193,29 +196,36 @@ turn_left (bool reverse_turn)
  * reverse.
  */
 void
-turn_right (bool reverse_turn)
+motor_turn_right (bool reverse_turn)
 {
-    update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
-    update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.2f);
+    motor_update_pwm(MOTOR_PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
+    motor_update_pwm(MOTOR_PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.2f);
 
     if (reverse_turn)
     {
-        update_direction(
-            LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 0, 1);
-        update_direction(
-            RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 1, 0);
+        motor_update_direction(
+            MOTOR_LEFT_PIN_CLKWISE, MOTOR_LEFT_PIN_ANTICLKWISE, 0, 1);
+        motor_update_direction(
+            MOTOR_RIGHT_PIN_CLKWISE, MOTOR_RIGHT_PIN_ANTICLKWISE, 1, 0);
     }
     else
     {
-        update_direction(
-            LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 1, 0);
-        update_direction(
-            RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 0, 1);
+        motor_update_direction(
+            MOTOR_LEFT_PIN_CLKWISE, MOTOR_LEFT_PIN_ANTICLKWISE, 1, 0);
+        motor_update_direction(
+            MOTOR_RIGHT_PIN_CLKWISE, MOTOR_RIGHT_PIN_ANTICLKWISE, 0, 1);
     }
 }
 
+/**
+ * @brief Update the ratio of the left motor's duty cycle to the right motor's
+ * duty cycle.
+ *
+ * @param[in] new_ratio New ratio of the left motor's duty cycle to the right
+ * motor's duty cycle.
+ */
 void
-update_ratio (float new_ratio)
+motor_update_ratio (float new_ratio)
 {
     g_ratio = new_ratio;
 }

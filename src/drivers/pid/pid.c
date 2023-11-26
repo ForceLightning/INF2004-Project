@@ -58,7 +58,7 @@ navigate_car_turn (turn_params_t            *p_turn_params,
             switch (direction)
             {
                 case WEST:
-                    turn_left(0);
+                    motor_turn_left(0);
                     if (p_turn_params->encoder_step_count
                         == ENCODER_STEP_TURN_90_DEG)
                     {
@@ -69,7 +69,7 @@ navigate_car_turn (turn_params_t            *p_turn_params,
                     break;
 
                 case EAST:
-                    turn_right(0);
+                    motor_turn_right(0);
                     if (p_turn_params->encoder_step_count
                         == ENCODER_STEP_TURN_90_DEG)
                     {
@@ -80,7 +80,7 @@ navigate_car_turn (turn_params_t            *p_turn_params,
                     break;
 
                 case SOUTH:
-                    turn_left(0);
+                    motor_turn_left(0);
                     if (p_turn_params->encoder_step_count
                         == ENCODER_STEP_TURN_180_DEG)
                     {
@@ -96,7 +96,7 @@ navigate_car_turn (turn_params_t            *p_turn_params,
         }
         else if (!p_turn_params->b_is_moved_cell)
         {
-            move_forward();
+            motor_move_forward();
             if (p_turn_params->encoder_step_count == ENCODER_STEP_MOVE)
             {
                 p_turn_params->b_is_moved_cell    = 1;
@@ -196,10 +196,10 @@ bearing_correction (float         target_bearing,
         p_pid_params->current_bearing = magneto_get_curr_bearing();
         p_pid_params->current_ratio   = new_ratio;
 
-        update_ratio(p_pid_params->current_ratio);
+        motor_update_ratio(p_pid_params->current_ratio);
     }
 
-    update_ratio(PID_BIAS_LEFT_RATIO);
+    motor_update_ratio(PID_BIAS_LEFT_RATIO);
 }
 
 // End of file pid.c

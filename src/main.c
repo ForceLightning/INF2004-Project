@@ -66,9 +66,9 @@ read_magnetometer_task(__unused void *params)
 static void
 move_car_forward_task(__unused void *params)
 {
-    start_motor(
+    motor_start(
         LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, PWM_PIN_LEFT);
-    start_motor(
+    motor_start(
         RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, PWM_PIN_RIGHT);
     while(1){
         if(magneto_is_bearing_invalid()){
@@ -76,7 +76,7 @@ move_car_forward_task(__unused void *params)
             init_pid_error_correction(&pid_params);
             bearing_correction(magneto_get_true_bearing(), magneto_get_curr_bearing(), &pid_params);
         }
-        move_forward();
+        motor_move_forward();
     }
 }
 
