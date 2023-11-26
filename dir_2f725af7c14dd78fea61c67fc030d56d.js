@@ -8,7 +8,6 @@ var dir_2f725af7c14dd78fea61c67fc030d56d =
     [ "dfs.h", "dfs_8h.html", "dfs_8h" ],
     [ "floodfill.c", "floodfill_8c.html", "floodfill_8c" ],
     [ "floodfill.h", "floodfill_8h.html", "floodfill_8h" ],
-    [ "main.c", "pathfinding_2main_8c.html", "pathfinding_2main_8c" ],
     [ "maze.c", "maze_8c.html", "maze_8c" ],
     [ "maze.h", "maze_8h.html", "maze_8h" ]
 ];
