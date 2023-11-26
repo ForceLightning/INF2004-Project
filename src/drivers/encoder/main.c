@@ -109,7 +109,7 @@ main ()
     // Call interrupt on rising edge.
     //
     gpio_set_irq_enabled_with_callback(
-        ENCODER_PIN, GPIO_IRQ_EDGE_RISE, true, &encoder_tick_isr);
+        PID_ENCODER_PIN, GPIO_IRQ_EDGE_RISE, true, &encoder_tick_isr);
 
     for (;;)
     {

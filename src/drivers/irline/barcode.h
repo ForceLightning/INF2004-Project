@@ -4,9 +4,9 @@
  * @brief Header file for the barcode driver.
  * @version 0.1
  * @date 2023-11-22
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
 #include <stdint.h>
 
@@ -18,7 +18,7 @@
 //
 #define BARCODE_MAX_LINES 9 // Maximum number of barcode lines.
 
-#ifndef BARCODE_DEBUG_VERBOSE
+#ifndef BARCODE_DEBUG_VERBOSE // Verbosity level for debug print.
 #define BARCODE_DEBUG_VERBOSE 0
 #endif
 

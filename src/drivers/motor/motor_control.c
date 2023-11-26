@@ -1,10 +1,10 @@
 /**
  * @file motor_control.c
  * @author Bryan Seah
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2023-10-29
- * 
+ *
  * @copyright Copyright (c) 2023
  */
 #include <stdio.h>
@@ -14,7 +14,7 @@
 #include "pico/types.h"
 #include "motor_control.h"
 
-float ratio = 1.05f;
+float g_ratio = 1.05f;
 
 /**
  * @brief Default initialization of a single motor.
@@ -106,7 +106,8 @@ move_forward ()
     update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
     update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.5f);
     update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 1, 0);
-    update_direction(RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 1, 0);
+    update_direction(
+        RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 1, 0);
 }
 
 /**
@@ -139,7 +140,8 @@ reverse ()
     update_pwm(PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
     update_pwm(PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.5f);
     update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 0, 1);
-    update_direction(RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 0, 1);
+    update_direction(
+        RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 0, 1);
 }
 
 /**
@@ -163,13 +165,17 @@ turn_left (bool reverse_turn)
 
     if (reverse_turn)
     {
-        update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 1, 0);
-        update_direction(RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 0, 1);
+        update_direction(
+            LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 1, 0);
+        update_direction(
+            RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 0, 1);
     }
     else
     {
-        update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 0, 1);
-        update_direction(RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 1, 0);
+        update_direction(
+            LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 0, 1);
+        update_direction(
+            RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 1, 0);
     }
 }
 
@@ -194,17 +200,23 @@ turn_right (bool reverse_turn)
 
     if (reverse_turn)
     {
-        update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 0, 1);
-        update_direction(RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 1, 0);
+        update_direction(
+            LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 0, 1);
+        update_direction(
+            RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 1, 0);
     }
     else
     {
-        update_direction(LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 1, 0);
-        update_direction(RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 0, 1);
+        update_direction(
+            LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, 1, 0);
+        update_direction(
+            RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, 0, 1);
     }
 }
 
-void update_ratio(float new_ratio){
-    ratio = new_ratio;
+void
+update_ratio (float new_ratio)
+{
+    g_ratio = new_ratio;
 }
 // End of file motor_control.c

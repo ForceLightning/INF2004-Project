@@ -39,7 +39,7 @@ main (void)
         RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, PWM_PIN_RIGHT);
 
     gpio_set_irq_enabled_with_callback(
-        ENCODER_PIN, GPIO_IRQ_EDGE_RISE, true, &encoder_tick_isr);
+        PID_ENCODER_PIN, GPIO_IRQ_EDGE_RISE, true, &encoder_tick_isr);
 
     for (;;)
     {
@@ -50,19 +50,19 @@ main (void)
         {
             case '1':
                 move_forward();
-                g_turn_params.is_turning     = 1;
+                g_turn_params.b_is_turning     = 1;
                 g_turn_params.turn_direction = user_input;
                 break;
 
             case '3':
                 move_forward();
-                g_turn_params.is_turning     = 1;
+                g_turn_params.b_is_turning     = 1;
                 g_turn_params.turn_direction = user_input;
                 break;
 
             case '2':
                 move_forward();
-                g_turn_params.is_turning     = 1;
+                g_turn_params.b_is_turning     = 1;
                 g_turn_params.turn_direction = user_input;
                 break;
         }

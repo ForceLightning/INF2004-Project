@@ -13,7 +13,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <string.h>
-#include "pico/stdlib.h"
 #include "ir_sensor.h"
 #include "barcode.h"
 

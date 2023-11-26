@@ -8,62 +8,78 @@
  * @copyright Copyright (c) 2023
  */
 
-#ifndef PID_H
+#ifndef PID_H // Include guard.
 #define PID_H
 
 #include "maze.h"
 
 // Definitions for the encoder steps.
 //
-#define ENCODER_STEP_TURN_90_DEG  18
-#define ENCODER_STEP_TURN_180_DEG 36
-#define ENCODER_STEP_MOVE         25
-#define ENCODER_CENTER_OFFSET     5
+#define ENCODER_STEP_TURN_90_DEG  18 // Number of encoder steps to turn 90 deg.
+#define ENCODER_STEP_TURN_180_DEG 36 // Number of encoder steps to turn 180 deg.
+#define ENCODER_STEP_MOVE         25 // Number of encoder steps to move 1 cell.
+#define ENCODER_CENTER_OFFSET     5  // Number of encoder steps to center.
 
-#define ENCODER_PIN 21
+// Constants for the PID.
+//
+#define PID_KP               0.01f   // Gain for proportional term.
+#define PID_KI               0.05f   // Gain for integral term.
+#define PID_KD               0.01f   // Gain for derivative term.
+#define PID_EPSILON          0.01f   // Epsilon for PID.
+#define PID_RATIO_TO_BEARING -0.035f // Ratio to bearing for PID.
+#define PID_ENCODER_PIN      21      // Encoder pin for PID.
+#define PID_BIAS_LEFT_RATIO  1.05f   // Bias for left ratio.
 
-typedef struct pid_params {
-    float kp;
-    float ki;
-    float kd;
+#define PID_DEGREES_NORMALISE(x) ((x + 180) % 360 - 180) // Normalise degrees.
 
-    float epsilon;
-    float ratio_to_bearing;
-    float setpoint;
-    float integral;
-    float prev_error;
-    float current_ratio;
-    float current_bearing;
+/**
+ * @typedef pid_params_t
+ * @brief Struct for PID parameters.
+ *
+ */
+typedef struct pid_params
+{
+    float k_p; ///< Gain for proportional term.
+    float k_i; ///< Gain for integral term.
+    float k_d; ///< Gain for derivative term.
+
+    float epsilon;          ///< Small epsilon value to prevent division by 0.
+    float ratio_to_bearing; ///< Ratio to bearing for PID.
+    float setpoint;         ///< Setpoint for PID.
+    float integral;         ///< Integral for PID.
+    float prev_error;       ///< Previous error for PID.
+    float current_ratio;    ///< Current ratio for PID.
+    float current_bearing;  ///< Current bearing for PID.
 } pid_params_t;
 
 void init_pid_error_correction(pid_params_t *p_pid_params);
 
+/**
+ * @typedef turn_params_t
+ * @brief Struct for turn parameters.
+ */
 typedef struct turn_params
 {
-    uint is_turning;
-    uint encoder_step_count;
-    char turn_direction;
-    uint is_centered;
-    uint completed_turn;
-    uint moved_cell;
+    uint b_is_turning;       ///< Flag to indicate if the car is turning.
+    uint encoder_step_count; ///< Current encoder step count.
+    char turn_direction;     ///< Direction to turn.
+    uint b_is_centered;      ///< Flag to indicate if the car is centered.
+    uint b_is_turn_complete; ///< Flag to indicate if the turn is complete.
+    uint b_is_moved_cell;    ///< Flag to indicate if the car has moved a cell.
 } turn_params_t;
 
-/**
- * @brief Sets up pid struct(s).
- */
 void init_pid_structs(turn_params_t *p_turn_params);
 
-/**
- * @brief Function to turn the car based on a given direction
- *
- * @param p_navigator
- * @param direction
- */
 void navigate_car_turn(turn_params_t            *p_turn_params,
                        maze_cardinal_direction_t direction);
 
-float calculate_pid(float current_bearing, float target_bearing, float current_ratio, pid_params_t *p_pid_params);
-void bearing_correction(float target_bearing, float current_bearing, pid_params_t *p_pid_params);
+float calculate_pid(float         current_bearing,
+                    float         target_bearing,
+                    float         current_ratio,
+                    pid_params_t *p_pid_params);
+void  bearing_correction(float         target_bearing,
+                         float         current_bearing,
+                         pid_params_t *p_pid_params);
 
 #endif // PID_H
 
