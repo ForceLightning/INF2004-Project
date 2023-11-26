@@ -28,3 +28,24 @@ pico_add_extra_outputs(ultrasonic)
 
 pico_enable_stdio_usb(ultrasonic 1)
 pico_enable_stdio_uart(ultrasonic 0)
+
+add_library(ultrasonic_driver INTERFACE
+    )
+
+target_sources(ultrasonic_driver INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}/ultrasonic.c
+    )
+
+target_link_libraries(ultrasonic_driver INTERFACE
+    pico_stdlib
+    hardware_gpio
+    )
+
+target_link_directories(ultrasonic_driver INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    )
+
+target_include_directories(ultrasonic_driver INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}
+    )

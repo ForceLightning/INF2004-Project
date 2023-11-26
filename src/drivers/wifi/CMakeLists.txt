@@ -26,14 +26,14 @@ target_include_directories(wifi_interrupt PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
     # ${CMAKE_CURRENT_LIST_DIR}/../
     ${CMAKE_CURRENT_LIST_DIR}/../../ # for common lwipopts.h and FreeRTOSConfig.h
-    # ${CMAKE_CURRENT_LIST_DIR}/../../../ # for common lwipopts.h and FreeRTOSConfig.h
+    ${CMAKE_CURRENT_LIST_DIR}/../../../ # for common lwipopts.h and FreeRTOSConfig.h
     )
 target_link_libraries(wifi_interrupt
-        pico_cyw43_arch_lwip_threadsafe_background
-        pico_stdlib
-        pico_lwip_iperf
-        FreeRTOS-Kernel-Heap4
-        )
+    pico_cyw43_arch_lwip_threadsafe_background
+    pico_stdlib
+    pico_lwip_iperf
+    FreeRTOS-Kernel-Heap4
+    )
 
 pico_add_extra_outputs(wifi_interrupt)
 pico_enable_stdio_usb(wifi_interrupt 1)
@@ -47,16 +47,41 @@ target_compile_definitions(wifi_poll PRIVATE
         WIFI_PASSWORD=\"${WIFI_PASSWORD}\"
         )
 target_include_directories(wifi_poll PRIVATE
-${CMAKE_CURRENT_LIST_DIR}
-# ${CMAKE_CURRENT_LIST_DIR}/../
-${CMAKE_CURRENT_LIST_DIR}/../../ # for common lwipopts.h and FreeRTOSConfig.h
-# ${CMAKE_CURRENT_LIST_DIR}/../../../ # for common lwipopts.h and FreeRTOSConfig.h
+    ${CMAKE_CURRENT_LIST_DIR}
+    # ${CMAKE_CURRENT_LIST_DIR}/../
+    ${CMAKE_CURRENT_LIST_DIR}/../../ # for common lwipopts.h and FreeRTOSConfig.h
+    ${CMAKE_CURRENT_LIST_DIR}/../../../ # for common lwipopts.h and FreeRTOSConfig.h
         )
 target_link_libraries(wifi_poll
     pico_cyw43_arch_lwip_threadsafe_background
     pico_stdlib
     pico_lwip_iperf
     FreeRTOS-Kernel-Heap4
-        )
+    )
 pico_add_extra_outputs(wifi_poll)
 pico_enable_stdio_usb(wifi_poll 1)
+
+
+add_library(wifi_driver INTERFACE
+    )
+
+target_sources(wifi_driver INTERFACE
+    ${CMAKE_CURRENT_LIST_DIR}/wifi.c
+    )
+
+target_link_libraries(wifi_driver INTERFACE
+    pico_stdlib
+    pico_cyw43_arch_lwip_sys_freertos
+    pico_lwip_freertos
+    pico_lwip_iperf
+    )
+
+target_link_directories(wifi_driver INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    )
+
+target_include_directories(wifi_driver INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}
+    ${CMAKE_CURRENT_LIST_DIR}/../../ # for common lwipopts.h and FreeRTOSConfig.h
+    )

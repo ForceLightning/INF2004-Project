@@ -31,3 +31,26 @@ pico_add_extra_outputs(irline)
 
 pico_enable_stdio_usb(irline 1)
 pico_enable_stdio_uart(irline 0)
+
+add_library(irline_driver INTERFACE
+    )
+
+target_sources(irline_driver INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}/ir_sensor.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/barcode.c
+    )
+
+target_link_libraries(irline_driver INTERFACE
+    pico_stdlib
+    hardware_gpio
+    hardware_adc
+    )
+
+target_link_directories(irline_driver INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+target_include_directories(irline_driver INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}
+    )

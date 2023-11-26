@@ -41,7 +41,7 @@ else()
 
 endif()
 
-add_subdirectory(driver)
+add_subdirectory(drivers)
 add_subdirectory(pathfinding)
 add_subdirectory(pid)
 
@@ -57,16 +57,29 @@ if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
     target_include_directories(car_project_nosys PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
         # ${CMAKE_CURRENT_LIST_DIR}/../.. # for our common lwipopts
-        ${CMAKE_CURRENT_LIST_DIR}/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/drivers
+        ${CMAKE_CURRENT_SOURCE_DIR}/pathfinding
+        ${CMAKE_CURRENT_SOURCE_DIR}/pid
         ${PICO_LWIP_CONTRIB_PATH}/apps/ping
         )
+    target_link_directories(car_project_nosys PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/drivers
+        ${CMAKE_CURRENT_SOURCE_DIR}/pathfinding
+        ${CMAKE_CURRENT_SOURCE_DIR}/pid
+        )
+
     target_link_libraries(car_project_nosys
         pico_cyw43_arch_lwip_threadsafe_background
         pico_stdlib
         pico_lwip_iperf
         FreeRTOS-Kernel-Heap4 # FreeRTOS kernel and dynamic heap
-        driver
         pathfinding
+        wifi_driver
+        encoder_driver
+        irline_driver
+        magnetometer_driver
+        motor_driver
+        ultrasonic_driver
         pid_driver
         )
     # enable usb output and uart output
@@ -93,8 +106,15 @@ if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
     target_include_directories(car_project PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
         ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts
-        ${CMAKE_CURRENT_LIST_DIR}/include
         ${PICO_LWIP_CONTRIB_PATH}/apps/ping
+        ${CMAKE_CURRENT_SOURCE_DIR}/drivers
+        ${CMAKE_CURRENT_SOURCE_DIR}/pathfinding
+        ${CMAKE_CURRENT_SOURCE_DIR}/pid
+        )
+    target_link_directories(car_project_nosys PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/drivers
+        ${CMAKE_CURRENT_SOURCE_DIR}/pathfinding
+        ${CMAKE_CURRENT_SOURCE_DIR}/pid
         )
     target_link_libraries(car_project
         hardware_adc
@@ -102,8 +122,13 @@ if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
         pico_stdlib
         pico_lwip_iperf
         FreeRTOS-Kernel-Heap4 # FreeRTOS kernel and dynamic heap
-        driver
         pathfinding
+        wifi_driver
+        encoder_driver
+        irline_driver
+        magnetometer_driver
+        motor_driver
+        ultrasonic_driver
         pid_driver
         )
     pico_enable_stdio_usb(car_project 1)

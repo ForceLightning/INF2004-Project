@@ -6,7 +6,7 @@
 #include "hardware/gpio.h"
 #include "hardware/timer.h"
 #include "pico/stdio.h"
-#include "motor/motor_control.h"
+#include "motor_control.h"
 #include "pid.h"
 
 turn_params_t g_turn_params;

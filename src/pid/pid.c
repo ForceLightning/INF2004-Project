@@ -11,10 +11,10 @@
 // #include "hardware/pwm.h"
 // #include "hardware/gpio.h"
 // #include "pico/types.h"
-#include "motor/motor_control.h"
+#include "motor_control.h"
 #include "maze.h"
 #include "pid.h"
-#include "magnetometer/magnetometer.h"
+#include "magnetometer.h"
 #include <stdio.h>
 
 /**

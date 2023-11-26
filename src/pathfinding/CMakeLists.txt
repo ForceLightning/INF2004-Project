@@ -9,10 +9,6 @@ target_sources(pathfinding INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}/dfs.c
 )
 
-# target_link_libraries(pathfinding INTERFACE
-#     pico_stdlib
-# )
-
 target_include_directories(pathfinding INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
