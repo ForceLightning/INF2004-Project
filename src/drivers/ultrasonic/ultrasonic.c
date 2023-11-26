@@ -13,15 +13,98 @@
 #include <sys/cdefs.h>
 #include "pico/time.h"
 #include "pico/types.h"
-#include "pico/platform.h"
 #include "hardware/gpio.h"
 
 #include "ultrasonic.h"
 
+// Global variables.
+// -----------------------------------------------------------------------------
+//
 static absolute_time_t g_start_time;  // Start time of the pulse.
 static absolute_time_t g_end_time;    // End time of the pulse.
 static uint64_t        g_pulse_width; // Pulse width in us.
 static uint64_t        g_width;       // Pulse width in cycles.
+
+// Private function prototypes.
+// -----------------------------------------------------------------------------
+//
+static void     ultrasonic_pulse_isr(uint gpio, uint32_t events);
+static uint64_t ultrasonic_get_pulse(uint trig_pin, uint echo_pin);
+
+// Public functions.
+// -----------------------------------------------------------------------------
+//
+
+/**
+ * @brief Initalises the pins for the ultrasonic sensor.
+ *
+ * @param trig_pin Trigger pin for the ultrasonic sensor.
+ * @param echo_pin Echo pin for the ultrasonic sensor.
+ *
+ * @par Initialises the trigger and echo pins, and sets a ISR on the echo pin to
+ * measure the pulse width.
+ */
+void
+ultrasonic_init_pins (uint trig_pin, uint echo_pin)
+{
+    gpio_init(trig_pin);
+    gpio_init(echo_pin);
+    gpio_set_dir(trig_pin, GPIO_OUT);
+    gpio_set_dir(echo_pin, GPIO_IN);
+    gpio_set_irq_enabled_with_callback(echo_pin,
+                                       GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL,
+                                       true,
+                                       &ultrasonic_pulse_isr);
+}
+
+/**
+ * @brief Get the distance to an object in centimetres.
+ *
+ * @param trig_pin Trigger pin for the ultrasonic sensor.
+ * @param echo_pin Echo pin for the ultrasonic sensor.
+ * @return uint64_t The distance to an object in centimetres.
+ */
+uint64_t
+ultrasonic_get_cm (uint trig_pin, uint echo_pin)
+{
+    uint64_t pulse_length = ultrasonic_get_pulse(trig_pin, echo_pin);
+    return (uint64_t)ULTRASONIC_PULSE_TO_CM(pulse_length);
+}
+
+/**
+ * @brief Get the distance to an object in inches.
+ *
+ * @param trig_pin Trigger pin for the ultrasonic sensor.
+ * @param echo_pin Echo pin for the ultrasonic sensor.
+ * @return uint64_t The distance to an object in inches.
+ */
+uint64_t
+ultrasonic_get_in (uint trig_pin, uint echo_pin)
+{
+    uint64_t pulse_length = ultrasonic_get_pulse(trig_pin, echo_pin);
+    return (uint64_t)ULTRASONIC_PULSE_TO_IN(pulse_length);
+}
+
+// Private functions.
+// -----------------------------------------------------------------------------
+//
+
+/**
+ * @brief Get the pulse length in cycles.
+ *
+ * @param trig_pin Trigger pin for the ultrasonic sensor.
+ * @param echo_pin Echo pin for the ultrasonic sensor.
+ * @return uint64_t The pulse length in cycles.
+ */
+static uint64_t
+ultrasonic_get_pulse (uint trig_pin, uint echo_pin)
+{
+    gpio_put(trig_pin, 1);
+    sleep_us(ULTRASONIC_TRIG_PULSE_US);
+    gpio_put(trig_pin, 0);
+    g_width = 0;
+    return g_pulse_width;
+}
 
 /**
  * @brief This function is the interrupt service routine when receiving a
@@ -50,73 +133,6 @@ ultrasonic_pulse_isr (__unused uint gpio, uint32_t events)
         g_end_time    = get_absolute_time();
         g_pulse_width = absolute_time_diff_us(g_start_time, g_end_time);
     }
-}
-
-/**
- * @brief Initalises the pins for the ultrasonic sensor.
- *
- * @param trig_pin Trigger pin for the ultrasonic sensor.
- * @param echo_pin Echo pin for the ultrasonic sensor.
- *
- * @par Initialises the trigger and echo pins, and sets a ISR on the echo pin to
- * measure the pulse width.
- */
-void
-init_ultrasonic_pins (uint trig_pin, uint echo_pin)
-{
-    gpio_init(trig_pin);
-    gpio_init(echo_pin);
-    gpio_set_dir(trig_pin, GPIO_OUT);
-    gpio_set_dir(echo_pin, GPIO_IN);
-    gpio_set_irq_enabled_with_callback(echo_pin,
-                                       GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL,
-                                       true,
-                                       &ultrasonic_pulse_isr);
-}
-
-/**
- * @brief Get the pulse length in cycles.
- *
- * @param trig_pin Trigger pin for the ultrasonic sensor.
- * @param echo_pin Echo pin for the ultrasonic sensor.
- * @return uint64_t The pulse length in cycles.
- */
-uint64_t
-get_pulse (uint trig_pin, uint echo_pin)
-{
-    gpio_put(trig_pin, 1);
-    sleep_us(ULTRASONIC_TRIG_PULSE_US);
-    gpio_put(trig_pin, 0);
-    g_width = 0;
-    return g_pulse_width;
-}
-
-/**
- * @brief Get the distance to an object in centimetres.
- *
- * @param trig_pin Trigger pin for the ultrasonic sensor.
- * @param echo_pin Echo pin for the ultrasonic sensor.
- * @return uint64_t The distance to an object in centimetres.
- */
-uint64_t
-get_cm (uint trig_pin, uint echo_pin)
-{
-    uint64_t pulse_length = get_pulse(trig_pin, echo_pin);
-    return pulse_length / 29 / 2;
-}
-
-/**
- * @brief Get the distance to an object in inches.
- *
- * @param trig_pin Trigger pin for the ultrasonic sensor.
- * @param echo_pin Echo pin for the ultrasonic sensor.
- * @return uint64_t The distance to an object in inches.
- */
-uint64_t
-get_inches (uint trig_pin, uint echo_pin)
-{
-    uint64_t pulse_length = get_pulse(trig_pin, echo_pin);
-    return (uint64_t)pulse_length / 74.f / 2.f;
 }
 
 // End of file driver/ultrasonic/ultrasonic.c.

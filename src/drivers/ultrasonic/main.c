@@ -25,12 +25,12 @@ main (void)
     // Initialisation.
     //
     stdio_init_all();
-    init_ultrasonic_pins(TRIG_PIN, ECHO_PIN);
+    ultrasonic_init_pins(TRIG_PIN, ECHO_PIN);
 
     for (;;) // Loop forever. See Barr Group "Embedded C Coding Standard" 8.4.c
     {
-        uint64_t distance_cm   = get_cm(TRIG_PIN, ECHO_PIN);
-        uint64_t distance_inch = get_inches(TRIG_PIN, ECHO_PIN);
+        uint64_t distance_cm   = ultrasonic_get_cm(TRIG_PIN, ECHO_PIN);
+        uint64_t distance_inch = ultrasonic_get_in(TRIG_PIN, ECHO_PIN);
         printf("Distance in cm: %llu\n", distance_cm);
         printf("Distance in inches: %llu\n", distance_inch);
 
