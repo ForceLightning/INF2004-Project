@@ -32,7 +32,7 @@
 #define OUT_Z_H_A 0x2D
 
 #define CRA_REG_M 0x00
-#define MR_REG_M 0x02
+#define MR_REG_M  0x02
 #define OUT_X_H_M 0x03
 #define OUT_X_L_M 0x04
 #define OUT_Z_H_M 0x05
@@ -40,15 +40,16 @@
 #define OUT_Y_H_M 0x07
 #define OUT_Y_L_M 0x08
 
-#define BEARING_OFFSET 1.0f
+#define BEARING_OFFSET          1.0f              // Offset for bearing.
+#define GRAVITY_CONSTANT_FACTOR 9.80665 / 16384.0 // 1 g = 16384 LSB
 
 // Function prototypes
-void init_magnetometer();
-void readMagnetometerData();
-void reset_true_north();
-uint checkBearingOutOfRange();
-float getTrueBearing();
-float getCurrentBearing();
+void  magneto_init(void);
+void  magneto_read_data(void);
+bool  magneto_is_bearing_invalid(void);
+float magneto_get_true_bearing(void);
+float magneto_get_curr_bearing(void);
+
 #endif // MAGNETOMETER_H
 
 // End of file driver/magnetometer/magnetometer.h.

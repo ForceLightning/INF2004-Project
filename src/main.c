@@ -60,7 +60,7 @@
 static void 
 read_magnetometer_task(__unused void *params)
 {
-    readMagnetometerData();
+    magneto_read_data();
 }
 
 static void
@@ -71,10 +71,10 @@ move_car_forward_task(__unused void *params)
     start_motor(
         RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, PWM_PIN_RIGHT);
     while(1){
-        if(checkBearingOutOfRange()){
+        if(magneto_is_bearing_invalid()){
             pid_params_t pid_params;
             init_pid_error_correction(&pid_params);
-            bearing_correction(getTrueBearing(), getCurrentBearing(), &pid_params);
+            bearing_correction(magneto_get_true_bearing(), magneto_get_curr_bearing(), &pid_params);
         }
         move_forward();
     }
@@ -125,7 +125,7 @@ main (void)
 {
     stdio_init_all();
     // stdio_usb_init();
-    init_magnetometer();
+    magneto_init();
     tcp_server_begin_init();
     // gpio_init(20);
     

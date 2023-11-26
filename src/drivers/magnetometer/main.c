@@ -22,7 +22,7 @@ main ()
 {
     stdio_init_all();
     stdio_usb_init();
-    init_magnetometer();
+    magneto_init();
 
     if (cyw43_arch_init())
     {
@@ -34,7 +34,7 @@ main ()
     {
         float true_heading = 0;
         float curr_heading = 0;
-        readMagnetometerData(&true_heading, &curr_heading);
+        magneto_read_data(&true_heading, &curr_heading);
     }
 
     return 0;

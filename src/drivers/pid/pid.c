@@ -148,7 +148,7 @@ void bearing_correction(float target_bearing, float current_bearing, pid_params_
         float new_ratio = (p_pid_params->current_ratio + p_pid_params->epsilon) + ((control_signal + p_pid_params->epsilon + 1) * p_pid_params->ratio_to_bearing);
 
         // p_pid_params->current_bearing += (new_ratio - p_pid_params->current_ratio) / p_pid_params->ratio_to_bearing;
-        p_pid_params->current_bearing = getCurrentBearing();
+        p_pid_params->current_bearing = magneto_get_curr_bearing();
         p_pid_params->current_ratio = new_ratio;
 
         update_ratio(p_pid_params->current_ratio);
