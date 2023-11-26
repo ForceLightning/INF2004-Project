@@ -22,6 +22,9 @@
 #include "hardware/i2c.h"
 #include "magnetometer.h"
 
+// Global variables.
+// -----------------------------------------------------------------------------
+// 
 int16_t g_bias_x = 0; // Bias for x-axis acceleration.
 int16_t g_bias_y = 0; // Bias for y-axis acceleration.
 int16_t g_bias_z = 0; // Bias for z-axis acceleration.
@@ -68,8 +71,8 @@ magneto_read_data (void)
 
         uint8_t reg = 0x03; // Register to read from.
         uint8_t data[6];
-        i2c_write_blocking(i2c0, MAGNETOMETER_ADDR, &reg, 1, true);
-        i2c_read_blocking(i2c0, MAGNETOMETER_ADDR, data, 6, false);
+        i2c_write_blocking(i2c0, MAGNETO_METER_ADDR, &reg, 1, true);
+        i2c_read_blocking(i2c0, MAGNETO_METER_ADDR, data, 6, false);
 
         int16_t x_mag           = (int16_t)((data[0] << 8) | data[1]);
         int16_t y_mag           = (int16_t)((data[4] << 8) | data[5]);
@@ -84,8 +87,8 @@ magneto_read_data (void)
         if (!*gp_true_heading)
         {
             *gp_true_heading = heading_radians;
-            *gp_min_bearing  = heading_radians - BEARING_OFFSET;
-            *gp_max_bearing  = heading_radians + BEARING_OFFSET;
+            *gp_min_bearing  = heading_radians - MAGNETO_BEARING_OFFSET;
+            *gp_max_bearing  = heading_radians + MAGNETO_BEARING_OFFSET;
         }
 
         printf("Compass Heading: %f\n", heading_radians);
@@ -184,7 +187,7 @@ magneto_read_register (uint8_t address, uint8_t reg)
 void
 magneto_config_accel (void)
 {
-    magneto_write_register(ACCELEROMETER_ADDR, CTRL_REG1_A, 0x47);
+    magneto_write_register(MAGNETO_ACCEL_ADDR, MAGNETO_CTRL_REG1_A, 0x47);
 }
 
 /**
@@ -197,14 +200,23 @@ magneto_config_accel (void)
 void
 magneto_read_accel (int16_t *p_x, int16_t *p_y, int16_t *p_z)
 {
-    *p_x = (int16_t)((magneto_read_register(ACCELEROMETER_ADDR, OUT_X_H_A) << 8)
-                     | magneto_read_register(ACCELEROMETER_ADDR, OUT_X_L_A))
+    *p_x = (int16_t)((magneto_read_register(MAGNETO_ACCEL_ADDR,
+                                            MAGNETO_OUT_X_H_A)
+                      << 8)
+                     | magneto_read_register(MAGNETO_ACCEL_ADDR,
+                                             MAGNETO_OUT_X_L_A))
            - g_bias_x;
-    *p_y = (int16_t)((magneto_read_register(ACCELEROMETER_ADDR, OUT_Y_H_A) << 8)
-                     | magneto_read_register(ACCELEROMETER_ADDR, OUT_Y_L_A))
+    *p_y = (int16_t)((magneto_read_register(MAGNETO_ACCEL_ADDR,
+                                            MAGNETO_OUT_Y_H_A)
+                      << 8)
+                     | magneto_read_register(MAGNETO_ACCEL_ADDR,
+                                             MAGNETO_OUT_Y_L_A))
            - g_bias_y;
-    *p_z = (int16_t)((magneto_read_register(ACCELEROMETER_ADDR, OUT_Z_H_A) << 8)
-                     | magneto_read_register(ACCELEROMETER_ADDR, OUT_Z_L_A))
+    *p_z = (int16_t)((magneto_read_register(MAGNETO_ACCEL_ADDR,
+                                            MAGNETO_OUT_Z_H_A)
+                      << 8)
+                     | magneto_read_register(MAGNETO_ACCEL_ADDR,
+                                             MAGNETO_OUT_Z_L_A))
            - g_bias_z;
 }
 
@@ -250,9 +262,9 @@ magneto_calibrate_accel (void)
 void
 magneto_calculate_accel (int16_t x_accel, int16_t y_accel, int16_t z_accel)
 {
-    double acc_x = (double)x_accel * (GRAVITY_CONSTANT_FACTOR);
-    double acc_y = (double)y_accel * (GRAVITY_CONSTANT_FACTOR);
-    double acc_z = (double)z_accel * (GRAVITY_CONSTANT_FACTOR);
+    double acc_x = (double)x_accel * (MAGNETO_GRAVITY_CONSTANT_F);
+    double acc_y = (double)y_accel * (MAGNETO_GRAVITY_CONSTANT_F);
+    double acc_z = (double)z_accel * (MAGNETO_GRAVITY_CONSTANT_F);
 
     double acceleration = sqrt(acc_x * acc_x + acc_y * acc_y + acc_z * acc_z);
     printf("Overall Acceleration: %.2f m/s^2\n", acceleration);
@@ -266,11 +278,11 @@ magneto_calculate_accel (int16_t x_accel, int16_t y_accel, int16_t z_accel)
 void
 magneto_init_i2c (void)
 {
-    i2c_init(i2c0, I2C_BAUDRATE);
-    gpio_set_function(I2C_SDA_PIN, GPIO_FUNC_I2C);
-    gpio_set_function(I2C_SCL_PIN, GPIO_FUNC_I2C);
-    gpio_pull_up(I2C_SDA_PIN);
-    gpio_pull_up(I2C_SCL_PIN);
+    i2c_init(i2c0, MAGNETO_I2C_BAUDRATE);
+    gpio_set_function(MAGNETO_I2C_SDA_PIN, GPIO_FUNC_I2C);
+    gpio_set_function(MAGNETO_I2C_SCL_PIN, GPIO_FUNC_I2C);
+    gpio_pull_up(MAGNETO_I2C_SDA_PIN);
+    gpio_pull_up(MAGNETO_I2C_SCL_PIN);
 }
 
 /**
@@ -281,7 +293,8 @@ magneto_init_i2c (void)
 void
 magneto_configure (void)
 {
-    magneto_write_register(MAGNETOMETER_ADDR, MR_REG_M, CRA_REG_M);
+    magneto_write_register(
+        MAGNETO_METER_ADDR, MAGNETO_MR_REG_M, MAGNETO_CRA_REG_M);
 }
 
 // End of file driver/magnetometer/magnetometer.c.
