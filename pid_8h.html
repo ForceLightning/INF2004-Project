@@ -141,8 +141,8 @@ Macros</h2></td></tr>
 <tr class="memitem:aee20130608abfeaf459568b796ecdeda"><td class="memItemLeft" align="right" valign="top"><a id="aee20130608abfeaf459568b796ecdeda" name="aee20130608abfeaf459568b796ecdeda"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PID_BIAS_LEFT_RATIO</b>&#160;&#160;&#160;1.05f</td></tr>
 <tr class="separator:aee20130608abfeaf459568b796ecdeda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf2cfd6667b9a62ac52169e984c0b69a"><td class="memItemLeft" align="right" valign="top"><a id="adf2cfd6667b9a62ac52169e984c0b69a" name="adf2cfd6667b9a62ac52169e984c0b69a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PID_DEGREES_NORMALISE</b>(x)&#160;&#160;&#160;((x + 180) % 360 - 180)</td></tr>
+<tr class="memitem:adf2cfd6667b9a62ac52169e984c0b69a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pid_8h.html#adf2cfd6667b9a62ac52169e984c0b69a">PID_DEGREES_NORMALISE</a>(x)&#160;&#160;&#160;((x + 180) % 360 - 180)</td></tr>
+<tr class="memdesc:adf2cfd6667b9a62ac52169e984c0b69a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalises degrees to be between 0 and 360.  <a href="pid_8h.html#adf2cfd6667b9a62ac52169e984c0b69a">More...</a><br /></td></tr>
 <tr class="separator:adf2cfd6667b9a62ac52169e984c0b69a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61a87cc66280d2c2914d4d60359ddfd9"><td class="memItemLeft" align="right" valign="top"><a id="a61a87cc66280d2c2914d4d60359ddfd9" name="a61a87cc66280d2c2914d4d60359ddfd9"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PID_ENCODER_CENTER_OFFSET</b>&#160;&#160;&#160;5</td></tr>
@@ -207,7 +207,35 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>pid_navigate_turn</b>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2023-10-29</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2023 </dd></dl>
-</div><h2 class="groupheader">Typedef Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="adf2cfd6667b9a62ac52169e984c0b69a" name="adf2cfd6667b9a62ac52169e984c0b69a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf2cfd6667b9a62ac52169e984c0b69a">&#9670;&#160;</a></span>PID_DEGREES_NORMALISE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_DEGREES_NORMALISE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;((x + 180) % 360 - 180)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Normalises degrees to be between 0 and 360. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Degrees to normalise. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Normalised degrees. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
 <a id="a1d86fda34540b6061ddf110c96406303" name="a1d86fda34540b6061ddf110c96406303"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1d86fda34540b6061ddf110c96406303">&#9670;&#160;</a></span>pid_params_t</h2>
 

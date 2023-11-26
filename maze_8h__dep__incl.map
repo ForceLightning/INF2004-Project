@@ -1,19 +1,20 @@
 <map id="src/pathfinding/maze.h" name="src/pathfinding/maze.h">
-<area shape="rect" id="node1" title="Header file for the maze data structure and public functions." alt="" coords="701,5,852,31"/>
+<area shape="rect" id="node1" title="Header file for the maze data structure and public functions." alt="" coords="705,5,856,31"/>
 <area shape="rect" id="node2" href="$pid_8c.html" title=" " alt="" coords="5,174,140,199"/>
 <area shape="rect" id="node3" href="$pid_8h.html" title=" " alt="" coords="111,86,245,111"/>
 <area shape="rect" id="node5" href="$a__star_8c.html" title="Source file for the implementation of the a* algorithm." alt="" coords="431,255,587,280"/>
 <area shape="rect" id="node6" href="$a__star_8h.html" title="Header file for the a* algorithm." alt="" coords="372,174,528,199"/>
-<area shape="rect" id="node7" href="$navigation__tests_8c.html" title="Tests the combined navigational functions." alt="" coords="755,255,915,280"/>
-<area shape="rect" id="node8" href="$pathfinding__tests_8c.html" title="This file contains the tests for the A* pathfinding algorithm." alt="" coords="243,255,406,280"/>
-<area shape="rect" id="node9" href="$binary__heap_8c.html" title="Source file for the binary min&#45;heap used in the a* algorithm and floodfill algorithm." alt="" coords="603,167,747,207"/>
-<area shape="rect" id="node10" href="$binary__heap_8h.html" title="This file contains the declarations for the binary min&#45;heap used in the a* algorithm." alt="" coords="705,79,849,119"/>
-<area shape="rect" id="node11" href="$dfs_8c.html" title="Runs the depth first search algorithm on a maze." alt="" coords="1069,255,1207,280"/>
-<area shape="rect" id="node12" href="$floodfill_8c.html" title="This file contains the implementation of the floodfill algorithm for mapping the maze and determining..." alt="" coords="975,174,1133,199"/>
-<area shape="rect" id="node13" href="$dfs__tests_8c.html" title="This file containst the functions that test the depth first search algorithm with a simulated navigat..." alt="" coords="1297,255,1416,280"/>
-<area shape="rect" id="node14" href="$dfs_8h.html" title="Header file for the depth first search algorithm for mapping the maze." alt="" coords="1209,174,1347,199"/>
-<area shape="rect" id="node15" href="$floodfill_8h.html" title="This file contains the function prototypes for the floodfill algorithm for mapping of the maze." alt="" coords="1199,86,1357,111"/>
-<area shape="rect" id="node16" href="$floodfill__tests_8c.html" title="This file contains the tests for the floodfill algorithm." alt="" coords="1473,174,1613,199"/>
-<area shape="rect" id="node17" href="$maze_8c.html" title="Contains the implementation of utility maze functions." alt="" coords="1689,86,1840,111"/>
+<area shape="rect" id="node7" href="$pathfinding_2main_8c.html" title="This file contains the mapping and pathfinding tests to be run on the Pico depending on the input ove..." alt="" coords="685,255,833,280"/>
+<area shape="rect" id="node8" href="$navigation__tests_8c.html" title="Tests the combined navigational functions." alt="" coords="978,255,1138,280"/>
+<area shape="rect" id="node9" href="$pathfinding__tests_8c.html" title="This file contains the tests for the A* pathfinding algorithm." alt="" coords="243,255,406,280"/>
+<area shape="rect" id="node10" href="$binary__heap_8c.html" title="Source file for the binary min&#45;heap used in the a* algorithm and floodfill algorithm." alt="" coords="654,167,798,207"/>
+<area shape="rect" id="node11" href="$binary__heap_8h.html" title="This file contains the declarations for the binary min&#45;heap used in the a* algorithm." alt="" coords="763,79,907,119"/>
+<area shape="rect" id="node12" href="$dfs_8c.html" title="Runs the depth first search algorithm on a maze." alt="" coords="1222,255,1361,280"/>
+<area shape="rect" id="node13" href="$floodfill_8c.html" title="This file contains the implementation of the floodfill algorithm for mapping the maze and determining..." alt="" coords="975,174,1133,199"/>
+<area shape="rect" id="node14" href="$dfs__tests_8c.html" title="This file containst the functions that test the depth first search algorithm with a simulated navigat..." alt="" coords="1412,255,1531,280"/>
+<area shape="rect" id="node15" href="$dfs_8h.html" title="Header file for the depth first search algorithm for mapping the maze." alt="" coords="1209,174,1347,199"/>
+<area shape="rect" id="node16" href="$floodfill_8h.html" title="This file contains the function prototypes for the floodfill algorithm for mapping of the maze." alt="" coords="1248,86,1407,111"/>
+<area shape="rect" id="node17" href="$floodfill__tests_8c.html" title="This file contains the tests for the floodfill algorithm." alt="" coords="1524,174,1664,199"/>
+<area shape="rect" id="node18" href="$maze_8c.html" title="Contains the implementation of utility maze functions." alt="" coords="1791,86,1941,111"/>
 <area shape="rect" id="node4" href="$main_8c.html" title="The main source file for robot control." alt="" coords="137,255,219,280"/>
 </map>

@@ -1,9 +1,10 @@
 <map id="src/pathfinding/floodfill.h" name="src/pathfinding/floodfill.h">
-<area shape="rect" id="node1" title="This file contains the function prototypes for the floodfill algorithm for mapping of the maze." alt="" coords="269,5,427,31"/>
+<area shape="rect" id="node1" title="This file contains the function prototypes for the floodfill algorithm for mapping of the maze." alt="" coords="349,5,507,31"/>
 <area shape="rect" id="node2" href="$dfs_8c.html" title="Runs the depth first search algorithm on a maze." alt="" coords="5,152,144,177"/>
-<area shape="rect" id="node3" href="$dfs_8h.html" title="Header file for the depth first search algorithm for mapping the maze." alt="" coords="147,79,285,104"/>
-<area shape="rect" id="node4" href="$dfs__tests_8c.html" title="This file containst the functions that test the depth first search algorithm with a simulated navigat..." alt="" coords="169,152,287,177"/>
-<area shape="rect" id="node5" href="$navigation__tests_8c.html" title="Tests the combined navigational functions." alt="" coords="312,152,472,177"/>
-<area shape="rect" id="node6" href="$floodfill_8c.html" title="This file contains the implementation of the floodfill algorithm for mapping the maze and determining..." alt="" coords="411,79,570,104"/>
-<area shape="rect" id="node7" href="$floodfill__tests_8c.html" title="This file contains the tests for the floodfill algorithm." alt="" coords="594,79,734,104"/>
+<area shape="rect" id="node3" href="$dfs_8h.html" title="Header file for the depth first search algorithm for mapping the maze." alt="" coords="252,79,391,104"/>
+<area shape="rect" id="node4" href="$pathfinding_2main_8c.html" title="This file contains the mapping and pathfinding tests to be run on the Pico depending on the input ove..." alt="" coords="169,152,317,177"/>
+<area shape="rect" id="node5" href="$dfs__tests_8c.html" title="This file containst the functions that test the depth first search algorithm with a simulated navigat..." alt="" coords="341,152,459,177"/>
+<area shape="rect" id="node6" href="$navigation__tests_8c.html" title="Tests the combined navigational functions." alt="" coords="484,152,644,177"/>
+<area shape="rect" id="node7" href="$floodfill_8c.html" title="This file contains the implementation of the floodfill algorithm for mapping the maze and determining..." alt="" coords="517,79,675,104"/>
+<area shape="rect" id="node8" href="$floodfill__tests_8c.html" title="This file contains the tests for the floodfill algorithm." alt="" coords="699,79,839,104"/>
 </map>
