@@ -152,7 +152,7 @@ maze_get_nav_dir_offset (const maze_navigator_state_t *p_navigator)
  * @param[in,out] p_grid Pointer to the maze grid.
  * @param[in] p_navigator Pointer to the navigator.
  * @param[in] aligned_wall_bitmask Bitmask of the walls to set or unset. This is
- * aligned to NORTH.
+ * aligned to MAZE_NORTH.
  * @param[in] is_set True if the walls are to be set.
  * @param[in] is_unset True if the walls are to be unset.
  *
@@ -276,16 +276,16 @@ maze_insert_nav_str (const maze_grid_t            *p_grid,
 
     switch (p_navigator->orientation)
     {
-        case NORTH:
+        case MAZE_NORTH:
             navigator_char = '^';
             break;
-        case EAST:
+        case MAZE_EAST:
             navigator_char = '>';
             break;
-        case SOUTH:
+        case MAZE_SOUTH:
             navigator_char = 'v';
             break;
-        case WEST:
+        case MAZE_WEST:
             navigator_char = '<';
             break;
         default:
@@ -314,7 +314,7 @@ maze_get_dir_from_to (const maze_point_t *p_point_a,
     int32_t row_offset = p_point_b->y - p_point_a->y;
     int32_t col_offset = p_point_b->x - p_point_a->x;
 
-    maze_cardinal_direction_t direction = NONE;
+    maze_cardinal_direction_t direction = MAZE_NONE;
 
     // Check if the points are adjacent.
     if (1 != (abs(row_offset) + abs(col_offset)))
@@ -326,19 +326,19 @@ maze_get_dir_from_to (const maze_point_t *p_point_a,
     {
         if (1 == row_offset)
         {
-            direction = SOUTH;
+            direction = MAZE_SOUTH;
         }
         else if (-1 == row_offset)
         {
-            direction = NORTH;
+            direction = MAZE_NORTH;
         }
         else if (1 == col_offset)
         {
-            direction = EAST;
+            direction = MAZE_EAST;
         }
         else if (-1 == col_offset)
         {
-            direction = WEST;
+            direction = MAZE_WEST;
         }
     }
 end:
@@ -497,8 +497,12 @@ maze_get_cell_in_dir (maze_grid_t              *p_grid,
                       maze_grid_cell_t         *p_from,
                       maze_cardinal_direction_t direction)
 {
-    int32_t row_diff = direction == NORTH ? -1 : direction == SOUTH ? 1 : 0;
-    int32_t col_diff = direction == EAST ? 1 : direction == WEST ? -1 : 0;
+    int32_t row_diff = direction == MAZE_NORTH   ? -1
+                       : direction == MAZE_SOUTH ? 1
+                                                 : 0;
+    int32_t col_diff = direction == MAZE_EAST   ? 1
+                       : direction == MAZE_WEST ? -1
+                                                : 0;
 
     maze_point_t coordinates = { p_from->coordinates.x + col_diff,
                                  p_from->coordinates.y + row_diff };
@@ -570,16 +574,16 @@ maze_get_cell_in_dir_from (maze_grid_t              *p_grid,
 
     switch (direction)
     {
-        case NORTH:
+        case MAZE_NORTH:
             row_offset = -1;
             break;
-        case EAST:
+        case MAZE_EAST:
             col_offset = 1;
             break;
-        case SOUTH:
+        case MAZE_SOUTH:
             row_offset = 1;
             break;
-        case WEST:
+        case MAZE_WEST:
             col_offset = -1;
             break;
         default:
@@ -632,10 +636,8 @@ maze_serialised_to_buffer (const maze_gap_bitmask_t *p_bitmask,
 
     // Write the header.
     //
-    p_buffer[0] = (p_bitmask->rows & 0xFF00) >> 8;    // MSB
-    p_buffer[1] = (p_bitmask->rows & 0x00FF);         // LSB
-    p_buffer[2] = (p_bitmask->columns & 0xFF00) >> 8; // MSB
-    p_buffer[3] = (p_bitmask->columns & 0x00FF);      // LSB
+    maze_uint16_to_uint8_buffer(p_bitmask->rows, &p_buffer[0]);
+    maze_uint16_to_uint8_buffer(p_bitmask->columns, &p_buffer[2]);
 
     // Write the compressed bitmask.
     //
@@ -785,7 +787,7 @@ draw_cell (const maze_grid_cell_t *p_cell,
         case 0:
             // Draw the North wall.
             //
-            if (NULL == p_cell->p_next[NORTH])
+            if (NULL == p_cell->p_next[MAZE_NORTH])
             {
                 strcat(p_maze_string, "+---");
             }
@@ -797,7 +799,7 @@ draw_cell (const maze_grid_cell_t *p_cell,
         case 1:
             // Draw the West wall.
             //
-            if (NULL == p_cell->p_next[WEST])
+            if (NULL == p_cell->p_next[MAZE_WEST])
             {
                 strcat(p_maze_string, "|   ");
             }

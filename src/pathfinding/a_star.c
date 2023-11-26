@@ -159,7 +159,7 @@ a_star_get_path_str (maze_grid_t *p_grid, a_star_path_t *p_path)
         &p_cell->coordinates, &p_cell->p_came_from->coordinates);
 
     insert_path_directions(
-        p_maze_string, p_cell, str_num_cols, direction, NONE);
+        p_maze_string, p_cell, str_num_cols, direction, MAZE_NONE);
 
     // Now for the rest of the path.
     //
@@ -189,7 +189,7 @@ a_star_get_path_str (maze_grid_t *p_grid, a_star_path_t *p_path)
                                      &p_previous_cell->coordinates);
 
     insert_path_directions(
-        p_maze_string, p_cell, str_num_cols, NONE, direction);
+        p_maze_string, p_cell, str_num_cols, MAZE_NONE, direction);
     return p_maze_string;
 }
 
@@ -463,7 +463,7 @@ insert_path_directions (char                     *p_maze_string,
 {
     uint32_t node_row = p_cell->coordinates.y * 2 + 1;
     uint32_t node_col = p_cell->coordinates.x * 4 + 2;
-    if (in_direction != NONE)
+    if (in_direction != MAZE_NONE)
     {
         insert_path_in_direction(
             p_maze_string, str_num_cols, node_row, node_col, in_direction);
@@ -471,13 +471,13 @@ insert_path_directions (char                     *p_maze_string,
 
     switch (in_direction)
     {
-        case NONE:
+        case MAZE_NONE:
             // Deals with the start node.
             insert_node_centre_char(
                 p_maze_string, node_row, node_col, str_num_cols, '%');
             goto handle_end;
-        case NORTH:
-            if (SOUTH == out_direction)
+        case MAZE_NORTH:
+            if (MAZE_SOUTH == out_direction)
             {
                 insert_node_centre_char(
                     p_maze_string, node_row, node_col, str_num_cols, '|');
@@ -487,8 +487,8 @@ insert_path_directions (char                     *p_maze_string,
                 goto handle_direction_change;
             }
             goto handle_end;
-        case EAST:
-            if (WEST == out_direction)
+        case MAZE_EAST:
+            if (MAZE_WEST == out_direction)
             {
                 insert_node_centre_char(
                     p_maze_string, node_row, node_col, str_num_cols, '-');
@@ -498,8 +498,8 @@ insert_path_directions (char                     *p_maze_string,
                 goto handle_direction_change;
             }
             goto handle_end;
-        case SOUTH:
-            if (NORTH == out_direction)
+        case MAZE_SOUTH:
+            if (MAZE_NORTH == out_direction)
             {
                 insert_node_centre_char(
                     p_maze_string, node_row, node_col, str_num_cols, '|');
@@ -509,8 +509,8 @@ insert_path_directions (char                     *p_maze_string,
                 goto handle_direction_change;
             }
             goto handle_end;
-        case WEST:
-            if (EAST == out_direction)
+        case MAZE_WEST:
+            if (MAZE_EAST == out_direction)
             {
                 insert_node_centre_char(
                     p_maze_string, node_row, node_col, str_num_cols, '-');
@@ -531,7 +531,7 @@ handle_direction_change:
     // Fallthrough to handle the end node.
     //
 handle_end:
-    if (NONE == out_direction)
+    if (MAZE_NONE == out_direction)
     {
         // Deals with the end node.
         insert_node_centre_char(
@@ -558,20 +558,20 @@ insert_path_in_direction (char                     *p_maze_str,
 
     switch (direction)
     {
-        case NORTH:
+        case MAZE_NORTH:
             p_maze_str[(node_row - 1) * str_num_cols + node_col] = '|';
             break;
-        case EAST:
+        case MAZE_EAST:
             for (uint32_t index = 0; 3 > index; index++)
             {
                 p_maze_str[node_row * str_num_cols + node_col + index + 1]
                     = '-';
             }
             break;
-        case SOUTH:
+        case MAZE_SOUTH:
             p_maze_str[(node_row + 1) * str_num_cols + node_col] = '|';
             break;
-        case WEST:
+        case MAZE_WEST:
             for (uint32_t index = 0; 3 > index; index++)
             {
                 p_maze_str[node_row * str_num_cols + node_col + index - 3]

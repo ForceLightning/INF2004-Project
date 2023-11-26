@@ -57,7 +57,7 @@ navigate_car_turn (pid_turn_params_t        *p_turn_params,
         {
             switch (direction)
             {
-                case WEST:
+                case MAZE_WEST:
                     motor_turn_left(0);
                     if (p_turn_params->encoder_step_count
                         == PID_ENCODER_STEP_TURN_90_DEG)
@@ -68,7 +68,7 @@ navigate_car_turn (pid_turn_params_t        *p_turn_params,
 
                     break;
 
-                case EAST:
+                case MAZE_EAST:
                     motor_turn_right(0);
                     if (p_turn_params->encoder_step_count
                         == PID_ENCODER_STEP_TURN_90_DEG)
@@ -79,7 +79,7 @@ navigate_car_turn (pid_turn_params_t        *p_turn_params,
 
                     break;
 
-                case SOUTH:
+                case MAZE_SOUTH:
                     motor_turn_left(0);
                     if (p_turn_params->encoder_step_count
                         == PID_ENCODER_STEP_TURN_180_DEG)

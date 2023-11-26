@@ -328,7 +328,7 @@ test_navigator_serialisation (void)
     maze_grid_cell_t *p_end     = maze_get_cell_at_coords(&maze, &end_point);
     maze_grid_cell_t *p_current = p_start;
 
-    navigator.orientation    = NORTH;
+    navigator.orientation    = MAZE_NORTH;
     navigator.p_current_node = p_current;
     navigator.p_start_node   = p_start;
     navigator.p_end_node     = p_end;
@@ -368,7 +368,7 @@ test_path_serialisation (void)
     maze_grid_cell_t *p_end     = maze_get_cell_at_coords(&maze, &end_point);
     maze_grid_cell_t *p_current = p_start;
 
-    navigator.orientation    = NORTH;
+    navigator.orientation    = MAZE_NORTH;
     navigator.p_current_node = p_current;
     navigator.p_start_node   = p_start;
     navigator.p_end_node     = p_end;
@@ -442,8 +442,8 @@ static int
 test_relative_direction (void)
 {
     int                       ret_val = 0;
-    maze_cardinal_direction_t dir_a   = NORTH;
-    maze_cardinal_direction_t dir_b   = SOUTH;
+    maze_cardinal_direction_t dir_a   = MAZE_NORTH;
+    maze_cardinal_direction_t dir_b   = MAZE_SOUTH;
 
     maze_relative_direction_t rel_dir = maze_get_relative_dir(dir_a, dir_b);
 
@@ -560,7 +560,7 @@ initialise_variables (uint16_t               *p_bitmask,
     maze_grid_cell_t *p_start = maze_get_cell_at_coords(p_maze, &start_point);
     maze_grid_cell_t *p_end   = maze_get_cell_at_coords(p_maze, &end_point);
 
-    p_navigator->orientation    = NORTH;
+    p_navigator->orientation    = MAZE_NORTH;
     p_navigator->p_current_node = p_start;
     p_navigator->p_start_node   = p_start;
     p_navigator->p_end_node     = p_end;

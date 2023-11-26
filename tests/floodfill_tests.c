@@ -214,7 +214,7 @@ test_floodfill (void)
 
     maze_grid_cell_t *p_start = maze_get_cell_at_coords(&maze, &start_point);
     maze_grid_cell_t *p_end   = maze_get_cell_at_coords(&maze, &end_point);
-    maze_navigator_state_t navigator = { p_start, p_start, p_end, NORTH };
+    maze_navigator_state_t navigator = { p_start, p_start, p_end, MAZE_NORTH };
 
     floodfill_explore_func_t   p_explore_func   = &explore_current_node;
     floodfill_move_navigator_t p_move_navigator = &move_navigator;

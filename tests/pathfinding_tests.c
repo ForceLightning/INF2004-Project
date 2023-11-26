@@ -357,7 +357,7 @@ test_row_pathfinding (void)
         &maze.p_grid_array[0],
         // Conversion to ptrdiff_t is ok because the result is always positive.
         &maze.p_grid_array[(ptrdiff_t)(GRID_ROWS * (GRID_COLS - 1))],
-        NORTH
+        MAZE_NORTH
     };
 
     // Run the A* algorithm.
@@ -443,7 +443,7 @@ test_print_route (void)
         &maze.p_grid_array[0],
         // Conversion to ptrdiff_t is ok because the result is always positive.
         &maze.p_grid_array[(ptrdiff_t)(GRID_ROWS * (GRID_COLS - 1))],
-        NORTH
+        MAZE_NORTH
     };
 
     // Run the A* algorithm.
@@ -573,7 +573,7 @@ test_complex_maze_pathfinding (void)
     maze_grid_cell_t *p_start = maze_get_cell_at_coords(&maze, &start_point);
     maze_grid_cell_t *p_end   = maze_get_cell_at_coords(&maze, &end_point);
 
-    maze_navigator_state_t navigator_state = { p_start, p_start, p_end, NORTH };
+    maze_navigator_state_t navigator_state = { p_start, p_start, p_end, MAZE_NORTH };
 
     // Run the A* algorithm.
     //
@@ -638,10 +638,10 @@ generate_col_maze (uint16_t rows, uint16_t cols)
     for (uint32_t row = 0; GRID_ROWS - 1 > row; row++)
     {
         // Conversion to ptrdiff_t is ok because the result is always positive.
-        p_current_node->p_next[SOUTH]
+        p_current_node->p_next[MAZE_SOUTH]
             = &maze.p_grid_array[(ptrdiff_t)((row + 1) * GRID_COLS)];
-        p_current_node->p_next[SOUTH]->p_next[NORTH] = p_current_node;
-        p_current_node = p_current_node->p_next[SOUTH];
+        p_current_node->p_next[MAZE_SOUTH]->p_next[MAZE_NORTH] = p_current_node;
+        p_current_node = p_current_node->p_next[MAZE_SOUTH];
     }
 
     return maze;

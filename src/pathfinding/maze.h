@@ -36,11 +36,11 @@ typedef struct maze_point
  */
 typedef enum
 {
-    NORTH = 0,  ///< North is the top of the maze.
-    EAST  = 1,  ///< East is the right of the maze.
-    SOUTH = 2,  ///< South is the bottom of the maze.
-    WEST  = 3,  ///< West is the left of the maze.
-    NONE  = 255 ///< None is used for errors.
+    MAZE_NORTH = 0,  ///< North is the top of the maze.
+    MAZE_EAST  = 1,  ///< East is the right of the maze.
+    MAZE_SOUTH = 2,  ///< South is the bottom of the maze.
+    MAZE_WEST  = 3,  ///< West is the left of the maze.
+    MAZE_NONE  = 255 ///< None is used for errors.
 } maze_cardinal_direction_t;
 
 /**
@@ -53,11 +53,11 @@ typedef enum
  */
 typedef enum
 {
-    NO_WALLS   = 0, ///< No walls.
-    FRONT_WALL = 1, ///< Front wall.
-    RIGHT_WALL = 2, ///< Right wall.
-    BACK_WALL  = 4, ///< Back wall.
-    LEFT_WALL  = 8  ///< Left wall.
+    MAZE_NO_WALLS   = 0, ///< No walls.
+    MAZE_FRONT_WALL = 1, ///< Front wall.
+    MAZE_RIGHT_WALL = 2, ///< Right wall.
+    MAZE_BACK_WALL  = 4, ///< Back wall.
+    MAZE_LEFT_WALL  = 8  ///< Left wall.
 } maze_wall_direction_t;
 
 /**

@@ -58,7 +58,7 @@ dfs_depth_first_search (maze_grid_t               *p_grid,
     // Step 2: Get the next node to explore.
     //
     const maze_grid_cell_t   *p_next_node = NULL;
-    maze_cardinal_direction_t direction   = NONE;
+    maze_cardinal_direction_t direction   = MAZE_NONE;
 
     while (!dfs_is_all_reachable_visited(p_grid, p_navigator))
     {

@@ -122,7 +122,7 @@ floodfill_map_maze (maze_grid_t               *p_grid,
         // Get the next node to explore.
         //
         maze_grid_cell_t         *p_next_node = NULL;
-        maze_cardinal_direction_t direction   = NONE;
+        maze_cardinal_direction_t direction   = MAZE_NONE;
 
         for (uint8_t i = 0; 4 > i; i++)
         {
