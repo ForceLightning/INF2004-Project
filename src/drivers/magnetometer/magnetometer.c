@@ -71,15 +71,11 @@ magneto_read_data (void)
         i2c_write_blocking(i2c0, MAGNETOMETER_ADDR, &reg, 1, true);
         i2c_read_blocking(i2c0, MAGNETOMETER_ADDR, data, 6, false);
 
-        int16_t x_mag = (int16_t)((data[0] << 8) | data[1]);
-        // int16_t z_mag = (int16_t)((data[2] << 8) | data[3]);
+        int16_t x_mag           = (int16_t)((data[0] << 8) | data[1]);
         int16_t y_mag           = (int16_t)((data[4] << 8) | data[5]);
-        float   heading_radians = atan2(y_mag, x_mag);
-        // float headingDegrees = heading_radians * 180.0 / M_PI;
-
-        // if (headingDegrees < 0) {
-        //     headingDegrees += 360.0;
-        // }
+        float   heading_radians = (float)atan2(
+            y_mag,
+            x_mag); // Double to float is safe, loss of precision is acceptable.
 
         *gp_current_bearing = heading_radians;
 
@@ -141,80 +137,11 @@ magneto_get_curr_bearing (void)
 void
 magneto_init (void)
 {
-    // stdio_usb_init();
     magneto_init_i2c();
     magneto_config_accel();
     magneto_calibrate_accel();
     magneto_configure();
 }
-
-// double getCompassBearing(int16_t x, int16_t y) {
-//     double angle = atan2((double)y, (double)x);
-//     if (angle < 0) {
-//         angle += 2 * M_PI;
-//     }
-//     return (angle * 180.0) / M_PI;
-// }
-
-/**
- * @brief Reads magnetometer data from the magnetometer sensor and outputs the
- * data for the X, Y, and Z axes. The function continuously reads the data and
- * outputs it every second. The function uses I2C communication to communicate
- * with the magnetometer sensor. The function sets the configuration registers
- * for the magnetometer sensor before reading the data. The function also sets
- * the configuration registers for the accelerometer sensor, but does not read
- * its data.
- *
- */
-
-// void
-// read_magnetometer_data (void)
-// {
-
-//     for (;;)
-//     {
-//         int16_t x_acc, y_acc, z_acc;
-
-//         magneto_read_accel(&x_acc, &y_acc, &z_acc);
-//         magneto_calculate_accel(x_acc, y_acc, z_acc);
-
-//         // Select MR register(0x02)
-//         // Continuous conversion(0x00)
-//         uint8_t config[] = {0x02, 0x00};
-//         i2c_write_blocking(i2c0, MAGNETOMETER_ADDR, config, 2, true);
-
-//         // Select CRA register(0x00)
-//         // Data output rate = 15Hz(0x10)
-//         config[0] = 0x00;
-//         config[1] = 0x10;
-//         i2c_write_blocking(i2c0, MAGNETOMETER_ADDR, config, 2, true);
-
-//         // Select CRB register(0x01)
-//         // Set gain = +/- 1.3g(0x20)
-//         config[0] = 0x01;
-//         config[1] = 0x20;
-//         i2c_write_blocking(i2c0, MAGNETOMETER_ADDR, config, 2, true);
-
-//         // Read magnetometer data
-//         // msb first
-//         // Read xMag msb data from register(0x03)
-//         uint8_t reg = 0x03;
-//         uint8_t data[6];
-//         i2c_write_blocking(i2c0, MAGNETOMETER_ADDR, &reg, 1, true);
-//         i2c_read_blocking(i2c0, MAGNETOMETER_ADDR, data, 6, false);
-
-//         int16_t x_mag = (int16_t)((data[0] << 8) | data[1]);
-//         int16_t z_mag = (int16_t)((data[2] << 8) | data[3]);
-//         int16_t y_mag = (int16_t)((data[4] << 8) | data[5]);
-
-//         float headingDegrees = getCompassBearing(x_mag, y_mag);
-
-//         // Output magnetometer data
-//         printf("Compass Heading: %f\n", headingDegrees);
-
-//         sleep_ms(1000);
-//     }
-// }
 
 // Private functions.
 // -----------------------------------------------------------------------------
