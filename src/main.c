@@ -83,7 +83,7 @@ move_car_forward_task(__unused void *params)
 static void 
 tcp_server_begin_task(__unused void *params)
 {
-    tcp_server_begin();
+    wifi_tcp_server_begin();
 }
 
 static void
@@ -126,7 +126,7 @@ main (void)
     stdio_init_all();
     // stdio_usb_init();
     magneto_init();
-    tcp_server_begin_init();
+    wifi_tcp_server_begin_init();
     // gpio_init(20);
     
 

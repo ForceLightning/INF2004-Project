@@ -15,11 +15,11 @@
 
 int main()
 {
-    tcp_server_begin_init();
+    wifi_tcp_server_begin_init();
 
     for (;;) // Loop forever. See Barr Group "Embedded C Coding Standard" 8.4.c
     {
-        tcp_server_begin();
+        wifi_tcp_server_begin();
     }
 
     return 0;
