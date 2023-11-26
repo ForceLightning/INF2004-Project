@@ -1,6 +1,7 @@
 <map id="src/pathfinding/dfs.h" name="src/pathfinding/dfs.h">
-<area shape="rect" id="node1" title="Header file for the depth first search algorithm for mapping the maze." alt="" coords="159,5,297,31"/>
-<area shape="rect" id="node2" href="$dfs_8c.html" title="Runs the depth first search algorithm on a maze." alt="" coords="5,79,144,104"/>
-<area shape="rect" id="node3" href="$dfs__tests_8c.html" title="This file containst the functions that test the depth first search algorithm with a simulated navigat..." alt="" coords="169,79,287,104"/>
-<area shape="rect" id="node4" href="$navigation__tests_8c.html" title="Tests the combined navigational functions." alt="" coords="312,79,472,104"/>
+<area shape="rect" id="node1" title="Header file for the depth first search algorithm for mapping the maze." alt="" coords="244,5,383,31"/>
+<area shape="rect" id="node2" href="$dfs_8c.html" title="Runs the depth first search algorithm on a maze." alt="" coords="5,86,144,111"/>
+<area shape="rect" id="node3" href="$pico__pathfinding__tests_8c.html" title="This file contains the mapping and pathfinding tests to be run on the Pico depending on the input ove..." alt="" coords="169,79,306,119"/>
+<area shape="rect" id="node4" href="$dfs__tests_8c.html" title="This file containst the functions that test the depth first search algorithm with a simulated navigat..." alt="" coords="330,86,449,111"/>
+<area shape="rect" id="node5" href="$navigation__tests_8c.html" title="Tests the combined navigational functions." alt="" coords="473,86,633,111"/>
 </map>

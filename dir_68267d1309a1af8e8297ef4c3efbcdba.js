@@ -5,5 +5,6 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "FreeRTOSConfig.h", "FreeRTOSConfig_8h_source.html", null ],
     [ "lwipopts.h", "lwipopts_8h_source.html", null ],
     [ "lwipopts_examples_common.h", "lwipopts__examples__common_8h_source.html", null ],
-    [ "main.c", "main_8c.html", null ]
+    [ "main.c", "main_8c.html", null ],
+    [ "pico_pathfinding_tests.c", "pico__pathfinding__tests_8c.html", "pico__pathfinding__tests_8c" ]
 ];
