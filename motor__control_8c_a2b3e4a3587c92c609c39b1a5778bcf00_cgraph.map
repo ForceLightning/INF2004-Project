@@ -1,5 +1,0 @@
-<map id="turn_left" name="turn_left">
-<area shape="rect" id="node1" title="A function to turn the car left." alt="" coords="5,31,75,56"/>
-<area shape="rect" id="node2" href="$motor__control_8c.html#af0ebed13ef30e857d8c5cbda43c8f7c0" title="A function to update the direction of the motor&#39;s rotation." alt="" coords="123,5,240,31"/>
-<area shape="rect" id="node3" href="$motor__control_8c.html#aa20774b583539f8a2698c2f8ac6d4334" title="A function to update the PWM duty cycle and wrap value." alt="" coords="133,55,229,80"/>
-</map>

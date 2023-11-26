@@ -1,4 +1,0 @@
-<map id="maze_initialise_empty_walled" name="maze_initialise_empty_walled">
-<area shape="rect" id="node1" title="Initialises an empty maze. This sets the coordinates of each node, all heuristic values to 0,..." alt="" coords="149,5,299,45"/>
-<area shape="rect" id="node2" href="$maze_8c.html#ab0ccd906b9a3479704eaf22867649b3f" title="Create a maze with the specified number of rows and columns." alt="" coords="5,13,101,38"/>
-</map>

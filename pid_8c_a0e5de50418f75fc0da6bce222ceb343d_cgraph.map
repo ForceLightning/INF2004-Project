@@ -1,9 +1,0 @@
-<map id="navigate_car_turn" name="navigate_car_turn">
-<area shape="rect" id="node1" title="Function to turn the car based on a given direction." alt="" coords="5,80,131,105"/>
-<area shape="rect" id="node2" href="$pid_8c.html#a9d536de103ad5b8b41e9fc2bdb1a9b52" title="Sets up pid struct(s)." alt="" coords="179,5,289,31"/>
-<area shape="rect" id="node3" href="$motor__control_8c.html#ae550a3c67881c84d0b773c23e5b3aecd" title="A function to move the car forward." alt="" coords="182,55,286,80"/>
-<area shape="rect" id="node6" href="$motor__control_8c.html#a2b3e4a3587c92c609c39b1a5778bcf00" title="A function to turn the car left." alt="" coords="199,104,269,129"/>
-<area shape="rect" id="node7" href="$motor__control_8c.html#adb5876f4cb9a5649408fdff387502929" title="A function to turn the car right." alt="" coords="196,153,272,179"/>
-<area shape="rect" id="node4" href="$motor__control_8c.html#af0ebed13ef30e857d8c5cbda43c8f7c0" title="A function to update the direction of the motor&#39;s rotation." alt="" coords="337,80,455,105"/>
-<area shape="rect" id="node5" href="$motor__control_8c.html#aa20774b583539f8a2698c2f8ac6d4334" title="A function to update the PWM duty cycle and wrap value." alt="" coords="348,129,444,155"/>
-</map>

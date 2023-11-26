@@ -1,4 +1,0 @@
-<map id="dfs_is_all_reachable_visited" name="dfs_is_all_reachable_visited">
-<area shape="rect" id="node1" title="Checks if all reachable nodes from the navigator&#39;s current position has been visisted." alt="" coords="207,5,347,45"/>
-<area shape="rect" id="node2" href="$dfs_8c.html#ad895d09bb41bba4132541d5d17f7f4c0" title="Conducts a depth first search on a maze." alt="" coords="5,13,159,38"/>
-</map>

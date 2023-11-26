@@ -1,4 +1,0 @@
-<map id="binary_heap_insert" name="binary_heap_insert">
-<area shape="rect" id="node1" title="Inserts a grid cell node into the binary heap with a given priority." alt="" coords="5,5,136,31"/>
-<area shape="rect" id="node2" href="$binary__heap_8c.html#a76720d1612568af283cab311e6506150" title="Moves the node at the given index down the binary heap to maintain the heap property...." alt="" coords="184,5,309,31"/>
-</map>

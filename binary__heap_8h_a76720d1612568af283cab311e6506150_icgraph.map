@@ -1,5 +1,0 @@
-<map id="binary_heapify_up" name="binary_heapify_up">
-<area shape="rect" id="node1" title="Moves the node at the given index down the binary heap to maintain the heap property...." alt="" coords="291,5,416,31"/>
-<area shape="rect" id="node2" href="$binary__heap_8c.html#ae2c52107ee2c491443e7f8f3cafa9edd" title="Inserts a grid cell node into the binary heap with a given priority." alt="" coords="112,5,243,31"/>
-<area shape="rect" id="node3" href="$a__star_8c.html#a6d82d3636110fd676cb68188a8351c3a" title="Runs the A* algorithm on a grid maze to find the shortest path between two points,..." alt="" coords="5,5,64,31"/>
-</map>

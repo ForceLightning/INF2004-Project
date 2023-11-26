@@ -1,4 +1,0 @@
-<map id="binary_heap_delete_min" name="binary_heap_delete_min">
-<area shape="rect" id="node1" title="Deletes and returns the root node from the binary heap." alt="" coords="5,5,167,31"/>
-<area shape="rect" id="node2" href="$binary__heap_8c.html#ae7dff85ea558ed732c081ab37b97ba5d" title="Moves the node at the given index up the binary heap to maintain the heap property...." alt="" coords="215,5,357,31"/>
-</map>

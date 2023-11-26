@@ -1,7 +1,0 @@
-<map id="main/pathfinding/dfs.h" name="main/pathfinding/dfs.h">
-<area shape="rect" id="node1" title="Header file for the depth first search algorithm for mapping the maze." alt="" coords="5,5,153,31"/>
-<area shape="rect" id="node2" title=" " alt="" coords="27,225,91,251"/>
-<area shape="rect" id="node3" href="$maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="113,152,176,177"/>
-<area shape="rect" id="node5" href="$floodfill_8h.html" title="This file contains the function prototypes for the floodfill algorithm for mapping of the maze." alt="" coords="44,79,115,104"/>
-<area shape="rect" id="node4" title=" " alt="" coords="115,225,190,251"/>
-</map>

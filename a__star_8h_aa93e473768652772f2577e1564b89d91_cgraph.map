@@ -1,5 +1,0 @@
-<map id="a_star_get_path_str" name="a_star_get_path_str">
-<area shape="rect" id="node1" title="Gets the string representation of the path from the start node to the end node." alt="" coords="5,31,143,56"/>
-<area shape="rect" id="node2" href="$maze_8c.html#ab8154230298572c603d5b32c37f39fb5" title="Get the direction from p_point_a to p_point_b if they are adjacent." alt="" coords="191,5,341,31"/>
-<area shape="rect" id="node3" href="$maze_8c.html#af92eb5d75cd2c4b9418d747bcbd15c7a" title="Get the string representation of the maze for pretty printing." alt="" coords="207,55,325,80"/>
-</map>

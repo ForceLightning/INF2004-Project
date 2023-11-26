@@ -1,4 +1,0 @@
-<map id="binary_heap_insert" name="binary_heap_insert">
-<area shape="rect" id="node1" title="Inserts a grid cell node into the binary heap with a given priority." alt="" coords="112,5,243,31"/>
-<area shape="rect" id="node2" href="$a__star_8c.html#a6d82d3636110fd676cb68188a8351c3a" title="Runs the A* algorithm on a grid maze to find the shortest path between two points,..." alt="" coords="5,5,64,31"/>
-</map>

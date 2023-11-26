@@ -1,8 +1,0 @@
-<map id="main/driver/ultrasonic/main.c" name="main/driver/ultrasonic/main.c">
-<area shape="rect" id="node1" title="Demonstration for the Ultrasonic driver." alt="" coords="149,5,295,45"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,93,65,119"/>
-<area shape="rect" id="node3" title=" " alt="" coords="90,93,154,119"/>
-<area shape="rect" id="node4" title=" " alt="" coords="178,93,266,119"/>
-<area shape="rect" id="node5" title=" " alt="" coords="290,93,375,119"/>
-<area shape="rect" id="node6" href="$ultrasonic_8h.html" title="Header file for the ultrasonic sensor driver." alt="" coords="399,93,487,119"/>
-</map>

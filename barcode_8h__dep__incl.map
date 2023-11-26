@@ -1,7 +1,0 @@
-<map id="main/driver/irline/barcode.h" name="main/driver/irline/barcode.h">
-<area shape="rect" id="node1" title="Header file for the barcode driver." alt="" coords="164,5,281,45"/>
-<area shape="rect" id="node2" href="$barcode_8c.html" title="Implementation of the barcode driver." alt="" coords="5,181,123,221"/>
-<area shape="rect" id="node3" href="$ir__sensor_8c.html" title="Driver code for the IR sensor driver." alt="" coords="147,181,264,221"/>
-<area shape="rect" id="node4" href="$ir__sensor_8h.html" title="Header file for the IR sensor driver." alt="" coords="116,93,233,133"/>
-<area shape="rect" id="node5" href="$driver_2irline_2main_8c.html" title="Demonstration for the IR sensor driver." alt="" coords="288,181,405,221"/>
-</map>

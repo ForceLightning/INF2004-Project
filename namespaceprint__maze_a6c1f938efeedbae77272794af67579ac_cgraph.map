@@ -1,7 +1,0 @@
-<map id="get_direction_from_coords" name="get_direction_from_coords">
-<area shape="rect" id="node1" title=" " alt="" coords="5,29,135,69"/>
-<area shape="rect" id="node2" href="$namespaceprint__maze.html#ade938b9fef84f37d1b59f8018b2e5d15" title=" " alt="" coords="183,37,344,62"/>
-<area shape="rect" id="node3" href="$namespaceprint__maze.html#ac338594cbf3e7db061a5a85cc7fa57c9" title=" " alt="" coords="392,37,516,62"/>
-<area shape="rect" id="node4" href="$namespaceprint__maze.html#afc9f1a93f2b4a0584a295c211ddb9a1d" title=" " alt="" coords="564,37,643,62"/>
-<area shape="rect" id="node5" href="$namespaceprint__maze.html#aad63d1885bf5f3d46eb9e8e3e3844d56" title=" " alt="" coords="691,37,768,62"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="maze_nav_modify_walls" name="maze_nav_modify_walls">
-<area shape="rect" id="node1" title="Modifies the walls of the navigator&#39;s current node." alt="" coords="207,5,369,31"/>
-<area shape="rect" id="node2" href="$dfs_8c.html#ad895d09bb41bba4132541d5d17f7f4c0" title="Conducts a depth first search on a maze." alt="" coords="5,5,159,31"/>
-</map>

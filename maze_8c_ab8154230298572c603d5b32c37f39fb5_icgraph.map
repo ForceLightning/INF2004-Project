@@ -1,5 +1,0 @@
-<map id="maze_get_dir_from_to" name="maze_get_dir_from_to">
-<area shape="rect" id="node1" title="Get the direction from p_point_a to p_point_b if they are adjacent." alt="" coords="207,31,357,56"/>
-<area shape="rect" id="node2" href="$a__star_8c.html#aa93e473768652772f2577e1564b89d91" title="Gets the string representation of the path from the start node to the end node." alt="" coords="13,5,151,31"/>
-<area shape="rect" id="node3" href="$dfs_8c.html#ad895d09bb41bba4132541d5d17f7f4c0" title="Conducts a depth first search on a maze." alt="" coords="5,55,159,80"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="main/pathfinding/a_star.h" name="main/pathfinding/a_star.h">
-<area shape="rect" id="node1" title="Header file for the a* algorithm." alt="" coords="205,5,332,45"/>
-<area shape="rect" id="node2" href="$main_8c.html" title="The main source file for robot control." alt="" coords="5,101,97,126"/>
-<area shape="rect" id="node3" href="$a__star_8c.html" title="Source file for the implementation of the a* algorithm." alt="" coords="121,93,248,133"/>
-<area shape="rect" id="node4" href="$navigation__tests_8c.html" title="Tests the combined navigational functions." alt="" coords="273,101,433,126"/>
-<area shape="rect" id="node5" href="$pathfinding__tests_8c.html" title="This file contains the tests for the A* pathfinding algorithm." alt="" coords="457,101,619,126"/>
-</map>

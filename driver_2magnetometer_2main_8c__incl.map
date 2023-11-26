@@ -1,7 +1,0 @@
-<map id="main/driver/magnetometer/main.c" name="main/driver/magnetometer/main.c">
-<area shape="rect" id="node1" title="Demonstration for the magnetometer driver." alt="" coords="115,5,289,45"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,93,65,119"/>
-<area shape="rect" id="node3" title=" " alt="" coords="90,93,181,119"/>
-<area shape="rect" id="node4" title=" " alt="" coords="205,93,335,119"/>
-<area shape="rect" id="node5" href="$magnetometer_8h.html" title="Header file for the magnetometer driver." alt="" coords="359,93,474,119"/>
-</map>

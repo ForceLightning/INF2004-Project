@@ -1,4 +1,0 @@
-<map id="get_cm" name="get_cm">
-<area shape="rect" id="node1" title="Get the distance to an object in centimetres." alt="" coords="5,5,71,31"/>
-<area shape="rect" id="node2" href="$ultrasonic_8c.html#aa8afe1af0eb541451138cf3e7369a4e5" title="Get the pulse length in cycles." alt="" coords="119,5,197,31"/>
-</map>

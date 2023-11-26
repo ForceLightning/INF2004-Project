@@ -1,7 +1,0 @@
-<map id="main/driver/magnetometer/magnetometer.h" name="main/driver/magnetometer/magnetometer.h">
-<area shape="rect" id="node1" title="Header file for the magnetometer driver." alt="" coords="281,5,455,45"/>
-<area shape="rect" id="node2" href="$magnetometer_8c.html" title="This file contains functions for initializing and reading data from a magnetometer sensor using I2C c..." alt="" coords="5,93,179,133"/>
-<area shape="rect" id="node3" href="$driver_2magnetometer_2main_8c.html" title="Demonstration for the magnetometer driver." alt="" coords="203,93,376,133"/>
-<area shape="rect" id="node4" href="$main_8c.html" title="The main source file for robot control." alt="" coords="401,101,493,126"/>
-<area shape="rect" id="node5" href="$pid_8c.html" title=" " alt="" coords="517,101,619,126"/>
-</map>

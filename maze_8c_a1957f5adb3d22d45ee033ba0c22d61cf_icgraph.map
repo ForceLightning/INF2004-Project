@@ -1,5 +1,0 @@
-<map id="maze_get_cell_at_coords" name="maze_get_cell_at_coords">
-<area shape="rect" id="node1" title="Get the cell at the specified coordinates." alt="" coords="367,13,536,38"/>
-<area shape="rect" id="node2" href="$maze_8c.html#a2b467ddfd914550a22224fa6be60f14f" title="Get the cell in the specified direction from a specific cell." alt="" coords="176,13,319,38"/>
-<area shape="rect" id="node3" href="$floodfill_8c.html#a921aecf0c7109fefa4e4edffc7c5c0db" title="This function initialises a maze with no walls to perform the floodfill algorithm on." alt="" coords="5,5,128,45"/>
-</map>
