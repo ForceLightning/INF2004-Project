@@ -10,13 +10,13 @@
 
 ## Environment Variables
 
-| Variable | Description |
-| -- | -- |
-| `PICO_SDK_PATH` | Path to the Pico SDK directory |
+| Variable               | Description                           |
+| ---------------------- | ------------------------------------- |
+| `PICO_SDK_PATH`        | Path to the Pico SDK directory        |
 | `FREERTOS_KERNEL_PATH` | Path to the FreeRTOS Kernel directory |
-| `WIFI_SSID` | Wi-Fi network SSID |
-| `WIFI_PASSWORD` | Wi-Fi network password |
-| `TEST_BUILD` | Define to enable `ctest` testing |
+| `WIFI_SSID`            | Wi-Fi network SSID                    |
+| `WIFI_PASSWORD`        | Wi-Fi network password                |
+| `TEST_BUILD`           | Define to enable `ctest` testing      |
 
 
 # Compilation
@@ -48,8 +48,7 @@ Documentation can be found [here](https://forcelightning.github.io/INF2004-Proje
 ![Data flow](images/dataflow.svg)
 
 # Contributing
-
-The enforced coding standard is the [Embedded C Coding Standard by the Barr Group](https://barrgroup.com/embedded-systems/books/embedded-c-coding-standard).
+The enforced coding standard is the [Embedded C Coding Standard by the Barr Group](https://barrgroup.com/embedded-systems/books/embedded-c-coding-standard). See the [Table of Abbreviations](ABBREV.md).
 
 # Licence
 [BSD-3-Clause](LICENSE.txt)
