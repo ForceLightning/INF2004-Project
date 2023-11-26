@@ -1,0 +1,13 @@
+<map id="src/pathfinding/dfs.c" name="src/pathfinding/dfs.c">
+<area shape="rect" id="node1" title="Runs the depth first search algorithm on a maze." alt="" coords="310,5,449,31"/>
+<area shape="rect" id="node2" title=" " alt="" coords="251,152,311,177"/>
+<area shape="rect" id="node3" title=" " alt="" coords="35,79,103,104"/>
+<area shape="rect" id="node4" title=" " alt="" coords="521,299,585,324"/>
+<area shape="rect" id="node5" title=" " alt="" coords="205,299,280,324"/>
+<area shape="rect" id="node6" title=" " alt="" coords="304,79,367,104"/>
+<area shape="rect" id="node7" title=" " alt="" coords="392,79,456,104"/>
+<area shape="rect" id="node8" href="$maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="436,225,499,251"/>
+<area shape="rect" id="node9" href="$floodfill_8h.html" title="This file contains the function prototypes for the floodfill algorithm for mapping of the maze." alt="" coords="591,152,662,177"/>
+<area shape="rect" id="node10" href="$binary__heap_8h.html" title="This file contains the declarations for the binary min&#45;heap used in the a* algorithm." alt="" coords="128,79,229,104"/>
+<area shape="rect" id="node11" href="$dfs_8h.html" title="Header file for the depth first search algorithm for mapping the maze." alt="" coords="530,79,581,104"/>
+</map>

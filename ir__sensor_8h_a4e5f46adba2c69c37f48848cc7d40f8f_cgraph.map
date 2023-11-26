@@ -1,0 +1,4 @@
+<map id="ir_find_wall_directions" name="ir_find_wall_directions">
+<area shape="rect" id="node1" title="This returns the information of the walls in the node." alt="" coords="5,5,155,31"/>
+<area shape="rect" id="node2" href="$ir__sensor_8c.html#a7ce43145514708552a16fdda59762bb7" title="Detects line." alt="" coords="203,5,291,31"/>
+</map>

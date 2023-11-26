@@ -1,0 +1,6 @@
+<map id="src/drivers/motor/motor_control.h" name="src/drivers/motor/motor_control.h">
+<area shape="rect" id="node1" title="Header file for motor control drivers." alt="" coords="176,5,333,45"/>
+<area shape="rect" id="node2" href="$motor__control_8c.html" title=" " alt="" coords="5,93,163,133"/>
+<area shape="rect" id="node3" href="$pid_8c.html" title=" " alt="" coords="187,101,322,126"/>
+<area shape="rect" id="node4" href="$main_8c.html" title="The main source file for robot control." alt="" coords="347,101,429,126"/>
+</map>

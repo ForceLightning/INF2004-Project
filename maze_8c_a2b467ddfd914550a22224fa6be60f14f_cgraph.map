@@ -1,0 +1,4 @@
+<map id="maze_get_cell_in_dir" name="maze_get_cell_in_dir">
+<area shape="rect" id="node1" title="Get the cell in the specified direction from a specific cell." alt="" coords="5,5,148,31"/>
+<area shape="rect" id="node2" href="$maze_8c.html#a1957f5adb3d22d45ee033ba0c22d61cf" title="Get the cell at the specified coordinates." alt="" coords="196,5,365,31"/>
+</map>

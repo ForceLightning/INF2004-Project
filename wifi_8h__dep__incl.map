@@ -1,0 +1,6 @@
+<map id="src/drivers/wifi/wifi.h" name="src/drivers/wifi/wifi.h">
+<area shape="rect" id="node1" title="Header file for WiFi module. This file contains the function prototypes and data structures for the W..." alt="" coords="178,5,317,31"/>
+<area shape="rect" id="node2" href="$drivers_2wifi_2main_8c.html" title="Demonstration for the WiFi driver." alt="" coords="5,79,153,104"/>
+<area shape="rect" id="node3" href="$wifi_8c.html" title="This file contains the implementation of a TCP server using lwIP. The TCP server is initialized using..." alt="" coords="178,79,317,104"/>
+<area shape="rect" id="node4" href="$main_8c.html" title="The main source file for robot control." alt="" coords="341,79,423,104"/>
+</map>

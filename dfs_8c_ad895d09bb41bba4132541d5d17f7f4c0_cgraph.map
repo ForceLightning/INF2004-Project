@@ -1,0 +1,9 @@
+<map id="dfs_depth_first_search" name="dfs_depth_first_search">
+<area shape="rect" id="node1" title="Conducts a depth first search on a maze." alt="" coords="5,87,159,112"/>
+<area shape="rect" id="node2" href="$dfs_8c.html#ae6f752eff6517a7aeace592951a6a919" title="Checks if all reachable nodes from the navigator&#39;s current position has been visisted." alt="" coords="218,22,358,62"/>
+<area shape="rect" id="node6" href="$maze_8c.html#ab8154230298572c603d5b32c37f39fb5" title="Get the direction from p_point_a to p_point_b if they are adjacent." alt="" coords="213,87,363,112"/>
+<area shape="rect" id="node7" href="$maze_8c.html#abb1a3c500ab00f0983a378f4b2045c4e" title="Modifies the walls of the navigator&#39;s current node." alt="" coords="207,136,369,161"/>
+<area shape="rect" id="node3" href="$binary__heap_8c.html#af38f858070d3c5f43dcb2b9a38920082" title="Deletes and returns the root node from the binary heap." alt="" coords="417,5,579,31"/>
+<area shape="rect" id="node5" href="$binary__heap_8c.html#ad06768f1a7c61c92aa00fe5a3a33dbc2" title="Peeks at the root node of the binary heap." alt="" coords="435,55,561,80"/>
+<area shape="rect" id="node4" href="$binary__heap_8c.html#ae7dff85ea558ed732c081ab37b97ba5d" title="Moves the node at the given index up the binary heap to maintain the heap property...." alt="" coords="627,5,769,31"/>
+</map>

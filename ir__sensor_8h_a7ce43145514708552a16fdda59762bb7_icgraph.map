@@ -1,0 +1,4 @@
+<map id="ir_read_line" name="ir_read_line">
+<area shape="rect" id="node1" title="Detects line." alt="" coords="203,5,291,31"/>
+<area shape="rect" id="node2" href="$ir__sensor_8c.html#a4e5f46adba2c69c37f48848cc7d40f8f" title="This returns the information of the walls in the node." alt="" coords="5,5,155,31"/>
+</map>

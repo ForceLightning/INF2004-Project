@@ -1,0 +1,4 @@
+<map id="maze_manhattan_dist" name="maze_manhattan_dist">
+<area shape="rect" id="node1" title="Calculates the manhattan distance between two points." alt="" coords="112,5,261,31"/>
+<area shape="rect" id="node2" href="$a__star_8c.html#a6d82d3636110fd676cb68188a8351c3a" title="Runs the A* algorithm on a grid maze to find the shortest path between two points,..." alt="" coords="5,5,64,31"/>
+</map>

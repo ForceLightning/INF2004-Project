@@ -1,0 +1,7 @@
+<map id="src/drivers/irline/ir_sensor.h" name="src/drivers/irline/ir_sensor.h">
+<area shape="rect" id="node1" title="Header file for the IR sensor driver." alt="" coords="213,5,328,45"/>
+<area shape="rect" id="node2" href="$barcode_8c.html" title="Implementation of the barcode driver." alt="" coords="5,93,120,133"/>
+<area shape="rect" id="node3" href="$ir__sensor_8c.html" title="Driver code for the IR sensor driver." alt="" coords="144,93,259,133"/>
+<area shape="rect" id="node4" href="$drivers_2irline_2main_8c.html" title="Demonstration for the IR sensor driver." alt="" coords="283,93,397,133"/>
+<area shape="rect" id="node5" href="$main_8c.html" title="The main source file for robot control." alt="" coords="421,101,504,126"/>
+</map>

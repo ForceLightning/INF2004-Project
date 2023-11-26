@@ -1,0 +1,11 @@
+<map id="src/drivers/magnetometer/magnetometer.c" name="src/drivers/magnetometer/magnetometer.c">
+<area shape="rect" id="node1" title="This file contains functions for initializing and reading data from a magnetometer and accelerometer ..." alt="" coords="270,5,441,45"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,93,65,119"/>
+<area shape="rect" id="node3" title=" " alt="" coords="90,93,154,119"/>
+<area shape="rect" id="node4" title=" " alt="" coords="178,93,253,119"/>
+<area shape="rect" id="node5" title=" " alt="" coords="277,93,338,119"/>
+<area shape="rect" id="node6" title=" " alt="" coords="362,93,447,119"/>
+<area shape="rect" id="node7" title=" " alt="" coords="472,93,585,119"/>
+<area shape="rect" id="node8" title=" " alt="" coords="610,93,717,119"/>
+<area shape="rect" id="node9" href="$magnetometer_8h.html" title="Header file for the magnetometer driver." alt="" coords="741,93,855,119"/>
+</map>

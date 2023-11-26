@@ -1,0 +1,4 @@
+<map id="a_star_path_to_buffer" name="a_star_path_to_buffer">
+<area shape="rect" id="node1" title="Inserts the path in coordinates from the start node to the end node into a buffer." alt="" coords="5,13,152,38"/>
+<area shape="rect" id="node2" href="$maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1" title="Helper function to convert a uint16_t to a uint8_t buffer." alt="" coords="200,5,348,45"/>
+</map>

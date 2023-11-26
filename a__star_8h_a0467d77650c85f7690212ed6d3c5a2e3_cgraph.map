@@ -1,0 +1,8 @@
+<map id="a_star_maze_path_nav_to_buffer" name="a_star_maze_path_nav_to_buffer">
+<area shape="rect" id="node1" title="Inserts the maze, path and navigator state into a buffer." alt="" coords="5,99,161,139"/>
+<area shape="rect" id="node2" href="$a__star_8c.html#ac106312a2e54f3fcfbc7b8f9893bb9c6" title="Inserts the path in coordinates from the start node to the end node into a buffer." alt="" coords="209,5,356,31"/>
+<area shape="rect" id="node3" href="$maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1" title="Helper function to convert a uint16_t to a uint8_t buffer." alt="" coords="404,74,552,114"/>
+<area shape="rect" id="node4" href="$maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270" title="Serialises the navigator state into a uint8_t buffer. The buffer is set with the navigator&#39;s coordina..." alt="" coords="213,107,352,132"/>
+<area shape="rect" id="node5" href="$maze_8c.html#a35e70f881f107a45f52eab387e71c61c" title="Serialises the maze into a bitmask array. maze_deserialise." alt="" coords="229,156,337,181"/>
+<area shape="rect" id="node6" href="$maze_8c.html#aae2cf92e83b0810d22411db9fbea4d94" title="Serialises the maze into a uint8_t buffer." alt="" coords="216,206,349,246"/>
+</map>

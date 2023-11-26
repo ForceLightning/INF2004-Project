@@ -1,0 +1,6 @@
+<map id="a_star" name="a_star">
+<area shape="rect" id="node1" title="Runs the A* algorithm on a grid maze to find the shortest path between two points,..." alt="" coords="5,31,64,56"/>
+<area shape="rect" id="node2" href="$binary__heap_8c.html#ae2c52107ee2c491443e7f8f3cafa9edd" title="Inserts a grid cell node into the binary heap with a given priority." alt="" coords="121,5,252,31"/>
+<area shape="rect" id="node4" href="$maze_8c.html#a9037ecf1d39a1e3f0e0a34ca30391b91" title="Calculates the manhattan distance between two points." alt="" coords="112,55,261,80"/>
+<area shape="rect" id="node3" href="$binary__heap_8c.html#a76720d1612568af283cab311e6506150" title="Moves the node at the given index down the binary heap to maintain the heap property...." alt="" coords="309,5,435,31"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="src/pathfinding/a_star.c" name="src/pathfinding/a_star.c">
+<area shape="rect" id="node1" title="Source file for the implementation of the a* algorithm." alt="" coords="141,5,297,31"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,299,69,324"/>
+<area shape="rect" id="node3" title=" " alt="" coords="235,225,295,251"/>
+<area shape="rect" id="node4" title=" " alt="" coords="333,79,395,104"/>
+<area shape="rect" id="node5" href="$binary__heap_8h.html" title="This file contains the declarations for the binary min&#45;heap used in the a* algorithm." alt="" coords="105,152,207,177"/>
+<area shape="rect" id="node6" href="$maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="119,225,182,251"/>
+<area shape="rect" id="node8" href="$a__star_8h.html" title="Header file for the a* algorithm." alt="" coords="51,79,119,104"/>
+<area shape="rect" id="node7" title=" " alt="" coords="113,299,188,324"/>
+</map>

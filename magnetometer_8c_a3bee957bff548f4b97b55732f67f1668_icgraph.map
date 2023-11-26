@@ -1,0 +1,4 @@
+<map id="magneto_get_curr_bearing" name="magneto_get_curr_bearing">
+<area shape="rect" id="node1" title="Gets the current bearing of the magnetometer sensor." alt="" coords="181,5,356,31"/>
+<area shape="rect" id="node2" href="$pid_8c.html#aab06760403be2a49cb1fc5997b16d0a6" title="Updates the motor differential ratio based on the target bearing and current bearing." alt="" coords="5,5,133,31"/>
+</map>

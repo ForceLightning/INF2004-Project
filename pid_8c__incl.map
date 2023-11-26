@@ -1,0 +1,11 @@
+<map id="src/drivers/pid/pid.c" name="src/drivers/pid/pid.c">
+<area shape="rect" id="node1" title=" " alt="" coords="184,5,318,31"/>
+<area shape="rect" id="node2" href="$motor__control_8h.html" title="Header file for motor control drivers." alt="" coords="42,79,153,104"/>
+<area shape="rect" id="node6" href="$maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="252,152,314,177"/>
+<area shape="rect" id="node8" href="$pid_8h.html" title=" " alt="" coords="258,79,308,104"/>
+<area shape="rect" id="node9" href="$magnetometer_8h.html" title="Header file for the magnetometer driver." alt="" coords="332,79,447,104"/>
+<area shape="rect" id="node3" title=" " alt="" coords="50,225,124,251"/>
+<area shape="rect" id="node4" title=" " alt="" coords="22,152,112,177"/>
+<area shape="rect" id="node5" title=" " alt="" coords="136,152,227,177"/>
+<area shape="rect" id="node7" title=" " alt="" coords="251,225,315,251"/>
+</map>

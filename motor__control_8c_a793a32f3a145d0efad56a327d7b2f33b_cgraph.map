@@ -1,0 +1,5 @@
+<map id="motor_move_forward" name="motor_move_forward">
+<area shape="rect" id="node1" title="A function to move the car forward." alt="" coords="5,31,149,56"/>
+<area shape="rect" id="node2" href="$motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf" title="A function to update the direction of the motor&#39;s rotation." alt="" coords="197,5,355,31"/>
+<area shape="rect" id="node3" href="$motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3" title="A function to update the PWM duty cycle and wrap value." alt="" coords="208,55,344,80"/>
+</map>
