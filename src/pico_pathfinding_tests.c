@@ -1,5 +1,5 @@
 /**
- * @file main.c
+ * @file pico_pathfinding_tests.c
  * @author Christopher Kok (chris@forcelightning.xyz)
  * @brief This file contains the mapping and pathfinding tests to be run on the
  * Pico depending on the input over serial.
@@ -26,7 +26,11 @@
 // ----------------------------------------------------------------------------
 //
 #ifndef NDEBUG
-#define PICO_DEBUG_MALLOC 1 // Enable malloc debug.
+/**
+ * @def PICO_DEBUG_MALLOC
+ * @brief Enables malloc debug.
+ */
+#define PICO_DEBUG_MALLOC 1
 /**
  * @def DEBUG_PRINT(...)
  * @brief Debug print macro. Only prints if NDEBUG is not defined.
@@ -74,8 +78,8 @@ static const uint16_t g_bitmask_array_south[GRID_ROWS * GRID_COLS] = {
     0x1, 0x3, 0xB, 0x9  // Last row.
 };
 
-static const maze_point_t start_point = { 2, 5 }; // Start point is at (2, 5).
-static const maze_point_t end_point   = { 1, 0 }; // End point is at (1, 0).
+static const maze_point_t g_start_point = { 2, 5 }; // Start point is at (2, 5).
+static const maze_point_t g_end_point   = { 1, 0 }; // End point is at (1, 0).
 
 static uint16_t *gp_bitmask_array = NULL; // Pointer to the global bitmask array
                                           // that is set by the test functions.
@@ -395,8 +399,8 @@ initialise_variables (const uint16_t         *p_bitmask,
     gp_bitmask_array = p_bitmask;
     floodfill_init_maze_nowall(p_maze);
 
-    maze_grid_cell_t *p_start = maze_get_cell_at_coords(p_maze, &start_point);
-    maze_grid_cell_t *p_end   = maze_get_cell_at_coords(p_maze, &end_point);
+    maze_grid_cell_t *p_start = maze_get_cell_at_coords(p_maze, &g_start_point);
+    maze_grid_cell_t *p_end   = maze_get_cell_at_coords(p_maze, &g_end_point);
 
     p_navigator->orientation    = MAZE_NORTH;
     p_navigator->p_current_node = p_start;
