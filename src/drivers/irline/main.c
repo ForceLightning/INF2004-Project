@@ -27,17 +27,17 @@ main (void)
     stdio_init_all();
     scanf("Press enter to start barcode read.\n");
     printf("Starting barcode read.\n");
-    setup_adc_pin(ADC_PIN_LEFT);
-    setup_adc_pin(ADC_PIN_FRONT);
-    setup_gpio_pin(GPIO_PIN_LEFT);
-    setup_gpio_pin(GPIO_PIN_FRONT);
+    ir_setup_adc_pin(ADC_PIN_LEFT);
+    ir_setup_adc_pin(ADC_PIN_FRONT);
+    ir_setup_gpio_pin(GPIO_PIN_LEFT);
+    ir_setup_gpio_pin(GPIO_PIN_FRONT);
 
     barcode_line_buffer_t barcode_line_buffer;
     barcode_clear_line_buffer(&barcode_line_buffer);
 
     for (;;) // Loop forever. See Barr Group "Embedded C Coding Standard" 8.4.c.
     {
-        barcode_line_type_t barcode_line_type = read_barcode();
+        barcode_line_type_t barcode_line_type = ir_read_barcode();
 
         // Check whether the barcode line is valid.
         //
@@ -89,7 +89,7 @@ main (void)
 
     end_barcode_read:
 
-        find_wall_directions(GPIO_PIN_LEFT, GPIO_PIN_FRONT);
+        ir_find_wall_directions(GPIO_PIN_LEFT, GPIO_PIN_FRONT);
     }
 }
 

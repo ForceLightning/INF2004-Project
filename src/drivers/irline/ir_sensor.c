@@ -22,7 +22,7 @@
  * @param adc_pin ADC pin for the IR sensor.
  */
 void
-setup_adc_pin (uint adc_pin)
+ir_setup_adc_pin (uint adc_pin)
 {
     adc_init();
     adc_gpio_init(adc_pin);
@@ -35,7 +35,7 @@ setup_adc_pin (uint adc_pin)
  * @param gpio_pin GPIO pin for the IR sensor
  */
 void
-setup_gpio_pin (uint gpio_pin)
+ir_setup_gpio_pin (uint gpio_pin)
 {
     gpio_init(gpio_pin);
     gpio_set_dir(gpio_pin, GPIO_IN);
@@ -48,7 +48,7 @@ setup_gpio_pin (uint gpio_pin)
  * @return uint16_t
  */
 uint16_t
-read_line (uint gpio_pin_in)
+ir_read_line (uint gpio_pin_in)
 {
     uint16_t digital_result = gpio_get(gpio_pin_in);
     return digital_result;
@@ -60,7 +60,7 @@ read_line (uint gpio_pin_in)
  * @param flag The indicator for the walls
  */
 void
-update_top_flag (ir_flags_t *p_flag)
+ir_update_top_flag (ir_flags_t *p_flag)
 {
     p_flag->top_wall = 1;
 }
@@ -71,7 +71,7 @@ update_top_flag (ir_flags_t *p_flag)
  * @param flag The indicator for the walls
  */
 void
-update_left_flag (ir_flags_t *p_flag)
+ir_update_left_flag (ir_flags_t *p_flag)
 {
     p_flag->left_wall = 1;
 }
@@ -84,14 +84,14 @@ update_left_flag (ir_flags_t *p_flag)
  * @return uint16_t
  */
 uint16_t
-find_wall_directions (uint gpio_pin_left, uint gpio_pin_right)
+ir_find_wall_directions (uint gpio_pin_left, uint gpio_pin_right)
 {
     uint16_t has_wall = 0;
-    if (read_line(gpio_pin_left) == 1)
+    if (ir_read_line(gpio_pin_left) == 1)
     {
         has_wall += 8;
     }
-    if (read_line(gpio_pin_right) == 1)
+    if (ir_read_line(gpio_pin_right) == 1)
     {
         has_wall += 1;
     }
@@ -104,7 +104,7 @@ find_wall_directions (uint gpio_pin_left, uint gpio_pin_right)
  *
  */
 barcode_line_type_t
-read_barcode (void)
+ir_read_barcode (void)
 {
     uint16_t result = adc_read();
 

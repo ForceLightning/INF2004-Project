@@ -27,13 +27,13 @@ typedef struct ir_flags
 
 // Function prototypes.
 //
-void                setup_adc_pin(uint adc_pin);
-void                setup_gpio_pin(uint gpio_pin);
-barcode_line_type_t read_barcode(void);
-uint16_t            read_line(uint gpio_pin_in);
-void                update_top_flag(ir_flags_t *flag);
-void                update_left_flag(ir_flags_t *flag);
-uint16_t find_wall_directions(uint gpio_pin_left, uint gpio_pin_right);
+void                ir_setup_adc_pin(uint adc_pin);
+void                ir_setup_gpio_pin(uint gpio_pin);
+barcode_line_type_t ir_read_barcode(void);
+uint16_t            ir_read_line(uint gpio_pin_in);
+void                ir_update_top_flag(ir_flags_t *flag);
+void                ir_update_left_flag(ir_flags_t *flag);
+uint16_t ir_find_wall_directions(uint gpio_pin_left, uint gpio_pin_right);
 
 #endif // IR_SENSOR_H
 
