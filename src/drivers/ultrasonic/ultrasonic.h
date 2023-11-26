@@ -9,16 +9,26 @@
  *
  */
 
-#ifndef ULTRASONIC_H
+#ifndef ULTRASONIC_H // Include guard.
 #define ULTRASONIC_H
 // Definitions
 //
 #define ULTRASONIC_TIMEOUT       26100 // Timeout in cycles.
 #define ULTRASONIC_TRIG_PULSE_US 10    // Trigger pulse width in us.
-#define ULTRASONIC_PULSE_TO_CM(x) \
-    (x / 29. / 2.) // Convert pulse width to cm. Constants from datasheet.
-#define ULTRASONIC_PULSE_TO_IN(x) \
-    (x / 74. / 2.) // Convert pulse width to in. Constants from datasheet.
+
+/**
+ * @def ULTRASONIC_PULSE_TO_CM(x)
+ * @param[in] x Pulse width in us. Constants from datasheet.
+ * @return Pulse width in cm.
+ */
+#define ULTRASONIC_PULSE_TO_CM(x) (x / 29. / 2.)
+
+/**
+ * @def ULTRASONIC_PULSE_TO_IN(x)
+ * @param[in] x Pulse width in us. Constants from datasheet.
+ * @return Pulse width in inches.
+ */
+#define ULTRASONIC_PULSE_TO_IN(x) (x / 74. / 2.)
 
 // Function prototypes
 //

@@ -32,6 +32,12 @@
 #define PID_ENCODER_PIN      21      // Encoder pin for PID.
 #define PID_BIAS_LEFT_RATIO  1.05f   // Bias for left ratio.
 
+/**
+ * @def PID_DEGREES_NORMALISE(x)
+ * @brief Normalises degrees to be between 0 and 360.
+ * @param x Degrees to normalise.
+ * @return Normalised degrees.
+*/
 #define PID_DEGREES_NORMALISE(x) ((x + 180) % 360 - 180) // Normalise degrees.
 
 /**
