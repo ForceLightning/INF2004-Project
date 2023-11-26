@@ -57,31 +57,36 @@
 //     cyw43_arch_deinit();
 // }
 
-static void 
-read_magnetometer_task(__unused void *params)
+static void
+read_magnetometer_task (__unused void *params)
 {
     magneto_read_data();
 }
 
 static void
-move_car_forward_task(__unused void *params)
+move_car_forward_task (__unused void *params)
 {
     motor_start(
-        LEFT_MOTOR_PIN_CLKWISE, LEFT_MOTOR_PIN_ANTICLKWISE, PWM_PIN_LEFT);
-    motor_start(
-        RIGHT_MOTOR_PIN_CLKWISE, RIGHT_MOTOR_PIN_ANTICLKWISE, PWM_PIN_RIGHT);
-    while(1){
-        if(magneto_is_bearing_invalid()){
+        MOTOR_LEFT_PIN_CLKWISE, MOTOR_LEFT_PIN_ANTICLKWISE, MOTOR_PWM_PIN_LEFT);
+    motor_start(MOTOR_RIGHT_PIN_CLKWISE,
+                MOTOR_RIGHT_PIN_ANTICLKWISE,
+                MOTOR_PWM_PIN_RIGHT);
+    while (1)
+    {
+        if (magneto_is_bearing_invalid())
+        {
             pid_params_t pid_params;
             init_pid_error_correction(&pid_params);
-            bearing_correction(magneto_get_true_bearing(), magneto_get_curr_bearing(), &pid_params);
+            pid_bearing_correction(magneto_get_true_bearing(),
+                               magneto_get_curr_bearing(),
+                               &pid_params);
         }
         motor_move_forward();
     }
 }
 
-static void 
-tcp_server_begin_task(__unused void *params)
+static void
+tcp_server_begin_task (__unused void *params)
 {
     wifi_tcp_server_begin();
 }
@@ -117,7 +122,7 @@ v_launch (void)
     vTaskCoreAffinitySet(h_main_task, 1);
 #endif
 
-   vTaskStartScheduler();
+    vTaskStartScheduler();
 }
 
 int
@@ -128,7 +133,6 @@ main (void)
     magneto_init();
     wifi_tcp_server_begin_init();
     // gpio_init(20);
-    
 
     const char *rtos_name;
 
@@ -152,7 +156,7 @@ main (void)
 #else
     // if (gpio_get(20)) {
     printf("Running %s on core 1\n", rtos_name);
-    v_launch(); 
+    v_launch();
     // }
 
 #endif

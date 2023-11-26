@@ -20,7 +20,7 @@
  * @brief Sets up pid struct(s).
  */
 void
-init_pid_structs (turn_params_t *p_turn_params)
+init_pid_structs (pid_turn_params_t *p_turn_params)
 {
     p_turn_params->b_is_turning       = 0;
     p_turn_params->encoder_step_count = 0;
@@ -31,13 +31,13 @@ init_pid_structs (turn_params_t *p_turn_params)
 }
 
 /**
- * @brief Function to turn the car based on a given direction
+ * @brief Function to turn the car and move in a given direction
  *
- * @param p_navigator
- * @param direction
+ * @param[in,out] p_turn_params Pointer to the turn parameters.
+ * @param[in] direction Direction to turn.
  */
 void
-navigate_car_turn (turn_params_t            *p_turn_params,
+navigate_car_turn (pid_turn_params_t        *p_turn_params,
                    maze_cardinal_direction_t direction)
 {
     if (p_turn_params->b_is_turning)
@@ -47,7 +47,7 @@ navigate_car_turn (turn_params_t            *p_turn_params,
         // Center the car to prepare for turning
         if (!p_turn_params->b_is_centered)
         {
-            if (p_turn_params->encoder_step_count == ENCODER_CENTER_OFFSET)
+            if (p_turn_params->encoder_step_count == PID_ENCODER_CENTER_OFFSET)
             {
                 p_turn_params->b_is_centered      = 1;
                 p_turn_params->encoder_step_count = 0;
@@ -60,7 +60,7 @@ navigate_car_turn (turn_params_t            *p_turn_params,
                 case WEST:
                     motor_turn_left(0);
                     if (p_turn_params->encoder_step_count
-                        == ENCODER_STEP_TURN_90_DEG)
+                        == PID_ENCODER_STEP_TURN_90_DEG)
                     {
                         p_turn_params->b_is_turn_complete = 1;
                         p_turn_params->encoder_step_count = 0;
@@ -71,7 +71,7 @@ navigate_car_turn (turn_params_t            *p_turn_params,
                 case EAST:
                     motor_turn_right(0);
                     if (p_turn_params->encoder_step_count
-                        == ENCODER_STEP_TURN_90_DEG)
+                        == PID_ENCODER_STEP_TURN_90_DEG)
                     {
                         p_turn_params->b_is_turn_complete = 1u;
                         p_turn_params->encoder_step_count = 0;
@@ -82,7 +82,7 @@ navigate_car_turn (turn_params_t            *p_turn_params,
                 case SOUTH:
                     motor_turn_left(0);
                     if (p_turn_params->encoder_step_count
-                        == ENCODER_STEP_TURN_180_DEG)
+                        == PID_ENCODER_STEP_TURN_180_DEG)
                     {
                         p_turn_params->b_is_turn_complete = 1u;
                         p_turn_params->encoder_step_count = 0;
@@ -97,7 +97,7 @@ navigate_car_turn (turn_params_t            *p_turn_params,
         else if (!p_turn_params->b_is_moved_cell)
         {
             motor_move_forward();
-            if (p_turn_params->encoder_step_count == ENCODER_STEP_MOVE)
+            if (p_turn_params->encoder_step_count == PID_ENCODER_STEP_MOVE)
             {
                 p_turn_params->b_is_moved_cell    = 1;
                 p_turn_params->encoder_step_count = 0;

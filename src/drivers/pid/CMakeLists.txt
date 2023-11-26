@@ -55,5 +55,5 @@ target_link_libraries(pid_driver INTERFACE
 target_include_directories(pid_driver INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/../
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../
     )

@@ -2,26 +2,24 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <sys/types.h>
-#include "hardware/pwm.h"
 #include "hardware/gpio.h"
-#include "hardware/timer.h"
 #include "pico/stdio.h"
 #include "motor_control.h"
 #include "pid.h"
 
-turn_params_t g_turn_params;
+pid_turn_params_t g_turn_params;
 
 /**
  * @brief Interrupt callback function on rising edge
  *
- * @param gpio      GPIO pin number.
- * @param events    Event mask. @see gpio_irq_level.
+ * @param[in] gpio      GPIO pin number.
+ * @param[in] events    Event mask. @see gpio_irq_level.
  */
 void
-encoder_tick_isr (uint gpio, uint32_t events)
+encoder_tick_isr (__unused uint gpio, __unused uint32_t events)
 {
     printf("Encoder step count: %d\n", g_turn_params.encoder_step_count);
-    navigate_car_turn(&g_turn_params, g_turn_params.turn_direction);
+    pid_navigate_turn(&g_turn_params, g_turn_params.turn_direction);
 }
 
 int
@@ -30,7 +28,7 @@ main (void)
     // Initialisation.
     //
     stdio_init_all();
-    init_pid_structs(&g_turn_params);
+    pid_init_structs(&g_turn_params);
 
     // Initialize motors.
     motor_start(

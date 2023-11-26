@@ -15,10 +15,12 @@
 
 // Definitions for the encoder steps.
 //
-#define ENCODER_STEP_TURN_90_DEG  18 // Number of encoder steps to turn 90 deg.
-#define ENCODER_STEP_TURN_180_DEG 36 // Number of encoder steps to turn 180 deg.
-#define ENCODER_STEP_MOVE         25 // Number of encoder steps to move 1 cell.
-#define ENCODER_CENTER_OFFSET     5  // Number of encoder steps to center.
+#define PID_ENCODER_STEP_TURN_90_DEG \
+    18 // Number of encoder steps to turn 90 deg.
+#define PID_ENCODER_STEP_TURN_180_DEG \
+    36                               // Number of encoder steps to turn 180 deg.
+#define PID_ENCODER_STEP_MOVE     25 // Number of encoder steps to move 1 cell.
+#define PID_ENCODER_CENTER_OFFSET 5  // Number of encoder steps to center.
 
 // Constants for the PID.
 //
@@ -58,7 +60,7 @@ void init_pid_error_correction(pid_params_t *p_pid_params);
  * @typedef turn_params_t
  * @brief Struct for turn parameters.
  */
-typedef struct turn_params
+typedef struct pid_turn_params
 {
     uint b_is_turning;       ///< Flag to indicate if the car is turning.
     uint encoder_step_count; ///< Current encoder step count.
@@ -66,20 +68,18 @@ typedef struct turn_params
     uint b_is_centered;      ///< Flag to indicate if the car is centered.
     uint b_is_turn_complete; ///< Flag to indicate if the turn is complete.
     uint b_is_moved_cell;    ///< Flag to indicate if the car has moved a cell.
-} turn_params_t;
+} pid_turn_params_t;
 
-void init_pid_structs(turn_params_t *p_turn_params);
-
-void navigate_car_turn(turn_params_t            *p_turn_params,
-                       maze_cardinal_direction_t direction);
-
-float calculate_pid(float         current_bearing,
-                    float         target_bearing,
-                    float         current_ratio,
-                    pid_params_t *p_pid_params);
-void  bearing_correction(float         target_bearing,
-                         float         current_bearing,
-                         pid_params_t *p_pid_params);
+void  pid_init_structs(pid_turn_params_t *p_turn_params);
+void  pid_navigate_turn(pid_turn_params_t        *p_turn_params,
+                        maze_cardinal_direction_t direction);
+float pid_calculate_correction(float         current_bearing,
+                               float         target_bearing,
+                               float         current_ratio,
+                               pid_params_t *p_pid_params);
+void  pid_bearing_correction(float         target_bearing,
+                             float         current_bearing,
+                             pid_params_t *p_pid_params);
 
 #endif // PID_H
 
