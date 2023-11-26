@@ -43,7 +43,6 @@ endif()
 
 add_subdirectory(drivers)
 add_subdirectory(pathfinding)
-add_subdirectory(pid)
 
 if (EXISTS ${PICO_LWIP_CONTRIB_PATH}/apps/ping/ping.c)
     add_executable(car_project_nosys
