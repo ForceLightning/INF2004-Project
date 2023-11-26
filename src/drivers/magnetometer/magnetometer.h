@@ -9,7 +9,7 @@
  *
  */
 
-#ifndef MAGNETOMETER_H
+#ifndef MAGNETOMETER_H // Include guard.
 #define MAGNETOMETER_H
 
 // Definitions.
@@ -17,28 +17,28 @@
 #define MAGNETOMETER_ADDR \
     0x1E // Default I2C address for the LSM303DLHC magnetometer.
 #define ACCELEROMETER_ADDR \
-    0x19 // Default I2C address for the LSM303DLHC accelerometer.
-#define I2C_SDA_PIN  0
-#define I2C_SCL_PIN  1
+    0x19               // Default I2C address for the LSM303DLHC accelerometer.
+#define I2C_SDA_PIN  0 // SDA pin for I2C communication.
+#define I2C_SCL_PIN  1 // SCL pin for I2C communication.
 #define I2C_BAUDRATE 1000000 // 1 MHz baudrate for I2C communication.
 
-#define CTRL_REG1_A 0x20
+#define CTRL_REG1_A 0x20 // Register for the accelerometer control.
 
-#define OUT_X_L_A 0x28
-#define OUT_X_H_A 0x29
-#define OUT_Y_L_A 0x2A
-#define OUT_Y_H_A 0x2B
-#define OUT_Z_L_A 0x2C
-#define OUT_Z_H_A 0x2D
+#define OUT_X_L_A 0x28 // Register for the x-axis acceleration (low).
+#define OUT_X_H_A 0x29 // Register for the x-axis acceleration (high).
+#define OUT_Y_L_A 0x2A // Register for the y-axis acceleration (low).
+#define OUT_Y_H_A 0x2B // Register for the y-axis acceleration (high).
+#define OUT_Z_L_A 0x2C // Register for the z-axis acceleration (low).
+#define OUT_Z_H_A 0x2D // Register for the z-axis acceleration (high).
 
-#define CRA_REG_M 0x00
-#define MR_REG_M  0x02
-#define OUT_X_H_M 0x03
-#define OUT_X_L_M 0x04
-#define OUT_Z_H_M 0x05
-#define OUT_Z_L_M 0x06
-#define OUT_Y_H_M 0x07
-#define OUT_Y_L_M 0x08
+#define CRA_REG_M 0x00 // Register for the magnetometer control.
+#define MR_REG_M  0x02 // Register for the magnetometer mode selection.
+#define OUT_X_H_M 0x03 // Register for the x-axis magnetometer (high).
+#define OUT_X_L_M 0x04 // Register for the x-axis magnetometer (low).
+#define OUT_Z_H_M 0x05 // Register for the z-axis magnetometer (high).
+#define OUT_Z_L_M 0x06 // Register for the z-axis magnetometer (low).
+#define OUT_Y_H_M 0x07 // Register for the y-axis magnetometer (high).
+#define OUT_Y_L_M 0x08 // Register for the y-axis magnetometer (low).
 
 #define BEARING_OFFSET          1.0f              // Offset for bearing.
 #define GRAVITY_CONSTANT_FACTOR 9.80665 / 16384.0 // 1 g = 16384 LSB
