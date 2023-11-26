@@ -1,3 +1,13 @@
+/**
+ * @file main.c
+ * @author Bryan Seah
+ * @brief Driver demo code for the wheel encoder.
+ * @version 0.1
+ * @date 2023-11-26
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -17,66 +27,16 @@
 #define ENCODER_PIN 22    // GP22 for encoder input.
 #define MM_TO_CM    10.0f // Conversion factor from mm to cm.
 
-/**
- * @brief Struct to store global encoder data.
- *
- * @param prev_time          Time of previous interrupt.
- * @param pulse_count        Number of pulses since last reset.
- * @param distance_traversed Distance traversed since last reset.
- */
-struct g_encoder_t
-{
-    uint64_t prev_time;
-    uint     pulse_count;
-    float    distance_traversed;
-} g_encoder;
+// Global variables.
+// -----------------------------------------------------------------------------
+//
+wheel_encoder_t g_encoder; // Global struct for encoder data.
 
-/**
- * @brief Sets up global struct(s).
- */
-static void
-init_global_structs (void)
-{
-    g_encoder.prev_time          = 0;
-    g_encoder.pulse_count        = 0;
-    g_encoder.distance_traversed = 0.0f;
-}
-
-/**
- * @brief Interrupt callback function on rising edge
- *
- * @param gpio      GPIO pin number.
- * @param events    Event mask. @see gpio_irq_level.
- */
-void
-encoder_tick_isr (uint gpio, uint32_t events)
-{
-    uint64_t current_time = time_us_64();
-    g_encoder.pulse_count++;
-
-    // Calculate time elapsed since last interrupt speed
-    float time_elapsed = get_time_diff(current_time, g_encoder.prev_time);
-
-    // Calculate current speed based on elapsed time
-    float current_speed_pulse = get_speed(time_elapsed, true);
-    float current_speed_mm    = get_speed(time_elapsed, false);
-
-    printf("\nCurrent speed: %f pulses/second", current_speed_pulse);
-    printf("\tCurrent speed: %f cm/second", current_speed_mm / MM_TO_CM);
-
-    // Update distance traversed
-    g_encoder.distance_traversed += DISTANCE_PER_PULSE;
-    printf("\tDistance traversed: %fcm",
-           g_encoder.distance_traversed / MM_TO_CM);
-
-    // Reset pulse count when one full cycle is completed
-    if (g_encoder.pulse_count == CYCLE_PULSE)
-    {
-        g_encoder.pulse_count = 0;
-    }
-
-    g_encoder.prev_time = current_time;
-}
+// Private function prototypes.
+// -----------------------------------------------------------------------------
+//
+static void init_global_structs(void);
+static void encoder_tick_isr(uint gpio, uint32_t events);
 
 int
 main ()
@@ -126,10 +86,61 @@ main ()
                 pwm_set_chan_level(slice_num, PWM_CHAN_A, PWM_WRAP / 2);
                 break;
             default:
-                pwm_set_wrap(slice_num, PWM_WRAP);
-                pwm_set_chan_level(slice_num, PWM_CHAN_A, PWM_WRAP / 2);
                 break;
         }
     }
 }
-// End of file comment.
+
+// Private functions.
+// -----------------------------------------------------------------------------
+//
+
+/**
+ * @brief Sets up global struct(s).
+ */
+static void
+init_global_structs (void)
+{
+    g_encoder.prev_time          = 0;
+    g_encoder.pulse_count        = 0;
+    g_encoder.distance_traversed = 0.0f;
+}
+
+/**
+ * @brief Interrupt callback function on rising edge
+ *
+ * @param gpio      GPIO pin number.
+ * @param events    Event mask. @see gpio_irq_level.
+ */
+static void
+encoder_tick_isr (uint gpio, uint32_t events)
+{
+    uint64_t current_time = time_us_64();
+    g_encoder.pulse_count++;
+
+    // Calculate time elapsed since last interrupt speed
+    float time_elapsed
+        = wheel_enc_get_time_diff(current_time, g_encoder.prev_time);
+
+    // Calculate current speed based on elapsed time
+    float current_speed_pulse = wheel_enc_get_speed(time_elapsed, true);
+    float current_speed_mm    = wheel_enc_get_speed(time_elapsed, false);
+
+    printf("\nCurrent speed: %f pulses/second", current_speed_pulse);
+    printf("\tCurrent speed: %f cm/second", current_speed_mm / MM_TO_CM);
+
+    // Update distance traversed
+    g_encoder.distance_traversed += WHEEL_ENC_DIST_PER_PULSE;
+    printf("\tDistance traversed: %fcm",
+           g_encoder.distance_traversed / MM_TO_CM);
+
+    // Reset pulse count when one full cycle is completed
+    if (g_encoder.pulse_count == WHEEL_ENC_CYCLE_PULSE)
+    {
+        g_encoder.pulse_count = 0;
+    }
+
+    g_encoder.prev_time = current_time;
+}
+
+// End of file drivers/encoder/main.c.

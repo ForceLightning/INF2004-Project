@@ -1,6 +1,15 @@
+/**
+ * @file wheel_encoder.c
+ * @author Bryan Seah
+ * @brief Driver code for the wheel encoder.
+ * @version 0.1
+ * @date 2023-11-26
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
 #include <stdbool.h>
 #include <stdint.h>
-#include <sys/types.h>
 #include "wheel_encoder.h"
 
 /**
@@ -11,12 +20,12 @@
  * @return float Time difference in ms
  */
 float
-get_time_diff (uint64_t current_time, uint64_t prev_time)
+wheel_enc_get_time_diff (uint64_t current_time, uint64_t prev_time)
 {
     return (current_time - prev_time)
-           / 1000.0f; // Conversion from uint64_t to float is safe because the
-                      // maximum value of uint64_t is greater than the maximum
-                      // value of float.
+           / WHEEL_ENC_SEC_TO_MSEC; // Conversion from uint64_t to float is safe
+                                    // because the maximum value of uint64_t is
+                                    // greater than the maximum value of float.
 }
 
 /**
@@ -28,17 +37,18 @@ get_time_diff (uint64_t current_time, uint64_t prev_time)
  * @return float Speed in either pulses/second or mm/second
  */
 float
-get_speed (float time_elapsed, bool is_pulse)
+wheel_enc_get_speed (float time_elapsed, bool is_pulse)
 {
     float speed = 0.0f;
 
     if (is_pulse)
     {
-        speed = 1000.0f / time_elapsed;
+        speed = WHEEL_ENC_SEC_TO_MSEC / time_elapsed;
     }
     else
     {
-        speed = (1000.0f / time_elapsed) * DISTANCE_PER_PULSE;
+        speed
+            = (WHEEL_ENC_SEC_TO_MSEC / time_elapsed) * WHEEL_ENC_DIST_PER_PULSE;
     }
 
     return speed;
