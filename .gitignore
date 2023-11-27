@@ -299,3 +299,6 @@ LastCoverageResults.log
 # Docs
 docs/latex/**
 docs/**.md5
+
+# CppCheck
+cppcheck**

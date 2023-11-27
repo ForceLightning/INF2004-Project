@@ -142,7 +142,7 @@ test_manhattan_distance (void)
             uint32_t     distance = maze_manhattan_dist(&point_a, &point_b);
             if (row + col != distance)
             {
-                printf("Distance between (%d, %d) and (%d, %d) is %d.\n",
+                printf("Distance between (%d, %d) and (%d, %d) is %u.\n",
                        point_a.x,
                        point_a.y,
                        point_b.x,
@@ -211,7 +211,7 @@ test_initialise_empty_maze (void)
             //
             if (0 != p_cell->f || 0 != p_cell->g || 0 != p_cell->h)
             {
-                printf("Heuristics of cell (%d, %d) are (%d, %d, %d).\n",
+                printf("Heuristics of cell (%u, %u) are (%u, %u, %u).\n",
                        row,
                        col,
                        p_cell->f,
@@ -279,7 +279,7 @@ test_clear_maze_heuristics (void)
             if (UINT32_MAX != p_cell->f || UINT32_MAX != p_cell->g
                 || UINT32_MAX != p_cell->h)
             {
-                printf("Heuristics of cell (%d, %d) are (%d, %d, %d).\n",
+                printf("Heuristics of cell (%u, %u) are (%u, %u, %u).\n",
                        row,
                        col,
                        p_cell->f,

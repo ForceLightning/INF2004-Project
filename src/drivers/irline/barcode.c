@@ -185,6 +185,9 @@ barcode_update_line_buffer (barcode_line_buffer_t *p_line_buffer,
         {
             return BARCODE_READ_NO_OP;
         }
+        p_line_buffer->line_buffer[0u] = line_type;
+        p_line_buffer->line_buffer_index++;
+        return BARCODE_READ_CONTINUE;
     }
 
     // If the line is the same colour but thicker than the previous line,
@@ -296,7 +299,6 @@ barcode_buffer_to_binary_string (barcode_line_buffer_t *p_line_buffer)
     uint16_t num_chars = p_line_buffer->line_buffer_index + 2u;
     char    *p_string  = NULL;
     p_string           = (char *)malloc(num_chars * sizeof(char));
-    memset(p_string, 0, num_chars * sizeof(char));
 
     // If the string failed to allocate, return NULL.
     //
@@ -306,6 +308,8 @@ barcode_buffer_to_binary_string (barcode_line_buffer_t *p_line_buffer)
             "DEBUG: Failed to allocate memory for barcode buffer string.\n");
         return NULL;
     }
+
+    memset(p_string, 0, num_chars * sizeof(char));
 
     // Insert into the string in reverse. (MSB first).
     //

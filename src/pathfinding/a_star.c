@@ -203,9 +203,9 @@ a_star_get_path_str (maze_grid_t *p_grid, a_star_path_t *p_path)
  * @return int16_t -1 if the buffer is too small, 0 otherwise.
  */
 int16_t
-a_star_path_to_buffer (a_star_path_t *p_path,
-                       uint8_t       *p_buffer,
-                       uint16_t       buffer_size)
+a_star_path_to_buffer (const a_star_path_t *p_path,
+                       uint8_t             *p_buffer,
+                       uint16_t             buffer_size)
 {
     // Calculate the number of bytes required to store the path.
     //
@@ -257,11 +257,11 @@ a_star_path_to_buffer (a_star_path_t *p_path,
  * required otherwise.
  */
 int16_t
-a_star_maze_path_nav_to_buffer (maze_grid_t            *p_grid,
-                                a_star_path_t          *p_path,
-                                maze_navigator_state_t *p_navigator,
-                                uint8_t                *p_buffer,
-                                uint16_t                buffer_size)
+a_star_maze_path_nav_to_buffer (maze_grid_t                  *p_grid,
+                                const a_star_path_t          *p_path,
+                                const maze_navigator_state_t *p_navigator,
+                                uint8_t                      *p_buffer,
+                                uint16_t                      buffer_size)
 {
     int16_t ret_val = 0;
 
