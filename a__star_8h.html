@@ -162,12 +162,12 @@ Functions</h2></td></tr>
 <tr class="memitem:aa93e473768652772f2577e1564b89d91"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#aa93e473768652772f2577e1564b89d91">a_star_get_path_str</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, <a class="el" href="structa__star__path.html">a_star_path_t</a> *p_path)</td></tr>
 <tr class="memdesc:aa93e473768652772f2577e1564b89d91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the string representation of the path from the start node to the end node.  <a href="a__star_8h.html#aa93e473768652772f2577e1564b89d91">More...</a><br /></td></tr>
 <tr class="separator:aa93e473768652772f2577e1564b89d91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0467d77650c85f7690212ed6d3c5a2e3"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#a0467d77650c85f7690212ed6d3c5a2e3">a_star_maze_path_nav_to_buffer</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, <a class="el" href="structa__star__path.html">a_star_path_t</a> *p_path, <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *p_navigator, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
-<tr class="memdesc:a0467d77650c85f7690212ed6d3c5a2e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts the maze, path and navigator state into a buffer.  <a href="a__star_8h.html#a0467d77650c85f7690212ed6d3c5a2e3">More...</a><br /></td></tr>
-<tr class="separator:a0467d77650c85f7690212ed6d3c5a2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac106312a2e54f3fcfbc7b8f9893bb9c6"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#ac106312a2e54f3fcfbc7b8f9893bb9c6">a_star_path_to_buffer</a> (<a class="el" href="structa__star__path.html">a_star_path_t</a> *p_path, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
-<tr class="memdesc:ac106312a2e54f3fcfbc7b8f9893bb9c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts the path in coordinates from the start node to the end node into a buffer.  <a href="a__star_8h.html#ac106312a2e54f3fcfbc7b8f9893bb9c6">More...</a><br /></td></tr>
-<tr class="separator:ac106312a2e54f3fcfbc7b8f9893bb9c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1422b2589ed850b4626defbd93c9998a"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#a1422b2589ed850b4626defbd93c9998a">a_star_maze_path_nav_to_buffer</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, const <a class="el" href="structa__star__path.html">a_star_path_t</a> *p_path, const <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *p_navigator, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
+<tr class="memdesc:a1422b2589ed850b4626defbd93c9998a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts the maze, path and navigator state into a buffer.  <a href="a__star_8h.html#a1422b2589ed850b4626defbd93c9998a">More...</a><br /></td></tr>
+<tr class="separator:a1422b2589ed850b4626defbd93c9998a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a454e910ecd336d1249010e468f6b2c07"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#a454e910ecd336d1249010e468f6b2c07">a_star_path_to_buffer</a> (const <a class="el" href="structa__star__path.html">a_star_path_t</a> *p_path, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
+<tr class="memdesc:a454e910ecd336d1249010e468f6b2c07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts the path in coordinates from the start node to the end node into a buffer.  <a href="a__star_8h.html#a454e910ecd336d1249010e468f6b2c07">More...</a><br /></td></tr>
+<tr class="separator:a454e910ecd336d1249010e468f6b2c07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Header file for the a* algorithm. </p>
@@ -303,8 +303,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a0467d77650c85f7690212ed6d3c5a2e3" name="a0467d77650c85f7690212ed6d3c5a2e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0467d77650c85f7690212ed6d3c5a2e3">&#9670;&#160;</a></span>a_star_maze_path_nav_to_buffer()</h2>
+<a id="a1422b2589ed850b4626defbd93c9998a" name="a1422b2589ed850b4626defbd93c9998a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1422b2589ed850b4626defbd93c9998a">&#9670;&#160;</a></span>a_star_maze_path_nav_to_buffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -318,13 +318,13 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structa__star__path.html">a_star_path_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structa__star__path.html">a_star_path_t</a> *&#160;</td>
           <td class="paramname"><em>p_path</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *&#160;</td>
           <td class="paramname"><em>p_navigator</em>, </td>
         </tr>
         <tr>
@@ -360,18 +360,18 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int16_t -1 if the buffer is too small, the size of the buffer required otherwise. </dd></dl>
 
-<p class="reference">References <a class="el" href="a__star_8c.html#ac106312a2e54f3fcfbc7b8f9893bb9c6">a_star_path_to_buffer()</a>, <a class="el" href="structmaze__grid.html#ae98bc97235b87da7326dd2169ec05437">maze_grid::columns</a>, <a class="el" href="structa__star__path.html#aebb70c2aab3407a9f05334c47131a43b">a_star_path::length</a>, <a class="el" href="maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270">maze_nav_to_buffer()</a>, <a class="el" href="maze_8c.html#a35e70f881f107a45f52eab387e71c61c">maze_serialise()</a>, <a class="el" href="maze_8c.html#aae2cf92e83b0810d22411db9fbea4d94">maze_serialised_to_buffer()</a>, <a class="el" href="maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1">maze_uint16_to_uint8_buffer()</a>, and <a class="el" href="structmaze__grid.html#a58897720d39a73af3d7686c4e8303758">maze_grid::rows</a>.</p>
+<p class="reference">References <a class="el" href="a__star_8c.html#a454e910ecd336d1249010e468f6b2c07">a_star_path_to_buffer()</a>, <a class="el" href="structmaze__grid.html#ae98bc97235b87da7326dd2169ec05437">maze_grid::columns</a>, <a class="el" href="structa__star__path.html#aebb70c2aab3407a9f05334c47131a43b">a_star_path::length</a>, <a class="el" href="maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270">maze_nav_to_buffer()</a>, <a class="el" href="maze_8c.html#a35e70f881f107a45f52eab387e71c61c">maze_serialise()</a>, <a class="el" href="maze_8c.html#aae2cf92e83b0810d22411db9fbea4d94">maze_serialised_to_buffer()</a>, <a class="el" href="maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1">maze_uint16_to_uint8_buffer()</a>, and <a class="el" href="structmaze__grid.html#a58897720d39a73af3d7686c4e8303758">maze_grid::rows</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a__star_8h_a0467d77650c85f7690212ed6d3c5a2e3_cgraph.svg" width="558" height="252"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a__star_8h_a1422b2589ed850b4626defbd93c9998a_cgraph.svg" width="558" height="252"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
 </div>
 </div>
-<a id="ac106312a2e54f3fcfbc7b8f9893bb9c6" name="ac106312a2e54f3fcfbc7b8f9893bb9c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac106312a2e54f3fcfbc7b8f9893bb9c6">&#9670;&#160;</a></span>a_star_path_to_buffer()</h2>
+<a id="a454e910ecd336d1249010e468f6b2c07" name="a454e910ecd336d1249010e468f6b2c07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a454e910ecd336d1249010e468f6b2c07">&#9670;&#160;</a></span>a_star_path_to_buffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -379,7 +379,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">int16_t a_star_path_to_buffer </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structa__star__path.html">a_star_path_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structa__star__path.html">a_star_path_t</a> *&#160;</td>
           <td class="paramname"><em>p_path</em>, </td>
         </tr>
         <tr>
@@ -417,13 +417,13 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a__star_8h_ac106312a2e54f3fcfbc7b8f9893bb9c6_cgraph.svg" width="354" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a__star_8h_a454e910ecd336d1249010e468f6b2c07_cgraph.svg" width="354" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a__star_8h_ac106312a2e54f3fcfbc7b8f9893bb9c6_icgraph.svg" width="362" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a__star_8h_a454e910ecd336d1249010e468f6b2c07_icgraph.svg" width="362" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 

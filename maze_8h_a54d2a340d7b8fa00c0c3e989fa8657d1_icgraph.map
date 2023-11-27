@@ -1,7 +1,7 @@
 <map id="maze_uint16_to_uint8_buffer" name="maze_uint16_to_uint8_buffer">
 <area shape="rect" id="node1" title="Helper function to convert a uint16_t to a uint8_t buffer." alt="" coords="404,46,552,86"/>
-<area shape="rect" id="node2" href="$a__star_8c.html#a0467d77650c85f7690212ed6d3c5a2e3" title="Inserts the maze, path and navigator state into a buffer." alt="" coords="5,46,161,86"/>
-<area shape="rect" id="node3" href="$a__star_8c.html#ac106312a2e54f3fcfbc7b8f9893bb9c6" title="Inserts the path in coordinates from the start node to the end node into a buffer." alt="" coords="209,28,356,53"/>
+<area shape="rect" id="node2" href="$a__star_8c.html#a1422b2589ed850b4626defbd93c9998a" title="Inserts the maze, path and navigator state into a buffer." alt="" coords="5,46,161,86"/>
+<area shape="rect" id="node3" href="$a__star_8c.html#a454e910ecd336d1249010e468f6b2c07" title="Inserts the path in coordinates from the start node to the end node into a buffer." alt="" coords="209,28,356,53"/>
 <area shape="rect" id="node4" href="$maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270" title="Serialises the navigator state into a uint8_t buffer. The buffer is set with the navigator&#39;s coordina..." alt="" coords="213,77,352,102"/>
 <area shape="rect" id="node5" href="$maze_8c.html#aae2cf92e83b0810d22411db9fbea4d94" title="Serialises the maze into a uint8_t buffer." alt="" coords="216,127,349,167"/>
 </map>

@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="a__star_8c.html#a0467d77650c85f7690212ed6d3c5a2e3" target="_top" xlink:title="Inserts the maze, path and navigator state into a buffer.">
+<g id="a_node2"><a xlink:href="a__star_8c.html#a1422b2589ed850b4626defbd93c9998a" target="_top" xlink:title="Inserts the maze, path and navigator state into a buffer.">
 <polygon fill="white" stroke="#666666" points="117,-91 0,-91 0,-61 117,-61 117,-91"/>
 <text text-anchor="start" x="8" y="-79" font-family="Helvetica,sans-Serif" font-size="10.00">a_star_maze_path_nav</text>
 <text text-anchor="middle" x="58.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00">_to_buffer</text>
@@ -37,7 +37,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="a__star_8c.html#ac106312a2e54f3fcfbc7b8f9893bb9c6" target="_top" xlink:title="Inserts the path in coordinates from the start node to the end node into a buffer.">
+<g id="a_node3"><a xlink:href="a__star_8c.html#a454e910ecd336d1249010e468f6b2c07" target="_top" xlink:title="Inserts the path in coordinates from the start node to the end node into a buffer.">
 <polygon fill="white" stroke="#666666" points="263,-104.5 153,-104.5 153,-85.5 263,-85.5 263,-104.5"/>
 <text text-anchor="middle" x="208" y="-92.5" font-family="Helvetica,sans-Serif" font-size="10.00">a_star_path_to_buffer</text>
 </a>

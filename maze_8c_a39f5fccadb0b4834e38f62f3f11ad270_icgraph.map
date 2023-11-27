@@ -1,4 +1,4 @@
 <map id="maze_nav_to_buffer" name="maze_nav_to_buffer">
 <area shape="rect" id="node1" title="Serialises the navigator state into a uint8_t buffer. The buffer is set with the navigator&#39;s coordina..." alt="" coords="209,13,348,38"/>
-<area shape="rect" id="node2" href="$a__star_8c.html#a0467d77650c85f7690212ed6d3c5a2e3" title="Inserts the maze, path and navigator state into a buffer." alt="" coords="5,5,161,45"/>
+<area shape="rect" id="node2" href="$a__star_8c.html#a1422b2589ed850b4626defbd93c9998a" title="Inserts the maze, path and navigator state into a buffer." alt="" coords="5,5,161,45"/>
 </map>
