@@ -22,6 +22,7 @@
  * @defgroup motor_control Motor Control Constants
  * @brief Constants for the motor control driver.
  * @{
+ */
 
 /** @brief PWM clock divider. */
 #define MOTOR_PWM_CLKDIV 100
@@ -49,9 +50,7 @@
 //
 
 /**
- * @typedef motor_pins_t
  * @brief Contains the GPIO pins for the motor.
- *
  */
 typedef struct motor_pins
 {

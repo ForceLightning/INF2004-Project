@@ -1,7 +1,7 @@
 /**
  * @file pid.c
  * @author Bryan Seah
- * @brief
+ * @brief Driver for PID control.
  * @version 0.1
  * @date 2023-10-29
  *

@@ -4,9 +4,9 @@
  * @brief Demonstration for the PID driver.
  * @version 0.1
  * @date 2023-11-28
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
 
 #include <stdint.h>
@@ -19,6 +19,7 @@
 #include "motor/motor_control.h"
 #include "pid/pid.h"
 
+/** @brief Global turn parameters struct. */
 pid_turn_params_t g_turn_params;
 
 /**

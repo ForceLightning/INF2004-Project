@@ -1,7 +1,7 @@
 /**
  * @file motor_control.c
  * @author Bryan Seah
- * @brief
+ * @brief Source file for the motor driver.
  * @version 0.1
  * @date 2023-10-29
  *
@@ -149,8 +149,8 @@ motor_reverse (void)
  * addition, the left motor is set to rotate in the opposite direction of the
  * right motor.
  *
- * @param reverse_turn A boolean value to indicate that the car is turning in
- * reverse.
+ * @param[in] reverse_turn A boolean value to indicate that the car is turning
+ * in reverse.
  */
 void
 motor_turn_left (bool reverse_turn)
@@ -219,4 +219,5 @@ motor_update_ratio (float new_ratio)
 {
     g_ratio = new_ratio;
 }
+
 // End of file motor_control.c

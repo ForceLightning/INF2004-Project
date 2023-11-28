@@ -15,13 +15,26 @@
 #include "pico/time.h"
 #include "ultrasonic/ultrasonic.h"
 
+/**
+ * @defgroup ultrasonic_demo_constants Ultrasonic Demo Constants
+ * @brief Constants for the ultrasonic demo.
+ * @{
+ */
+
 /** @brief Trigger pin for the ultrasonic sensor.*/
 #define TRIG_PIN 0
 /** @brief Echo pin for the ultrasonic sensor. */
 #define ECHO_PIN 1
 /** Number of milliseconds in a second. */
 #define SLEEP_1S 1000
+/**
+ @} */ // End of ultrasonic_demo_constants group.
 
+/**
+ * @brief Main function for the ultrasonic demo.
+ * 
+ * @return int 0 if successful.
+ */
 int
 main (void)
 {

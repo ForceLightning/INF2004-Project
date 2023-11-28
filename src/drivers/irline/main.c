@@ -18,7 +18,9 @@
 
 /**
  * @defgroup ir_sensor_demo IR Sensor Demo Constants
+ * @brief Constants for the IR sensor demo.
  * @{
+ */
 
 /** @brief Pin for left IR sensor's analogue output. */
 #define ADC_PIN_LEFT 26

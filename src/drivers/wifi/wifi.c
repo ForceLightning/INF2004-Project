@@ -41,12 +41,6 @@
 // Definitions.
 // -----------------------------------------------------------------------------
 //
-/** @brief Port to listen on. */
-#define WIFI_TCP_PORT 4242
-/** @brief Poll time in seconds. */
-#define WIFI_POLL_TIME_S 20
-/** @brief Maximum length of a received message. */
-#define WIFI_MAX_MESSAGE_LENGTH 1024
 
 // Private function prototypes.
 // -----------------------------------------------------------------------------

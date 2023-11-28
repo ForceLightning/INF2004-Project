@@ -1,7 +1,7 @@
 /**
  * @file dfs_tests.c
  * @author Christopher Kok (chris@forcelightning.xyz)
- * @brief This file containst the functions that test the depth first search
+ * @brief This file contains the functions that test the depth first search
  * algorithm with a simulated navigator.
  * @version 0.1
  * @date 2023-11-19

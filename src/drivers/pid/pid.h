@@ -1,7 +1,7 @@
 /**
  * @file pid.h
  * @author Bryan Seah
- * @brief
+ * @brief Header file for PID control.
  * @version 0.1
  * @date 2023-10-29
  *
@@ -12,6 +12,10 @@
 #define PID_H
 
 #include "pathfinding/maze.h"
+
+// Definitions.
+// -----------------------------------------------------------------------------
+//
 
 /**
  * @defgroup pid_encoder_constants PID Encoder Constants
@@ -67,7 +71,7 @@
 //
 
 /**
- * @brief Struct for PID parameters. @see pid_params
+ * @brief Struct for PID parameters.
  *
  */
 typedef struct pid_params

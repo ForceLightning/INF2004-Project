@@ -20,7 +20,9 @@
 
 /**
  * @defgroup encoder_demo_constants Encoder Demo Constants
+ * @brief Constants for the encoder demo.
  * @{
+ */
 
 /** @brief GPIO pin number for clockwise rotation. */
 #define MOTOR_PIN_CLKWISE 16

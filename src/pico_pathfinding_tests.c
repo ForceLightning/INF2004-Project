@@ -138,6 +138,11 @@ static int test_path_serialisation(void);
 static int test_combined_serialisation(void);
 static int test_relative_direction(void);
 
+/**
+ * @brief Runs the tests based on user input.
+ *
+ * @return int 0 when exiting the main loop.
+ */
 int
 main (void)
 {
