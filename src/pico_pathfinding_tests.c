@@ -17,20 +17,19 @@
 #include "pico/stdlib.h"
 #include "pico/stdio.h"
 #include "pico/platform.h"
-#include "maze.h"
-#include "dfs.h"
-#include "floodfill.h"
-#include "a_star.h"
+#include "pico/time.h"
+#include "pathfinding/maze.h"
+#include "pathfinding/dfs.h"
+#include "pathfinding/floodfill.h"
+#include "pathfinding/a_star.h"
 
 // Definitions.
 // ----------------------------------------------------------------------------
 //
 #ifndef NDEBUG
-/**
- * @def PICO_DEBUG_MALLOC
- * @brief Enables malloc debug.
- */
+/** @brief Enables malloc debug. */
 #define PICO_DEBUG_MALLOC 1
+
 /**
  * @def DEBUG_PRINT(...)
  * @brief Debug print macro. Only prints if NDEBUG is not defined.
@@ -45,11 +44,18 @@
 // Type definitions.
 // ----------------------------------------------------------------------------
 //
+
+/**
+ * @brief Constants used in the tests.
+ *
+ */
 typedef enum
 {
-    GRID_ROWS        = 6,    ///< Number of rows in the grid.
-    GRID_COLS        = 4,    ///< Number of columns in the grid.
-    TEST_BUFFER_SIZE = 2048u ///< Size of the test buffer for serialisation.
+    GRID_ROWS        = 6,     ///< Number of rows in the grid.
+    GRID_COLS        = 4,     ///< Number of columns in the grid.
+    TEST_BUFFER_SIZE = 2048u, ///< Size of the test buffer for serialisation.
+    INITIALISE_WAIT  = 5000u  ///< Time to wait for the user to open the serial
+                              ///< terminal.
 } constants_t;
 
 // Global variables.
@@ -78,35 +84,48 @@ static const uint16_t g_bitmask_array_south[GRID_ROWS * GRID_COLS] = {
     0x1, 0x3, 0xB, 0x9  // Last row.
 };
 
-static const maze_point_t g_start_point = { 2, 5 }; // Start point is at (2, 5).
-static const maze_point_t g_end_point   = { 1, 0 }; // End point is at (1, 0).
+/** @brief Start point is at (2, 5). */
+static const maze_point_t g_start_point = { 2, 5 };
+/** @brief End point is at (1, 0). */
+static const maze_point_t g_end_point = { 1, 0 };
 
-static uint16_t *gp_bitmask_array = NULL; // Pointer to the global bitmask array
-                                          // that is set by the test functions.
+/** @brief Pointer to the global bitmask array that is set by the test
+ * functions.
+ */
+static uint16_t *gp_bitmask_array = NULL;
 
 // Private function prototypes.
 // ----------------------------------------------------------------------------
 //
+
 static uint16_t explore_current_node(maze_grid_t              *p_grid,
                                      maze_navigator_state_t   *p_navigator,
                                      maze_cardinal_direction_t direction);
-static void     move_navigator(maze_navigator_state_t   *p_navigator,
-                               maze_cardinal_direction_t direction);
-static void     map_maze(maze_grid_t            *p_grid,
-                         const uint16_t         *p_bitmask_array,
-                         maze_navigator_state_t *p_navigator);
-static bool     is_maze_correct(maze_gap_bitmask_t map_bitmask,
-                                maze_gap_bitmask_t true_map_bitmask);
-static void     initialise_variables(const uint16_t         *p_bitmask,
-                                     maze_grid_t            *p_maze,
-                                     maze_navigator_state_t *p_navigator);
-static int      test_mapping(const uint16_t *p_bitmask_array);
-static int      test_navigation(const uint16_t *p_bitmask_array);
-static int      test_combined(const uint16_t *p_bitmask_array);
+
+static void move_navigator(maze_navigator_state_t   *p_navigator,
+                           maze_cardinal_direction_t direction);
+
+static void map_maze(maze_grid_t            *p_grid,
+                     const uint16_t         *p_bitmask_array,
+                     maze_navigator_state_t *p_navigator);
+
+static bool is_maze_correct(maze_gap_bitmask_t map_bitmask,
+                            maze_gap_bitmask_t true_map_bitmask);
+
+static void initialise_variables(const uint16_t         *p_bitmask,
+                                 maze_grid_t            *p_maze,
+                                 maze_navigator_state_t *p_navigator);
+
+static int test_mapping(const uint16_t *p_bitmask_array);
+
+static int test_navigation(const uint16_t *p_bitmask_array);
+
+static int test_combined(const uint16_t *p_bitmask_array);
 
 // Test function prototypes.
 // ----------------------------------------------------------------------------
 //
+
 static int test_mapping_northwards(void);
 static int test_navigation_northwards(void);
 static int test_combined_northwards(void);
@@ -128,7 +147,7 @@ main (void)
 
     // Sleep 5s to allow the user to open the serial terminal.
     //
-    sleep_ms(5000);
+    sleep_ms(INITIALISE_WAIT);
 
     for (;;)
     {
@@ -258,12 +277,13 @@ test_combined_southwards (void)
 // Private functions.
 // ----------------------------------------------------------------------------
 //
+
 /**
  * @brief Explores the current node. Used by @ref dfs_depth_first_search.
  *
- * @param p_grid Pointer to the grid.
- * @param p_navigator Pointer to the navigator state.
- * @param direction Cardinal direction of the node to explore.
+ * @param[in,out] p_grid Pointer to the grid.
+ * @param[in,out] p_navigator Pointer to the navigator state.
+ * @param[in] direction Cardinal direction of the node to explore.
  * @return uint16_t Bitmask of the node.
  */
 static uint16_t
@@ -278,7 +298,7 @@ explore_current_node (maze_grid_t              *p_grid,
         = gp_bitmask_array[p_current_node->coordinates.y * p_grid->columns
                            + p_current_node->coordinates.x];
 
-    bitmask = 0xF - bitmask;
+    bitmask = MAZE_INVERT_BITMASK(bitmask);
 
     p_navigator->orientation = direction;
 
@@ -294,8 +314,8 @@ explore_current_node (maze_grid_t              *p_grid,
  * @brief Moves the navigator in the given direction. Used by @ref
  * dfs_depth_first_search.
  *
- * @param p_navigator Pointer to the navigator state.
- * @param direction Cardinal direction to move the navigator.
+ * @param[in,out] p_navigator Pointer to the navigator state.
+ * @param[in] direction Cardinal direction to move the navigator.
  */
 static void
 move_navigator (maze_navigator_state_t   *p_navigator,
@@ -314,9 +334,9 @@ move_navigator (maze_navigator_state_t   *p_navigator,
 /**
  * @brief Maps the maze given a ground truth bitmask array.
  *
- * @param p_grid Pointer to the maze grid.
- * @param p_bitmask_array Pointer to the true bitmask array.
- * @param p_navigator Pointer to the navigator state.
+ * @param[in,out] p_grid Pointer to the maze grid.
+ * @param[in] p_bitmask_array Pointer to the true bitmask array.
+ * @param[in,out] p_navigator Pointer to the navigator state.
  */
 static void
 map_maze (maze_grid_t            *p_grid,
@@ -352,8 +372,8 @@ map_maze (maze_grid_t            *p_grid,
 /**
  * @brief Checks whether the mapped maze is correct.
  *
- * @param map_bitmask Bitmask of the mapped maze.
- * @param true_map_bitmask Bitmask of the true state of the maze.
+ * @param[in] map_bitmask Bitmask of the mapped maze.
+ * @param[in] true_map_bitmask Bitmask of the true state of the maze.
  * @return true Mapped maze is correct.
  * @return false Mapped maze is not correct.
  */
@@ -386,9 +406,9 @@ is_maze_correct (maze_gap_bitmask_t map_bitmask,
  * @brief Initialises the variables for the tests. Useful as there are 2
  * directions the tests can be run in.
  *
- * @param p_bitmask Pointer to the bitmask array (direction dependent).
- * @param p_maze Pointer to the maze grid.
- * @param p_navigator Pointer to the navigator state.
+ * @param[in] p_bitmask Pointer to the bitmask array (direction dependent).
+ * @param[out] p_maze Pointer to the maze grid.
+ * @param[out] p_navigator Pointer to the navigator state.
  */
 static void
 initialise_variables (const uint16_t         *p_bitmask,
@@ -411,7 +431,7 @@ initialise_variables (const uint16_t         *p_bitmask,
 /**
  * @brief Tests mapping of the maze.
  *
- * @param p_bitmask_array Pointer to the true bitmask array (direction
+ * @param[in] p_bitmask_array Pointer to the true bitmask array (direction
  * dependent).
  * @return int 0 if the test passes, -1 otherwise.
  */
@@ -442,7 +462,7 @@ test_mapping (const uint16_t *p_bitmask_array)
 /**
  * @brief Tests navigation of the maze.
  *
- * @param p_bitmask_array Pointer to the true bitmask array (direction
+ * @param[in] p_bitmask_array Pointer to the true bitmask array (direction
  * dependent).
  * @return int 0 if the test passes, -1 otherwise.
  */
@@ -486,7 +506,7 @@ end:
 /**
  * @brief Tests both the mapping and navigation of the maze.
  *
- * @param p_bitmask_array Pointer to the true bitmask array (direction
+ * @param[in] p_bitmask_array Pointer to the true bitmask array (direction
  * dependent).
  * @return int 0 if the test passes, -1 otherwise.
  */
@@ -586,3 +606,5 @@ end_mapping:
 
     return ret_val;
 }
+
+// End of file pico_pathfinding_tests.c.

@@ -10,13 +10,13 @@
  */
 #include <stdbool.h>
 #include <stdint.h>
-#include "wheel_encoder.h"
+#include "encoder/wheel_encoder.h"
 
 /**
  * @brief Get the time difference in ms
  *
- * @param current_time Current time in us
- * @param prev_time Previous time in us
+ * @param[in] current_time Current time in us
+ * @param[in] prev_time Previous time in us
  * @return float Time difference in ms
  */
 float
@@ -31,15 +31,15 @@ wheel_enc_get_time_diff (uint64_t current_time, uint64_t prev_time)
 /**
  * @brief Get the speed in either pulses/second or mm/second
  *
- * @param time_elapsed Time elapsed in ms
- * @param is_pulse True if speed is in pulses/second, false if speed is in
+ * @param[in] time_elapsed Time elapsed in ms
+ * @param[in] is_pulse True if speed is in pulses/second, false if speed is in
  * mm/second
  * @return float Speed in either pulses/second or mm/second
  */
 float
 wheel_enc_get_speed (float time_elapsed, bool is_pulse)
 {
-    float speed = 0.0f;
+    float speed = 0.0f; // Initialize speed to 0.
 
     if (is_pulse)
     {

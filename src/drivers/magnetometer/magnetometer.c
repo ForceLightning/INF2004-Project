@@ -20,23 +20,31 @@
 #include "pico/time.h"
 #include "hardware/gpio.h"
 #include "hardware/i2c.h"
-#include "magnetometer.h"
+#include "magnetometer/magnetometer.h"
 
 // Global variables.
 // -----------------------------------------------------------------------------
-// 
-int16_t g_bias_x = 0; // Bias for x-axis acceleration.
-int16_t g_bias_y = 0; // Bias for y-axis acceleration.
-int16_t g_bias_z = 0; // Bias for z-axis acceleration.
+//
+/** @brief Bias for x-axis acceleration. */
+int16_t g_bias_x = 0;
+/** @brief Bias for y-axis acceleration. */
+int16_t g_bias_y = 0;
+/** @brief Bias for z-axis acceleration. */
+int16_t g_bias_z = 0;
 
-float *gp_true_heading    = 0; // True heading in radians.
-float *gp_current_bearing = 0; // Current bearing in radians.
-float *gp_min_bearing     = 0; // Minimum bearing in radians.
-float *gp_max_bearing     = 0; // Maximum bearing in radians.
+/** @brief Pointer to true heading in radians. */
+float *gp_true_heading = 0;
+/** @brief Pointer to current bearing in radians. */
+float *gp_current_bearing = 0;
+/** @brief Minimum bearing in radians. */
+float *gp_min_bearing = 0;
+/** @brief Maximum bearing in radians. */
+float *gp_max_bearing = 0;
 
 // Private function prototypes.
 // -----------------------------------------------------------------------------
 //
+
 static void magneto_write_register(uint8_t address, uint8_t reg, uint8_t value);
 static uint8_t magneto_read_register(uint8_t address, uint8_t reg);
 static void    magneto_config_accel(void);

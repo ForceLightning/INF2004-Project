@@ -25,6 +25,12 @@ target_link_libraries(motor
     hardware_pwm
     )
 
+target_include_directories(motor PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/..
+    ${CMAKE_CURRENT_BINARY_DIR}
+    )
+
 pico_add_extra_outputs(motor)
 
 pico_enable_stdio_usb(motor 1)

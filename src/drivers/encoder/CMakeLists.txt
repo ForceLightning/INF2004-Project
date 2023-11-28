@@ -15,7 +15,8 @@ set(WIFI_SSID "${WIFI_SSID}" CACHE INTERNAL "WiFi SSID")
 set(WIFI_PASSWORD "${WIFI_PASSWORD}" CACHE INTERNAL "WiFi password")
 
 add_executable(encoder
-    main.c wheel_encoder.c
+    main.c
+    wheel_encoder.c
     )
 
 target_link_libraries(encoder PRIVATE
@@ -23,6 +24,16 @@ target_link_libraries(encoder PRIVATE
     pico_cyw43_arch_none
     hardware_gpio
     hardware_pwm
+    )
+
+target_include_directories(encoder PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/..
+    ${CMAKE_CURRENT_BINARY_DIR}
+    )
+
+target_link_directories(encoder PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
     )
 
 pico_add_extra_outputs(encoder)
@@ -49,5 +60,6 @@ target_link_directories(encoder_driver INTERFACE
 
 target_include_directories(encoder_driver INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/..
     ${CMAKE_CURRENT_BINARY_DIR}
     )

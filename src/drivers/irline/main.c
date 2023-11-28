@@ -13,13 +13,24 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include "pico/stdio.h"
-#include "ir_sensor.h"
-#include "barcode.h"
+#include "irline/ir_sensor.h"
+#include "irline/barcode.h"
 
-#define ADC_PIN_LEFT   26 // Pin for left IR_sensor for analog ouput.
-#define ADC_PIN_FRONT  27 // Pin for front IR_sensor for analog output
-#define GPIO_PIN_LEFT  15 // Pin for left IR_sensor for digital output
-#define GPIO_PIN_FRONT 16 // Pin for front IR_sensor for digital output
+/**
+ * @defgroup ir_sensor_demo IR Sensor Demo Constants
+ * @{
+
+/** @brief Pin for left IR sensor's analogue output. */
+#define ADC_PIN_LEFT 26
+/** @brief Pin for front IR sensor's analogue output. */
+#define ADC_PIN_FRONT 27
+/** @brief Pin for left IR sensor's digital output. */
+#define GPIO_PIN_LEFT 15
+/** @brief Pin for front IR sensor's digital output. */
+#define GPIO_PIN_FRONT 16
+
+/**
+ @} */ // End of ir_sensor_demo group.
 
 int
 main (void)

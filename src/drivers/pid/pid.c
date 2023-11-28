@@ -7,20 +7,17 @@
  *
  * @copyright Copyright (c) 2023
  */
-// #include <stdbool.h>
-// #include "hardware/pwm.h"
-// #include "hardware/gpio.h"
-// #include "pico/types.h"
-#include "motor_control.h"
-#include "maze.h"
-#include "pid.h"
-#include "magnetometer.h"
+#include "motor/motor_control.h"
+#include "pid/pid.h"
+#include "magnetometer/magnetometer.h"
+#include "pathfinding/maze.h"
 
 /**
  * @brief Sets up pid struct(s).
+ * @param[in,out] p_turn_params Pointer to the turn parameters.
  */
 void
-init_pid_structs (pid_turn_params_t *p_turn_params)
+pid_init_structs (pid_turn_params_t *p_turn_params)
 {
     p_turn_params->b_is_turning       = 0;
     p_turn_params->encoder_step_count = 0;
@@ -37,7 +34,7 @@ init_pid_structs (pid_turn_params_t *p_turn_params)
  * @param[in] direction Direction to turn.
  */
 void
-navigate_car_turn (pid_turn_params_t        *p_turn_params,
+pid_navigate_turn (pid_turn_params_t        *p_turn_params,
                    maze_cardinal_direction_t direction)
 {
     if (p_turn_params->b_is_turning)
@@ -105,7 +102,7 @@ navigate_car_turn (pid_turn_params_t        *p_turn_params,
         }
         else
         {
-            init_pid_structs(p_turn_params);
+            pid_init_structs(p_turn_params);
         }
     }
     else
@@ -120,7 +117,7 @@ navigate_car_turn (pid_turn_params_t        *p_turn_params,
  * @param[out] p_pid_params Pointer to the PID parameters.
  */
 void
-init_pid_error_correction (pid_params_t *p_pid_params)
+pid_init_error_correction (pid_params_t *p_pid_params)
 {
     p_pid_params->k_p              = PID_KP;
     p_pid_params->k_i              = PID_KI;
@@ -144,10 +141,10 @@ init_pid_error_correction (pid_params_t *p_pid_params)
  * @return float Control signal.
  */
 float
-calculate_pid (float         current_bearing,
-               float         target_bearing,
-               float         current_ratio,
-               pid_params_t *p_pid_params)
+pid_calculate_correction (float         current_bearing,
+                          float         target_bearing,
+                          float         current_ratio,
+                          pid_params_t *p_pid_params)
 {
     float error
         = PID_DEGREES_NORMALISE((int)(target_bearing - current_bearing));
@@ -173,19 +170,20 @@ calculate_pid (float         current_bearing,
  * @param[in,out] p_pid_params Pointer to the PID parameters.
  */
 void
-bearing_correction (float         target_bearing,
-                    float         current_bearing,
-                    pid_params_t *p_pid_params)
+pid_bearing_correction (float         target_bearing,
+                        float         current_bearing,
+                        pid_params_t *p_pid_params)
 {
-    // init_pid_error_correction(pid_params_t *p_pid_params);
+    // pid_init_error_correction(pid_params_t *p_pid_params);
 
     p_pid_params->current_bearing = current_bearing;
     while ((int)p_pid_params->current_bearing != (int)target_bearing)
     {
-        float control_signal = calculate_pid(p_pid_params->current_bearing,
-                                             target_bearing,
-                                             p_pid_params->current_ratio,
-                                             p_pid_params);
+        float control_signal
+            = pid_calculate_correction(p_pid_params->current_bearing,
+                                       target_bearing,
+                                       p_pid_params->current_ratio,
+                                       p_pid_params);
 
         float new_ratio = (p_pid_params->current_ratio + p_pid_params->epsilon)
                           + ((control_signal + p_pid_params->epsilon + 1)

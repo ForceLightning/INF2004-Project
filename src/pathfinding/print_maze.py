@@ -14,7 +14,7 @@ def pretty_print_maze(serialised_maze: bytes) -> str:
         Each hex character represents a cell in the maze.
 
     Returns:
-        str: A string representing the maze.
+        ret_str (str): A string representing the maze.
     """
 
     # Convert the string into a 2D array.
@@ -64,7 +64,7 @@ def pretty_print_maze(serialised_maze: bytes) -> str:
             raise ValueError("Invalid navigator header")
         else:
             serialised_maze = serialised_maze[2:]
-            current_x, current_y, orientation, start_x, start_y, end_x, end_y = struct.unpack(
+            current_x, current_y, orientation, _, _, _, _ = struct.unpack(
                 ">2HB2H2H", serialised_maze[:13])
             ret_str = draw_navigator(
                 ret_str, rows, cols, (current_x, current_y), orientation)
@@ -270,7 +270,6 @@ def draw_navigator(
 
 def main():
     serialised_maze_bytes = b'\x00\x06\x00\x04\x6E\xC4\x51\x39\x7A\xA8\x56\xAC\x3D\x41\x2B\xB8\xFF\xFF\x00\x00\x00\x09\x00\x00\x00\x05\x00\x01\x00\x05\x00\x01\x00\x04\x00\x00\x00\x04\x00\x00\x00\x03\x00\x00\x00\x02\x00\x00\x00\x01\x00\x00\x00\x00\x00\x01\x00\x00\xFF\xFF\x00\x00\x00\x05\x03\x00\x02\x00\x05\x00\x01\x00\x03'
-    # TODO: fix the uint16_t and uint32_t insertions (maze header, path header)
     print(pretty_print_maze(serialised_maze_bytes))
 
 

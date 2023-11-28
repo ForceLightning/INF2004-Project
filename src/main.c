@@ -76,7 +76,7 @@ move_car_forward_task (__unused void *params)
         if (magneto_is_bearing_invalid())
         {
             pid_params_t pid_params;
-            init_pid_error_correction(&pid_params);
+            pid_init_error_correction(&pid_params);
             pid_bearing_correction(magneto_get_true_bearing(),
                                magneto_get_curr_bearing(),
                                &pid_params);

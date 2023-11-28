@@ -17,13 +17,21 @@
 #include "pathfinding/maze.h"
 
 // Definitions.
+// ----------------------------------------------------------------------------
 //
-typedef enum constants
+
+/**
+ * @brief Constants used in the tests.
+ */
+typedef enum
 {
-    GRID_ROWS = 10, // Number of rows in the grid.
-    GRID_COLS = 10  // Number of columns in the grid.
+    GRID_ROWS = 10, ///< Number of rows in the grid.
+    GRID_COLS = 10  ///< Number of columns in the grid.
 } constants_t;
 
+/**
+ * @brief The true bitmask array for the maze.
+ */
 static const uint16_t g_bitmask_array[25] = {
     0x2, 0xE, 0xA, 0xC, 0x4, // Top Row
     0x6, 0xB, 0xC, 0x3, 0x9, // 2nd row
@@ -573,7 +581,8 @@ test_complex_maze_pathfinding (void)
     maze_grid_cell_t *p_start = maze_get_cell_at_coords(&maze, &start_point);
     maze_grid_cell_t *p_end   = maze_get_cell_at_coords(&maze, &end_point);
 
-    maze_navigator_state_t navigator_state = { p_start, p_start, p_end, MAZE_NORTH };
+    maze_navigator_state_t navigator_state
+        = { p_start, p_start, p_end, MAZE_NORTH };
 
     // Run the A* algorithm.
     //

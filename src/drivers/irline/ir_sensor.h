@@ -12,10 +12,9 @@
 #ifndef IR_SENSOR_H // Include guard.
 #define IR_SENSOR_H
 #include "pico/types.h"
-#include "barcode.h"
+#include "irline/barcode.h"
 
 /**
- * @typedef ir_flags_t
  * @brief Indicates whether the IR line sensor detects walls on the top and left
  * sides.
  */

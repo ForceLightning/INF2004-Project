@@ -13,11 +13,14 @@
 #include <stdint.h>
 #include "pico/stdio.h"
 #include "pico/time.h"
-#include "ultrasonic.h"
+#include "ultrasonic/ultrasonic.h"
 
-#define TRIG_PIN 0    // Trigger pin for the ultrasonic sensor.
-#define ECHO_PIN 1    // Echo pin for the ultrasonic sensor.
-#define SLEEP_1S 1000 // 1 second in milliseconds.
+/** @brief Trigger pin for the ultrasonic sensor.*/
+#define TRIG_PIN 0
+/** @brief Echo pin for the ultrasonic sensor. */
+#define ECHO_PIN 1
+/** Number of milliseconds in a second. */
+#define SLEEP_1S 1000
 
 int
 main (void)
@@ -36,7 +39,6 @@ main (void)
 
         sleep_ms(SLEEP_1S);
     }
-
 }
 
 // End of file driver/ultrasonic/main.c.

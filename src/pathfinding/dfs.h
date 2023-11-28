@@ -13,8 +13,12 @@
 #define DFS_H
 
 #include <stdint.h>
-#include "maze.h"
-#include "floodfill.h"
+#include "pathfinding/maze.h"
+#include "pathfinding/floodfill.h"
+
+// Public function prototypes.
+// ----------------------------------------------------------------------------
+//
 
 void dfs_depth_first_search(maze_grid_t               *p_grid,
                             maze_grid_cell_t          *p_start_node,

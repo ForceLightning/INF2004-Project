@@ -24,6 +24,12 @@ target_link_libraries(ultrasonic
     hardware_gpio
     )
 
+target_include_directories(ultrasonic PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/..
+    ${CMAKE_CURRENT_BINARY_DIR}
+    )
+
 pico_add_extra_outputs(ultrasonic)
 
 pico_enable_stdio_usb(ultrasonic 1)

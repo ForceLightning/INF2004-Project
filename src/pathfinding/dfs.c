@@ -16,15 +16,21 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "maze.h"
-#include "floodfill.h"
-#include "binary_heap.h"
-#include "dfs.h"
+#include "pathfinding/maze.h"
+#include "pathfinding/floodfill.h"
+#include "pathfinding/binary_heap.h"
+#include "pathfinding/dfs.h"
 
 // Private function prototypes.
+// ----------------------------------------------------------------------------
 //
+
 static void reachable_floodfill(binary_heap_t          *p_reachable_set,
                                 maze_navigator_state_t *p_navigator);
+
+// Public function definitions.
+// ----------------------------------------------------------------------------
+//
 
 /**
  * @brief Conducts a depth first search on a maze.

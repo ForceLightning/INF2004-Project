@@ -10,18 +10,18 @@
  *
  */
 
-#ifndef FLOODFILL_H
+#ifndef FLOODFILL_H // Include guard.
 #define FLOODFILL_H
 
 #include <stdint.h>
-#include "maze.h"
+#include "pathfinding/maze.h"
 
 // Type definitions.
 // ----------------------------------------------------------------------------
 //
 
 /**
- & @typedef floodfill_explore_func_t
+ * @typedef floodfill_explore_func_t
  * @brief This function pointer type is used to explore the maze. It is expected
  * to return the walls that the robot sees.
  *
@@ -46,7 +46,7 @@ typedef uint16_t (*floodfill_explore_func_t)(
 typedef void (*floodfill_move_navigator_t)(maze_navigator_state_t *p_navigator,
                                            maze_cardinal_direction_t direction);
 
-// Public Functions.
+// Public function prototypes.
 // ----------------------------------------------------------------------------
 //
 

@@ -15,26 +15,23 @@
 #include "lwip/pbuf.h"
 #include "lwip/tcp.h"
 
+/** @brief Buffer size for messages sent out via wifi. */
 #define WIFI_BUFFER_SIZE 2048
 
 #ifndef NDEBUG
-#define DEBUG_PRINT(...) printf(__VA_ARGS__) // Assign to printf for debugging
+/**
+ * @def DEBUG_PRINT(...)
+ * @brief Macro for printing debug messages.
+ * @param ... Variable number of arguments to be printed.
+ */
+#define DEBUG_PRINT(...) printf(__VA_ARGS__)
 #else
 #define DEBUG_PRINT(...)
 #endif
 
 /**
  * @typedef wifi_tcp_server_t
- * @brief Struct representing a TCP server connection.
- *
- * @param p_server_pcb Pointer to the server PCB.
- * @param p_client_pcb Pointer to the client PCB.
- * @param complete Flag indicating whether the connection is complete.
- * @param buffer_sent Buffer for sent data.
- * @param buffer_recv Buffer for received data.
- * @param sent_len Length of sent data.
- * @param recv_len Length of received data.
- * @param run_count Counter for tracking the state of the connection.
+ * @brief Struct representing a TCP server connection. @see wifi_tcp_server
  *
  * @note The struct contains information about a TCP server connection,
  * including the server and client PCBs, flags indicating whether the connection
@@ -43,14 +40,14 @@
  */
 typedef struct wifi_tcp_server
 {
-    struct tcp_pcb *p_server_pcb; /**< Pointer to the server PCB */
-    struct tcp_pcb *p_client_pcb; /**< Pointer to the client PCB */
-    bool is_complete; /**< Flag indicating whether the connection is complete */
-    uint8_t buffer_sent[WIFI_BUFFER_SIZE]; /**< Buffer for sent data */
-    uint8_t buffer_recv[WIFI_BUFFER_SIZE]; /**< Buffer for received data */
-    int     sent_len;                      /**< Length of sent data */
-    int     recv_len;                      /**< Length of received data */
-    int     run_count; /**< Counter for tracking the state of the connection */
+    struct tcp_pcb *p_server_pcb; ///< Pointer to the server PCB
+    struct tcp_pcb *p_client_pcb; ///< Pointer to the client PCB
+    bool    is_complete; ///< Flag indicating whether the connection is complete
+    uint8_t buffer_sent[WIFI_BUFFER_SIZE]; ///< Buffer for sent data
+    uint8_t buffer_recv[WIFI_BUFFER_SIZE]; ///< Buffer for received data
+    int     sent_len;                      ///< Length of sent data
+    int     recv_len;                      ///< Length of received data
+    int     run_count; ///< Counter for tracking the state of the connection
 } wifi_tcp_server_t;
 
 // Function prototypes

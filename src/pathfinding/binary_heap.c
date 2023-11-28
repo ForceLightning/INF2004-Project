@@ -5,6 +5,8 @@
  * floodfill algorithm.
  * @version 0.1
  * @date 2023-11-07
+ * @note The functions are prefixed with `binary_heap` to avoid name collisions,
+ * but we are liberal with the usage of either `binary_heap_` or `binary_heap`.
  *
  * @copyright Copyright (c) 2023
  *
@@ -12,8 +14,8 @@
 
 #include <stddef.h>
 #include <stdint.h>
-#include "binary_heap.h"
-#include "maze.h"
+#include "pathfinding/binary_heap.h"
+#include "pathfinding/maze.h"
 
 // Public functions.
 // ----------------------------------------------------------------------------
@@ -23,8 +25,8 @@
  * @brief Moves the node at the given index down the binary heap to maintain the
  * heap property. This in effect raises the node to the correct position.
  *
- * @param p_heap Pointer to the binary heap.
- * @param index Index of the node to be heapified up.
+ * @param[in,out] p_heap Pointer to the binary heap.
+ * @param[in] index Index of the node to be heapified up.
  */
 void
 binary_heapify_up (binary_heap_t *p_heap, uint16_t index)
@@ -79,8 +81,8 @@ binary_heapify_up (binary_heap_t *p_heap, uint16_t index)
  * @brief Moves the node at the given index up the binary heap to maintain the
  * heap property. This is in effect lowers the node to the correct position.
  *
- * @param p_heap Pointer to the binary heap.
- * @param index Index of the node to be heapified down.
+ * @param[in,out] p_heap Pointer to the binary heap.
+ * @param[in] index Index of the node to be heapified down.
  */
 void
 binary_heapify_down (binary_heap_t *p_heap, uint16_t index)
@@ -137,9 +139,9 @@ binary_heapify_down (binary_heap_t *p_heap, uint16_t index)
 /**
  * @brief Inserts a grid cell node into the binary heap with a given priority.
  *
- * @param p_heap Pointer to the binary min-heap.
- * @param p_maze_node Pointer to the grid cell node to be inserted.
- * @param priority Priority of the node to be inserted.
+ * @param[in,out] p_heap Pointer to the binary min-heap.
+ * @param[in] p_maze_node Pointer to the grid cell node to be inserted.
+ * @param[in] priority Priority of the node to be inserted.
  */
 void
 binary_heap_insert (binary_heap_t    *p_heap,
@@ -174,7 +176,7 @@ binary_heap_insert (binary_heap_t    *p_heap,
 /**
  * @brief Deletes and returns the root node from the binary heap.
  *
- * @param p_heap Pointer to the binary min-heap.
+ * @param[in,out] p_heap Pointer to the binary min-heap.
  * @return maze_grid_cell_t* Pointer to the original root node.
  */
 maze_grid_cell_t *
@@ -207,7 +209,7 @@ binary_heap_delete_min (binary_heap_t *p_heap)
 /**
  * @brief Peeks at the root node of the binary heap.
  *
- * @param p_heap Pointer to the binary min-heap.
+ * @param[in] p_heap Pointer to the binary min-heap.
  * @return binary_heap_node_t Root node of the binary heap.
  */
 binary_heap_node_t

@@ -14,9 +14,9 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include "maze.h"
-#include "binary_heap.h"
-#include "floodfill.h"
+#include "pathfinding/maze.h"
+#include "pathfinding/binary_heap.h"
+#include "pathfinding/floodfill.h"
 
 // Private function prototypes.
 // ----------------------------------------------------------------------------
@@ -25,7 +25,7 @@
 static void floodfill(binary_heap_t          *p_open_set,
                       maze_navigator_state_t *p_navigator);
 
-// Public Functions.
+// Public function definitions.
 // ----------------------------------------------------------------------------
 //
 
@@ -33,7 +33,7 @@ static void floodfill(binary_heap_t          *p_open_set,
  * @brief This function initialises a maze with no walls to perform the
  * floodfill algorithm on.
  *
- * @param p_grid Pointer to the maze.
+ * @param[in,out] p_grid Pointer to the maze.
  */
 void
 floodfill_init_maze_nowall (maze_grid_t *p_grid)
@@ -238,3 +238,5 @@ floodfill (binary_heap_t *p_open_set, maze_navigator_state_t *p_navigator)
         }
     }
 }
+
+// End of file pathfinding/floodfill.c

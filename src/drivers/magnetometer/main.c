@@ -12,13 +12,14 @@
  */
 
 #include <stdio.h>
-#include "pico/stdlib.h"
+#include "pico/stdio.h"
+#include "pico/stdio_usb.h"
 #include "pico/cyw43_arch.h"
 
-#include "magnetometer.h"
+#include "magnetometer/magnetometer.h"
 
 int
-main ()
+main (void)
 {
     stdio_init_all();
     stdio_usb_init();
@@ -34,7 +35,7 @@ main ()
     {
         float true_heading = 0;
         float curr_heading = 0;
-        magneto_read_data(&true_heading, &curr_heading);
+        magneto_read_data();
     }
 
     return 0;

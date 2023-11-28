@@ -1,5 +1,15 @@
+/**
+ * @file main.c
+ * @author Bryan Seah
+ * @brief Demonstration for the motor driver.
+ * @version 0.1
+ * @date 2023-11-28
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #include <stdio.h>
-#include "motor_control.h"
+#include "motor/motor_control.h"
 
 int
 main (void)
@@ -56,3 +66,5 @@ main (void)
         }
     }
 }
+
+// End of file drivers/motor/main.c

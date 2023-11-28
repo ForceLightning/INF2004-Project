@@ -6,9 +6,9 @@
  * @brief This file contains the implementation of a TCP server using lwIP.
  * The TCP server is initialized using tcp_server_init() and closed using
  * tcp_server_close(). The server sends data to the client using
- * tcp_server_send_data() and receives data from the client using
- * wifi_tcp_server_recv(). Callback functions for sent data and connection result are
- * defined in tcp_server_sent() and tcp_server_result() respectively.
+ * wifi_tcp_server_send_data() and receives data from the client using
+ * wifi_tcp_server_recv(). Callback functions for sent data and connection
+ * result are defined in tcp_server_sent() and tcp_server_result() respectively.
  *
  * @version 0.1
  * @date 2023-10-29
@@ -36,24 +36,28 @@
 #include "lwip/tcpbase.h"
 #include "pico/time.h"
 
-#include "wifi.h"
+#include "drivers/wifi/wifi.h"
 
 // Definitions.
 // -----------------------------------------------------------------------------
 //
-#define WIFI_TCP_PORT           4242 // Port to listen on
-#define WIFI_POLL_TIME_S        20   // Poll time in seconds
-#define WIFI_MAX_MESSAGE_LENGTH 1024 // Maximum length of a received message
+/** @brief Port to listen on. */
+#define WIFI_TCP_PORT 4242
+/** @brief Poll time in seconds. */
+#define WIFI_POLL_TIME_S 20
+/** @brief Maximum length of a received message. */
+#define WIFI_MAX_MESSAGE_LENGTH 1024
 
 // Private function prototypes.
 // -----------------------------------------------------------------------------
 //
+
 static wifi_tcp_server_t *tcp_server_init(void);
-static err_t         tcp_server_close(void *p_arg);
-static err_t         tcp_server_result(void *p_arg, int status);
-static err_t         tcp_server_sent(void                    *p_arg,
-                                     __unused struct tcp_pcb *p_tpcb,
-                                     u16_t                    len);
+static err_t              tcp_server_close(void *p_arg);
+static err_t              tcp_server_result(__unused void *p_arg, int status);
+static err_t              tcp_server_sent(void                    *p_arg,
+                                          __unused struct tcp_pcb *p_tpcb,
+                                          u16_t                    len);
 static err_t tcp_server_poll(void *p_arg, __unused struct tcp_pcb *p_tpcb);
 static void  tcp_server_err(void *p_arg, err_t err);
 static err_t tcp_server_accept(void           *p_arg,
@@ -61,13 +65,17 @@ static err_t tcp_server_accept(void           *p_arg,
                                err_t           err);
 static bool  tcp_server_open(void *p_arg);
 
+// Public function definitions.
+// -----------------------------------------------------------------------------
+//
+
 /**
  * @brief This function is a callback from lwIP, so cyw43_arch_lwip_begin is not
  * required. However, you can use this method to cause an assertion in debug
  * mode if this method is called when cyw43_arch_lwip_begin IS needed.
  *
- * @param p_arg A void pointer to the wifi_tcp_server_t struct.
- * @param p_tpcb A pointer to the tcp_pcb struct.
+ * @param[in] p_arg A void pointer to the wifi_tcp_server_t struct.
+ * @param[in] p_tpcb A pointer to the tcp_pcb struct.
  *
  * @return err_t value indicating success or failure.
  */
@@ -104,18 +112,18 @@ wifi_tcp_server_send_data (void *p_arg, struct tcp_pcb *p_tpcb)
  * been received, it null-terminates the received data, prints it to the
  * console, and resets the receive buffer.
  *
- * @param p_arg Pointer to the TCP server state structure.
- * @param p_tpcb Pointer to the TCP control block.
- * @param p_buf Pointer to the received data buffer.
- * @param err Error code.
+ * @param[in] p_arg Pointer to the TCP server state structure.
+ * @param[in] p_tpcb Pointer to the TCP protocol control block (Unused).
+ * @param[in] p_buf Pointer to the received data buffer.
+ * @param[in] err Error code (Unused).
  *
  * @return err_t Error code.
  */
 err_t
 wifi_tcp_server_recv (void                    *p_arg,
-                 __unused struct tcp_pcb *p_tpcb,
-                 struct pbuf             *p_buf,
-                 __unused err_t           err)
+                      __unused struct tcp_pcb *p_tpcb,
+                      struct pbuf             *p_buf,
+                      __unused err_t           err)
 {
     wifi_tcp_server_t *p_state = (wifi_tcp_server_t *)p_arg;
     if (!p_buf)
@@ -146,10 +154,10 @@ wifi_tcp_server_recv (void                    *p_arg,
         {
             p_state->buffer_recv[p_state->recv_len]
                 = '\0'; // Null-terminate the received data
-            printf("Received message: %s\n", p_state->buffer_recv);
 
             // Process the received message or respond to it as needed
             // Here, we're just printing it to the console
+            printf("Received message: %s\n", p_state->buffer_recv);
 
             // Reset the receive buffer
             p_state->recv_len = 0;
@@ -164,10 +172,6 @@ wifi_tcp_server_recv (void                    *p_arg,
  * Wi-Fi driver or lwIP work that needs to be done. If using
  * pico_cyw43_arch_poll, it polls periodically from the main loop to check for
  * work. Otherwise, it sleeps for 1000ms.
- *
- * @param None
- *
- * @return void
  *
  * @note The code contains a note that assumes certain conditions have been met
  * before the function can be executed. These conditions include the inclusion
@@ -215,10 +219,6 @@ wifi_run_tcp_server_test (void)
 /**
  * @brief Initializes the TCP server by initializing standard input/output,
  * initializing the CYW43 architecture, and enabling station mode.
- *
- * @param None
- *
- * @return void
  */
 void
 wifi_tcp_server_begin_init (void)
@@ -230,13 +230,9 @@ wifi_tcp_server_begin_init (void)
 /**
  * @brief Begins a TCP server by connecting to Wi-Fi with the given SSID and
  * password.
- *
- * @param None
- *
- * @return void
  */
 void
-wifi_tcp_server_begin ()
+wifi_tcp_server_begin (void)
 {
 
     printf("Connecting to Wi-Fi...\n");
@@ -289,7 +285,7 @@ static err_t
 tcp_server_close (void *p_arg)
 {
     wifi_tcp_server_t *p_state = (wifi_tcp_server_t *)p_arg;
-    err_t         err     = ERR_OK;
+    err_t              err     = ERR_OK;
     if (p_state->p_client_pcb != NULL)
     {
         tcp_arg(p_state->p_client_pcb, NULL);

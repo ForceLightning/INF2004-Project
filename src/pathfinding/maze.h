@@ -9,17 +9,27 @@
  *
  */
 
-#ifndef MAZE_H
+#ifndef MAZE_H // Include guard.
 #define MAZE_H
 #include <stdint.h>
 #include <stdbool.h>
+
+// Definitions.
+// ----------------------------------------------------------------------------
+//
+
+/**
+ * @def MAZE_INVERT_BITMASK(x)
+ * @brief This macro inverts an 4-bit bitmask.
+ * @param[in] x Bitmask to invert.
+ */
+#define MAZE_INVERT_BITMASK(x) ((0xFu - x) & 0xFu)
 
 // Type definitions.
 // ----------------------------------------------------------------------------
 //
 
 /**
- * @typedef point_t
  * @brief This struct contains the coordinates of a point.
  *
  */
@@ -30,7 +40,6 @@ typedef struct maze_point
 } maze_point_t;
 
 /**
- * @typedef cardinal_direction_t
  * @brief This enum contains the possible directions.
  *
  */
@@ -44,7 +53,6 @@ typedef enum
 } maze_cardinal_direction_t;
 
 /**
- * @typedef maze_wall_direction_t
  * @brief This enum contains bitmasks for the walls. Useful when updating more
  * than one wall at a time.
  *
@@ -61,7 +69,6 @@ typedef enum
 } maze_wall_direction_t;
 
 /**
- * @typedef maze_relative_direction_t
  * @brief This enum contains the relative directions of instructions from the
  * navigator's perspective.
  *
@@ -75,20 +82,7 @@ typedef enum
 } maze_relative_direction_t;
 
 /**
- * @typedef grid_cell_t
  * @brief This struct contains the node information.
- *
- * @property coordinates X and Y coordinates of the node.
- * @property f F-value of the node. F = G + H.
- * @property g G-value of the node. G = cost to move from the starting node to
- * the current node.
- * @property h H-value of the node. H = estimated cost to move from the current
- * node to the end node aka heuristic.
- * @property p_next Pointers to the next nodes. This is indexed by the direction
- * enum.
- * @property p_came_from Pointer to the node that the current node came from for
- * the A* algorithm.
- * @property is_visited Indicates if the node has been visited before.
  *
  * @note Ensure that the initialisation of the struct sets all pointers to
  * NULL. Otherwise, the program might have undefined behaviour.
@@ -111,12 +105,7 @@ typedef struct maze_grid_cell
 } maze_grid_cell_t;
 
 /**
- * @typedef grid_t
  * @brief This struct contains the maze grid information.
- *
- * @property p_grid_array Pointer to the first element of the grid array.
- * @property rows Number of rows in the grid.
- * @property columns Number of columns in the grid.
  *
  * @note The grid array is indexed by row first, then column.
  */
@@ -129,13 +118,7 @@ typedef struct maze_grid
 } maze_grid_t;
 
 /**
- * @typedef navigator_state_t
  * @brief This struct contains the state of a navigator in the maze.
- *
- * @property p_current_node Pointer to the current location of the navigator.
- * @property p_start_node Pointer to the start node of the maze.
- * @property p_end_node Pointer to the end node of the maze.
- * @property orientation Orientation of the navigator. This is an enum.
  */
 typedef struct maze_navigator_state
 {
@@ -148,12 +131,7 @@ typedef struct maze_navigator_state
 } maze_navigator_state_t;
 
 /**
- * @typedef maze_gap_bitmask_t
  * @brief This struct contains the maze gap bitmasks for serialisation.
- *
- * @property p_bitmask Pointer to the bitmask array.
- * @property rows Number of rows.
- * @property columns Number of columns.
  */
 typedef struct maze_gap_bitmask
 {
@@ -164,11 +142,7 @@ typedef struct maze_gap_bitmask
 } maze_gap_bitmask_t;
 
 /**
- * @typedef maze_serialised_compressed_t
  * @brief Used for sending the maze over serial or WiFi.
- *
- * @property cell_b Cell B bitmask.
- * @property cell_a Cell A bitmask.
  */
 typedef union maze_bitmask_compressed
 {
@@ -176,8 +150,8 @@ typedef union maze_bitmask_compressed
     {
         uint8_t cell_b : 4; ///< Cell B bitmask (LSB).
         uint8_t cell_a : 4; ///< Cell A bitmask (MSB).
-    } fields;
-    uint8_t bits; ///< Bitmask.
+    } fields;               ///< Bit masks for each cell.
+    uint8_t bits;           ///< Combined bitmasks.
 } maze_bitmask_compressed_t;
 
 // Public Functions.

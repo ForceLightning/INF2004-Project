@@ -4,9 +4,9 @@
  * @brief Driver demo code for the wheel encoder.
  * @version 0.1
  * @date 2023-11-26
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
 #include <stdint.h>
 #include <stdbool.h>
@@ -16,21 +16,36 @@
 #include "hardware/gpio.h"
 #include "hardware/timer.h"
 #include "pico/stdio.h"
-#include "wheel_encoder.h"
+#include "encoder/wheel_encoder.h"
 
-#define MOTOR_PIN_CLKWISE     16 // GP16 for clockwise rotation.
-#define MOTOR_PIN_ANTICLKWISE 17 // GP17 for anticlockwise rotation.
+/**
+ * @defgroup encoder_demo_constants Encoder Demo Constants
+ * @{
 
-#define PWM_PIN     0     // GP0 for PWM output to control motor speed.
-#define PWM_CLKDIV  100   // PWM clock divider.
-#define PWM_WRAP    62500 // PWM wrap value.
-#define ENCODER_PIN 22    // GP22 for encoder input.
-#define MM_TO_CM    10.0f // Conversion factor from mm to cm.
+/** @brief GPIO pin number for clockwise rotation. */
+#define MOTOR_PIN_CLKWISE 16
+/** @brief GPIO pin number for anticlockwise rotation. */
+#define MOTOR_PIN_ANTICLKWISE 17
+/** @brief GPIO pin number for PWM output to control motor speed. */
+#define PWM_PIN 0
+/** @brief PWM clock divider. */
+#define PWM_CLKDIV 100
+/** @brief PWM wrap value. */
+#define PWM_WRAP 62500
+/** @brief GP22 for encoder input. */
+#define ENCODER_PIN 22
+/** @brief Conversion factor from mm to cm. */
+#define MM_TO_CM 10.0f
+
+/**
+ @} */ // End of encoder_demo_constants group.
 
 // Global variables.
 // -----------------------------------------------------------------------------
 //
-wheel_encoder_t g_encoder; // Global struct for encoder data.
+
+/** @brief Global struct for holding encoder data. */
+wheel_encoder_t g_encoder;
 
 // Private function prototypes.
 // -----------------------------------------------------------------------------
@@ -109,8 +124,8 @@ init_global_structs (void)
 /**
  * @brief Interrupt callback function on rising edge
  *
- * @param gpio      GPIO pin number.
- * @param events    Event mask. @see gpio_irq_level.
+ * @param[in] gpio GPIO pin number.
+ * @param[in] events Event mask. @see gpio_irq_level.
  */
 static void
 encoder_tick_isr (uint gpio, uint32_t events)

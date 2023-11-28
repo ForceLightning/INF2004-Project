@@ -32,6 +32,13 @@ target_link_libraries(pid PRIVATE
     pathfinding
     )
 
+target_include_directories(pid PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/../
+    ${CMAKE_CURRENT_SOURCE_DIR}/../..
+    )
+
 pico_add_extra_outputs(pid)
 
 pico_enable_stdio_usb(pid 1)
@@ -55,5 +62,6 @@ target_link_libraries(pid_driver INTERFACE
 target_include_directories(pid_driver INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../
+    ${CMAKE_CURRENT_SOURCE_DIR}/../
+    ${CMAKE_CURRENT_SOURCE_DIR}/../..
     )

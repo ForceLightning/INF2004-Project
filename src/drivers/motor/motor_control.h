@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2023
  */
 
-#ifndef MOTOR_CONTROL_H
+#ifndef MOTOR_CONTROL_H // Include guard
 #define MOTOR_CONTROL_H
 #include <stdbool.h>
 #include "pico/stdlib.h"
@@ -17,20 +17,32 @@
 // Definitions
 // --------------------------------------------------------------------------------------------
 //
-#define MOTOR_PWM_CLKDIV 100   // PWM clock divider.
-#define MOTOR_PWM_WRAP   62500 // PWM wrap value.
 
-// Definitions for the motor pins.
-//
-#define MOTOR_LEFT_PIN_CLKWISE     16 // GPIO pin for left motor clockwise.
-#define MOTOR_LEFT_PIN_ANTICLKWISE 17 // GPIO pin for left motor anti-clockwise.
-#define MOTOR_RIGHT_PIN_CLKWISE    15 // GPIO pin for right motor clockwise.
-#define MOTOR_RIGHT_PIN_ANTICLKWISE \
-    14                         // GPIO pin for right motor anti-clockwise.
-#define MOTOR_PWM_PIN_LEFT  10 // GPIO pin for left motor PWM.
-#define MOTOR_PWM_PIN_RIGHT 11 // GPIO pin for right motor PWM.
-#define MOTOR_DEFAULT_DIFF_RATIO \
-    1.05f // Default ratio for motor speed difference.
+/**
+ * @defgroup motor_control Motor Control Constants
+ * @brief Constants for the motor control driver.
+ * @{
+
+/** @brief PWM clock divider. */
+#define MOTOR_PWM_CLKDIV 100
+/** @brief PWM wrap value. */
+#define MOTOR_PWM_WRAP 62500
+/** @brief GPIO pin for left motor clockwise. */
+#define MOTOR_LEFT_PIN_CLKWISE 16
+/** @brief GPIO pin for left motor anti-clockwise. */
+#define MOTOR_LEFT_PIN_ANTICLKWISE 17
+/** @brief GPIO pin for right motor clockwise. */
+#define MOTOR_RIGHT_PIN_CLKWISE 15
+/** @brief GPIO pin for right motor anti-clockwise. */
+#define MOTOR_RIGHT_PIN_ANTICLKWISE 14
+/** @brief GPIO pin for left motor PWM. */
+#define MOTOR_PWM_PIN_LEFT 10
+/** @brief GPIO pin for right motor PWM. */
+#define MOTOR_PWM_PIN_RIGHT 11
+/** @brief Default ratio for motor speed difference. */
+#define MOTOR_DEFAULT_DIFF_RATIO 1.05f
+/**
+ @} */ // End of motor_control group.
 
 // Type definitions
 // --------------------------------------------------------------------------------------------
@@ -52,7 +64,9 @@ typedef struct motor_pins
 } motor_pins_t;
 
 // Function prototypes
+// --------------------------------------------------------------------------------------------
 //
+
 void motor_start(uint clkwise_gpio, uint anti_clkwise_gpio, uint pwm_gpio);
 void motor_update_pwm(uint pwm_gpio, uint pwm_wrap, float duty_cycle);
 void motor_update_direction(uint clkwise_gpio,
@@ -64,7 +78,6 @@ void motor_stop(void);
 void motor_reverse(void);
 void motor_turn_left(bool reverse_turn);
 void motor_turn_right(bool reverse_turn);
-
 void motor_update_ratio(float new_ratio);
 
 #endif // MOTOR_CONTROL_H

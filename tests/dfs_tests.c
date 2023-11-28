@@ -41,11 +41,9 @@
 //
 
 /**
- * @typedef constants_t
  * @brief This enum contains constants used in the tests.
- *
  */
-typedef enum constants
+typedef enum
 {
     GRID_ROWS = 5, ///< Number of rows in the grid.
     GRID_COLS = 5  ///< Number of columns in the grid.
@@ -57,7 +55,6 @@ typedef enum constants
 
 /**
  * @brief Global bitmask array of a maze for testing.
- *
  */
 static const uint16_t g_bitmask_array[GRID_ROWS * GRID_COLS] = {
     0x2, 0xE, 0xA, 0xC, 0x4, // Top Row
@@ -253,7 +250,7 @@ explore_current_node (maze_grid_t              *p_grid,
         = g_bitmask_array[p_current_node->coordinates.y * p_grid->columns
                           + p_current_node->coordinates.x];
 
-    bitmask = 0xF - bitmask;
+    bitmask = MAZE_INVERT_BITMASK(bitmask);
 
     p_navigator->orientation = direction;
     maze_nav_modify_walls(p_grid, p_navigator, bitmask, true, false);

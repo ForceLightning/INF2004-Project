@@ -41,9 +41,7 @@
 //
 
 /**
- * @typedef constants_t
  * @brief This enum contains constants used in the tests.
- *
  */
 typedef enum constants
 {
@@ -438,6 +436,11 @@ end:
     return ret_val == -1 ? -1 : 0;
 }
 
+/**
+ * @brief Tests the relative direction function.
+ * 
+ * @return int 0 if the test passes, -1 otherwise.
+ */
 static int
 test_relative_direction (void)
 {
@@ -461,6 +464,15 @@ end:
 // Private function definitions.
 // ----------------------------------------------------------------------------
 //
+
+/**
+ * @brief Explores the current node.
+ * 
+ * @param[in] p_grid Pointer to the maze.
+ * @param[in,out] p_navigator Pointer to the navigator.
+ * @param[in] direction Direction to explore in.
+ * @return uint16_t Bitmask of the current node.
+ */
 static uint16_t
 explore_current_node (maze_grid_t              *p_grid,
                       maze_navigator_state_t   *p_navigator,
@@ -473,12 +485,18 @@ explore_current_node (maze_grid_t              *p_grid,
         = gp_bitmask_array[p_current_node->coordinates.y * p_grid->columns
                            + p_current_node->coordinates.x];
 
-    bitmask = 0xF - bitmask;
+    bitmask = MAZE_INVERT_BITMASK(bitmask);
 
     p_navigator->orientation = direction;
     return bitmask;
 }
 
+/**
+ * @brief Moves the navigator to the next node.
+ * 
+ * @param[in] p_navigator Pointer to the navigator.
+ * @param[in] direction Direction to move.
+ */
 static void
 move_navigator (maze_navigator_state_t   *p_navigator,
                 maze_cardinal_direction_t direction)
@@ -493,6 +511,13 @@ move_navigator (maze_navigator_state_t   *p_navigator,
     p_navigator->p_current_node = p_next_node;
 }
 
+/**
+ * @brief Maps the maze with the given bitmask array.
+ *
+ * @param[in,out] p_grid Pointer to the unmapped maze.
+ * @param[in] p_bitmask_array Pointer to the true bitmask array.
+ * @param[in,out] p_navigator Pointer to the navigator state.
+ */
 static void
 map_maze (maze_grid_t            *p_grid,
           const uint16_t         *p_bitmask_array,
@@ -524,6 +549,14 @@ map_maze (maze_grid_t            *p_grid,
     free(p_maze_str);
 }
 
+/**
+ * @brief Checks if the mapped maze is correct.
+ *
+ * @param[in] map_bitmask Bitmask of the mapped maze.
+ * @param[in] true_map_bitmask Bitmask of the true maze.
+ * @return true The mapped maze is correct.
+ * @return false The mapped maze is wrong.
+ */
 static bool
 is_maze_correct (maze_gap_bitmask_t map_bitmask,
                  maze_gap_bitmask_t true_map_bitmask)
@@ -549,6 +582,13 @@ is_maze_correct (maze_gap_bitmask_t map_bitmask,
     return true;
 }
 
+/**
+ * @brief Initialises the global variables.
+ *
+ * @param[in] p_bitmask Pointer to the true bitmask array.
+ * @param[out] p_maze Pointer to the maze.
+ * @param[out] p_navigator Pointer to the navigator.
+ */
 static void
 initialise_variables (uint16_t               *p_bitmask,
                       maze_grid_t            *p_maze,
@@ -566,6 +606,12 @@ initialise_variables (uint16_t               *p_bitmask,
     p_navigator->p_end_node     = p_end;
 }
 
+/**
+ * @brief Tests the mapping of the maze.
+ *
+ * @param[in] p_bitmask_array Pointer to the true bitmask array.
+ * @return int 0 if the test passes, -1 otherwise.
+ */
 static int
 test_mapping (const uint16_t *p_bitmask_array)
 {
@@ -589,6 +635,12 @@ test_mapping (const uint16_t *p_bitmask_array)
     return ret_val;
 }
 
+/**
+ * @brief Tests the navigation of the maze.
+ *
+ * @param[in] p_bitmask_array Pointer to the true bitmask array.
+ * @return int 0 if the test passes, -1 otherwise.
+ */
 static int
 test_navigation (const uint16_t *p_bitmask_array)
 {
@@ -625,6 +677,12 @@ end:
     return ret_val;
 }
 
+/**
+ * @brief Tests the combined mapping and navigation.
+ *
+ * @param[in] p_bitmask_array Pointer to the true bitmask array.
+ * @return int 0 if the test passes, -1 otherwise.
+ */
 static int
 test_combined (const uint16_t *p_bitmask_array)
 {

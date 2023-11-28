@@ -12,10 +12,10 @@
 #include "hardware/pwm.h"
 #include "hardware/gpio.h"
 #include "pico/types.h"
-#include "motor_control.h"
+#include "motor/motor_control.h"
 
-float g_ratio = MOTOR_DEFAULT_DIFF_RATIO; // Global variable for motor speed
-                                          // difference ratio.
+/** @brief Global variable for motor speed difference ratio. */
+float g_ratio = MOTOR_DEFAULT_DIFF_RATIO;
 
 /**
  * @brief Default initialization of a single motor.
@@ -23,9 +23,9 @@ float g_ratio = MOTOR_DEFAULT_DIFF_RATIO; // Global variable for motor speed
  * @par The function initializes the PWM pin and the two GPIO pins for the
  * motor. It also sets the clock divider to 100 and enables the PWM slice.
  *
- * @param clkwise_gpio GPIO pin number for clockwise rotation.
- * @param anti_clkwise_gpio GPIO pin number for anticlockwise rotation.
- * @param pwm_gpio GPIO pin number for PWM output to control motor speed.
+ * @param[in] clkwise_gpio GPIO pin number for clockwise rotation.
+ * @param[in] anti_clkwise_gpio GPIO pin number for anticlockwise rotation.
+ * @param[in] pwm_gpio GPIO pin number for PWM output to control motor speed.
  */
 void
 motor_start (uint clkwise_gpio, uint anti_clkwise_gpio, uint pwm_gpio)
@@ -48,9 +48,9 @@ motor_start (uint clkwise_gpio, uint anti_clkwise_gpio, uint pwm_gpio)
  * @par This function updates the PWM duty cycle and wrap value of a PWM slice.
  * This is used to update / modify the speed of the motor's rotation.
  *
- * @param pwm_gpio The GPIO pin number for the PWM output.
- * @param pwm_wrap The wrap value of the PWM slice.
- * @param duty_cycle The duty cycle of the PWM slice.
+ * @param[in] pwm_gpio The GPIO pin number for the PWM output.
+ * @param[in] pwm_wrap The wrap value of the PWM slice.
+ * @param[in] duty_cycle The duty cycle of the PWM slice.
  */
 void
 motor_update_pwm (uint pwm_gpio, uint pwm_wrap, float duty_cycle)
@@ -76,10 +76,10 @@ motor_update_pwm (uint pwm_gpio, uint pwm_wrap, float duty_cycle)
 /**
  * @brief A function to update the direction of the motor's rotation.
  *
- * @param clkwise_gpio The GPIO pin number for clockwise rotation.
- * @param anti_clkwise_gpio The GPIO pin number for anticlockwise rotation.
- * @param clkwise The digital value to set for clockwise rotation.
- * @param anti_clkwise The digital value to set for anticlockwise rotation.
+ * @param[in] clkwise_gpio The GPIO pin number for clockwise rotation.
+ * @param[in] anti_clkwise_gpio The GPIO pin number for anticlockwise rotation.
+ * @param[in] clkwise The digital value to set for clockwise rotation.
+ * @param[in] anti_clkwise The digital value to set for anticlockwise rotation.
  */
 void
 motor_update_direction (uint clkwise_gpio,
@@ -97,11 +97,9 @@ motor_update_direction (uint clkwise_gpio,
  * This function moves the car forward by setting the duty cycle of both motors
  * to be equal, as well as setting a clockwise rotation for both motors.
  *
- * @param motor_data The structure containing the GPIO pin numbers for the
- * motors.
  */
 void
-motor_move_forward ()
+motor_move_forward (void)
 {
     printf("Moving forward\n");
     motor_update_pwm(MOTOR_PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
@@ -117,11 +115,9 @@ motor_move_forward ()
  *
  * This function works by setting the duty cycle of both motors to 0.
  *
- * @param motor_data The structure containing the GPIO pin numbers for the
- * motors.
  */
 void
-stop ()
+motor_stop (void)
 {
     motor_update_pwm(MOTOR_PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.0f);
     motor_update_pwm(MOTOR_PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.0f);
@@ -133,11 +129,9 @@ stop ()
  * This function reverses the car by setting the duty cycle of both motors
  * to be equal, as well as setting an anti-clockwise rotation for both motors.
  *
- * @param motor_data The structure containing the GPIO pin numbers for the
- * motors.
  */
 void
-motor_reverse ()
+motor_reverse (void)
 {
     motor_update_pwm(MOTOR_PWM_PIN_LEFT, MOTOR_PWM_WRAP, 0.5f);
     motor_update_pwm(MOTOR_PWM_PIN_RIGHT, MOTOR_PWM_WRAP, 0.5f);
@@ -155,8 +149,6 @@ motor_reverse ()
  * addition, the left motor is set to rotate in the opposite direction of the
  * right motor.
  *
- * @param motor_data The structure containing the GPIO pin numbers for the
- * motors.
  * @param reverse_turn A boolean value to indicate that the car is turning in
  * reverse.
  */
@@ -190,8 +182,6 @@ motor_turn_left (bool reverse_turn)
  * In addition, the right motor is set to rotate in the opposite direction of
  * the right motor.
  *
- * @param motor_data The structure containing the GPIO pin numbers for the
- * motors.
  * @param reverse_turn A boolean value to indicate that the car is turning in
  * reverse.
  */

@@ -23,6 +23,12 @@ target_link_libraries(magnetometer
     pico_cyw43_arch_none
     )
 
+target_include_directories(magnetometer PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/..
+    ${CMAKE_CURRENT_BINARY_DIR}
+    )
+
 pico_add_extra_outputs(magnetometer)
 
 pico_enable_stdio_usb(magnetometer 1)

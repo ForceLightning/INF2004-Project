@@ -14,9 +14,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <string.h>
-#include "maze.h"
+#include "pathfinding/maze.h"
 
 // Private function prototypes.
+// ----------------------------------------------------------------------------
 //
 static maze_grid_cell_t *maze_get_cell_in_dir_from(
     maze_grid_t              *p_grid,
@@ -37,6 +38,10 @@ static void draw_cell(const maze_grid_cell_t *p_cell,
 
 static maze_bitmask_compressed_t *serialised_to_compressed(
     const maze_gap_bitmask_t *p_bitmask);
+
+// Public functions.
+// ----------------------------------------------------------------------------
+//
 
 /**
  * @brief Create a maze with the specified number of rows and columns.
@@ -710,6 +715,7 @@ maze_nav_to_buffer (const maze_navigator_state_t *p_navigator,
  *
  * @param value Value to convert.
  * @param p_buffer uint8_t buffer of size 2.
+ * @par This shifts the 8 MSBs of the value to the 8 LSBs of the buffer.
  */
 void
 maze_uint16_to_uint8_buffer (uint16_t value, uint8_t *p_buffer)

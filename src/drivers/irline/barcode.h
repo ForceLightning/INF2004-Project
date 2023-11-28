@@ -16,18 +16,48 @@
 // Definitions.
 // ----------------------------------------------------------------------------
 //
-#define BARCODE_MAX_LINES 9 // Maximum number of barcode lines.
+
+/**
+ * @defgroup barcode_constants Barcode Constants
+ * @brief Constants for the barcode driver.
+ * @{
+ */
+
+/** @brief Maximum number of barcode lines. */
+#define BARCODE_MAX_LINES 9
+/**
+ @}*/ // End of barcode_definitions group.
 
 #ifndef BARCODE_DEBUG_VERBOSE // Verbosity level for debug print.
+/**
+ * @def BARCODE_DEBUG_VERBOSE
+ * @brief Verbosity level for debug print.
+ */
 #define BARCODE_DEBUG_VERBOSE 0
 #endif
 
 #ifndef NDEBUG
-#define PICO_DEBUG_MALLOC     1 // Enable malloc debug.
-#define BARCODE_DEBUG_VERBOSE 0 // Enable verbose debug. 1-3.
+/**
+ * @def PICO_DEBUG_MALLOC
+ * @brief Enables malloc debugging.
+ */
+#define PICO_DEBUG_MALLOC 1
+
+/**
+ * @def BARCODE_DEBUG_VERBOSE
+ * @brief Verbosity level for debug print.
+ */
+#define BARCODE_DEBUG_VERBOSE 0
 #ifndef DEBUG_PRINT
+/**
+ * @def DEBUG_PRINT(...)
+ * @brief Enables debug print.
+ * @param ... Variable arguments.
+ */
 #define DEBUG_PRINT(...) printf(__VA_ARGS__) // Enable debug print.
 #endif
+#else
+#define DEBUG_PRINT(...) // Disable debug print.
 #endif
 
 // Type definitions.
@@ -104,8 +134,7 @@ typedef enum
 } barcode_line_type_t;
 
 /**
- * @typedef barcode_line_buffer_t
- * @brief Holds the 9 most recent barcode lines.
+ * @brief Struct that holds the 9 most recent barcode lines.
  *
  */
 typedef struct barcode_line_buffer
@@ -117,7 +146,6 @@ typedef struct barcode_line_buffer
 } barcode_line_buffer_t;
 
 /**
- * @typedef barcode_read_response_t
  * @brief Enum for the barcode read response. Success or error.
  *
  */
@@ -134,18 +162,13 @@ typedef enum
 // ----------------------------------------------------------------------------
 //
 
-char barcode_get_char(barcode_char_t barcode_char);
-
-char *barcode_line_to_string(barcode_line_type_t line_type);
-
-int8_t barcode_update_line_buffer(barcode_line_buffer_t *p_line_buffer,
-                                  barcode_line_type_t    line_type);
-
-void barcode_clear_line_buffer(barcode_line_buffer_t *p_line_buffer);
-
+char           barcode_get_char(barcode_char_t barcode_char);
+char          *barcode_line_to_string(barcode_line_type_t line_type);
+int8_t         barcode_update_line_buffer(barcode_line_buffer_t *p_line_buffer,
+                                          barcode_line_type_t    line_type);
+void           barcode_clear_line_buffer(barcode_line_buffer_t *p_line_buffer);
 barcode_char_t barcode_decode_barcode_char(
     barcode_line_buffer_t *p_line_buffer);
-
 char *barcode_buffer_to_binary_string(barcode_line_buffer_t *p_line_buffer);
 
 #endif // BARCODE_H

@@ -16,19 +16,28 @@
 // Definitions.
 // ----------------------------------------------------------------------------
 //
-#define WHEEL_ENC_CYCLE_PULSE \
-    20 // Number of encoder pulses per 1 full rotation.
-#define WHEEL_ENC_DIST_PER_PULSE \
-    (204.203f / 20.0f) // Distance travelled per tick in mm.
-#define WHEEL_ENC_SEC_TO_MSEC \
-    1000.0f // Conversion from seconds to milliseconds.
+
+/**
+ * @defgroup encoder_driver_constants Encoder Driver Constants
+ * @brief Constants for the encoder driver.
+ * @{
+ */
+
+/** @brief Number of encoder pulses per 1 full rotation. */
+#define WHEEL_ENC_CYCLE_PULSE 20
+/** @brief Distance travelled per encoder tick in mm. */
+#define WHEEL_ENC_DIST_PER_PULSE (204.203f / 20.0f)
+/** @brief Conversion from seconds to milliseconds. */
+#define WHEEL_ENC_SEC_TO_MSEC 1000.0f
+
+/**
+ @} */ // End of encoder_driver_constants group.
 
 // Type definitions.
 // ----------------------------------------------------------------------------
 //
 
 /**
- * @typedef wheel_encoder_t
  * @brief Struct to store global encoder data.
  *
  */
@@ -39,8 +48,10 @@ typedef struct wheel_encoder
     float    distance_traversed; ///< Distance traversed since last reset.
 } wheel_encoder_t;
 
-// Function prototypes
+// Function prototypes.
+// ----------------------------------------------------------------------------
 //
+
 float wheel_enc_get_time_diff(uint64_t current_time, uint64_t prev_time);
 float wheel_enc_get_speed(float time_elapsed, bool is_pulse);
 

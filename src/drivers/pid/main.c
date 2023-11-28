@@ -1,11 +1,23 @@
+/**
+ * @file main.c
+ * @author Bryan Seah
+ * @brief Demonstration for the PID driver.
+ * @version 0.1
+ * @date 2023-11-28
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <sys/cdefs.h>
 #include <sys/types.h>
 #include "hardware/gpio.h"
 #include "pico/stdio.h"
-#include "motor_control.h"
-#include "pid.h"
+#include "motor/motor_control.h"
+#include "pid/pid.h"
 
 pid_turn_params_t g_turn_params;
 

@@ -13,8 +13,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <string.h>
-#include "ir_sensor.h"
-#include "barcode.h"
+#include "irline/ir_sensor.h"
+#include "irline/barcode.h"
 
 // Public function definitions.
 // ---------------------------------------------------------------------------
@@ -268,7 +268,6 @@ barcode_decode_barcode_char (barcode_line_buffer_t *p_line_buffer)
         if (BARCODE_LINE_BLACK_THICK == line_type
             || BARCODE_LINE_WHITE_THICK == line_type)
         {
-
             barcode_binarised |= 1u;
         }
     }

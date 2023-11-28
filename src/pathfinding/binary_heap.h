@@ -13,7 +13,7 @@
 #define BINARY_HEAP_H
 
 #include <stdint.h>
-#include "maze.h"
+#include "pathfinding/maze.h"
 
 // Definitions.
 // ----------------------------------------------------------------------------
@@ -38,13 +38,8 @@
 //
 
 /**
- * @typedef heap_node_t
  * @brief This struct contains basic information about a node in a priority
- * queue implemented with a binary heap.
- *
- * @property priority Priority of the node. This is the F-value of the node.
- * @property p_maze_node Pointer to a node in the maze.
- *
+ * queue implemented with a binary heap. @see binary_heap_node
  */
 typedef struct binary_heap_node
 {
@@ -55,13 +50,7 @@ typedef struct binary_heap_node
 } binary_heap_node_t;
 
 /**
- * @typedef binary_heap_t
- * @brief Struct containing the binary heap.
- *
- * @property p_array Pointer to the first element of the array.
- * @property capacity Maximum number of nodes that can be stored in the binary
- * heap.
- * @property size Current number of nodes in the binary heap.
+ * @brief Struct containing the binary heap. @see binary_heap
  *
  * @warning The array is 0-indexed, so capacity and size are always 1 greater
  * than their respective index maximums.

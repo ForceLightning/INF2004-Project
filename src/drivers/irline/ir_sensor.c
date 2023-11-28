@@ -8,18 +8,17 @@
  * @copyright Copyright (c) 2023
  *
  */
-#include <stdio.h>
 #include <stdint.h>
 #include <sys/types.h>
 #include "hardware/gpio.h"
 #include "hardware/adc.h"
-#include "ir_sensor.h"
-#include "barcode.h"
+#include "irline/ir_sensor.h"
+#include "irline/barcode.h"
 
 /**
  * @brief Initalises the analog pins for the IR sensor to ADC.
  *
- * @param adc_pin ADC pin for the IR sensor.
+ * @param[in] adc_pin ADC pin for the IR sensor.
  */
 void
 ir_setup_adc_pin (uint adc_pin)
@@ -32,7 +31,7 @@ ir_setup_adc_pin (uint adc_pin)
 /**
  * @brief Initialises the digital pin for the IR sensor.
  *
- * @param gpio_pin GPIO pin for the IR sensor
+ * @param[in] gpio_pin GPIO pin for the IR sensor
  */
 void
 ir_setup_gpio_pin (uint gpio_pin)
@@ -44,8 +43,8 @@ ir_setup_gpio_pin (uint gpio_pin)
 /**
  * @brief Detects line
  *
- * @param gpio_pin_in GPIO pin for the IR sensor
- * @return uint16_t
+ * @param[in] gpio_pin_in GPIO pin for the IR sensor
+ * @return uint16_t Returns 1 if line is detected, 0 otherwise
  */
 uint16_t
 ir_read_line (uint gpio_pin_in)
@@ -57,7 +56,7 @@ ir_read_line (uint gpio_pin_in)
 /**
  * @brief Indicates whether there is a top wall
  *
- * @param flag The indicator for the walls
+ * @param[out] p_flag Pointer to the indicator for the walls.
  */
 void
 ir_update_top_flag (ir_flags_t *p_flag)
@@ -68,7 +67,7 @@ ir_update_top_flag (ir_flags_t *p_flag)
 /**
  * @brief Indicates whether there is a left wall
  *
- * @param flag The indicator for the walls
+ * @param[out] p_flag Pointer to the indicator for the walls.
  */
 void
 ir_update_left_flag (ir_flags_t *p_flag)
@@ -79,9 +78,10 @@ ir_update_left_flag (ir_flags_t *p_flag)
 /**
  * @brief This returns the information of the walls in the node
  *
- * @param gpio_pin_left GPIO pin for the left sensor
- * @param gpio_pin_right GPIO pin for the front sensor
- * @return uint16_t
+ * @param[in] gpio_pin_left GPIO pin for the left sensor
+ * @param[in] gpio_pin_right GPIO pin for the front sensor
+ * @return uint16_t Returns wall directions as a bitfield. @see
+ * maze_wall_direction_t
  */
 uint16_t
 ir_find_wall_directions (uint gpio_pin_left, uint gpio_pin_right)
@@ -102,6 +102,8 @@ ir_find_wall_directions (uint gpio_pin_left, uint gpio_pin_right)
  * @brief This function reads the barcode and determines the colour and the
  * thickness.
  *
+ * @return barcode_line_type_t Returns the barcode line type. @see
+ * barcode_line_type
  */
 barcode_line_type_t
 ir_read_barcode (void)
