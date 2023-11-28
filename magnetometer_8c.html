@@ -121,11 +121,11 @@ $(document).ready(function(){initNavTree('magnetometer_8c.html',''); initResizab
 <code>#include &quot;pico/time.h&quot;</code><br />
 <code>#include &quot;hardware/gpio.h&quot;</code><br />
 <code>#include &quot;hardware/i2c.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="magnetometer_8h_source.html">magnetometer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="magnetometer_8h_source.html">magnetometer/magnetometer.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for magnetometer.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="magnetometer_8c__incl.svg" width="862" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="magnetometer_8c__incl.svg" width="950" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
@@ -152,24 +152,31 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>magneto_init</b> (voi
 Variables</h2></td></tr>
 <tr class="memitem:a7d6d4a309f88169a82fc89b5cd29fc02"><td class="memItemLeft" align="right" valign="top"><a id="a7d6d4a309f88169a82fc89b5cd29fc02" name="a7d6d4a309f88169a82fc89b5cd29fc02"></a>
 int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>g_bias_x</b> = 0</td></tr>
+<tr class="memdesc:a7d6d4a309f88169a82fc89b5cd29fc02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bias for x-axis acceleration. <br /></td></tr>
 <tr class="separator:a7d6d4a309f88169a82fc89b5cd29fc02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad89176acca673de4a77c438b11032065"><td class="memItemLeft" align="right" valign="top"><a id="ad89176acca673de4a77c438b11032065" name="ad89176acca673de4a77c438b11032065"></a>
 int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>g_bias_y</b> = 0</td></tr>
+<tr class="memdesc:ad89176acca673de4a77c438b11032065"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bias for y-axis acceleration. <br /></td></tr>
 <tr class="separator:ad89176acca673de4a77c438b11032065"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6934a4d279c81058dd9b0fea04cee295"><td class="memItemLeft" align="right" valign="top"><a id="a6934a4d279c81058dd9b0fea04cee295" name="a6934a4d279c81058dd9b0fea04cee295"></a>
 int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>g_bias_z</b> = 0</td></tr>
+<tr class="memdesc:a6934a4d279c81058dd9b0fea04cee295"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bias for z-axis acceleration. <br /></td></tr>
 <tr class="separator:a6934a4d279c81058dd9b0fea04cee295"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b9d1e89794cbdcd186389f41d187ca0"><td class="memItemLeft" align="right" valign="top"><a id="a5b9d1e89794cbdcd186389f41d187ca0" name="a5b9d1e89794cbdcd186389f41d187ca0"></a>
 float *&#160;</td><td class="memItemRight" valign="bottom"><b>gp_current_bearing</b> = 0</td></tr>
+<tr class="memdesc:a5b9d1e89794cbdcd186389f41d187ca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to current bearing in radians. <br /></td></tr>
 <tr class="separator:a5b9d1e89794cbdcd186389f41d187ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9d4a397ba1e1c77b53b4216cf8182ca"><td class="memItemLeft" align="right" valign="top"><a id="aa9d4a397ba1e1c77b53b4216cf8182ca" name="aa9d4a397ba1e1c77b53b4216cf8182ca"></a>
 float *&#160;</td><td class="memItemRight" valign="bottom"><b>gp_max_bearing</b> = 0</td></tr>
+<tr class="memdesc:aa9d4a397ba1e1c77b53b4216cf8182ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum bearing in radians. <br /></td></tr>
 <tr class="separator:aa9d4a397ba1e1c77b53b4216cf8182ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae53db54841b541a785d4cef8af672ff3"><td class="memItemLeft" align="right" valign="top"><a id="ae53db54841b541a785d4cef8af672ff3" name="ae53db54841b541a785d4cef8af672ff3"></a>
 float *&#160;</td><td class="memItemRight" valign="bottom"><b>gp_min_bearing</b> = 0</td></tr>
+<tr class="memdesc:ae53db54841b541a785d4cef8af672ff3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum bearing in radians. <br /></td></tr>
 <tr class="separator:ae53db54841b541a785d4cef8af672ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af46f00d68f9eff81c74301a2d52c8854"><td class="memItemLeft" align="right" valign="top"><a id="af46f00d68f9eff81c74301a2d52c8854" name="af46f00d68f9eff81c74301a2d52c8854"></a>
 float *&#160;</td><td class="memItemRight" valign="bottom"><b>gp_true_heading</b> = 0</td></tr>
+<tr class="memdesc:af46f00d68f9eff81c74301a2d52c8854"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to true heading in radians. <br /></td></tr>
 <tr class="separator:af46f00d68f9eff81c74301a2d52c8854"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -197,10 +204,12 @@ float *&#160;</td><td class="memItemRight" valign="bottom"><b>gp_true_heading</b
 
 <p>Gets the current bearing of the magnetometer sensor. </p>
 <dl class="section return"><dt>Returns</dt><dd>float Current bearing in radians. </dd></dl>
+
+<p class="reference">References <a class="el" href="magnetometer_8c.html#a5b9d1e89794cbdcd186389f41d187ca0">gp_current_bearing</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="magnetometer_8c_a3bee957bff548f4b97b55732f67f1668_icgraph.svg" width="362" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="magnetometer_8c_a3bee957bff548f4b97b55732f67f1668_icgraph.svg" width="386" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -225,6 +234,8 @@ Here is the caller graph for this function:</div>
 <p>Gets the true bearing of the magnetometer sensor. </p>
 <dl class="section return"><dt>Returns</dt><dd>float True bearing in radians. </dd></dl>
 
+<p class="reference">References <a class="el" href="magnetometer_8c.html#af46f00d68f9eff81c74301a2d52c8854">gp_true_heading</a>.</p>
+
 </div>
 </div>
 <a id="aeba0958dded41b25cb48a6b3a75bd9d2" name="aeba0958dded41b25cb48a6b3a75bd9d2"></a>
@@ -248,6 +259,8 @@ Here is the caller graph for this function:</div>
 <dd>
 false Bearing is valid. </dd></dl>
 
+<p class="reference">References <a class="el" href="magnetometer_8c.html#a5b9d1e89794cbdcd186389f41d187ca0">gp_current_bearing</a>, <a class="el" href="magnetometer_8c.html#aa9d4a397ba1e1c77b53b4216cf8182ca">gp_max_bearing</a>, and <a class="el" href="magnetometer_8c.html#ae53db54841b541a785d4cef8af672ff3">gp_min_bearing</a>.</p>
+
 </div>
 </div>
 <a id="a0ff2ca25675ee43f5fb9d0da7ae0f3be" name="a0ff2ca25675ee43f5fb9d0da7ae0f3be"></a>
@@ -267,6 +280,8 @@ false Bearing is valid. </dd></dl>
 </div><div class="memdoc">
 
 <p>Reads magnetometer data from the magnetometer sensor and outputs the values into the global variables. </p>
+
+<p class="reference">References <a class="el" href="magnetometer_8c.html#a5b9d1e89794cbdcd186389f41d187ca0">gp_current_bearing</a>, <a class="el" href="magnetometer_8c.html#aa9d4a397ba1e1c77b53b4216cf8182ca">gp_max_bearing</a>, <a class="el" href="magnetometer_8c.html#ae53db54841b541a785d4cef8af672ff3">gp_min_bearing</a>, <a class="el" href="magnetometer_8c.html#af46f00d68f9eff81c74301a2d52c8854">gp_true_heading</a>, <a class="el" href="group__magnetometer__constants.html#ga1934f928422b33417ca4e0a37e2705d3">MAGNETO_BEARING_OFFSET</a>, and <a class="el" href="group__magnetometer__constants.html#ga1933244a5e1625442302e3776a6ed79e">MAGNETO_METER_ADDR</a>.</p>
 
 </div>
 </div>

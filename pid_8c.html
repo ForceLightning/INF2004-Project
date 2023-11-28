@@ -110,35 +110,34 @@ $(document).ready(function(){initNavTree('pid_8c.html',''); initResizable(); });
   <div class="headertitle"><div class="title">pid.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="motor__control_8h_source.html">motor_control.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="maze_8h_source.html">maze.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="pid_8h_source.html">pid.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="magnetometer_8h_source.html">magnetometer.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="motor__control_8h_source.html">motor/motor_control.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="pid_8h_source.html">pid/pid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="magnetometer_8h_source.html">magnetometer/magnetometer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="maze_8h_source.html">pathfinding/maze.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for pid.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="pid_8c__incl.svg" width="452" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="pid_8c__incl.svg" width="562" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aab06760403be2a49cb1fc5997b16d0a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pid_8c.html#aab06760403be2a49cb1fc5997b16d0a6">bearing_correction</a> (float target_bearing, float current_bearing, <a class="el" href="pid_8h.html#a1d86fda34540b6061ddf110c96406303">pid_params_t</a> *p_pid_params)</td></tr>
-<tr class="memdesc:aab06760403be2a49cb1fc5997b16d0a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the motor differential ratio based on the target bearing and current bearing.  <a href="pid_8c.html#aab06760403be2a49cb1fc5997b16d0a6">More...</a><br /></td></tr>
-<tr class="separator:aab06760403be2a49cb1fc5997b16d0a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecce6c03751e0fc8169a1614db629a95"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pid_8c.html#aecce6c03751e0fc8169a1614db629a95">calculate_pid</a> (float current_bearing, float target_bearing, float current_ratio, <a class="el" href="pid_8h.html#a1d86fda34540b6061ddf110c96406303">pid_params_t</a> *p_pid_params)</td></tr>
-<tr class="memdesc:aecce6c03751e0fc8169a1614db629a95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the PID control signal.  <a href="pid_8c.html#aecce6c03751e0fc8169a1614db629a95">More...</a><br /></td></tr>
-<tr class="separator:aecce6c03751e0fc8169a1614db629a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97d510886f5f84c9e49e1eaa220d7859"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pid_8c.html#a97d510886f5f84c9e49e1eaa220d7859">init_pid_error_correction</a> (<a class="el" href="pid_8h.html#a1d86fda34540b6061ddf110c96406303">pid_params_t</a> *p_pid_params)</td></tr>
-<tr class="memdesc:a97d510886f5f84c9e49e1eaa220d7859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets defaults for PID parameters.  <a href="pid_8c.html#a97d510886f5f84c9e49e1eaa220d7859">More...</a><br /></td></tr>
-<tr class="separator:a97d510886f5f84c9e49e1eaa220d7859"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb5f8fde344a9de8b942207909ae46f8"><td class="memItemLeft" align="right" valign="top"><a id="acb5f8fde344a9de8b942207909ae46f8" name="acb5f8fde344a9de8b942207909ae46f8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init_pid_structs</b> (<a class="el" href="structpid__turn__params.html">pid_turn_params_t</a> *p_turn_params)</td></tr>
-<tr class="memdesc:acb5f8fde344a9de8b942207909ae46f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up pid struct(s). <br /></td></tr>
-<tr class="separator:acb5f8fde344a9de8b942207909ae46f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ba495049f805afac3a7b18020ce0cf4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pid_8c.html#a1ba495049f805afac3a7b18020ce0cf4">navigate_car_turn</a> (<a class="el" href="structpid__turn__params.html">pid_turn_params_t</a> *p_turn_params, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> direction)</td></tr>
-<tr class="memdesc:a1ba495049f805afac3a7b18020ce0cf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to turn the car and move in a given direction.  <a href="pid_8c.html#a1ba495049f805afac3a7b18020ce0cf4">More...</a><br /></td></tr>
-<tr class="separator:a1ba495049f805afac3a7b18020ce0cf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb68d16b0888d974c14bcefee0c03825"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pid_8c.html#acb68d16b0888d974c14bcefee0c03825">pid_bearing_correction</a> (float target_bearing, float current_bearing, <a class="el" href="pid_8h.html#a8ef7439bc185f839f220b5e74e4354cb">pid_params_t</a> *p_pid_params)</td></tr>
+<tr class="memdesc:acb68d16b0888d974c14bcefee0c03825"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the motor differential ratio based on the target bearing and current bearing.  <a href="pid_8c.html#acb68d16b0888d974c14bcefee0c03825">More...</a><br /></td></tr>
+<tr class="separator:acb68d16b0888d974c14bcefee0c03825"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a820cbffab6b043d0018e7e9937a5729c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pid_8c.html#a820cbffab6b043d0018e7e9937a5729c">pid_calculate_correction</a> (float current_bearing, float target_bearing, float current_ratio, <a class="el" href="pid_8h.html#a8ef7439bc185f839f220b5e74e4354cb">pid_params_t</a> *p_pid_params)</td></tr>
+<tr class="memdesc:a820cbffab6b043d0018e7e9937a5729c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the PID control signal.  <a href="pid_8c.html#a820cbffab6b043d0018e7e9937a5729c">More...</a><br /></td></tr>
+<tr class="separator:a820cbffab6b043d0018e7e9937a5729c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad310270bc91fea8409f7353704826518"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pid_8c.html#ad310270bc91fea8409f7353704826518">pid_init_error_correction</a> (<a class="el" href="pid_8h.html#a8ef7439bc185f839f220b5e74e4354cb">pid_params_t</a> *p_pid_params)</td></tr>
+<tr class="memdesc:ad310270bc91fea8409f7353704826518"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets defaults for PID parameters.  <a href="pid_8c.html#ad310270bc91fea8409f7353704826518">More...</a><br /></td></tr>
+<tr class="separator:ad310270bc91fea8409f7353704826518"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2df167fb87eed8f206d2231abc2b7610"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pid_8c.html#a2df167fb87eed8f206d2231abc2b7610">pid_init_structs</a> (<a class="el" href="pid_8h.html#af6bad7c524c5d879ef099e8b5caa2b70">pid_turn_params_t</a> *p_turn_params)</td></tr>
+<tr class="memdesc:a2df167fb87eed8f206d2231abc2b7610"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up pid struct(s).  <a href="pid_8c.html#a2df167fb87eed8f206d2231abc2b7610">More...</a><br /></td></tr>
+<tr class="separator:a2df167fb87eed8f206d2231abc2b7610"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71879f5750062bb9d1e51da2a02d626d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pid_8c.html#a71879f5750062bb9d1e51da2a02d626d">pid_navigate_turn</a> (<a class="el" href="pid_8h.html#af6bad7c524c5d879ef099e8b5caa2b70">pid_turn_params_t</a> *p_turn_params, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> direction)</td></tr>
+<tr class="memdesc:a71879f5750062bb9d1e51da2a02d626d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to turn the car and move in a given direction.  <a href="pid_8c.html#a71879f5750062bb9d1e51da2a02d626d">More...</a><br /></td></tr>
+<tr class="separator:a71879f5750062bb9d1e51da2a02d626d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Bryan Seah </dd></dl>
@@ -146,14 +145,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>init_pid_structs</b> 
 <dl class="section date"><dt>Date</dt><dd>2023-10-29</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2023 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="aab06760403be2a49cb1fc5997b16d0a6" name="aab06760403be2a49cb1fc5997b16d0a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab06760403be2a49cb1fc5997b16d0a6">&#9670;&#160;</a></span>bearing_correction()</h2>
+<a id="acb68d16b0888d974c14bcefee0c03825" name="acb68d16b0888d974c14bcefee0c03825"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb68d16b0888d974c14bcefee0c03825">&#9670;&#160;</a></span>pid_bearing_correction()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void bearing_correction </td>
+          <td class="memname">void pid_bearing_correction </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>target_bearing</em>, </td>
@@ -167,7 +166,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>init_pid_structs</b> 
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="pid_8h.html#a1d86fda34540b6061ddf110c96406303">pid_params_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="pid_8h.html#a8ef7439bc185f839f220b5e74e4354cb">pid_params_t</a> *&#160;</td>
           <td class="paramname"><em>p_pid_params</em>&#160;</td>
         </tr>
         <tr>
@@ -188,24 +187,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>init_pid_structs</b> 
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="pid_8c.html#aecce6c03751e0fc8169a1614db629a95">calculate_pid()</a>, <a class="el" href="structpid__params.html#a26a8e60c640e821a287561fa89d15e8e">pid_params::current_bearing</a>, <a class="el" href="structpid__params.html#a1ca2fbeefe9c28662877d23bbf5aae09">pid_params::current_ratio</a>, <a class="el" href="structpid__params.html#a2dceb63003a97fa431d06d1d07edc449">pid_params::epsilon</a>, <a class="el" href="magnetometer_8c.html#a3bee957bff548f4b97b55732f67f1668">magneto_get_curr_bearing()</a>, <a class="el" href="motor__control_8c.html#a33e4c9d262504d95b4a6e42419462de6">motor_update_ratio()</a>, and <a class="el" href="structpid__params.html#a6b31ddcb125478fa054985bdc3935941">pid_params::ratio_to_bearing</a>.</p>
+<p class="reference">References <a class="el" href="structpid__params.html#a26a8e60c640e821a287561fa89d15e8e">pid_params::current_bearing</a>, <a class="el" href="structpid__params.html#a1ca2fbeefe9c28662877d23bbf5aae09">pid_params::current_ratio</a>, <a class="el" href="structpid__params.html#a2dceb63003a97fa431d06d1d07edc449">pid_params::epsilon</a>, <a class="el" href="magnetometer_8c.html#a3bee957bff548f4b97b55732f67f1668">magneto_get_curr_bearing()</a>, <a class="el" href="motor__control_8c.html#a33e4c9d262504d95b4a6e42419462de6">motor_update_ratio()</a>, <a class="el" href="group__pid__constants.html#gaee20130608abfeaf459568b796ecdeda">PID_BIAS_LEFT_RATIO</a>, <a class="el" href="pid_8c.html#a820cbffab6b043d0018e7e9937a5729c">pid_calculate_correction()</a>, and <a class="el" href="structpid__params.html#a6b31ddcb125478fa054985bdc3935941">pid_params::ratio_to_bearing</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="pid_8c_aab06760403be2a49cb1fc5997b16d0a6_cgraph.svg" width="362" height="135"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="pid_8c_acb68d16b0888d974c14bcefee0c03825_cgraph.svg" width="386" height="135"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
 </div>
 </div>
-<a id="aecce6c03751e0fc8169a1614db629a95" name="aecce6c03751e0fc8169a1614db629a95"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aecce6c03751e0fc8169a1614db629a95">&#9670;&#160;</a></span>calculate_pid()</h2>
+<a id="a820cbffab6b043d0018e7e9937a5729c" name="a820cbffab6b043d0018e7e9937a5729c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a820cbffab6b043d0018e7e9937a5729c">&#9670;&#160;</a></span>pid_calculate_correction()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float calculate_pid </td>
+          <td class="memname">float pid_calculate_correction </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>current_bearing</em>, </td>
@@ -225,7 +224,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="pid_8h.html#a1d86fda34540b6061ddf110c96406303">pid_params_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="pid_8h.html#a8ef7439bc185f839f220b5e74e4354cb">pid_params_t</a> *&#160;</td>
           <td class="paramname"><em>p_pid_params</em>&#160;</td>
         </tr>
         <tr>
@@ -252,22 +251,22 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="pid_8c_aecce6c03751e0fc8169a1614db629a95_icgraph.svg" width="286" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="pid_8c_a820cbffab6b043d0018e7e9937a5729c_icgraph.svg" width="374" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
 </div>
 </div>
-<a id="a97d510886f5f84c9e49e1eaa220d7859" name="a97d510886f5f84c9e49e1eaa220d7859"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97d510886f5f84c9e49e1eaa220d7859">&#9670;&#160;</a></span>init_pid_error_correction()</h2>
+<a id="ad310270bc91fea8409f7353704826518" name="ad310270bc91fea8409f7353704826518"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad310270bc91fea8409f7353704826518">&#9670;&#160;</a></span>pid_init_error_correction()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void init_pid_error_correction </td>
+          <td class="memname">void pid_init_error_correction </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="pid_8h.html#a1d86fda34540b6061ddf110c96406303">pid_params_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="pid_8h.html#a8ef7439bc185f839f220b5e74e4354cb">pid_params_t</a> *&#160;</td>
           <td class="paramname"><em>p_pid_params</em></td><td>)</td>
           <td></td>
         </tr>
@@ -282,20 +281,54 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="structpid__params.html#a26a8e60c640e821a287561fa89d15e8e">pid_params::current_bearing</a>, <a class="el" href="structpid__params.html#a1ca2fbeefe9c28662877d23bbf5aae09">pid_params::current_ratio</a>, <a class="el" href="structpid__params.html#a2dceb63003a97fa431d06d1d07edc449">pid_params::epsilon</a>, <a class="el" href="structpid__params.html#a1174af01b8a329a6d465ea6e0951b3e5">pid_params::integral</a>, <a class="el" href="structpid__params.html#a3fc9a4919eef40d0048d7ad445aaf974">pid_params::k_d</a>, <a class="el" href="structpid__params.html#add2e55125fb5c43e2bc76af4d0730418">pid_params::k_i</a>, <a class="el" href="structpid__params.html#a91729034eb76b81af8effb06803a8b94">pid_params::k_p</a>, <a class="el" href="structpid__params.html#a461cae71b420a0cbbb17f75db63af2b8">pid_params::prev_error</a>, <a class="el" href="structpid__params.html#a6b31ddcb125478fa054985bdc3935941">pid_params::ratio_to_bearing</a>, and <a class="el" href="structpid__params.html#ac42e310b3d595fffa6195cc51d11e240">pid_params::setpoint</a>.</p>
+<p class="reference">References <a class="el" href="structpid__params.html#a26a8e60c640e821a287561fa89d15e8e">pid_params::current_bearing</a>, <a class="el" href="structpid__params.html#a1ca2fbeefe9c28662877d23bbf5aae09">pid_params::current_ratio</a>, <a class="el" href="structpid__params.html#a2dceb63003a97fa431d06d1d07edc449">pid_params::epsilon</a>, <a class="el" href="structpid__params.html#a1174af01b8a329a6d465ea6e0951b3e5">pid_params::integral</a>, <a class="el" href="structpid__params.html#a3fc9a4919eef40d0048d7ad445aaf974">pid_params::k_d</a>, <a class="el" href="structpid__params.html#add2e55125fb5c43e2bc76af4d0730418">pid_params::k_i</a>, <a class="el" href="structpid__params.html#a91729034eb76b81af8effb06803a8b94">pid_params::k_p</a>, <a class="el" href="group__pid__constants.html#ga2658017fe72dffc7a35efcd90a0a5eea">PID_EPSILON</a>, <a class="el" href="group__pid__constants.html#gaee243663cc71fd10f4ff8552c3087a26">PID_KD</a>, <a class="el" href="group__pid__constants.html#ga92a0aaeab94f5f64e5ad340e1e9b86dd">PID_KI</a>, <a class="el" href="group__pid__constants.html#ga6b207f9033329febafe1690def5a0dc9">PID_KP</a>, <a class="el" href="group__pid__constants.html#ga3ad14038bc62f4786a2a438ccea9e362">PID_RATIO_TO_BEARING</a>, <a class="el" href="structpid__params.html#a461cae71b420a0cbbb17f75db63af2b8">pid_params::prev_error</a>, <a class="el" href="structpid__params.html#a6b31ddcb125478fa054985bdc3935941">pid_params::ratio_to_bearing</a>, and <a class="el" href="structpid__params.html#ac42e310b3d595fffa6195cc51d11e240">pid_params::setpoint</a>.</p>
 
 </div>
 </div>
-<a id="a1ba495049f805afac3a7b18020ce0cf4" name="a1ba495049f805afac3a7b18020ce0cf4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ba495049f805afac3a7b18020ce0cf4">&#9670;&#160;</a></span>navigate_car_turn()</h2>
+<a id="a2df167fb87eed8f206d2231abc2b7610" name="a2df167fb87eed8f206d2231abc2b7610"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2df167fb87eed8f206d2231abc2b7610">&#9670;&#160;</a></span>pid_init_structs()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void navigate_car_turn </td>
+          <td class="memname">void pid_init_structs </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structpid__turn__params.html">pid_turn_params_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="pid_8h.html#af6bad7c524c5d879ef099e8b5caa2b70">pid_turn_params_t</a> *&#160;</td>
+          <td class="paramname"><em>p_turn_params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets up pid struct(s). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">p_turn_params</td><td>Pointer to the turn parameters. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">References <a class="el" href="structpid__turn__params.html#a1e816755e1453cdece3d6f72b41dd6a8">pid_turn_params::b_is_centered</a>, <a class="el" href="structpid__turn__params.html#ae17a49fe40fae3baa0adb8c4414777f8">pid_turn_params::b_is_moved_cell</a>, <a class="el" href="structpid__turn__params.html#adca15e17d96dac632bbd79a60aed848d">pid_turn_params::b_is_turn_complete</a>, <a class="el" href="structpid__turn__params.html#a059f72aa600a4f2f8194e0a77e1534fa">pid_turn_params::b_is_turning</a>, <a class="el" href="structpid__turn__params.html#a4082419c0a4d8dae0f68655b4fae78d5">pid_turn_params::encoder_step_count</a>, and <a class="el" href="structpid__turn__params.html#a70213293bb823cccf277e4955f11966d">pid_turn_params::turn_direction</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="pid_8c_a2df167fb87eed8f206d2231abc2b7610_icgraph.svg" width="459" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a71879f5750062bb9d1e51da2a02d626d" name="a71879f5750062bb9d1e51da2a02d626d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71879f5750062bb9d1e51da2a02d626d">&#9670;&#160;</a></span>pid_navigate_turn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pid_navigate_turn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="pid_8h.html#af6bad7c524c5d879ef099e8b5caa2b70">pid_turn_params_t</a> *&#160;</td>
           <td class="paramname"><em>p_turn_params</em>, </td>
         </tr>
         <tr>
@@ -321,11 +354,17 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="structpid__turn__params.html#a1e816755e1453cdece3d6f72b41dd6a8">pid_turn_params::b_is_centered</a>, <a class="el" href="structpid__turn__params.html#ae17a49fe40fae3baa0adb8c4414777f8">pid_turn_params::b_is_moved_cell</a>, <a class="el" href="structpid__turn__params.html#adca15e17d96dac632bbd79a60aed848d">pid_turn_params::b_is_turn_complete</a>, <a class="el" href="structpid__turn__params.html#a059f72aa600a4f2f8194e0a77e1534fa">pid_turn_params::b_is_turning</a>, <a class="el" href="structpid__turn__params.html#a4082419c0a4d8dae0f68655b4fae78d5">pid_turn_params::encoder_step_count</a>, <a class="el" href="pid_8c.html#acb5f8fde344a9de8b942207909ae46f8">init_pid_structs()</a>, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4daa6b2ed277f790224ce5aa0e79f7de0752">MAZE_EAST</a>, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4daa64ce1a553342c0d3e05b41cf5d195cc7">MAZE_SOUTH</a>, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4daa7f96a30622b21ea7fd7090df6e68c595">MAZE_WEST</a>, <a class="el" href="motor__control_8c.html#a793a32f3a145d0efad56a327d7b2f33b">motor_move_forward()</a>, <a class="el" href="motor__control_8c.html#a24063f2aae5b4a3eb6b33dc2eea150dd">motor_turn_left()</a>, and <a class="el" href="motor__control_8c.html#a63c73ae82a6d47bc620608fc752b83f9">motor_turn_right()</a>.</p>
+<p class="reference">References <a class="el" href="structpid__turn__params.html#a1e816755e1453cdece3d6f72b41dd6a8">pid_turn_params::b_is_centered</a>, <a class="el" href="structpid__turn__params.html#ae17a49fe40fae3baa0adb8c4414777f8">pid_turn_params::b_is_moved_cell</a>, <a class="el" href="structpid__turn__params.html#adca15e17d96dac632bbd79a60aed848d">pid_turn_params::b_is_turn_complete</a>, <a class="el" href="structpid__turn__params.html#a059f72aa600a4f2f8194e0a77e1534fa">pid_turn_params::b_is_turning</a>, <a class="el" href="structpid__turn__params.html#a4082419c0a4d8dae0f68655b4fae78d5">pid_turn_params::encoder_step_count</a>, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4daa6b2ed277f790224ce5aa0e79f7de0752">MAZE_EAST</a>, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4daa64ce1a553342c0d3e05b41cf5d195cc7">MAZE_SOUTH</a>, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4daa7f96a30622b21ea7fd7090df6e68c595">MAZE_WEST</a>, <a class="el" href="motor__control_8c.html#aa0ac4ae2f8c20282dec6b8e443fd6666">motor_move_forward()</a>, <a class="el" href="motor__control_8c.html#a24063f2aae5b4a3eb6b33dc2eea150dd">motor_turn_left()</a>, <a class="el" href="motor__control_8c.html#a63c73ae82a6d47bc620608fc752b83f9">motor_turn_right()</a>, <a class="el" href="group__pid__encoder__constants.html#ga61a87cc66280d2c2914d4d60359ddfd9">PID_ENCODER_CENTER_OFFSET</a>, <a class="el" href="group__pid__encoder__constants.html#gac9cc5fa08fc1503a9191e9ab454cc5a5">PID_ENCODER_STEP_MOVE</a>, <a class="el" href="group__pid__encoder__constants.html#gab315c8da6ca5ad629de723143e7e1806">PID_ENCODER_STEP_TURN_180_DEG</a>, <a class="el" href="group__pid__encoder__constants.html#ga2b03cfdadab84700e2f39e57c397b6be">PID_ENCODER_STEP_TURN_90_DEG</a>, and <a class="el" href="pid_8c.html#a2df167fb87eed8f206d2231abc2b7610">pid_init_structs()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="pid_8c_a1ba495049f805afac3a7b18020ce0cf4_cgraph.svg" width="534" height="184"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="pid_8c_a71879f5750062bb9d1e51da2a02d626d_cgraph.svg" width="532" height="184"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="pid_8c_a71879f5750062bb9d1e51da2a02d626d_icgraph.svg" width="300" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 

@@ -1,10 +1,10 @@
 <map id="src/pathfinding/floodfill.c" name="src/pathfinding/floodfill.c">
-<area shape="rect" id="node1" title="This file contains the implementation of the floodfill algorithm for mapping the maze and determining..." alt="" coords="96,5,255,31"/>
-<area shape="rect" id="node2" title=" " alt="" coords="32,152,92,177"/>
-<area shape="rect" id="node3" title=" " alt="" coords="58,225,133,251"/>
-<area shape="rect" id="node4" title=" " alt="" coords="38,79,100,104"/>
-<area shape="rect" id="node5" title=" " alt="" coords="268,225,332,251"/>
-<area shape="rect" id="node6" href="$maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="232,152,295,177"/>
-<area shape="rect" id="node7" href="$binary__heap_8h.html" title="This file contains the declarations for the binary min&#45;heap used in the a* algorithm." alt="" coords="125,79,226,104"/>
-<area shape="rect" id="node8" href="$floodfill_8h.html" title="This file contains the function prototypes for the floodfill algorithm for mapping of the maze." alt="" coords="302,79,372,104"/>
+<area shape="rect" id="node1" title="This file contains the implementation of the floodfill algorithm for mapping the maze and determining..." alt="" coords="103,5,262,31"/>
+<area shape="rect" id="node2" title=" " alt="" coords="34,167,94,192"/>
+<area shape="rect" id="node3" title=" " alt="" coords="82,240,157,265"/>
+<area shape="rect" id="node4" title=" " alt="" coords="34,86,96,111"/>
+<area shape="rect" id="node5" title=" " alt="" coords="304,240,368,265"/>
+<area shape="rect" id="node6" href="$maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="220,167,350,192"/>
+<area shape="rect" id="node7" href="$binary__heap_8h.html" title="This file contains the declarations for the binary min&#45;heap used in the a* algorithm." alt="" coords="121,79,244,119"/>
+<area shape="rect" id="node8" href="$floodfill_8h.html" title="This file contains the function prototypes for the floodfill algorithm for mapping of the maze." alt="" coords="319,86,456,111"/>
 </map>

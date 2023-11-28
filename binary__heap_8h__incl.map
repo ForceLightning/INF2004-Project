@@ -1,7 +1,7 @@
 <map id="src/pathfinding/binary_heap.h" name="src/pathfinding/binary_heap.h">
-<area shape="rect" id="node1" title="This file contains the declarations for the binary min&#45;heap used in the a* algorithm." alt="" coords="35,5,179,45"/>
+<area shape="rect" id="node1" title="This file contains the declarations for the binary min&#45;heap used in the a* algorithm." alt="" coords="63,5,207,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,167,69,192"/>
-<area shape="rect" id="node3" href="$maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="75,93,138,119"/>
-<area shape="rect" id="node5" title=" " alt="" coords="162,93,222,119"/>
-<area shape="rect" id="node4" title=" " alt="" coords="93,167,168,192"/>
+<area shape="rect" id="node3" href="$maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="70,93,199,119"/>
+<area shape="rect" id="node5" title=" " alt="" coords="223,93,283,119"/>
+<area shape="rect" id="node4" title=" " alt="" coords="97,167,172,192"/>
 </map>

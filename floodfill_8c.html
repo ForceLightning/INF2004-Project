@@ -117,22 +117,22 @@ $(document).ready(function(){initNavTree('floodfill_8c.html',''); initResizable(
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="maze_8h_source.html">maze.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="binary__heap_8h_source.html">binary_heap.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="floodfill_8h_source.html">floodfill.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="maze_8h_source.html">pathfinding/maze.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="binary__heap_8h_source.html">pathfinding/binary_heap.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floodfill_8h_source.html">pathfinding/floodfill.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for floodfill.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="floodfill_8c__incl.svg" width="400" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="floodfill_8c__incl.svg" width="486" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a921aecf0c7109fefa4e4edffc7c5c0db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floodfill_8c.html#a921aecf0c7109fefa4e4edffc7c5c0db">floodfill_init_maze_nowall</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid)</td></tr>
+<tr class="memitem:a921aecf0c7109fefa4e4edffc7c5c0db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floodfill_8c.html#a921aecf0c7109fefa4e4edffc7c5c0db">floodfill_init_maze_nowall</a> (<a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *p_grid)</td></tr>
 <tr class="memdesc:a921aecf0c7109fefa4e4edffc7c5c0db"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function initialises a maze with no walls to perform the floodfill algorithm on.  <a href="floodfill_8c.html#a921aecf0c7109fefa4e4edffc7c5c0db">More...</a><br /></td></tr>
 <tr class="separator:a921aecf0c7109fefa4e4edffc7c5c0db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa793d42b399aedc7163225eda679b11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floodfill_8c.html#aaa793d42b399aedc7163225eda679b11">floodfill_map_maze</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, const <a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *p_end_node, <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *p_navigator, <a class="el" href="floodfill_8h.html#a085b6be2b6e4f1335e82e7b902b0f1ca">floodfill_explore_func_t</a> p_explore_func, <a class="el" href="floodfill_8h.html#aaa5dd0d15668be40804766df2d3fc69d">floodfill_move_navigator_t</a> p_move_navigator)</td></tr>
+<tr class="memitem:aaa793d42b399aedc7163225eda679b11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floodfill_8c.html#aaa793d42b399aedc7163225eda679b11">floodfill_map_maze</a> (<a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *p_grid, const <a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> *p_end_node, <a class="el" href="maze_8h.html#a097c7005561a4e9caebe5dbf6c080344">maze_navigator_state_t</a> *p_navigator, <a class="el" href="floodfill_8h.html#a085b6be2b6e4f1335e82e7b902b0f1ca">floodfill_explore_func_t</a> p_explore_func, <a class="el" href="floodfill_8h.html#aaa5dd0d15668be40804766df2d3fc69d">floodfill_move_navigator_t</a> p_move_navigator)</td></tr>
 <tr class="memdesc:aaa793d42b399aedc7163225eda679b11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the floodfill algorithm to map out the maze.  <a href="floodfill_8c.html#aaa793d42b399aedc7163225eda679b11">More...</a><br /></td></tr>
 <tr class="separator:aaa793d42b399aedc7163225eda679b11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -152,7 +152,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void floodfill_init_maze_nowall </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmaze__grid.html">maze_grid_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *&#160;</td>
           <td class="paramname"><em>p_grid</em></td><td>)</td>
           <td></td>
         </tr>
@@ -162,7 +162,7 @@ Functions</h2></td></tr>
 <p>This function initialises a maze with no walls to perform the floodfill algorithm on. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p_grid</td><td>Pointer to the maze. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">p_grid</td><td>Pointer to the maze. </td></tr>
   </table>
   </dd>
 </dl>
@@ -186,19 +186,19 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void floodfill_map_maze </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmaze__grid.html">maze_grid_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *&#160;</td>
           <td class="paramname"><em>p_grid</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> *&#160;</td>
           <td class="paramname"><em>p_end_node</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a097c7005561a4e9caebe5dbf6c080344">maze_navigator_state_t</a> *&#160;</td>
           <td class="paramname"><em>p_navigator</em>, </td>
         </tr>
         <tr>

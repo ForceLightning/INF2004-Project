@@ -1,0 +1,4 @@
+<map id="motor_stop" name="motor_stop">
+<area shape="rect" id="node1" title="A function to stop the car." alt="" coords="5,5,92,31"/>
+<area shape="rect" id="node2" href="$motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3" title="A function to update the PWM duty cycle and wrap value." alt="" coords="140,5,276,31"/>
+</map>

@@ -1,11 +1,11 @@
 <map id="tests/pathfinding_tests.c" name="tests/pathfinding_tests.c">
-<area shape="rect" id="node1" title="This file contains the tests for the A* pathfinding algorithm." alt="" coords="227,5,390,31"/>
+<area shape="rect" id="node1" title="This file contains the tests for the A* pathfinding algorithm." alt="" coords="238,5,401,31"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,79,73,104"/>
-<area shape="rect" id="node3" title=" " alt="" coords="149,225,209,251"/>
-<area shape="rect" id="node4" title=" " alt="" coords="261,299,325,324"/>
-<area shape="rect" id="node5" title=" " alt="" coords="536,79,599,104"/>
-<area shape="rect" id="node6" title=" " alt="" coords="373,299,447,324"/>
-<area shape="rect" id="node7" href="$a__star_8h.html" title="Header file for the a* algorithm." alt="" coords="241,79,376,104"/>
-<area shape="rect" id="node9" href="$maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="365,225,428,251"/>
-<area shape="rect" id="node8" href="$binary__heap_8h.html" title="This file contains the declarations for the binary min&#45;heap used in the a* algorithm." alt="" coords="258,152,359,177"/>
+<area shape="rect" id="node3" title=" " alt="" coords="149,240,209,265"/>
+<area shape="rect" id="node4" title=" " alt="" coords="251,313,315,339"/>
+<area shape="rect" id="node5" title=" " alt="" coords="557,79,620,104"/>
+<area shape="rect" id="node6" title=" " alt="" coords="430,313,505,339"/>
+<area shape="rect" id="node7" href="$a__star_8h.html" title="Header file for the a* algorithm." alt="" coords="252,79,387,104"/>
+<area shape="rect" id="node9" href="$maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="352,240,481,265"/>
+<area shape="rect" id="node8" href="$binary__heap_8h.html" title="This file contains the declarations for the binary min&#45;heap used in the a* algorithm." alt="" coords="258,152,381,192"/>
 </map>

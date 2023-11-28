@@ -119,144 +119,39 @@ Collaboration diagram for wifi_tcp_server:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a996f1c0373ed5677c623b81f72fb2f06"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwifi__tcp__server.html#a996f1c0373ed5677c623b81f72fb2f06">buffer_recv</a> [WIFI_BUFFER_SIZE]</td></tr>
+<tr class="memitem:a996f1c0373ed5677c623b81f72fb2f06"><td class="memItemLeft" align="right" valign="top"><a id="a996f1c0373ed5677c623b81f72fb2f06" name="a996f1c0373ed5677c623b81f72fb2f06"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>buffer_recv</b> [<a class="el" href="wifi_8h.html#af1ab7ee59d27c84b860a721a980f8b71">WIFI_BUFFER_SIZE</a>]</td></tr>
+<tr class="memdesc:a996f1c0373ed5677c623b81f72fb2f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer for received data. <br /></td></tr>
 <tr class="separator:a996f1c0373ed5677c623b81f72fb2f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c82dc51109ea04af164b0bb213d2234"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwifi__tcp__server.html#a9c82dc51109ea04af164b0bb213d2234">buffer_sent</a> [WIFI_BUFFER_SIZE]</td></tr>
+<tr class="memitem:a9c82dc51109ea04af164b0bb213d2234"><td class="memItemLeft" align="right" valign="top"><a id="a9c82dc51109ea04af164b0bb213d2234" name="a9c82dc51109ea04af164b0bb213d2234"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>buffer_sent</b> [<a class="el" href="wifi_8h.html#af1ab7ee59d27c84b860a721a980f8b71">WIFI_BUFFER_SIZE</a>]</td></tr>
+<tr class="memdesc:a9c82dc51109ea04af164b0bb213d2234"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer for sent data. <br /></td></tr>
 <tr class="separator:a9c82dc51109ea04af164b0bb213d2234"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ba80387dac4a2324d41f3958b9e4e97"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwifi__tcp__server.html#a8ba80387dac4a2324d41f3958b9e4e97">is_complete</a></td></tr>
+<tr class="memitem:a8ba80387dac4a2324d41f3958b9e4e97"><td class="memItemLeft" align="right" valign="top"><a id="a8ba80387dac4a2324d41f3958b9e4e97" name="a8ba80387dac4a2324d41f3958b9e4e97"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_complete</b></td></tr>
+<tr class="memdesc:a8ba80387dac4a2324d41f3958b9e4e97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag indicating whether the connection is complete. <br /></td></tr>
 <tr class="separator:a8ba80387dac4a2324d41f3958b9e4e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefae4075ba152272c15650aa5ae3b34d"><td class="memItemLeft" align="right" valign="top">struct tcp_pcb *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwifi__tcp__server.html#aefae4075ba152272c15650aa5ae3b34d">p_client_pcb</a></td></tr>
+<tr class="memitem:aefae4075ba152272c15650aa5ae3b34d"><td class="memItemLeft" align="right" valign="top"><a id="aefae4075ba152272c15650aa5ae3b34d" name="aefae4075ba152272c15650aa5ae3b34d"></a>
+struct tcp_pcb *&#160;</td><td class="memItemRight" valign="bottom"><b>p_client_pcb</b></td></tr>
+<tr class="memdesc:aefae4075ba152272c15650aa5ae3b34d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the client PCB. <br /></td></tr>
 <tr class="separator:aefae4075ba152272c15650aa5ae3b34d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa82570234b649c0b2ef54da43bdda18c"><td class="memItemLeft" align="right" valign="top">struct tcp_pcb *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwifi__tcp__server.html#aa82570234b649c0b2ef54da43bdda18c">p_server_pcb</a></td></tr>
+<tr class="memitem:aa82570234b649c0b2ef54da43bdda18c"><td class="memItemLeft" align="right" valign="top"><a id="aa82570234b649c0b2ef54da43bdda18c" name="aa82570234b649c0b2ef54da43bdda18c"></a>
+struct tcp_pcb *&#160;</td><td class="memItemRight" valign="bottom"><b>p_server_pcb</b></td></tr>
+<tr class="memdesc:aa82570234b649c0b2ef54da43bdda18c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the server PCB. <br /></td></tr>
 <tr class="separator:aa82570234b649c0b2ef54da43bdda18c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87070e93bad893ca3fddbe2853173b5c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwifi__tcp__server.html#a87070e93bad893ca3fddbe2853173b5c">recv_len</a></td></tr>
+<tr class="memitem:a87070e93bad893ca3fddbe2853173b5c"><td class="memItemLeft" align="right" valign="top"><a id="a87070e93bad893ca3fddbe2853173b5c" name="a87070e93bad893ca3fddbe2853173b5c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>recv_len</b></td></tr>
+<tr class="memdesc:a87070e93bad893ca3fddbe2853173b5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length of received data. <br /></td></tr>
 <tr class="separator:a87070e93bad893ca3fddbe2853173b5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a29572e19988c3954cb886b5325e07c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwifi__tcp__server.html#a0a29572e19988c3954cb886b5325e07c">run_count</a></td></tr>
+<tr class="memitem:a0a29572e19988c3954cb886b5325e07c"><td class="memItemLeft" align="right" valign="top"><a id="a0a29572e19988c3954cb886b5325e07c" name="a0a29572e19988c3954cb886b5325e07c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>run_count</b></td></tr>
+<tr class="memdesc:a0a29572e19988c3954cb886b5325e07c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counter for tracking the state of the connection. <br /></td></tr>
 <tr class="separator:a0a29572e19988c3954cb886b5325e07c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79a428820b513503b6589f9e8ed7ef49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwifi__tcp__server.html#a79a428820b513503b6589f9e8ed7ef49">sent_len</a></td></tr>
+<tr class="memitem:a79a428820b513503b6589f9e8ed7ef49"><td class="memItemLeft" align="right" valign="top"><a id="a79a428820b513503b6589f9e8ed7ef49" name="a79a428820b513503b6589f9e8ed7ef49"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>sent_len</b></td></tr>
+<tr class="memdesc:a79a428820b513503b6589f9e8ed7ef49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length of sent data. <br /></td></tr>
 <tr class="separator:a79a428820b513503b6589f9e8ed7ef49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Field Documentation</h2>
-<a id="a996f1c0373ed5677c623b81f72fb2f06" name="a996f1c0373ed5677c623b81f72fb2f06"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a996f1c0373ed5677c623b81f72fb2f06">&#9670;&#160;</a></span>buffer_recv</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t buffer_recv[WIFI_BUFFER_SIZE]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Buffer for received data </p>
-
-</div>
-</div>
-<a id="a9c82dc51109ea04af164b0bb213d2234" name="a9c82dc51109ea04af164b0bb213d2234"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c82dc51109ea04af164b0bb213d2234">&#9670;&#160;</a></span>buffer_sent</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t buffer_sent[WIFI_BUFFER_SIZE]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Buffer for sent data </p>
-
-</div>
-</div>
-<a id="a8ba80387dac4a2324d41f3958b9e4e97" name="a8ba80387dac4a2324d41f3958b9e4e97"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ba80387dac4a2324d41f3958b9e4e97">&#9670;&#160;</a></span>is_complete</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool is_complete</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Flag indicating whether the connection is complete </p>
-
-</div>
-</div>
-<a id="aefae4075ba152272c15650aa5ae3b34d" name="aefae4075ba152272c15650aa5ae3b34d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aefae4075ba152272c15650aa5ae3b34d">&#9670;&#160;</a></span>p_client_pcb</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct tcp_pcb* p_client_pcb</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Pointer to the client PCB </p>
-
-</div>
-</div>
-<a id="aa82570234b649c0b2ef54da43bdda18c" name="aa82570234b649c0b2ef54da43bdda18c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa82570234b649c0b2ef54da43bdda18c">&#9670;&#160;</a></span>p_server_pcb</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct tcp_pcb* p_server_pcb</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Pointer to the server PCB </p>
-
-</div>
-</div>
-<a id="a87070e93bad893ca3fddbe2853173b5c" name="a87070e93bad893ca3fddbe2853173b5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87070e93bad893ca3fddbe2853173b5c">&#9670;&#160;</a></span>recv_len</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int recv_len</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Length of received data </p>
-
-</div>
-</div>
-<a id="a0a29572e19988c3954cb886b5325e07c" name="a0a29572e19988c3954cb886b5325e07c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a29572e19988c3954cb886b5325e07c">&#9670;&#160;</a></span>run_count</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int run_count</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Counter for tracking the state of the connection </p>
-
-</div>
-</div>
-<a id="a79a428820b513503b6589f9e8ed7ef49" name="a79a428820b513503b6589f9e8ed7ef49"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79a428820b513503b6589f9e8ed7ef49">&#9670;&#160;</a></span>sent_len</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int sent_len</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Length of sent data </p>
-
-</div>
-</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/drivers/wifi/<a class="el" href="wifi_8h_source.html">wifi.h</a></li>
 </ul>

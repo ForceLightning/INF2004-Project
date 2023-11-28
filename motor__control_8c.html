@@ -116,25 +116,28 @@ $(document).ready(function(){initNavTree('motor__control_8c.html',''); initResiz
 <code>#include &quot;hardware/pwm.h&quot;</code><br />
 <code>#include &quot;hardware/gpio.h&quot;</code><br />
 <code>#include &quot;pico/types.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="motor__control_8h_source.html">motor_control.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="motor__control_8h_source.html">motor/motor_control.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for motor_control.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c__incl.svg" width="620" height="198"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c__incl.svg" width="658" height="198"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a793a32f3a145d0efad56a327d7b2f33b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8c.html#a793a32f3a145d0efad56a327d7b2f33b">motor_move_forward</a> ()</td></tr>
-<tr class="memdesc:a793a32f3a145d0efad56a327d7b2f33b"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to move the car forward.  <a href="motor__control_8c.html#a793a32f3a145d0efad56a327d7b2f33b">More...</a><br /></td></tr>
-<tr class="separator:a793a32f3a145d0efad56a327d7b2f33b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a216ac731db260b900f5329cbe23231"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8c.html#a0a216ac731db260b900f5329cbe23231">motor_reverse</a> ()</td></tr>
-<tr class="memdesc:a0a216ac731db260b900f5329cbe23231"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to reverse the car.  <a href="motor__control_8c.html#a0a216ac731db260b900f5329cbe23231">More...</a><br /></td></tr>
-<tr class="separator:a0a216ac731db260b900f5329cbe23231"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0ac4ae2f8c20282dec6b8e443fd6666"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8c.html#aa0ac4ae2f8c20282dec6b8e443fd6666">motor_move_forward</a> (void)</td></tr>
+<tr class="memdesc:aa0ac4ae2f8c20282dec6b8e443fd6666"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to move the car forward.  <a href="motor__control_8c.html#aa0ac4ae2f8c20282dec6b8e443fd6666">More...</a><br /></td></tr>
+<tr class="separator:aa0ac4ae2f8c20282dec6b8e443fd6666"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0796140da7a16bab07b05853d114cd1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8c.html#a0796140da7a16bab07b05853d114cd1e">motor_reverse</a> (void)</td></tr>
+<tr class="memdesc:a0796140da7a16bab07b05853d114cd1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to reverse the car.  <a href="motor__control_8c.html#a0796140da7a16bab07b05853d114cd1e">More...</a><br /></td></tr>
+<tr class="separator:a0796140da7a16bab07b05853d114cd1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c26f641f517d0324daff0a3a14b2dc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8c.html#a6c26f641f517d0324daff0a3a14b2dc0">motor_start</a> (uint clkwise_gpio, uint anti_clkwise_gpio, uint pwm_gpio)</td></tr>
 <tr class="memdesc:a6c26f641f517d0324daff0a3a14b2dc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default initialization of a single motor.  <a href="motor__control_8c.html#a6c26f641f517d0324daff0a3a14b2dc0">More...</a><br /></td></tr>
 <tr class="separator:a6c26f641f517d0324daff0a3a14b2dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49b123e7151768d344e744d0682660b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8c.html#a49b123e7151768d344e744d0682660b0">motor_stop</a> (void)</td></tr>
+<tr class="memdesc:a49b123e7151768d344e744d0682660b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to stop the car.  <a href="motor__control_8c.html#a49b123e7151768d344e744d0682660b0">More...</a><br /></td></tr>
+<tr class="separator:a49b123e7151768d344e744d0682660b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24063f2aae5b4a3eb6b33dc2eea150dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8c.html#a24063f2aae5b4a3eb6b33dc2eea150dd">motor_turn_left</a> (bool reverse_turn)</td></tr>
 <tr class="memdesc:a24063f2aae5b4a3eb6b33dc2eea150dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to turn the car left.  <a href="motor__control_8c.html#a24063f2aae5b4a3eb6b33dc2eea150dd">More...</a><br /></td></tr>
 <tr class="separator:a24063f2aae5b4a3eb6b33dc2eea150dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,14 +153,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a33e4c9d262504d95b4a6e42419462de6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8c.html#a33e4c9d262504d95b4a6e42419462de6">motor_update_ratio</a> (float new_ratio)</td></tr>
 <tr class="memdesc:a33e4c9d262504d95b4a6e42419462de6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the ratio of the left motor's duty cycle to the right motor's duty cycle.  <a href="motor__control_8c.html#a33e4c9d262504d95b4a6e42419462de6">More...</a><br /></td></tr>
 <tr class="separator:a33e4c9d262504d95b4a6e42419462de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c528baf37154d347366083f0f816846"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8c.html#a8c528baf37154d347366083f0f816846">stop</a> ()</td></tr>
-<tr class="memdesc:a8c528baf37154d347366083f0f816846"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to stop the car.  <a href="motor__control_8c.html#a8c528baf37154d347366083f0f816846">More...</a><br /></td></tr>
-<tr class="separator:a8c528baf37154d347366083f0f816846"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a63095c7a54435332fe1818a01055ac01"><td class="memItemLeft" align="right" valign="top"><a id="a63095c7a54435332fe1818a01055ac01" name="a63095c7a54435332fe1818a01055ac01"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>g_ratio</b> = MOTOR_DEFAULT_DIFF_RATIO</td></tr>
+<tr class="memdesc:a63095c7a54435332fe1818a01055ac01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global variable for motor speed difference ratio. <br /></td></tr>
 <tr class="separator:a63095c7a54435332fe1818a01055ac01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -166,8 +167,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>g_ratio</b> = MOTOR_
 <dl class="section date"><dt>Date</dt><dd>2023-10-29</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2023 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a793a32f3a145d0efad56a327d7b2f33b" name="a793a32f3a145d0efad56a327d7b2f33b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a793a32f3a145d0efad56a327d7b2f33b">&#9670;&#160;</a></span>motor_move_forward()</h2>
+<a id="aa0ac4ae2f8c20282dec6b8e443fd6666" name="aa0ac4ae2f8c20282dec6b8e443fd6666"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0ac4ae2f8c20282dec6b8e443fd6666">&#9670;&#160;</a></span>motor_move_forward()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -183,32 +184,26 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>g_ratio</b> = MOTOR_
 </div><div class="memdoc">
 
 <p>A function to move the car forward. </p>
-<p >This function moves the car forward by setting the duty cycle of both motors to be equal, as well as setting a clockwise rotation for both motors.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">motor_data</td><td>The structure containing the GPIO pin numbers for the motors. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p >This function moves the car forward by setting the duty cycle of both motors to be equal, as well as setting a clockwise rotation for both motors. </p>
 
 <p class="reference">References <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_a793a32f3a145d0efad56a327d7b2f33b_cgraph.svg" width="360" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_aa0ac4ae2f8c20282dec6b8e443fd6666_cgraph.svg" width="360" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_a793a32f3a145d0efad56a327d7b2f33b_icgraph.svg" width="328" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_aa0ac4ae2f8c20282dec6b8e443fd6666_icgraph.svg" width="492" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
 </div>
 </div>
-<a id="a0a216ac731db260b900f5329cbe23231" name="a0a216ac731db260b900f5329cbe23231"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a216ac731db260b900f5329cbe23231">&#9670;&#160;</a></span>motor_reverse()</h2>
+<a id="a0796140da7a16bab07b05853d114cd1e" name="a0796140da7a16bab07b05853d114cd1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0796140da7a16bab07b05853d114cd1e">&#9670;&#160;</a></span>motor_reverse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -224,19 +219,13 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>A function to reverse the car. </p>
-<p >This function reverses the car by setting the duty cycle of both motors to be equal, as well as setting an anti-clockwise rotation for both motors.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">motor_data</td><td>The structure containing the GPIO pin numbers for the motors. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p >This function reverses the car by setting the duty cycle of both motors to be equal, as well as setting an anti-clockwise rotation for both motors. </p>
 
 <p class="reference">References <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_a0a216ac731db260b900f5329cbe23231_cgraph.svg" width="322" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_a0796140da7a16bab07b05853d114cd1e_cgraph.svg" width="322" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -278,12 +267,41 @@ Here is the call graph for this function:</div>
 <dl class="section user"><dt>The function initializes the PWM pin and the two GPIO pins for the</dt><dd>motor. It also sets the clock divider to 100 and enables the PWM slice.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">clkwise_gpio</td><td>GPIO pin number for clockwise rotation. </td></tr>
-    <tr><td class="paramname">anti_clkwise_gpio</td><td>GPIO pin number for anticlockwise rotation. </td></tr>
-    <tr><td class="paramname">pwm_gpio</td><td>GPIO pin number for PWM output to control motor speed. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">clkwise_gpio</td><td>GPIO pin number for clockwise rotation. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">anti_clkwise_gpio</td><td>GPIO pin number for anticlockwise rotation. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwm_gpio</td><td>GPIO pin number for PWM output to control motor speed. </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a49b123e7151768d344e744d0682660b0" name="a49b123e7151768d344e744d0682660b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49b123e7151768d344e744d0682660b0">&#9670;&#160;</a></span>motor_stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void motor_stop </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A function to stop the car. </p>
+<p >This function works by setting the duty cycle of both motors to 0. </p>
+
+<p class="reference">References <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_a49b123e7151768d344e744d0682660b0_cgraph.svg" width="282" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -307,7 +325,6 @@ Here is the call graph for this function:</div>
 <p >This function turns the car left by setting the duty cycle of the left motor to be lower than the right motor, which enables the car to turn left. In addition, the left motor is set to rotate in the opposite direction of the right motor.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor_data</td><td>The structure containing the GPIO pin numbers for the motors. </td></tr>
     <tr><td class="paramname">reverse_turn</td><td>A boolean value to indicate that the car is turning in reverse. </td></tr>
   </table>
   </dd>
@@ -323,7 +340,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_a24063f2aae5b4a3eb6b33dc2eea150dd_icgraph.svg" width="294" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_a24063f2aae5b4a3eb6b33dc2eea150dd_icgraph.svg" width="458" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -349,7 +366,6 @@ Here is the caller graph for this function:</div>
 <p >This function turns the car right by setting the duty cycle of the right motor to be lower than the left motor, which enables the car to turn left. In addition, the right motor is set to rotate in the opposite direction of the right motor.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor_data</td><td>The structure containing the GPIO pin numbers for the motors. </td></tr>
     <tr><td class="paramname">reverse_turn</td><td>A boolean value to indicate that the car is turning in reverse. </td></tr>
   </table>
   </dd>
@@ -365,7 +381,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_a63c73ae82a6d47bc620608fc752b83f9_icgraph.svg" width="300" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_a63c73ae82a6d47bc620608fc752b83f9_icgraph.svg" width="464" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -412,17 +428,17 @@ Here is the caller graph for this function:</div>
 <p>A function to update the direction of the motor's rotation. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">clkwise_gpio</td><td>The GPIO pin number for clockwise rotation. </td></tr>
-    <tr><td class="paramname">anti_clkwise_gpio</td><td>The GPIO pin number for anticlockwise rotation. </td></tr>
-    <tr><td class="paramname">clkwise</td><td>The digital value to set for clockwise rotation. </td></tr>
-    <tr><td class="paramname">anti_clkwise</td><td>The digital value to set for anticlockwise rotation. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">clkwise_gpio</td><td>The GPIO pin number for clockwise rotation. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">anti_clkwise_gpio</td><td>The GPIO pin number for anticlockwise rotation. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">clkwise</td><td>The digital value to set for clockwise rotation. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">anti_clkwise</td><td>The digital value to set for anticlockwise rotation. </td></tr>
   </table>
   </dd>
 </dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_a3dc0491deae0e443306e8695d7879daf_icgraph.svg" width="534" height="184"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_a3dc0491deae0e443306e8695d7879daf_icgraph.svg" width="698" height="184"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -464,16 +480,16 @@ Here is the caller graph for this function:</div>
 <dl class="section user"><dt>This function updates the PWM duty cycle and wrap value of a PWM slice.</dt><dd>This is used to update / modify the speed of the motor's rotation.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pwm_gpio</td><td>The GPIO pin number for the PWM output. </td></tr>
-    <tr><td class="paramname">pwm_wrap</td><td>The wrap value of the PWM slice. </td></tr>
-    <tr><td class="paramname">duty_cycle</td><td>The duty cycle of the PWM slice. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwm_gpio</td><td>The GPIO pin number for the PWM output. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwm_wrap</td><td>The wrap value of the PWM slice. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">duty_cycle</td><td>The duty cycle of the PWM slice. </td></tr>
   </table>
   </dd>
 </dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_a38f59b6b48b6a4d0dd583eef8719e1a3_icgraph.svg" width="512" height="234"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_a38f59b6b48b6a4d0dd583eef8719e1a3_icgraph.svg" width="676" height="234"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -502,44 +518,12 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
+
+<p class="reference">References <a class="el" href="motor__control_8c.html#a63095c7a54435332fe1818a01055ac01">g_ratio</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_a33e4c9d262504d95b4a6e42419462de6_icgraph.svg" width="320" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
-</div>
-</div>
-<a id="a8c528baf37154d347366083f0f816846" name="a8c528baf37154d347366083f0f816846"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c528baf37154d347366083f0f816846">&#9670;&#160;</a></span>stop()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void stop </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>A function to stop the car. </p>
-<p >This function works by setting the duty cycle of both motors to 0.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">motor_data</td><td>The structure containing the GPIO pin numbers for the motors. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="reference">References <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_a8c528baf37154d347366083f0f816846_cgraph.svg" width="242" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="motor__control_8c_a33e4c9d262504d95b4a6e42419462de6_icgraph.svg" width="344" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 

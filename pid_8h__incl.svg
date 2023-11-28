@@ -21,8 +21,8 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="maze_8h.html" target="_top" xlink:title="Header file for the maze data structure and public functions.">
-<polygon fill="white" stroke="#666666" points="82.5,-74 35.5,-74 35.5,-55 82.5,-55 82.5,-74"/>
-<text text-anchor="middle" x="59" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">maze.h</text>
+<polygon fill="white" stroke="#666666" points="107.5,-74 10.5,-74 10.5,-55 107.5,-55 107.5,-74"/>
+<text text-anchor="middle" x="59" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">pathfinding/maze.h</text>
 </a>
 </g>
 </g>

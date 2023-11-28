@@ -1,5 +1,5 @@
 <map id="binary_heap_node" name="binary_heap_node">
-<area shape="rect" id="node1" title=" " alt="" coords="5,211,132,236"/>
-<area shape="rect" id="node2" href="$structmaze__grid__cell.html" title=" " alt="" coords="15,123,123,148"/>
+<area shape="rect" id="node1" title="This struct contains basic information about a node in a priority queue implemented with a binary hea..." alt="" coords="5,211,132,236"/>
+<area shape="rect" id="node2" href="$structmaze__grid__cell.html" title="This struct contains the node information." alt="" coords="15,123,123,148"/>
 <area shape="rect" id="node3" title=" " alt="" coords="41,5,96,31"/>
 </map>

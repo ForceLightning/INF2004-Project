@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pid_5fparams_5ft_0',['pid_params_t',['../pid_8h.html#a1d86fda34540b6061ddf110c96406303',1,'pid.h']]]
+  ['ir_5fflags_5ft_0',['ir_flags_t',['../ir__sensor_8h.html#ab500f06521bf19a63e00417ba2a6c4f8',1,'ir_sensor.h']]]
 ];

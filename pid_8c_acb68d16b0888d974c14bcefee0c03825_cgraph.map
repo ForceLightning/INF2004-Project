@@ -1,0 +1,6 @@
+<map id="pid_bearing_correction" name="pid_bearing_correction">
+<area shape="rect" id="node1" title="Updates the motor differential ratio based on the target bearing and current bearing." alt="" coords="5,55,157,80"/>
+<area shape="rect" id="node2" href="$magnetometer_8c.html#a3bee957bff548f4b97b55732f67f1668" title="Gets the current bearing of the magnetometer sensor." alt="" coords="205,5,380,31"/>
+<area shape="rect" id="node3" href="$motor__control_8c.html#a33e4c9d262504d95b4a6e42419462de6" title="Update the ratio of the left motor&#39;s duty cycle to the right motor&#39;s duty cycle." alt="" coords="226,55,359,80"/>
+<area shape="rect" id="node4" href="$pid_8c.html#a820cbffab6b043d0018e7e9937a5729c" title="Calculates the PID control signal." alt="" coords="211,104,374,129"/>
+</map>

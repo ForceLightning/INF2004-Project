@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['pico_5fdebug_5fmalloc_0',['PICO_DEBUG_MALLOC',['../pico__pathfinding__tests_8c.html#a0ec6dbb5c8d3a5734aa2db6b60140ec6',1,'pico_pathfinding_tests.c']]],
-  ['pid_5fdegrees_5fnormalise_1',['PID_DEGREES_NORMALISE',['../pid_8h.html#adf2cfd6667b9a62ac52169e984c0b69a',1,'pid.h']]]
+  ['debug_5fprint_0',['DEBUG_PRINT',['../barcode_8h.html#a88edd2aa4feabff4af21a997d5d8aa23',1,'DEBUG_PRINT():&#160;barcode.h'],['../wifi_8h.html#a88edd2aa4feabff4af21a997d5d8aa23',1,'DEBUG_PRINT():&#160;wifi.h'],['../a__star_8h.html#a88edd2aa4feabff4af21a997d5d8aa23',1,'DEBUG_PRINT():&#160;a_star.h'],['../binary__heap_8h.html#a88edd2aa4feabff4af21a997d5d8aa23',1,'DEBUG_PRINT():&#160;binary_heap.h'],['../pico__pathfinding__tests_8c.html#a88edd2aa4feabff4af21a997d5d8aa23',1,'DEBUG_PRINT():&#160;pico_pathfinding_tests.c'],['../dfs__tests_8c.html#a88edd2aa4feabff4af21a997d5d8aa23',1,'DEBUG_PRINT():&#160;dfs_tests.c'],['../floodfill__tests_8c.html#a88edd2aa4feabff4af21a997d5d8aa23',1,'DEBUG_PRINT():&#160;floodfill_tests.c'],['../navigation__tests_8c.html#a88edd2aa4feabff4af21a997d5d8aa23',1,'DEBUG_PRINT():&#160;navigation_tests.c']]]
 ];

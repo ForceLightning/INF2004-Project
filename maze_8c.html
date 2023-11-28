@@ -118,65 +118,65 @@ $(document).ready(function(){initNavTree('maze_8c.html',''); initResizable(); })
 <code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="maze_8h_source.html">maze.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="maze_8h_source.html">pathfinding/maze.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for maze.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="maze_8c__incl.svg" width="411" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="maze_8c__incl.svg" width="470" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae46a2d15996ecdd82d948a24c682cbe1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#ae46a2d15996ecdd82d948a24c682cbe1">maze_clear_heuristics</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid)</td></tr>
+<tr class="memitem:ae46a2d15996ecdd82d948a24c682cbe1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#ae46a2d15996ecdd82d948a24c682cbe1">maze_clear_heuristics</a> (<a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *p_grid)</td></tr>
 <tr class="memdesc:ae46a2d15996ecdd82d948a24c682cbe1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the maze heuristics. This sets the F, G, and H values of each node to UINT32_MAX for the A* and floodfill algorithm.  <a href="maze_8c.html#ae46a2d15996ecdd82d948a24c682cbe1">More...</a><br /></td></tr>
 <tr class="separator:ae46a2d15996ecdd82d948a24c682cbe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0ccd906b9a3479704eaf22867649b3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmaze__grid.html">maze_grid_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#ab0ccd906b9a3479704eaf22867649b3f">maze_create</a> (uint16_t rows, uint16_t columns)</td></tr>
+<tr class="memitem:ab0ccd906b9a3479704eaf22867649b3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#ab0ccd906b9a3479704eaf22867649b3f">maze_create</a> (uint16_t rows, uint16_t columns)</td></tr>
 <tr class="memdesc:ab0ccd906b9a3479704eaf22867649b3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a maze with the specified number of rows and columns.  <a href="maze_8c.html#ab0ccd906b9a3479704eaf22867649b3f">More...</a><br /></td></tr>
 <tr class="separator:ab0ccd906b9a3479704eaf22867649b3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20eeebb6a55bf5f6dac5ba158ea21878"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a20eeebb6a55bf5f6dac5ba158ea21878">maze_deserialise</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, <a class="el" href="maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2">maze_gap_bitmask_t</a> *p_no_walls_array)</td></tr>
+<tr class="memitem:a20eeebb6a55bf5f6dac5ba158ea21878"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a20eeebb6a55bf5f6dac5ba158ea21878">maze_deserialise</a> (<a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *p_grid, <a class="el" href="maze_8h.html#a8f9cb819070db4b721d5c32e6cafcd8a">maze_gap_bitmask_t</a> *p_no_walls_array)</td></tr>
 <tr class="memdesc:a20eeebb6a55bf5f6dac5ba158ea21878"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialises the maze from a bitmask array. <a class="el" href="maze_8c.html#a35e70f881f107a45f52eab387e71c61c">maze_serialise</a>.  <a href="maze_8c.html#a20eeebb6a55bf5f6dac5ba158ea21878">More...</a><br /></td></tr>
 <tr class="separator:a20eeebb6a55bf5f6dac5ba158ea21878"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfd3fd1e0b98f4368aed22fbb72dbe8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#adfd3fd1e0b98f4368aed22fbb72dbe8c">maze_destroy</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid)</td></tr>
+<tr class="memitem:adfd3fd1e0b98f4368aed22fbb72dbe8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#adfd3fd1e0b98f4368aed22fbb72dbe8c">maze_destroy</a> (<a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *p_grid)</td></tr>
 <tr class="memdesc:adfd3fd1e0b98f4368aed22fbb72dbe8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the maze by freeing the memory allocated to the grid array.  <a href="maze_8c.html#adfd3fd1e0b98f4368aed22fbb72dbe8c">More...</a><br /></td></tr>
 <tr class="separator:adfd3fd1e0b98f4368aed22fbb72dbe8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1957f5adb3d22d45ee033ba0c22d61cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a1957f5adb3d22d45ee033ba0c22d61cf">maze_get_cell_at_coords</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_coordinates)</td></tr>
+<tr class="memitem:a1957f5adb3d22d45ee033ba0c22d61cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a1957f5adb3d22d45ee033ba0c22d61cf">maze_get_cell_at_coords</a> (<a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *p_grid, const <a class="el" href="maze_8h.html#aeee527597e983106d296b6c9a4ca7c90">maze_point_t</a> *p_coordinates)</td></tr>
 <tr class="memdesc:a1957f5adb3d22d45ee033ba0c22d61cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the cell at the specified coordinates.  <a href="maze_8c.html#a1957f5adb3d22d45ee033ba0c22d61cf">More...</a><br /></td></tr>
 <tr class="separator:a1957f5adb3d22d45ee033ba0c22d61cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b467ddfd914550a22224fa6be60f14f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a2b467ddfd914550a22224fa6be60f14f">maze_get_cell_in_dir</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, <a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *p_from, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> direction)</td></tr>
+<tr class="memitem:a2b467ddfd914550a22224fa6be60f14f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a2b467ddfd914550a22224fa6be60f14f">maze_get_cell_in_dir</a> (<a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *p_grid, <a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> *p_from, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> direction)</td></tr>
 <tr class="memdesc:a2b467ddfd914550a22224fa6be60f14f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the cell in the specified direction from a specific cell.  <a href="maze_8c.html#a2b467ddfd914550a22224fa6be60f14f">More...</a><br /></td></tr>
 <tr class="separator:a2b467ddfd914550a22224fa6be60f14f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8154230298572c603d5b32c37f39fb5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#ab8154230298572c603d5b32c37f39fb5">maze_get_dir_from_to</a> (const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_a, const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_b)</td></tr>
+<tr class="memitem:ab8154230298572c603d5b32c37f39fb5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#ab8154230298572c603d5b32c37f39fb5">maze_get_dir_from_to</a> (const <a class="el" href="maze_8h.html#aeee527597e983106d296b6c9a4ca7c90">maze_point_t</a> *p_point_a, const <a class="el" href="maze_8h.html#aeee527597e983106d296b6c9a4ca7c90">maze_point_t</a> *p_point_b)</td></tr>
 <tr class="memdesc:ab8154230298572c603d5b32c37f39fb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the direction from p_point_a to p_point_b if they are adjacent.  <a href="maze_8c.html#ab8154230298572c603d5b32c37f39fb5">More...</a><br /></td></tr>
 <tr class="separator:ab8154230298572c603d5b32c37f39fb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf53560282204aa46ad3f18cab9e0cd8"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#adf53560282204aa46ad3f18cab9e0cd8">maze_get_nav_dir_offset</a> (const <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *p_navigator)</td></tr>
+<tr class="memitem:adf53560282204aa46ad3f18cab9e0cd8"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#adf53560282204aa46ad3f18cab9e0cd8">maze_get_nav_dir_offset</a> (const <a class="el" href="maze_8h.html#a097c7005561a4e9caebe5dbf6c080344">maze_navigator_state_t</a> *p_navigator)</td></tr>
 <tr class="memdesc:adf53560282204aa46ad3f18cab9e0cd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the offset from the navigator's current direction to any other possible direction.  <a href="maze_8c.html#adf53560282204aa46ad3f18cab9e0cd8">More...</a><br /></td></tr>
 <tr class="separator:adf53560282204aa46ad3f18cab9e0cd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a899cf893dd431a4896d1d0f74825cf40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maze_8h.html#afa054bfc35cf2998af33b43faab72b39">maze_relative_direction_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a899cf893dd431a4896d1d0f74825cf40">maze_get_relative_dir</a> (const <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> direction_from, const <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> direction_to)</td></tr>
 <tr class="memdesc:a899cf893dd431a4896d1d0f74825cf40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the relative direction from the current direction to the desired cardinal direction.  <a href="maze_8c.html#a899cf893dd431a4896d1d0f74825cf40">More...</a><br /></td></tr>
 <tr class="separator:a899cf893dd431a4896d1d0f74825cf40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af92eb5d75cd2c4b9418d747bcbd15c7a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#af92eb5d75cd2c4b9418d747bcbd15c7a">maze_get_string</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid)</td></tr>
+<tr class="memitem:af92eb5d75cd2c4b9418d747bcbd15c7a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#af92eb5d75cd2c4b9418d747bcbd15c7a">maze_get_string</a> (<a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *p_grid)</td></tr>
 <tr class="memdesc:af92eb5d75cd2c4b9418d747bcbd15c7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the string representation of the maze for pretty printing.  <a href="maze_8c.html#af92eb5d75cd2c4b9418d747bcbd15c7a">More...</a><br /></td></tr>
 <tr class="separator:af92eb5d75cd2c4b9418d747bcbd15c7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef69dba27c12430494d4dbca3a9c0ef3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#aef69dba27c12430494d4dbca3a9c0ef3">maze_initialise_empty_walled</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid)</td></tr>
+<tr class="memitem:aef69dba27c12430494d4dbca3a9c0ef3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#aef69dba27c12430494d4dbca3a9c0ef3">maze_initialise_empty_walled</a> (<a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *p_grid)</td></tr>
 <tr class="memdesc:aef69dba27c12430494d4dbca3a9c0ef3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialises an empty maze. This sets the coordinates of each node, all heuristic values to 0, and all pointers to NULL. This is useful for the A* algorithm.  <a href="maze_8c.html#aef69dba27c12430494d4dbca3a9c0ef3">More...</a><br /></td></tr>
 <tr class="separator:aef69dba27c12430494d4dbca3a9c0ef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a892498023a08de789335a138509f04e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a892498023a08de789335a138509f04e5">maze_insert_nav_str</a> (const <a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, const <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *p_navigator, char *p_maze_str)</td></tr>
+<tr class="memitem:a892498023a08de789335a138509f04e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a892498023a08de789335a138509f04e5">maze_insert_nav_str</a> (const <a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *p_grid, const <a class="el" href="maze_8h.html#a097c7005561a4e9caebe5dbf6c080344">maze_navigator_state_t</a> *p_navigator, char *p_maze_str)</td></tr>
 <tr class="memdesc:a892498023a08de789335a138509f04e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts the navigator character into the maze string for pretty printing.  <a href="maze_8c.html#a892498023a08de789335a138509f04e5">More...</a><br /></td></tr>
 <tr class="separator:a892498023a08de789335a138509f04e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9037ecf1d39a1e3f0e0a34ca30391b91"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a9037ecf1d39a1e3f0e0a34ca30391b91">maze_manhattan_dist</a> (const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_a, const <a class="el" href="structmaze__point.html">maze_point_t</a> *p_point_b)</td></tr>
+<tr class="memitem:a9037ecf1d39a1e3f0e0a34ca30391b91"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a9037ecf1d39a1e3f0e0a34ca30391b91">maze_manhattan_dist</a> (const <a class="el" href="maze_8h.html#aeee527597e983106d296b6c9a4ca7c90">maze_point_t</a> *p_point_a, const <a class="el" href="maze_8h.html#aeee527597e983106d296b6c9a4ca7c90">maze_point_t</a> *p_point_b)</td></tr>
 <tr class="memdesc:a9037ecf1d39a1e3f0e0a34ca30391b91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the manhattan distance between two points.  <a href="maze_8c.html#a9037ecf1d39a1e3f0e0a34ca30391b91">More...</a><br /></td></tr>
 <tr class="separator:a9037ecf1d39a1e3f0e0a34ca30391b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb1a3c500ab00f0983a378f4b2045c4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#abb1a3c500ab00f0983a378f4b2045c4e">maze_nav_modify_walls</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *p_navigator, uint8_t aligned_wall_bitmask, bool is_set, bool is_unset)</td></tr>
+<tr class="memitem:abb1a3c500ab00f0983a378f4b2045c4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#abb1a3c500ab00f0983a378f4b2045c4e">maze_nav_modify_walls</a> (<a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *p_grid, <a class="el" href="maze_8h.html#a097c7005561a4e9caebe5dbf6c080344">maze_navigator_state_t</a> *p_navigator, uint8_t aligned_wall_bitmask, bool is_set, bool is_unset)</td></tr>
 <tr class="memdesc:abb1a3c500ab00f0983a378f4b2045c4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifies the walls of the navigator's current node.  <a href="maze_8c.html#abb1a3c500ab00f0983a378f4b2045c4e">More...</a><br /></td></tr>
 <tr class="separator:abb1a3c500ab00f0983a378f4b2045c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39f5fccadb0b4834e38f62f3f11ad270"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270">maze_nav_to_buffer</a> (const <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *p_navigator, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
+<tr class="memitem:a39f5fccadb0b4834e38f62f3f11ad270"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270">maze_nav_to_buffer</a> (const <a class="el" href="maze_8h.html#a097c7005561a4e9caebe5dbf6c080344">maze_navigator_state_t</a> *p_navigator, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
 <tr class="memdesc:a39f5fccadb0b4834e38f62f3f11ad270"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialises the navigator state into a uint8_t buffer. The buffer is set with the navigator's coordinates, orientation, start node, and end node coordinates in that order.  <a href="maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270">More...</a><br /></td></tr>
 <tr class="separator:a39f5fccadb0b4834e38f62f3f11ad270"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35e70f881f107a45f52eab387e71c61c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2">maze_gap_bitmask_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a35e70f881f107a45f52eab387e71c61c">maze_serialise</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid)</td></tr>
+<tr class="memitem:a35e70f881f107a45f52eab387e71c61c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maze_8h.html#a8f9cb819070db4b721d5c32e6cafcd8a">maze_gap_bitmask_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a35e70f881f107a45f52eab387e71c61c">maze_serialise</a> (<a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *p_grid)</td></tr>
 <tr class="memdesc:a35e70f881f107a45f52eab387e71c61c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialises the maze into a bitmask array. <a class="el" href="maze_8c.html#a20eeebb6a55bf5f6dac5ba158ea21878">maze_deserialise</a>.  <a href="maze_8c.html#a35e70f881f107a45f52eab387e71c61c">More...</a><br /></td></tr>
 <tr class="separator:a35e70f881f107a45f52eab387e71c61c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae2cf92e83b0810d22411db9fbea4d94"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#aae2cf92e83b0810d22411db9fbea4d94">maze_serialised_to_buffer</a> (const <a class="el" href="maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2">maze_gap_bitmask_t</a> *p_bitmask, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
+<tr class="memitem:aae2cf92e83b0810d22411db9fbea4d94"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#aae2cf92e83b0810d22411db9fbea4d94">maze_serialised_to_buffer</a> (const <a class="el" href="maze_8h.html#a8f9cb819070db4b721d5c32e6cafcd8a">maze_gap_bitmask_t</a> *p_bitmask, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
 <tr class="memdesc:aae2cf92e83b0810d22411db9fbea4d94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialises the maze into a uint8_t buffer.  <a href="maze_8c.html#aae2cf92e83b0810d22411db9fbea4d94">More...</a><br /></td></tr>
 <tr class="separator:aae2cf92e83b0810d22411db9fbea4d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54d2a340d7b8fa00c0c3e989fa8657d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1">maze_uint16_to_uint8_buffer</a> (uint16_t value, uint8_t *p_buffer)</td></tr>
@@ -199,7 +199,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void maze_clear_heuristics </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmaze__grid.html">maze_grid_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *&#160;</td>
           <td class="paramname"><em>p_grid</em></td><td>)</td>
           <td></td>
         </tr>
@@ -231,7 +231,7 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structmaze__grid.html">maze_grid_t</a> maze_create </td>
+          <td class="memname"><a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> maze_create </td>
           <td>(</td>
           <td class="paramtype">uint16_t&#160;</td>
           <td class="paramname"><em>rows</em>, </td>
@@ -280,13 +280,13 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">int16_t maze_deserialise </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmaze__grid.html">maze_grid_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *&#160;</td>
           <td class="paramname"><em>p_grid</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2">maze_gap_bitmask_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a8f9cb819070db4b721d5c32e6cafcd8a">maze_gap_bitmask_t</a> *&#160;</td>
           <td class="paramname"><em>p_no_walls_array</em>&#160;</td>
         </tr>
         <tr>
@@ -320,7 +320,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void maze_destroy </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmaze__grid.html">maze_grid_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *&#160;</td>
           <td class="paramname"><em>p_grid</em></td><td>)</td>
           <td></td>
         </tr>
@@ -346,15 +346,15 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> * maze_get_cell_at_coords </td>
+          <td class="memname"><a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> * maze_get_cell_at_coords </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmaze__grid.html">maze_grid_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *&#160;</td>
           <td class="paramname"><em>p_grid</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structmaze__point.html">maze_point_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#aeee527597e983106d296b6c9a4ca7c90">maze_point_t</a> *&#160;</td>
           <td class="paramname"><em>p_coordinates</em>&#160;</td>
         </tr>
         <tr>
@@ -392,15 +392,15 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> * maze_get_cell_in_dir </td>
+          <td class="memname"><a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> * maze_get_cell_in_dir </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmaze__grid.html">maze_grid_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *&#160;</td>
           <td class="paramname"><em>p_grid</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> *&#160;</td>
           <td class="paramname"><em>p_from</em>, </td>
         </tr>
         <tr>
@@ -453,13 +453,13 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname"><a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4da">maze_cardinal_direction_t</a> maze_get_dir_from_to </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structmaze__point.html">maze_point_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#aeee527597e983106d296b6c9a4ca7c90">maze_point_t</a> *&#160;</td>
           <td class="paramname"><em>p_point_a</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structmaze__point.html">maze_point_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#aeee527597e983106d296b6c9a4ca7c90">maze_point_t</a> *&#160;</td>
           <td class="paramname"><em>p_point_b</em>&#160;</td>
         </tr>
         <tr>
@@ -499,7 +499,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">int8_t maze_get_nav_dir_offset </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#a097c7005561a4e9caebe5dbf6c080344">maze_navigator_state_t</a> *&#160;</td>
           <td class="paramname"><em>p_navigator</em></td><td>)</td>
           <td></td>
         </tr>
@@ -567,7 +567,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">char * maze_get_string </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmaze__grid.html">maze_grid_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *&#160;</td>
           <td class="paramname"><em>p_grid</em></td><td>)</td>
           <td></td>
         </tr>
@@ -603,7 +603,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void maze_initialise_empty_walled </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmaze__grid.html">maze_grid_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *&#160;</td>
           <td class="paramname"><em>p_grid</em></td><td>)</td>
           <td></td>
         </tr>
@@ -637,13 +637,13 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void maze_insert_nav_str </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structmaze__grid.html">maze_grid_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *&#160;</td>
           <td class="paramname"><em>p_grid</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#a097c7005561a4e9caebe5dbf6c080344">maze_navigator_state_t</a> *&#160;</td>
           <td class="paramname"><em>p_navigator</em>, </td>
         </tr>
         <tr>
@@ -683,13 +683,13 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">uint32_t maze_manhattan_dist </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structmaze__point.html">maze_point_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#aeee527597e983106d296b6c9a4ca7c90">maze_point_t</a> *&#160;</td>
           <td class="paramname"><em>p_point_a</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structmaze__point.html">maze_point_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#aeee527597e983106d296b6c9a4ca7c90">maze_point_t</a> *&#160;</td>
           <td class="paramname"><em>p_point_b</em>&#160;</td>
         </tr>
         <tr>
@@ -731,13 +731,13 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void maze_nav_modify_walls </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmaze__grid.html">maze_grid_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *&#160;</td>
           <td class="paramname"><em>p_grid</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a097c7005561a4e9caebe5dbf6c080344">maze_navigator_state_t</a> *&#160;</td>
           <td class="paramname"><em>p_navigator</em>, </td>
         </tr>
         <tr>
@@ -798,7 +798,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">int16_t maze_nav_to_buffer </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#a097c7005561a4e9caebe5dbf6c080344">maze_navigator_state_t</a> *&#160;</td>
           <td class="paramname"><em>p_navigator</em>, </td>
         </tr>
         <tr>
@@ -857,9 +857,9 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2">maze_gap_bitmask_t</a> maze_serialise </td>
+          <td class="memname"><a class="el" href="maze_8h.html#a8f9cb819070db4b721d5c32e6cafcd8a">maze_gap_bitmask_t</a> maze_serialise </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmaze__grid.html">maze_grid_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *&#160;</td>
           <td class="paramname"><em>p_grid</em></td><td>)</td>
           <td></td>
         </tr>
@@ -894,7 +894,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">int16_t maze_serialised_to_buffer </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2">maze_gap_bitmask_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#a8f9cb819070db4b721d5c32e6cafcd8a">maze_gap_bitmask_t</a> *&#160;</td>
           <td class="paramname"><em>p_bitmask</em>, </td>
         </tr>
         <tr>
@@ -979,6 +979,7 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
+<dl class="section user"><dt>This shifts the 8 MSBs of the value to the 8 LSBs of the buffer.</dt><dd></dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

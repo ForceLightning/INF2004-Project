@@ -1,9 +1,9 @@
 <map id="src/pathfinding/maze.c" name="src/pathfinding/maze.c">
-<area shape="rect" id="node1" title="Contains the implementation of utility maze functions." alt="" coords="149,5,300,31"/>
+<area shape="rect" id="node1" title="Contains the implementation of utility maze functions." alt="" coords="165,5,316,31"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,79,65,104"/>
 <area shape="rect" id="node3" title=" " alt="" coords="89,79,152,104"/>
-<area shape="rect" id="node4" title=" " alt="" coords="193,152,257,177"/>
-<area shape="rect" id="node5" title=" " alt="" coords="330,152,405,177"/>
-<area shape="rect" id="node6" title=" " alt="" coords="315,79,379,104"/>
-<area shape="rect" id="node7" href="$maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="228,79,291,104"/>
+<area shape="rect" id="node4" title=" " alt="" coords="211,152,275,177"/>
+<area shape="rect" id="node5" title=" " alt="" coords="303,152,378,177"/>
+<area shape="rect" id="node6" title=" " alt="" coords="382,79,446,104"/>
+<area shape="rect" id="node7" href="$maze_8h.html" title="Header file for the maze data structure and public functions." alt="" coords="228,79,357,104"/>
 </map>

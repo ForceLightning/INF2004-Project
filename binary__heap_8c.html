@@ -115,33 +115,33 @@ $(document).ready(function(){initNavTree('binary__heap_8c.html',''); initResizab
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="binary__heap_8h_source.html">binary_heap.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="maze_8h_source.html">maze.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="binary__heap_8h_source.html">pathfinding/binary_heap.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="maze_8h_source.html">pathfinding/maze.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for binary_heap.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="binary__heap_8c__incl.svg" width="359" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="binary__heap_8c__incl.svg" width="419" height="286"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af38f858070d3c5f43dcb2b9a38920082"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8c.html#af38f858070d3c5f43dcb2b9a38920082">binary_heap_delete_min</a> (<a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *p_heap)</td></tr>
+<tr class="memitem:af38f858070d3c5f43dcb2b9a38920082"><td class="memItemLeft" align="right" valign="top"><a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8c.html#af38f858070d3c5f43dcb2b9a38920082">binary_heap_delete_min</a> (<a class="el" href="binary__heap_8h.html#a88df470335447507e3073e2f3bccec4c">binary_heap_t</a> *p_heap)</td></tr>
 <tr class="memdesc:af38f858070d3c5f43dcb2b9a38920082"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes and returns the root node from the binary heap.  <a href="binary__heap_8c.html#af38f858070d3c5f43dcb2b9a38920082">More...</a><br /></td></tr>
 <tr class="separator:af38f858070d3c5f43dcb2b9a38920082"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7eeedd36046d03eb1321e3e191895ec4"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8c.html#a7eeedd36046d03eb1321e3e191895ec4">binary_heap_get_node_idx</a> (const <a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *p_heap, const <a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *p_maze_node)</td></tr>
+<tr class="memitem:a7eeedd36046d03eb1321e3e191895ec4"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8c.html#a7eeedd36046d03eb1321e3e191895ec4">binary_heap_get_node_idx</a> (const <a class="el" href="binary__heap_8h.html#a88df470335447507e3073e2f3bccec4c">binary_heap_t</a> *p_heap, const <a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> *p_maze_node)</td></tr>
 <tr class="memdesc:a7eeedd36046d03eb1321e3e191895ec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the index of a given node in the binary heap if it exists. Otherwise, returns UINT16_MAX.  <a href="binary__heap_8c.html#a7eeedd36046d03eb1321e3e191895ec4">More...</a><br /></td></tr>
 <tr class="separator:a7eeedd36046d03eb1321e3e191895ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2c52107ee2c491443e7f8f3cafa9edd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8c.html#ae2c52107ee2c491443e7f8f3cafa9edd">binary_heap_insert</a> (<a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *p_heap, <a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *p_maze_node, uint16_t priority)</td></tr>
+<tr class="memitem:ae2c52107ee2c491443e7f8f3cafa9edd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8c.html#ae2c52107ee2c491443e7f8f3cafa9edd">binary_heap_insert</a> (<a class="el" href="binary__heap_8h.html#a88df470335447507e3073e2f3bccec4c">binary_heap_t</a> *p_heap, <a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> *p_maze_node, uint16_t priority)</td></tr>
 <tr class="memdesc:ae2c52107ee2c491443e7f8f3cafa9edd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts a grid cell node into the binary heap with a given priority.  <a href="binary__heap_8c.html#ae2c52107ee2c491443e7f8f3cafa9edd">More...</a><br /></td></tr>
 <tr class="separator:ae2c52107ee2c491443e7f8f3cafa9edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad06768f1a7c61c92aa00fe5a3a33dbc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbinary__heap__node.html">binary_heap_node_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8c.html#ad06768f1a7c61c92aa00fe5a3a33dbc2">binary_heap_peek</a> (<a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *p_heap)</td></tr>
+<tr class="memitem:ad06768f1a7c61c92aa00fe5a3a33dbc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="binary__heap_8h.html#a994ecabafceb8e0cc1cef9683ead38d3">binary_heap_node_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8c.html#ad06768f1a7c61c92aa00fe5a3a33dbc2">binary_heap_peek</a> (<a class="el" href="binary__heap_8h.html#a88df470335447507e3073e2f3bccec4c">binary_heap_t</a> *p_heap)</td></tr>
 <tr class="memdesc:ad06768f1a7c61c92aa00fe5a3a33dbc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peeks at the root node of the binary heap.  <a href="binary__heap_8c.html#ad06768f1a7c61c92aa00fe5a3a33dbc2">More...</a><br /></td></tr>
 <tr class="separator:ad06768f1a7c61c92aa00fe5a3a33dbc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7dff85ea558ed732c081ab37b97ba5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8c.html#ae7dff85ea558ed732c081ab37b97ba5d">binary_heapify_down</a> (<a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *p_heap, uint16_t index)</td></tr>
+<tr class="memitem:ae7dff85ea558ed732c081ab37b97ba5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8c.html#ae7dff85ea558ed732c081ab37b97ba5d">binary_heapify_down</a> (<a class="el" href="binary__heap_8h.html#a88df470335447507e3073e2f3bccec4c">binary_heap_t</a> *p_heap, uint16_t index)</td></tr>
 <tr class="memdesc:ae7dff85ea558ed732c081ab37b97ba5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the node at the given index up the binary heap to maintain the heap property. This is in effect lowers the node to the correct position.  <a href="binary__heap_8c.html#ae7dff85ea558ed732c081ab37b97ba5d">More...</a><br /></td></tr>
 <tr class="separator:ae7dff85ea558ed732c081ab37b97ba5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76720d1612568af283cab311e6506150"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8c.html#a76720d1612568af283cab311e6506150">binary_heapify_up</a> (<a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *p_heap, uint16_t index)</td></tr>
+<tr class="memitem:a76720d1612568af283cab311e6506150"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary__heap_8c.html#a76720d1612568af283cab311e6506150">binary_heapify_up</a> (<a class="el" href="binary__heap_8h.html#a88df470335447507e3073e2f3bccec4c">binary_heap_t</a> *p_heap, uint16_t index)</td></tr>
 <tr class="memdesc:a76720d1612568af283cab311e6506150"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the node at the given index down the binary heap to maintain the heap property. This in effect raises the node to the correct position.  <a href="binary__heap_8c.html#a76720d1612568af283cab311e6506150">More...</a><br /></td></tr>
 <tr class="separator:a76720d1612568af283cab311e6506150"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -149,7 +149,8 @@ Functions</h2></td></tr>
 <div class="textblock"><p >Source file for the binary min-heap used in the a* algorithm and floodfill algorithm. </p>
 <dl class="section author"><dt>Author</dt><dd>Christopher Kok (<a href="#" onclick="location.href='mai'+'lto:'+'chr'+'is'+'@fo'+'rc'+'eli'+'gh'+'tni'+'ng'+'.xy'+'z'; return false;">chris<span class="obfuscator">.nosp@m.</span>@for<span class="obfuscator">.nosp@m.</span>celig<span class="obfuscator">.nosp@m.</span>htni<span class="obfuscator">.nosp@m.</span>ng.xy<span class="obfuscator">.nosp@m.</span>z</a>) </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2023-11-07</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2023-11-07 </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The functions are prefixed with <code><a class="el" href="structbinary__heap.html" title="Struct containing the binary heap.">binary_heap</a></code> to avoid name collisions, but we are liberal with the usage of either <code>binary_heap_</code> or <code><a class="el" href="structbinary__heap.html" title="Struct containing the binary heap.">binary_heap</a></code>.</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2023 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="af38f858070d3c5f43dcb2b9a38920082" name="af38f858070d3c5f43dcb2b9a38920082"></a>
@@ -159,9 +160,9 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> * binary_heap_delete_min </td>
+          <td class="memname"><a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> * binary_heap_delete_min </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="binary__heap_8h.html#a88df470335447507e3073e2f3bccec4c">binary_heap_t</a> *&#160;</td>
           <td class="paramname"><em>p_heap</em></td><td>)</td>
           <td></td>
         </tr>
@@ -171,7 +172,7 @@ Functions</h2></td></tr>
 <p>Deletes and returns the root node from the binary heap. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p_heap</td><td>Pointer to the binary min-heap. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">p_heap</td><td>Pointer to the binary min-heap. </td></tr>
   </table>
   </dd>
 </dl>
@@ -202,13 +203,13 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">uint16_t binary_heap_get_node_idx </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="binary__heap_8h.html#a88df470335447507e3073e2f3bccec4c">binary_heap_t</a> *&#160;</td>
           <td class="paramname"><em>p_heap</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> *&#160;</td>
           <td class="paramname"><em>p_maze_node</em>&#160;</td>
         </tr>
         <tr>
@@ -242,13 +243,13 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void binary_heap_insert </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="binary__heap_8h.html#a88df470335447507e3073e2f3bccec4c">binary_heap_t</a> *&#160;</td>
           <td class="paramname"><em>p_heap</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> *&#160;</td>
           <td class="paramname"><em>p_maze_node</em>, </td>
         </tr>
         <tr>
@@ -268,14 +269,14 @@ Here is the caller graph for this function:</div>
 <p>Inserts a grid cell node into the binary heap with a given priority. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p_heap</td><td>Pointer to the binary min-heap. </td></tr>
-    <tr><td class="paramname">p_maze_node</td><td>Pointer to the grid cell node to be inserted. </td></tr>
-    <tr><td class="paramname">priority</td><td>Priority of the node to be inserted. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">p_heap</td><td>Pointer to the binary min-heap. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_maze_node</td><td>Pointer to the grid cell node to be inserted. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">priority</td><td>Priority of the node to be inserted. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="binary__heap_8c.html#a76720d1612568af283cab311e6506150">binary_heapify_up()</a>, <a class="el" href="structbinary__heap.html#a6be948a502bdacee3d2a2cc1d2f97ece">binary_heap::capacity</a>, <a class="el" href="structbinary__heap.html#a35c0dc945e4aad02d896e3cb0fbeca64">binary_heap::p_array</a>, <a class="el" href="structbinary__heap__node.html#ae372b3bd7dd2c88ac107c1113719584c">binary_heap_node::p_maze_node</a>, <a class="el" href="structbinary__heap__node.html#a0815784d41b3c13d42ce22367abfba1d">binary_heap_node::priority</a>, and <a class="el" href="structbinary__heap.html#aaba88b24a21a6c70c895c0d55f4a69a0">binary_heap::size</a>.</p>
+<p class="reference">References <a class="el" href="binary__heap_8c.html#a76720d1612568af283cab311e6506150">binary_heapify_up()</a>, <a class="el" href="structbinary__heap.html#a6be948a502bdacee3d2a2cc1d2f97ece">binary_heap::capacity</a>, <a class="el" href="barcode_8h.html#a88edd2aa4feabff4af21a997d5d8aa23">DEBUG_PRINT</a>, <a class="el" href="structbinary__heap.html#a35c0dc945e4aad02d896e3cb0fbeca64">binary_heap::p_array</a>, <a class="el" href="structbinary__heap__node.html#ae372b3bd7dd2c88ac107c1113719584c">binary_heap_node::p_maze_node</a>, <a class="el" href="structbinary__heap__node.html#a0815784d41b3c13d42ce22367abfba1d">binary_heap_node::priority</a>, and <a class="el" href="structbinary__heap.html#aaba88b24a21a6c70c895c0d55f4a69a0">binary_heap::size</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -298,9 +299,9 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structbinary__heap__node.html">binary_heap_node_t</a> binary_heap_peek </td>
+          <td class="memname"><a class="el" href="binary__heap_8h.html#a994ecabafceb8e0cc1cef9683ead38d3">binary_heap_node_t</a> binary_heap_peek </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="binary__heap_8h.html#a88df470335447507e3073e2f3bccec4c">binary_heap_t</a> *&#160;</td>
           <td class="paramname"><em>p_heap</em></td><td>)</td>
           <td></td>
         </tr>
@@ -310,7 +311,7 @@ Here is the caller graph for this function:</div>
 <p>Peeks at the root node of the binary heap. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p_heap</td><td>Pointer to the binary min-heap. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_heap</td><td>Pointer to the binary min-heap. </td></tr>
   </table>
   </dd>
 </dl>
@@ -335,7 +336,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void binary_heapify_down </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="binary__heap_8h.html#a88df470335447507e3073e2f3bccec4c">binary_heap_t</a> *&#160;</td>
           <td class="paramname"><em>p_heap</em>, </td>
         </tr>
         <tr>
@@ -355,8 +356,8 @@ Here is the caller graph for this function:</div>
 <p>Moves the node at the given index up the binary heap to maintain the heap property. This is in effect lowers the node to the correct position. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p_heap</td><td>Pointer to the binary heap. </td></tr>
-    <tr><td class="paramname">index</td><td>Index of the node to be heapified down. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">p_heap</td><td>Pointer to the binary heap. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">index</td><td>Index of the node to be heapified down. </td></tr>
   </table>
   </dd>
 </dl>
@@ -380,7 +381,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void binary_heapify_up </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="binary__heap_8h.html#a608ce3cc1d91fd03dc74413c9b7f45e1">binary_heap_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="binary__heap_8h.html#a88df470335447507e3073e2f3bccec4c">binary_heap_t</a> *&#160;</td>
           <td class="paramname"><em>p_heap</em>, </td>
         </tr>
         <tr>
@@ -400,8 +401,8 @@ Here is the caller graph for this function:</div>
 <p>Moves the node at the given index down the binary heap to maintain the heap property. This in effect raises the node to the correct position. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p_heap</td><td>Pointer to the binary heap. </td></tr>
-    <tr><td class="paramname">index</td><td>Index of the node to be heapified up. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">p_heap</td><td>Pointer to the binary heap. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">index</td><td>Index of the node to be heapified up. </td></tr>
   </table>
   </dd>
 </dl>

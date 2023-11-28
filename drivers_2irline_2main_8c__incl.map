@@ -2,9 +2,9 @@
 <area shape="rect" id="node1" title="Demonstration for the IR sensor driver." alt="" coords="173,5,287,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,93,65,119"/>
 <area shape="rect" id="node3" title=" " alt="" coords="89,93,152,119"/>
-<area shape="rect" id="node4" title=" " alt="" coords="254,240,318,265"/>
+<area shape="rect" id="node4" title=" " alt="" coords="262,240,326,265"/>
 <area shape="rect" id="node5" title=" " alt="" coords="227,93,315,119"/>
-<area shape="rect" id="node6" href="$ir__sensor_8h.html" title="Header file for the IR sensor driver." alt="" coords="339,93,425,119"/>
-<area shape="rect" id="node8" href="$barcode_8h.html" title="Header file for the barcode driver." alt="" coords="383,167,461,192"/>
-<area shape="rect" id="node7" title=" " alt="" coords="267,167,358,192"/>
+<area shape="rect" id="node6" href="$ir__sensor_8h.html" title="Header file for the IR sensor driver." alt="" coords="340,93,456,119"/>
+<area shape="rect" id="node8" href="$barcode_8h.html" title="Header file for the barcode driver." alt="" coords="391,167,501,192"/>
+<area shape="rect" id="node7" title=" " alt="" coords="277,167,367,192"/>
 </map>

@@ -115,11 +115,11 @@ $(document).ready(function(){initNavTree('wheel__encoder_8c.html',''); initResiz
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="wheel__encoder_8h_source.html">wheel_encoder.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="wheel__encoder_8h_source.html">encoder/wheel_encoder.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for wheel_encoder.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="wheel__encoder_8c__incl.svg" width="318" height="198"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="wheel__encoder_8c__incl.svg" width="368" height="198"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
@@ -168,12 +168,14 @@ Functions</h2></td></tr>
 <p>Get the speed in either pulses/second or mm/second. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">time_elapsed</td><td>Time elapsed in ms </td></tr>
-    <tr><td class="paramname">is_pulse</td><td>True if speed is in pulses/second, false if speed is in mm/second </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">time_elapsed</td><td>Time elapsed in ms </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">is_pulse</td><td>True if speed is in pulses/second, false if speed is in mm/second </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>float Speed in either pulses/second or mm/second </dd></dl>
+
+<p class="reference">References <a class="el" href="group__encoder__driver__constants.html#ga50c24329ceffd4dd038e117a7fe8d112">WHEEL_ENC_DIST_PER_PULSE</a>, and <a class="el" href="group__encoder__driver__constants.html#gac321731157ed5414cd0d104c483a7ed4">WHEEL_ENC_SEC_TO_MSEC</a>.</p>
 
 </div>
 </div>
@@ -206,12 +208,14 @@ Functions</h2></td></tr>
 <p>Get the time difference in ms. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">current_time</td><td>Current time in us </td></tr>
-    <tr><td class="paramname">prev_time</td><td>Previous time in us </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">current_time</td><td>Current time in us </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">prev_time</td><td>Previous time in us </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>float Time difference in ms </dd></dl>
+
+<p class="reference">References <a class="el" href="group__encoder__driver__constants.html#gac321731157ed5414cd0d104c483a7ed4">WHEEL_ENC_SEC_TO_MSEC</a>.</p>
 
 </div>
 </div>

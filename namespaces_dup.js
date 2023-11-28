@@ -6,5 +6,8 @@ var namespaces_dup =
       [ "get_direction_from_coords", "namespaceprint__maze.html#a6c1f938efeedbae77272794af67579ac", null ],
       [ "insert_centre_path_char", "namespaceprint__maze.html#ade938b9fef84f37d1b59f8018b2e5d15", null ],
       [ "pretty_print_maze", "namespaceprint__maze.html#ac338594cbf3e7db061a5a85cc7fa57c9", null ]
+    ] ],
+    [ "tcp_client", "namespacetcp__client.html", [
+      [ "main", "namespacetcp__client.html#a7ef7e0ba4dbb24a9678021d2cf41cfc6", null ]
     ] ]
 ];

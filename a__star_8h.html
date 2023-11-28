@@ -117,12 +117,12 @@ $(document).ready(function(){initNavTree('a__star_8h.html',''); initResizable();
 <p>Header file for the a* algorithm.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="binary__heap_8h_source.html">binary_heap.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="maze_8h_source.html">maze.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="binary__heap_8h_source.html">pathfinding/binary_heap.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="maze_8h_source.html">pathfinding/maze.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for a_star.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a__star_8h__incl.svg" width="234" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a__star_8h__incl.svg" width="295" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -137,45 +137,92 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structa__star__path.html">a_star_path</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct containing the path from the start node to the end node.  <a href="structa__star__path.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a88edd2aa4feabff4af21a997d5d8aa23"><td class="memItemLeft" align="right" valign="top"><a id="a88edd2aa4feabff4af21a997d5d8aa23" name="a88edd2aa4feabff4af21a997d5d8aa23"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DEBUG_PRINT</b>(...)&#160;&#160;&#160;printf(__VA_ARGS__)</td></tr>
+<tr class="memitem:a88edd2aa4feabff4af21a997d5d8aa23"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#a88edd2aa4feabff4af21a997d5d8aa23">DEBUG_PRINT</a>(...)&#160;&#160;&#160;printf(__VA_ARGS__)</td></tr>
+<tr class="memdesc:a88edd2aa4feabff4af21a997d5d8aa23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro for printing debug messages.  <a href="a__star_8h.html#a88edd2aa4feabff4af21a997d5d8aa23">More...</a><br /></td></tr>
 <tr class="separator:a88edd2aa4feabff4af21a997d5d8aa23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a527cde189628f809da4a1cbf8b9426f7"><td class="memItemLeft" align="right" valign="top"><a id="a527cde189628f809da4a1cbf8b9426f7" name="a527cde189628f809da4a1cbf8b9426f7"></a>
-typedef struct <a class="el" href="structa__star__path.html">a_star_path</a>&#160;</td><td class="memItemRight" valign="bottom"><b>a_star_path_t</b></td></tr>
+<tr class="memitem:a527cde189628f809da4a1cbf8b9426f7"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structa__star__path.html">a_star_path</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#a527cde189628f809da4a1cbf8b9426f7">a_star_path_t</a></td></tr>
+<tr class="memdesc:a527cde189628f809da4a1cbf8b9426f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct containing the path from the start node to the end node.  <a href="a__star_8h.html#a527cde189628f809da4a1cbf8b9426f7">More...</a><br /></td></tr>
 <tr class="separator:a527cde189628f809da4a1cbf8b9426f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a6d82d3636110fd676cb68188a8351c3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#a6d82d3636110fd676cb68188a8351c3a">a_star</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, <a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *p_start_node, <a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *p_end_node)</td></tr>
+<tr class="memitem:a6d82d3636110fd676cb68188a8351c3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#a6d82d3636110fd676cb68188a8351c3a">a_star</a> (<a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *p_grid, <a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> *p_start_node, <a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> *p_end_node)</td></tr>
 <tr class="memdesc:a6d82d3636110fd676cb68188a8351c3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the A* algorithm on a grid maze to find the shortest path between two points, if one exists. The path can be retrieved by checking the <code>p_came_from</code> field of each node.  <a href="a__star_8h.html#a6d82d3636110fd676cb68188a8351c3a">More...</a><br /></td></tr>
 <tr class="separator:a6d82d3636110fd676cb68188a8351c3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f70df96f17376cc25ad3f453e80e4a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structa__star__path.html">a_star_path_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#a2f70df96f17376cc25ad3f453e80e4a9">a_star_get_path</a> (<a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *p_end_node)</td></tr>
+<tr class="memitem:a2f70df96f17376cc25ad3f453e80e4a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a__star_8h.html#a527cde189628f809da4a1cbf8b9426f7">a_star_path_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#a2f70df96f17376cc25ad3f453e80e4a9">a_star_get_path</a> (<a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> *p_end_node)</td></tr>
 <tr class="memdesc:a2f70df96f17376cc25ad3f453e80e4a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the path from the start node to the end node (inclusive).  <a href="a__star_8h.html#a2f70df96f17376cc25ad3f453e80e4a9">More...</a><br /></td></tr>
 <tr class="separator:a2f70df96f17376cc25ad3f453e80e4a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa93e473768652772f2577e1564b89d91"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#aa93e473768652772f2577e1564b89d91">a_star_get_path_str</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, <a class="el" href="structa__star__path.html">a_star_path_t</a> *p_path)</td></tr>
+<tr class="memitem:aa93e473768652772f2577e1564b89d91"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#aa93e473768652772f2577e1564b89d91">a_star_get_path_str</a> (<a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *p_grid, <a class="el" href="a__star_8h.html#a527cde189628f809da4a1cbf8b9426f7">a_star_path_t</a> *p_path)</td></tr>
 <tr class="memdesc:aa93e473768652772f2577e1564b89d91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the string representation of the path from the start node to the end node.  <a href="a__star_8h.html#aa93e473768652772f2577e1564b89d91">More...</a><br /></td></tr>
 <tr class="separator:aa93e473768652772f2577e1564b89d91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1422b2589ed850b4626defbd93c9998a"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#a1422b2589ed850b4626defbd93c9998a">a_star_maze_path_nav_to_buffer</a> (<a class="el" href="structmaze__grid.html">maze_grid_t</a> *p_grid, const <a class="el" href="structa__star__path.html">a_star_path_t</a> *p_path, const <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *p_navigator, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
+<tr class="memitem:a1422b2589ed850b4626defbd93c9998a"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#a1422b2589ed850b4626defbd93c9998a">a_star_maze_path_nav_to_buffer</a> (<a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *p_grid, const <a class="el" href="a__star_8h.html#a527cde189628f809da4a1cbf8b9426f7">a_star_path_t</a> *p_path, const <a class="el" href="maze_8h.html#a097c7005561a4e9caebe5dbf6c080344">maze_navigator_state_t</a> *p_navigator, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
 <tr class="memdesc:a1422b2589ed850b4626defbd93c9998a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts the maze, path and navigator state into a buffer.  <a href="a__star_8h.html#a1422b2589ed850b4626defbd93c9998a">More...</a><br /></td></tr>
 <tr class="separator:a1422b2589ed850b4626defbd93c9998a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a454e910ecd336d1249010e468f6b2c07"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#a454e910ecd336d1249010e468f6b2c07">a_star_path_to_buffer</a> (const <a class="el" href="structa__star__path.html">a_star_path_t</a> *p_path, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
+<tr class="memitem:a454e910ecd336d1249010e468f6b2c07"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a__star_8h.html#a454e910ecd336d1249010e468f6b2c07">a_star_path_to_buffer</a> (const <a class="el" href="a__star_8h.html#a527cde189628f809da4a1cbf8b9426f7">a_star_path_t</a> *p_path, uint8_t *p_buffer, uint16_t buffer_size)</td></tr>
 <tr class="memdesc:a454e910ecd336d1249010e468f6b2c07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts the path in coordinates from the start node to the end node into a buffer.  <a href="a__star_8h.html#a454e910ecd336d1249010e468f6b2c07">More...</a><br /></td></tr>
 <tr class="separator:a454e910ecd336d1249010e468f6b2c07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Header file for the a* algorithm. </p>
 <dl class="section author"><dt>Author</dt><dd>Christopher Kok (<a href="#" onclick="location.href='mai'+'lto:'+'chr'+'is'+'@fo'+'rc'+'eli'+'gh'+'tni'+'ng'+'.xy'+'z'; return false;">chris<span class="obfuscator">.nosp@m.</span>@for<span class="obfuscator">.nosp@m.</span>celig<span class="obfuscator">.nosp@m.</span>htni<span class="obfuscator">.nosp@m.</span>ng.xy<span class="obfuscator">.nosp@m.</span>z</a>) </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2023-11-07</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.2 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2023-11-28</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2023 </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a88edd2aa4feabff4af21a997d5d8aa23" name="a88edd2aa4feabff4af21a997d5d8aa23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88edd2aa4feabff4af21a997d5d8aa23">&#9670;&#160;</a></span>DEBUG_PRINT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUG_PRINT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td>&#160;&#160;&#160;printf(__VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Macro for printing debug messages. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">...</td><td>Variable number of arguments to be printed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This macro is only defined if NDEBUG is not defined. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a527cde189628f809da4a1cbf8b9426f7" name="a527cde189628f809da4a1cbf8b9426f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a527cde189628f809da4a1cbf8b9426f7">&#9670;&#160;</a></span>a_star_path_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structa__star__path.html">a_star_path</a> <a class="el" href="a__star_8h.html#a527cde189628f809da4a1cbf8b9426f7">a_star_path_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Struct containing the path from the start node to the end node. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structa__star__path.html" title="Struct containing the path from the start node to the end node.">a_star_path</a> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="a6d82d3636110fd676cb68188a8351c3a" name="a6d82d3636110fd676cb68188a8351c3a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6d82d3636110fd676cb68188a8351c3a">&#9670;&#160;</a></span>a_star()</h2>
 
@@ -185,19 +232,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void a_star </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmaze__grid.html">maze_grid_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *&#160;</td>
           <td class="paramname"><em>p_grid</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> *&#160;</td>
           <td class="paramname"><em>p_start_node</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> *&#160;</td>
           <td class="paramname"><em>p_end_node</em>&#160;</td>
         </tr>
         <tr>
@@ -235,9 +282,9 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structa__star__path.html">a_star_path_t</a> * a_star_get_path </td>
+          <td class="memname"><a class="el" href="a__star_8h.html#a527cde189628f809da4a1cbf8b9426f7">a_star_path_t</a> * a_star_get_path </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmaze__grid__cell.html">maze_grid_cell_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a12801eb645cc8316245e29c7ec3dcbe4">maze_grid_cell_t</a> *&#160;</td>
           <td class="paramname"><em>p_end_node</em></td><td>)</td>
           <td></td>
         </tr>
@@ -247,11 +294,11 @@ Here is the call graph for this function:</div>
 <p>Get the path from the start node to the end node (inclusive). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p_end_node</td><td>Pointer to the end node. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_end_node</td><td>Pointer to the end node. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>path_t* Pointer to the path. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a_star_path_t* Pointer to the path. </dd></dl>
 
 <p class="reference">References <a class="el" href="structmaze__grid__cell.html#a1fab8d68d051eca3d118d5408e1200ca">maze_grid_cell::g</a>, <a class="el" href="structa__star__path.html#aebb70c2aab3407a9f05334c47131a43b">a_star_path::length</a>, <a class="el" href="structmaze__grid__cell.html#a5ab4724a87dab3741294b7ac26d747c7">maze_grid_cell::p_came_from</a>, and <a class="el" href="structa__star__path.html#a92ccc400aec1171b97c27eb1bbf1d2dc">a_star_path::p_path</a>.</p>
 
@@ -266,13 +313,13 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">char * a_star_get_path_str </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmaze__grid.html">maze_grid_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *&#160;</td>
           <td class="paramname"><em>p_grid</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structa__star__path.html">a_star_path_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="a__star_8h.html#a527cde189628f809da4a1cbf8b9426f7">a_star_path_t</a> *&#160;</td>
           <td class="paramname"><em>p_path</em>&#160;</td>
         </tr>
         <tr>
@@ -286,12 +333,13 @@ Here is the call graph for this function:</div>
 <p>Gets the string representation of the path from the start node to the end node. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p_grid</td><td>Pointer to the grid maze. </td></tr>
-    <tr><td class="paramname">p_path</td><td>Pointer to the path.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_grid</td><td>Pointer to the grid maze. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_path</td><td>Pointer to the path.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>char* The string representation of the path. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>The string must be freed after use. </dd></dl>
 
 <p class="reference">References <a class="el" href="structmaze__grid.html#ae98bc97235b87da7326dd2169ec05437">maze_grid::columns</a>, <a class="el" href="structmaze__grid__cell.html#a16ac3af8d458b9527df92bfc368e5e91">maze_grid_cell::coordinates</a>, <a class="el" href="structa__star__path.html#aebb70c2aab3407a9f05334c47131a43b">a_star_path::length</a>, <a class="el" href="maze_8c.html#ab8154230298572c603d5b32c37f39fb5">maze_get_dir_from_to()</a>, <a class="el" href="maze_8c.html#af92eb5d75cd2c4b9418d747bcbd15c7a">maze_get_string()</a>, <a class="el" href="maze_8h.html#acc7f25a6419c912c96df8a247f83c4daaf736862b29879b7653f6f3bf5768fae5">MAZE_NONE</a>, <a class="el" href="structmaze__grid__cell.html#a5ab4724a87dab3741294b7ac26d747c7">maze_grid_cell::p_came_from</a>, and <a class="el" href="structa__star__path.html#a92ccc400aec1171b97c27eb1bbf1d2dc">a_star_path::p_path</a>.</p>
 <div class="dynheader">
@@ -312,19 +360,19 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">int16_t a_star_maze_path_nav_to_buffer </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmaze__grid.html">maze_grid_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a2713a9f7c6ab0472da5528832b9da204">maze_grid_t</a> *&#160;</td>
           <td class="paramname"><em>p_grid</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structa__star__path.html">a_star_path_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="a__star_8h.html#a527cde189628f809da4a1cbf8b9426f7">a_star_path_t</a> *&#160;</td>
           <td class="paramname"><em>p_path</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structmaze__navigator__state.html">maze_navigator_state_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="maze_8h.html#a097c7005561a4e9caebe5dbf6c080344">maze_navigator_state_t</a> *&#160;</td>
           <td class="paramname"><em>p_navigator</em>, </td>
         </tr>
         <tr>
@@ -350,17 +398,17 @@ Here is the call graph for this function:</div>
 <p>Inserts the maze, path and navigator state into a buffer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p_grid</td><td>Pointer to the maze grid. </td></tr>
-    <tr><td class="paramname">p_path</td><td>Pointer to the path generated by A*, NULL if no path exists. </td></tr>
-    <tr><td class="paramname">p_navigator</td><td>Pointer to the navigator state. </td></tr>
-    <tr><td class="paramname">p_buffer</td><td>Pointer to the buffer to store the maze, path and navigator state in. </td></tr>
-    <tr><td class="paramname">buffer_size</td><td>Size of the buffer. Checks if the buffer is large enough. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_grid</td><td>Pointer to the maze grid. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_path</td><td>Pointer to the path generated by A*, NULL if no path exists. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_navigator</td><td>Pointer to the navigator state. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_buffer</td><td>Pointer to the buffer to store the maze, path and navigator state in. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buffer_size</td><td>Size of the buffer. Checks if the buffer is large enough. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int16_t -1 if the buffer is too small, the size of the buffer required otherwise. </dd></dl>
 
-<p class="reference">References <a class="el" href="a__star_8c.html#a454e910ecd336d1249010e468f6b2c07">a_star_path_to_buffer()</a>, <a class="el" href="structmaze__grid.html#ae98bc97235b87da7326dd2169ec05437">maze_grid::columns</a>, <a class="el" href="structa__star__path.html#aebb70c2aab3407a9f05334c47131a43b">a_star_path::length</a>, <a class="el" href="maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270">maze_nav_to_buffer()</a>, <a class="el" href="maze_8c.html#a35e70f881f107a45f52eab387e71c61c">maze_serialise()</a>, <a class="el" href="maze_8c.html#aae2cf92e83b0810d22411db9fbea4d94">maze_serialised_to_buffer()</a>, <a class="el" href="maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1">maze_uint16_to_uint8_buffer()</a>, and <a class="el" href="structmaze__grid.html#a58897720d39a73af3d7686c4e8303758">maze_grid::rows</a>.</p>
+<p class="reference">References <a class="el" href="a__star_8c.html#a454e910ecd336d1249010e468f6b2c07">a_star_path_to_buffer()</a>, <a class="el" href="structmaze__grid.html#ae98bc97235b87da7326dd2169ec05437">maze_grid::columns</a>, <a class="el" href="barcode_8h.html#a88edd2aa4feabff4af21a997d5d8aa23">DEBUG_PRINT</a>, <a class="el" href="structa__star__path.html#aebb70c2aab3407a9f05334c47131a43b">a_star_path::length</a>, <a class="el" href="maze_8c.html#a39f5fccadb0b4834e38f62f3f11ad270">maze_nav_to_buffer()</a>, <a class="el" href="maze_8c.html#a35e70f881f107a45f52eab387e71c61c">maze_serialise()</a>, <a class="el" href="maze_8c.html#aae2cf92e83b0810d22411db9fbea4d94">maze_serialised_to_buffer()</a>, <a class="el" href="maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1">maze_uint16_to_uint8_buffer()</a>, and <a class="el" href="structmaze__grid.html#a58897720d39a73af3d7686c4e8303758">maze_grid::rows</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -379,7 +427,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">int16_t a_star_path_to_buffer </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structa__star__path.html">a_star_path_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="a__star_8h.html#a527cde189628f809da4a1cbf8b9426f7">a_star_path_t</a> *&#160;</td>
           <td class="paramname"><em>p_path</em>, </td>
         </tr>
         <tr>
@@ -405,15 +453,15 @@ Here is the call graph for this function:</div>
 <p>Inserts the path in coordinates from the start node to the end node into a buffer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p_path</td><td>Pointer to the path generated by the A* algorithm. </td></tr>
-    <tr><td class="paramname">p_buffer</td><td>Pointer to the buffer to store the path in. </td></tr>
-    <tr><td class="paramname">buffer_size</td><td>Size of the buffer. Checks if the buffer is large enough. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_path</td><td>Pointer to the path generated by the A* algorithm. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_buffer</td><td>Pointer to the buffer to store the path in. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buffer_size</td><td>Size of the buffer. Checks if the buffer is large enough. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int16_t -1 if the buffer is too small, 0 otherwise. </dd></dl>
 
-<p class="reference">References <a class="el" href="structmaze__grid__cell.html#a16ac3af8d458b9527df92bfc368e5e91">maze_grid_cell::coordinates</a>, <a class="el" href="structa__star__path.html#aebb70c2aab3407a9f05334c47131a43b">a_star_path::length</a>, <a class="el" href="maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1">maze_uint16_to_uint8_buffer()</a>, <a class="el" href="structa__star__path.html#a92ccc400aec1171b97c27eb1bbf1d2dc">a_star_path::p_path</a>, <a class="el" href="structmaze__point.html#a4dde988b1b2adba65ae3efa69f65d960">maze_point::x</a>, and <a class="el" href="structmaze__point.html#ab0580f504a7428539be299fa71565f30">maze_point::y</a>.</p>
+<p class="reference">References <a class="el" href="structmaze__grid__cell.html#a16ac3af8d458b9527df92bfc368e5e91">maze_grid_cell::coordinates</a>, <a class="el" href="barcode_8h.html#a88edd2aa4feabff4af21a997d5d8aa23">DEBUG_PRINT</a>, <a class="el" href="structa__star__path.html#aebb70c2aab3407a9f05334c47131a43b">a_star_path::length</a>, <a class="el" href="maze_8c.html#a54d2a340d7b8fa00c0c3e989fa8657d1">maze_uint16_to_uint8_buffer()</a>, <a class="el" href="structa__star__path.html#a92ccc400aec1171b97c27eb1bbf1d2dc">a_star_path::p_path</a>, <a class="el" href="structmaze__point.html#a4dde988b1b2adba65ae3efa69f65d960">maze_point::x</a>, and <a class="el" href="structmaze__point.html#ab0580f504a7428539be299fa71565f30">maze_point::y</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

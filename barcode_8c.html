@@ -118,24 +118,24 @@ $(document).ready(function(){initNavTree('barcode_8c.html',''); initResizable();
 <code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="ir__sensor_8h_source.html">ir_sensor.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="barcode_8h_source.html">barcode.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ir__sensor_8h_source.html">irline/ir_sensor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="barcode_8h_source.html">irline/barcode.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for barcode.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="barcode_8c__incl.svg" width="542" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="barcode_8c__incl.svg" width="582" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a69019ec4aeeba68d066bb8ec2e6c9053"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barcode_8c.html#a69019ec4aeeba68d066bb8ec2e6c9053">barcode_buffer_to_binary_string</a> (<a class="el" href="barcode_8h.html#a072729e83023f24c40dbc592e23386f3">barcode_line_buffer_t</a> *p_line_buffer)</td></tr>
+<tr class="memitem:a69019ec4aeeba68d066bb8ec2e6c9053"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barcode_8c.html#a69019ec4aeeba68d066bb8ec2e6c9053">barcode_buffer_to_binary_string</a> (<a class="el" href="barcode_8h.html#aac338ee5d9d85fd80a17d7e5f5d509ef">barcode_line_buffer_t</a> *p_line_buffer)</td></tr>
 <tr class="memdesc:a69019ec4aeeba68d066bb8ec2e6c9053"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a binary string representation of the barcode line buffer.  <a href="barcode_8c.html#a69019ec4aeeba68d066bb8ec2e6c9053">More...</a><br /></td></tr>
 <tr class="separator:a69019ec4aeeba68d066bb8ec2e6c9053"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a930f3467576aa64f40cde4c0d8634dd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barcode_8c.html#a930f3467576aa64f40cde4c0d8634dd5">barcode_clear_line_buffer</a> (<a class="el" href="barcode_8h.html#a072729e83023f24c40dbc592e23386f3">barcode_line_buffer_t</a> *p_line_buffer)</td></tr>
+<tr class="memitem:a930f3467576aa64f40cde4c0d8634dd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barcode_8c.html#a930f3467576aa64f40cde4c0d8634dd5">barcode_clear_line_buffer</a> (<a class="el" href="barcode_8h.html#aac338ee5d9d85fd80a17d7e5f5d509ef">barcode_line_buffer_t</a> *p_line_buffer)</td></tr>
 <tr class="memdesc:a930f3467576aa64f40cde4c0d8634dd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialises or clears the barcode line buffer.  <a href="barcode_8c.html#a930f3467576aa64f40cde4c0d8634dd5">More...</a><br /></td></tr>
 <tr class="separator:a930f3467576aa64f40cde4c0d8634dd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2757825072bb590461acc502edffdbf1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="barcode_8h.html#aeda6e579e848aaf49374aeec4a3d9195">barcode_char_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barcode_8c.html#a2757825072bb590461acc502edffdbf1">barcode_decode_barcode_char</a> (<a class="el" href="barcode_8h.html#a072729e83023f24c40dbc592e23386f3">barcode_line_buffer_t</a> *p_line_buffer)</td></tr>
+<tr class="memitem:a2757825072bb590461acc502edffdbf1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="barcode_8h.html#aeda6e579e848aaf49374aeec4a3d9195">barcode_char_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barcode_8c.html#a2757825072bb590461acc502edffdbf1">barcode_decode_barcode_char</a> (<a class="el" href="barcode_8h.html#aac338ee5d9d85fd80a17d7e5f5d509ef">barcode_line_buffer_t</a> *p_line_buffer)</td></tr>
 <tr class="memdesc:a2757825072bb590461acc502edffdbf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decodes the barcode character enum from the line buffer.  <a href="barcode_8c.html#a2757825072bb590461acc502edffdbf1">More...</a><br /></td></tr>
 <tr class="separator:a2757825072bb590461acc502edffdbf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f8bf2b229094dcca51ebede2e4a2963"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barcode_8c.html#a9f8bf2b229094dcca51ebede2e4a2963">barcode_get_char</a> (<a class="el" href="barcode_8h.html#aeda6e579e848aaf49374aeec4a3d9195">barcode_char_t</a> barcode_char)</td></tr>
@@ -144,7 +144,7 @@ Functions</h2></td></tr>
 <tr class="memitem:af2490a1af2a3c2c3b1c435e8e6f5d528"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barcode_8c.html#af2490a1af2a3c2c3b1c435e8e6f5d528">barcode_line_to_string</a> (<a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301">barcode_line_type_t</a> line_type)</td></tr>
 <tr class="memdesc:af2490a1af2a3c2c3b1c435e8e6f5d528"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function to get the barcode line type as a string.  <a href="barcode_8c.html#af2490a1af2a3c2c3b1c435e8e6f5d528">More...</a><br /></td></tr>
 <tr class="separator:af2490a1af2a3c2c3b1c435e8e6f5d528"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad76b1372bc11bdd77b3934cb8f3086a2"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barcode_8c.html#ad76b1372bc11bdd77b3934cb8f3086a2">barcode_update_line_buffer</a> (<a class="el" href="barcode_8h.html#a072729e83023f24c40dbc592e23386f3">barcode_line_buffer_t</a> *p_line_buffer, <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301">barcode_line_type_t</a> line_type)</td></tr>
+<tr class="memitem:ad76b1372bc11bdd77b3934cb8f3086a2"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barcode_8c.html#ad76b1372bc11bdd77b3934cb8f3086a2">barcode_update_line_buffer</a> (<a class="el" href="barcode_8h.html#aac338ee5d9d85fd80a17d7e5f5d509ef">barcode_line_buffer_t</a> *p_line_buffer, <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301">barcode_line_type_t</a> line_type)</td></tr>
 <tr class="memdesc:ad76b1372bc11bdd77b3934cb8f3086a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the line buffer with the line type detected.  <a href="barcode_8c.html#ad76b1372bc11bdd77b3934cb8f3086a2">More...</a><br /></td></tr>
 <tr class="separator:ad76b1372bc11bdd77b3934cb8f3086a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -164,7 +164,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">char * barcode_buffer_to_binary_string </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="barcode_8h.html#a072729e83023f24c40dbc592e23386f3">barcode_line_buffer_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="barcode_8h.html#aac338ee5d9d85fd80a17d7e5f5d509ef">barcode_line_buffer_t</a> *&#160;</td>
           <td class="paramname"><em>p_line_buffer</em></td><td>)</td>
           <td></td>
         </tr>
@@ -181,7 +181,7 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>char* Pointer to the binary string.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>The returned string needs to be freed. </dd></dl>
 
-<p class="reference">References <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301a504f3efef303dc7a0054d791ba2a08b5">BARCODE_LINE_BLACK_THICK</a>, <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301a20e71a98a22ecbbac7f78c121bceb81a">BARCODE_LINE_BLACK_THIN</a>, <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301a9ac7408467b65ca2bd1251427aa96154">BARCODE_LINE_WHITE_THICK</a>, <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301a6593c193c35352f32ae818fe602dfa22">BARCODE_LINE_WHITE_THIN</a>, <a class="el" href="structbarcode__line__buffer.html#a96d130bebfe50cab46bd7b78d4ac292f">barcode_line_buffer::line_buffer</a>, and <a class="el" href="structbarcode__line__buffer.html#a708b53ad719e6be35e3a80090bbfe422">barcode_line_buffer::line_buffer_index</a>.</p>
+<p class="reference">References <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301a504f3efef303dc7a0054d791ba2a08b5">BARCODE_LINE_BLACK_THICK</a>, <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301a20e71a98a22ecbbac7f78c121bceb81a">BARCODE_LINE_BLACK_THIN</a>, <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301a9ac7408467b65ca2bd1251427aa96154">BARCODE_LINE_WHITE_THICK</a>, <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301a6593c193c35352f32ae818fe602dfa22">BARCODE_LINE_WHITE_THIN</a>, <a class="el" href="barcode_8h.html#a88edd2aa4feabff4af21a997d5d8aa23">DEBUG_PRINT</a>, <a class="el" href="structbarcode__line__buffer.html#a96d130bebfe50cab46bd7b78d4ac292f">barcode_line_buffer::line_buffer</a>, and <a class="el" href="structbarcode__line__buffer.html#a708b53ad719e6be35e3a80090bbfe422">barcode_line_buffer::line_buffer_index</a>.</p>
 
 </div>
 </div>
@@ -194,7 +194,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void barcode_clear_line_buffer </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="barcode_8h.html#a072729e83023f24c40dbc592e23386f3">barcode_line_buffer_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="barcode_8h.html#aac338ee5d9d85fd80a17d7e5f5d509ef">barcode_line_buffer_t</a> *&#160;</td>
           <td class="paramname"><em>p_line_buffer</em></td><td>)</td>
           <td></td>
         </tr>
@@ -222,7 +222,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="barcode_8h.html#aeda6e579e848aaf49374aeec4a3d9195">barcode_char_t</a> barcode_decode_barcode_char </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="barcode_8h.html#a072729e83023f24c40dbc592e23386f3">barcode_line_buffer_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="barcode_8h.html#aac338ee5d9d85fd80a17d7e5f5d509ef">barcode_line_buffer_t</a> *&#160;</td>
           <td class="paramname"><em>p_line_buffer</em></td><td>)</td>
           <td></td>
         </tr>
@@ -310,7 +310,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int8_t barcode_update_line_buffer </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="barcode_8h.html#a072729e83023f24c40dbc592e23386f3">barcode_line_buffer_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="barcode_8h.html#aac338ee5d9d85fd80a17d7e5f5d509ef">barcode_line_buffer_t</a> *&#160;</td>
           <td class="paramname"><em>p_line_buffer</em>, </td>
         </tr>
         <tr>
@@ -337,7 +337,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>-1 on error, 0 on success, 1 if the line type has not changed. </dd></dl>
 
-<p class="reference">References <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301aea42eda0d93632966807ce9f10fa5e00">BARCODE_LINE_NONE</a>, <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301a9ac7408467b65ca2bd1251427aa96154">BARCODE_LINE_WHITE_THICK</a>, <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301a6593c193c35352f32ae818fe602dfa22">BARCODE_LINE_WHITE_THIN</a>, <a class="el" href="barcode_8h.html#aa55e3126e2d347a9943a5df811bee6d8a1406d53148cee1eab61c4e05495d6a29">BARCODE_READ_CONTINUE</a>, <a class="el" href="barcode_8h.html#aa55e3126e2d347a9943a5df811bee6d8a0a58c76393c72e67b83ae0653c271d1e">BARCODE_READ_ERROR</a>, <a class="el" href="barcode_8h.html#aa55e3126e2d347a9943a5df811bee6d8ac122c10cfc550a145e03c566645b6e1e">BARCODE_READ_NO_OP</a>, <a class="el" href="barcode_8h.html#aa55e3126e2d347a9943a5df811bee6d8a0a12a08db51823f68568da370087e1cf">BARCODE_READ_SUCCESS</a>, <a class="el" href="structbarcode__line__buffer.html#a96d130bebfe50cab46bd7b78d4ac292f">barcode_line_buffer::line_buffer</a>, and <a class="el" href="structbarcode__line__buffer.html#a708b53ad719e6be35e3a80090bbfe422">barcode_line_buffer::line_buffer_index</a>.</p>
+<p class="reference">References <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301aea42eda0d93632966807ce9f10fa5e00">BARCODE_LINE_NONE</a>, <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301a9ac7408467b65ca2bd1251427aa96154">BARCODE_LINE_WHITE_THICK</a>, <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301a6593c193c35352f32ae818fe602dfa22">BARCODE_LINE_WHITE_THIN</a>, <a class="el" href="group__barcode__constants.html#ga39f1eefe46cad57232bc6b3f39708e42">BARCODE_MAX_LINES</a>, <a class="el" href="barcode_8h.html#aa55e3126e2d347a9943a5df811bee6d8a1406d53148cee1eab61c4e05495d6a29">BARCODE_READ_CONTINUE</a>, <a class="el" href="barcode_8h.html#aa55e3126e2d347a9943a5df811bee6d8a0a58c76393c72e67b83ae0653c271d1e">BARCODE_READ_ERROR</a>, <a class="el" href="barcode_8h.html#aa55e3126e2d347a9943a5df811bee6d8ac122c10cfc550a145e03c566645b6e1e">BARCODE_READ_NO_OP</a>, <a class="el" href="barcode_8h.html#aa55e3126e2d347a9943a5df811bee6d8a0a12a08db51823f68568da370087e1cf">BARCODE_READ_SUCCESS</a>, <a class="el" href="structbarcode__line__buffer.html#a96d130bebfe50cab46bd7b78d4ac292f">barcode_line_buffer::line_buffer</a>, and <a class="el" href="structbarcode__line__buffer.html#a708b53ad719e6be35e3a80090bbfe422">barcode_line_buffer::line_buffer_index</a>.</p>
 
 </div>
 </div>

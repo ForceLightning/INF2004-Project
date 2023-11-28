@@ -1,0 +1,4 @@
+<map id="pid_navigate_turn" name="pid_navigate_turn">
+<area shape="rect" id="node1" title="Function to turn the car and move in a given direction." alt="" coords="171,29,295,55"/>
+<area shape="rect" id="node2" href="$drivers_2pid_2main_8c.html#a0187889d224f77fe06a8bee605897eb3" title="Interrupt callback function on rising edge." alt="" coords="5,29,123,55"/>
+</map>

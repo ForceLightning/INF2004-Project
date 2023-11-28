@@ -119,11 +119,11 @@ $(document).ready(function(){initNavTree('ultrasonic_8c.html',''); initResizable
 <code>#include &quot;pico/time.h&quot;</code><br />
 <code>#include &quot;pico/types.h&quot;</code><br />
 <code>#include &quot;hardware/gpio.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="ultrasonic_8h_source.html">ultrasonic.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ultrasonic_8h_source.html">ultrasonic/ultrasonic.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ultrasonic.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="ultrasonic_8c__incl.svg" width="760" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="ultrasonic_8c__incl.svg" width="820" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
@@ -175,14 +175,14 @@ Functions</h2></td></tr>
 <p>Get the distance to an object in centimetres. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">trig_pin</td><td>Trigger pin for the ultrasonic sensor. </td></tr>
-    <tr><td class="paramname">echo_pin</td><td>Echo pin for the ultrasonic sensor. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">trig_pin</td><td>Trigger pin for the ultrasonic sensor. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">echo_pin</td><td>Echo pin for the ultrasonic sensor. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>uint64_t The distance to an object in centimetres. </dd></dl>
 
-<p class="reference">References <a class="el" href="ultrasonic_8h.html#a539db9aefc2b0eebb25d59eb3bbb330b">ULTRASONIC_PULSE_TO_CM</a>.</p>
+<p class="reference">References <a class="el" href="group__ultrasonic__macros.html#ga539db9aefc2b0eebb25d59eb3bbb330b">ULTRASONIC_PULSE_TO_CM</a>.</p>
 
 </div>
 </div>
@@ -215,14 +215,14 @@ Functions</h2></td></tr>
 <p>Get the distance to an object in inches. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">trig_pin</td><td>Trigger pin for the ultrasonic sensor. </td></tr>
-    <tr><td class="paramname">echo_pin</td><td>Echo pin for the ultrasonic sensor. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">trig_pin</td><td>Trigger pin for the ultrasonic sensor. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">echo_pin</td><td>Echo pin for the ultrasonic sensor. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>uint64_t The distance to an object in inches. </dd></dl>
 
-<p class="reference">References <a class="el" href="ultrasonic_8h.html#a41a73e9f92d664c685ad70706366db3b">ULTRASONIC_PULSE_TO_IN</a>.</p>
+<p class="reference">References <a class="el" href="group__ultrasonic__macros.html#ga41a73e9f92d664c685ad70706366db3b">ULTRASONIC_PULSE_TO_IN</a>.</p>
 
 </div>
 </div>
@@ -255,8 +255,8 @@ Functions</h2></td></tr>
 <p>Initalises the pins for the ultrasonic sensor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">trig_pin</td><td>Trigger pin for the ultrasonic sensor. </td></tr>
-    <tr><td class="paramname">echo_pin</td><td>Echo pin for the ultrasonic sensor.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">trig_pin</td><td>Trigger pin for the ultrasonic sensor. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">echo_pin</td><td>Echo pin for the ultrasonic sensor.</td></tr>
   </table>
   </dd>
 </dl>

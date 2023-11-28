@@ -1,0 +1,10 @@
+<map id="encoder_tick_isr" name="encoder_tick_isr">
+<area shape="rect" id="node1" title="Interrupt callback function on rising edge." alt="" coords="5,80,123,105"/>
+<area shape="rect" id="node2" href="$pid_8c.html#a71879f5750062bb9d1e51da2a02d626d" title="Function to turn the car and move in a given direction." alt="" coords="171,80,295,105"/>
+<area shape="rect" id="node3" href="$motor__control_8c.html#aa0ac4ae2f8c20282dec6b8e443fd6666" title="A function to move the car forward." alt="" coords="343,5,487,31"/>
+<area shape="rect" id="node6" href="$motor__control_8c.html#a24063f2aae5b4a3eb6b33dc2eea150dd" title="A function to turn the car left." alt="" coords="360,55,469,80"/>
+<area shape="rect" id="node7" href="$motor__control_8c.html#a63c73ae82a6d47bc620608fc752b83f9" title="A function to turn the car right." alt="" coords="357,104,473,129"/>
+<area shape="rect" id="node8" href="$pid_8c.html#a2df167fb87eed8f206d2231abc2b7610" title="Sets up pid struct(s)." alt="" coords="359,153,470,179"/>
+<area shape="rect" id="node4" href="$motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf" title="A function to update the direction of the motor&#39;s rotation." alt="" coords="535,31,692,56"/>
+<area shape="rect" id="node5" href="$motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3" title="A function to update the PWM duty cycle and wrap value." alt="" coords="545,80,681,105"/>
+</map>

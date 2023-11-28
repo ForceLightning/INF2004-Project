@@ -1,4 +1,0 @@
-<map id="wifi_tcp_server_begin" name="wifi_tcp_server_begin">
-<area shape="rect" id="node1" title="Begins a TCP server by connecting to Wi&#45;Fi with the given SSID and password." alt="" coords="5,5,152,31"/>
-<area shape="rect" id="node2" href="$wifi_8c.html#aa2dfdb3478f7b326d077e4f6eac7d764" title="Runs a TCP server and opens it. Then, it enters a loop to check for Wi&#45;Fi driver or lwIP work that ne..." alt="" coords="200,5,363,31"/>
-</map>

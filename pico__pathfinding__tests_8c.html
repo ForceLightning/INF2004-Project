@@ -123,14 +123,15 @@ $(document).ready(function(){initNavTree('pico__pathfinding__tests_8c.html','');
 <code>#include &quot;pico/stdlib.h&quot;</code><br />
 <code>#include &quot;pico/stdio.h&quot;</code><br />
 <code>#include &quot;pico/platform.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="maze_8h_source.html">maze.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="dfs_8h_source.html">dfs.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="floodfill_8h_source.html">floodfill.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="a__star_8h_source.html">a_star.h</a>&quot;</code><br />
+<code>#include &quot;pico/time.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="maze_8h_source.html">pathfinding/maze.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dfs_8h_source.html">pathfinding/dfs.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floodfill_8h_source.html">pathfinding/floodfill.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a__star_8h_source.html">pathfinding/a_star.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for pico_pathfinding_tests.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="pico__pathfinding__tests_8c__incl.svg" width="1112" height="344"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="pico__pathfinding__tests_8c__incl.svg" width="1316" height="359"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
@@ -146,11 +147,22 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a9401d5eb194f6744c433d6d580c27cb2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pico__pathfinding__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2">constants_t</a> { <a class="el" href="pico__pathfinding__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2a999a85451a10a5ea3c71e34ad10089a0">GRID_ROWS</a> = 6
+<tr class="memitem:a9401d5eb194f6744c433d6d580c27cb2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pico__pathfinding__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2">constants_t</a> { <br />
+&#160;&#160;<a class="el" href="pico__pathfinding__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2a999a85451a10a5ea3c71e34ad10089a0">GRID_ROWS</a> = 6
 , <a class="el" href="pico__pathfinding__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2a5fc37eb4ae64c6aacc59bb40c0b682b5">GRID_COLS</a> = 4
 , <a class="el" href="pico__pathfinding__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2a99885a00235c340919dfc18be13c32b5">TEST_BUFFER_SIZE</a> = 2048u
+, <a class="el" href="pico__pathfinding__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2a7b4782b2983bca4c0550f47349da1597">INITIALISE_WAIT</a> = 5000u
+, <br />
+&#160;&#160;<a class="el" href="dfs__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2a999a85451a10a5ea3c71e34ad10089a0">GRID_ROWS</a> = 5
+, <a class="el" href="dfs__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2a5fc37eb4ae64c6aacc59bb40c0b682b5">GRID_COLS</a> = 5
+, <a class="el" href="floodfill__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2a999a85451a10a5ea3c71e34ad10089a0">GRID_ROWS</a> = 5
+, <a class="el" href="floodfill__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2a5fc37eb4ae64c6aacc59bb40c0b682b5">GRID_COLS</a> = 5
+, <br />
+&#160;&#160;<a class="el" href="pathfinding__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2a999a85451a10a5ea3c71e34ad10089a0">GRID_ROWS</a> = 10
+, <a class="el" href="pathfinding__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2a5fc37eb4ae64c6aacc59bb40c0b682b5">GRID_COLS</a> = 10
+<br />
  }</td></tr>
-<tr class="memdesc:a9401d5eb194f6744c433d6d580c27cb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">This enum contains constants used in the tests.  <a href="pico__pathfinding__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2">More...</a><br /></td></tr>
+<tr class="memdesc:a9401d5eb194f6744c433d6d580c27cb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constants used in the tests.  <a href="pico__pathfinding__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2">More...</a><br /></td></tr>
 <tr class="separator:a9401d5eb194f6744c433d6d580c27cb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -206,13 +218,27 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> (void)</td></
       </table>
 </div><div class="memdoc">
 
-<p>This enum contains constants used in the tests. </p>
+<p>Constants used in the tests. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a9401d5eb194f6744c433d6d580c27cb2a999a85451a10a5ea3c71e34ad10089a0" name="a9401d5eb194f6744c433d6d580c27cb2a999a85451a10a5ea3c71e34ad10089a0"></a>GRID_ROWS&#160;</td><td class="fielddoc"><p >Number of rows in the grid. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a9401d5eb194f6744c433d6d580c27cb2a5fc37eb4ae64c6aacc59bb40c0b682b5" name="a9401d5eb194f6744c433d6d580c27cb2a5fc37eb4ae64c6aacc59bb40c0b682b5"></a>GRID_COLS&#160;</td><td class="fielddoc"><p >Number of columns in the grid. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a9401d5eb194f6744c433d6d580c27cb2a99885a00235c340919dfc18be13c32b5" name="a9401d5eb194f6744c433d6d580c27cb2a99885a00235c340919dfc18be13c32b5"></a>TEST_BUFFER_SIZE&#160;</td><td class="fielddoc"><p >Size of the test buffer for serialisation. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9401d5eb194f6744c433d6d580c27cb2a7b4782b2983bca4c0550f47349da1597" name="a9401d5eb194f6744c433d6d580c27cb2a7b4782b2983bca4c0550f47349da1597"></a>INITIALISE_WAIT&#160;</td><td class="fielddoc"><p >Time to wait for the user to open the serial terminal. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9401d5eb194f6744c433d6d580c27cb2a999a85451a10a5ea3c71e34ad10089a0" name="a9401d5eb194f6744c433d6d580c27cb2a999a85451a10a5ea3c71e34ad10089a0"></a>GRID_ROWS&#160;</td><td class="fielddoc"><p >Number of rows in the grid. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9401d5eb194f6744c433d6d580c27cb2a5fc37eb4ae64c6aacc59bb40c0b682b5" name="a9401d5eb194f6744c433d6d580c27cb2a5fc37eb4ae64c6aacc59bb40c0b682b5"></a>GRID_COLS&#160;</td><td class="fielddoc"><p >Number of columns in the grid. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9401d5eb194f6744c433d6d580c27cb2a999a85451a10a5ea3c71e34ad10089a0" name="a9401d5eb194f6744c433d6d580c27cb2a999a85451a10a5ea3c71e34ad10089a0"></a>GRID_ROWS&#160;</td><td class="fielddoc"><p >Number of rows in the grid. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9401d5eb194f6744c433d6d580c27cb2a5fc37eb4ae64c6aacc59bb40c0b682b5" name="a9401d5eb194f6744c433d6d580c27cb2a5fc37eb4ae64c6aacc59bb40c0b682b5"></a>GRID_COLS&#160;</td><td class="fielddoc"><p >Number of columns in the grid. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9401d5eb194f6744c433d6d580c27cb2a999a85451a10a5ea3c71e34ad10089a0" name="a9401d5eb194f6744c433d6d580c27cb2a999a85451a10a5ea3c71e34ad10089a0"></a>GRID_ROWS&#160;</td><td class="fielddoc"><p >Number of rows in the grid. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9401d5eb194f6744c433d6d580c27cb2a5fc37eb4ae64c6aacc59bb40c0b682b5" name="a9401d5eb194f6744c433d6d580c27cb2a5fc37eb4ae64c6aacc59bb40c0b682b5"></a>GRID_COLS&#160;</td><td class="fielddoc"><p >Number of columns in the grid. </p>
 </td></tr>
 </table>
 

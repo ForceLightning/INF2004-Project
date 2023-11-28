@@ -1,4 +1,5 @@
 <map id="motor_turn_right" name="motor_turn_right">
-<area shape="rect" id="node1" title="A function to turn the car right." alt="" coords="179,5,295,31"/>
-<area shape="rect" id="node2" href="$pid_8c.html#a1ba495049f805afac3a7b18020ce0cf4" title="Function to turn the car and move in a given direction." alt="" coords="5,5,131,31"/>
+<area shape="rect" id="node1" title="A function to turn the car right." alt="" coords="343,29,459,55"/>
+<area shape="rect" id="node2" href="$pid_8c.html#a71879f5750062bb9d1e51da2a02d626d" title="Function to turn the car and move in a given direction." alt="" coords="171,29,295,55"/>
+<area shape="rect" id="node3" href="$drivers_2pid_2main_8c.html#a0187889d224f77fe06a8bee605897eb3" title="Interrupt callback function on rising edge." alt="" coords="5,29,123,55"/>
 </map>

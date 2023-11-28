@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="wifi_8c.html#a7ffb0a73f3a40a14b007cefdf6b4fcab" target="_top" xlink:title="Begins a TCP server by connecting to Wi&#45;Fi with the given SSID and password.">
+<g id="a_node2"><a xlink:href="wifi_8c.html#aaba12e0bf7d99e82269db476f6b06e3e" target="_top" xlink:title="Begins a TCP server by connecting to Wi&#45;Fi with the given SSID and password.">
 <polygon fill="white" stroke="#666666" points="110,-19 0,-19 0,0 110,0 110,-19"/>
 <text text-anchor="middle" x="55" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">wifi_tcp_server_begin</text>
 </a>

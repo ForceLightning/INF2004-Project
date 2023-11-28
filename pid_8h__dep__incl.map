@@ -1,5 +1,6 @@
 <map id="src/drivers/pid/pid.h" name="src/drivers/pid/pid.h">
-<area shape="rect" id="node1" title=" " alt="" coords="72,5,207,31"/>
-<area shape="rect" id="node2" href="$pid_8c.html" title=" " alt="" coords="5,79,140,104"/>
-<area shape="rect" id="node3" href="$main_8c.html" title="The main source file for robot control." alt="" coords="165,79,247,104"/>
+<area shape="rect" id="node1" title=" " alt="" coords="177,5,311,31"/>
+<area shape="rect" id="node2" href="$drivers_2pid_2main_8c.html" title="Demonstration for the PID driver." alt="" coords="5,79,152,104"/>
+<area shape="rect" id="node3" href="$pid_8c.html" title=" " alt="" coords="177,79,311,104"/>
+<area shape="rect" id="node4" href="$main_8c.html" title="The main source file for robot control." alt="" coords="336,79,419,104"/>
 </map>

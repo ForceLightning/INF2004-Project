@@ -1,0 +1,25 @@
+var group__magnetometer__constants =
+[
+    [ "MAGNETO_ACCEL_ADDR", "group__magnetometer__constants.html#ga3787aedac35819fa4c6674762bee5fdd", null ],
+    [ "MAGNETO_BEARING_OFFSET", "group__magnetometer__constants.html#ga1934f928422b33417ca4e0a37e2705d3", null ],
+    [ "MAGNETO_CRA_REG_M", "group__magnetometer__constants.html#gae007a3e0730d5139451eae5ca22a09d9", null ],
+    [ "MAGNETO_CTRL_REG1_A", "group__magnetometer__constants.html#ga88cf257dac098aea535bc41f994f2d7a", null ],
+    [ "MAGNETO_GRAVITY_CONSTANT_F", "group__magnetometer__constants.html#ga9e5e001f3c7aecc4e1d94553b873261a", null ],
+    [ "MAGNETO_I2C_BAUDRATE", "group__magnetometer__constants.html#ga470e725ba07e108fff8a3840090615af", null ],
+    [ "MAGNETO_I2C_SCL_PIN", "group__magnetometer__constants.html#ga345ace5bd22533ab1c710dccd825f02a", null ],
+    [ "MAGNETO_I2C_SDA_PIN", "group__magnetometer__constants.html#ga48cb3805d38e347d262fd7a181cd4838", null ],
+    [ "MAGNETO_METER_ADDR", "group__magnetometer__constants.html#ga1933244a5e1625442302e3776a6ed79e", null ],
+    [ "MAGNETO_MR_REG_M", "group__magnetometer__constants.html#ga7a16f1ad062e4d9be657edc5434214d8", null ],
+    [ "MAGNETO_OUT_X_H_A", "group__magnetometer__constants.html#ga632e3c30df8917cb17d96187ade07d3f", null ],
+    [ "MAGNETO_OUT_X_H_M", "group__magnetometer__constants.html#gacc495b3f1df3b1dd3a3f209b8275d8ff", null ],
+    [ "MAGNETO_OUT_X_L_A", "group__magnetometer__constants.html#gac123eac3b5a5a4c08db87408c5722815", null ],
+    [ "MAGNETO_OUT_X_L_M", "group__magnetometer__constants.html#ga3ea333309dbe9a9b3df9541342585c43", null ],
+    [ "MAGNETO_OUT_Y_H_A", "group__magnetometer__constants.html#ga1345d3d92d62ffaca041564c30c28ad4", null ],
+    [ "MAGNETO_OUT_Y_H_M", "group__magnetometer__constants.html#gab102927ad3290dd9a62794796b455941", null ],
+    [ "MAGNETO_OUT_Y_L_A", "group__magnetometer__constants.html#gabe3b6fe29f206ed6d77b70650b382e25", null ],
+    [ "MAGNETO_OUT_Y_L_M", "group__magnetometer__constants.html#ga63fbb3c11765b36dcb0e32d88ec09832", null ],
+    [ "MAGNETO_OUT_Z_H_A", "group__magnetometer__constants.html#ga0db9fd04b944c3b857e4cc26fbe2a54d", null ],
+    [ "MAGNETO_OUT_Z_H_M", "group__magnetometer__constants.html#ga64c119f2fd99c933a42b725e3dc6687e", null ],
+    [ "MAGNETO_OUT_Z_L_A", "group__magnetometer__constants.html#ga64d9ff67daedab5221b634fd448b1b1a", null ],
+    [ "MAGNETO_OUT_Z_L_M", "group__magnetometer__constants.html#gaddfd98db21e57b37b06a972996cb4516", null ]
+];

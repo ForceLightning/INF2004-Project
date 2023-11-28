@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['maze_5fgap_5fbitmask_5ft_0',['maze_gap_bitmask_t',['../maze_8h.html#a8b7f60aa6e205b169ea0494a0f0f5dd2',1,'maze.h']]],
-  ['motor_5fpins_5ft_1',['motor_pins_t',['../motor__control_8h.html#a3194ed010c3bbfaff659e872a1ee6d9e',1,'motor_control.h']]]
+  ['floodfill_5fexplore_5ffunc_5ft_0',['floodfill_explore_func_t',['../floodfill_8h.html#a085b6be2b6e4f1335e82e7b902b0f1ca',1,'floodfill.h']]],
+  ['floodfill_5fmove_5fnavigator_5ft_1',['floodfill_move_navigator_t',['../floodfill_8h.html#aaa5dd0d15668be40804766df2d3fc69d',1,'floodfill.h']]]
 ];

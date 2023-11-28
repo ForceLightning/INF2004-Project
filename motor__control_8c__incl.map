@@ -1,10 +1,10 @@
 <map id="src/drivers/motor/motor_control.c" name="src/drivers/motor/motor_control.c">
 <area shape="rect" id="node1" title=" " alt="" coords="190,5,347,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,93,65,119"/>
-<area shape="rect" id="node3" title=" " alt="" coords="189,167,263,192"/>
+<area shape="rect" id="node3" title=" " alt="" coords="207,167,282,192"/>
 <area shape="rect" id="node4" title=" " alt="" coords="141,93,258,119"/>
 <area shape="rect" id="node5" title=" " alt="" coords="283,93,396,119"/>
-<area shape="rect" id="node6" title=" " alt="" coords="523,167,614,192"/>
-<area shape="rect" id="node7" href="$motor__control_8h.html" title="Header file for motor control drivers." alt="" coords="420,93,531,119"/>
-<area shape="rect" id="node8" title=" " alt="" coords="409,167,499,192"/>
+<area shape="rect" id="node6" title=" " alt="" coords="561,167,651,192"/>
+<area shape="rect" id="node7" href="$motor__control_8h.html" title="Header file for motor control drivers." alt="" coords="420,93,568,119"/>
+<area shape="rect" id="node8" title=" " alt="" coords="446,167,537,192"/>
 </map>

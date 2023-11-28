@@ -1,7 +1,12 @@
 var barcode_8h =
 [
     [ "barcode_line_buffer", "structbarcode__line__buffer.html", "structbarcode__line__buffer" ],
-    [ "barcode_line_buffer_t", "barcode_8h.html#a072729e83023f24c40dbc592e23386f3", null ],
+    [ "BARCODE_DEBUG_VERBOSE", "barcode_8h.html#aaf8c67a7c6df92c6759ca4722809e057", null ],
+    [ "BARCODE_DEBUG_VERBOSE", "barcode_8h.html#aaf8c67a7c6df92c6759ca4722809e057", null ],
+    [ "BARCODE_MAX_LINES", "group__barcode__constants.html#ga39f1eefe46cad57232bc6b3f39708e42", null ],
+    [ "DEBUG_PRINT", "barcode_8h.html#a88edd2aa4feabff4af21a997d5d8aa23", null ],
+    [ "PICO_DEBUG_MALLOC", "barcode_8h.html#a0ec6dbb5c8d3a5734aa2db6b60140ec6", null ],
+    [ "barcode_line_buffer_t", "barcode_8h.html#aac338ee5d9d85fd80a17d7e5f5d509ef", null ],
     [ "barcode_char_t", "barcode_8h.html#aeda6e579e848aaf49374aeec4a3d9195", [
       [ "BARCODE_CHAR_0", "barcode_8h.html#aeda6e579e848aaf49374aeec4a3d9195ac59d8ef80ea3c7430db8a817f42df377", null ],
       [ "BARCODE_CHAR_1", "barcode_8h.html#aeda6e579e848aaf49374aeec4a3d9195abc2606fe9a87aad125658596aed4b8f8", null ],

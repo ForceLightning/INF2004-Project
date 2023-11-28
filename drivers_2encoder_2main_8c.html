@@ -106,7 +106,6 @@ $(document).ready(function(){initNavTree('drivers_2encoder_2main_8c.html',''); i
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">main.c File Reference</div></div>
@@ -123,38 +122,14 @@ $(document).ready(function(){initNavTree('drivers_2encoder_2main_8c.html',''); i
 <code>#include &quot;hardware/gpio.h&quot;</code><br />
 <code>#include &quot;hardware/timer.h&quot;</code><br />
 <code>#include &quot;pico/stdio.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="wheel__encoder_8h_source.html">wheel_encoder.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="wheel__encoder_8h_source.html">encoder/wheel_encoder.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="drivers_2encoder_2main_8c__incl.svg" width="1048" height="198"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="drivers_2encoder_2main_8c__incl.svg" width="1099" height="198"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a3835ad6a89a424c0a0eb80132b72efd3"><td class="memItemLeft" align="right" valign="top"><a id="a3835ad6a89a424c0a0eb80132b72efd3" name="a3835ad6a89a424c0a0eb80132b72efd3"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ENCODER_PIN</b>&#160;&#160;&#160;22</td></tr>
-<tr class="separator:a3835ad6a89a424c0a0eb80132b72efd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9564b3a258722c5c469dc036d4f0444"><td class="memItemLeft" align="right" valign="top"><a id="ac9564b3a258722c5c469dc036d4f0444" name="ac9564b3a258722c5c469dc036d4f0444"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>MM_TO_CM</b>&#160;&#160;&#160;10.0f</td></tr>
-<tr class="separator:ac9564b3a258722c5c469dc036d4f0444"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa110ef4ed1995cd4b27aaa8a605e0500"><td class="memItemLeft" align="right" valign="top"><a id="aa110ef4ed1995cd4b27aaa8a605e0500" name="aa110ef4ed1995cd4b27aaa8a605e0500"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_PIN_ANTICLKWISE</b>&#160;&#160;&#160;17</td></tr>
-<tr class="separator:aa110ef4ed1995cd4b27aaa8a605e0500"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0f1dddea3d7784576d4b1877c4a8aa9"><td class="memItemLeft" align="right" valign="top"><a id="ad0f1dddea3d7784576d4b1877c4a8aa9" name="ad0f1dddea3d7784576d4b1877c4a8aa9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_PIN_CLKWISE</b>&#160;&#160;&#160;16</td></tr>
-<tr class="separator:ad0f1dddea3d7784576d4b1877c4a8aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f88ea8f18caee03ff2bc4f6dbb63b81"><td class="memItemLeft" align="right" valign="top"><a id="a3f88ea8f18caee03ff2bc4f6dbb63b81" name="a3f88ea8f18caee03ff2bc4f6dbb63b81"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PWM_CLKDIV</b>&#160;&#160;&#160;100</td></tr>
-<tr class="separator:a3f88ea8f18caee03ff2bc4f6dbb63b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5a48adc9d939102a42f2829b7a1b8ac"><td class="memItemLeft" align="right" valign="top"><a id="af5a48adc9d939102a42f2829b7a1b8ac" name="af5a48adc9d939102a42f2829b7a1b8ac"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PWM_PIN</b>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:af5a48adc9d939102a42f2829b7a1b8ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19bbd3f95a23c9ecf96180fae5486441"><td class="memItemLeft" align="right" valign="top"><a id="a19bbd3f95a23c9ecf96180fae5486441" name="a19bbd3f95a23c9ecf96180fae5486441"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PWM_WRAP</b>&#160;&#160;&#160;62500</td></tr>
-<tr class="separator:a19bbd3f95a23c9ecf96180fae5486441"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top"><a id="ae66f6b31b5ad750f1fe042a706a4e3d4" name="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
@@ -164,7 +139,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> ()</td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a8bcd5d699cde7fbe9a1248182e52bd54"><td class="memItemLeft" align="right" valign="top"><a id="a8bcd5d699cde7fbe9a1248182e52bd54" name="a8bcd5d699cde7fbe9a1248182e52bd54"></a>
-<a class="el" href="wheel__encoder_8h.html#a01f66b6a68eda029268fad423043b0fe">wheel_encoder_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>g_encoder</b></td></tr>
+<a class="el" href="wheel__encoder_8h.html#a289e885834dcd4feb95b33ecb6827188">wheel_encoder_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>g_encoder</b></td></tr>
+<tr class="memdesc:a8bcd5d699cde7fbe9a1248182e52bd54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global struct for holding encoder data. <br /></td></tr>
 <tr class="separator:a8bcd5d699cde7fbe9a1248182e52bd54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>

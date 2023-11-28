@@ -113,17 +113,16 @@ $(document).ready(function(){initNavTree('ir__sensor_8c.html',''); initResizable
 
 <p>Driver code for the IR sensor driver.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;stdint.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;sys/types.h&gt;</code><br />
 <code>#include &quot;hardware/gpio.h&quot;</code><br />
 <code>#include &quot;hardware/adc.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="ir__sensor_8h_source.html">ir_sensor.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="barcode_8h_source.html">barcode.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ir__sensor_8h_source.html">irline/ir_sensor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="barcode_8h_source.html">irline/barcode.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ir_sensor.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="ir__sensor_8c__incl.svg" width="652" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="ir__sensor_8c__incl.svg" width="579" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
@@ -144,10 +143,10 @@ Functions</h2></td></tr>
 <tr class="memitem:ae1e7b09263867af6b6e2362e5bab77db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ir__sensor_8c.html#ae1e7b09263867af6b6e2362e5bab77db">ir_setup_gpio_pin</a> (uint gpio_pin)</td></tr>
 <tr class="memdesc:ae1e7b09263867af6b6e2362e5bab77db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialises the digital pin for the IR sensor.  <a href="ir__sensor_8c.html#ae1e7b09263867af6b6e2362e5bab77db">More...</a><br /></td></tr>
 <tr class="separator:ae1e7b09263867af6b6e2362e5bab77db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d65ede546561f2b112b5075795be07c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ir__sensor_8c.html#a3d65ede546561f2b112b5075795be07c">ir_update_left_flag</a> (<a class="el" href="ir__sensor_8h.html#a461088461b65ec1d748be8d1511f999d">ir_flags_t</a> *p_flag)</td></tr>
+<tr class="memitem:a3d65ede546561f2b112b5075795be07c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ir__sensor_8c.html#a3d65ede546561f2b112b5075795be07c">ir_update_left_flag</a> (<a class="el" href="ir__sensor_8h.html#ab500f06521bf19a63e00417ba2a6c4f8">ir_flags_t</a> *p_flag)</td></tr>
 <tr class="memdesc:a3d65ede546561f2b112b5075795be07c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether there is a left wall.  <a href="ir__sensor_8c.html#a3d65ede546561f2b112b5075795be07c">More...</a><br /></td></tr>
 <tr class="separator:a3d65ede546561f2b112b5075795be07c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2673e4c3c8245d0f6ad98114b73b63f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ir__sensor_8c.html#a2673e4c3c8245d0f6ad98114b73b63f7">ir_update_top_flag</a> (<a class="el" href="ir__sensor_8h.html#a461088461b65ec1d748be8d1511f999d">ir_flags_t</a> *p_flag)</td></tr>
+<tr class="memitem:a2673e4c3c8245d0f6ad98114b73b63f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ir__sensor_8c.html#a2673e4c3c8245d0f6ad98114b73b63f7">ir_update_top_flag</a> (<a class="el" href="ir__sensor_8h.html#ab500f06521bf19a63e00417ba2a6c4f8">ir_flags_t</a> *p_flag)</td></tr>
 <tr class="memdesc:a2673e4c3c8245d0f6ad98114b73b63f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether there is a top wall.  <a href="ir__sensor_8c.html#a2673e4c3c8245d0f6ad98114b73b63f7">More...</a><br /></td></tr>
 <tr class="separator:a2673e4c3c8245d0f6ad98114b73b63f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -187,12 +186,13 @@ Functions</h2></td></tr>
 <p>This returns the information of the walls in the node. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gpio_pin_left</td><td>GPIO pin for the left sensor </td></tr>
-    <tr><td class="paramname">gpio_pin_right</td><td>GPIO pin for the front sensor </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_pin_left</td><td>GPIO pin for the left sensor </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_pin_right</td><td>GPIO pin for the front sensor </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>uint16_t </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>uint16_t Returns wall directions as a bitfield. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="maze_8h.html#ae87b89fdc19784bdcc8c4eb985715375" title="This enum contains bitmasks for the walls. Useful when updating more than one wall at a time.">maze_wall_direction_t</a> </dd></dl>
 
 <p class="reference">References <a class="el" href="ir__sensor_8c.html#a7ce43145514708552a16fdda59762bb7">ir_read_line()</a>.</p>
 <div class="dynheader">
@@ -221,6 +221,8 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>This function reads the barcode and determines the colour and the thickness. </p>
+<dl class="section return"><dt>Returns</dt><dd>barcode_line_type_t Returns the barcode line type. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>barcode_line_type </dd></dl>
 
 <p class="reference">References <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301a504f3efef303dc7a0054d791ba2a08b5">BARCODE_LINE_BLACK_THICK</a>, <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301a20e71a98a22ecbbac7f78c121bceb81a">BARCODE_LINE_BLACK_THIN</a>, <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301aea42eda0d93632966807ce9f10fa5e00">BARCODE_LINE_NONE</a>, <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301a9ac7408467b65ca2bd1251427aa96154">BARCODE_LINE_WHITE_THICK</a>, and <a class="el" href="barcode_8h.html#ae3d95abda64b627e0e9049d45d891301a6593c193c35352f32ae818fe602dfa22">BARCODE_LINE_WHITE_THIN</a>.</p>
 
@@ -245,11 +247,11 @@ Here is the call graph for this function:</div>
 <p>Detects line. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gpio_pin_in</td><td>GPIO pin for the IR sensor </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_pin_in</td><td>GPIO pin for the IR sensor </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>uint16_t </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>uint16_t Returns 1 if line is detected, 0 otherwise </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -278,7 +280,7 @@ Here is the caller graph for this function:</div>
 <p>Initalises the analog pins for the IR sensor to ADC. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">adc_pin</td><td>ADC pin for the IR sensor. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">adc_pin</td><td>ADC pin for the IR sensor. </td></tr>
   </table>
   </dd>
 </dl>
@@ -304,7 +306,7 @@ Here is the caller graph for this function:</div>
 <p>Initialises the digital pin for the IR sensor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gpio_pin</td><td>GPIO pin for the IR sensor </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_pin</td><td>GPIO pin for the IR sensor </td></tr>
   </table>
   </dd>
 </dl>
@@ -320,7 +322,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void ir_update_left_flag </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="ir__sensor_8h.html#a461088461b65ec1d748be8d1511f999d">ir_flags_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="ir__sensor_8h.html#ab500f06521bf19a63e00417ba2a6c4f8">ir_flags_t</a> *&#160;</td>
           <td class="paramname"><em>p_flag</em></td><td>)</td>
           <td></td>
         </tr>
@@ -330,7 +332,7 @@ Here is the caller graph for this function:</div>
 <p>Indicates whether there is a left wall. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">flag</td><td>The indicator for the walls </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_flag</td><td>Pointer to the indicator for the walls. </td></tr>
   </table>
   </dd>
 </dl>
@@ -348,7 +350,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void ir_update_top_flag </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="ir__sensor_8h.html#a461088461b65ec1d748be8d1511f999d">ir_flags_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="ir__sensor_8h.html#ab500f06521bf19a63e00417ba2a6c4f8">ir_flags_t</a> *&#160;</td>
           <td class="paramname"><em>p_flag</em></td><td>)</td>
           <td></td>
         </tr>
@@ -358,7 +360,7 @@ Here is the caller graph for this function:</div>
 <p>Indicates whether there is a top wall. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">flag</td><td>The indicator for the walls </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_flag</td><td>Pointer to the indicator for the walls. </td></tr>
   </table>
   </dd>
 </dl>

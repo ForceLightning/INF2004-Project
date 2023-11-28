@@ -1,4 +1,10 @@
 var searchData=
 [
-  ['navigate_5fcar_5fturn_0',['navigate_car_turn',['../pid_8c.html#a1ba495049f805afac3a7b18020ce0cf4',1,'pid.c']]]
+  ['pathfinding_5ftests_0',['pathfinding_tests',['../pathfinding__tests_8c.html#a12f00de89ab5b9d9f9f01c8999b89a04',1,'pathfinding_tests.c']]],
+  ['pid_5fbearing_5fcorrection_1',['pid_bearing_correction',['../pid_8c.html#acb68d16b0888d974c14bcefee0c03825',1,'pid_bearing_correction(float target_bearing, float current_bearing, pid_params_t *p_pid_params):&#160;pid.c'],['../pid_8h.html#acb68d16b0888d974c14bcefee0c03825',1,'pid_bearing_correction(float target_bearing, float current_bearing, pid_params_t *p_pid_params):&#160;pid.c']]],
+  ['pid_5fcalculate_5fcorrection_2',['pid_calculate_correction',['../pid_8c.html#a820cbffab6b043d0018e7e9937a5729c',1,'pid_calculate_correction(float current_bearing, float target_bearing, float current_ratio, pid_params_t *p_pid_params):&#160;pid.c'],['../pid_8h.html#a820cbffab6b043d0018e7e9937a5729c',1,'pid_calculate_correction(float current_bearing, float target_bearing, float current_ratio, pid_params_t *p_pid_params):&#160;pid.c']]],
+  ['pid_5finit_5ferror_5fcorrection_3',['pid_init_error_correction',['../pid_8c.html#ad310270bc91fea8409f7353704826518',1,'pid_init_error_correction(pid_params_t *p_pid_params):&#160;pid.c'],['../pid_8h.html#ad310270bc91fea8409f7353704826518',1,'pid_init_error_correction(pid_params_t *p_pid_params):&#160;pid.c']]],
+  ['pid_5finit_5fstructs_4',['pid_init_structs',['../pid_8c.html#a2df167fb87eed8f206d2231abc2b7610',1,'pid_init_structs(pid_turn_params_t *p_turn_params):&#160;pid.c'],['../pid_8h.html#a2df167fb87eed8f206d2231abc2b7610',1,'pid_init_structs(pid_turn_params_t *p_turn_params):&#160;pid.c']]],
+  ['pid_5fnavigate_5fturn_5',['pid_navigate_turn',['../pid_8c.html#a71879f5750062bb9d1e51da2a02d626d',1,'pid_navigate_turn(pid_turn_params_t *p_turn_params, maze_cardinal_direction_t direction):&#160;pid.c'],['../pid_8h.html#a71879f5750062bb9d1e51da2a02d626d',1,'pid_navigate_turn(pid_turn_params_t *p_turn_params, maze_cardinal_direction_t direction):&#160;pid.c']]],
+  ['pretty_5fprint_5fmaze_6',['pretty_print_maze',['../namespaceprint__maze.html#ac338594cbf3e7db061a5a85cc7fa57c9',1,'print_maze']]]
 ];
