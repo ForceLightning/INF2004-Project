@@ -140,7 +140,7 @@
 <!-- Node12 -->
 <g id="node12" class="node">
 <title>Node12</title>
-<g id="a_node12"><a xlink:href="pid_8h.html" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="pid_8h.html" target="_top" xlink:title="Header file for PID control.">
 <polygon fill="white" stroke="#666666" points="74.52,-129 21.52,-129 21.52,-110 74.52,-110 74.52,-129"/>
 <text text-anchor="middle" x="48.02" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">pid/pid.h</text>
 </a>

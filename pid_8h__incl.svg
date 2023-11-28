@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Header file for PID control.">
 <polygon fill="#999999" stroke="#666666" points="109.5,-129 8.5,-129 8.5,-110 109.5,-110 109.5,-129"/>
 <text text-anchor="middle" x="59" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">src/drivers/pid/pid.h</text>
 </a>

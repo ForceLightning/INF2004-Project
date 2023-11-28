@@ -97,7 +97,7 @@
 <!-- Node11 -->
 <g id="node11" class="node">
 <title>Node11</title>
-<g id="a_node11"><a xlink:href="dfs__tests_8c.html" target="_top" xlink:title="This file containst the functions that test the depth first search algorithm with a simulated navigat...">
+<g id="a_node11"><a xlink:href="dfs__tests_8c.html" target="_top" xlink:title="This file contains the functions that test the depth first search algorithm with a simulated navigato...">
 <polygon fill="white" stroke="#666666" points="768,-90.5 679,-90.5 679,-71.5 768,-71.5 768,-90.5"/>
 <text text-anchor="middle" x="723.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">tests/dfs_tests.c</text>
 </a>

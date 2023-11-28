@@ -53,7 +53,7 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="pid_8c.html" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="pid_8c.html" target="_top" xlink:title="Driver for PID control.">
 <polygon fill="white" stroke="#666666" points="393.5,-24.5 292.5,-24.5 292.5,-5.5 393.5,-5.5 393.5,-24.5"/>
 <text text-anchor="middle" x="343" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">src/drivers/pid/pid.c</text>
 </a>

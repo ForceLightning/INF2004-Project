@@ -110,6 +110,11 @@ $(document).ready(function(){initNavTree('structwifi__tcp__server.html',''); ini
   <div class="headertitle"><div class="title">wifi_tcp_server Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Struct representing a TCP server connection.  
+ <a href="structwifi__tcp__server.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="wifi_8h_source.html">wifi.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for wifi_tcp_server:</div>
 <div class="dyncontent">
@@ -120,11 +125,11 @@ Collaboration diagram for wifi_tcp_server:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a996f1c0373ed5677c623b81f72fb2f06"><td class="memItemLeft" align="right" valign="top"><a id="a996f1c0373ed5677c623b81f72fb2f06" name="a996f1c0373ed5677c623b81f72fb2f06"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>buffer_recv</b> [<a class="el" href="wifi_8h.html#af1ab7ee59d27c84b860a721a980f8b71">WIFI_BUFFER_SIZE</a>]</td></tr>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>buffer_recv</b> [<a class="el" href="group__wifi__constants.html#gaf1ab7ee59d27c84b860a721a980f8b71">WIFI_BUFFER_SIZE</a>]</td></tr>
 <tr class="memdesc:a996f1c0373ed5677c623b81f72fb2f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer for received data. <br /></td></tr>
 <tr class="separator:a996f1c0373ed5677c623b81f72fb2f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c82dc51109ea04af164b0bb213d2234"><td class="memItemLeft" align="right" valign="top"><a id="a9c82dc51109ea04af164b0bb213d2234" name="a9c82dc51109ea04af164b0bb213d2234"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>buffer_sent</b> [<a class="el" href="wifi_8h.html#af1ab7ee59d27c84b860a721a980f8b71">WIFI_BUFFER_SIZE</a>]</td></tr>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>buffer_sent</b> [<a class="el" href="group__wifi__constants.html#gaf1ab7ee59d27c84b860a721a980f8b71">WIFI_BUFFER_SIZE</a>]</td></tr>
 <tr class="memdesc:a9c82dc51109ea04af164b0bb213d2234"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer for sent data. <br /></td></tr>
 <tr class="separator:a9c82dc51109ea04af164b0bb213d2234"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ba80387dac4a2324d41f3958b9e4e97"><td class="memItemLeft" align="right" valign="top"><a id="a8ba80387dac4a2324d41f3958b9e4e97" name="a8ba80387dac4a2324d41f3958b9e4e97"></a>
@@ -152,7 +157,10 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>sent_len</b></td></tr>
 <tr class="memdesc:a79a428820b513503b6589f9e8ed7ef49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length of sent data. <br /></td></tr>
 <tr class="separator:a79a428820b513503b6589f9e8ed7ef49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Struct representing a TCP server connection. </p>
+<dl class="section note"><dt>Note</dt><dd>The struct contains information about a TCP server connection, including the server and client PCBs, flags indicating whether the connection is complete, buffers for sent and received data, and various counters for tracking the state of the connection. </dd></dl>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/drivers/wifi/<a class="el" href="wifi_8h_source.html">wifi.h</a></li>
 </ul>
 </div><!-- contents -->

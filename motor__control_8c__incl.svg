@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Source file for the motor driver.">
 <polygon fill="#999999" stroke="#666666" points="256.5,-140 138.5,-140 138.5,-110 256.5,-110 256.5,-140"/>
 <text text-anchor="start" x="146.5" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">src/drivers/motor/motor</text>
 <text text-anchor="middle" x="197.5" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">_control.c</text>

@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="This file containst the functions that test the depth first search algorithm with a simulated navigat...">
+<g id="a_node1"><a xlink:title="This file contains the functions that test the depth first search algorithm with a simulated navigato...">
 <polygon fill="#999999" stroke="#666666" points="343.59,-250 254.59,-250 254.59,-231 343.59,-231 343.59,-250"/>
 <text text-anchor="middle" x="299.09" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00">tests/dfs_tests.c</text>
 </a>

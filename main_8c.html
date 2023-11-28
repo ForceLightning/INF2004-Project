@@ -115,6 +115,8 @@ $(document).ready(function(){initNavTree('main_8c.html',''); initResizable(); })
 <p>The main source file for robot control.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;sys/cdefs.h&gt;</code><br />
 <code>#include &quot;pico/cyw43_arch.h&quot;</code><br />
 <code>#include &quot;pico/stdlib.h&quot;</code><br />
 <code>#include &quot;FreeRTOS.h&quot;</code><br />
@@ -131,24 +133,26 @@ $(document).ready(function(){initNavTree('main_8c.html',''); initResizable(); })
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="main_8c__incl.svg" width="2012" height="344"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="main_8c__incl.svg" width="2218" height="344"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:aefeffa5cfb9654e78b33f577b6d7564d"><td class="memItemLeft" align="right" valign="top"><a id="aefeffa5cfb9654e78b33f577b6d7564d" name="aefeffa5cfb9654e78b33f577b6d7564d"></a>
+<tr class="memitem:gaefeffa5cfb9654e78b33f577b6d7564d"><td class="memItemLeft" align="right" valign="top">
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>MAIN_TASK_PRIORITY</b>&#160;&#160;&#160;(tskIDLE_PRIORITY + 1ul)</td></tr>
-<tr class="separator:aefeffa5cfb9654e78b33f577b6d7564d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f2f773d4cada695fa336d0baf2f6719"><td class="memItemLeft" align="right" valign="top"><a id="a9f2f773d4cada695fa336d0baf2f6719" name="a9f2f773d4cada695fa336d0baf2f6719"></a>
+<tr class="memdesc:gaefeffa5cfb9654e78b33f577b6d7564d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Priority of the main task. <br /></td></tr>
+<tr class="separator:gaefeffa5cfb9654e78b33f577b6d7564d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9f2f773d4cada695fa336d0baf2f6719"><td class="memItemLeft" align="right" valign="top">
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RUN_FREERTOS_ON_CORE</b>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a9f2f773d4cada695fa336d0baf2f6719"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:ga9f2f773d4cada695fa336d0baf2f6719"><td class="mdescLeft">&#160;</td><td class="mdescRight">Core to run FreeRTOS on. <br /></td></tr>
+<tr class="separator:ga9f2f773d4cada695fa336d0baf2f6719"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top"><a id="a840291bc02cba5474a4cb46a9b9566fe" name="a840291bc02cba5474a4cb46a9b9566fe"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> (void)</td></tr>
-<tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__main__constants.html#ga840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
+<tr class="memdesc:ga840291bc02cba5474a4cb46a9b9566fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main function for the robot. This just starts the tasks.  <a href="group__main__constants.html#ga840291bc02cba5474a4cb46a9b9566fe">More...</a><br /></td></tr>
+<tr class="separator:ga840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The main source file for robot control. </p>

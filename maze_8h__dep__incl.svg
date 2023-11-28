@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="pid_8c.html" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="pid_8c.html" target="_top" xlink:title="Driver for PID control.">
 <polygon fill="white" stroke="#666666" points="101,-90.5 0,-90.5 0,-71.5 101,-71.5 101,-90.5"/>
 <text text-anchor="middle" x="50.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00">src/drivers/pid/pid.c</text>
 </a>
@@ -35,7 +35,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="pid_8h.html" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="pid_8h.html" target="_top" xlink:title="Header file for PID control.">
 <polygon fill="white" stroke="#666666" points="222,-156.5 121,-156.5 121,-137.5 222,-137.5 222,-156.5"/>
 <text text-anchor="middle" x="171.5" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">src/drivers/pid/pid.h</text>
 </a>
@@ -188,7 +188,7 @@
 <!-- Node15 -->
 <g id="node15" class="node">
 <title>Node15</title>
-<g id="a_node15"><a xlink:href="dfs__tests_8c.html" target="_top" xlink:title="This file containst the functions that test the depth first search algorithm with a simulated navigat...">
+<g id="a_node15"><a xlink:href="dfs__tests_8c.html" target="_top" xlink:title="This file contains the functions that test the depth first search algorithm with a simulated navigato...">
 <polygon fill="white" stroke="#666666" points="1125,-24.5 1036,-24.5 1036,-5.5 1125,-5.5 1125,-24.5"/>
 <text text-anchor="middle" x="1080.5" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">tests/dfs_tests.c</text>
 </a>

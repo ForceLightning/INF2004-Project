@@ -1,0 +1,6 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title="Main function for the ultrasonic demo." alt="" coords="5,55,56,80"/>
+<area shape="rect" id="node2" href="$ultrasonic_8c.html#ae91f6e488d56c1d3ebd62fa2314b747e" title="Get the distance to an object in centimetres." alt="" coords="107,5,235,31"/>
+<area shape="rect" id="node3" href="$ultrasonic_8c.html#a4394ffd9d39e128aa47307ecc2d4f083" title="Get the distance to an object in inches." alt="" coords="111,55,231,80"/>
+<area shape="rect" id="node4" href="$ultrasonic_8c.html#ac385d876054e40ec234dfd93ed5f0114" title="Initalises the pins for the ultrasonic sensor." alt="" coords="104,104,237,129"/>
+</map>

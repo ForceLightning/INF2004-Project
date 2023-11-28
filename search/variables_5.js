@@ -7,8 +7,9 @@ var searchData=
   ['g_5fencoder_4',['g_encoder',['../drivers_2encoder_2main_8c.html#a8bcd5d699cde7fbe9a1248182e52bd54',1,'main.c']]],
   ['g_5fratio_5',['g_ratio',['../motor__control_8c.html#a63095c7a54435332fe1818a01055ac01',1,'motor_control.c']]],
   ['g_5ftrue_5fgrid_6',['g_true_grid',['../floodfill__tests_8c.html#ad64b83add2c6ae324a250baf54898c04',1,'floodfill_tests.c']]],
-  ['gp_5fcurrent_5fbearing_7',['gp_current_bearing',['../magnetometer_8c.html#a5b9d1e89794cbdcd186389f41d187ca0',1,'magnetometer.c']]],
-  ['gp_5fmax_5fbearing_8',['gp_max_bearing',['../magnetometer_8c.html#aa9d4a397ba1e1c77b53b4216cf8182ca',1,'magnetometer.c']]],
-  ['gp_5fmin_5fbearing_9',['gp_min_bearing',['../magnetometer_8c.html#ae53db54841b541a785d4cef8af672ff3',1,'magnetometer.c']]],
-  ['gp_5ftrue_5fheading_10',['gp_true_heading',['../magnetometer_8c.html#af46f00d68f9eff81c74301a2d52c8854',1,'magnetometer.c']]]
+  ['g_5fturn_5fparams_7',['g_turn_params',['../drivers_2pid_2main_8c.html#a14bdace461fcac61affd7359ea5b0ff6',1,'main.c']]],
+  ['gp_5fcurrent_5fbearing_8',['gp_current_bearing',['../magnetometer_8c.html#a5b9d1e89794cbdcd186389f41d187ca0',1,'magnetometer.c']]],
+  ['gp_5fmax_5fbearing_9',['gp_max_bearing',['../magnetometer_8c.html#aa9d4a397ba1e1c77b53b4216cf8182ca',1,'magnetometer.c']]],
+  ['gp_5fmin_5fbearing_10',['gp_min_bearing',['../magnetometer_8c.html#ae53db54841b541a785d4cef8af672ff3',1,'magnetometer.c']]],
+  ['gp_5ftrue_5fheading_11',['gp_true_heading',['../magnetometer_8c.html#af46f00d68f9eff81c74301a2d52c8854',1,'magnetometer.c']]]
 ];

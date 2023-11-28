@@ -111,6 +111,9 @@ $(document).ready(function(){initNavTree('motor__control_8c.html',''); initResiz
   <div class="headertitle"><div class="title">motor_control.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Source file for the motor driver.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &quot;hardware/pwm.h&quot;</code><br />
@@ -157,12 +160,13 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a63095c7a54435332fe1818a01055ac01"><td class="memItemLeft" align="right" valign="top"><a id="a63095c7a54435332fe1818a01055ac01" name="a63095c7a54435332fe1818a01055ac01"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>g_ratio</b> = MOTOR_DEFAULT_DIFF_RATIO</td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>g_ratio</b> = <a class="el" href="group__motor__control.html#gaa728ff1d792d35fe30af1ddc0cdb2e27">MOTOR_DEFAULT_DIFF_RATIO</a></td></tr>
 <tr class="memdesc:a63095c7a54435332fe1818a01055ac01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global variable for motor speed difference ratio. <br /></td></tr>
 <tr class="separator:a63095c7a54435332fe1818a01055ac01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Bryan Seah </dd></dl>
+<div class="textblock"><p >Source file for the motor driver. </p>
+<dl class="section author"><dt>Author</dt><dd>Bryan Seah </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2023-10-29</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2023 </dd></dl>
@@ -186,7 +190,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>g_ratio</b> = MOTOR_
 <p>A function to move the car forward. </p>
 <p >This function moves the car forward by setting the duty cycle of both motors to be equal, as well as setting a clockwise rotation for both motors. </p>
 
-<p class="reference">References <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
+<p class="reference">References <a class="el" href="group__motor__control.html#gaeb475f8f549c88b4129e2f9c73cc2ab3">MOTOR_LEFT_PIN_ANTICLKWISE</a>, <a class="el" href="group__motor__control.html#gae53b22e0b9c63112c0a63e636ce2406c">MOTOR_LEFT_PIN_CLKWISE</a>, <a class="el" href="group__motor__control.html#gaa97675ff7d318074a795718f597a7923">MOTOR_PWM_PIN_LEFT</a>, <a class="el" href="group__motor__control.html#ga9e7d0b0cf487ddf621b37bcdc2b7b776">MOTOR_PWM_PIN_RIGHT</a>, <a class="el" href="group__motor__control.html#gaf98dec0f0cd51e25b66c0d3ac408010f">MOTOR_PWM_WRAP</a>, <a class="el" href="group__motor__control.html#ga22a9de3d0575d4e8a423f860ed1fd6a1">MOTOR_RIGHT_PIN_ANTICLKWISE</a>, <a class="el" href="group__motor__control.html#ga2152892edaeef92e5b791651de120cc4">MOTOR_RIGHT_PIN_CLKWISE</a>, <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -221,7 +225,7 @@ Here is the caller graph for this function:</div>
 <p>A function to reverse the car. </p>
 <p >This function reverses the car by setting the duty cycle of both motors to be equal, as well as setting an anti-clockwise rotation for both motors. </p>
 
-<p class="reference">References <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
+<p class="reference">References <a class="el" href="group__motor__control.html#gaeb475f8f549c88b4129e2f9c73cc2ab3">MOTOR_LEFT_PIN_ANTICLKWISE</a>, <a class="el" href="group__motor__control.html#gae53b22e0b9c63112c0a63e636ce2406c">MOTOR_LEFT_PIN_CLKWISE</a>, <a class="el" href="group__motor__control.html#gaa97675ff7d318074a795718f597a7923">MOTOR_PWM_PIN_LEFT</a>, <a class="el" href="group__motor__control.html#ga9e7d0b0cf487ddf621b37bcdc2b7b776">MOTOR_PWM_PIN_RIGHT</a>, <a class="el" href="group__motor__control.html#gaf98dec0f0cd51e25b66c0d3ac408010f">MOTOR_PWM_WRAP</a>, <a class="el" href="group__motor__control.html#ga22a9de3d0575d4e8a423f860ed1fd6a1">MOTOR_RIGHT_PIN_ANTICLKWISE</a>, <a class="el" href="group__motor__control.html#ga2152892edaeef92e5b791651de120cc4">MOTOR_RIGHT_PIN_CLKWISE</a>, <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -274,6 +278,8 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
+<p class="reference">References <a class="el" href="group__motor__control.html#gabf41e0be988d8cb591db928e40e7bc90">MOTOR_PWM_CLKDIV</a>.</p>
+
 </div>
 </div>
 <a id="a49b123e7151768d344e744d0682660b0" name="a49b123e7151768d344e744d0682660b0"></a>
@@ -295,7 +301,7 @@ Here is the call graph for this function:</div>
 <p>A function to stop the car. </p>
 <p >This function works by setting the duty cycle of both motors to 0. </p>
 
-<p class="reference">References <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
+<p class="reference">References <a class="el" href="group__motor__control.html#gaa97675ff7d318074a795718f597a7923">MOTOR_PWM_PIN_LEFT</a>, <a class="el" href="group__motor__control.html#ga9e7d0b0cf487ddf621b37bcdc2b7b776">MOTOR_PWM_PIN_RIGHT</a>, <a class="el" href="group__motor__control.html#gaf98dec0f0cd51e25b66c0d3ac408010f">MOTOR_PWM_WRAP</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -325,12 +331,12 @@ Here is the call graph for this function:</div>
 <p >This function turns the car left by setting the duty cycle of the left motor to be lower than the right motor, which enables the car to turn left. In addition, the left motor is set to rotate in the opposite direction of the right motor.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">reverse_turn</td><td>A boolean value to indicate that the car is turning in reverse. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">reverse_turn</td><td>A boolean value to indicate that the car is turning in reverse. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
+<p class="reference">References <a class="el" href="group__motor__control.html#gaeb475f8f549c88b4129e2f9c73cc2ab3">MOTOR_LEFT_PIN_ANTICLKWISE</a>, <a class="el" href="group__motor__control.html#gae53b22e0b9c63112c0a63e636ce2406c">MOTOR_LEFT_PIN_CLKWISE</a>, <a class="el" href="group__motor__control.html#gaa97675ff7d318074a795718f597a7923">MOTOR_PWM_PIN_LEFT</a>, <a class="el" href="group__motor__control.html#ga9e7d0b0cf487ddf621b37bcdc2b7b776">MOTOR_PWM_PIN_RIGHT</a>, <a class="el" href="group__motor__control.html#gaf98dec0f0cd51e25b66c0d3ac408010f">MOTOR_PWM_WRAP</a>, <a class="el" href="group__motor__control.html#ga22a9de3d0575d4e8a423f860ed1fd6a1">MOTOR_RIGHT_PIN_ANTICLKWISE</a>, <a class="el" href="group__motor__control.html#ga2152892edaeef92e5b791651de120cc4">MOTOR_RIGHT_PIN_CLKWISE</a>, <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -371,7 +377,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
+<p class="reference">References <a class="el" href="group__motor__control.html#gaeb475f8f549c88b4129e2f9c73cc2ab3">MOTOR_LEFT_PIN_ANTICLKWISE</a>, <a class="el" href="group__motor__control.html#gae53b22e0b9c63112c0a63e636ce2406c">MOTOR_LEFT_PIN_CLKWISE</a>, <a class="el" href="group__motor__control.html#gaa97675ff7d318074a795718f597a7923">MOTOR_PWM_PIN_LEFT</a>, <a class="el" href="group__motor__control.html#ga9e7d0b0cf487ddf621b37bcdc2b7b776">MOTOR_PWM_PIN_RIGHT</a>, <a class="el" href="group__motor__control.html#gaf98dec0f0cd51e25b66c0d3ac408010f">MOTOR_PWM_WRAP</a>, <a class="el" href="group__motor__control.html#ga22a9de3d0575d4e8a423f860ed1fd6a1">MOTOR_RIGHT_PIN_ANTICLKWISE</a>, <a class="el" href="group__motor__control.html#ga2152892edaeef92e5b791651de120cc4">MOTOR_RIGHT_PIN_CLKWISE</a>, <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

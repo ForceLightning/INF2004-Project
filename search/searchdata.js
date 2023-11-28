@@ -9,8 +9,8 @@ var indexSectionsWithContent =
   6: "abcfimpw",
   7: "bcm",
   8: "bgimt",
-  9: "bdempstw",
-  10: "beimpu"
+  9: "bdmp",
+  10: "beimpuw"
 };
 
 var indexSectionNames =

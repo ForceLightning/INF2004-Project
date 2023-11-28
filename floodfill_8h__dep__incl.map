@@ -3,7 +3,7 @@
 <area shape="rect" id="node2" href="$dfs_8c.html" title="Runs the depth first search algorithm on a maze." alt="" coords="5,159,144,185"/>
 <area shape="rect" id="node3" href="$dfs_8h.html" title="Header file for the depth first search algorithm for mapping the maze." alt="" coords="244,79,383,104"/>
 <area shape="rect" id="node4" href="$pico__pathfinding__tests_8c.html" title="This file contains the mapping and pathfinding tests to be run on the Pico depending on the input ove..." alt="" coords="169,152,306,192"/>
-<area shape="rect" id="node5" href="$dfs__tests_8c.html" title="This file containst the functions that test the depth first search algorithm with a simulated navigat..." alt="" coords="330,159,449,185"/>
+<area shape="rect" id="node5" href="$dfs__tests_8c.html" title="This file contains the functions that test the depth first search algorithm with a simulated navigato..." alt="" coords="330,159,449,185"/>
 <area shape="rect" id="node6" href="$navigation__tests_8c.html" title="Tests the combined navigational functions." alt="" coords="473,159,633,185"/>
 <area shape="rect" id="node7" href="$floodfill_8c.html" title="This file contains the implementation of the floodfill algorithm for mapping the maze and determining..." alt="" coords="509,79,667,104"/>
 <area shape="rect" id="node8" href="$floodfill__tests_8c.html" title="This file contains the tests for the floodfill algorithm." alt="" coords="691,79,831,104"/>

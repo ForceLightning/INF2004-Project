@@ -114,7 +114,7 @@ $(document).ready(function(){initNavTree('wifi_8h.html',''); initResizable(); })
 </div><!--header-->
 <div class="contents">
 
-<p>Header file for WiFi module. This file contains the function prototypes and data structures for the WiFi module. The module provides a TCP server that can be initialized and started using the functions tcp_server_begin_init() and <a class="el" href="wifi_8h.html#aaba12e0bf7d99e82269db476f6b06e3e" title="Begins a TCP server by connecting to Wi-Fi with the given SSID and password.">wifi_tcp_server_begin()</a>. The TCP server uses lwIP library for network communication and has a buffer size of 2048 bytes.  
+<p>Header file for WiFi module. This file contains the function prototypes and data structures for the WiFi module. The module provides a TCP server that can be initialized and started using the functions <a class="el" href="wifi_8h.html#a829ded4aede301fbb42e0f323f537364" title="Initializes the TCP server by initializing standard input/output, initializing the CYW43 architecture...">wifi_tcp_server_begin_init()</a> and <a class="el" href="wifi_8h.html#aaba12e0bf7d99e82269db476f6b06e3e" title="Begins a TCP server by connecting to Wi-Fi with the given SSID and password.">wifi_tcp_server_begin()</a>. The TCP server uses lwIP library for network communication and has a buffer size of 2048 bytes.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &quot;lwip/pbuf.h&quot;</code><br />
@@ -137,6 +137,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwifi__tcp__server.html">wifi_tcp_server</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct representing a TCP server connection.  <a href="structwifi__tcp__server.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -144,16 +145,28 @@ Macros</h2></td></tr>
 <tr class="memitem:a88edd2aa4feabff4af21a997d5d8aa23"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wifi_8h.html#a88edd2aa4feabff4af21a997d5d8aa23">DEBUG_PRINT</a>(...)&#160;&#160;&#160;printf(__VA_ARGS__)</td></tr>
 <tr class="memdesc:a88edd2aa4feabff4af21a997d5d8aa23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro for printing debug messages.  <a href="wifi_8h.html#a88edd2aa4feabff4af21a997d5d8aa23">More...</a><br /></td></tr>
 <tr class="separator:a88edd2aa4feabff4af21a997d5d8aa23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1ab7ee59d27c84b860a721a980f8b71"><td class="memItemLeft" align="right" valign="top"><a id="af1ab7ee59d27c84b860a721a980f8b71" name="af1ab7ee59d27c84b860a721a980f8b71"></a>
+<tr class="memitem:gaf1ab7ee59d27c84b860a721a980f8b71"><td class="memItemLeft" align="right" valign="top">
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>WIFI_BUFFER_SIZE</b>&#160;&#160;&#160;2048</td></tr>
-<tr class="memdesc:af1ab7ee59d27c84b860a721a980f8b71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer size for messages sent out via wifi. <br /></td></tr>
-<tr class="separator:af1ab7ee59d27c84b860a721a980f8b71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:gaf1ab7ee59d27c84b860a721a980f8b71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer size for messages sent out via wifi. <br /></td></tr>
+<tr class="separator:gaf1ab7ee59d27c84b860a721a980f8b71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa09b156e7b3ff2352f42b3b634ae4c40"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WIFI_MAX_MESSAGE_LENGTH</b>&#160;&#160;&#160;1024</td></tr>
+<tr class="memdesc:gaa09b156e7b3ff2352f42b3b634ae4c40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum length of a received message. <br /></td></tr>
+<tr class="separator:gaa09b156e7b3ff2352f42b3b634ae4c40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga249d7b3f1b49ba50aa06c7e388f74df7"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WIFI_POLL_TIME_S</b>&#160;&#160;&#160;20</td></tr>
+<tr class="memdesc:ga249d7b3f1b49ba50aa06c7e388f74df7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poll time in seconds. <br /></td></tr>
+<tr class="separator:ga249d7b3f1b49ba50aa06c7e388f74df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaec6fbf9298ef542ac8b51b84e07b7084"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WIFI_TCP_PORT</b>&#160;&#160;&#160;4242</td></tr>
+<tr class="memdesc:gaec6fbf9298ef542ac8b51b84e07b7084"><td class="mdescLeft">&#160;</td><td class="mdescRight">Port to listen on. <br /></td></tr>
+<tr class="separator:gaec6fbf9298ef542ac8b51b84e07b7084"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a9b4dba1c18391819a66c4d7d1f896da3"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structwifi__tcp__server.html">wifi_tcp_server</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wifi_8h.html#a9b4dba1c18391819a66c4d7d1f896da3">wifi_tcp_server_t</a></td></tr>
-<tr class="memdesc:a9b4dba1c18391819a66c4d7d1f896da3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct representing a TCP server connection.  <a href="wifi_8h.html#a9b4dba1c18391819a66c4d7d1f896da3">More...</a><br /></td></tr>
-<tr class="separator:a9b4dba1c18391819a66c4d7d1f896da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaa89583d45305abe87c820d915e63ec"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structwifi__tcp__server.html">wifi_tcp_server</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wifi_8h.html#abaa89583d45305abe87c820d915e63ec">wifi_tcp_server_t</a></td></tr>
+<tr class="memdesc:abaa89583d45305abe87c820d915e63ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct representing a TCP server connection.  <a href="wifi_8h.html#abaa89583d45305abe87c820d915e63ec">More...</a><br /></td></tr>
+<tr class="separator:abaa89583d45305abe87c820d915e63ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -176,7 +189,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>wifi_tcp_server_begin
 <tr class="separator:a41a79053f697f3fd2b86a6507f1c5a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Header file for WiFi module. This file contains the function prototypes and data structures for the WiFi module. The module provides a TCP server that can be initialized and started using the functions tcp_server_begin_init() and <a class="el" href="wifi_8h.html#aaba12e0bf7d99e82269db476f6b06e3e" title="Begins a TCP server by connecting to Wi-Fi with the given SSID and password.">wifi_tcp_server_begin()</a>. The TCP server uses lwIP library for network communication and has a buffer size of 2048 bytes. </p>
+<div class="textblock"><p >Header file for WiFi module. This file contains the function prototypes and data structures for the WiFi module. The module provides a TCP server that can be initialized and started using the functions <a class="el" href="wifi_8h.html#a829ded4aede301fbb42e0f323f537364" title="Initializes the TCP server by initializing standard input/output, initializing the CYW43 architecture...">wifi_tcp_server_begin_init()</a> and <a class="el" href="wifi_8h.html#aaba12e0bf7d99e82269db476f6b06e3e" title="Begins a TCP server by connecting to Wi-Fi with the given SSID and password.">wifi_tcp_server_begin()</a>. The TCP server uses lwIP library for network communication and has a buffer size of 2048 bytes. </p>
+<dl class="section author"><dt>Author</dt><dd>Jurgen Tan</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2023-11-28</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2023 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a88edd2aa4feabff4af21a997d5d8aa23" name="a88edd2aa4feabff4af21a997d5d8aa23"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a88edd2aa4feabff4af21a997d5d8aa23">&#9670;&#160;</a></span>DEBUG_PRINT</h2>
@@ -205,20 +222,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>wifi_tcp_server_begin
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="a9b4dba1c18391819a66c4d7d1f896da3" name="a9b4dba1c18391819a66c4d7d1f896da3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b4dba1c18391819a66c4d7d1f896da3">&#9670;&#160;</a></span>wifi_tcp_server_t</h2>
+<a id="abaa89583d45305abe87c820d915e63ec" name="abaa89583d45305abe87c820d915e63ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaa89583d45305abe87c820d915e63ec">&#9670;&#160;</a></span>wifi_tcp_server_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="wifi_8h.html#a9b4dba1c18391819a66c4d7d1f896da3">wifi_tcp_server_t</a></td>
+          <td class="memname">typedef struct <a class="el" href="structwifi__tcp__server.html">wifi_tcp_server</a> <a class="el" href="wifi_8h.html#abaa89583d45305abe87c820d915e63ec">wifi_tcp_server_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Struct representing a TCP server connection. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="structwifi__tcp__server.html">wifi_tcp_server</a></dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The struct contains information about a TCP server connection, including the server and client PCBs, flags indicating whether the connection is complete, buffers for sent and received data, and various counters for tracking the state of the connection. </dd></dl>
 
 </div>
@@ -303,7 +319,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>err_t Error code. </dd></dl>
 
-<p class="reference">References <a class="el" href="structwifi__tcp__server.html#a996f1c0373ed5677c623b81f72fb2f06">wifi_tcp_server::buffer_recv</a>, <a class="el" href="structwifi__tcp__server.html#aefae4075ba152272c15650aa5ae3b34d">wifi_tcp_server::p_client_pcb</a>, <a class="el" href="structwifi__tcp__server.html#a87070e93bad893ca3fddbe2853173b5c">wifi_tcp_server::recv_len</a>, <a class="el" href="wifi_8h.html#af1ab7ee59d27c84b860a721a980f8b71">WIFI_BUFFER_SIZE</a>, and <a class="el" href="wifi_8c.html#a41a79053f697f3fd2b86a6507f1c5a64">wifi_tcp_server_send_data()</a>.</p>
+<p class="reference">References <a class="el" href="structwifi__tcp__server.html#a996f1c0373ed5677c623b81f72fb2f06">wifi_tcp_server::buffer_recv</a>, <a class="el" href="structwifi__tcp__server.html#aefae4075ba152272c15650aa5ae3b34d">wifi_tcp_server::p_client_pcb</a>, <a class="el" href="structwifi__tcp__server.html#a87070e93bad893ca3fddbe2853173b5c">wifi_tcp_server::recv_len</a>, <a class="el" href="group__wifi__constants.html#gaf1ab7ee59d27c84b860a721a980f8b71">WIFI_BUFFER_SIZE</a>, and <a class="el" href="wifi_8c.html#a41a79053f697f3fd2b86a6507f1c5a64">wifi_tcp_server_send_data()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -349,7 +365,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>err_t value indicating success or failure. </dd></dl>
 
-<p class="reference">References <a class="el" href="structwifi__tcp__server.html#a9c82dc51109ea04af164b0bb213d2234">wifi_tcp_server::buffer_sent</a>, <a class="el" href="barcode_8h.html#a88edd2aa4feabff4af21a997d5d8aa23">DEBUG_PRINT</a>, <a class="el" href="structwifi__tcp__server.html#a79a428820b513503b6589f9e8ed7ef49">wifi_tcp_server::sent_len</a>, and <a class="el" href="wifi_8h.html#af1ab7ee59d27c84b860a721a980f8b71">WIFI_BUFFER_SIZE</a>.</p>
+<p class="reference">References <a class="el" href="structwifi__tcp__server.html#a9c82dc51109ea04af164b0bb213d2234">wifi_tcp_server::buffer_sent</a>, <a class="el" href="barcode_8h.html#a88edd2aa4feabff4af21a997d5d8aa23">DEBUG_PRINT</a>, <a class="el" href="structwifi__tcp__server.html#a79a428820b513503b6589f9e8ed7ef49">wifi_tcp_server::sent_len</a>, and <a class="el" href="group__wifi__constants.html#gaf1ab7ee59d27c84b860a721a980f8b71">WIFI_BUFFER_SIZE</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

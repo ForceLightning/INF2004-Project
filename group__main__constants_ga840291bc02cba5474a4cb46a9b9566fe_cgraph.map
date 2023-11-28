@@ -1,0 +1,5 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title="Main function for the robot. This just starts the tasks." alt="" coords="5,31,56,56"/>
+<area shape="rect" id="node2" href="$magnetometer_8c.html#ab7782502fc0c8715fe8b2db9081027fc" title="Initializes the magnetometer by initializing the USB, I2C, and setting the GPIO pins." alt="" coords="141,5,237,31"/>
+<area shape="rect" id="node3" href="$wifi_8c.html#a829ded4aede301fbb42e0f323f537364" title="Initializes the TCP server by initializing standard input/output, initializing the CYW43 architecture..." alt="" coords="104,55,275,80"/>
+</map>

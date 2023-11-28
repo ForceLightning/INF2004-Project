@@ -105,14 +105,48 @@ $(document).ready(function(){initNavTree('group__encoder__demo__constants.html',
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle"><div class="title">Encoder Demo Constants</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>GPIO pin number for clockwise rotation.  
-</p>
-<p >GPIO pin number for clockwise rotation. </p>
-<p >/** </p>
+<p>Constants for the encoder demo.  
+<a href="#details">More...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga3835ad6a89a424c0a0eb80132b72efd3"><td class="memItemLeft" align="right" valign="top"><a id="ga3835ad6a89a424c0a0eb80132b72efd3" name="ga3835ad6a89a424c0a0eb80132b72efd3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ENCODER_PIN</b>&#160;&#160;&#160;22</td></tr>
+<tr class="memdesc:ga3835ad6a89a424c0a0eb80132b72efd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">GP22 for encoder input. <br /></td></tr>
+<tr class="separator:ga3835ad6a89a424c0a0eb80132b72efd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac9564b3a258722c5c469dc036d4f0444"><td class="memItemLeft" align="right" valign="top"><a id="gac9564b3a258722c5c469dc036d4f0444" name="gac9564b3a258722c5c469dc036d4f0444"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MM_TO_CM</b>&#160;&#160;&#160;10.0f</td></tr>
+<tr class="memdesc:gac9564b3a258722c5c469dc036d4f0444"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conversion factor from mm to cm. <br /></td></tr>
+<tr class="separator:gac9564b3a258722c5c469dc036d4f0444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa110ef4ed1995cd4b27aaa8a605e0500"><td class="memItemLeft" align="right" valign="top"><a id="gaa110ef4ed1995cd4b27aaa8a605e0500" name="gaa110ef4ed1995cd4b27aaa8a605e0500"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_PIN_ANTICLKWISE</b>&#160;&#160;&#160;17</td></tr>
+<tr class="memdesc:gaa110ef4ed1995cd4b27aaa8a605e0500"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO pin number for anticlockwise rotation. <br /></td></tr>
+<tr class="separator:gaa110ef4ed1995cd4b27aaa8a605e0500"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad0f1dddea3d7784576d4b1877c4a8aa9"><td class="memItemLeft" align="right" valign="top"><a id="gad0f1dddea3d7784576d4b1877c4a8aa9" name="gad0f1dddea3d7784576d4b1877c4a8aa9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_PIN_CLKWISE</b>&#160;&#160;&#160;16</td></tr>
+<tr class="memdesc:gad0f1dddea3d7784576d4b1877c4a8aa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO pin number for clockwise rotation. <br /></td></tr>
+<tr class="separator:gad0f1dddea3d7784576d4b1877c4a8aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3f88ea8f18caee03ff2bc4f6dbb63b81"><td class="memItemLeft" align="right" valign="top"><a id="ga3f88ea8f18caee03ff2bc4f6dbb63b81" name="ga3f88ea8f18caee03ff2bc4f6dbb63b81"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PWM_CLKDIV</b>&#160;&#160;&#160;100</td></tr>
+<tr class="memdesc:ga3f88ea8f18caee03ff2bc4f6dbb63b81"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM clock divider. <br /></td></tr>
+<tr class="separator:ga3f88ea8f18caee03ff2bc4f6dbb63b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf5a48adc9d939102a42f2829b7a1b8ac"><td class="memItemLeft" align="right" valign="top"><a id="gaf5a48adc9d939102a42f2829b7a1b8ac" name="gaf5a48adc9d939102a42f2829b7a1b8ac"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PWM_PIN</b>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:gaf5a48adc9d939102a42f2829b7a1b8ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO pin number for PWM output to control motor speed. <br /></td></tr>
+<tr class="separator:gaf5a48adc9d939102a42f2829b7a1b8ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga19bbd3f95a23c9ecf96180fae5486441"><td class="memItemLeft" align="right" valign="top"><a id="ga19bbd3f95a23c9ecf96180fae5486441" name="ga19bbd3f95a23c9ecf96180fae5486441"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PWM_WRAP</b>&#160;&#160;&#160;62500</td></tr>
+<tr class="memdesc:ga19bbd3f95a23c9ecf96180fae5486441"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM wrap value. <br /></td></tr>
+<tr class="separator:ga19bbd3f95a23c9ecf96180fae5486441"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p >Constants for the encoder demo. </p>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

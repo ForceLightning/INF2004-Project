@@ -107,6 +107,7 @@ $(document).ready(function(){initNavTree('motor__control_8h.html',''); initResiz
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">motor_control.h File Reference</div></div>
@@ -136,13 +137,54 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmotor__pins.html">motor_pins</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains the GPIO pins for the motor.  <a href="structmotor__pins.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:gaa728ff1d792d35fe30af1ddc0cdb2e27"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_DEFAULT_DIFF_RATIO</b>&#160;&#160;&#160;1.05f</td></tr>
+<tr class="memdesc:gaa728ff1d792d35fe30af1ddc0cdb2e27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default ratio for motor speed difference. <br /></td></tr>
+<tr class="separator:gaa728ff1d792d35fe30af1ddc0cdb2e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeb475f8f549c88b4129e2f9c73cc2ab3"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_LEFT_PIN_ANTICLKWISE</b>&#160;&#160;&#160;17</td></tr>
+<tr class="memdesc:gaeb475f8f549c88b4129e2f9c73cc2ab3"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO pin for left motor anti-clockwise. <br /></td></tr>
+<tr class="separator:gaeb475f8f549c88b4129e2f9c73cc2ab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae53b22e0b9c63112c0a63e636ce2406c"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_LEFT_PIN_CLKWISE</b>&#160;&#160;&#160;16</td></tr>
+<tr class="memdesc:gae53b22e0b9c63112c0a63e636ce2406c"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO pin for left motor clockwise. <br /></td></tr>
+<tr class="separator:gae53b22e0b9c63112c0a63e636ce2406c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabf41e0be988d8cb591db928e40e7bc90"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_PWM_CLKDIV</b>&#160;&#160;&#160;100</td></tr>
+<tr class="memdesc:gabf41e0be988d8cb591db928e40e7bc90"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM clock divider. <br /></td></tr>
+<tr class="separator:gabf41e0be988d8cb591db928e40e7bc90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa97675ff7d318074a795718f597a7923"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_PWM_PIN_LEFT</b>&#160;&#160;&#160;10</td></tr>
+<tr class="memdesc:gaa97675ff7d318074a795718f597a7923"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO pin for left motor PWM. <br /></td></tr>
+<tr class="separator:gaa97675ff7d318074a795718f597a7923"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9e7d0b0cf487ddf621b37bcdc2b7b776"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_PWM_PIN_RIGHT</b>&#160;&#160;&#160;11</td></tr>
+<tr class="memdesc:ga9e7d0b0cf487ddf621b37bcdc2b7b776"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO pin for right motor PWM. <br /></td></tr>
+<tr class="separator:ga9e7d0b0cf487ddf621b37bcdc2b7b776"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf98dec0f0cd51e25b66c0d3ac408010f"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_PWM_WRAP</b>&#160;&#160;&#160;62500</td></tr>
+<tr class="memdesc:gaf98dec0f0cd51e25b66c0d3ac408010f"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM wrap value. <br /></td></tr>
+<tr class="separator:gaf98dec0f0cd51e25b66c0d3ac408010f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga22a9de3d0575d4e8a423f860ed1fd6a1"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_RIGHT_PIN_ANTICLKWISE</b>&#160;&#160;&#160;14</td></tr>
+<tr class="memdesc:ga22a9de3d0575d4e8a423f860ed1fd6a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO pin for right motor anti-clockwise. <br /></td></tr>
+<tr class="separator:ga22a9de3d0575d4e8a423f860ed1fd6a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2152892edaeef92e5b791651de120cc4"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_RIGHT_PIN_CLKWISE</b>&#160;&#160;&#160;15</td></tr>
+<tr class="memdesc:ga2152892edaeef92e5b791651de120cc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO pin for right motor clockwise. <br /></td></tr>
+<tr class="separator:ga2152892edaeef92e5b791651de120cc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a3194ed010c3bbfaff659e872a1ee6d9e"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structmotor__pins.html">motor_pins</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor__control_8h.html#a3194ed010c3bbfaff659e872a1ee6d9e">motor_pins_t</a></td></tr>
-<tr class="memdesc:a3194ed010c3bbfaff659e872a1ee6d9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains the GPIO pins for the motor.  <a href="motor__control_8h.html#a3194ed010c3bbfaff659e872a1ee6d9e">More...</a><br /></td></tr>
-<tr class="separator:a3194ed010c3bbfaff659e872a1ee6d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a354760e4d4170534892d9ceafd878f1b"><td class="memItemLeft" align="right" valign="top"><a id="a354760e4d4170534892d9ceafd878f1b" name="a354760e4d4170534892d9ceafd878f1b"></a>
+typedef struct <a class="el" href="structmotor__pins.html">motor_pins</a>&#160;</td><td class="memItemRight" valign="bottom"><b>motor_pins_t</b></td></tr>
+<tr class="memdesc:a354760e4d4170534892d9ceafd878f1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains the GPIO pins for the motor. <br /></td></tr>
+<tr class="separator:a354760e4d4170534892d9ceafd878f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -180,24 +222,7 @@ Functions</h2></td></tr>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2023-10-29</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2023 </dd></dl>
-</div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="a3194ed010c3bbfaff659e872a1ee6d9e" name="a3194ed010c3bbfaff659e872a1ee6d9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3194ed010c3bbfaff659e872a1ee6d9e">&#9670;&#160;</a></span>motor_pins_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="motor__control_8h.html#a3194ed010c3bbfaff659e872a1ee6d9e">motor_pins_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Contains the GPIO pins for the motor. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="aa0ac4ae2f8c20282dec6b8e443fd6666" name="aa0ac4ae2f8c20282dec6b8e443fd6666"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa0ac4ae2f8c20282dec6b8e443fd6666">&#9670;&#160;</a></span>motor_move_forward()</h2>
 
@@ -217,7 +242,7 @@ Functions</h2></td></tr>
 <p>A function to move the car forward. </p>
 <p >This function moves the car forward by setting the duty cycle of both motors to be equal, as well as setting a clockwise rotation for both motors. </p>
 
-<p class="reference">References <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
+<p class="reference">References <a class="el" href="group__motor__control.html#gaeb475f8f549c88b4129e2f9c73cc2ab3">MOTOR_LEFT_PIN_ANTICLKWISE</a>, <a class="el" href="group__motor__control.html#gae53b22e0b9c63112c0a63e636ce2406c">MOTOR_LEFT_PIN_CLKWISE</a>, <a class="el" href="group__motor__control.html#gaa97675ff7d318074a795718f597a7923">MOTOR_PWM_PIN_LEFT</a>, <a class="el" href="group__motor__control.html#ga9e7d0b0cf487ddf621b37bcdc2b7b776">MOTOR_PWM_PIN_RIGHT</a>, <a class="el" href="group__motor__control.html#gaf98dec0f0cd51e25b66c0d3ac408010f">MOTOR_PWM_WRAP</a>, <a class="el" href="group__motor__control.html#ga22a9de3d0575d4e8a423f860ed1fd6a1">MOTOR_RIGHT_PIN_ANTICLKWISE</a>, <a class="el" href="group__motor__control.html#ga2152892edaeef92e5b791651de120cc4">MOTOR_RIGHT_PIN_CLKWISE</a>, <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -252,7 +277,7 @@ Here is the caller graph for this function:</div>
 <p>A function to reverse the car. </p>
 <p >This function reverses the car by setting the duty cycle of both motors to be equal, as well as setting an anti-clockwise rotation for both motors. </p>
 
-<p class="reference">References <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
+<p class="reference">References <a class="el" href="group__motor__control.html#gaeb475f8f549c88b4129e2f9c73cc2ab3">MOTOR_LEFT_PIN_ANTICLKWISE</a>, <a class="el" href="group__motor__control.html#gae53b22e0b9c63112c0a63e636ce2406c">MOTOR_LEFT_PIN_CLKWISE</a>, <a class="el" href="group__motor__control.html#gaa97675ff7d318074a795718f597a7923">MOTOR_PWM_PIN_LEFT</a>, <a class="el" href="group__motor__control.html#ga9e7d0b0cf487ddf621b37bcdc2b7b776">MOTOR_PWM_PIN_RIGHT</a>, <a class="el" href="group__motor__control.html#gaf98dec0f0cd51e25b66c0d3ac408010f">MOTOR_PWM_WRAP</a>, <a class="el" href="group__motor__control.html#ga22a9de3d0575d4e8a423f860ed1fd6a1">MOTOR_RIGHT_PIN_ANTICLKWISE</a>, <a class="el" href="group__motor__control.html#ga2152892edaeef92e5b791651de120cc4">MOTOR_RIGHT_PIN_CLKWISE</a>, <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -305,6 +330,8 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
+<p class="reference">References <a class="el" href="group__motor__control.html#gabf41e0be988d8cb591db928e40e7bc90">MOTOR_PWM_CLKDIV</a>.</p>
+
 </div>
 </div>
 <a id="a49b123e7151768d344e744d0682660b0" name="a49b123e7151768d344e744d0682660b0"></a>
@@ -326,7 +353,7 @@ Here is the call graph for this function:</div>
 <p>A function to stop the car. </p>
 <p >This function works by setting the duty cycle of both motors to 0. </p>
 
-<p class="reference">References <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
+<p class="reference">References <a class="el" href="group__motor__control.html#gaa97675ff7d318074a795718f597a7923">MOTOR_PWM_PIN_LEFT</a>, <a class="el" href="group__motor__control.html#ga9e7d0b0cf487ddf621b37bcdc2b7b776">MOTOR_PWM_PIN_RIGHT</a>, <a class="el" href="group__motor__control.html#gaf98dec0f0cd51e25b66c0d3ac408010f">MOTOR_PWM_WRAP</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -356,12 +383,12 @@ Here is the call graph for this function:</div>
 <p >This function turns the car left by setting the duty cycle of the left motor to be lower than the right motor, which enables the car to turn left. In addition, the left motor is set to rotate in the opposite direction of the right motor.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">reverse_turn</td><td>A boolean value to indicate that the car is turning in reverse. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">reverse_turn</td><td>A boolean value to indicate that the car is turning in reverse. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
+<p class="reference">References <a class="el" href="group__motor__control.html#gaeb475f8f549c88b4129e2f9c73cc2ab3">MOTOR_LEFT_PIN_ANTICLKWISE</a>, <a class="el" href="group__motor__control.html#gae53b22e0b9c63112c0a63e636ce2406c">MOTOR_LEFT_PIN_CLKWISE</a>, <a class="el" href="group__motor__control.html#gaa97675ff7d318074a795718f597a7923">MOTOR_PWM_PIN_LEFT</a>, <a class="el" href="group__motor__control.html#ga9e7d0b0cf487ddf621b37bcdc2b7b776">MOTOR_PWM_PIN_RIGHT</a>, <a class="el" href="group__motor__control.html#gaf98dec0f0cd51e25b66c0d3ac408010f">MOTOR_PWM_WRAP</a>, <a class="el" href="group__motor__control.html#ga22a9de3d0575d4e8a423f860ed1fd6a1">MOTOR_RIGHT_PIN_ANTICLKWISE</a>, <a class="el" href="group__motor__control.html#ga2152892edaeef92e5b791651de120cc4">MOTOR_RIGHT_PIN_CLKWISE</a>, <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -402,7 +429,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
+<p class="reference">References <a class="el" href="group__motor__control.html#gaeb475f8f549c88b4129e2f9c73cc2ab3">MOTOR_LEFT_PIN_ANTICLKWISE</a>, <a class="el" href="group__motor__control.html#gae53b22e0b9c63112c0a63e636ce2406c">MOTOR_LEFT_PIN_CLKWISE</a>, <a class="el" href="group__motor__control.html#gaa97675ff7d318074a795718f597a7923">MOTOR_PWM_PIN_LEFT</a>, <a class="el" href="group__motor__control.html#ga9e7d0b0cf487ddf621b37bcdc2b7b776">MOTOR_PWM_PIN_RIGHT</a>, <a class="el" href="group__motor__control.html#gaf98dec0f0cd51e25b66c0d3ac408010f">MOTOR_PWM_WRAP</a>, <a class="el" href="group__motor__control.html#ga22a9de3d0575d4e8a423f860ed1fd6a1">MOTOR_RIGHT_PIN_ANTICLKWISE</a>, <a class="el" href="group__motor__control.html#ga2152892edaeef92e5b791651de120cc4">MOTOR_RIGHT_PIN_CLKWISE</a>, <a class="el" href="motor__control_8c.html#a3dc0491deae0e443306e8695d7879daf">motor_update_direction()</a>, and <a class="el" href="motor__control_8c.html#a38f59b6b48b6a4d0dd583eef8719e1a3">motor_update_pwm()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

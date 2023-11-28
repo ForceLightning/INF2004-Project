@@ -13,5 +13,6 @@ var pico__pathfinding__tests_8c =
       [ "GRID_COLS", "floodfill__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2a5fc37eb4ae64c6aacc59bb40c0b682b5", null ],
       [ "GRID_ROWS", "pathfinding__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2a999a85451a10a5ea3c71e34ad10089a0", null ],
       [ "GRID_COLS", "pathfinding__tests_8c.html#a9401d5eb194f6744c433d6d580c27cb2a5fc37eb4ae64c6aacc59bb40c0b682b5", null ]
-    ] ]
+    ] ],
+    [ "main", "pico__pathfinding__tests_8c.html#a840291bc02cba5474a4cb46a9b9566fe", null ]
 ];

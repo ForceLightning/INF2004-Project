@@ -106,7 +106,6 @@ $(document).ready(function(){initNavTree('wifi_8c.html',''); initResizable(); })
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">wifi.c File Reference</div></div>
 </div><!--header-->
@@ -140,21 +139,6 @@ Include dependency graph for wifi.c:</div>
 </div>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:aa09b156e7b3ff2352f42b3b634ae4c40"><td class="memItemLeft" align="right" valign="top"><a id="aa09b156e7b3ff2352f42b3b634ae4c40" name="aa09b156e7b3ff2352f42b3b634ae4c40"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>WIFI_MAX_MESSAGE_LENGTH</b>&#160;&#160;&#160;1024</td></tr>
-<tr class="memdesc:aa09b156e7b3ff2352f42b3b634ae4c40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum length of a received message. <br /></td></tr>
-<tr class="separator:aa09b156e7b3ff2352f42b3b634ae4c40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a249d7b3f1b49ba50aa06c7e388f74df7"><td class="memItemLeft" align="right" valign="top"><a id="a249d7b3f1b49ba50aa06c7e388f74df7" name="a249d7b3f1b49ba50aa06c7e388f74df7"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>WIFI_POLL_TIME_S</b>&#160;&#160;&#160;20</td></tr>
-<tr class="memdesc:a249d7b3f1b49ba50aa06c7e388f74df7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poll time in seconds. <br /></td></tr>
-<tr class="separator:a249d7b3f1b49ba50aa06c7e388f74df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec6fbf9298ef542ac8b51b84e07b7084"><td class="memItemLeft" align="right" valign="top"><a id="aec6fbf9298ef542ac8b51b84e07b7084" name="aec6fbf9298ef542ac8b51b84e07b7084"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>WIFI_TCP_PORT</b>&#160;&#160;&#160;4242</td></tr>
-<tr class="memdesc:aec6fbf9298ef542ac8b51b84e07b7084"><td class="mdescLeft">&#160;</td><td class="mdescRight">Port to listen on. <br /></td></tr>
-<tr class="separator:aec6fbf9298ef542ac8b51b84e07b7084"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aa2dfdb3478f7b326d077e4f6eac7d764"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wifi_8c.html#aa2dfdb3478f7b326d077e4f6eac7d764">wifi_run_tcp_server_test</a> (void)</td></tr>
@@ -261,7 +245,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>err_t Error code. </dd></dl>
 
-<p class="reference">References <a class="el" href="structwifi__tcp__server.html#a996f1c0373ed5677c623b81f72fb2f06">wifi_tcp_server::buffer_recv</a>, <a class="el" href="structwifi__tcp__server.html#aefae4075ba152272c15650aa5ae3b34d">wifi_tcp_server::p_client_pcb</a>, <a class="el" href="structwifi__tcp__server.html#a87070e93bad893ca3fddbe2853173b5c">wifi_tcp_server::recv_len</a>, <a class="el" href="wifi_8h.html#af1ab7ee59d27c84b860a721a980f8b71">WIFI_BUFFER_SIZE</a>, and <a class="el" href="wifi_8c.html#a41a79053f697f3fd2b86a6507f1c5a64">wifi_tcp_server_send_data()</a>.</p>
+<p class="reference">References <a class="el" href="structwifi__tcp__server.html#a996f1c0373ed5677c623b81f72fb2f06">wifi_tcp_server::buffer_recv</a>, <a class="el" href="structwifi__tcp__server.html#aefae4075ba152272c15650aa5ae3b34d">wifi_tcp_server::p_client_pcb</a>, <a class="el" href="structwifi__tcp__server.html#a87070e93bad893ca3fddbe2853173b5c">wifi_tcp_server::recv_len</a>, <a class="el" href="group__wifi__constants.html#gaf1ab7ee59d27c84b860a721a980f8b71">WIFI_BUFFER_SIZE</a>, and <a class="el" href="wifi_8c.html#a41a79053f697f3fd2b86a6507f1c5a64">wifi_tcp_server_send_data()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -307,7 +291,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>err_t value indicating success or failure. </dd></dl>
 
-<p class="reference">References <a class="el" href="structwifi__tcp__server.html#a9c82dc51109ea04af164b0bb213d2234">wifi_tcp_server::buffer_sent</a>, <a class="el" href="barcode_8h.html#a88edd2aa4feabff4af21a997d5d8aa23">DEBUG_PRINT</a>, <a class="el" href="structwifi__tcp__server.html#a79a428820b513503b6589f9e8ed7ef49">wifi_tcp_server::sent_len</a>, and <a class="el" href="wifi_8h.html#af1ab7ee59d27c84b860a721a980f8b71">WIFI_BUFFER_SIZE</a>.</p>
+<p class="reference">References <a class="el" href="structwifi__tcp__server.html#a9c82dc51109ea04af164b0bb213d2234">wifi_tcp_server::buffer_sent</a>, <a class="el" href="barcode_8h.html#a88edd2aa4feabff4af21a997d5d8aa23">DEBUG_PRINT</a>, <a class="el" href="structwifi__tcp__server.html#a79a428820b513503b6589f9e8ed7ef49">wifi_tcp_server::sent_len</a>, and <a class="el" href="group__wifi__constants.html#gaf1ab7ee59d27c84b860a721a980f8b71">WIFI_BUFFER_SIZE</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

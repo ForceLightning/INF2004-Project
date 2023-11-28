@@ -59,8 +59,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "FreeRTOSConfig_8h_source.html",
-"index.html",
-"structpid__params.html#a6b31ddcb125478fa054985bdc3935941"
+"group__motor__control.html#gaa97675ff7d318074a795718f597a7923",
+"structmaze__grid.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
